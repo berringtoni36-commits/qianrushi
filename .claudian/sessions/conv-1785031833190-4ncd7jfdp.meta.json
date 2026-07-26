@@ -4,6 +4,23 @@
   "title": "https://github",
   "titleGenerationStatus": "failed",
   "createdAt": 1785031833191,
-  "updatedAt": 1785031835623,
-  "sessionId": null
+  "updatedAt": 1785032846887,
+  "lastResponseAt": 1785032842340,
+  "sessionId": "019f9c39-dfdc-7751-b3d0-f5ef74bbc127",
+  "providerState": {
+    "threadId": "019f9c39-dfdc-7751-b3d0-f5ef74bbc127",
+    "sessionFilePath": "C:\\Users\\11624\\.codex\\sessions\\2026\\07\\26\\rollout-2026-07-26T10-21-11-019f9c39-dfdc-7751-b3d0-f5ef74bbc127.jsonl",
+    "transcriptRootPath": "C:\\Users\\11624\\.codex\\sessions"
+  },
+  "currentNote": "projects/linux视觉感知项目/文档/03 LIME 低照度增强/3.1 算法原理：Retinex与光照图.md",
+  "usage": {
+    "inputTokens": 30271,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 28416,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 30271,
+    "percentage": 12,
+    "model": "gpt-5.6-luna"
+  }
 }

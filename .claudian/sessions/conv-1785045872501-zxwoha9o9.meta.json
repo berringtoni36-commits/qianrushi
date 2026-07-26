@@ -1,0 +1,23 @@
+{
+  "id": "conv-1785045872501-zxwoha9o9",
+  "providerId": "claude",
+  "title": "这个文章的大纲标题整理下，怎么都消失了要求和C:\\Users\\11624\\Desktop\\my-va...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1785045872501,
+  "updatedAt": 1785046475091,
+  "lastResponseAt": 1785046475091,
+  "sessionId": "d65fee9b-8d99-42cc-9480-891b1f69a7dc",
+  "providerState": {
+    "providerSessionId": "d65fee9b-8d99-42cc-9480-891b1f69a7dc"
+  },
+  "currentNote": "projects/linux视觉感知项目/Linux视觉感知处理原作者文档.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 72,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 114688,
+    "contextWindow": 1000000,
+    "contextTokens": 114760,
+    "percentage": 11
+  }
+}

@@ -35,7 +35,7 @@
       "enableOpus1M": true,
       "enableSonnet1M": true,
       "customModels": "",
-      "lastModel": "haiku",
+      "lastModel": "opus[1m]",
       "environmentVariables": "",
       "environmentHash": ""
     },
@@ -80,7 +80,7 @@
   },
   "settingsProvider": "codex",
   "savedProviderModel": {
-    "claude": "haiku",
+    "claude": "opus[1m]",
     "codex": "gpt-5.6-luna",
     "opencode": "opencode"
   },
@@ -96,7 +96,7 @@
     "opencode": "default"
   },
   "savedProviderPermissionMode": {
-    "claude": "normal",
+    "claude": "yolo",
     "codex": "yolo",
     "opencode": "yolo"
   },
