@@ -1,0 +1,24 @@
+{
+  "id": "conv-1784791724351-9srioxj5l",
+  "providerId": "claude",
+  "title": "pdf能用flashcards插件制作卡片吗",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784791724351,
+  "updatedAt": 1784793007008,
+  "lastResponseAt": 1784791869022,
+  "sessionId": "17f6aed7-c482-450e-a2c0-73f2efb8d7f0",
+  "providerState": {
+    "providerSessionId": "17f6aed7-c482-450e-a2c0-73f2efb8d7f0"
+  },
+  "currentNote": "projects/Linux物理内存检测项目/linux物理内存检测工具：_带目录.pdf",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 1630,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 37888,
+    "contextWindow": 200000,
+    "contextTokens": 39518,
+    "percentage": 20,
+    "contextWindowIsAuthoritative": true
+  }
+}

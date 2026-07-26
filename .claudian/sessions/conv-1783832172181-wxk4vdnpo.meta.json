@@ -1,0 +1,21 @@
+{
+  "id": "conv-1783832172181-wxk4vdnpo",
+  "providerId": "codex",
+  "title": "这种3",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783832172181,
+  "updatedAt": 1783838949863,
+  "lastResponseAt": 1783838949863,
+  "sessionId": null,
+  "currentNote": "projects/Linux物理内存检测项目/4 深度学习/4.4 新旧Wiki对比总结.md",
+  "usage": {
+    "inputTokens": 70314,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 68992,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 70314,
+    "percentage": 27,
+    "model": "gpt-5.5"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "conv-1781966726830-940jzgloo",
+  "providerId": "claude",
+  "title": "Query image visibility capability",
+  "titleGenerationStatus": "success",
+  "createdAt": 1781966726830,
+  "updatedAt": 1781969208762,
+  "lastResponseAt": 1781966735118,
+  "sessionId": "e0725e35-12bf-4576-9105-2ea62d52991f",
+  "providerState": {
+    "providerSessionId": "e0725e35-12bf-4576-9105-2ea62d52991f"
+  },
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 29871,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 29871,
+    "percentage": 15,
+    "contextWindowIsAuthoritative": true
+  }
+}

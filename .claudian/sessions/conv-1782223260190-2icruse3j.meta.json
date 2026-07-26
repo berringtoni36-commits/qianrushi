@@ -1,0 +1,23 @@
+{
+  "id": "conv-1782223260190-2icruse3j",
+  "providerId": "claude",
+  "title": "图片里有什么",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1782223260190,
+  "updatedAt": 1782223479901,
+  "lastResponseAt": 1782223338541,
+  "sessionId": "2f28d146-e3ff-4b91-97af-087ed794c870",
+  "providerState": {
+    "providerSessionId": "2f28d146-e3ff-4b91-97af-087ed794c870"
+  },
+  "currentNote": "projects/八股/嵌入式八股150题.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 1919,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 28928,
+    "contextWindow": 1000000,
+    "contextTokens": 30847,
+    "percentage": 3
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "conv-1781969385025-h1z5frr01",
+  "providerId": "claude",
+  "title": "Add 1M context support to configuration",
+  "titleGenerationStatus": "success",
+  "createdAt": 1781969385025,
+  "updatedAt": 1781969806602,
+  "lastResponseAt": 1781969726127,
+  "sessionId": "c75c4024-e8b1-47ea-b2d2-813fef1f93af",
+  "providerState": {
+    "providerSessionId": "c75c4024-e8b1-47ea-b2d2-813fef1f93af"
+  },
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 413,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 46592,
+    "contextWindow": 200000,
+    "contextTokens": 47005,
+    "percentage": 24,
+    "contextWindowIsAuthoritative": true
+  }
+}

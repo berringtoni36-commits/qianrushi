@@ -1,0 +1,22 @@
+{
+  "id": "conv-1783676085453-a6jk16khj",
+  "providerId": "claude",
+  "title": "C:\\Users\\11624\\Desktop\\my-vault\\projects\\Linux物理内存...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783676085454,
+  "updatedAt": 1783677570471,
+  "lastResponseAt": 1783677532358,
+  "sessionId": "efd1586c-0061-4c24-9cfb-205a7dc3b4bc",
+  "providerState": {
+    "providerSessionId": "efd1586c-0061-4c24-9cfb-205a7dc3b4bc"
+  },
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 233,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 133952,
+    "contextWindow": 1000000,
+    "contextTokens": 134185,
+    "percentage": 13
+  }
+}

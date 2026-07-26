@@ -1,0 +1,24 @@
+{
+  "id": "conv-1784425177977-fzgidwqar",
+  "providerId": "claude",
+  "title": "这个图没画好，再画下",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784425177978,
+  "updatedAt": 1784531034365,
+  "lastResponseAt": 1784516525145,
+  "sessionId": "03616961-1187-4f9e-88c4-784e2c17403f",
+  "providerState": {
+    "providerSessionId": "03616961-1187-4f9e-88c4-784e2c17403f"
+  },
+  "currentNote": "projects/RTOS项目/4 硬件驱动开发/4.1 电机控制与反馈/4.1.3 PID闭环调速算法实现与调参.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 257,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 49024,
+    "contextWindow": 200000,
+    "contextTokens": 49281,
+    "percentage": 25,
+    "contextWindowIsAuthoritative": true
+  }
+}

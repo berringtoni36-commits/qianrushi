@@ -1,0 +1,24 @@
+{
+  "id": "conv-1781971228202-pfevwp3jq",
+  "providerId": "claude",
+  "title": "Update interview prep skill with diagrams and t...",
+  "titleGenerationStatus": "success",
+  "createdAt": 1781971228202,
+  "updatedAt": 1781971405852,
+  "lastResponseAt": 1781971405852,
+  "sessionId": "331afdb6-379f-490b-bb3e-91f4b0e292f0",
+  "providerState": {
+    "providerSessionId": "331afdb6-379f-490b-bb3e-91f4b0e292f0"
+  },
+  "currentNote": "projects/八股/嵌入式八股150题.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 575,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 34432,
+    "contextWindow": 200000,
+    "contextTokens": 35007,
+    "percentage": 18,
+    "contextWindowIsAuthoritative": true
+  }
+}

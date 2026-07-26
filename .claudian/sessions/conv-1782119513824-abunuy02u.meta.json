@@ -1,0 +1,24 @@
+{
+  "id": "conv-1782119513824-abunuy02u",
+  "providerId": "claude",
+  "title": "完全参考51题的格式，题目下面还要有一个红色的竖杠,带我看下56题",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1782119513825,
+  "updatedAt": 1782120014163,
+  "lastResponseAt": 1782119784460,
+  "sessionId": "3dd16a11-993c-49bb-9277-b56e2c80691d",
+  "providerState": {
+    "providerSessionId": "3dd16a11-993c-49bb-9277-b56e2c80691d"
+  },
+  "currentNote": "projects/八股/嵌入式八股150题.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 2841,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 35008,
+    "contextWindow": 200000,
+    "contextTokens": 37849,
+    "percentage": 19,
+    "contextWindowIsAuthoritative": true
+  }
+}

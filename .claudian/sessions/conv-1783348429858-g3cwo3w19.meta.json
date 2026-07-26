@@ -1,0 +1,21 @@
+{
+  "id": "conv-1783348429858-g3cwo3w19",
+  "providerId": "codex",
+  "title": "这部分的表格是不是乱码了，调整一下",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783348429858,
+  "updatedAt": 1783419846511,
+  "lastResponseAt": 1783412496521,
+  "sessionId": null,
+  "currentNote": "projects/rtos-油烟机/RTOS项目复习文档.md",
+  "usage": {
+    "inputTokens": 133750,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 129920,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 133750,
+    "percentage": 52,
+    "model": "gpt-5.5"
+  }
+}

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img">
+  <defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#64748b"/></marker><filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.12"/></filter><style>
+    .bg{fill:#f8fafc} .card{fill:#fff;stroke:#dbe3ee;stroke-width:1.5;filter:url(#shadow)} .title{font:700 32px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#0f172a} .sub{font:500 17px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#64748b}
+    .axis{stroke:#94a3b8;stroke-width:2} .grid{stroke:#e2e8f0;stroke-width:1} .saw{fill:none;stroke:#3b82f6;stroke-width:4;stroke-linejoin:round} .ccr{stroke:#f97316;stroke-width:3;stroke-dasharray:8 8} .arr{stroke:#ef4444;stroke-width:3;stroke-dasharray:8 8}
+    .wave{fill:none;stroke:#10b981;stroke-width:5;stroke-linejoin:round} .highArea{fill:#dcfce7;opacity:.75} .lowArea{fill:#f1f5f9;opacity:.85}
+    .box{stroke-width:2;rx:16;ry:16} .timer{fill:#eff6ff;stroke:#3b82f6} .calc{fill:#fff7ed;stroke:#f97316} .out{fill:#ecfdf5;stroke:#10b981}
+    .main{font:700 21px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#0f172a} .small{font:500 16px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#334155} .code{font:700 18px Consolas,'Microsoft YaHei',monospace;fill:#0f172a} .arrow{fill:none;stroke:#64748b;stroke-width:2.4;marker-end:url(#arrow)}
+  </style></defs>
+  <rect width="1200" height="700" rx="24" class="bg"/><rect x="28" y="24" width="1144" height="640" rx="24" class="card"/>
+  <text x="62" y="74" class="title">PWM 波形生成原理</text><text x="62" y="106" class="sub">TIM1 计数器从 0 计到 ARR，每个计数周期比较 CNT 和 CCR：CNT &lt; CCR 输出高电平。</text>
+
+  <rect x="80" y="145" width="260" height="80" class="box timer"/><text x="210" y="178" text-anchor="middle" class="main">TIM1 计数器</text><text x="210" y="204" text-anchor="middle" class="code">72MHz / (PSC+1)</text>
+  <rect x="420" y="145" width="220" height="80" class="box calc"/><text x="530" y="178" text-anchor="middle" class="code">ARR = 999</text><text x="530" y="204" text-anchor="middle" class="code">CCR = 500</text>
+  <rect x="720" y="145" width="280" height="80" class="box out"/><text x="860" y="178" text-anchor="middle" class="main">CNT &lt; CCR ?</text><text x="860" y="204" text-anchor="middle" class="small">高电平：500 个计数 / 低电平：500 个计数</text>
+  <path d="M340 185 L410 185" class="arrow"/><path d="M640 185 L710 185" class="arrow"/>
+
+  <!-- counter chart -->
+  <text x="80" y="280" class="main">CNT 计数和 CCR 比较</text>
+  <line x1="100" y1="520" x2="1050" y2="520" class="axis"/><line x1="100" y1="300" x2="100" y2="520" class="axis"/>
+  <line x1="100" y1="410" x2="1050" y2="410" class="ccr"/><text x="1060" y="416" class="code">CCR=500</text>
+  <line x1="100" y1="300" x2="1050" y2="300" class="arr"/><text x="1060" y="306" class="code">ARR=999</text>
+  <path d="M100 520 L575 300 L575 520 L1050 300" class="saw"/>
+  <text x="96" y="545" class="small">0</text><text x="560" y="545" class="small">ARR</text><text x="1030" y="545" class="small">ARR</text><text x="460" y="292" class="small">到 ARR 后清零，下一周期重来</text>
+
+  <!-- pwm waveform -->
+  <text x="80" y="590" class="main">PWM 输出</text>
+  <rect x="200" y="565" width="235" height="70" class="highArea"/><rect x="435" y="565" width="235" height="70" class="lowArea"/><rect x="670" y="565" width="235" height="70" class="highArea"/>
+  <path d="M200 625 L200 570 L435 570 L435 625 L670 625 L670 570 L905 570 L905 625" class="wave"/>
+  <text x="318" y="555" text-anchor="middle" class="small">高电平：500 个计数</text><text x="552" y="655" text-anchor="middle" class="small">低电平：500 个计数</text><text x="786" y="555" text-anchor="middle" class="small">高电平：500 个计数</text>
+  <rect x="690" y="450" width="450" height="86" class="box out"/><text x="915" y="480" text-anchor="middle" class="main">占空比 = CCR / (ARR+1) = 500/1000 = 50%</text><text x="915" y="506" text-anchor="middle" class="small">平均电压 = 12V × 50% = 6V</text><text x="915" y="528" text-anchor="middle" class="small">占空比越大 → 平均电压越高 → 电机转速越高</text>
+</svg>

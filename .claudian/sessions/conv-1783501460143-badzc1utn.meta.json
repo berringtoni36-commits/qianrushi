@@ -1,0 +1,20 @@
+{
+  "id": "conv-1783501460143-badzc1utn",
+  "providerId": "codex",
+  "title": "开始day1的学习",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783501460143,
+  "updatedAt": 1783519220999,
+  "lastResponseAt": 1783503166645,
+  "sessionId": null,
+  "usage": {
+    "inputTokens": 161951,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 159616,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 161951,
+    "percentage": 63,
+    "model": "gpt-5.5"
+  }
+}

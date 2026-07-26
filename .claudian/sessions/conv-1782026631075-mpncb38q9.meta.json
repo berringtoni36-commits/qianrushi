@@ -1,0 +1,24 @@
+{
+  "id": "conv-1782026631075-mpncb38q9",
+  "providerId": "claude",
+  "title": "Respond to user greeting",
+  "titleGenerationStatus": "success",
+  "createdAt": 1782026631076,
+  "updatedAt": 1782028676139,
+  "lastResponseAt": 1782026804506,
+  "sessionId": "826660d3-077b-4010-89b7-69c838acf220",
+  "providerState": {
+    "providerSessionId": "826660d3-077b-4010-89b7-69c838acf220"
+  },
+  "currentNote": "projects/八股/嵌入式八股150题.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 575,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 30016,
+    "contextWindow": 200000,
+    "contextTokens": 30591,
+    "percentage": 15,
+    "contextWindowIsAuthoritative": true
+  }
+}

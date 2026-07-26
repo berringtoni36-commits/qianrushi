@@ -1,0 +1,24 @@
+{
+  "id": "conv-1781971130659-dzq98cvgy",
+  "providerId": "claude",
+  "title": "继续解决第54题",
+  "titleGenerationStatus": "success",
+  "createdAt": 1781971130659,
+  "updatedAt": 1782046299627,
+  "lastResponseAt": 1782032151770,
+  "sessionId": "11eb846c-6b53-4823-93ed-b3a96b260d52",
+  "providerState": {
+    "providerSessionId": "11eb846c-6b53-4823-93ed-b3a96b260d52"
+  },
+  "currentNote": "projects/八股/嵌入式八股150题.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 42154,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 42154,
+    "percentage": 21,
+    "contextWindowIsAuthoritative": true
+  }
+}

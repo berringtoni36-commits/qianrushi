@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Linux 视觉感知交互学习实验室</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="vision-learning-app" class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">FT2000/4 · Qt · LIME · LSTR · Unet</p>
+        <h1>Linux 视觉感知交互学习实验室</h1>
+        <p class="hero-copy">用真实项目帧和源码调用链，亲手走完一次车道线视觉感知流程。</p>
+      </div>
+      <div class="hero-status" aria-label="演示性质">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span><strong>离线教学仿真</strong><small>真实结果帧回放，不调用模型</small></span>
+      </div>
+    </header>
+
+    <div class="mode-bar" aria-label="学习模式">
+      <div class="mode-buttons">
+        <button type="button" class="mode-button is-active" data-mode="guided">引导学习</button>
+        <button type="button" class="mode-button" data-mode="free">自由探索</button>
+        <button type="button" class="mode-button" data-mode="challenge">挑战模式</button>
+      </div>
+      <div class="progress-summary">
+        <span id="mode-hint">跟随流水线逐站理解项目</span>
+        <progress id="learning-progress" max="8" value="1">1/8</progress>
+        <strong id="progress-label">1 / 8</strong>
+      </div>
+    </div>
+
+    <nav class="section-tabs" aria-label="实验室模块" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-section="system">系统主线</button>
+      <button type="button" role="tab" aria-selected="false" data-section="lime">LIME 实验</button>
+      <button type="button" role="tab" aria-selected="false" data-section="models">模型路线</button>
+      <button type="button" role="tab" aria-selected="false" data-section="performance">ARM 性能</button>
+      <button type="button" role="tab" aria-selected="false" data-section="quiz">检验与排障</button>
+    </nav>
+
+    <main>
+      <section class="lab-panel is-active" data-panel="system" aria-labelledby="system-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">端到端数据流</p>
+            <h2 id="system-title">从按钮点击到车道线显示</h2>
+          </div>
+          <div class="control-row" aria-label="流水线控制">
+            <button id="prev-step" type="button" class="button">上一步</button>
+            <button id="play-flow" type="button" class="button button-primary" aria-pressed="false">播放流水线</button>
+            <button id="next-step" type="button" class="button">下一步</button>
+            <label class="select-label">速度
+              <select id="flow-speed">
+                <option value="0.5">0.5×</option>
+                <option value="1" selected>1×</option>
+                <option value="2">2×</option>
+              </select>
+            </label>
+            <button id="reset-flow" type="button" class="button button-quiet">复位</button>
+          </div>
+        </div>
+
+        <ol id="pipeline" class="pipeline" aria-label="系统处理阶段"></ol>
+
+        <div class="system-grid">
+          <article class="visual-stage">
+            <div class="stage-head">
+              <div>
+                <span id="active-stage-number" class="stage-number">01</span>
+                <strong id="active-stage-title">Qt 事件入口</strong>
+              </div>
+              <span id="stage-model-badge" class="badge">LSTR 路线</span>
+            </div>
+            <div class="frame-pair" aria-label="真实输入帧与模型结果帧">
+              <figure>
+                <img id="input-frame" src="assets/lstr/input/001.jpg" alt="项目输入帧 1">
+                <figcaption>输入帧 <span id="input-frame-label">001</span></figcaption>
+              </figure>
+              <div class="frame-arrow" aria-hidden="true">→</div>
+              <figure>
+                <img id="result-frame" src="assets/lstr/result/001.jpg" alt="LSTR 结果帧 1">
+                <figcaption>真实 LSTR 结果 <span id="result-frame-label">001</span></figcaption>
+              </figure>
+            </div>
+            <div class="frame-control">
+              <label for="frame-slider">真实帧序列</label>
+              <input id="frame-slider" type="range" min="1" max="100" value="1">
+              <output id="frame-output" for="frame-slider">1 / 100</output>
+            </div>
+            <div class="switch-row">
+              <button id="toggle-lime" type="button" class="toggle-button is-on" aria-pressed="true">LIME：启用</button>
+              <div class="route-switch" aria-label="模型路线">
+                <button type="button" class="route-button is-active" data-model="lstr" aria-pressed="true">LSTR</button>
+                <button type="button" class="route-button" data-model="unet" aria-pressed="false">Unet</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="detail-stage" aria-live="polite">
+            <p id="stage-short" class="detail-lead">点击按钮，信号槽接管流程</p>
+            <p id="stage-detail"></p>
+            <dl class="data-list">
+              <div><dt>此刻的数据</dt><dd id="stage-data"></dd></div>
+              <div><dt>真实源码</dt><dd><code id="stage-source"></code></dd></div>
+            </dl>
+            <pre class="code-view"><code id="stage-code"></code></pre>
+            <div class="risk-callout">
+              <strong>破坏测试</strong>
+              <p id="stage-risk"></p>
+            </div>
+          </article>
+        </div>
+
+        <div class="event-strip" aria-live="polite">
+          <strong>事件轨迹</strong>
+          <ol id="event-log"></ol>
+        </div>
+      </section>
+
+      <section class="lab-panel" data-panel="lime" aria-labelledby="lime-title" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">图像增强与 ADMM</p>
+            <h2 id="lime-title">LIME：先估计光照，再安全补光</h2>
+          </div>
+          <span class="truth-label">左侧为项目真实处理结果；数值区为教学计算</span>
+        </div>
+        <div class="lime-grid">
+          <article class="visual-stage">
+            <div class="compare-stage" id="lime-compare" style="--reveal: 50%">
+              <img src="assets/lime/input.jpg" alt="LIME 处理前的项目图像">
+              <div class="compare-overlay">
+                <img src="assets/lime/output.jpg" alt="LIME 处理后的项目图像">
+              </div>
+              <span class="compare-label before">原图</span>
+              <span class="compare-label after">真实输出</span>
+              <span class="compare-divider" aria-hidden="true"></span>
+            </div>
+            <label class="range-label" for="compare-slider">拖动查看真实前后差异 <output id="compare-output">50%</output></label>
+            <input id="compare-slider" type="range" min="0" max="100" value="50">
+            <p class="caption">示例来自源码中固定读取的 <code>Lime/data/38.jpg</code> 与生成的 <code>output.jpg</code>。</p>
+          </article>
+
+          <article class="detail-stage">
+            <div id="lime-stage-buttons" class="step-buttons" aria-label="LIME 处理步骤"></div>
+            <div class="concept-panel" aria-live="polite">
+              <span id="lime-stage-key" class="stage-number">T_hat</span>
+              <h3 id="lime-stage-title">初始光照图</h3>
+              <p id="lime-stage-text"></p>
+              <code id="lime-stage-equation" class="equation"></code>
+            </div>
+            <div class="pixel-lab">
+              <h3>单像素手算：为什么需要安全下限？</h3>
+              <label for="pixel-input">输入亮度 I <output id="pixel-input-value">0.24</output></label>
+              <input id="pixel-input" type="range" min="0" max="100" value="24">
+              <label for="pixel-light">估计光照 T <output id="pixel-light-value">0.12</output></label>
+              <input id="pixel-light" type="range" min="1" max="100" value="12">
+              <label for="pixel-floor">安全下限 ε <output id="pixel-floor-value">0.20</output></label>
+              <input id="pixel-floor" type="range" min="5" max="40" value="20">
+              <div class="formula-result">
+                <span>R = I / max(T, ε)</span>
+                <strong id="pixel-result">1.00</strong>
+                <small id="pixel-warning">T 低于 ε，已启用安全护栏</small>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="lab-panel" data-panel="models" aria-labelledby="models-title" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">两条部署路线</p>
+            <h2 id="models-title">LSTR 参数曲线 vs Unet 像素分割</h2>
+          </div>
+          <div class="route-switch large" aria-label="模型详情路线">
+            <button type="button" class="route-button is-active" data-model="lstr" aria-pressed="true">LSTR / ONNX Runtime</button>
+            <button type="button" class="route-button" data-model="unet" aria-pressed="false">Unet / NCNN</button>
+          </div>
+        </div>
+        <div class="model-visual">
+          <div id="model-flow" class="model-flow" aria-label="模型推理步骤"></div>
+          <div class="model-media">
+            <figure>
+              <img id="model-input" src="assets/lstr/input/001.jpg" alt="LSTR 输入图像">
+              <figcaption id="model-input-caption">输入：道路图像</figcaption>
+            </figure>
+            <div class="model-output-symbol" aria-hidden="true">⇒</div>
+            <figure>
+              <img id="model-output" src="assets/lstr/result/001.jpg" alt="LSTR 后处理结果">
+              <figcaption id="model-output-caption">输出：参数曲线恢复后的结果</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead><tr><th>维度</th><th>LSTR</th><th>Unet</th></tr></thead>
+            <tbody>
+              <tr><th>任务表达</th><td>车道存在性 + 曲线参数</td><td>每个像素的类别</td></tr>
+              <tr><th>输入关键点</th><td>图像张量 + 全零 mask_tensor</td><td>720×720，HWC→CHW</td></tr>
+              <tr><th>后处理</th><td>logits 筛选 + log_space 曲线恢复</td><td>逐像素 argmax + 去 padding</td></tr>
+              <tr><th>项目优化后时间</th><td><strong>0.182 s/图</strong></td><td><strong>4.676 s/图</strong></td></tr>
+              <tr><th>工程取舍</th><td>速度优先，适合端侧主路线</td><td>像素覆盖细，但计算更重</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="lab-panel" data-panel="performance" aria-labelledby="performance-title" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">FT2000/4 CPU 侧优化</p>
+            <h2 id="performance-title">从标量循环到 SIMD + 多核</h2>
+          </div>
+          <span class="truth-label">柱状图使用项目实测值</span>
+        </div>
+        <div class="perf-grid">
+          <article class="visual-stage">
+            <div id="perf-preset-buttons" class="step-buttons" aria-label="性能优化阶段"></div>
+            <div id="performance-chart" class="performance-chart" role="img" aria-label="LIME 三个版本耗时对比"></div>
+            <div class="metric-row">
+              <div><span>当前耗时</span><strong id="metric-seconds">1.6305 s</strong></div>
+              <div><span>理论吞吐</span><strong id="metric-fps">0.61 FPS</strong></div>
+              <div><span>相对加速</span><strong id="metric-speedup">1.00×</strong></div>
+            </div>
+          </article>
+          <article class="detail-stage">
+            <h3 id="lane-title">标量：一个像素接一个像素</h3>
+            <p id="lane-description">单个 CPU 核顺序处理，每次循环只完成一个 float 数据。</p>
+            <div id="lane-demo" class="lane-demo mode-baseline" aria-label="64 个像素的处理分组动画"></div>
+            <div class="lane-legend">
+              <span><i class="legend-swatch scalar"></i>标量/向量组</span>
+              <span><i class="legend-swatch core"></i>OpenMP 核心分区</span>
+            </div>
+            <div class="monitor-box">
+              <div class="monitor-head">
+                <h3>资源监控滑动窗口</h3>
+                <span>教学模拟 · 对应 Qt 1 Hz 刷新</span>
+              </div>
+              <svg id="monitor-chart" viewBox="0 0 600 180" role="img" aria-labelledby="monitor-title monitor-desc">
+                <title id="monitor-title">CPU 和内存使用率模拟曲线</title>
+                <desc id="monitor-desc">用于解释项目的 51 点滑动窗口，不代表当前计算机的真实资源占用。</desc>
+                <g class="grid-lines" aria-hidden="true">
+                  <line x1="42" y1="20" x2="580" y2="20"></line>
+                  <line x1="42" y1="90" x2="580" y2="90"></line>
+                  <line x1="42" y1="160" x2="580" y2="160"></line>
+                </g>
+                <text x="6" y="25">100%</text><text x="17" y="95">50%</text><text x="28" y="165">0</text>
+                <polyline id="cpu-line" class="cpu-line" points=""></polyline>
+                <polyline id="mem-line" class="mem-line" points=""></polyline>
+              </svg>
+              <div class="chart-legend"><span><i class="legend-line cpu"></i>CPU</span><span><i class="legend-line mem"></i>内存</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="lab-panel" data-panel="quiz" aria-labelledby="quiz-title" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">费曼检验 + 破坏测试</p>
+            <h2 id="quiz-title">不看源码，你能解释和排障吗？</h2>
+          </div>
+          <div class="quiz-score" aria-live="polite">
+            <span>当前得分</span>
+            <strong id="quiz-score">0 / 8</strong>
+            <small id="quiz-progress">尚未作答</small>
+          </div>
+        </div>
+        <div id="quiz-list" class="quiz-list"></div>
+        <div class="rebuild-box">
+          <div>
+            <p class="section-kicker">闭卷重建</p>
+            <h3>两分钟项目表达骨架</h3>
+            <p>按“硬件约束 → 系统主线 → LIME 优化 → 两种模型取舍 → 性能数据”顺序，用自己的话复述。不要照抄答案。</p>
+          </div>
+          <button id="copy-prompt" type="button" class="button button-primary">复制练习提示</button>
+          <button id="clear-progress" type="button" class="button button-quiet">清空学习记录</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>学习顺序建议：系统主线 → LIME → 模型路线 → ARM 性能 → 检验与排障。</p>
+      <p>数据来源：本地 Linux 视觉感知处理系统源码与项目复习文档。</p>
+    </footer>
+  </div>
+
+  <noscript>此学习实验室需要启用 JavaScript 才能运行交互动画。</noscript>
+  <script src="app-core.js"></script>
+  <script src="project-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+

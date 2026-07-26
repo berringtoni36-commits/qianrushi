@@ -1,0 +1,3 @@
+/media/kylin/11b9268b-64b0-4b3c-af7b-8229540612031/初赛作品提交/软件源代码/上位机程序/Lane_Detection/LSTR/build/CMakeFiles/LSTR.dir
+/media/kylin/11b9268b-64b0-4b3c-af7b-8229540612031/初赛作品提交/软件源代码/上位机程序/Lane_Detection/LSTR/build/CMakeFiles/edit_cache.dir
+/media/kylin/11b9268b-64b0-4b3c-af7b-8229540612031/初赛作品提交/软件源代码/上位机程序/Lane_Detection/LSTR/build/CMakeFiles/rebuild_cache.dir

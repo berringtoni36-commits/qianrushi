@@ -1,0 +1,21 @@
+{
+  "id": "conv-1782964280658-ueqn9i3ur",
+  "providerId": "codex",
+  "title": "给obsidian应用这个主题，主题文件在这\"C:\\Users\\11624\\AppData\\Roam...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1782964280659,
+  "updatedAt": 1783343194737,
+  "lastResponseAt": 1782980552296,
+  "sessionId": null,
+  "currentNote": "projects/rtos-油烟机/RTOS项目复习文档.md",
+  "usage": {
+    "inputTokens": 101986,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 94080,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 101986,
+    "percentage": 39,
+    "model": "gpt-5.5"
+  }
+}

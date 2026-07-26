@@ -1,0 +1,23 @@
+{
+  "id": "conv-1783737969372-vo08n2qe6",
+  "providerId": "claude",
+  "title": "\"C:\\Users\\11624\\Desktop\\Rtos项目\\",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783737969372,
+  "updatedAt": 1783786725555,
+  "lastResponseAt": 1783744983210,
+  "sessionId": "a2a06145-a3fa-413a-b324-09ea86afa0c3",
+  "providerState": {
+    "providerSessionId": "a2a06145-a3fa-413a-b324-09ea86afa0c3"
+  },
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 1033,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 104576,
+    "contextWindow": 1000000,
+    "contextTokens": 105609,
+    "percentage": 11,
+    "contextWindowIsAuthoritative": true
+  }
+}

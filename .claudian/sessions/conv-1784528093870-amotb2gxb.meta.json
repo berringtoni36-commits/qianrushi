@@ -1,0 +1,24 @@
+{
+  "id": "conv-1784528093870-amotb2gxb",
+  "providerId": "claude",
+  "title": "我下划线的这个是什么意思啊",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784528093870,
+  "updatedAt": 1784531032623,
+  "lastResponseAt": 1784528107431,
+  "sessionId": "514a9fe1-ad5a-4e0a-8b03-d6253a927fab",
+  "providerState": {
+    "providerSessionId": "514a9fe1-ad5a-4e0a-8b03-d6253a927fab"
+  },
+  "currentNote": "projects/Linux物理内存检测项目/3 深入理解/3.1 核心技术架构/3.1.1 eBPF与BCC技术栈.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 3821,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 35456,
+    "contextWindow": 200000,
+    "contextTokens": 39277,
+    "percentage": 20,
+    "contextWindowIsAuthoritative": true
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "conv-1784376005579-85gd1lbdu",
+  "providerId": "codex",
+  "title": "这一块不懂",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784376005580,
+  "updatedAt": 1784452727592,
+  "lastResponseAt": 1784376201491,
+  "sessionId": null,
+  "currentNote": "projects/RTOS项目/4 硬件驱动开发/4.1 电机控制与反馈/4.1.2 编码器测速原理与定时器编码器模式.md",
+  "usage": {
+    "inputTokens": 29432,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 25344,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 29432,
+    "percentage": 11,
+    "model": "gpt-5.6-luna"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "conv-1783921504591-uwajmvkfm",
+  "providerId": "claude",
+  "title": "给RTOS高频面试题里面的三十题，给我做成anki卡组供我复习，我该怎么操作，要用anki-mcp吗",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783921504592,
+  "updatedAt": 1784165437161,
+  "lastResponseAt": 1783922386786,
+  "sessionId": "8d8ca03c-16e4-4853-bc80-ec0f13c5b952",
+  "providerState": {
+    "providerSessionId": "8d8ca03c-16e4-4853-bc80-ec0f13c5b952"
+  },
+  "currentNote": "projects/RTOS项目/7 项目实战与面试准备/RTOS高频面试题.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 409,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 66048,
+    "contextWindow": 1000000,
+    "contextTokens": 66457,
+    "percentage": 7
+  }
+}

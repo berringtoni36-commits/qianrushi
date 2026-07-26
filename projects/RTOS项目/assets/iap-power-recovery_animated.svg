@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">IAP 断电恢复与 A/B 回滚</title>
+  <desc id="desc">上方展示本项目当前单 APP 区方案的断电边界，下方展示 A/B 双 APP 分区的可靠恢复流程。</desc>
+  <defs>
+    <marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2563eb"/></marker>
+    <marker id="green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#059669"/></marker>
+    <style>
+      .bg{fill:#f8fafc}.box{fill:#fff;stroke:#475569;stroke-width:2}.now{fill:#fff7ed;stroke:#d97706}.safe{fill:#ecfdf5;stroke:#059669}.warn{fill:#fef2f2;stroke:#dc2626}.title{font:700 29px -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;fill:#0f172a;text-anchor:middle}.lane{font:700 21px -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;fill:#0f172a}.h{font:650 18px -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;fill:#0f172a;text-anchor:middle}.s{font:14px -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;fill:#475569;text-anchor:middle}.flowB{fill:none;stroke:#2563eb;stroke-width:4;stroke-dasharray:11 8;marker-end:url(#blue)}.flowG{fill:none;stroke:#059669;stroke-width:4;stroke-dasharray:11 8;marker-end:url(#green)}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="720" rx="22"/>
+  <text class="title" x="600" y="45">断电升级：CRC 能发现错误，但 A/B 才能保留可回滚版本</text>
+  <line x1="35" y1="335" x2="1165" y2="335" stroke="#cbd5e1" stroke-width="2"/>
+
+  <text class="lane" x="45" y="90">本项目当前：Bootloader + 单 APP 区</text>
+  <g>
+    <rect class="box now" x="45" y="120" width="180" height="105" rx="16"/>
+    <rect class="box now" x="285" y="120" width="180" height="105" rx="16"/>
+    <rect class="box warn" x="525" y="120" width="180" height="105" rx="16"/>
+    <rect class="box warn" x="765" y="120" width="180" height="105" rx="16"/>
+    <rect class="box" x="1005" y="120" width="150" height="105" rx="16"/>
+    <path class="flowB" d="M225 172 L285 172"><animate attributeName="stroke-dashoffset" from="38" to="0" dur="0.7s" repeatCount="indefinite"/></path>
+    <path class="flowB" d="M465 172 L525 172"><animate attributeName="stroke-dashoffset" from="38" to="0" dur="0.7s" repeatCount="indefinite"/></path>
+    <path class="flowB" d="M705 172 L765 172"><animate attributeName="stroke-dashoffset" from="38" to="0" dur="0.7s" repeatCount="indefinite"/></path>
+    <path class="flowB" d="M945 172 L1005 172"><animate attributeName="stroke-dashoffset" from="38" to="0" dur="0.7s" repeatCount="indefinite"/></path>
+    <path d="M735 95 l16 26 h-12 l15 26 -42 -35 h15 z" fill="#dc2626"><animate attributeName="opacity" values="0.35;1;0.35" dur="1.2s" repeatCount="indefinite"/></path>
+  </g>
+  <g>
+    <text class="h" x="135" y="159">接收固件</text><text class="s" x="135" y="189">USART + DMA</text>
+    <text class="h" x="375" y="159">先验 CRC32</text><text class="s" x="375" y="189">失败本应停止升级</text>
+    <text class="h" x="615" y="159">擦除单 APP</text><text class="s" x="615" y="189">断电会破坏旧版本</text>
+    <text class="h" x="855" y="159">写入新 APP</text><text class="s" x="855" y="189">中途断电可能不完整</text>
+    <text class="h" x="1080" y="159">上电校验</text><text class="s" x="1080" y="189">无效则留在升级模式</text>
+    <text x="375" y="250" style="font:700 14px -apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;fill:#dc2626;text-anchor:middle">源码风险：CRC 失败分支仍擦页，必须删除</text>
+    <text class="s" x="650" y="275">结论：修正失败分支后可防传输错误，但写 Flash 期间断电仍不能自动恢复旧 APP。</text>
+  </g>
+
+  <text class="lane" x="45" y="385">可靠量产方案：A/B 双 APP 分区 + 启动状态</text>
+  <g>
+    <rect class="box safe" x="45" y="420" width="180" height="110" rx="16"/>
+    <rect class="box safe" x="275" y="420" width="190" height="110" rx="16"/>
+    <rect class="box safe" x="515" y="420" width="180" height="110" rx="16"/>
+    <rect class="box safe" x="745" y="420" width="180" height="110" rx="16"/>
+    <rect class="box safe" x="975" y="420" width="180" height="110" rx="16"/>
+    <path class="flowG" d="M225 475 L275 475"><animate attributeName="stroke-dashoffset" from="38" to="0" dur="0.7s" repeatCount="indefinite"/></path>
+    <path class="flowG" d="M465 475 L515 475"><animate attributeName="stroke-dashoffset" from="38" to="0" dur="0.7s" repeatCount="indefinite"/></path>
+    <path class="flowG" d="M695 475 L745 475"><animate attributeName="stroke-dashoffset" from="38" to="0" dur="0.7s" repeatCount="indefinite"/></path>
+    <path class="flowG" d="M925 475 L975 475"><animate attributeName="stroke-dashoffset" from="38" to="0" dur="0.7s" repeatCount="indefinite"/></path>
+    <path class="flowG" d="M1065 530 C1065 625 605 625 605 530"><animate attributeName="stroke-dashoffset" from="38" to="0" dur="1.4s" repeatCount="indefinite"/></path>
+  </g>
+  <g>
+    <text class="h" x="135" y="458">保留活动分区 A</text><text class="s" x="135" y="488">旧 APP 继续可用</text><text class="s" x="135" y="510">升级不覆盖它</text>
+    <text class="h" x="370" y="458">写入非活动分区 B</text><text class="s" x="370" y="488">断电只影响 B</text><text class="s" x="370" y="510">A 仍可启动</text>
+    <text class="h" x="605" y="458">完整校验 B</text><text class="s" x="605" y="488">CRC / 长度 / 签名</text><text class="s" x="605" y="510">失败则继续用 A</text>
+    <text class="h" x="835" y="458">原子切换标志</text><text class="s" x="835" y="488">标记 B 为待确认</text><text class="s" x="835" y="510">再尝试启动 B</text>
+    <text class="h" x="1065" y="458">确认或回滚</text><text class="s" x="1065" y="488">成功：确认 B</text><text class="s" x="1065" y="510">失败：回滚 A</text>
+    <text class="s" x="600" y="675">绿色回路表示：新版本未确认成功前，Bootloader 始终保留回到旧版本的路径。</text>
+  </g>
+</svg>
+

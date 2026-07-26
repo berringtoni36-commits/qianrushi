@@ -1,0 +1,26 @@
+{
+  "id": "conv-1784531834414-ngxqz535z",
+  "providerId": "codex",
+  "title": "C:\\Users\\11624\\Desktop\\my-vault\\projects\\Linux视觉感知...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784531834414,
+  "updatedAt": 1784544138647,
+  "lastResponseAt": 1784537407530,
+  "sessionId": "019f7e62-eb77-74e2-838f-c62dbe5b933b",
+  "providerState": {
+    "threadId": "019f7e62-eb77-74e2-838f-c62dbe5b933b",
+    "sessionFilePath": "C:\\Users\\11624\\.codex\\sessions\\2026\\07\\20\\rollout-2026-07-20T15-17-24-019f7e62-eb77-74e2-838f-c62dbe5b933b.jsonl",
+    "transcriptRootPath": "C:\\Users\\11624\\.codex\\sessions"
+  },
+  "currentNote": "projects/Linux物理内存检测项目/3 深入理解/3.2 内存管理核心概念/3.2.1 Linux物理内存与伙伴系统.md",
+  "usage": {
+    "inputTokens": 158072,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 157440,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 158072,
+    "percentage": 61,
+    "model": "gpt-5.6-sol"
+  }
+}

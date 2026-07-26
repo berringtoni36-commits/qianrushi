@@ -1,0 +1,26 @@
+/* Make Mermaid diagrams fit in Baseline like they do in Zen.
+   Covers both Reading View and Live Preview rendered Mermaid blocks. */
+
+.markdown-rendered .mermaid,
+.markdown-preview-view .mermaid,
+.markdown-source-view.mod-cm6 .cm-preview-code-block .mermaid,
+.markdown-source-view.mod-cm6 .cm-embed-block .mermaid {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  text-align: center;
+}
+
+.markdown-source-view.mod-cm6 .cm-embed-block:has(.mermaid),
+.markdown-source-view.mod-cm6 .cm-preview-code-block:has(.mermaid) {
+  max-width: 100%;
+  overflow: visible;
+}
+
+.mermaid svg {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin-inline: auto;
+}

@@ -1,0 +1,21 @@
+{
+  "id": "conv-1783490855646-6elizdinu",
+  "providerId": "codex",
+  "title": "文档里这种图都做成格式正确比较清晰的svg图，类似于assets/dht11-timing",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783490855647,
+  "updatedAt": 1783675993185,
+  "lastResponseAt": 1783501300924,
+  "sessionId": null,
+  "currentNote": "projects/rtos-油烟机/RTOS项目复习文档.md",
+  "usage": {
+    "inputTokens": 157954,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 156032,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 157954,
+    "percentage": 61,
+    "model": "gpt-5.5"
+  }
+}

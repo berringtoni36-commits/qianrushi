@@ -1,0 +1,3 @@
+[mcp_servers.anki]
+command = "ankimcp"
+args = ["--stdio"]

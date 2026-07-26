@@ -1,0 +1,22 @@
+{
+  "id": "conv-1783486273351-gb8lfvgp8",
+  "providerId": "claude",
+  "title": "C:\\Users\\11624\\Desktop\\my-vault\\raw\\LeetCode-BaiTi...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783486273351,
+  "updatedAt": 1783488274803,
+  "lastResponseAt": 1783488273827,
+  "sessionId": "344a598e-9f23-4a97-9928-89d75da4def1",
+  "providerState": {
+    "providerSessionId": "344a598e-9f23-4a97-9928-89d75da4def1"
+  },
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 358,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 26752,
+    "contextWindow": 1000000,
+    "contextTokens": 27110,
+    "percentage": 3
+  }
+}

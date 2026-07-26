@@ -1,0 +1,23 @@
+{
+  "id": "conv-1781887505927-d1a01k1xs",
+  "providerId": "claude",
+  "title": "讲解第51题",
+  "titleGenerationStatus": "success",
+  "createdAt": 1781887505928,
+  "updatedAt": 1781970549776,
+  "lastResponseAt": 1781969365977,
+  "sessionId": "b582d1a7-8902-43aa-a167-90696ed8d9b2",
+  "providerState": {
+    "providerSessionId": "b582d1a7-8902-43aa-a167-90696ed8d9b2"
+  },
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 2932,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 100288,
+    "contextWindow": 200000,
+    "contextTokens": 103220,
+    "percentage": 52,
+    "contextWindowIsAuthoritative": true
+  }
+}

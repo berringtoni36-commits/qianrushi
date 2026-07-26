@@ -1,0 +1,21 @@
+{
+  "id": "conv-1782120867072-v1lt98mgi",
+  "providerId": "codex",
+  "title": "按照projects/八股/八股教学SKILL的要求带着我学第56题",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1782120867072,
+  "updatedAt": 1782121171856,
+  "lastResponseAt": 1782121156829,
+  "sessionId": null,
+  "currentNote": "projects/八股/烤鸭的嵌入式校招笔记纯面经版.md",
+  "usage": {
+    "inputTokens": 14430,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 6528,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 14430,
+    "percentage": 6,
+    "model": "gpt-5.5"
+  }
+}

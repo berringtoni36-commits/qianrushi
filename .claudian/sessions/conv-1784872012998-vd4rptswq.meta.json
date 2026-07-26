@@ -1,0 +1,26 @@
+{
+  "id": "conv-1784872012998-vd4rptswq",
+  "providerId": "codex",
+  "title": "这个文档里免得图片怎么消失了，比如我画线的部分的图在projects/RTOS项目/assets这里...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784872012999,
+  "updatedAt": 1784872992672,
+  "lastResponseAt": 1784872992672,
+  "sessionId": "019f92a9-a8c7-7a21-8f39-a21d69ae4e9d",
+  "providerState": {
+    "threadId": "019f92a9-a8c7-7a21-8f39-a21d69ae4e9d",
+    "sessionFilePath": "C:\\Users\\11624\\.codex\\sessions\\2026\\07\\24\\rollout-2026-07-24T13-47-05-019f92a9-a8c7-7a21-8f39-a21d69ae4e9d.jsonl",
+    "transcriptRootPath": "C:\\Users\\11624\\.codex\\sessions"
+  },
+  "currentNote": "projects/RTOS项目/RTOS项目复习文档.md",
+  "usage": {
+    "inputTokens": 66502,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 65280,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 66502,
+    "percentage": 26,
+    "model": "gpt-5.6-luna"
+  }
+}

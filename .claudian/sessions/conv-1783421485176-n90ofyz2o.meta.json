@@ -1,0 +1,21 @@
+{
+  "id": "conv-1783421485176-n90ofyz2o",
+  "providerId": "codex",
+  "title": "\"C:\\Users\\11624\\Desktop\\my-vault\\",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783421485177,
+  "updatedAt": 1783486195507,
+  "lastResponseAt": 1783437352399,
+  "sessionId": null,
+  "currentNote": "projects/linux视觉感知项目/Linux视觉感知处理系统.md",
+  "usage": {
+    "inputTokens": 121974,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 117632,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 121974,
+    "percentage": 47,
+    "model": "gpt-5.5"
+  }
+}

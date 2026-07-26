@@ -1,0 +1,23 @@
+{
+  "id": "conv-1783343210261-mf1yjtuwt",
+  "providerId": "claude",
+  "title": "给这个pdf弄个目录",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783343210261,
+  "updatedAt": 1783348169275,
+  "lastResponseAt": 1783343242653,
+  "sessionId": "da4a8dec-f0d9-46d9-bfd9-4e4f59740f3a",
+  "providerState": {
+    "providerSessionId": "da4a8dec-f0d9-46d9-bfd9-4e4f59740f3a"
+  },
+  "currentNote": "projects/Linux物理内存检测项目/linux物理内存检测工具：_带目录.pdf",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 272,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 25664,
+    "contextWindow": 1000000,
+    "contextTokens": 25936,
+    "percentage": 3
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "conv-1784517637011-ksbnptvd7",
+  "providerId": "claude",
+  "title": "这个按切换档位是只是在手动模式下吗？其他模式没有档位吧",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784517637012,
+  "updatedAt": 1784531033316,
+  "lastResponseAt": 1784526240211,
+  "sessionId": "307f8ef9-de80-49ce-8b2f-d7156a1d1cde",
+  "providerState": {
+    "providerSessionId": "307f8ef9-de80-49ce-8b2f-d7156a1d1cde"
+  },
+  "currentNote": "projects/RTOS项目/5 系统功能实现/5.1 工作模式：待机、手动、自动、防回流.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 3803,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 58304,
+    "contextWindow": 200000,
+    "contextTokens": 62107,
+    "percentage": 31,
+    "contextWindowIsAuthoritative": true
+  }
+}

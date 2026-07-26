@@ -1,0 +1,22 @@
+{
+  "id": "conv-1783501410220-tt9nbcpj8",
+  "providerId": "claude",
+  "title": "开始day1的学习",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1783501410220,
+  "updatedAt": 1783519223046,
+  "lastResponseAt": 1783501427541,
+  "sessionId": "12e88766-20f8-4b86-aa5d-15b45aacc39e",
+  "providerState": {
+    "providerSessionId": "12e88766-20f8-4b86-aa5d-15b45aacc39e"
+  },
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 1832,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 36800,
+    "contextWindow": 1000000,
+    "contextTokens": 38632,
+    "percentage": 4
+  }
+}

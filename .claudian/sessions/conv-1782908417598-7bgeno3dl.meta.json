@@ -1,0 +1,21 @@
+{
+  "id": "conv-1782908417598-7bgeno3dl",
+  "providerId": "codex",
+  "title": "给obsidian装下面的主题，也是codex的主题codex-theme-v1:{\"codeThe...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1782908417598,
+  "updatedAt": 1782910209795,
+  "lastResponseAt": 1782909210374,
+  "sessionId": null,
+  "currentNote": "projects/rtos-油烟机/RTOS项目复习文档 1.md",
+  "usage": {
+    "inputTokens": 26712,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 24960,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 26712,
+    "percentage": 10,
+    "model": "gpt-5.5"
+  }
+}

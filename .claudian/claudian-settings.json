@@ -1,0 +1,111 @@
+{
+  "userName": "",
+  "permissionMode": "normal",
+  "model": "gpt-5.6-luna",
+  "thinkingBudget": "off",
+  "effortLevel": "high",
+  "serviceTier": "fast",
+  "enableAutoTitleGeneration": true,
+  "titleGenerationModel": "",
+  "excludedTags": [],
+  "mediaFolder": "",
+  "systemPrompt": "",
+  "persistentExternalContextPaths": [],
+  "sharedEnvironmentVariables": "",
+  "envSnippets": [],
+  "customContextLimits": {
+    "mimo-v2.5pro": 1000000
+  },
+  "customModelAliases": {},
+  "keyboardNavigation": {
+    "scrollUpKey": "w",
+    "scrollDownKey": "s",
+    "focusInputKey": "i"
+  },
+  "requireCommandOrControlEnterToSend": false,
+  "locale": "zh-CN",
+  "providerConfigs": {
+    "claude": {
+      "safeMode": "acceptEdits",
+      "cliPath": "",
+      "cliPathsByHost": {},
+      "loadUserSettings": true,
+      "enableChrome": false,
+      "enableBangBash": false,
+      "enableOpus1M": true,
+      "enableSonnet1M": true,
+      "customModels": "",
+      "lastModel": "haiku",
+      "environmentVariables": "",
+      "environmentHash": ""
+    },
+    "codex": {
+      "enabled": true,
+      "safeMode": "workspace-write",
+      "cliPath": "",
+      "cliPathsByHost": {},
+      "customModels": "gpt-5.6-sol\ngpt-5.6-terra\ngpt-5.6-luna",
+      "reasoningSummary": "detailed",
+      "environmentVariables": "OPENAI_MODEL=gpt-5.6-sol",
+      "environmentHash": "OPENAI_MODEL=gpt-5.6-sol",
+      "installationMethodsByHost": {
+        "device:93ab6ae9-1385-404f-a58f-36b5814f8a69": "native-windows"
+      },
+      "wslDistroOverridesByHost": {}
+    },
+    "opencode": {
+      "cliPath": "",
+      "cliPathsByHost": {},
+      "enabled": false,
+      "environmentHash": "",
+      "environmentVariables": "OPENCODE_ENABLE_EXA=1",
+      "modelAliases": {},
+      "preferredThinkingByModel": {},
+      "selectedMode": "claudian-yolo",
+      "thinkingOptionsByModel": {},
+      "visibleModels": []
+    },
+    "pi": {
+      "cliPath": "",
+      "cliPathsByHost": {},
+      "discoveredModels": [],
+      "enabled": false,
+      "environmentHash": "",
+      "environmentVariables": "",
+      "modelAliases": {},
+      "preferredThinkingByModel": {},
+      "toolMode": "all",
+      "visibleModels": []
+    }
+  },
+  "settingsProvider": "codex",
+  "savedProviderModel": {
+    "claude": "haiku",
+    "codex": "gpt-5.6-luna",
+    "opencode": "opencode"
+  },
+  "savedProviderEffort": {
+    "claude": "high",
+    "codex": "high",
+    "opencode": "default"
+  },
+  "savedProviderServiceTier": {
+    "codex": "fast"
+  },
+  "savedProviderThinkingBudget": {
+    "opencode": "default"
+  },
+  "savedProviderPermissionMode": {
+    "claude": "normal",
+    "codex": "normal",
+    "opencode": "yolo"
+  },
+  "lastCustomModel": "gpt-5.6-luna",
+  "maxTabs": 5,
+  "tabBarPosition": "input",
+  "enableAutoScroll": true,
+  "deferMathRenderingDuringStreaming": true,
+  "expandFileEditsByDefault": false,
+  "chatViewPlacement": "right-sidebar",
+  "hiddenProviderCommands": {}
+}

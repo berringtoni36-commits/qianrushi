@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>防回流模式动画演示</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 16px;
+  }
+
+  /* ===== Main Container ===== */
+  .container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ===== Chart Area ===== */
+  .chart-panel {
+    background: #1e293b;
+    border-radius: 14px;
+    padding: 20px 24px 16px;
+    border: 1px solid #334155;
+    position: relative;
+  }
+  .chart-title {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  canvas {
+    width: 100%;
+    height: 280px;
+    display: block;
+  }
+
+  /* ===== Status Row ===== */
+  .status-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .status-card {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #334155;
+    text-align: center;
+    transition: border-color 0.4s, box-shadow 0.4s;
+  }
+  .status-card.active {
+    border-color: #22c55e;
+    box-shadow: 0 0 20px rgba(34,197,94,0.15);
+  }
+  .status-card.warning {
+    border-color: #f59e0b;
+    box-shadow: 0 0 20px rgba(245,158,11,0.15);
+  }
+  .status-card.danger {
+    border-color: #ef4444;
+    box-shadow: 0 0 20px rgba(239,68,68,0.2);
+  }
+  .card-label {
+    font-size: 0.7rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .card-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.3s;
+  }
+  .card-unit {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  /* ===== Motor Visual ===== */
+  .motor-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .motor-panel {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 16px 20px;
+    border: 1px solid #334155;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .fan-icon {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .fan-blades {
+    width: 100%;
+    height: 100%;
+    animation: none;
+  }
+  .fan-blades.spinning {
+    animation: spin 0.4s linear infinite;
+  }
+  .fan-blades.spinning.slow {
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .fan-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px; height: 14px;
+    background: #475569;
+    border-radius: 50%;
+    border: 2px solid #64748b;
+  }
+  .motor-info { flex: 1; }
+  .motor-info .label {
+    font-size: 0.7rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .motor-info .value {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  /* ===== Threshold Indicator ===== */
+  .threshold-panel {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 14px 20px;
+    border: 1px solid #334155;
+  }
+  .threshold-bar {
+    position: relative;
+    height: 32px;
+    background: #0f172a;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .threshold-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.15s ease-out, background 0.4s;
+    position: relative;
+  }
+  .threshold-marker {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 2px;
+    z-index: 2;
+    transition: left 0.6s ease-out;
+  }
+  .threshold-marker::after {
+    content: attr(data-label);
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    white-space: nowrap;
+    color: #94a3b8;
+  }
+  .marker-normal {
+    background: #f59e0b;
+  }
+  .marker-high {
+    background: #ef4444;
+  }
+
+  /* ===== Logic Flow ===== */
+  .logic-panel {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 16px 20px;
+    border: 1px solid #334155;
+  }
+  .logic-steps {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    margin-top: 8px;
+  }
+  .logic-step {
+    flex: 1;
+    padding: 10px 8px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    color: #64748b;
+    background: #0f172a;
+    border: 1px solid transparent;
+    transition: all 0.4s;
+    position: relative;
+  }
+  .logic-step.highlight {
+    color: #e2e8f0;
+    border-color: #38bdf8;
+    background: rgba(56,189,248,0.08);
+  }
+  .logic-step .step-num {
+    font-size: 0.6rem;
+    display: block;
+    margin-bottom: 3px;
+    opacity: 0.5;
+  }
+  .logic-arrow {
+    display: flex;
+    align-items: center;
+    color: #334155;
+    font-size: 0.9rem;
+    padding: 0 2px;
+    transition: color 0.4s;
+  }
+  .logic-arrow.active { color: #38bdf8; }
+
+  /* ===== Controls ===== */
+  .controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  button {
+    padding: 8px 20px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  button:hover {
+    background: #334155;
+    border-color: #475569;
+  }
+  button.primary {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    border: none;
+    font-weight: 600;
+  }
+  button.primary:hover { opacity: 0.9; }
+  .speed-label {
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+
+  /* ===== Log ===== */
+  .log-panel {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 14px 18px;
+    border: 1px solid #334155;
+    max-height: 140px;
+    overflow-y: auto;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.72rem;
+    line-height: 1.7;
+  }
+  .log-panel::-webkit-scrollbar { width: 4px; }
+  .log-panel::-webkit-scrollbar-track { background: transparent; }
+  .log-panel::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+  .log-entry { color: #64748b; }
+  .log-entry .time { color: #475569; }
+  .log-entry.event { color: #f59e0b; }
+  .log-entry.action { color: #22c55e; }
+  .log-entry.danger { color: #ef4444; }
+</style>
+</head>
+<body>
+
+<h1>防回流模式 · 动态演示</h1>
+<p class="subtitle">AntiBackflowTask — 气体浓度 vs 动态阈值 vs 电机控制</p>
+
+<div class="container">
+
+  <!-- Chart -->
+  <div class="chart-panel">
+    <div class="chart-title">📈 气体浓度实时曲线</div>
+    <canvas id="chart"></canvas>
+  </div>
+
+  <!-- Status Cards -->
+  <div class="status-row">
+    <div class="status-card" id="gasCard">
+      <div class="card-label">气体浓度</div>
+      <div class="card-value" id="gasValue">0</div>
+      <div class="card-unit">MQ-2 ADC</div>
+    </div>
+    <div class="status-card" id="thresholdCard">
+      <div class="card-label">当前阈值</div>
+      <div class="card-value" id="thresholdValue">100</div>
+      <div class="card-unit" id="thresholdLabel">GAS_THRESHOLD_NORMAL</div>
+    </div>
+    <div class="status-card" id="motorCard">
+      <div class="card-label">电机状态</div>
+      <div class="card-value" id="motorStatus" style="font-size:1.2rem;">停止</div>
+      <div class="card-unit" id="motorRPM">0 RPM</div>
+    </div>
+  </div>
+
+  <!-- Threshold Bar -->
+  <div class="threshold-panel">
+    <div class="chart-title">🎚️ 浓度条 & 阈值标记</div>
+    <div class="threshold-bar">
+      <div class="threshold-fill" id="thresholdFill"></div>
+      <div class="threshold-marker marker-normal" id="markerNormal" data-label="NORMAL=100"></div>
+      <div class="threshold-marker marker-high" id="markerHigh" data-label="HIGH=2000" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- Motor Visual -->
+  <div class="motor-row">
+    <div class="motor-panel">
+      <div class="fan-icon">
+        <svg class="fan-blades" id="fanSvg" viewBox="0 0 100 100">
+          <g transform="translate(50,50)">
+            <ellipse cx="0" cy="-22" rx="10" ry="22" fill="#38bdf8" opacity="0.8"/>
+            <ellipse cx="0" cy="-22" rx="10" ry="22" fill="#38bdf8" opacity="0.8" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-22" rx="10" ry="22" fill="#38bdf8" opacity="0.8" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-22" rx="10" ry="22" fill="#38bdf8" opacity="0.8" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-22" rx="10" ry="22" fill="#38bdf8" opacity="0.8" transform="rotate(288)"/>
+          </g>
+        </svg>
+        <div class="fan-center"></div>
+      </div>
+      <div class="motor-info">
+        <div class="label">风扇转速</div>
+        <div class="value" id="fanRPM" style="color:#64748b;">0 RPM</div>
+      </div>
+    </div>
+    <div class="motor-panel">
+      <div class="fan-icon" style="width:48px;height:48px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" id="pidIcon">
+          <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+        </svg>
+      </div>
+      <div class="motor-info">
+        <div class="label">PID 输出</div>
+        <div class="value" id="pidOutput" style="color:#64748b;">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logic Flow -->
+  <div class="logic-panel">
+    <div class="chart-title">🧠 防回流决策流程</div>
+    <div class="logic-steps">
+      <div class="logic-step" id="step1">
+        <span class="step-num">①</span>
+        读取浓度
+      </div>
+      <div class="logic-arrow" id="arrow1">→</div>
+      <div class="logic-step" id="step2">
+        <span class="step-num">②</span>
+        ≥ 当前阈值？
+      </div>
+      <div class="logic-arrow" id="arrow2">→</div>
+      <div class="logic-step" id="step3">
+        <span class="step-num">③</span>
+        &lt; 2000？
+      </div>
+      <div class="logic-arrow" id="arrow3">→</div>
+      <div class="logic-step" id="step4">
+        <span class="step-num">④</span>
+        启动电机<br>切换阈值
+      </div>
+      <div class="logic-arrow" id="arrow4">→</div>
+      <div class="logic-step" id="step5">
+        <span class="step-num">⑤</span>
+        浓度 &lt; 100<br>停止电机
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="primary" id="btnStart">▶ 播放完整流程</button>
+    <button id="btnReset">↺ 重置</button>
+    <button id="btnGasUp">浓度 ↑↑</button>
+    <button id="btnGasDown">浓度 ↓↓</button>
+    <button id="btnBug">🐛 触发BUG（≥2000）</button>
+    <span class="speed-label">动画速度</span>
+    <button id="btnSpeed">1×</button>
+  </div>
+
+  <!-- Log -->
+  <div class="log-panel" id="logPanel">
+    <div class="log-entry"><span class="time">[00:00]</span> 系统就绪，点击「播放完整流程」开始演示</div>
+  </div>
+
+</div>
+
+<script>
+// ===== State =====
+const S = {
+  gas: 0,
+  threshold: 100,       // 动态阈值，初始 = GAS_THRESHOLD_NORMAL
+  thresholdMode: 'NORMAL', // NORMAL | HIGH
+  motorOn: false,
+  pidTarget: 0,         // RPM target based on gear
+  pidCurrent: 0,        // simulated current RPM
+  gear: 1,              // 1=低档 190RPM, 2=高档 220RPM
+  time: 0,
+  running: false,
+  speed: 1,
+  animId: null,
+  scenario: null,
+  scenarioStep: 0,
+  scenarioTimer: 0,
+};
+
+const NORMAL_THRESHOLD = 100;
+const HIGH_THRESHOLD = 2000;
+const MAX_GAS = 2200;
+const GEAR_SPEEDS = [0, 190, 220];
+
+// ===== DOM =====
+const $ = id => document.getElementById(id);
+const canvas = $('chart');
+const ctx = canvas.getContext('2d');
+
+// history for chart
+const history = [];
+const HISTORY_LEN = 400;
+
+function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * devicePixelRatio;
+  canvas.height = rect.height * devicePixelRatio;
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// ===== Logging =====
+function log(msg, cls = '') {
+  const t = S.time.toFixed(1).padStart(5, ' ');
+  const d = document.createElement('div');
+  d.className = 'log-entry ' + cls;
+  d.innerHTML = `<span class="time">[${t}s]</span> ${msg}`;
+  $('logPanel').appendChild(d);
+  $('logPanel').scrollTop = $('logPanel').scrollHeight;
+}
+
+// ===== Drawing =====
+function drawChart() {
+  const w = canvas.getBoundingClientRect().width;
+  const h = canvas.getBoundingClientRect().height;
+  ctx.clearRect(0, 0, w, h);
+
+  const pad = { top: 15, right: 50, bottom: 25, left: 10 };
+  const cw = w - pad.left - pad.right;
+  const ch = h - pad.top - pad.bottom;
+
+  // Background grid
+  ctx.strokeStyle = '#1e293b';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 5; i++) {
+    const y = pad.top + (ch / 5) * i;
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.stroke();
+  }
+
+  // Y axis labels
+  ctx.fillStyle = '#475569';
+  ctx.font = '11px system-ui';
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 5; i++) {
+    const v = Math.round(MAX_GAS * (5 - i) / 5);
+    const y = pad.top + (ch / 5) * i;
+    ctx.fillText(v, w - pad.right + 40, y + 4);
+  }
+
+  // Threshold zones
+  const normalY = pad.top + ch * (1 - NORMAL_THRESHOLD / MAX_GAS);
+  const highY = pad.top + ch * (1 - HIGH_THRESHOLD / MAX_GAS);
+
+  // Normal zone fill (below 100)
+  ctx.fillStyle = 'rgba(34,197,94,0.04)';
+  ctx.fillRect(pad.left, normalY, cw, pad.top + ch - normalY);
+
+  // Danger zone fill (above 2000)
+  ctx.fillStyle = 'rgba(239,68,68,0.04)';
+  ctx.fillRect(pad.left, pad.top, cw, highY - pad.top);
+
+  // Threshold lines
+  // Normal = 100
+  ctx.setLineDash([6, 4]);
+  ctx.strokeStyle = '#f59e0b';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(pad.left, normalY); ctx.lineTo(w - pad.right, normalY); ctx.stroke();
+
+  // High = 2000
+  ctx.strokeStyle = '#ef4444';
+  ctx.beginPath(); ctx.moveTo(pad.left, highY); ctx.lineTo(w - pad.right, highY); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Labels
+  ctx.font = '10px system-ui';
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#f59e0b';
+  ctx.fillText('NORMAL=100', pad.left + 4, normalY - 4);
+  ctx.fillStyle = '#ef4444';
+  ctx.fillText('HIGH=2000', pad.left + 4, highY - 4);
+
+  // Active threshold highlight
+  if (S.thresholdMode === 'HIGH') {
+    ctx.fillStyle = 'rgba(239,68,68,0.12)';
+    ctx.fillRect(pad.left, highY, cw, normalY - highY);
+  }
+
+  // Gas line
+  if (history.length > 1) {
+    ctx.beginPath();
+    ctx.strokeStyle = '#38bdf8';
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    const step = cw / (HISTORY_LEN - 1);
+    for (let i = 0; i < history.length; i++) {
+      const x = pad.left + i * step;
+      const y = pad.top + ch * (1 - Math.min(history[i], MAX_GAS) / MAX_GAS);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Glow
+    ctx.strokeStyle = 'rgba(56,189,248,0.25)';
+    ctx.lineWidth = 8;
+    ctx.beginPath();
+    for (let i = 0; i < history.length; i++) {
+      const x = pad.left + i * step;
+      const y = pad.top + ch * (1 - Math.min(history[i], MAX_GAS) / MAX_GAS);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Current point dot
+    if (history.length > 0) {
+      const lastI = history.length - 1;
+      const lx = pad.left + lastI * step;
+      const ly = pad.top + ch * (1 - Math.min(history[lastI], MAX_GAS) / MAX_GAS);
+      ctx.beginPath();
+      ctx.arc(lx, ly, 5, 0, Math.PI * 2);
+      ctx.fillStyle = '#38bdf8';
+      ctx.fill();
+      ctx.strokeStyle = '#0f172a';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+  }
+}
+
+function updateUI() {
+  // Gas card
+  const gasColor = S.gas >= HIGH_THRESHOLD ? '#ef4444' : S.gas >= NORMAL_THRESHOLD ? '#f59e0b' : '#22c55e';
+  $('gasValue').textContent = Math.round(S.gas);
+  $('gasValue').style.color = gasColor;
+  const gc = $('gasCard');
+  gc.className = 'status-card' + (S.gas >= HIGH_THRESHOLD ? ' danger' : S.gas >= NORMAL_THRESHOLD ? ' warning' : S.motorOn ? ' active' : '');
+
+  // Threshold card
+  $('thresholdValue').textContent = S.threshold;
+  $('thresholdValue').style.color = S.thresholdMode === 'HIGH' ? '#ef4444' : '#f59e0b';
+  $('thresholdLabel').textContent = S.thresholdMode === 'HIGH' ? 'GAS_THRESHOLD_HIGH' : 'GAS_THRESHOLD_NORMAL';
+
+  // Motor card
+  $('motorStatus').textContent = S.motorOn ? '运行中' : '停止';
+  $('motorStatus').style.color = S.motorOn ? '#22c55e' : '#64748b';
+  $('motorRPM').textContent = S.motorOn ? Math.round(S.pidCurrent) + ' RPM' : '0 RPM';
+  const mc = $('motorCard');
+  mc.className = 'status-card' + (S.motorOn ? ' active' : '');
+
+  // Fan
+  const fan = $('fanSvg');
+  if (S.motorOn) {
+    fan.classList.add('spinning');
+    fan.classList.toggle('slow', S.pidCurrent < 180);
+    fan.style.animationDuration = S.motorOn ? Math.max(0.2, 0.8 - (S.pidCurrent / 300)) + 's' : '0s';
+  } else {
+    fan.classList.remove('spinning', 'slow');
+  }
+  $('fanRPM').textContent = S.motorOn ? Math.round(S.pidCurrent) + ' RPM' : '0 RPM';
+  $('fanRPM').style.color = S.motorOn ? '#38bdf8' : '#64748b';
+
+  // PID output
+  if (S.motorOn) {
+    const pwm = Math.round(S.pidCurrent / 220 * 1000);
+    $('pidOutput').textContent = pwm + '/1000';
+    $('pidOutput').style.color = '#818cf8';
+  } else {
+    $('pidOutput').textContent = '—';
+    $('pidOutput').style.color = '#64748b';
+  }
+
+  // Threshold bar
+  const pct = Math.min(S.gas / MAX_GAS * 100, 100);
+  const fill = $('thresholdFill');
+  fill.style.width = pct + '%';
+  fill.style.background = S.gas >= HIGH_THRESHOLD
+    ? 'linear-gradient(90deg, #22c55e 0%, #f59e0b 30%, #ef4444 80%)'
+    : S.gas >= NORMAL_THRESHOLD
+    ? 'linear-gradient(90deg, #22c55e 0%, #f59e0b 100%)'
+    : '#22c55e';
+
+  // Markers
+  $('markerNormal').style.left = (NORMAL_THRESHOLD / MAX_GAS * 100) + '%';
+  $('markerHigh').style.left = (HIGH_THRESHOLD / MAX_GAS * 100) + '%';
+  $('markerHigh').style.display = S.thresholdMode === 'HIGH' ? 'block' : 'none';
+
+  // Logic steps highlighting
+  ['step1','step2','step3','step4','step5'].forEach(id => $(id).classList.remove('highlight'));
+  ['arrow1','arrow2','arrow3','arrow4'].forEach(id => $(id).classList.remove('active'));
+  if (S.motorOn) {
+    $('step5').classList.add('highlight');
+    $('arrow4').classList.add('active');
+    $('step4').classList.add('highlight');
+    $('arrow3').classList.add('active');
+    $('step3').classList.add('highlight');
+    $('arrow2').classList.add('active');
+    $('step2').classList.add('highlight');
+    $('arrow1').classList.add('active');
+    $('step1').classList.add('highlight');
+  } else if (S.gas > 0) {
+    $('step1').classList.add('highlight');
+    $('arrow1').classList.add('active');
+    $('step2').classList.add('highlight');
+  }
+}
+
+// ===== Simulation Step =====
+function simStep(dt) {
+  // PID simulation
+  if (S.motorOn) {
+    const target = GEAR_SPEEDS[S.gear];
+    const err = target - S.pidCurrent;
+    const Kp = 14.0, Ki = 1.65, Kd = 0.0;
+    const pwm = Math.max(0, Math.min(1000, Kp * err + Ki * err * dt));
+    S.pidCurrent = Math.max(0, Math.min(250, S.pidCurrent + (pwm / 1000 * 300 - S.pidCurrent) * dt * 2));
+  } else {
+    S.pidCurrent = Math.max(0, S.pidCurrent - S.pidCurrent * dt * 3);
+  }
+
+  // Anti-backflow logic
+  if (S.gas >= S.threshold) {
+    if (S.thresholdMode === 'NORMAL' && S.gas < HIGH_THRESHOLD) {
+      // Normal case: start motor, switch threshold to HIGH
+      if (!S.motorOn) {
+        S.motorOn = true;
+        log('✅ 浓度 ' + Math.round(S.gas) + ' ≥ ' + NORMAL_THRESHOLD + ' → 启动电机', 'action');
+        log('🔄 阈值切换: 100 → 2000 (防止重复触发)', 'event');
+      }
+      S.threshold = HIGH_THRESHOLD;
+      S.thresholdMode = 'HIGH';
+    } else if (S.thresholdMode === 'NORMAL' && S.gas >= HIGH_THRESHOLD) {
+      // BUG case: gas >= 2000 on first check
+      if (!S.motorOn) {
+        log('🐛 BUG触发: 浓度 ' + Math.round(S.gas) + ' ≥ 2000，外层检测为真但内层 < 2000 为假，电机不启动！', 'danger');
+        // Don't start motor — this is the bug
+      }
+    }
+  } else if (S.thresholdMode === 'HIGH' && S.gas < NORMAL_THRESHOLD) {
+    // Below normal threshold → stop motor, reset threshold
+    if (S.motorOn) {
+      log('⛔ 浓度 ' + Math.round(S.gas) + ' < ' + NORMAL_THRESHOLD + ' → 停止电机', 'event');
+      log('🔄 阈值重置: 2000 → 100', 'event');
+    }
+    S.motorOn = false;
+    S.threshold = NORMAL_THRESHOLD;
+    S.thresholdMode = 'NORMAL';
+  }
+}
+
+// ===== Scenarios =====
+const SCENARIOS = [
+  // Phase 1: Idle
+  { gas: 0, dur: 2, msg: '初始状态：气体浓度为 0，电机停止，阈值 = 100' },
+  // Phase 2: Gas rises slowly
+  { gas: 50, dur: 1.5, msg: '油烟开始产生，浓度缓慢上升...' },
+  { gas: 80, dur: 1, msg: '浓度接近阈值 100...' },
+  // Phase 3: Cross threshold
+  { gas: 120, dur: 2, msg: '🔥 浓度 ≥ 100 (NORMAL)，电机启动！阈值切换为 2000' },
+  { gas: 300, dur: 1.5, msg: '持续烹饪，浓度继续上升...' },
+  { gas: 500, dur: 1.5, msg: 'PID 闭环控制稳定转速，当前阈值为 2000 不会重复启动' },
+  { gas: 400, dur: 1, msg: '浓度在正常烹饪范围内波动...' },
+  // Phase 4: Gas drops
+  { gas: 200, dur: 1, msg: '烹饪结束，浓度开始下降...' },
+  { gas: 80, dur: 2, msg: '浓度降至 100 以下 → 电机停止，阈值重置为 100' },
+  { gas: 30, dur: 1.5, msg: '电机减速停止，系统回到监测状态' },
+  // Phase 5: BUG demonstration
+  { gas: 0, dur: 1.5, msg: '--- 接下来演示边界BUG ---' },
+  { gas: 2100, dur: 2.5, msg: '🐛 BUG：浓度突增至 2100，外层 ≥100 为真，但内层 <2000 为假 → 电机不启动！' },
+  { gas: 1800, dur: 1.5, msg: '浓度降到 1800，但阈值仍为 100，且电机从未启动...' },
+  { gas: 50, dur: 2, msg: '最终浓度降到 100 以下，一切回到初始状态（但电机本应启动过）' },
+];
+
+let scenarioPhase = 0;
+let scenarioTimer = 0;
+let scenarioTransition = 0;
+let prevGasForScenario = 0;
+
+function startScenario() {
+  scenarioPhase = 0;
+  scenarioTimer = 0;
+  scenarioTransition = 0;
+  prevGasForScenario = 0;
+  S.gas = SCENARIOS[0].gas;
+  S.time = 0;
+  S.motorOn = false;
+  S.threshold = 100;
+  S.thresholdMode = 'NORMAL';
+  S.pidCurrent = 0;
+  history.length = 0;
+  $('logPanel').innerHTML = '';
+  log('🎬 演示开始', 'action');
+  S.scenario = true;
+  S.running = true;
+}
+
+function updateScenario(dt) {
+  if (!S.scenario) return;
+  scenarioTimer += dt;
+
+  const phase = SCENARIOS[scenarioPhase];
+  if (!phase) { S.scenario = false; S.running = false; log('✅ 演示结束', 'action'); return; }
+
+  // Log message on phase entry
+  if (scenarioTimer < dt * 1.5 && phase.msg !== SCENARIOS[Math.max(0, scenarioPhase - 1)]?.msg) {
+    log(phase.msg, phase.msg.includes('BUG') ? 'danger' : 'event');
+  }
+
+  // Transition gas value
+  scenarioTransition = Math.min(scenarioTimer / phase.dur, 1);
+  const ease = scenarioTransition < 0.5
+    ? 2 * scenarioTransition * scenarioTransition
+    : 1 - Math.pow(-2 * scenarioTransition + 2, 2) / 2;
+  S.gas = prevGasForScenario + (phase.gas - prevGasForScenario) * ease;
+
+  if (scenarioTimer >= phase.dur) {
+    prevGasForScenario = phase.gas;
+    scenarioTimer = 0;
+    scenarioPhase++;
+  }
+}
+
+// ===== Main Loop =====
+let lastTime = null;
+
+function loop(ts) {
+  if (!lastTime) lastTime = ts;
+  const rawDt = (ts - lastTime) / 1000;
+  lastTime = ts;
+  const dt = rawDt * S.speed;
+
+  if (S.running) {
+    S.time += dt;
+    updateScenario(dt);
+    simStep(dt);
+    history.push(S.gas);
+    if (history.length > HISTORY_LEN) history.shift();
+  }
+
+  drawChart();
+  updateUI();
+  S.animId = requestAnimationFrame(loop);
+}
+
+requestAnimationFrame(loop);
+
+// ===== Controls =====
+$('btnStart').addEventListener('click', () => {
+  startScenario();
+});
+
+$('btnReset').addEventListener('click', () => {
+  S.scenario = false;
+  S.running = false;
+  S.gas = 0;
+  S.threshold = 100;
+  S.thresholdMode = 'NORMAL';
+  S.motorOn = false;
+  S.pidCurrent = 0;
+  S.time = 0;
+  history.length = 0;
+  $('logPanel').innerHTML = '';
+  log('已重置', 'event');
+  if (S.animId) cancelAnimationFrame(S.animId);
+  lastTime = null;
+  requestAnimationFrame(loop);
+});
+
+$('btnGasUp').addEventListener('click', () => {
+  S.running = true;
+  S.scenario = false;
+  S.gas = Math.min(S.gas + 80, MAX_GAS);
+  history.push(S.gas);
+  if (history.length > HISTORY_LEN) history.shift();
+});
+
+$('btnGasDown').addEventListener('click', () => {
+  S.running = true;
+  S.scenario = false;
+  S.gas = Math.max(S.gas - 80, 0);
+  history.push(S.gas);
+  if (history.length > HISTORY_LEN) history.shift();
+});
+
+$('btnBug').addEventListener('click', () => {
+  S.scenario = false;
+  S.running = true;
+  S.gas = 2100;
+  S.threshold = 100;
+  S.thresholdMode = 'NORMAL';
+  S.motorOn = false;
+  history.push(S.gas);
+  if (history.length > HISTORY_LEN) history.shift();
+  log('🐛 手动触发BUG：浓度 = 2100，阈值 = 100', 'danger');
+  log('外层 gas ≥ threshold (2100 ≥ 100) = true', 'danger');
+  log('内层 gas < HIGH (2100 < 2000) = false → 电机不启动！', 'danger');
+});
+
+const speeds = [0.5, 1, 2, 3];
+let speedIdx = 1;
+$('btnSpeed').addEventListener('click', () => {
+  speedIdx = (speedIdx + 1) % speeds.length;
+  S.speed = speeds[speedIdx];
+  $('btnSpeed').textContent = S.speed + '×';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+{
+  "sessions": [
+    {
+      "id": "session-1782032885878-ebe79e41b23028",
+      "title": "New Agent",
+      "timeline": [],
+      "statusItemIndex": null,
+      "runStartedAt": 0,
+      "createdAt": 1782032885878,
+      "updatedAt": 1782032885878
+    }
+  ],
+  "archivedSessions": [
+    {
+      "id": "session-1782028668859-762499857e54d",
+      "title": "你好",
+      "tokenUsageLimit": null,
+      "timeline": [
+        {
+          "title": "You",
+          "body": "你好",
+          "tone": "user",
+          "contextChips": [],
+          "messageParts": [
+            {
+              "type": "text",
+              "text": "你好"
+            }
+          ]
+        },
+        {
+          "title": "Codex app-server failed to start",
+          "body": "spawn codex ENOENT. Tried: codex",
+          "tone": "command"
+        },
+        {
+          "title": "Run failed",
+          "body": "Codex exited with code 1.",
+          "tone": "status"
+        }
+      ],
+      "statusItemIndex": 2,
+      "runStartedAt": 1782032341276,
+      "createdAt": 1782028668859,
+      "updatedAt": 1782032885878,
+      "closedAt": 1782032885878
+    },
+    {
+      "id": "session-1782028128399-f1b124e0ce5bd",
+      "title": "你好",
+      "tokenUsageLimit": null,
+      "timeline": [
+        {
+          "title": "You",
+          "body": "你好",
+          "tone": "user",
+          "contextChips": [],
+          "messageParts": [
+            {
+              "type": "text",
+              "text": "你好"
+            }
+          ],
+          "expanded": false,
+          "readSummary": false,
+          "diffSummary": false,
+          "planSummary": false,
+          "streaming": false
+        },
+        {
+          "title": "Codex app-server failed to start",
+          "body": "spawn codex ENOENT. Tried: codex",
+          "tone": "command",
+          "expanded": false,
+          "readSummary": false,
+          "diffSummary": false,
+          "planSummary": false,
+          "streaming": false
+        },
+        {
+          "title": "Run failed",
+          "body": "Codex exited with code 1.",
+          "tone": "status",
+          "expanded": false,
+          "readSummary": false,
+          "diffSummary": false,
+          "planSummary": false,
+          "streaming": false
+        },
+        {
+          "title": "You",
+          "body": "你好",
+          "tone": "user",
+          "contextChips": [],
+          "messageParts": [
+            {
+              "type": "text",
+              "text": "你好"
+            }
+          ],
+          "expanded": false,
+          "readSummary": false,
+          "diffSummary": false,
+          "planSummary": false,
+          "streaming": false
+        },
+        {
+          "title": "Codex app-server failed to start",
+          "body": "spawn codex ENOENT. Tried: codex",
+          "tone": "command",
+          "expanded": false,
+          "readSummary": false,
+          "diffSummary": false,
+          "planSummary": false,
+          "streaming": false
+        },
+        {
+          "title": "Run failed",
+          "body": "Codex exited with code 1.",
+          "tone": "status",
+          "expanded": false,
+          "readSummary": false,
+          "diffSummary": false,
+          "planSummary": false,
+          "streaming": false
+        }
+      ],
+      "statusItemIndex": 5,
+      "runStartedAt": 1782028165844,
+      "createdAt": 1782028128399,
+      "updatedAt": 1782028665226,
+      "closedAt": 1782028665226
+    }
+  ],
+  "activeSessionId": "session-1782032885878-ebe79e41b23028",
+  "settings": {
+    "codexBin": "codex",
+    "nodeBin": "",
+    "adapterMode": "app-server",
+    "defaultMode": "agent",
+    "defaultModel": "GPT-5.5",
+    "defaultReasoningLevel": "Medium",
+    "autoAttachActiveNote": false,
+    "enableRightClickAddToAgent": true,
+    "maxNoteLength": 10000,
+    "maxSelectionLength": 10000,
+    "folderTreeDepth": 3,
+    "externalPathAccess": "ask-each-time",
+    "showDetailedApprovals": true,
+    "stickyUserPrompts": true,
+    "compactCommandGroups": true,
+    "diffLineNumbers": true,
+    "enableDiffReview": true,
+    "enableGitManagement": true,
+    "language": "en",
+    "pastedImageBehavior": "chip",
+    "chatViewLocation": "right-pane",
+    "chatFontSize": 15,
+    "inlineEditQuickCommands": [
+      {
+        "id": "polish",
+        "name": "Polish",
+        "prompt": "Polish the selected content for clarity and natural flow while preserving the original meaning and Markdown structure."
+      },
+      {
+        "id": "summarize",
+        "name": "Summarize",
+        "prompt": "Summarize the selected content into concise points while preserving the key information."
+      }
+    ]
+  },
+  "diffReviewState": {
+    "acceptedFiles": [],
+    "acceptedHunks": [],
+    "acceptedLines": [],
+    "rejectedFiles": []
+  }
+}

@@ -1,0 +1,2317 @@
+import AppKit
+import CoreGraphics
+import Darwin
+import Foundation
+
+private let userHome = FileManager.default.homeDirectoryForCurrentUser.path
+private let codexHome = "\(userHome)/.codex"
+private let statePath = "\(codexHome)/.codex-global-state.json"
+private let todoPath = ProcessInfo.processInfo.environment["LULU_TODO_PATH"]
+    ?? "\(codexHome)/pets/lulu/todo.json"
+private let settingsPath = ProcessInfo.processInfo.environment["LULU_SETTINGS_PATH"]
+    ?? "\(codexHome)/pets/lulu/settings.json"
+
+private struct LuluSettings: Codable {
+    var schemaVersion = 1
+    var timerMode = "countUp"
+    var countdownMinutes = 50
+    var minimumRecordMinutes = 5
+    var usageRefreshSeconds = 60.0
+    var badgeWidth = 184.0
+    var badgeHeight = 58.0
+    var badgeVisible = true
+}
+
+private final class SettingsStore {
+    static let shared = SettingsStore()
+    private(set) var value: LuluSettings
+    private let url = URL(fileURLWithPath: settingsPath)
+
+    private init() {
+        let decoder = JSONDecoder()
+        if let data = try? Data(contentsOf: url),
+           let decoded = try? decoder.decode(LuluSettings.self, from: data) {
+            value = decoded
+        } else {
+            var migrated = LuluSettings()
+            let defaults = UserDefaults.standard
+            if defaults.object(forKey: "lulu.focusTimerMode") != nil {
+                migrated.timerMode = defaults.integer(forKey: "lulu.focusTimerMode") == 1 ? "countUp" : "countDown"
+            }
+            let minutes = defaults.integer(forKey: "lulu.focusDurationMinutes")
+            if minutes > 0 { migrated.countdownMinutes = minutes }
+            value = migrated
+            save()
+        }
+        value.countdownMinutes = max(1, min(180, value.countdownMinutes))
+        value.minimumRecordMinutes = max(1, value.minimumRecordMinutes)
+        value.usageRefreshSeconds = max(15, value.usageRefreshSeconds)
+        value.badgeWidth = max(160, value.badgeWidth)
+        value.badgeHeight = max(52, value.badgeHeight)
+    }
+
+    func update(_ change: (inout LuluSettings) -> Void) {
+        change(&value)
+        save()
+    }
+
+    private func save() {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        guard let data = try? encoder.encode(value) else { return }
+        try? FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try? data.write(to: url, options: .atomic)
+    }
+}
+
+private let settingsStore = SettingsStore.shared
+private var minimumFocusRecordSeconds: Int { settingsStore.value.minimumRecordMinutes * 60 }
+
+private func findCodexExecutable() -> String {
+    if let configured = ProcessInfo.processInfo.environment["LULU_CODEX_PATH"],
+       !configured.isEmpty,
+       FileManager.default.isExecutableFile(atPath: configured) {
+        return configured
+    }
+    let candidates = [
+        "\(userHome)/.local/bin/codex",
+        "\(userHome)/.local/node-v22.16.0-darwin-arm64/bin/codex",
+        "/opt/homebrew/bin/codex",
+        "/usr/local/bin/codex"
+    ]
+    if let match = candidates.first(where: { FileManager.default.isExecutableFile(atPath: $0) }) {
+        return match
+    }
+    return "codex"
+}
+
+private let codexPath = findCodexExecutable()
+
+private func jsonLine(_ value: Any) -> String? {
+    guard JSONSerialization.isValidJSONObject(value),
+          let data = try? JSONSerialization.data(withJSONObject: value),
+          let text = String(data: data, encoding: .utf8) else { return nil }
+    return text + "\n"
+}
+
+private func number(_ value: Any?) -> Double? {
+    if let value = value as? NSNumber { return value.doubleValue }
+    if let value = value as? String { return Double(value) }
+    return nil
+}
+
+private func point(_ dictionary: [String: Any], _ key: String) -> CGFloat? {
+    guard let value = number(dictionary[key]) else { return nil }
+    return CGFloat(value)
+}
+
+private func durationText(_ seconds: Int) -> String {
+    let minutes = max(0, seconds) / 60
+    if minutes < 60 { return "\(minutes) 分钟" }
+    let hours = minutes / 60
+    let rest = minutes % 60
+    return rest == 0 ? "\(hours) 小时" : "\(hours) 小时 \(rest) 分"
+}
+
+private enum TaskCategory: String, Codable, CaseIterable {
+    case linuxVisual
+    case rtos
+    case linuxPhysical
+    case anki
+    case general
+}
+
+private struct TodoItem: Codable {
+    let id: UUID
+    var text: String
+    var completed: Bool
+    let createdAt: Date
+    var categories: [TaskCategory]
+
+    private enum CodingKeys: String, CodingKey {
+        case id, text, completed, createdAt, categories
+    }
+
+    init(id: UUID, text: String, completed: Bool, createdAt: Date, categories: [TaskCategory]) {
+        self.id = id
+        self.text = text
+        self.completed = completed
+        self.createdAt = createdAt
+        self.categories = categories
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        text = try container.decode(String.self, forKey: .text)
+        completed = try container.decode(Bool.self, forKey: .completed)
+        createdAt = try container.decode(Date.self, forKey: .createdAt)
+        categories = try container.decodeIfPresent([TaskCategory].self, forKey: .categories) ?? []
+    }
+}
+
+private struct PlanDay: Codable {
+    var dayNumber: Int
+    var title: String
+    var tasks: [TodoItem]
+}
+
+private struct CompletionRecord: Codable {
+    let id: UUID
+    var text: String
+    let completedAt: Date
+    let dayKey: String
+}
+
+private struct FocusSession: Codable {
+    let id: UUID
+    let startedAt: Date
+    let endedAt: Date
+    let durationSeconds: Int
+    let dayKey: String
+}
+
+private struct AnkiDeckProgress: Codable {
+    var learned: Int
+    var total: Int
+    var updatedAt: Date
+
+    var percent: Int {
+        guard total > 0 else { return 0 }
+        return max(0, min(100, Int((Double(learned) / Double(total) * 100).rounded())))
+    }
+}
+
+private struct TodoArchive: Codable {
+    var schemaVersion = 2
+    var planDays: [PlanDay] = []
+    var currentStudyDay = 1
+    var startDate = "2026-07-14"
+    var targetDate = "2026-08-24"
+    var ankiProgressCache: [String: AnkiDeckProgress] = [:]
+    var completions: [CompletionRecord] = []
+    var focusSessions: [FocusSession] = []
+
+    private enum CodingKeys: String, CodingKey {
+        case schemaVersion, planDays, currentStudyDay, startDate, targetDate
+        case ankiProgressCache, completions, focusSessions, days
+    }
+
+    init() {}
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        schemaVersion = try container.decodeIfPresent(Int.self, forKey: .schemaVersion) ?? 1
+        planDays = try container.decodeIfPresent([PlanDay].self, forKey: .planDays) ?? []
+        currentStudyDay = try container.decodeIfPresent(Int.self, forKey: .currentStudyDay) ?? 1
+        startDate = try container.decodeIfPresent(String.self, forKey: .startDate) ?? "2026-07-14"
+        targetDate = try container.decodeIfPresent(String.self, forKey: .targetDate) ?? "2026-08-24"
+        ankiProgressCache = try container.decodeIfPresent([String: AnkiDeckProgress].self, forKey: .ankiProgressCache) ?? [:]
+        completions = try container.decodeIfPresent([CompletionRecord].self, forKey: .completions) ?? []
+        focusSessions = try container.decodeIfPresent([FocusSession].self, forKey: .focusSessions) ?? []
+
+        if planDays.isEmpty,
+           let legacyDays = try container.decodeIfPresent([String: [TodoItem]].self, forKey: .days) {
+            planDays = legacyDays.keys.sorted().enumerated().map { offset, key in
+                let dayNumber = offset + 1
+                return PlanDay(
+                    dayNumber: dayNumber,
+                    title: TodoStore.theme(for: dayNumber),
+                    tasks: legacyDays[key] ?? []
+                )
+            }
+            currentStudyDay = planDays.first(where: { !$0.tasks.isEmpty && !$0.tasks.allSatisfy(\.completed) })?.dayNumber
+                ?? max(1, planDays.last?.dayNumber ?? 1)
+            schemaVersion = 2
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(schemaVersion, forKey: .schemaVersion)
+        try container.encode(planDays, forKey: .planDays)
+        try container.encode(currentStudyDay, forKey: .currentStudyDay)
+        try container.encode(startDate, forKey: .startDate)
+        try container.encode(targetDate, forKey: .targetDate)
+        try container.encode(ankiProgressCache, forKey: .ankiProgressCache)
+        try container.encode(completions, forKey: .completions)
+        try container.encode(focusSessions, forKey: .focusSessions)
+    }
+}
+
+private struct HistoryDay {
+    let dayKey: String
+    let records: [CompletionRecord]
+    let focusSeconds: Int
+    let focusCount: Int
+}
+
+private struct LearningStats {
+    let recentCompleted: Int
+    let activeDays: Int
+    let streak: Int
+}
+
+private struct FocusStats {
+    let todaySeconds: Int
+    let recentSeconds: Int
+    let recentSessions: Int
+}
+
+private struct ProjectProgress {
+    let title: String
+    let completed: Int
+    let total: Int
+
+    var percent: Int {
+        guard total > 0 else { return 0 }
+        return max(0, min(100, Int((Double(completed) / Double(total) * 100).rounded())))
+    }
+}
+
+private struct DeadlineStatus {
+    let remainingStudyDays: Int
+    let remainingCalendarDays: Int
+    let weeklyPace: Double
+    let targetDateText: String
+}
+
+private final class TodoStore {
+    private let url = URL(fileURLWithPath: todoPath)
+    private var archive = TodoArchive()
+
+    private(set) var ankiConnected = false
+    private(set) var ankiLastAttempt: Date?
+    private var ankiRefreshInFlight = false
+
+    static let ankiDecks = ["嵌入式高频150", "Linux视觉", "rtos项目", "Linux物理"]
+
+    init() { load() }
+
+    private static let keyFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = .current
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
+    static func dayKey(for date: Date = Date()) -> String {
+        keyFormatter.string(from: date)
+    }
+
+    static func date(for dayKey: String) -> Date? {
+        keyFormatter.date(from: dayKey)
+    }
+
+    var planDays: [PlanDay] {
+        archive.planDays.sorted { $0.dayNumber < $1.dayNumber }
+    }
+
+    var currentStudyDay: Int {
+        archive.currentStudyDay
+    }
+
+    var today: [TodoItem] {
+        items(for: currentStudyDay)
+    }
+
+    func items(for studyDay: Int) -> [TodoItem] {
+        archive.planDays.first(where: { $0.dayNumber == studyDay })?.tasks ?? []
+    }
+
+    func title(for studyDay: Int) -> String {
+        archive.planDays.first(where: { $0.dayNumber == studyDay })?.title ?? Self.theme(for: studyDay)
+    }
+
+    var progress: (completed: Int, total: Int) {
+        let items = today
+        return (items.filter(\.completed).count, items.count)
+    }
+
+    var canAdvanceCurrentDay: Bool {
+        let items = today
+        return items.allSatisfy(\.completed) && currentStudyDay < (planDays.last?.dayNumber ?? 28)
+    }
+
+    var deadlineStatus: DeadlineStatus {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let target = Self.date(for: archive.targetDate) ?? today
+        let remainingCalendarDays = max(0, (calendar.dateComponents([.day], from: today, to: target).day ?? 0) + 1)
+        let remainingStudyDays = max(0, (planDays.last?.dayNumber ?? 28) - currentStudyDay + 1)
+        let weeks = max(1.0 / 7.0, Double(remainingCalendarDays) / 7.0)
+        return DeadlineStatus(
+            remainingStudyDays: remainingStudyDays,
+            remainingCalendarDays: remainingCalendarDays,
+            weeklyPace: Double(remainingStudyDays) / weeks,
+            targetDateText: archive.targetDate
+        )
+    }
+
+    var projectProgress: [ProjectProgress] {
+        let definitions: [(String, TaskCategory)] = [
+            ("Linux视觉", .linuxVisual),
+            ("RTOS", .rtos),
+            ("Linux物理", .linuxPhysical)
+        ]
+        let allTasks = planDays.flatMap(\.tasks)
+        return definitions.map { title, category in
+            let tasks = allTasks.filter { $0.categories.contains(category) }
+            return ProjectProgress(title: title, completed: tasks.filter(\.completed).count, total: tasks.count)
+        }
+    }
+
+    var ankiProgress: [String: AnkiDeckProgress] { archive.ankiProgressCache }
+
+    var history: [HistoryDay] {
+        let grouped = Dictionary(grouping: archive.completions, by: \CompletionRecord.dayKey)
+        let focusGrouped = Dictionary(grouping: archive.focusSessions, by: \FocusSession.dayKey)
+        let keys = Set(grouped.keys).union(focusGrouped.keys)
+        return keys.sorted(by: >).map { key in
+            let sessions = focusGrouped[key] ?? []
+            return HistoryDay(
+                dayKey: key,
+                records: (grouped[key] ?? []).sorted { $0.completedAt > $1.completedAt },
+                focusSeconds: sessions.reduce(0) { $0 + $1.durationSeconds },
+                focusCount: sessions.count
+            )
+        }
+    }
+
+    var learningStats: LearningStats {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let sevenDaysAgo = calendar.date(byAdding: .day, value: -6, to: today) ?? today
+        let recentCompleted = archive.completions.filter { record in
+            guard let date = Self.date(for: record.dayKey) else { return false }
+            return date >= sevenDaysAgo && date <= today
+        }.count
+        let activeDayKeys = Set(archive.completions.map(\.dayKey))
+            .union(archive.focusSessions.map(\.dayKey))
+
+        var cursor = today
+        if !activeDayKeys.contains(Self.dayKey(for: cursor)),
+           let yesterday = calendar.date(byAdding: .day, value: -1, to: cursor),
+           activeDayKeys.contains(Self.dayKey(for: yesterday)) {
+            cursor = yesterday
+        }
+        var streak = 0
+        while activeDayKeys.contains(Self.dayKey(for: cursor)) {
+            streak += 1
+            guard let previous = calendar.date(byAdding: .day, value: -1, to: cursor) else { break }
+            cursor = previous
+        }
+        return LearningStats(
+            recentCompleted: recentCompleted,
+            activeDays: activeDayKeys.count,
+            streak: streak
+        )
+    }
+
+    var focusStats: FocusStats {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let sevenDaysAgo = calendar.date(byAdding: .day, value: -6, to: today) ?? today
+        let todayKey = Self.dayKey()
+        let recent = archive.focusSessions.filter { session in
+            guard let date = Self.date(for: session.dayKey) else { return false }
+            return date >= sevenDaysAgo && date <= today
+        }
+        return FocusStats(
+            todaySeconds: archive.focusSessions.filter { $0.dayKey == todayKey }.reduce(0) { $0 + $1.durationSeconds },
+            recentSeconds: recent.reduce(0) { $0 + $1.durationSeconds },
+            recentSessions: recent.count
+        )
+    }
+
+    func addFocusSession(startedAt: Date, durationSeconds: Int) {
+        guard durationSeconds >= minimumFocusRecordSeconds else { return }
+        let endedAt = Date()
+        archive.focusSessions.append(FocusSession(
+            id: UUID(),
+            startedAt: startedAt,
+            endedAt: endedAt,
+            durationSeconds: durationSeconds,
+            dayKey: Self.dayKey(for: endedAt)
+        ))
+        save()
+    }
+
+    func add(_ rawText: String, to studyDay: Int? = nil) {
+        let text = rawText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !text.isEmpty else { return }
+        let day = studyDay ?? currentStudyDay
+        var items = items(for: day)
+        items.append(TodoItem(
+            id: UUID(),
+            text: text,
+            completed: false,
+            createdAt: Date(),
+            categories: Self.categories(for: day, text: text)
+        ))
+        set(items, for: day)
+    }
+
+    func setCompleted(id: UUID, completed: Bool, studyDay: Int? = nil) {
+        let day = studyDay ?? currentStudyDay
+        var items = items(for: day)
+        guard let index = items.firstIndex(where: { $0.id == id }) else { return }
+        let wasCompleted = items[index].completed
+        items[index].completed = completed
+        replaceTasks(items, for: day)
+        if completed && !wasCompleted {
+            archive.completions.removeAll { $0.id == id }
+            archive.completions.append(CompletionRecord(
+                id: id,
+                text: items[index].text,
+                completedAt: Date(),
+                dayKey: Self.dayKey()
+            ))
+        } else if !completed && wasCompleted {
+            archive.completions.removeAll { $0.id == id }
+        }
+        save()
+    }
+
+    func update(id: UUID, rawText: String, studyDay: Int? = nil) {
+        let text = rawText.trimmingCharacters(in: .whitespacesAndNewlines)
+        let day = studyDay ?? currentStudyDay
+        if text.isEmpty {
+            remove(id: id, studyDay: day)
+            return
+        }
+        var items = items(for: day)
+        guard let index = items.firstIndex(where: { $0.id == id }) else { return }
+        items[index].text = text
+        items[index].categories = Self.categories(for: day, text: text)
+        replaceTasks(items, for: day)
+        if let recordIndex = archive.completions.firstIndex(where: { $0.id == id }) {
+            archive.completions[recordIndex].text = text
+        }
+        save()
+    }
+
+    func remove(id: UUID, studyDay: Int? = nil) {
+        let day = studyDay ?? currentStudyDay
+        set(items(for: day).filter { $0.id != id }, for: day)
+    }
+
+    func advanceCurrentStudyDay() -> Bool {
+        guard canAdvanceCurrentDay else { return false }
+        archive.currentStudyDay += 1
+        save()
+        return true
+    }
+
+    func setCurrentStudyDay(_ day: Int) -> Bool {
+        guard archive.planDays.contains(where: { $0.dayNumber == day }) else { return false }
+        archive.currentStudyDay = day
+        save()
+        return true
+    }
+
+    func refreshAnkiProgress(force: Bool = false, completion: @escaping () -> Void) {
+        if ankiRefreshInFlight { return }
+        if !force, let last = ankiLastAttempt, Date().timeIntervalSince(last) < 30 { return }
+        ankiRefreshInFlight = true
+        ankiLastAttempt = Date()
+
+        let actions = Self.ankiDecks.flatMap { deck -> [[String: Any]] in
+            let quoted = "deck:\"\(deck)\""
+            return [
+                ["action": "findCards", "params": ["query": quoted]],
+                ["action": "findCards", "params": ["query": quoted + " is:new"]]
+            ]
+        }
+        let payload: [String: Any] = ["action": "multi", "version": 6, "params": ["actions": actions]]
+        let endpointText = ProcessInfo.processInfo.environment["LULU_ANKI_URL"] ?? "http://127.0.0.1:8765"
+        guard let body = try? JSONSerialization.data(withJSONObject: payload),
+              let endpoint = URL(string: endpointText) else {
+            ankiRefreshInFlight = false
+            return
+        }
+        var request = URLRequest(url: endpoint, timeoutInterval: 2.5)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = body
+
+        URLSession.shared.dataTask(with: request) { [weak self] data, _, _ in
+            guard let self else { return }
+            var fresh: [String: AnkiDeckProgress] = [:]
+            if let data,
+               let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               json["error"] is NSNull,
+               let results = json["result"] as? [[Any]],
+               results.count == Self.ankiDecks.count * 2 {
+                let now = Date()
+                for (index, deck) in Self.ankiDecks.enumerated() {
+                    let total = results[index * 2].count
+                    let unseen = results[index * 2 + 1].count
+                    fresh[deck] = AnkiDeckProgress(learned: max(0, total - unseen), total: total, updatedAt: now)
+                }
+            }
+            DispatchQueue.main.async {
+                self.ankiRefreshInFlight = false
+                self.ankiConnected = !fresh.isEmpty
+                if !fresh.isEmpty {
+                    self.archive.ankiProgressCache.merge(fresh) { _, new in new }
+                    self.save()
+                }
+                completion()
+            }
+        }.resume()
+    }
+
+    private func set(_ items: [TodoItem], for studyDay: Int) {
+        replaceTasks(items, for: studyDay)
+        save()
+    }
+
+    private func replaceTasks(_ items: [TodoItem], for studyDay: Int) {
+        guard let index = archive.planDays.firstIndex(where: { $0.dayNumber == studyDay }) else { return }
+        archive.planDays[index].tasks = items
+    }
+
+    private func load() {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        guard let data = try? Data(contentsOf: url),
+              let value = try? decoder.decode(TodoArchive.self, from: data) else { return }
+        archive = value
+        var migrated = archive.schemaVersion < 2
+        archive.schemaVersion = 2
+        archive.planDays.sort { $0.dayNumber < $1.dayNumber }
+        archive.currentStudyDay = max(1, min(archive.currentStudyDay, archive.planDays.last?.dayNumber ?? 28))
+        let recordedIDs = Set(archive.completions.map(\.id))
+        for dayIndex in archive.planDays.indices {
+            let day = archive.planDays[dayIndex].dayNumber
+            for itemIndex in archive.planDays[dayIndex].tasks.indices {
+                if archive.planDays[dayIndex].tasks[itemIndex].categories.isEmpty {
+                    let text = archive.planDays[dayIndex].tasks[itemIndex].text
+                    archive.planDays[dayIndex].tasks[itemIndex].categories = Self.categories(for: day, text: text)
+                    migrated = true
+                }
+            }
+            for item in archive.planDays[dayIndex].tasks where item.completed && !recordedIDs.contains(item.id) {
+                archive.completions.append(CompletionRecord(
+                    id: item.id,
+                    text: item.text,
+                    completedAt: item.createdAt,
+                    dayKey: Self.dayKey(for: item.createdAt)
+                ))
+                migrated = true
+            }
+        }
+        if migrated { save() }
+    }
+
+    private func save() {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        encoder.dateEncodingStrategy = .iso8601
+        guard let data = try? encoder.encode(archive) else { return }
+        try? data.write(to: url, options: .atomic)
+    }
+
+    static func theme(for day: Int) -> String {
+        let themes = [
+            "三个项目总结", "视觉项目地图与快速入门", "Qt入口与模块通信", "LIME与ADMM原理",
+            "LIME性能优化", "LSTR与ONNX Runtime", "Unet、NCNN与Qt图像处理", "视觉项目面试内容",
+            "RTOS高频题与入门", "RTOS架构与任务设计", "中断、定时任务与电机闭环", "传感器、交互与工作模式",
+            "自动模式、IAP与调试", "任务监控与扩展内容", "RTOS查漏", "物理内存高频题与事实边界",
+            "eBPF架构与伙伴系统", "探针、BPF map与指标采集", "用户态与全链路追踪", "物理内存深入复习",
+            "Anki集中复习·视觉薄弱点", "Anki集中复习·RTOS任务与电机", "Anki集中复习·RTOS IAP与调试", "Anki集中复习·内存碎片",
+            "视觉项目面试复习", "RTOS高频题复习", "Linux物理高频题复习", "收尾与补齐"
+        ]
+        return themes.indices.contains(day - 1) ? themes[day - 1] : "学习计划"
+    }
+
+    static func categories(for day: Int, text: String) -> [TaskCategory] {
+        var categories: [TaskCategory] = []
+        func add(_ category: TaskCategory) {
+            if !categories.contains(category) { categories.append(category) }
+        }
+        if text.localizedCaseInsensitiveContains("Anki") { add(.anki) }
+        if day == 1 && !text.localizedCaseInsensitiveContains("Anki") {
+            add(.linuxVisual); add(.rtos); add(.linuxPhysical)
+        } else if (2...8).contains(day) {
+            add(.linuxVisual)
+        } else if (9...15).contains(day) {
+            add(.rtos)
+        } else if (16...20).contains(day) {
+            add(.linuxPhysical)
+        } else {
+            if text.contains("三个项目") {
+                add(.linuxVisual); add(.rtos); add(.linuxPhysical)
+            }
+            if text.contains("视觉") { add(.linuxVisual) }
+            if text.localizedCaseInsensitiveContains("RTOS") || text.contains("rtos项目") { add(.rtos) }
+            if text.contains("Linux物理") || text.contains("伙伴系统") || text.contains("order") || text.contains("碎片") { add(.linuxPhysical) }
+        }
+        if categories.isEmpty { add(.general) }
+        return categories
+    }
+}
+
+private class FlippedView: NSView {
+    override var isFlipped: Bool { true }
+}
+
+private func makeGlassContainer(for contentView: NSView, cornerRadius: CGFloat = 16) -> NSVisualEffectView {
+    let glassView = NSVisualEffectView(frame: contentView.frame)
+    glassView.material = .hudWindow
+    glassView.blendingMode = .behindWindow
+    glassView.state = .active
+    glassView.wantsLayer = true
+    glassView.layer?.cornerRadius = cornerRadius
+    glassView.layer?.masksToBounds = true
+    glassView.layer?.borderWidth = 1
+    glassView.layer?.borderColor = NSColor.white.withAlphaComponent(0.16).cgColor
+    contentView.frame = glassView.bounds
+    contentView.autoresizingMask = [.width, .height]
+    glassView.addSubview(contentView)
+    return glassView
+}
+
+private final class BadgeView: NSView {
+    private let quickTimerButton = NSButton(title: "▶ 正计时", target: nil, action: nil)
+    private let closeButton = NSButton(title: "×", target: nil, action: nil)
+    var usageTitle = "Codex · 读取中…" { didSet { needsDisplay = true } }
+    var remaining: Int? { didSet { needsDisplay = true } }
+    var completed = 0 { didSet { needsDisplay = true } }
+    var total = 0 { didSet { needsDisplay = true } }
+    var isTimerRunning = false { didSet { updateTimerButton() } }
+    var onClick: (() -> Void)?
+    var onQuickStartTimer: (() -> Void)?
+    var onClose: (() -> Void)?
+
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        quickTimerButton.target = self
+        quickTimerButton.action = #selector(quickStartTimer)
+        quickTimerButton.isBordered = false
+        quickTimerButton.font = .systemFont(ofSize: 10.5, weight: .semibold)
+        quickTimerButton.contentTintColor = .systemOrange
+        quickTimerButton.toolTip = "直接开始番茄钟正计时"
+        quickTimerButton.wantsLayer = true
+        quickTimerButton.layer?.backgroundColor = NSColor.systemOrange.withAlphaComponent(0.16).cgColor
+        quickTimerButton.layer?.cornerRadius = 8
+        addSubview(quickTimerButton)
+
+        closeButton.target = self
+        closeButton.action = #selector(closeBadge)
+        closeButton.isBordered = false
+        closeButton.font = .systemFont(ofSize: 13, weight: .medium)
+        closeButton.contentTintColor = NSColor.white.withAlphaComponent(0.58)
+        closeButton.toolTip = "隐藏卡片（右击 Lulu 可重新打开）"
+        addSubview(closeButton)
+    }
+
+    required init?(coder: NSCoder) { nil }
+
+    override func layout() {
+        super.layout()
+        quickTimerButton.frame = NSRect(x: bounds.width - 72, y: 4, width: 62, height: 22)
+        closeButton.frame = NSRect(x: bounds.width - 23, y: 35, width: 16, height: 17)
+    }
+
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        let card = NSBezierPath(
+            roundedRect: bounds.insetBy(dx: 0.5, dy: 0.5),
+            xRadius: 13,
+            yRadius: 13
+        )
+        NSColor(calibratedWhite: 0.08, alpha: 0.26).setFill()
+        card.fill()
+        NSColor.white.withAlphaComponent(0.24).setStroke()
+        card.lineWidth = 1
+        card.stroke()
+
+        let usageColor: NSColor
+        if let remaining {
+            usageColor = remaining <= 20 ? .systemRed : remaining <= 50 ? .systemYellow : .systemGreen
+        } else {
+            usageColor = .secondaryLabelColor
+        }
+
+        usageColor.setFill()
+        NSBezierPath(ovalIn: NSRect(x: 11, y: 42, width: 6, height: 6)).fill()
+
+        let rawUsage = usageTitle.replacingOccurrences(of: "Codex · ", with: "")
+        let focusedUsage = rawUsage.components(separatedBy: "  ").last ?? rawUsage
+        let usageValue = NSAttributedString(string: focusedUsage, attributes: [
+            .font: NSFont.systemFont(ofSize: 10.8, weight: .semibold),
+            .foregroundColor: usageColor
+        ])
+        usageValue.draw(
+            with: NSRect(x: 22, y: 35, width: bounds.width - 50, height: 17),
+            options: [.usesLineFragmentOrigin, .truncatesLastVisibleLine]
+        )
+
+        NSColor.white.withAlphaComponent(0.10).setStroke()
+        let divider = NSBezierPath()
+        divider.move(to: NSPoint(x: 11, y: 29))
+        divider.line(to: NSPoint(x: bounds.width - 11, y: 29))
+        divider.lineWidth = 1
+        divider.stroke()
+
+        NSAttributedString(string: "☑︎  今日任务", attributes: [
+            .font: NSFont.systemFont(ofSize: 11.5, weight: .medium),
+            .foregroundColor: NSColor.white.withAlphaComponent(0.9)
+        ]).draw(at: NSPoint(x: 11, y: 8))
+
+        let progress = NSAttributedString(string: "\(completed)/\(total)", attributes: [
+            .font: NSFont.monospacedDigitSystemFont(ofSize: 10.5, weight: .semibold),
+            .foregroundColor: total > 0 && completed == total
+                ? NSColor.systemGreen
+                : NSColor.white.withAlphaComponent(0.8)
+        ])
+        progress.draw(at: NSPoint(x: bounds.width - 79 - progress.size().width, y: 9))
+    }
+
+    @objc private func quickStartTimer() {
+        onQuickStartTimer?()
+    }
+
+    @objc private func closeBadge() {
+        onClose?()
+    }
+
+    private func updateTimerButton() {
+        quickTimerButton.title = isTimerRunning ? "● 计时中" : "▶ 正计时"
+        let color: NSColor = isTimerRunning ? .systemGreen : .systemOrange
+        quickTimerButton.contentTintColor = color
+        quickTimerButton.layer?.backgroundColor = color.withAlphaComponent(isTimerRunning ? 0.22 : 0.16).cgColor
+        quickTimerButton.toolTip = isTimerRunning ? "正在计时，点击打开番茄钟" : "直接开始番茄钟正计时"
+    }
+
+    override func mouseDown(with event: NSEvent) {
+        onClick?()
+    }
+
+    override func resetCursorRects() {
+        addCursorRect(bounds, cursor: .pointingHand)
+    }
+}
+
+private final class TodoRowView: FlippedView, NSTextFieldDelegate {
+    private let itemID: UUID
+    private let checkbox: NSButton
+    private let textField: NSTextField
+    private let deleteButton: NSButton
+    private let onToggle: (UUID, Bool) -> Void
+    private let onEdit: (UUID, String) -> Void
+    private let onDelete: (UUID) -> Void
+
+    init(item: TodoItem,
+         onToggle: @escaping (UUID, Bool) -> Void,
+         onEdit: @escaping (UUID, String) -> Void,
+         onDelete: @escaping (UUID) -> Void) {
+        itemID = item.id
+        checkbox = NSButton(checkboxWithTitle: "", target: nil, action: nil)
+        textField = NSTextField(string: item.text)
+        deleteButton = NSButton(title: "×", target: nil, action: nil)
+        self.onToggle = onToggle
+        self.onEdit = onEdit
+        self.onDelete = onDelete
+        super.init(frame: .zero)
+
+        checkbox.state = item.completed ? .on : .off
+        checkbox.target = self
+        checkbox.action = #selector(toggleTask)
+
+        textField.delegate = self
+        textField.isBordered = false
+        textField.drawsBackground = false
+        textField.focusRingType = .none
+        textField.font = .systemFont(ofSize: 13)
+        textField.maximumNumberOfLines = 0
+        textField.lineBreakMode = .byWordWrapping
+        textField.cell?.wraps = true
+        textField.cell?.isScrollable = false
+        textField.cell?.usesSingleLineMode = false
+        applyTextStyle(completed: item.completed)
+
+        wantsLayer = true
+        layer?.cornerRadius = 9
+        layer?.backgroundColor = NSColor.controlBackgroundColor.withAlphaComponent(0.12).cgColor
+
+        deleteButton.target = self
+        deleteButton.action = #selector(deleteTask)
+        deleteButton.isBordered = false
+        deleteButton.font = .systemFont(ofSize: 17, weight: .medium)
+        deleteButton.contentTintColor = .secondaryLabelColor
+
+        addSubview(checkbox)
+        addSubview(textField)
+        addSubview(deleteButton)
+    }
+
+    required init?(coder: NSCoder) { nil }
+
+    override func layout() {
+        super.layout()
+        checkbox.frame = NSRect(x: 4, y: 8, width: 22, height: 22)
+        deleteButton.frame = NSRect(x: bounds.width - 30, y: 6, width: 26, height: 26)
+        textField.frame = NSRect(x: 30, y: 7, width: bounds.width - 64, height: max(24, bounds.height - 14))
+    }
+
+    func preferredHeight(for width: CGFloat) -> CGFloat {
+        let availableWidth = max(80, width - 64)
+        let textBounds = textField.attributedStringValue.boundingRect(
+            with: NSSize(width: availableWidth, height: .greatestFiniteMagnitude),
+            options: [.usesLineFragmentOrigin, .usesFontLeading]
+        )
+        return max(40, ceil(textBounds.height) + 16)
+    }
+
+    private func applyTextStyle(completed: Bool) {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: NSFont.systemFont(ofSize: 13),
+            .foregroundColor: completed ? NSColor.secondaryLabelColor : NSColor.labelColor,
+            .strikethroughStyle: completed ? NSUnderlineStyle.single.rawValue : 0
+        ]
+        textField.attributedStringValue = NSAttributedString(string: textField.stringValue, attributes: attributes)
+    }
+
+    @objc private func toggleTask() {
+        let completed = checkbox.state == .on
+        applyTextStyle(completed: completed)
+        onToggle(itemID, completed)
+    }
+
+    @objc private func deleteTask() {
+        onDelete(itemID)
+    }
+
+    func controlTextDidEndEditing(_ obj: Notification) {
+        onEdit(itemID, textField.stringValue)
+    }
+}
+
+private final class HistoryDayView: FlippedView {
+    private let headerLabel: NSTextField
+    private let records: [CompletionRecord]
+    private var taskLabels: [NSTextField] = []
+    private var timeLabels: [NSTextField] = []
+
+    private static let timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "zh_CN")
+        formatter.timeZone = .current
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+
+    init(title: String, records: [CompletionRecord], focusSeconds: Int, focusCount: Int) {
+        self.records = records
+        var summary = "完成 \(records.count) 项"
+        if focusSeconds > 0 {
+            summary += "  ·  专注 \(durationText(focusSeconds))（\(focusCount) 次）"
+        }
+        headerLabel = NSTextField(labelWithString: "\(title)  ·  \(summary)")
+        super.init(frame: .zero)
+
+        wantsLayer = true
+        headerLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        headerLabel.textColor = .secondaryLabelColor
+        addSubview(headerLabel)
+
+        for record in records {
+            let task = NSTextField(wrappingLabelWithString: "✓  \(record.text)")
+            task.font = .systemFont(ofSize: 12.5, weight: .regular)
+            task.textColor = .labelColor
+            task.maximumNumberOfLines = 2
+            task.lineBreakMode = .byTruncatingTail
+            taskLabels.append(task)
+            addSubview(task)
+
+            let time = NSTextField(labelWithString: Self.timeFormatter.string(from: record.completedAt))
+            time.font = .monospacedDigitSystemFont(ofSize: 10.5, weight: .regular)
+            time.textColor = .tertiaryLabelColor
+            time.alignment = .right
+            timeLabels.append(time)
+            addSubview(time)
+        }
+    }
+
+    required init?(coder: NSCoder) { nil }
+
+    var preferredHeight: CGFloat {
+        39 + CGFloat(records.count) * 42 + 7
+    }
+
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        let path = NSBezierPath(roundedRect: bounds.insetBy(dx: 0.5, dy: 0.5), xRadius: 10, yRadius: 10)
+        NSColor.controlBackgroundColor.withAlphaComponent(0.55).setFill()
+        path.fill()
+        NSColor.separatorColor.withAlphaComponent(0.55).setStroke()
+        path.lineWidth = 1
+        path.stroke()
+
+        NSColor.systemGreen.withAlphaComponent(0.85).setFill()
+        NSBezierPath(ovalIn: NSRect(x: 12, y: 16, width: 6, height: 6)).fill()
+    }
+
+    override func layout() {
+        super.layout()
+        headerLabel.frame = NSRect(x: 24, y: 9, width: bounds.width - 36, height: 20)
+        for index in records.indices {
+            let y = 36 + CGFloat(index) * 42
+            taskLabels[index].frame = NSRect(x: 13, y: y, width: bounds.width - 73, height: 36)
+            taskLabels[index].textColor = .labelColor
+            let attributed = NSMutableAttributedString(attributedString: taskLabels[index].attributedStringValue)
+            if attributed.length >= 1 {
+                attributed.addAttribute(.foregroundColor, value: NSColor.systemGreen, range: NSRange(location: 0, length: 1))
+            }
+            taskLabels[index].attributedStringValue = attributed
+            timeLabels[index].frame = NSRect(x: bounds.width - 59, y: y + 2, width: 46, height: 18)
+        }
+    }
+}
+
+private final class FocusTimerView: FlippedView, NSTextFieldDelegate {
+    private let store: TodoStore
+    private let timerModeControl = NSSegmentedControl(labels: ["正计时", "倒计时"], trackingMode: .selectOne, target: nil, action: nil)
+    private let durationLabel = NSTextField(labelWithString: "专注时长")
+    private let durationField = NSTextField(string: "25")
+    private let minuteLabel = NSTextField(labelWithString: "分钟")
+    private let timerLabel = NSTextField(labelWithString: "25:00")
+    private let progressBar = NSProgressIndicator()
+    private let statusLabel = NSTextField(labelWithString: "准备好后，开始一次安静的专注")
+    private let startButton = NSButton(title: "开始专注", target: nil, action: nil)
+    private let finishButton = NSButton(title: "结束", target: nil, action: nil)
+    private let resetButton = NSButton(title: "重置", target: nil, action: nil)
+    private let statsTitle = NSTextField(labelWithString: "专注记录")
+    private let statsLabel = NSTextField(wrappingLabelWithString: "")
+    private var timer: Timer?
+    private var isCountUp: Bool
+    private var durationMinutes: Int
+    private var remainingSeconds: Int
+    private var focusedSeconds = 0
+    private var isRunning = false {
+        didSet {
+            if oldValue != isRunning { onRunningChanged?(isRunning) }
+        }
+    }
+    private var sessionStartedAt: Date?
+    var onRunningChanged: ((Bool) -> Void)?
+
+    init(store: TodoStore) {
+        self.store = store
+        isCountUp = settingsStore.value.timerMode == "countUp"
+        durationMinutes = settingsStore.value.countdownMinutes
+        remainingSeconds = durationMinutes * 60
+        super.init(frame: .zero)
+
+        timerModeControl.selectedSegment = isCountUp ? 0 : 1
+        timerModeControl.target = self
+        timerModeControl.action = #selector(switchTimerMode)
+        durationLabel.font = .systemFont(ofSize: 12, weight: .medium)
+        durationField.stringValue = "\(durationMinutes)"
+        durationField.alignment = .center
+        durationField.font = .monospacedDigitSystemFont(ofSize: 13, weight: .semibold)
+        durationField.delegate = self
+        minuteLabel.font = .systemFont(ofSize: 12)
+        minuteLabel.textColor = .secondaryLabelColor
+
+        timerLabel.font = .monospacedDigitSystemFont(ofSize: 48, weight: .medium)
+        timerLabel.alignment = .center
+        timerLabel.textColor = .labelColor
+
+        progressBar.style = .bar
+        progressBar.isIndeterminate = false
+        progressBar.minValue = 0
+        progressBar.maxValue = Double(durationMinutes * 60)
+        progressBar.doubleValue = 0
+
+        statusLabel.font = .systemFont(ofSize: 11.5)
+        statusLabel.textColor = .secondaryLabelColor
+        statusLabel.alignment = .center
+
+        startButton.target = self
+        startButton.action = #selector(toggleTimer)
+        startButton.bezelStyle = .rounded
+        startButton.keyEquivalent = "\r"
+        finishButton.target = self
+        finishButton.action = #selector(finishAndRecord)
+        finishButton.bezelStyle = .rounded
+        finishButton.isEnabled = false
+        resetButton.target = self
+        resetButton.action = #selector(resetTimer)
+        resetButton.bezelStyle = .rounded
+
+        statsTitle.font = .systemFont(ofSize: 13, weight: .semibold)
+        statsLabel.font = .systemFont(ofSize: 12.5)
+        statsLabel.textColor = .secondaryLabelColor
+        statsLabel.maximumNumberOfLines = 3
+
+        [timerModeControl, durationLabel, durationField, minuteLabel, timerLabel, progressBar, statusLabel,
+         startButton, finishButton, resetButton, statsTitle, statsLabel].forEach(addSubview)
+        refreshDisplay()
+    }
+
+    required init?(coder: NSCoder) { nil }
+
+    deinit { timer?.invalidate() }
+
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        let timerCard = NSBezierPath(roundedRect: NSRect(x: 0.5, y: 38.5, width: bounds.width - 1, height: 205), xRadius: 14, yRadius: 14)
+        NSColor.controlBackgroundColor.withAlphaComponent(0.48).setFill()
+        timerCard.fill()
+        NSColor.separatorColor.withAlphaComponent(0.5).setStroke()
+        timerCard.lineWidth = 1
+        timerCard.stroke()
+
+        let statsCard = NSBezierPath(roundedRect: NSRect(x: 0.5, y: 256.5, width: bounds.width - 1, height: 92), xRadius: 12, yRadius: 12)
+        NSColor.controlBackgroundColor.withAlphaComponent(0.34).setFill()
+        statsCard.fill()
+    }
+
+    override func layout() {
+        super.layout()
+        let width = bounds.width
+        timerModeControl.frame = NSRect(x: 18, y: 6, width: 128, height: 28)
+        durationLabel.frame = NSRect(x: 164, y: 10, width: 52, height: 22)
+        durationField.frame = NSRect(x: 220, y: 6, width: 54, height: 28)
+        minuteLabel.frame = NSRect(x: 280, y: 10, width: 42, height: 22)
+        timerLabel.frame = NSRect(x: 18, y: 58, width: width - 36, height: 66)
+        progressBar.frame = NSRect(x: 24, y: 133, width: width - 48, height: 6)
+        statusLabel.frame = NSRect(x: 18, y: 151, width: width - 36, height: 20)
+
+        let buttonsWidth = min(width - 36, 302)
+        let startX = (width - buttonsWidth) / 2
+        startButton.frame = NSRect(x: startX, y: 188, width: 104, height: 32)
+        finishButton.frame = NSRect(x: startX + 110, y: 188, width: 112, height: 32)
+        resetButton.frame = NSRect(x: startX + 228, y: 188, width: 74, height: 32)
+
+        statsTitle.frame = NSRect(x: 17, y: 270, width: width - 34, height: 20)
+        statsLabel.frame = NSRect(x: 17, y: 297, width: width - 34, height: 42)
+    }
+
+    func refreshStats() {
+        let stats = store.focusStats
+        statsLabel.stringValue = "今天  \(durationText(stats.todaySeconds))\n近 7 天  \(durationText(stats.recentSeconds))  ·  \(stats.recentSessions) 次专注"
+    }
+
+    private func refreshDisplay(message: String? = nil) {
+        let displaySeconds = isCountUp ? focusedSeconds : remainingSeconds
+        let minutes = displaySeconds / 60
+        let seconds = displaySeconds % 60
+        timerLabel.stringValue = String(format: "%02d:%02d", minutes, seconds)
+        progressBar.maxValue = Double(durationMinutes * 60)
+        progressBar.doubleValue = Double(isCountUp ? focusedSeconds : durationMinutes * 60 - remainingSeconds)
+        startButton.title = isRunning ? "暂停" : (focusedSeconds > 0 ? "继续专注" : "开始专注")
+        finishButton.isEnabled = focusedSeconds > 0
+        durationLabel.isHidden = isCountUp
+        durationField.isHidden = isCountUp
+        minuteLabel.isHidden = isCountUp
+        durationField.isEnabled = !isRunning && focusedSeconds == 0 && !isCountUp
+        if let message {
+            statusLabel.stringValue = message
+        } else if isRunning {
+            statusLabel.stringValue = isCountUp
+                ? "正计时中 · 暂停时不会计入学习时间"
+                : "倒计时中 · 暂停时不会计入学习时间"
+        } else if focusedSeconds > 0 {
+            statusLabel.stringValue = "已专注 \(durationText(focusedSeconds))，可以继续或结束记录"
+        } else {
+            statusLabel.stringValue = "准备好后，开始一次安静的专注"
+        }
+        refreshStats()
+    }
+
+    private func applyDuration() {
+        let value = Int(durationField.stringValue) ?? durationMinutes
+        durationMinutes = max(1, min(180, value))
+        durationField.stringValue = "\(durationMinutes)"
+        remainingSeconds = isCountUp ? 0 : durationMinutes * 60
+        settingsStore.update { $0.countdownMinutes = durationMinutes }
+        refreshDisplay()
+    }
+
+    @objc private func toggleTimer() {
+        if isRunning {
+            isRunning = false
+            timer?.invalidate()
+            timer = nil
+            refreshDisplay(message: "已暂停 · 当前专注 \(durationText(focusedSeconds))")
+            return
+        }
+        if focusedSeconds == 0 && !isCountUp { applyDuration() }
+        if sessionStartedAt == nil { sessionStartedAt = Date() }
+        isRunning = true
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            self?.tick()
+        }
+        refreshDisplay()
+    }
+
+    private func tick() {
+        guard isRunning else { return }
+        focusedSeconds += 1
+        if !isCountUp {
+            remainingSeconds = max(0, remainingSeconds - 1)
+        }
+        if !isCountUp && remainingSeconds == 0 {
+            completeTimer()
+        } else {
+            refreshDisplay()
+        }
+    }
+
+    private func completeTimer() {
+        timer?.invalidate()
+        timer = nil
+        isRunning = false
+        let recorded = focusedSeconds
+        if recorded >= minimumFocusRecordSeconds {
+            store.addFocusSession(startedAt: sessionStartedAt ?? Date(), durationSeconds: recorded)
+        }
+        focusedSeconds = 0
+        sessionStartedAt = nil
+        remainingSeconds = durationMinutes * 60
+        NSSound.beep()
+        refreshDisplay(message: recorded >= minimumFocusRecordSeconds
+            ? "完成一次专注，已记录 \(durationText(recorded)) ✓"
+            : "不足 5 分钟，本次不记入学习记录")
+    }
+
+    @objc private func finishAndRecord() {
+        guard focusedSeconds > 0 else { return }
+        timer?.invalidate()
+        timer = nil
+        isRunning = false
+        let recorded = focusedSeconds
+        if recorded >= minimumFocusRecordSeconds {
+            store.addFocusSession(startedAt: sessionStartedAt ?? Date(), durationSeconds: recorded)
+        }
+        focusedSeconds = 0
+        sessionStartedAt = nil
+        remainingSeconds = durationMinutes * 60
+        refreshDisplay(message: recorded >= minimumFocusRecordSeconds
+            ? "本次学习已记录：\(durationText(recorded))"
+            : "不足 5 分钟，本次不记入学习记录")
+    }
+
+    @objc private func resetTimer() {
+        timer?.invalidate()
+        timer = nil
+        isRunning = false
+        focusedSeconds = 0
+        sessionStartedAt = nil
+        applyDuration()
+        refreshDisplay(message: "计时器已重置")
+    }
+
+    @objc private func switchTimerMode() {
+        guard !isRunning && focusedSeconds == 0 else {
+            timerModeControl.selectedSegment = isCountUp ? 0 : 1
+            return
+        }
+        isCountUp = timerModeControl.selectedSegment == 0
+        settingsStore.update { $0.timerMode = isCountUp ? "countUp" : "countDown" }
+        remainingSeconds = isCountUp ? 0 : durationMinutes * 60
+        refreshDisplay(message: isCountUp ? "正计时已准备好，想学多久就学多久" : "倒计时已准备好")
+    }
+
+    func startCountUp() {
+        guard !isRunning else { return }
+        if focusedSeconds == 0 {
+            isCountUp = true
+            timerModeControl.selectedSegment = 0
+            settingsStore.update { $0.timerMode = "countUp" }
+            remainingSeconds = 0
+        }
+        guard isCountUp else { return }
+        toggleTimer()
+    }
+
+    func toggleCountUpFromBadge() {
+        if isRunning {
+            timer?.invalidate()
+            timer = nil
+            isRunning = false
+            let recorded = focusedSeconds
+            if recorded >= minimumFocusRecordSeconds {
+                store.addFocusSession(startedAt: sessionStartedAt ?? Date(), durationSeconds: recorded)
+            }
+            focusedSeconds = 0
+            sessionStartedAt = nil
+            remainingSeconds = durationMinutes * 60
+            refreshDisplay(message: recorded >= minimumFocusRecordSeconds ? "本次学习已记录" : "不足 5 分钟，本次不记录")
+        } else {
+            startCountUp()
+        }
+    }
+
+    func controlTextDidEndEditing(_ obj: Notification) {
+        guard focusedSeconds == 0 && !isRunning else { return }
+        applyDuration()
+    }
+}
+
+private final class ProgressLineView: FlippedView {
+    private let titleLabel = NSTextField(labelWithString: "")
+    private let detailLabel = NSTextField(labelWithString: "")
+    private let bar = NSProgressIndicator()
+
+    init(title: String, completed: Int, total: Int, percent: Int) {
+        super.init(frame: .zero)
+        wantsLayer = true
+        layer?.cornerRadius = 9
+        layer?.backgroundColor = NSColor.controlBackgroundColor.withAlphaComponent(0.12).cgColor
+        titleLabel.font = .systemFont(ofSize: 12.5, weight: .semibold)
+        detailLabel.font = .monospacedDigitSystemFont(ofSize: 10.5, weight: .medium)
+        detailLabel.textColor = .secondaryLabelColor
+        detailLabel.alignment = .right
+        bar.style = .bar
+        bar.controlSize = .small
+        bar.minValue = 0
+        bar.maxValue = 100
+        addSubview(titleLabel)
+        addSubview(detailLabel)
+        addSubview(bar)
+        update(title: title, completed: completed, total: total, percent: percent)
+    }
+
+    required init?(coder: NSCoder) { nil }
+
+    func update(title: String, completed: Int, total: Int, percent: Int) {
+        titleLabel.stringValue = title
+        detailLabel.stringValue = "\(completed)/\(total)  ·  \(percent)%"
+        bar.doubleValue = Double(max(0, min(100, percent)))
+    }
+
+    override func layout() {
+        super.layout()
+        titleLabel.frame = NSRect(x: 11, y: 7, width: bounds.width - 142, height: 18)
+        detailLabel.frame = NSRect(x: bounds.width - 126, y: 7, width: 115, height: 18)
+        bar.frame = NSRect(x: 11, y: 31, width: bounds.width - 22, height: 8)
+    }
+}
+
+private final class LearningDashboardView: FlippedView {
+    private let projectTitle = NSTextField(labelWithString: "三个项目完成情况")
+    private let ankiTitle = NSTextField(labelWithString: "Anki 首轮学习进度")
+    private let ankiStatus = NSTextField(wrappingLabelWithString: "")
+    private let refreshButton = NSButton(title: "刷新 Anki", target: nil, action: nil)
+    private var projectRows: [ProgressLineView] = []
+    private var ankiRows: [ProgressLineView] = []
+    var onRefresh: (() -> Void)?
+    let preferredHeight: CGFloat = 465
+
+    init(projects: [ProjectProgress], anki: [String: AnkiDeckProgress], connected: Bool) {
+        super.init(frame: .zero)
+        projectTitle.font = .systemFont(ofSize: 13.5, weight: .bold)
+        ankiTitle.font = .systemFont(ofSize: 13.5, weight: .bold)
+        ankiStatus.font = .systemFont(ofSize: 10.5)
+        ankiStatus.textColor = .secondaryLabelColor
+        ankiStatus.maximumNumberOfLines = 2
+        refreshButton.bezelStyle = .rounded
+        refreshButton.controlSize = .small
+        refreshButton.target = self
+        refreshButton.action = #selector(refreshAnki)
+        addSubview(projectTitle)
+        addSubview(ankiTitle)
+        addSubview(ankiStatus)
+        addSubview(refreshButton)
+
+        for project in projects {
+            let row = ProgressLineView(title: project.title, completed: project.completed, total: project.total, percent: project.percent)
+            projectRows.append(row)
+            addSubview(row)
+        }
+
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "zh_CN")
+        formatter.dateFormat = "M月d日 HH:mm"
+        let latest = anki.values.map(\.updatedAt).max()
+        if connected {
+            ankiStatus.stringValue = "Anki 已连接，进度已实时刷新"
+        } else if let latest {
+            ankiStatus.stringValue = "Anki 未连接 · 显示缓存数据（\(formatter.string(from: latest))）"
+        } else {
+            ankiStatus.stringValue = "Anki 未连接 · 暂无缓存数据"
+        }
+
+        for deck in TodoStore.ankiDecks {
+            let value = anki[deck] ?? AnkiDeckProgress(learned: 0, total: 0, updatedAt: .distantPast)
+            let row = ProgressLineView(title: deck, completed: value.learned, total: value.total, percent: value.percent)
+            ankiRows.append(row)
+            addSubview(row)
+        }
+    }
+
+    required init?(coder: NSCoder) { nil }
+
+    override func layout() {
+        super.layout()
+        projectTitle.frame = NSRect(x: 4, y: 0, width: bounds.width - 8, height: 20)
+        var y: CGFloat = 25
+        for row in projectRows {
+            row.frame = NSRect(x: 0, y: y, width: bounds.width, height: 47)
+            y += 53
+        }
+        ankiTitle.frame = NSRect(x: 4, y: y + 2, width: bounds.width - 94, height: 20)
+        refreshButton.frame = NSRect(x: bounds.width - 86, y: y - 2, width: 82, height: 25)
+        y += 28
+        ankiStatus.frame = NSRect(x: 4, y: y, width: bounds.width - 8, height: 30)
+        y += 31
+        for row in ankiRows {
+            row.frame = NSRect(x: 0, y: y, width: bounds.width, height: 47)
+            y += 53
+        }
+    }
+
+    @objc private func refreshAnki() { onRefresh?() }
+}
+
+private final class TodoPanelView: FlippedView, NSTextFieldDelegate {
+    private let store: TodoStore
+    private let titleLabel = NSTextField(labelWithString: "Lulu 学习")
+    private let modeControl = NSSegmentedControl(labels: ["今日任务", "28天计划", "学习记录", "番茄钟"], trackingMode: .selectOne, target: nil, action: nil)
+    private let dateLabel = NSTextField(wrappingLabelWithString: "")
+    private let previousDayButton = NSButton(title: "‹", target: nil, action: nil)
+    private let nextDayButton = NSButton(title: "›", target: nil, action: nil)
+    private let inputField = NSTextField(string: "")
+    private let addButton = NSButton(title: "添加", target: nil, action: nil)
+    private let advanceButton = NSButton(title: "进入下一学习日", target: nil, action: nil)
+    private let setCurrentButton = NSButton(title: "设为当前学习日", target: nil, action: nil)
+    private let scrollView = NSScrollView()
+    private let documentView = FlippedView()
+    private let footerLabel = NSTextField(labelWithString: "")
+    private let focusView: FocusTimerView
+    private var loadedCalendarDay = ""
+    private var selectedPlanDay = 0
+    private var isPlanMode: Bool { modeControl.selectedSegment == 1 }
+    private var isHistoryMode: Bool { modeControl.selectedSegment == 2 }
+    private var isFocusMode: Bool { modeControl.selectedSegment == 3 }
+    var onProgressChanged: ((Int, Int) -> Void)?
+    var onFocusRunningChanged: ((Bool) -> Void)? {
+        didSet { focusView.onRunningChanged = onFocusRunningChanged }
+    }
+
+    private static let historyDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "zh_CN")
+        formatter.timeZone = .current
+        formatter.dateFormat = "M月d日 EEEE"
+        return formatter
+    }()
+
+    init(store: TodoStore) {
+        self.store = store
+        focusView = FocusTimerView(store: store)
+        super.init(frame: .zero)
+
+        titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        modeControl.selectedSegment = 0
+        modeControl.target = self
+        modeControl.action = #selector(switchPanelMode)
+        dateLabel.font = .systemFont(ofSize: 11)
+        dateLabel.textColor = .secondaryLabelColor
+        dateLabel.maximumNumberOfLines = 2
+        inputField.delegate = self
+
+        previousDayButton.target = self
+        previousDayButton.action = #selector(showPreviousPlanDay)
+        previousDayButton.bezelStyle = .rounded
+        previousDayButton.font = .systemFont(ofSize: 18, weight: .semibold)
+        nextDayButton.target = self
+        nextDayButton.action = #selector(showNextPlanDay)
+        nextDayButton.bezelStyle = .rounded
+        nextDayButton.font = .systemFont(ofSize: 18, weight: .semibold)
+        addButton.target = self
+        addButton.action = #selector(addTask)
+        addButton.bezelStyle = .rounded
+        advanceButton.target = self
+        advanceButton.action = #selector(advanceStudyDay)
+        advanceButton.bezelStyle = .rounded
+        advanceButton.contentTintColor = .systemBlue
+        setCurrentButton.target = self
+        setCurrentButton.action = #selector(setSelectedAsCurrent)
+        setCurrentButton.bezelStyle = .rounded
+
+        scrollView.hasVerticalScroller = true
+        scrollView.hasHorizontalScroller = false
+        scrollView.autohidesScrollers = true
+        scrollView.drawsBackground = false
+        scrollView.documentView = documentView
+        footerLabel.font = .systemFont(ofSize: 11)
+        footerLabel.textColor = .secondaryLabelColor
+        footerLabel.alignment = .center
+
+        [titleLabel, modeControl, dateLabel, previousDayButton, nextDayButton, inputField, addButton,
+         advanceButton, setCurrentButton, scrollView, footerLabel, focusView].forEach(addSubview)
+        reload()
+    }
+
+    required init?(coder: NSCoder) { nil }
+
+    override func layout() {
+        super.layout()
+        let width = bounds.width
+        titleLabel.frame = NSRect(x: 16, y: 14, width: 92, height: 24)
+        modeControl.frame = NSRect(x: width - 338, y: 13, width: 322, height: 26)
+        previousDayButton.frame = NSRect(x: 16, y: 46, width: 30, height: 25)
+        nextDayButton.frame = NSRect(x: width - 46, y: 46, width: 30, height: 25)
+        dateLabel.frame = NSRect(x: isPlanMode ? 52 : 16, y: 46, width: isPlanMode ? width - 104 : width - 32, height: isPlanMode || isHistoryMode ? 22 : 36)
+        dateLabel.alignment = isPlanMode ? .center : .left
+        addButton.frame = NSRect(x: width - 72, y: 88, width: 56, height: 30)
+        inputField.frame = NSRect(x: 16, y: 88, width: width - 96, height: 30)
+
+        let top: CGFloat = isHistoryMode ? 76 : 128
+        let bottom: CGFloat = (isHistoryMode || isFocusMode) ? 42 : 82
+        scrollView.frame = NSRect(x: 12, y: top, width: width - 24, height: max(80, bounds.height - top - bottom))
+        focusView.frame = NSRect(x: 16, y: 73, width: width - 32, height: bounds.height - 113)
+        advanceButton.frame = NSRect(x: (width - 190) / 2, y: bounds.height - 72, width: 190, height: 30)
+        setCurrentButton.frame = NSRect(x: (width - 180) / 2, y: bounds.height - 72, width: 180, height: 30)
+        footerLabel.frame = NSRect(x: 16, y: bounds.height - 32, width: width - 32, height: 18)
+        layoutRows()
+    }
+
+    func refreshForNewDay() {
+        let day = TodoStore.dayKey()
+        if day != loadedCalendarDay { reload() }
+    }
+
+    func toggleCountUpFromBadge() { focusView.toggleCountUpFromBadge() }
+
+    private func reload() {
+        loadedCalendarDay = TodoStore.dayKey()
+        documentView.subviews.forEach { $0.removeFromSuperview() }
+        inputField.isHidden = isHistoryMode || isFocusMode
+        addButton.isHidden = isHistoryMode || isFocusMode
+        previousDayButton.isHidden = !isPlanMode
+        nextDayButton.isHidden = !isPlanMode
+        advanceButton.isHidden = true
+        setCurrentButton.isHidden = true
+        scrollView.isHidden = isFocusMode
+        footerLabel.isHidden = isFocusMode
+        focusView.isHidden = !isFocusMode
+
+        if isFocusMode {
+            dateLabel.stringValue = "自定义专注时间，完成后自动记入学习记录"
+            focusView.refreshStats()
+        } else if isHistoryMode {
+            reloadHistory()
+        } else if isPlanMode {
+            reloadPlan()
+        } else {
+            reloadToday()
+        }
+        needsLayout = true
+        layoutSubtreeIfNeeded()
+    }
+
+    private func reloadToday() {
+        let day = store.currentStudyDay
+        let status = store.deadlineStatus
+        dateLabel.stringValue = "第\(day)学习日 / 28 · \(store.title(for: day))\n截止 \(status.targetDateText) · 剩余\(status.remainingStudyDays)学习日/\(status.remainingCalendarDays)自然日 · 建议每周\(String(format: "%.1f", status.weeklyPace))天"
+        inputField.placeholderString = "添加到第\(day)学习日…"
+        for item in store.today where !item.completed {
+            let row = makeTodoRow(item: item, studyDay: day)
+            documentView.addSubview(row)
+        }
+        updateProgress()
+        advanceButton.title = "进入第\(day + 1)学习日"
+        advanceButton.isHidden = !store.canAdvanceCurrentDay
+    }
+
+    private func reloadPlan() {
+        let days = store.planDays
+        if selectedPlanDay == 0 || !days.contains(where: { $0.dayNumber == selectedPlanDay }) {
+            selectedPlanDay = store.currentStudyDay
+        }
+        let index = days.firstIndex(where: { $0.dayNumber == selectedPlanDay }) ?? 0
+        let day = days.indices.contains(index) ? days[index] : PlanDay(dayNumber: 1, title: "", tasks: [])
+        let currentMark = day.dayNumber == store.currentStudyDay ? " · 当前学习日" : ""
+        dateLabel.stringValue = "第\(day.dayNumber)学习日 / \(max(1, days.count)) · \(day.title)\(currentMark)"
+        inputField.placeholderString = "添加到第\(day.dayNumber)学习日…"
+        previousDayButton.isEnabled = index > 0
+        nextDayButton.isEnabled = !days.isEmpty && index < days.count - 1
+        for item in day.tasks { documentView.addSubview(makeTodoRow(item: item, studyDay: day.dayNumber)) }
+        let completed = day.tasks.filter(\.completed).count
+        footerLabel.stringValue = "已完成 \(completed) / \(day.tasks.count) · 任务可换行编辑、增删和勾选"
+        setCurrentButton.isHidden = day.dayNumber == store.currentStudyDay
+    }
+
+    private func makeTodoRow(item: TodoItem, studyDay: Int) -> TodoRowView {
+        TodoRowView(
+            item: item,
+            onToggle: { [weak self] id, completed in
+                self?.store.setCompleted(id: id, completed: completed, studyDay: studyDay)
+                self?.reload()
+            },
+            onEdit: { [weak self] id, text in
+                self?.store.update(id: id, rawText: text, studyDay: studyDay)
+                DispatchQueue.main.async { [weak self] in self?.reload() }
+            },
+            onDelete: { [weak self] id in
+                self?.store.remove(id: id, studyDay: studyDay)
+                self?.reload()
+            }
+        )
+    }
+
+    private func reloadHistory() {
+        let stats = store.learningStats
+        dateLabel.stringValue = "近7天完成 \(stats.recentCompleted) 项 · 累计学习 \(stats.activeDays) 天 · 连续 \(stats.streak) 天"
+        let dashboard = LearningDashboardView(projects: store.projectProgress, anki: store.ankiProgress, connected: store.ankiConnected)
+        dashboard.onRefresh = { [weak self] in
+            self?.store.refreshAnkiProgress(force: true) { [weak self] in self?.reload() }
+        }
+        documentView.addSubview(dashboard)
+
+        for day in store.history {
+            let title: String
+            if day.dayKey == TodoStore.dayKey() {
+                title = "今天"
+            } else if let date = TodoStore.date(for: day.dayKey) {
+                title = Self.historyDateFormatter.string(from: date)
+            } else {
+                title = day.dayKey
+            }
+            documentView.addSubview(HistoryDayView(title: title, records: day.records, focusSeconds: day.focusSeconds, focusCount: day.focusCount))
+        }
+        footerLabel.stringValue = "任务与专注记录按实际完成日期保存"
+        store.refreshAnkiProgress { [weak self] in
+            guard self?.isHistoryMode == true else { return }
+            self?.reload()
+        }
+    }
+
+    private func layoutRows() {
+        let rowWidth = scrollView.contentSize.width
+        var y: CGFloat = 0
+        if isHistoryMode {
+            for subview in documentView.subviews {
+                if let dashboard = subview as? LearningDashboardView {
+                    dashboard.frame = NSRect(x: 0, y: y, width: rowWidth, height: dashboard.preferredHeight)
+                    y += dashboard.preferredHeight + 14
+                } else if let section = subview as? HistoryDayView {
+                    section.frame = NSRect(x: 0, y: y, width: rowWidth, height: section.preferredHeight)
+                    y += section.preferredHeight + 10
+                }
+            }
+        } else {
+            for case let row as TodoRowView in documentView.subviews {
+                let rowHeight = row.preferredHeight(for: rowWidth)
+                row.frame = NSRect(x: 0, y: y, width: rowWidth, height: rowHeight)
+                y += rowHeight + 6
+            }
+        }
+        documentView.frame = NSRect(x: 0, y: 0, width: rowWidth, height: max(scrollView.contentSize.height, max(0, y - 6)))
+    }
+
+    @objc private func switchPanelMode() {
+        if isPlanMode { selectedPlanDay = store.currentStudyDay }
+        reload()
+    }
+
+    @objc private func showPreviousPlanDay() { movePlanDay(by: -1) }
+    @objc private func showNextPlanDay() { movePlanDay(by: 1) }
+
+    private func movePlanDay(by offset: Int) {
+        let days = store.planDays
+        guard let index = days.firstIndex(where: { $0.dayNumber == selectedPlanDay }) else { return }
+        let nextIndex = index + offset
+        guard days.indices.contains(nextIndex) else { return }
+        selectedPlanDay = days[nextIndex].dayNumber
+        reload()
+    }
+
+    private func updateProgress() {
+        let progress = store.progress
+        if progress.total == 0 {
+            footerLabel.stringValue = "当前学习日没有任务，可添加任务或直接进入下一日"
+        } else if progress.completed == progress.total {
+            footerLabel.stringValue = store.currentStudyDay == 28 ? "28天计划已全部完成 ✓" : "本学习日已全部完成，确认后再进入下一日"
+        } else {
+            footerLabel.stringValue = "待完成 \(progress.total - progress.completed) 项 · 已完成 \(progress.completed) / \(progress.total)"
+        }
+        onProgressChanged?(progress.completed, progress.total)
+    }
+
+    @objc private func addTask() {
+        store.add(inputField.stringValue, to: isPlanMode ? selectedPlanDay : nil)
+        inputField.stringValue = ""
+        reload()
+        window?.makeFirstResponder(inputField)
+    }
+
+    @objc private func advanceStudyDay() {
+        let next = store.currentStudyDay + 1
+        let alert = NSAlert()
+        alert.messageText = "进入第\(next)学习日？"
+        alert.informativeText = "只会推进当前学习日，不会改变任务的完成记录。"
+        alert.addButton(withTitle: "进入下一日")
+        alert.addButton(withTitle: "取消")
+        guard alert.runModal() == .alertFirstButtonReturn else { return }
+        if store.advanceCurrentStudyDay() { reload() }
+    }
+
+    @objc private func setSelectedAsCurrent() {
+        let alert = NSAlert()
+        alert.messageText = "将第\(selectedPlanDay)天设为当前学习日？"
+        alert.informativeText = "这个操作用于误操作恢复或主动回退，不会删除已有记录。"
+        alert.addButton(withTitle: "确认设置")
+        alert.addButton(withTitle: "取消")
+        guard alert.runModal() == .alertFirstButtonReturn else { return }
+        if store.setCurrentStudyDay(selectedPlanDay) { reload() }
+    }
+
+    func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        if control === inputField && commandSelector == #selector(NSResponder.insertNewline(_:)) {
+            addTask()
+            return true
+        }
+        return false
+    }
+}
+
+private final class LuluOverlay: NSObject, NSWindowDelegate {
+    private let badgeWindow: NSWindow
+    private let badgeGlassView: NSVisualEffectView
+    private let badgeView: BadgeView
+    private let panelWindow: NSPanel
+    private let panelView: TodoPanelView
+    private var panelOpen = false
+    private var panelFollowOffset: NSPoint?
+    private var targetBadgeOrigin = NSPoint.zero
+    private var displayedBadgeOrigin = NSPoint.zero
+    private var hasBadgeOrigin = false
+    private var lastAnimationTime = ProcessInfo.processInfo.systemUptime
+    private var petFrame = NSRect.zero
+    private var petIsVisible = false
+    private var badgeManuallyHidden = !settingsStore.value.badgeVisible
+    private var globalRightClickMonitor: Any?
+
+    override init() {
+        let store = TodoStore()
+        badgeView = BadgeView(frame: NSRect(
+            x: 0,
+            y: 0,
+            width: settingsStore.value.badgeWidth,
+            height: settingsStore.value.badgeHeight
+        ))
+        badgeGlassView = NSVisualEffectView(frame: badgeView.bounds)
+        badgeWindow = NSWindow(
+            contentRect: badgeView.bounds,
+            styleMask: .borderless,
+            backing: .buffered,
+            defer: false
+        )
+        panelView = TodoPanelView(store: store)
+        panelWindow = NSPanel(
+            contentRect: NSRect(x: 0, y: 0, width: 460, height: 540),
+            styleMask: [.titled, .closable, .utilityWindow],
+            backing: .buffered,
+            defer: false
+        )
+        super.init()
+
+        badgeWindow.isOpaque = false
+        badgeWindow.backgroundColor = .clear
+        badgeWindow.hasShadow = true
+        badgeWindow.level = .floating
+        badgeWindow.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
+        badgeGlassView.material = .hudWindow
+        badgeGlassView.blendingMode = .behindWindow
+        badgeGlassView.state = .active
+        badgeGlassView.wantsLayer = true
+        badgeGlassView.layer?.cornerRadius = 13
+        badgeGlassView.layer?.masksToBounds = true
+        badgeView.autoresizingMask = [.width, .height]
+        badgeGlassView.addSubview(badgeView)
+        badgeWindow.contentView = badgeGlassView
+        badgeWindow.acceptsMouseMovedEvents = true
+
+        panelWindow.title = "Lulu · 学习计划与记录"
+        panelWindow.isReleasedWhenClosed = false
+        panelWindow.isOpaque = false
+        panelWindow.backgroundColor = .clear
+        panelWindow.hasShadow = true
+        panelWindow.titlebarAppearsTransparent = true
+        panelWindow.level = .floating
+        panelWindow.hidesOnDeactivate = false
+        panelWindow.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
+        panelWindow.contentView = makeGlassContainer(for: panelView)
+        panelWindow.delegate = self
+        if let closeButton = panelWindow.standardWindowButton(.closeButton) {
+            closeButton.target = self
+            closeButton.action = #selector(hideTaskPanel)
+            closeButton.toolTip = "隐藏学习面板（Lulu 继续运行）"
+        }
+
+        badgeView.onClick = { [weak self] in self?.togglePanel() }
+        badgeView.onQuickStartTimer = { [weak self] in self?.toggleCountUpFromBadge() }
+        badgeView.onClose = { [weak self] in self?.hideBadge() }
+        panelView.onProgressChanged = { [weak self] completed, total in
+            self?.badgeView.completed = completed
+            self?.badgeView.total = total
+        }
+        panelView.onFocusRunningChanged = { [weak self] isRunning in
+            self?.badgeView.isTimerRunning = isRunning
+        }
+        let progress = store.progress
+        badgeView.completed = progress.completed
+        badgeView.total = progress.total
+
+        globalRightClickMonitor = NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown) { [weak self] _ in
+            guard let self, self.petIsVisible, self.petFrame.contains(NSEvent.mouseLocation) else { return }
+            DispatchQueue.main.async { self.toggleBadgeFromPet() }
+        }
+    }
+
+    deinit {
+        if let globalRightClickMonitor { NSEvent.removeMonitor(globalRightClickMonitor) }
+    }
+
+    func setVisible(_ visible: Bool) {
+        let becameVisible = visible && !petIsVisible
+        petIsVisible = visible
+        if visible && !badgeManuallyHidden {
+            if becameVisible { snapToTargetOrigin() }
+            badgeWindow.orderFrontRegardless()
+            if panelOpen { panelWindow.orderFrontRegardless() }
+        } else {
+            badgeWindow.orderOut(nil)
+            panelWindow.orderOut(nil)
+        }
+    }
+
+    func setPetFrame(_ frame: NSRect) {
+        petFrame = frame
+    }
+
+    func setUsageTitle(_ title: String, remaining: Int?, deadlineTooltip: String?) {
+        badgeView.usageTitle = title
+        badgeView.remaining = remaining
+        badgeView.toolTip = deadlineTooltip
+    }
+
+    func setOrigin(_ origin: NSPoint) {
+        if hasBadgeOrigin,
+           abs(origin.x - targetBadgeOrigin.x) < 0.05,
+           abs(origin.y - targetBadgeOrigin.y) < 0.05 { return }
+        targetBadgeOrigin = origin
+        if !hasBadgeOrigin {
+            displayedBadgeOrigin = origin
+            hasBadgeOrigin = true
+            lastAnimationTime = ProcessInfo.processInfo.systemUptime
+            positionWindows(at: origin)
+        }
+    }
+
+    func advancePosition() {
+        guard hasBadgeOrigin, petIsVisible, !badgeManuallyHidden else { return }
+
+        let now = ProcessInfo.processInfo.systemUptime
+        let deltaTime = min(max(now - lastAnimationTime, 1.0 / 240.0), 1.0 / 20.0)
+        lastAnimationTime = now
+
+        let dx = targetBadgeOrigin.x - displayedBadgeOrigin.x
+        let dy = targetBadgeOrigin.y - displayedBadgeOrigin.y
+        if abs(dx) < 0.15, abs(dy) < 0.15 {
+            guard displayedBadgeOrigin != targetBadgeOrigin else { return }
+            displayedBadgeOrigin = targetBadgeOrigin
+        } else {
+            // State-file updates arrive in small, uneven jumps while Lulu is dragged.
+            // A time-based response keeps window motion fluid on both 60 Hz and 120 Hz displays.
+            let blend = CGFloat(1.0 - exp(-50.0 * deltaTime))
+            displayedBadgeOrigin.x += dx * blend
+            displayedBadgeOrigin.y += dy * blend
+        }
+        positionWindows(at: displayedBadgeOrigin)
+    }
+
+    func refreshForNewDay() {
+        panelView.refreshForNewDay()
+    }
+
+    private func togglePanel() {
+        panelOpen.toggle()
+        if panelOpen {
+            panelFollowOffset = nil
+            positionWindows(at: displayedBadgeOrigin)
+            NSApp.activate(ignoringOtherApps: true)
+            panelWindow.makeKeyAndOrderFront(nil)
+        } else {
+            panelFollowOffset = nil
+            panelWindow.orderOut(nil)
+        }
+    }
+
+    private func toggleCountUpFromBadge() {
+        panelView.toggleCountUpFromBadge()
+    }
+
+    private func hideBadge() {
+        badgeManuallyHidden = true
+        settingsStore.update { $0.badgeVisible = false }
+        panelOpen = false
+        panelFollowOffset = nil
+        badgeWindow.orderOut(nil)
+        panelWindow.orderOut(nil)
+    }
+
+    private func toggleBadgeFromPet() {
+        badgeManuallyHidden.toggle()
+        settingsStore.update { $0.badgeVisible = !badgeManuallyHidden }
+        if badgeManuallyHidden {
+            panelOpen = false
+            panelFollowOffset = nil
+            badgeWindow.orderOut(nil)
+            panelWindow.orderOut(nil)
+        } else if petIsVisible {
+            snapToTargetOrigin()
+            badgeWindow.orderFrontRegardless()
+        }
+    }
+
+    private func snapToTargetOrigin() {
+        guard hasBadgeOrigin else { return }
+        displayedBadgeOrigin = targetBadgeOrigin
+        lastAnimationTime = ProcessInfo.processInfo.systemUptime
+        positionWindows(at: displayedBadgeOrigin)
+    }
+
+    private func positionWindows(at origin: NSPoint) {
+        let badgeSize = badgeWindow.frame.size
+        let screenFrame = NSScreen.screens.first(where: { $0.visibleFrame.contains(origin) })?.visibleFrame
+            ?? NSScreen.main?.visibleFrame
+            ?? NSRect(x: 0, y: 0, width: 1440, height: 900)
+
+        let badgeX = min(max(origin.x, screenFrame.minX + 8), screenFrame.maxX - badgeSize.width - 8)
+        let badgeY = min(max(origin.y, screenFrame.minY + 8), screenFrame.maxY - badgeSize.height - 8)
+        badgeWindow.setFrameOrigin(NSPoint(x: badgeX, y: badgeY))
+
+        let panelSize = panelWindow.frame.size
+        if panelOpen, let offset = panelFollowOffset {
+            panelWindow.setFrameOrigin(NSPoint(x: badgeX + offset.x, y: badgeY + offset.y))
+            return
+        }
+
+        var panelX = badgeX
+        var panelY = badgeY - panelSize.height - 8
+        if panelY < screenFrame.minY + 8 { panelY = badgeY + badgeSize.height + 8 }
+        panelX = min(max(panelX, screenFrame.minX + 8), screenFrame.maxX - panelSize.width - 8)
+        panelY = min(max(panelY, screenFrame.minY + 8), screenFrame.maxY - panelSize.height - 8)
+        panelWindow.setFrameOrigin(NSPoint(x: panelX, y: panelY))
+        if panelOpen {
+            panelFollowOffset = NSPoint(x: panelX - badgeX, y: panelY - badgeY)
+        }
+    }
+
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        hideTaskPanel()
+        return false
+    }
+
+    @objc private func hideTaskPanel() {
+        panelOpen = false
+        panelFollowOffset = nil
+        panelWindow.orderOut(nil)
+    }
+}
+
+private final class RateLimitClient: NSObject {
+    private let process = Process()
+    private let input = Pipe()
+    private let output = Pipe()
+    private var buffer = ""
+    private var initialized = false
+    private var requestID = 2
+    private let onUpdate: (String, Int?, String?) -> Void
+
+    init(onUpdate: @escaping (String, Int?, String?) -> Void) {
+        self.onUpdate = onUpdate
+        super.init()
+        start()
+    }
+
+    private func start() {
+        process.executableURL = URL(fileURLWithPath: codexPath)
+        process.arguments = ["app-server", "--listen", "stdio://"]
+        process.standardInput = input
+        process.standardOutput = output
+        process.standardError = FileHandle.nullDevice
+        var environment = ProcessInfo.processInfo.environment
+        environment["CODEX_HOME"] = codexHome
+        environment["PATH"] = "\(userHome)/.local/bin:\(userHome)/.local/share/pnpm/bin:\(userHome)/.local/node-v22.16.0-darwin-arm64/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+        process.environment = environment
+
+        output.fileHandleForReading.readabilityHandler = { [weak self] handle in
+            guard let self else { return }
+            let data = handle.availableData
+            if !data.isEmpty { receive(data) }
+        }
+
+        do {
+            try process.run()
+            send([
+                "id": 1,
+                "method": "initialize",
+                "params": [
+                    "clientInfo": ["name": "lulu-study-overlay", "title": "Lulu Study", "version": "2.0"],
+                    "capabilities": [:]
+                ]
+            ])
+        } catch {
+            DispatchQueue.main.async { [onUpdate] in onUpdate("Codex · 不可用", nil, nil) }
+        }
+    }
+
+    func refresh() {
+        guard initialized else { return }
+        send(["id": requestID, "method": "account/rateLimits/read", "params": [:]])
+        requestID += 1
+    }
+
+    private func send(_ object: Any) {
+        guard let line = jsonLine(object), let data = line.data(using: .utf8) else { return }
+        input.fileHandleForWriting.write(data)
+    }
+
+    private func receive(_ data: Data) {
+        guard let chunk = String(data: data, encoding: .utf8) else { return }
+        buffer += chunk
+        while let newline = buffer.firstIndex(of: "\n") {
+            let line = String(buffer[..<newline])
+            buffer = String(buffer[buffer.index(after: newline)...])
+            handle(line)
+        }
+    }
+
+    private func handle(_ line: String) {
+        guard let data = line.data(using: .utf8),
+              let message = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return }
+
+        if !initialized, let id = message["id"] as? NSNumber, id.intValue == 1 {
+            initialized = true
+            send(["method": "initialized", "params": [:]])
+            refresh()
+            return
+        }
+
+        guard let result = message["result"] as? [String: Any],
+              let limits = result["rateLimits"] as? [String: Any],
+              let primary = limits["primary"] as? [String: Any] else { return }
+
+        let windows = [primary, limits["secondary"] as? [String: Any]].compactMap { $0 }
+        let deadlineFormatter = DateFormatter()
+        deadlineFormatter.locale = Locale(identifier: "zh_CN")
+        deadlineFormatter.timeZone = TimeZone(identifier: "Asia/Shanghai")
+        deadlineFormatter.dateFormat = "yyyy年M月d日 HH:mm"
+
+        let parts = windows.compactMap { window -> (String, Int, String?)? in
+            guard let used = number(window["usedPercent"]) else { return nil }
+            let remaining = max(0, min(100, Int((100 - used).rounded())))
+            let minutes = Int(number(window["windowDurationMins"]) ?? 0)
+            let periodFallback: String
+            if minutes <= 360 { periodFallback = "5h" }
+            else if minutes >= 10080 { periodFallback = "7d" }
+            else if minutes >= 1440 { periodFallback = "\(minutes / 1440)d" }
+            else { periodFallback = "\(minutes / 60)h" }
+
+            let remainingTime: String
+            let tooltip: String?
+            if let resetTimestamp = number(window["resetsAt"]) {
+                let resetDate = Date(timeIntervalSince1970: resetTimestamp)
+                let secondsUntilReset = max(0, Int(resetDate.timeIntervalSinceNow))
+                let days = secondsUntilReset / 86_400
+                let hours = (secondsUntilReset % 86_400) / 3_600
+                let mins = max(1, (secondsUntilReset % 3_600) / 60)
+                if days > 0 {
+                    remainingTime = hours > 0 ? "\(days)d \(hours)h" : "\(days)d"
+                } else if hours > 0 {
+                    remainingTime = "\(hours)h"
+                } else {
+                    remainingTime = "\(mins)m"
+                }
+                tooltip = "Deadline: \(deadlineFormatter.string(from: resetDate)) (Beijing time)"
+            } else {
+                remainingTime = periodFallback
+                tooltip = nil
+            }
+            return ("\(remainingTime) · \(remaining)%", remaining, tooltip)
+        }
+
+        guard !parts.isEmpty else {
+            DispatchQueue.main.async { [onUpdate] in onUpdate("Codex · 暂无用量", nil, nil) }
+            return
+        }
+        var labels = parts.map(\.0)
+        let resetCredits = result["rateLimitResetCredits"] as? [String: Any]
+        let resetCount = Int(number(resetCredits?["availableCount"]) ?? 0)
+        labels[labels.count - 1] += " · Reset \(resetCount)"
+        let title = "Codex · " + labels.joined(separator: "  ")
+        let minimum = parts.map(\.1).min()
+        let deadline = parts.compactMap { $0.2 }.last
+        let tooltip = [deadline, "Reset cards available: \(resetCount)"].compactMap { $0 }.joined(separator: "\n")
+        DispatchQueue.main.async { [onUpdate] in onUpdate(title, minimum, tooltip) }
+    }
+}
+
+private final class AppController: NSObject {
+    private struct PetLayout {
+        let displayY: CGFloat
+        let displayHeight: CGFloat
+        let mascotLeft: CGFloat
+        let mascotTop: CGFloat
+        let mascotWidth: CGFloat
+        let mascotHeight: CGFloat
+        let overlayWidth: CGFloat
+        let overlayHeight: CGFloat
+    }
+
+    private let overlay = LuluOverlay()
+    private var stateTimer: Timer?
+    private var refreshTimer: Timer?
+    private var dayTimer: Timer?
+    private var stateWatchSource: DispatchSourceFileSystemObject?
+    private var stateDirectoryFD: Int32 = -1
+    private var pendingStateFrames = 1
+    private var livePollFrame = 0
+    private var petLayout: PetLayout?
+    private var avatarWindowID: CGWindowID?
+    private var client: RateLimitClient!
+
+    func start() {
+        client = RateLimitClient { [weak self] title, remaining, deadlineTooltip in
+            self?.overlay.setUsageTitle(title, remaining: remaining, deadlineTooltip: deadlineTooltip)
+        }
+        startStateWatcher()
+        let displayTimer = Timer(timeInterval: 1.0 / 120.0, repeats: true) { [weak self] _ in
+            guard let self else { return }
+            if self.pendingStateFrames > 0 {
+                self.pendingStateFrames -= 1
+                self.syncPetState()
+            }
+            self.livePollFrame &+= 1
+            if NSEvent.pressedMouseButtons & 1 != 0 || self.livePollFrame % 8 == 0 {
+                self.syncLivePetPosition()
+            }
+            self.overlay.advancePosition()
+        }
+        displayTimer.tolerance = 1.0 / 1_000.0
+        RunLoop.main.add(displayTimer, forMode: .common)
+        stateTimer = displayTimer
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: settingsStore.value.usageRefreshSeconds, repeats: true) { [weak self] _ in
+            self?.client.refresh()
+        }
+        dayTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
+            self?.overlay.refreshForNewDay()
+        }
+        syncPetState()
+    }
+
+    deinit {
+        stateTimer?.invalidate()
+        refreshTimer?.invalidate()
+        dayTimer?.invalidate()
+        stateWatchSource?.cancel()
+    }
+
+    private func startStateWatcher() {
+        let descriptor = open(codexHome, O_EVTONLY)
+        guard descriptor >= 0 else {
+            let fallback = Timer(timeInterval: 1.0 / 30.0, repeats: true) { [weak self] _ in
+                self?.pendingStateFrames = 1
+            }
+            RunLoop.main.add(fallback, forMode: .common)
+            return
+        }
+        stateDirectoryFD = descriptor
+        let source = DispatchSource.makeFileSystemObjectSource(
+            fileDescriptor: descriptor,
+            eventMask: [.write, .rename, .delete],
+            queue: DispatchQueue.global(qos: .userInteractive)
+        )
+        source.setEventHandler { [weak self] in
+            DispatchQueue.main.async { self?.pendingStateFrames = 1 }
+        }
+        source.setCancelHandler { close(descriptor) }
+        stateWatchSource = source
+        source.resume()
+    }
+
+    private func syncPetState() {
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: statePath)),
+              let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            pendingStateFrames = max(pendingStateFrames, 2)
+            return
+        }
+        guard let open = root["electron-avatar-overlay-open"] as? Bool,
+              let bounds = root["electron-avatar-overlay-bounds"] as? [String: Any],
+              let mascot = bounds["mascot"] as? [String: Any],
+              let display = bounds["displayBounds"] as? [String: Any],
+              open,
+              let overlayX = point(bounds, "x"),
+              let overlayY = point(bounds, "y"),
+              let mascotLeft = point(mascot, "left"),
+              let mascotTop = point(mascot, "top"),
+              let mascotWidth = point(mascot, "width"),
+              let mascotHeight = point(mascot, "height"),
+              let displayX = point(display, "x"),
+              let displayY = point(display, "y"),
+              let overlayWidth = point(bounds, "width"),
+              let overlayHeight = point(bounds, "height"),
+              let displayHeight = point(display, "height"),
+              open else {
+            petLayout = nil
+            avatarWindowID = nil
+            overlay.setVisible(false)
+            return
+        }
+
+        let layout = PetLayout(
+            displayY: displayY,
+            displayHeight: displayHeight,
+            mascotLeft: mascotLeft,
+            mascotTop: mascotTop,
+            mascotWidth: mascotWidth,
+            mascotHeight: mascotHeight,
+            overlayWidth: overlayWidth,
+            overlayHeight: overlayHeight
+        )
+        petLayout = layout
+        let windowX = displayX + overlayX
+        let windowY = displayY + overlayY
+        if avatarWindowID == nil {
+            avatarWindowID = findAvatarWindow(
+                expectedX: windowX,
+                expectedY: windowY,
+                layout: layout
+            )
+        }
+        applyPetPosition(windowX: windowX, windowY: windowY, layout: layout)
+    }
+
+    private func syncLivePetPosition() {
+        guard let layout = petLayout else { return }
+        if avatarWindowID == nil {
+            avatarWindowID = findAvatarWindow(expectedX: nil, expectedY: nil, layout: layout)
+        }
+        guard let windowID = avatarWindowID,
+              let info = CGWindowListCopyWindowInfo(
+                  [.optionIncludingWindow, .excludeDesktopElements],
+                  windowID
+              ) as? [[String: Any]],
+              let window = info.first,
+              let windowBounds = cgWindowBounds(window),
+              abs(windowBounds.width - layout.overlayWidth) < 2,
+              abs(windowBounds.height - layout.overlayHeight) < 2 else {
+            avatarWindowID = nil
+            return
+        }
+        applyPetPosition(windowX: windowBounds.minX, windowY: windowBounds.minY, layout: layout)
+    }
+
+    private func applyPetPosition(windowX: CGFloat, windowY: CGFloat, layout: PetLayout) {
+        let x = windowX + layout.mascotLeft + layout.mascotWidth + 8
+        let petTop = windowY + layout.mascotTop
+        let y = layout.displayY + layout.displayHeight - petTop
+            - (layout.mascotHeight + settingsStore.value.badgeHeight) / 2
+        let petFrame = NSRect(
+            x: windowX + layout.mascotLeft,
+            y: layout.displayY + layout.displayHeight - petTop - layout.mascotHeight,
+            width: layout.mascotWidth,
+            height: layout.mascotHeight
+        )
+        overlay.setPetFrame(petFrame)
+        overlay.setOrigin(NSPoint(x: x, y: y))
+        overlay.setVisible(true)
+    }
+
+    private func findAvatarWindow(
+        expectedX: CGFloat?,
+        expectedY: CGFloat?,
+        layout: PetLayout
+    ) -> CGWindowID? {
+        let codexPID = NSRunningApplication
+            .runningApplications(withBundleIdentifier: "com.openai.codex")
+            .first?.processIdentifier
+        guard let windows = CGWindowListCopyWindowInfo(
+            [.optionOnScreenOnly, .excludeDesktopElements],
+            kCGNullWindowID
+        ) as? [[String: Any]] else { return nil }
+
+        let candidates = windows.compactMap { window -> (CGWindowID, NSRect, CGFloat)? in
+            guard let ownerPID = number(window[kCGWindowOwnerPID as String]),
+                  codexPID == nil || pid_t(ownerPID) == codexPID,
+                  let windowID = number(window[kCGWindowNumber as String]),
+                  let bounds = cgWindowBounds(window),
+                  abs(bounds.width - layout.overlayWidth) < 2,
+                  abs(bounds.height - layout.overlayHeight) < 2 else { return nil }
+            let distance = abs(bounds.minX - (expectedX ?? bounds.minX))
+                + abs(bounds.minY - (expectedY ?? bounds.minY))
+            return (CGWindowID(windowID), bounds, distance)
+        }
+        return candidates.min(by: { $0.2 < $1.2 })?.0
+    }
+
+    private func cgWindowBounds(_ window: [String: Any]) -> NSRect? {
+        guard let raw = window[kCGWindowBounds as String] as? [String: Any],
+              let x = number(raw["X"]),
+              let y = number(raw["Y"]),
+              let width = number(raw["Width"]),
+              let height = number(raw["Height"]) else { return nil }
+        return NSRect(x: x, y: y, width: width, height: height)
+    }
+}
+
+if ProcessInfo.processInfo.environment["LULU_MIGRATE_ONLY"] == "1" {
+    _ = TodoStore()
+    exit(0)
+}
+
+let application = NSApplication.shared
+private var controller: AppController?
+private var previewWindow: NSWindow?
+private var previewPanelView: TodoPanelView?
+private var previewOverlay: LuluOverlay?
+
+if ProcessInfo.processInfo.environment["LULU_OVERLAY_PREVIEW"] == "1" {
+    application.setActivationPolicy(.regular)
+    let overlay = LuluOverlay()
+    let visible = NSScreen.main?.visibleFrame ?? NSRect(x: 0, y: 0, width: 1440, height: 900)
+    overlay.setUsageTitle("Codex · 预览", remaining: 80, deadlineTooltip: nil)
+    overlay.setPetFrame(NSRect(x: visible.midX - 80, y: visible.midY, width: 80, height: 80))
+    overlay.setOrigin(NSPoint(x: visible.midX, y: visible.midY))
+    overlay.setVisible(true)
+    previewOverlay = overlay
+} else if ProcessInfo.processInfo.environment["LULU_PANEL_PREVIEW"] == "1" {
+    application.setActivationPolicy(.regular)
+    let store = TodoStore()
+    let panelView = TodoPanelView(store: store)
+    let window = NSWindow(
+        contentRect: NSRect(x: 0, y: 0, width: 460, height: 540),
+        styleMask: [.titled, .closable, .resizable],
+        backing: .buffered,
+        defer: false
+    )
+    window.title = "Lulu · 学习计划与记录（预览）"
+    window.isOpaque = false
+    window.backgroundColor = .clear
+    window.hasShadow = true
+    window.titlebarAppearsTransparent = true
+    window.contentView = makeGlassContainer(for: panelView)
+    window.center()
+    window.makeKeyAndOrderFront(nil)
+    application.activate(ignoringOtherApps: true)
+    previewPanelView = panelView
+    previewWindow = window
+} else {
+    application.setActivationPolicy(.accessory)
+    let liveController = AppController()
+    liveController.start()
+    controller = liveController
+}
+application.run()

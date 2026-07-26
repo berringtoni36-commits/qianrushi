@@ -1,0 +1,23 @@
+{
+  "id": "conv-1784879535069-74xzf4o4z",
+  "providerId": "claude",
+  "title": "这一块我不懂",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784879535070,
+  "updatedAt": 1784879834794,
+  "lastResponseAt": 1784879834794,
+  "sessionId": "99204c89-df42-4aa2-a863-7c721a7cdc15",
+  "providerState": {
+    "providerSessionId": "99204c89-df42-4aa2-a863-7c721a7cdc15"
+  },
+  "currentNote": "projects/Linux视觉感知项目/02 Qt 上位机/2.3 QProcess 进程管理.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 1817,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 40960,
+    "contextWindow": 1000000,
+    "contextTokens": 42777,
+    "percentage": 4
+  }
+}

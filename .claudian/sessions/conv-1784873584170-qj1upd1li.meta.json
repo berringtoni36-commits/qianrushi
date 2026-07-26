@@ -1,0 +1,23 @@
+{
+  "id": "conv-1784873584170-qj1upd1li",
+  "providerId": "claude",
+  "title": "这个我不是很理解",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784873584170,
+  "updatedAt": 1784875544956,
+  "lastResponseAt": 1784873667584,
+  "sessionId": "20bbe044-33d4-4691-b0da-7f35e0674d5b",
+  "providerState": {
+    "providerSessionId": "20bbe044-33d4-4691-b0da-7f35e0674d5b"
+  },
+  "currentNote": "projects/嵌入式八股/RTOS高频面试题.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 2305,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 64896,
+    "contextWindow": 1000000,
+    "contextTokens": 67201,
+    "percentage": 7
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "conv-1784791004041-lx78bdbwt",
+  "providerId": "claude",
+  "title": "flashcard插件怎么用我已经安装好了",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784791004041,
+  "updatedAt": 1784791304079,
+  "lastResponseAt": 1784791196600,
+  "sessionId": "936f5f81-f156-498b-84fb-91e0a6e14949",
+  "providerState": {
+    "providerSessionId": "936f5f81-f156-498b-84fb-91e0a6e14949"
+  },
+  "currentNote": "projects/Linux物理内存检测项目/linux物理内存检测工具：_带目录.pdf",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 2560,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 36736,
+    "contextWindow": 200000,
+    "contextTokens": 39296,
+    "percentage": 20,
+    "contextWindowIsAuthoritative": true
+  }
+}

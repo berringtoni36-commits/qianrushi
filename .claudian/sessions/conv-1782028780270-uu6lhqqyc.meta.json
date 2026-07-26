@@ -1,0 +1,21 @@
+{
+  "id": "conv-1782028780270-uu6lhqqyc",
+  "providerId": "codex",
+  "title": "Open terminal in VS Code",
+  "titleGenerationStatus": "success",
+  "createdAt": 1782028780271,
+  "updatedAt": 1782034368095,
+  "lastResponseAt": 1782033112048,
+  "sessionId": null,
+  "currentNote": "projects/八股/嵌入式八股150题.md",
+  "usage": {
+    "inputTokens": 26013,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 21376,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 26013,
+    "percentage": 10,
+    "model": "gpt-5.5"
+  }
+}

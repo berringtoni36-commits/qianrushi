@@ -1,0 +1,14 @@
+{
+  "id": "conv-1782028706649-260bnj9wm",
+  "providerId": "opencode",
+  "title": "Simple greeting",
+  "titleGenerationStatus": "success",
+  "createdAt": 1782028706650,
+  "updatedAt": 1782028754142,
+  "lastResponseAt": 1782028706756,
+  "sessionId": null,
+  "providerState": {
+    "databasePath": "C:\\Users\\11624\\AppData\\Roaming\\opencode\\opencode.db"
+  },
+  "currentNote": "projects/八股/嵌入式八股150题.md"
+}

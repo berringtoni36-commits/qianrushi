@@ -1,0 +1,23 @@
+{
+  "id": "conv-1784597433614-g0ooic0gb",
+  "providerId": "claude",
+  "title": "这个图重新画一下",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1784597433615,
+  "updatedAt": 1784791304797,
+  "lastResponseAt": 1784790948307,
+  "sessionId": "57b87dfa-196a-4cca-9a77-8f57d85dc0e9",
+  "providerState": {
+    "providerSessionId": "57b87dfa-196a-4cca-9a77-8f57d85dc0e9"
+  },
+  "currentNote": "projects/Linux物理内存检测项目/3 深入理解/3.2 内存管理核心概念/3.2.2 内存碎片化问题分析.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 148,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 53696,
+    "contextWindow": 200000,
+    "contextTokens": 53844,
+    "percentage": 27
+  }
+}
