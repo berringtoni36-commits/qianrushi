@@ -1,6 +1,6 @@
 {
   "userName": "",
-  "permissionMode": "normal",
+  "permissionMode": "yolo",
   "model": "gpt-5.6-luna",
   "thinkingBudget": "off",
   "effortLevel": "high",
@@ -97,7 +97,7 @@
   },
   "savedProviderPermissionMode": {
     "claude": "normal",
-    "codex": "normal",
+    "codex": "yolo",
     "opencode": "yolo"
   },
   "lastCustomModel": "gpt-5.6-luna",

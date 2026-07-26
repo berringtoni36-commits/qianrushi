@@ -4,8 +4,8 @@
   "title": "给我整理下这篇文章的格式和标题，让他看起来清晰些",
   "titleGenerationStatus": "failed",
   "createdAt": 1784946825205,
-  "updatedAt": 1785031137117,
-  "lastResponseAt": 1785031137117,
+  "updatedAt": 1785031836411,
+  "lastResponseAt": 1785031389881,
   "sessionId": "b4564205-3ac5-403f-b82c-88a3e1afb21d",
   "providerState": {
     "providerSessionId": "b4564205-3ac5-403f-b82c-88a3e1afb21d"
@@ -13,12 +13,12 @@
   "currentNote": "projects/linux视觉感知项目/原作者学习指南.md",
   "usage": {
     "model": "haiku",
-    "inputTokens": 36322,
+    "inputTokens": 1923,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 0,
+    "cacheReadInputTokens": 41152,
     "contextWindow": 200000,
-    "contextTokens": 36322,
-    "percentage": 18,
+    "contextTokens": 43075,
+    "percentage": 22,
     "contextWindowIsAuthoritative": true
   }
 }
