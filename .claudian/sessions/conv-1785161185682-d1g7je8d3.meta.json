@@ -1,0 +1,26 @@
+{
+  "id": "conv-1785161185682-d1g7je8d3",
+  "providerId": "codex",
+  "title": "这个文件的4",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1785161185684,
+  "updatedAt": 1785203363309,
+  "lastResponseAt": 1785162029221,
+  "sessionId": "019fa3e6-005e-7ea2-a18c-44feb049f7a9",
+  "providerState": {
+    "threadId": "019fa3e6-005e-7ea2-a18c-44feb049f7a9",
+    "sessionFilePath": "C:\\Users\\11624\\.codex\\sessions\\2026\\07\\27\\rollout-2026-07-27T22-06-32-019fa3e6-005e-7ea2-a18c-44feb049f7a9.jsonl",
+    "transcriptRootPath": "C:\\Users\\11624\\.codex\\sessions"
+  },
+  "currentNote": "projects/linux视觉感知项目/Linux视觉感知处理原作者文档.md",
+  "usage": {
+    "inputTokens": 83513,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 82688,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 83513,
+    "percentage": 32,
+    "model": "gpt-5.6-luna"
+  }
+}

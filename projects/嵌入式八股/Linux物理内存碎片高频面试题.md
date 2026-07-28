@@ -81,15 +81,15 @@ kprobe 是运行时对内核函数进行动态插桩，可以挂到存在且可�
 
 ![[projects/Linux物理内存检测项目/assets/Linux物理内存碎片高频面试题/tracepoint-kprobe_animated.svg]]
 
-| 维度 | Tracepoint | kprobe |
-|---|---|---|
-| 探针来源 | 内核源码预定义的静态事件 | 运行时动态挂到内核函数 |
-| 灵活性 | 只能使用已有事件 | 可覆盖大量可探测函数 |
-| 稳定性 | 事件语义和字段相对稳定 | 依赖函数符号、签名和内核结构 |
-| 参数获取 | 结构化 <code>args-&gt;field</code> | 函数参数、<code>pt_regs</code>、安全读取 helper |
-| 数据粒度 | 事件提供什么就能拿什么 | 可沿函数参数深入复杂内核对象 |
-| 典型用途 | 生产长期观测、统计稳定事件 | 深入诊断、补足没有 Tracepoint 的内部状态 |
-| 本项目挂点 | <code>kmem:mm_page_alloc_extfrag</code> | <code>get_page_from_freelist</code> |
+| 维度    | Tracepoint                              | kprobe                                |
+| ----- | --------------------------------------- | ------------------------------------- |
+| 探针来源  | 内核源码预定义的静态事件                            | 运行时动态挂到内核函数                           |
+| 灵活性   | 只能使用已有事件                                | 可覆盖大量可探测函数                            |
+| 稳定性   | 事件语义和字段相对稳定                             | 依赖函数符号、签名和内核结构                        |
+| 参数获取  | 结构化 <code>args-&gt;field</code>         | 函数参数、<code>pt_regs</code>、安全读取 helper |
+| 数据粒度  | 事件提供什么就能拿什么                             | 可沿函数参数深入复杂内核对象                        |
+| 典型用途  | 生产长期观测、统计稳定事件                           | 深入诊断、补足没有 Tracepoint 的内部状态            |
+| 本项目挂点 | <code>kmem:mm_page_alloc_extfrag</code> | <code>get_page_from_freelist</code>   |
 
 ~~~mermaid
 flowchart TB

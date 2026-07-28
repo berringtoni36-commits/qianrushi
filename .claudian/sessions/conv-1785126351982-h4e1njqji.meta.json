@@ -1,0 +1,26 @@
+{
+  "id": "conv-1785126351982-h4e1njqji",
+  "providerId": "codex",
+  "title": "带我理解下",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1785126351983,
+  "updatedAt": 1785126786440,
+  "lastResponseAt": 1785126531199,
+  "sessionId": "019fa1d2-77e0-7713-ac77-3e9be2dd3595",
+  "providerState": {
+    "threadId": "019fa1d2-77e0-7713-ac77-3e9be2dd3595",
+    "sessionFilePath": "C:\\Users\\11624\\.codex\\sessions\\2026\\07\\27\\rollout-2026-07-27T12-25-57-019fa1d2-77e0-7713-ac77-3e9be2dd3595.jsonl",
+    "transcriptRootPath": "C:\\Users\\11624\\.codex\\sessions"
+  },
+  "currentNote": "projects/linux视觉感知项目/文档/03 LIME 低照度增强/3.2 ADMM优化框架.md",
+  "usage": {
+    "inputTokens": 29102,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 28416,
+    "contextWindow": 272000,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 29102,
+    "percentage": 11,
+    "model": "gpt-5.6-sol"
+  }
+}

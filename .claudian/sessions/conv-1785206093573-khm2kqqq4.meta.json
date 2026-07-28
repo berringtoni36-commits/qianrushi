@@ -1,0 +1,26 @@
+{
+  "id": "conv-1785206093573-khm2kqqq4",
+  "providerId": "codex",
+  "title": "I need the actual code or content you'd like me...",
+  "titleGenerationStatus": "success",
+  "createdAt": 1785206093573,
+  "updatedAt": 1785207763053,
+  "lastResponseAt": 1785206425104,
+  "sessionId": "019fa693-4cd7-7570-9d5f-7ce11a3779a5",
+  "providerState": {
+    "threadId": "019fa693-4cd7-7570-9d5f-7ce11a3779a5",
+    "sessionFilePath": "C:\\Users\\11624\\.codex\\sessions\\2026\\07\\28\\rollout-2026-07-28T10-35-04-019fa693-4cd7-7570-9d5f-7ce11a3779a5.jsonl",
+    "transcriptRootPath": "C:\\Users\\11624\\.codex\\sessions"
+  },
+  "currentNote": "projects/linux视觉感知项目/文档/03 LIME 低照度增强/3.5 NEON SIMD向量化加速.md",
+  "usage": {
+    "inputTokens": 46039,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 35584,
+    "contextWindow": 353400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 46039,
+    "percentage": 13,
+    "model": "gpt-5.6-sol"
+  }
+}

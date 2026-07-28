@@ -1,9 +1,9 @@
 {
   "userName": "",
   "permissionMode": "yolo",
-  "model": "gpt-5.6-luna",
+  "model": "gpt-5.5",
   "thinkingBudget": "off",
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
   "serviceTier": "fast",
   "enableAutoTitleGeneration": true,
   "titleGenerationModel": "",
@@ -81,12 +81,12 @@
   "settingsProvider": "codex",
   "savedProviderModel": {
     "claude": "opus[1m]",
-    "codex": "gpt-5.6-luna",
+    "codex": "gpt-5.5",
     "opencode": "opencode"
   },
   "savedProviderEffort": {
     "claude": "high",
-    "codex": "high",
+    "codex": "xhigh",
     "opencode": "default"
   },
   "savedProviderServiceTier": {
@@ -96,7 +96,7 @@
     "opencode": "default"
   },
   "savedProviderPermissionMode": {
-    "claude": "yolo",
+    "claude": "normal",
     "codex": "yolo",
     "opencode": "yolo"
   },

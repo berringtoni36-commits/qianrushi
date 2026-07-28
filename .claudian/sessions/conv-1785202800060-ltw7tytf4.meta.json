@@ -1,0 +1,26 @@
+{
+  "id": "conv-1785202800060-ltw7tytf4",
+  "providerId": "codex",
+  "title": "Reorganize document into readable markdown",
+  "titleGenerationStatus": "success",
+  "createdAt": 1785202800060,
+  "updatedAt": 1785205268001,
+  "lastResponseAt": 1785204987808,
+  "sessionId": "019fa660-f9a5-7190-b4cf-f67d6b9a458a",
+  "providerState": {
+    "threadId": "019fa660-f9a5-7190-b4cf-f67d6b9a458a",
+    "sessionFilePath": "C:\\Users\\11624\\.codex\\sessions\\2026\\07\\28\\rollout-2026-07-28T09-40-06-019fa660-f9a5-7190-b4cf-f67d6b9a458a.jsonl",
+    "transcriptRootPath": "C:\\Users\\11624\\.codex\\sessions"
+  },
+  "currentNote": "projects/linux视觉感知项目/Linux视觉感知处理原作者文档.md",
+  "usage": {
+    "inputTokens": 180049,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 178944,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 180049,
+    "percentage": 70,
+    "model": "gpt-5.6-luna"
+  }
+}
