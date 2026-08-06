@@ -10,6 +10,10 @@ type: interview-review
 > 题目数量：7 个部分，共 35 题  
 > 使用原则：先遮住答案口述 60～90 秒，再对照“标准回答”和“常见错误”查漏补缺。
 
+## 面试开场：请介绍一下这个项目
+
+**建议回答：**我做的是一个基于 BCC/eBPF 的 Linux 物理内存碎片监测工具，主要解决系统总空闲内存还够，但高阶连续物理页可能分配困难的问题。项目采用“内核采集、用户态展示”的架构：内核侧用 `mm_page_alloc_extfrag` Tracepoint 采集 fallback 事件，用 `get_page_from_freelist` kprobe 统计伙伴系统在 node、zone、order 维度的状态，并计算 unusable 和 extfrag 指标；Python/BCC 负责编译、加载和读取 BPF Map，curses 负责终端展示。运行时，Python 启动后挂载探针，内核事件触发 eBPF 程序并更新 Map，用户态再周期性读取数据、整理结果并刷新界面。相比 `/proc/buddyinfo`，它不仅能查看当前内存状态，还能辅助定位碎片事件和触发进程。当前源码属于教学/诊断原型，两个 eBPF 程序按模式二选一加载，采样和路径部分还需要完善。
+
 ## 资料依据与阅读说明
 
 本文的事实依据按以下顺序核对：

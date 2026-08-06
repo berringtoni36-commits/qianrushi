@@ -1,0 +1,7 @@
+{"ts":1785496854611,"cat":"scan","lvl":"warn","msg":"stat returned null for \".obsidian/hotkeys.json\", skipping"}
+{"ts":1785499281941,"cat":"execute","lvl":"warn","msg":"auto sync paused after incomplete run: 同步已暂停：计划可在侧边栏查看"}
+{"ts":1785499445360,"cat":"scan","lvl":"warn","msg":"stat returned null for \".obsidian/hotkeys.json\", skipping"}
+{"ts":1785499447280,"cat":"plan","lvl":"warn","msg":"plan changed since review — re-pausing for confirmation"}
+{"ts":1785499447446,"cat":"execute","lvl":"warn","msg":"auto sync paused after incomplete run: 同步已暂停：计划可在侧边栏查看"}
+{"ts":1785499464288,"cat":"scan","lvl":"warn","msg":"stat returned null for \".obsidian/hotkeys.json\", skipping"}
+{"ts":1785499596825,"cat":"execute","lvl":"warn","msg":"upload skipped — .obsidian/plugins/crisp-file-explorer-v0.2.21-letschips-share/data.json hash changed since scan (77a77581… → 7076076c…)"}

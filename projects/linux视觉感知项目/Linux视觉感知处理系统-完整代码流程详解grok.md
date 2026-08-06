@@ -374,30 +374,18 @@ Lime / Lime_NEON+OpenMP (CMake，独立 demo)
 ### 完整代码（带行号）
 
 ```cpp
-1  #include "mainwindow.h"
-2  #include <QApplication>
+1  #include "mainwindow.h"         // 引入主窗口类声明，编译器由此知道 MainWindow 的槽/成员
+2  #include <QApplication>         // Qt 应用程序类：事件循环、全局应用状态
 3
-4  int main(int argc, char *argv[])
+4  int main(int argc, char *argv[]) // 程序入口，argc/argv 传给 Qt 解析 -style 等参数
 5  {
-6      QApplication a(argc, argv);
-7      MainWindow w;
-8      w.show();
+6      QApplication a(argc, argv); // ★ 必须先于窗口创建；初始化 GUI 子系统，生命周期贯穿整个进程
+7      MainWindow w;               // ★ 栈上同步执行完整构造函数（UI、QProcess、connect…），失败直接崩
+8      w.show();                   // 标记窗口可见；真正绘制在事件循环处理 QPaintEvent 时
 9
-10     return a.exec();
+10     return a.exec();             // ★ 进入事件循环：线程阻塞于此。没有这行，main结束→窗口闪退
 11 }
 ```
-
-### 逐行解释
-
-| 行 | 代码 | 逐行说明 |
-|----|------|----------|
-| 1 | `#include "mainwindow.h"` | 引入主窗口类声明。编译器由此知道 `MainWindow` 有哪些槽、成员。 |
-| 2 | `#include <QApplication>` | Qt 应用程序类：事件循环、全局应用状态。 |
-| 4 | `int main(int argc, char *argv[])` | 程序入口。`argc/argv` 传给 Qt 解析如 `-style` 等参数。 |
-| 6 | `QApplication a(argc, argv);` | **必须先有** QApplication，才能创建窗口。对象 `a` 在整个进程生命周期存在（直到 main 结束）。内部会初始化 GUI 子系统。 |
-| 7 | `MainWindow w;` | **栈上构造**主窗口。C++ 在此行**同步执行完整个构造函数**（创建 UI、QProcess、connect…）。构造失败会抛异常/直接崩，不会进事件循环。 |
-| 8 | `w.show();` | 把窗口设为可见。此时可能还没真正画完，真正绘制在事件循环处理 `QPaintEvent` 时。 |
-| 10 | `return a.exec();` | **进入事件循环**：线程阻塞在这里。循环伪代码：`while (还有窗口) { 取事件; 分发到对象; }`。返回值是应用退出码。没有这行，main 结束→析构 w→进程退出→窗口闪退。 |
 
 ### 调用关系
 
@@ -421,75 +409,40 @@ OS → main
 
 ```cpp
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    QMainWindow(parent),        // 调用父类构造，嵌入 Qt 对象树
+    ui(new Ui::MainWindow)      // 堆上创建 Designer 生成的 UI 对象
 {
-    ui->setupUi(this);
+    ui->setupUi(this);          // ★ 根据 .ui 文件创建全部控件并布局，之后才能用 ui->Open 等
 
     m_model = new QFileSystemModel;
-    QString path = "/home/kylin/桌面/project_v1.0/LSTR/result/";
-    m_model->setRootPath(path);
+    QString path = "/home/kylin/桌面/project_v1.0/LSTR/result/"; // ⚠️ 写死，换机必改
+    m_model->setRootPath(path); // 模型监控该目录
     ui->treeView->setModel(m_model);
-    ui->treeView->setRootIndex(m_model->index(path));
+    ui->treeView->setRootIndex(m_model->index(path)); // 树根 = result 目录
 
-    timer = new QTimer(this);
-    timer2 = new QTimer(this);
-    process2 = new QProcess;
-    process3 = new QProcess;
-    process2->start("bash");
-    process3->start("bash");
-    process2->waitForStarted();
+    timer = new QTimer(this);   // 采帧定时器；this 为 parent，窗口销毁时 Qt 自动释放
+    timer2 = new QTimer(this);  // 监控定时器
+    process2 = new QProcess;    // 将来跑 ./LSTR（先只启动 bash）
+    process3 = new QProcess;    // 将来跑 ffmpeg
+    process2->start("bash");    // 启动常驻交互 shell，stdin 可 write 命令
+    process3->start("bash");    // 专给 ffmpeg 抽帧
+    process2->waitForStarted(); // 阻塞直到 bash 起来，避免过早 write
     process3->waitForStarted();
 
-    timer2->start(1000);
+    timer2->start(1000);        // 每秒触发 timerTimeOut（监控）；注意 timer 此时还没 start
 
     connect(timer, SIGNAL(timeout()), this, SLOT(readFrame()));
     connect(ui->Open, SIGNAL(clicked()), this, SLOT(on_Open_triggered()));
     connect(ui->Stop, SIGNAL(clicked()), this, SLOT(on_Stop_triggered()));
-    connect(ui->result, SIGNAL(clicked()), this, SLOT(on_Select_triggered()));
-    connect(ui->yolop_process, SIGNAL(clicked()), this, SLOT(yolop_process()));
-    connect(process2, SIGNAL(readyReadStandardOutput()), this, SLOT(readBashStandardOutputInfo()));
+    connect(ui->result, SIGNAL(clicked()), this, SLOT(on_Select_triggered())); // 控件名 result 实为「选视频」
+    connect(ui->yolop_process, SIGNAL(clicked()), this, SLOT(yolop_process())); // 名字遗留，实际 LSTR
+    connect(process2, SIGNAL(readyReadStandardOutput()), this, SLOT(readBashStandardOutputInfo())); // LSTR cout→界面
     connect(timer2, SIGNAL(timeout()), this, SLOT(timerTimeOut()));
 
-    InitChart();
+    InitChart();                // 创建 CPU/内存曲线图
     setWindowTitle("神经网络车道线识别系统");
 }
 ```
-
-### 初始化列表逐行
-
-| 代码 | 说明 |
-|------|------|
-| `QMainWindow(parent)` | 调用父类构造，嵌入 Qt 对象树，`parent` 负责生命周期时有用。 |
-| `ui(new Ui::MainWindow)` | 堆上创建 Designer 生成的 UI 对象，后面 `setupUi` 用。 |
-
-### 函数体逐行
-
-| 代码 | 说明 |
-|------|------|
-| `ui->setupUi(this)` | 根据 `.ui` 文件创建按钮、Label、ChartView、TreeView 等，全部以 `this` 为父窗口布局好。**之后才能** `ui->Open`。 |
-| `m_model = new QFileSystemModel` | 文件系统模型，把磁盘目录映射成树。 |
-| `path = "/home/kylin/.../result/"` | **写死的结果目录**。换机器必改。 |
-| `setRootPath(path)` | 模型监控该路径。 |
-| `treeView->setModel` | 树控件使用该模型。 |
-| `setRootIndex(...)` | 树的根显示为 result 目录，而不是整个磁盘。 |
-| `timer = new QTimer(this)` | 采帧定时器；`this` 为 parent，窗口销毁时 Qt 自动删。 |
-| `timer2 = new QTimer(this)` | 监控定时器。 |
-| `process2 = new QProcess` | 将来跑 `./LSTR` 的进程封装（先只 start bash）。 |
-| `process3 = new QProcess` | 将来跑 `ffmpeg`。 |
-| `process2->start("bash")` | 启动一个交互 shell，stdin 可 write 命令。 |
-| `process3->start("bash")` | 同上，专给抽帧。 |
-| `waitForStarted()` | **阻塞**直到 bash 起来，避免过早 write。 |
-| `timer2->start(1000)` | 每 1000ms 发 timeout → 将来连到 `timerTimeOut`。**注意 timer（采帧）这里还没 start。** |
-| `connect(timer → readFrame)` | 以后 timer 一超时就采帧。 |
-| `connect(Open → on_Open)` | 开摄像头按钮。 |
-| `connect(Stop → on_Stop)` | 关摄像头。 |
-| `connect(result → on_Select)` | 选视频（控件名 result 易混，实际是选视频）。 |
-| `connect(yolop_process → yolop_process)` | 识别；名字遗留，实际 LSTR。 |
-| `connect(process2 输出 → 日志槽)` | LSTR 的 cout 进界面。 |
-| `connect(timer2 → timerTimeOut)` | 监控刷新。 |
-| `InitChart()` | 创建 CPU/内存曲线图（见后）。 |
-| `setWindowTitle(...)` | 标题栏文字。 |
 
 ### 构造结束后系统状态
 
@@ -508,21 +461,14 @@ MainWindow::MainWindow(QWidget *parent) :
 ```cpp
 void MainWindow::on_Open_triggered()
 {
-    cap.open(0);
-    timer->start(3);
-    t = getTickCount();
-    count = 0;
+    cap.open(0);           // OpenCV 打开索引0摄像头，失败时后续 read 得空图
+    timer->start(3);       // 每3ms进入事件队列一次（实际≥3ms，受系统调度），与 connect(timer,readFrame) 联动
+    t = getTickCount();    // 记录起始 CPU tick，关摄像头时算运行秒数
+    count = 0;             // 帧文件名从0开始：0.jpg, 1.jpg, ...
 }
 ```
 
-| 行 | 代码 | 说明 |
-|----|------|------|
-| 1 | `cap.open(0)` | OpenCV 打开索引 0 摄像头。成功后 `cap.isOpened()==true`。失败则后续 read 得到空图。 |
-| 2 | `timer->start(3)` | 每 **3 毫秒** 进入事件队列一个 timeout（实际间隔 ≥3ms，且受系统调度影响）。与 `connect(timer, readFrame)` 联动。 |
-| 3 | `t = getTickCount()` | 记录 CPU  tick，关摄像头时算运行秒数。 |
-| 4 | `count = 0` | 保存帧文件名从 0 起：`0.jpg,1.jpg,...`。 |
-
-**不在这里读图**——读图全在 `readFrame`。
+**读图不在这里**——全在 `readFrame`。
 
 ---
 
@@ -531,33 +477,22 @@ void MainWindow::on_Open_triggered()
 ```cpp
 void MainWindow::readFrame()
 {
-    cap.read(src_image);
-    if(!src_image.empty())
+    cap.read(src_image);                   // 从摄像头抓一帧 → BGR Mat（设备分辨率）
+    if(!src_image.empty())                 // 读失败（设备断/未open）则跳过，避免崩溃
     {
-        QImage qsrc = MatImageToQt(src_image);
-        ui->cameraView->setPixmap(QPixmap::fromImage(qsrc));
+        QImage qsrc = MatImageToQt(src_image);              // BGR Mat → QImage（见1.9）
+        ui->cameraView->setPixmap(QPixmap::fromImage(qsrc)); // 预览显示，不参与算法
         Mat re;
-        cv::resize(src_image, re, cv::Size(320,240), cv::INTER_AREA);
-        imwrite("/home/kylin/桌面/project_v1.0/frames/"+ to_string(count) + ".jpg", re);
-        count ++;
+        cv::resize(src_image, re, cv::Size(320,240), cv::INTER_AREA); // 缩到320×240，AREA适合缩小
+        imwrite("/home/kylin/.../frames/"+ to_string(count) + ".jpg", re); // 落盘，路径写死 ⚠️
+        count ++;                          // 下一帧文件名递增
     }
 }
 ```
 
-| 行 | 代码 | 说明 | 数据 |
-|----|------|------|------|
-| 1 | `cap.read(src_image)` | 从摄像头抓一帧写入成员 `src_image`。 | → BGR Mat，设备分辨率 |
-| 2 | `if (!empty)` | 读失败（设备断、未 open）则整段跳过，避免崩。 | |
-| 3 | `MatImageToQt(src_image)` | BGR Mat 转 QImage（见 1.9 逐行）。 | → QImage RGB |
-| 4 | `setPixmap(...)` | 预览控件显示；**不参与算法**。 | 仅 UI |
-| 5 | `Mat re;` | 准备缩小后的缓冲。 | |
-| 6 | `resize(..., 320,240, INTER_AREA)` | 缩到 320×240；AREA 适合缩小。 | → 320×240 BGR u8 |
-| 7 | `imwrite(.../frames/+count+.jpg)` | 落盘。路径写死。 | 磁盘文件 |
-| 8 | `count++` | 下一文件名。 | |
+**调用栈**：`timer timeout → Qt 元对象 → readFrame`。
 
-**调用栈**：`timer timeout 信号 → Qt 元对象调用 readFrame`。
-
-**注意**：LSTR 批处理默认读的是 `videos/frames/` 且从 1 起；摄像头写的是另一目录且从 0 起——两条输入链不要混。
+**注意**：LSTR 批处理读 `videos/frames/` 且从1起；摄像头写的是另一目录且从0起——两条输入链不要混。
 
 ---
 
@@ -566,21 +501,13 @@ void MainWindow::readFrame()
 ```cpp
 void MainWindow::on_Stop_triggered()
 {
-    timer->stop();
-    cap.release();
+    timer->stop();       // 停止再触发 readFrame
+    cap.release();       // 释放设备节点
     ui->cameraView->clear();
-    t = ((double)getTickCount() - t) / getTickFrequency() - 1.500;
-    ui->info_box->append(tr("摄像头运行了 %1 s, 采集了 %2 张图像").arg(t).arg(count));
+    t = ((double)getTickCount() - t) / getTickFrequency() - 1.500; // 耗时公式，-1.5是作者估计的启动延迟
+    ui->info_box->append(tr("摄像头运行了 %1 s, 采集了 %2 张图像").arg(t).arg(count)); // tr为翻译宏
 }
 ```
-
-| 行 | 说明 |
-|----|------|
-| `timer->stop()` | 停止再触发 readFrame。 |
-| `cap.release()` | 释放设备节点。 |
-| `clear()` | 预览变空。 |
-| 时长公式 | `(现在tick - 开始tick)/频率 - 1.5`：作者认为启动有 1.5s 延迟要扣。 |
-| `append` | 信息框追加一行中文统计。`tr` 为翻译宏。 |
 
 ---
 
@@ -589,51 +516,35 @@ void MainWindow::on_Stop_triggered()
 ```cpp
 void MainWindow::on_Select_triggered()
 {
-    if (cap.isOpened())
+    if (cap.isOpened())                    // 摄像头与视频互斥，开着则警告并 return
     {
         QMessageBox::warning(this, "Warning!", "请关闭摄像头再操作!");
         return;
     }
-    vid_dir = "/home/kylin/桌面/project_v1.0/videos/";
+    vid_dir = "/home/kylin/.../videos/";  // 对话框默认目录（写死）⚠️
     QString filename2 = QFileDialog::getOpenFileName(this, tr("文件夹"), vid_dir,
-        tr("video files(*.avi *.mp4 *.wmv);;images(...);;All files(*.*)"));
+        tr("video files(*.avi *.mp4 *.wmv);;images(...);;All files(*.*)")); // 阻塞式对话框，取消则filename2为空
     if(filename2.isEmpty())
         QMessageBox::warning(this, "Warning!", "文件夹路径错误!");
     else
     {
-        process3->write("cd /home/kylin/桌面/project_v1.0/LSTR/videos/\n");
-        process3->write("ffmpeg -i test.mp4 -vf fps=10 frames/%d.jpg\n");
-        waitKey(2000);
+        process3->write("cd /home/kylin/.../LSTR/videos/\n");   // 往 ffmpeg 专用 bash 发 cd 命令
+        process3->write("ffmpeg -i test.mp4 -vf fps=10 frames/%d.jpg\n"); // ⚠️ 输入写死 test.mp4，-vf fps=10抽帧
+        waitKey(2000);                     // 粗糙等2秒给 ffmpeg 时间，在 UI 线程阻塞
         player=new QMediaPlayer;
         videowidget = ui->videowidget;
         videowidget->show();
         player->setVideoOutput(videowidget);
-        player->setMedia(QUrl::fromLocalFile(filename2));
+        player->setMedia(QUrl::fromLocalFile(filename2)); // ⚠️ 播放用户选的文件，可能≠ffmpeg的test.mp4
         player->play();
         if(player->state() == QMediaPlayer::StoppedState)
         {
-           videowidget->close();
+           videowidget->close();           // 立刻停止则关闭控件（边缘情况）
            return;
         }
     }
 }
 ```
-
-| 行/块 | 说明 |
-|-------|------|
-| `cap.isOpened` 检查 | 摄像头与视频互斥，开着则警告并 **return**，后面不执行。 |
-| `vid_dir = ...` | 对话框默认打开目录（写死）。 |
-| `getOpenFileName` | 阻塞式对话框；用户取消则 `filename2` 空。过滤器限制视频/图片类型。 |
-| `isEmpty` 警告 | 用户取消或路径无效。 |
-| `process3->write(cd...)` | 往 **ffmpeg 专用 bash** 发：进入 LSTR/videos。`\n` 表示回车执行。 |
-| `process3->write(ffmpeg...)` | `-i test.mp4` 输入写死；`-vf fps=10` 每秒 10 帧；`frames/%d.jpg` 输出 1.jpg,2.jpg… |
-| `waitKey(2000)` | OpenCV 等约 2 秒；给 ffmpeg 时间。**粗糙**，且在 UI 逻辑里调用。 |
-| `new QMediaPlayer` | 播放器对象。 |
-| `videowidget = ui->...` | 使用界面上的视频控件。 |
-| `setVideoOutput` | 解码画面画到该控件。 |
-| `setMedia(filename2)` | **播放用户选的文件**（可能与 ffmpeg 的 test.mp4 不同！）。 |
-| `play()` | 开始播。 |
-| `StoppedState` 判断 | 若立刻停止则关闭控件（边缘情况处理）。 |
 
 **数据产物**：`LSTR/videos/frames/1.jpg,2.jpg,...` → 这才是后续 `./LSTR` 的输入。
 
@@ -644,32 +555,25 @@ void MainWindow::on_Select_triggered()
 ```cpp
 void MainWindow::yolop_process()
 {
-    process2->write("cd /home/kylin/桌面/project_v1.0/LSTR/build\n");
-    process2->write("./LSTR ../videos/frames/\n");
+    process2->write("cd /home/kylin/.../LSTR/build\n");    // 切工作目录，保证 ../lstr.onnx 路径正确
+    process2->write("./LSTR ../videos/frames/\n");          // 启动算法子进程，argv[1]=帧目录
 
-    waitKey(10000);
-    for(int i = 1; i < INT_MAX; i++)
+    waitKey(10000);           // ⚠️ 卡住当前调用栈~10s，希望 LSTR 多写出 result；UI 卡顿，不保证跑完
+    for(int i = 1; i < INT_MAX; i++)  // 从1开始，与 LSTR 写盘编号一致
     {
-        Mat r = imread("/home/kylin/桌面/project_v1.0/LSTR/result/" + to_string(i) + ".jpg");
-        if(r.empty()) break;
+        Mat r = imread(".../result/" + to_string(i) + ".jpg"); // 读算法输出图
+        if(r.empty()) break;   // 读不到则认为后面没有（中间缺号会提前停）
         QImage rq = MatImageToQt(r);
-        ui->resultView->setPixmap(QPixmap::fromImage(rq));
-        waitKey(100);
+        ui->resultView->setPixmap(QPixmap::fromImage(rq)); // 结果显示区更新
+        waitKey(100);          // 间隔100ms 当幻灯片
     }
 }
 ```
 
-| 行 | 说明 | 运行时效果 |
-|----|------|------------|
-| `write(cd build)` | 算法工作目录切到 build，保证 `../lstr_....onnx` 相对路径正确。 | bash 执行 cd |
-| `write(./LSTR ../videos/frames/)` | 启动算法；`argv[1]`=帧目录。 | **新子进程 LSTR 开始跑**（在 bash 里） |
-| `waitKey(10000)` | 当前调用栈卡住 ~10s。希望此时 LSTR 多写出 result。 | UI 卡顿；不保证跑完 |
-| `for i=1..` | 与 LSTR 写盘编号一致从 1。 | |
-| `imread(result/i.jpg)` | 读算法输出。 | 文件→Mat |
-| `empty break` | 读不到认为后面没有了（若中间缺号会提前停）。 | |
-| `MatImageToQt` | 转 Qt 图。 | |
-| `resultView setPixmap` | 结果显示区更新一帧。 | 用户看见车道图 |
-| `waitKey(100)` | 间隔 100ms 当幻灯片。 | |
+**难点说明**
+
+1. **`waitKey(10000)` 而非 `waitForFinished`**：LSTR 跑在另一进程，Qt 没有等它结束的信号，直接粗暴等 10s，期间 LSTR 正在「构造→处理1→写1→处理2→写2...」。代价是 UI 卡顿且时间估算不精确。
+2. **轮询文件而非信号驱动**：LSTR 只往磁盘写图，没有通知父进程的机制，Qt 逐帧 `imread` 轮询，读不到就认为结束，无法感知推理中途失败。
 
 ### 与进程 B 的时序关系（重要）
 
@@ -691,20 +595,12 @@ LSTR:           构造→处理1→写1→处理2→写2→...
 ```cpp
 void MainWindow::readBashStandardOutputInfo()
 {
-    QByteArray _out = process2->readAllStandardOutput();
-    if(!_out.isEmpty())
+    QByteArray _out = process2->readAllStandardOutput(); // process2有输出时Qt触发此槽，一次读完缓冲
+    if(!_out.isEmpty())                                  // 无数据不刷 UI
         ui->textBrowser->append("<font color=\"#FFFFFF\">" +
-            QString::fromLocal8Bit(_out) + "</font> ");
+            QString::fromLocal8Bit(_out) + "</font> ");  // 本地编码→QString，确保中文 cout 不乱码
 }
 ```
-
-| 行 | 说明 |
-|----|------|
-| 触发 | `process2` 有 stdout 可读时 Qt 发 `readyReadStandardOutput`。 |
-| `readAllStandardOutput` | 一次读完当前缓冲。 |
-| `isEmpty` | 无数据不刷 UI。 |
-| `fromLocal8Bit` | 按系统本地编码（GBK/UTF-8 等）转 QString；中文 cout 依赖此。 |
-| `append` HTML 白字 | 追加到日志框。内容如「正在处理第3张图片」。 |
 
 ---
 
@@ -713,60 +609,39 @@ void MainWindow::readBashStandardOutputInfo()
 ```cpp
 QImage MainWindow::MatImageToQt(const Mat &src)
 {
-    if(src.type() == CV_8UC1)
+    if(src.type() == CV_8UC1)              // 灰度图分支
     {
-        QImage qImage(src.cols,src.rows,QImage::Format_Indexed8);
+        QImage qImage(src.cols,src.rows,QImage::Format_Indexed8); // 8位索引色格式
         qImage.setColorCount(256);
         for(int i = 0; i < 256; i ++)
-            qImage.setColor(i,qRgb(i,i,i));
+            qImage.setColor(i,qRgb(i,i,i));// 建灰度调色板：索引i→RGB(i,i,i)
         uchar *pSrc = src.data;
         for(int row = 0; row < src.rows; row ++)
         {
-            uchar *pDest = qImage.scanLine(row);
-            memcmp(pDest,pSrc,src.cols);  // 问题：应 memcpy
-            pSrc += src.step;
+            uchar *pDest = qImage.scanLine(row); // 目标行指针
+            memcmp(pDest,pSrc,src.cols);  // ⚠️ 笔误：memcmp只比较不拷贝，应为 memcpy
+            pSrc += src.step;             // 跳到 Mat 下一行
         }
         return qImage;
     }
-    else if(src.type() == CV_8UC3)
+    else if(src.type() == CV_8UC3)         // BGR彩色图分支（最常用）
     {
         const uchar *pSrc = (const uchar*)src.data;
-        QImage qImage(pSrc,src.cols,src.rows,src.step,QImage::Format_RGB888);
-        return qImage.rgbSwapped();
+        QImage qImage(pSrc,src.cols,src.rows,
+                      src.step,              // 每行字节数=cols*3+对齐padding
+                      QImage::Format_RGB888);// 告诉Qt按RGB解释（内存实际是BGR）
+        return qImage.rgbSwapped();          // 交换R/B通道，颜色正确，返回新QImage
     }
-    else if(src.type() == CV_8UC4)
+    else if(src.type() == CV_8UC4)         // 带alpha分支
     {
         const uchar *pSrc = (const uchar*)src.data;
         QImage qImage(pSrc, src.cols, src.rows, src.step, QImage::Format_ARGB32);
-        return qImage.copy();
+        return qImage.copy();              // copy()保证QImage独立缓冲，避免Mat释放后悬空
     }
     else
         return QImage();
 }
 ```
-
-### CV_8UC3 分支（摄像头/结果最常用）逐行
-
-| 行 | 说明 |
-|----|------|
-| `pSrc = src.data` | 指向 BGR 数据首字节。 |
-| `QImage(..., RGB888)` | 告诉 Qt「按 RGB 解释」；但内存实际是 BGR。 |
-| `src.step` | 每行字节数=cols*3+对齐 padding。 |
-| `rgbSwapped()` | 交换 R/B 通道，颜色正确。返回新 QImage。 |
-
-### CV_8UC1 分支
-
-| 行 | 说明 |
-|----|------|
-| `Format_Indexed8` | 8 位索引色。 |
-| `setColorCount(256)` + 灰调色板 | 索引 i → RGB(i,i,i)。 |
-| 逐行 `scanLine` | 目标行指针。 |
-| `memcmp` | **只比较不拷贝**，疑为 `memcpy` 笔误。 |
-| `pSrc += src.step` | 跳到 Mat 下一行。 |
-
-### CV_8UC4
-
-带 alpha；`copy()` 保证 QImage 拥有独立缓冲，避免 Mat 释放后悬空。
 
 ---
 
@@ -775,21 +650,14 @@ QImage MainWindow::MatImageToQt(const Mat &src)
 ### timerTimeOut
 
 ```cpp
-void MainWindow::timerTimeOut()
+void MainWindow::timerTimeOut()   // 每秒由 timer2 调用
 {
-    double cpuLoadAverage = sysinfo.cpuLoadAverage();
-    double mem_used = sysinfo.get_mem_usage__();
-    receivedData_cpu(cpuLoadAverage);
-    receivedDate_mem(mem_used);
+    double cpuLoadAverage = sysinfo.cpuLoadAverage(); // 读 /proc/stat 差分算 CPU 占用率
+    double mem_used = sysinfo.get_mem_usage__();      // 读 free -m 算内存占用率
+    receivedData_cpu(cpuLoadAverage);                 // 把数值点画进 CPU 曲线
+    receivedDate_mem(mem_used);                       // 把数值点画进内存曲线
 }
 ```
-
-| 行 | 说明 |
-|----|------|
-| 每秒由 timer2 调用 | |
-| `cpuLoadAverage()` | 见下，读 /proc/stat |
-| `get_mem_usage__()` | 读 free -m |
-| `receivedData_*` | 把数值点画进曲线 |
 
 ### cpuLoadAverage 逐行
 
@@ -797,60 +665,40 @@ void MainWindow::timerTimeOut()
 double sysinfolinuximpl::cpuLoadAverage()
 {
     QProcess process;
-    process.start("cat /proc/stat");
+    process.start("cat /proc/stat"); // 每次采样启动临时进程读内核累计CPU时间
     process.waitForFinished();
-    QString str = process.readLine();
+    QString str = process.readLine(); // 第一行形如 "cpu  user nice system idle ..."
     str.replace("\n","");
-    str.replace(QRegExp("( ){1,}")," ");
-    auto lst = str.split(" ");
+    str.replace(QRegExp("( ){1,}")," "); // 压缩多余空格便于 split
+    auto lst = str.split(" ");           // lst[0]="cpu", lst[1..]=各状态累计ticks
     if(lst.size() > 3)
     {
-        double use = lst[1].toDouble() + lst[2].toDouble() + lst[3].toDouble();
+        double use = lst[1].toDouble() + lst[2].toDouble() + lst[3].toDouble(); // user+nice+system=忙时间
         double total = 0;
         for(int i = 1;i < lst.size();++i)
-            total += lst[i].toDouble();
+            total += lst[i].toDouble(); // 所有状态时间总和
         if(total - pre_total > 0)
         {
-            cpu_rate =(use - pre_user) / (total - pre_total) * 100.0;
-            pre_total = total;
+            cpu_rate =(use - pre_user) / (total - pre_total) * 100.0; // 差分公式：Δuse/Δtotal×100
+            pre_total = total;  // 存下供下秒差分
             pre_user = use;
         }
     }
-    return cpu_rate;
+    return cpu_rate;  // 第一次调用可能返回0（无上一次数据）
 }
 ```
-
-| 行 | 说明 |
-|----|------|
-| 局部 `QProcess` | 每次采样临时进程执行 cat。 |
-| `start("cat /proc/stat")` | 读内核累计 CPU 时间。 |
-| `waitForFinished` | 等命令结束。 |
-| `readLine` | 第一行形如 `cpu  user nice system idle ...` |
-| 去换行、压缩空格、split | 得到字段列表；`lst[0]=="cpu"` |
-| `use=lst[1]+[2]+[3]` | user+nice+system = 忙时间累计 |
-| `total=sum(lst[1..])` | 所有状态时间总和 |
-| 差分公式 | `(Δuse/Δtotal)*100` = 占用率% |
-| 写回 `pre_*` | 供下秒差分 |
-| `return cpu_rate` | 第一次可能仍是 0（还无上一次） |
 
 ### get_mem_usage__ 逐行
 
 ```cpp
-process.start("free -m");
+process.start("free -m");        // 以 MB 单位显示内存
 waitForFinished();
-process.readLine();           // 跳过标题
-str = process.readLine();     // Mem: total used free ... available
+process.readLine();               // 跳过表头行
+str = process.readLine();         // 第二行 Mem: total used free shared... available（字段随版本略有差异）
 ...
-free = lst[6]; total = lst[1];
-mem_rate = (total-free)/total*100;
+free = lst[6]; total = lst[1];   // lst[6]=available，lst[1]=total
+mem_rate = (total-free)/total*100; // 占用率 = 1 - available/total
 ```
-
-| 行 | 说明 |
-|----|------|
-| `free -m` | 以 MB 显示内存 |
-| 跳过第一行 | 表头 |
-| 第二行 Mem | 字段随 util-linux 版本略有差异 |
-| `lst[1]` total，`lst[6]` 作 available | 占用 = 1 - available/total |
 
 ### receivedData_cpu 逐行
 
@@ -874,66 +722,40 @@ for (int i = 0; i < data_cpu.size(); ++i)
 ## 2.1 完整代码（行号）
 
 ```cpp
-209 int main(int argc, char** argv)
+209 int main(int argc, char** argv)  // 由 Qt 侧 ./LSTR ../videos/frames/ 启动
 210 {
-211     if (argc != 2)
+211     if (argc != 2)               // 必须且只带一个参数（帧目录）
 212     {
 213         fprintf(stderr, "Usage: %s [imagepath]\n", argv[0]);
 214         return -1;
 215     }
-216     LSTR mynet;
-217     Mat frame;
-218     LIME::lime *l;
-219     const char* filefolderpath = argv[1];
-220     double time = cv::getTickCount();
-221     cout << "开始计时" << endl;
-222     for(int i = 1; i < INT_MAX; i++)
+216     LSTR mynet;                  // ★ 构造函数同步执行：加载onnx、节点名、log_space，只做一次
+217     Mat frame;                   // 声明了但本 main 未使用（遗留变量）
+218     LIME::lime *l;               // 指针，循环内每次 new/delete
+219     const char* filefolderpath = argv[1]; // 如 "../videos/frames/"，字符串拼接依赖末尾有/
+220     double time = cv::getTickCount();     // 批处理计时起点
+221     cout << "开始计时" << endl;           // stdout → 被 Qt process2 捕获显示
+222     for(int i = 1; i < INT_MAX; i++)     // 从1起，与 ffmpeg %d 编号对齐
 223     {
-224         cv::Mat m = cv::imread(filefolderpath + to_string(i) + ".jpg", 1);
-225         if (m.empty())
+224         cv::Mat m = cv::imread(filefolderpath + to_string(i) + ".jpg", 1); // flag=1彩色
+225         if (m.empty())                   // 文件不存在/读失败 → 正常退出
 226         {
 227             break;
 228         }
-229         cout << "正在处理第" << i <<"张图片" << endl;
-230         Mat d;
-231         cv::resize(m, d, cv::Size(360,204));
-232         l = new LIME::lime(d);
-233         d = l->enhance(d);
-234         Mat dstimg = mynet.detect(d);
-235         cv::imwrite("../result/" + to_string(i) + ".jpg", dstimg);
-236         delete l;
+229         cout << "正在处理第" << i <<"张图片" << endl; // 进度日志
+230         Mat d;                           // 缩小/增强用缓冲
+231         cv::resize(m, d, cv::Size(360,204)); // ★ 宽360高204，降低 LIME 复杂度
+232         l = new LIME::lime(d);           // 构造只记 channels，大初始化在 enhance 内
+233         d = l->enhance(d);               // ★ 整棵 LIME 树（第三部分）→ 增强 u8 图
+234         Mat dstimg = mynet.detect(d);    // ★ 整棵 detect 树（第四部分）
+235         cv::imwrite("../result/" + to_string(i) + ".jpg", dstimg); // 相对 build 目录的 ../result/
+236         delete l;                        // 释放该帧 LIME 对象，避免循环泄漏
 237     }
 238     time = ((double)cv::getTickCount() - time) / cv::getTickFrequency();
-239     cout << "处理完成,共用时" << time << "秒" << endl;
+239     cout << "处理完成,共用时" << time << "秒" << endl; // 进程B结束，bash回到提示符
 240     return 0;
 241 }
 ```
-
-## 2.2 逐行解释
-
-| 行 | 代码 | 说明 |
-|----|------|------|
-| 209 | `main(argc,argv)` | 由 Qt 侧 `./LSTR ../videos/frames/` 启动。 |
-| 211-215 | `argc!=2` | 必须带且只带文件夹路径一个参数；否则打印 Usage 退出。 |
-| 216 | `LSTR mynet` | **构造函数同步执行**：加载 onnx、节点名、log_space（见第四部分构造逐行）。只做一次。 |
-| 217 | `Mat frame` | 声明了但本 main **未使用**（遗留变量）。 |
-| 218 | `LIME::lime *l` | 指针，循环内每次 new/delete。 |
-| 219 | `filefolderpath=argv[1]` | 如 `../videos/frames/`。后面直接字符串拼接，**依赖末尾是否有/**。 |
-| 220 | `getTickCount` | 批处理计时起点。 |
-| 221 | `cout 开始计时` | stdout → 被 Qt process2 捕获显示。 |
-| 222 | `for i=1..` | 与 ffmpeg `%d` 从 1 编号对齐。 |
-| 224 | `imread(path+i+".jpg",1)` | flag=1 彩色图。拼出 `.../1.jpg`。 |
-| 225-228 | `empty break` | 文件不存在或读失败 → 结束循环（正常退出条件）。 |
-| 229 | `cout 正在处理第i张` | 进度日志。 |
-| 230 | `Mat d` | 缩小/增强用缓冲。 |
-| 231 | `resize(m,d,Size(360,204))` | **宽360 高204**。降低 LIME 复杂度。 |
-| 232 | `new LIME::lime(d)` | 构造只记 channels；大初始化在 enhance 内。 |
-| 233 | `d=l->enhance(d)` | **整棵 LIME 树**（第三部分）。输出增强 u8 图，仍约 204×360。 |
-| 234 | `dstimg=mynet.detect(d)` | **整棵 detect 树**（第四部分）。 |
-| 235 | `imwrite("../result/"+i+".jpg")` | 相对 **build 目录** 的 `../result/`。 |
-| 236 | `delete l` | 释放该帧 LIME 对象，避免循环泄漏。 |
-| 238-239 | 总耗时秒 | 打印「处理完成」。 |
-| 240 | `return 0` | 进程 B 结束；bash 回到提示符。 |
 
 ### 单次循环调用展开
 
@@ -975,54 +797,37 @@ delete lime
 
 ```cpp
 cv::Mat lime::enhance(cv::Mat &src){
-    _init_IllumMap(src);                                      // L1
-    cv::Size sz(img_norm.size());                             // L2
-    R = cv::Mat(sz, CV_32F, cv::Scalar::all(0.0));            // L3
+    _init_IllumMap(src);                                      // L1: 归一化src→img_norm，算T_hat/epsilon/差分算子
+    cv::Size sz(img_norm.size());                             // L2: 取归一化图尺寸
+    R = cv::Mat(sz, CV_32F, cv::Scalar::all(0.0));            // L3: 成员R全0（本函数后续未深用，占位遗留）
     std::vector<cv::Mat> img_norm_rgb;                        // L4
     cv::Mat img_norm_b, img_norm_g, img_norm_r;               // L5
 
-    cv::split(img_norm, img_norm_rgb);                        // L6
-    img_norm_g = img_norm_rgb.at(0);                          // L7
+    cv::split(img_norm, img_norm_rgb);                        // L6: 1张多通道→3张单通道
+    img_norm_g = img_norm_rgb.at(0);                          // L7: OpenCV split顺序B,G,R
     img_norm_b = img_norm_rgb.at(1);                          // L8
     img_norm_r = img_norm_rgb.at(2);                          // L9
-    cv::Mat T = optIllumMap();                                // L10
+    cv::Mat T = optIllumMap();                                // L10: ★核心迭代求优化光照T→H×W float
 
-    auto g = img_norm_g / T;                                  // L11
+    auto g = img_norm_g / T;                                  // L11: 增强公式 反射≈观察/光照（暗处T小商更大）
     auto b = img_norm_b / T;                                  // L12
     auto r = img_norm_r / T;                                  // L13
 
-    cv::Mat g1, b1, r1;                                       // L14
-    threshold(g, g1, 0.0, 0.0, 3);                            // L15
+    cv::Mat g1, b1, r1;
+    threshold(g, g1, 0.0, 0.0, 3);                            // L15: THRESH_TOZERO：抑制≤0等非法值
     threshold(b, b1, 0.0, 0.0, 3);                            // L16
     threshold(r, r1, 0.0, 0.0, 3);                            // L17
 
-    img_norm_rgb.clear();                                     // L18
-    img_norm_rgb.push_back(g1);                               // L19
-    img_norm_rgb.push_back(b1);                               // L20
-    img_norm_rgb.push_back(r1);                               // L21
+    img_norm_rgb.clear();
+    img_norm_rgb.push_back(g1);                               // L19-L21: 按B,G,R顺序装回vector
+    img_norm_rgb.push_back(b1);
+    img_norm_rgb.push_back(r1);
 
-    cv::merge(img_norm_rgb, out_lime);                        // L22
-    out_lime.convertTo(out_lime, CV_8U, 255);                 // L23
+    cv::merge(img_norm_rgb, out_lime);                        // L22: 三通道合成彩色float BGR
+    out_lime.convertTo(out_lime, CV_8U, 255);                 // L23: ×255转uint8
     return out_lime;                                          // L24
 }
 ```
-
-| 标记 | 说明 | 数据变化 |
-|------|------|----------|
-| L1 | 归一化、算 T_hat、差分算子、epsilon 等，见 3.2 | src→img_norm, T_hat |
-| L2 | 取归一化图尺寸 | Size(h,w) |
-| L3 | 成员 R 分配全 0（本函数后续未深用，占位/遗留） | |
-| L4-L5 | 准备通道容器与三个 Mat 头 | |
-| L6 | 把多通道 Mat 拆成 vector\<Mat\> | 1 张→3 张单通道 |
-| L7-L9 | 命名绑定；OpenCV split 顺序为 B,G,R，这里变量名与 at(0/1/2) 对应关系以 split 为准 | |
-| L10 | **核心迭代**求优化光照 T，见 3.5 | → T (H×W float) |
-| L11-L13 | **增强公式** 反射≈观察/光照；暗处 T 小，商更大 | float 增强通道 |
-| L14 | 阈值输出缓冲 | |
-| L15-L17 | `THRESH_TOZERO` 类行为（type=3）：处理 ≤0 等，抑制非法值 | |
-| L18-L21 | 按 B,G,R 顺序装回 vector | |
-| L22 | 三通道合成彩色 | float BGR |
-| L23 | ×255 并转为 uint8 | 可给后续 OpenCV/显示/再推理 |
-| L24 | 返回增强图 | |
 
 **为何三通道共用 T？** 光照是空间位置属性，不是每个颜色各一张无关光照图。
 
@@ -1032,35 +837,24 @@ cv::Mat lime::enhance(cv::Mat &src){
 
 ```cpp
 void lime::_init_IllumMap(cv::Mat src){
-    src.convertTo(img_norm, CV_32F, 1/255.0, 0);   // 1
-    cv::Size sz(img_norm.size());                    // 2
-    row = img_norm.rows;                             // 3
+    src.convertTo(img_norm, CV_32F, 1/255.0, 0);   // 1: 每像素 /255 变 float，u8→[0,1]
+    cv::Size sz(img_norm.size());                    // 2: 尺寸对象（row/col 已够，sz 几乎未用）
+    row = img_norm.rows;                             // 3: 存成员，后面 getMax/reshape/Dev 都靠它
     col = img_norm.cols;                             // 4
-    T_hat = lime::getMax(img_norm);                  // 5
-    epsilon = Frobenius(T_hat)*0.001;                // 6
-    dv = Dev(row, 1);                                // 7
-    dh = Dev(col, -1);                               // 8
-    float u = dv.at<float>(0,0);                     // 9  未再用于逻辑
-    float u2 = dh.at<float>(0,0);                    // 10 未再用于逻辑
-    veCDD = cv::Mat(1,row*col, CV_32F, cv::Scalar::all(0.0)); // 11
-    veCDD.at<float>(0,0) = 4;                        // 12
-    veCDD.at<float>(0,1) = -1;                       // 13
+    T_hat = lime::getMax(img_norm);                  // 5: 初始光照 = 每像素三通道最大值
+    epsilon = Frobenius(T_hat)*0.001;                // 6: 用 T_hat 的F范数定 epsilon 尺度
+    dv = Dev(row, 1);                                // 7: 垂直方向差分矩阵
+    dh = Dev(col, -1);                               // 8: 水平方向差分矩阵
+    float u = dv.at<float>(0,0);                     // 9:  ⚠️ 读了(0,0)但未参与后续（调试残留）
+    float u2 = dh.at<float>(0,0);                    // 10: 同上
+    veCDD = cv::Mat(1,row*col, CV_32F, cv::Scalar::all(0.0)); // 11: 频域分母稀疏系数向量
+    veCDD.at<float>(0,0) = 4;                        // 12: 中心系数
+    veCDD.at<float>(0,1) = -1;                       // 13: 邻居系数，供 solveT 里 veCDD*u 使用
     veCDD.at<float>(0,row) = -1;                     // 14
     veCDD.at<float>(0,row*col-1) = -1;               // 15
     veCDD.at<float>(0,row*col-row) = -1;             // 16
 }
 ```
-
-| # | 说明 |
-|---|------|
-| 1 | 每个像素 `dst = src*1/255+0`，类型变 float。 |
-| 2 | 尺寸对象（本函数内几乎不用，row/col 已够）。 |
-| 3-4 | 成员 row/col，后面 getMax、reshape、Dev 都靠它。 |
-| 5 | 初始光照 = 每像素通道最大。 |
-| 6 | 用 T_hat 的 Frobenius 范数定 epsilon 尺度。 |
-| 7-8 | 差分矩阵；k=±1 表示上下/左右邻居关系。 |
-| 9-10 | 读了 dv/dh 的 (0,0) 元素但未参与后续（调试残留）。 |
-| 11-16 | 频域分母相关的稀疏系数向量，供 solveT 里 `veCDD*u` 使用。 |
 
 ---
 
@@ -1069,35 +863,26 @@ void lime::_init_IllumMap(cv::Mat src){
 ```cpp
 cv::Mat lime::getMax(const cv::Mat& bgr)
 {
-    cv::Mat temp_mat(row, col, CV_32F, cv::Scalar::all(0.0)); // 1
-    std::vector<cv::Mat> img_norm_rgb;                        // 2
-    cv::Mat img_norm_b, img_norm_g, img_norm_r;               // 3
-    cv::split(bgr, img_norm_rgb);                             // 4
-    img_norm_g = img_norm_rgb.at(0);                          // 5
+    cv::Mat temp_mat(row, col, CV_32F, cv::Scalar::all(0.0)); // 1: 输出图，同尺寸float初值0
+    std::vector<cv::Mat> img_norm_rgb;
+    cv::Mat img_norm_b, img_norm_g, img_norm_r;
+    cv::split(bgr, img_norm_rgb);                             // 4: 拆通道
+    img_norm_g = img_norm_rgb.at(0);                          // 5: OpenCV split顺序B,G,R
     img_norm_b = img_norm_rgb.at(1);                          // 6
     img_norm_r = img_norm_rgb.at(2);                          // 7
-    for(int i = 0; i < row; i++){                             // 8
+    for(int i = 0; i < row; i++){                             // 8: 遍历每个像素
         for(int j = 0; j< col; j++){                          // 9
             temp_mat.at<float>(i,j) = MAX(MAX(
                 img_norm_g.at<float>(i,j),
                 img_norm_b.at<float>(i,j)),
-                img_norm_r.at<float>(i,j));                   // 10
+                img_norm_r.at<float>(i,j));                   // 10: T_hat(i,j)=max(三通道)
         }
     }
-    return temp_mat;                                          // 11
+    return temp_mat;                                          // 11: 返回初始光照图
 }
 ```
 
-| # | 说明 |
-|---|------|
-| 1 | 输出图，与图像同尺寸 float，初值 0。 |
-| 2-4 | 拆通道。 |
-| 5-7 | 绑定三个单通道（命名与通道序以 split 为准）。 |
-| 8-9 | 遍历每个像素。 |
-| 10 | `T_hat(i,j)=max(三通道)`。 |
-| 11 | 返回初始光照图。 |
-
-**加速版替换 8-10 行**：OpenMP 切四象限 + NEON 一次 4 像素 `vmaxq_f32`（见第五部分历史文档逻辑，此处不重复粘贴四份 section）。
+**加速版替换 8-10 行**：OpenMP 切四象限 + NEON 一次 4 像素 `vmaxq_f32`（见第五部分）。
 
 ---
 
@@ -1147,42 +932,27 @@ W = vconcat(Wv,Wh)
 
 ```cpp
 cv::Mat lime::optIllumMap(){
-    weightStrategy();                          // 1
-    cv::Mat T(row,col, CV_32F, 0);             // 2
-    cv::Mat G(row*2,col, CV_32F, 0);           // 3
-    cv::Mat Z(row*2,col, CV_32F, 0);           // 4
-    int t = 0;                                 // 5
-    float u = 1;                               // 6
-    while (true){                              // 7
-        T = solveT(G,Z,u);                     // 8
-        G = solveG(T,Z,u,W);                   // 9
-        Z = solveZ(T,G,Z,u);                   // 10
-        u = solveU(u);                         // 11
-        if(t == 0){                            // 12
+    weightStrategy();                          // 1: 先算权重矩阵W（边缘处小→保边）
+    cv::Mat T(row,col, CV_32F, 0);             // 2: 光照图初值0
+    cv::Mat G(row*2,col, CV_32F, 0);           // 3: G高度2*row，匹配 derivative 输出（垂直+水平）
+    cv::Mat Z(row*2,col, CV_32F, 0);           // 4: 拉格朗日乘子（对偶变量）
+    int t = 0;                                 // 5: 迭代计数
+    float u = 1;                               // 6: ADMM惩罚参数初值
+    while (true){                              // 7: 直到满足迭代次数
+        T = solveT(G,Z,u);                     // 8: 更新T（频域子问题，闭式解）
+        G = solveG(T,Z,u,W);                   // 9: 更新G（软阈值，保稀疏）
+        Z = solveZ(T,G,Z,u);                   // 10: 更新Z（残差累积）
+        u = solveU(u);                         // 11: u←u*rho，惩罚加大
+        if(t == 0){                            // 12: ★仅第一轮估迭代次数 thd
             float temp = Frobenius(derivative(T) - G);
             thd = ceil(2* log(temp / epsilon));
         }
         t += 1;                                // 13
-        if(t >= thd) break;                    // 14
+        if(t >= thd) break;                    // 14: 满 thd 退出
     }
-    return T;                                  // 15
+    return T;                                  // 15: 返回优化光照
 }
 ```
-
-| # | 说明 |
-|---|------|
-| 1 | 先算 W。 |
-| 2 | 光照图初值 0。 |
-| 3-4 | G、Z 高度 2*row，匹配 derivative 输出。 |
-| 5-6 | 迭代计数与惩罚初值。 |
-| 7 | 直到 t 达到 thd。 |
-| 8 | 更新 T（频域子问题）。 |
-| 9 | 更新 G（软阈值）。 |
-| 10 | 更新 Z（残差累积）。 |
-| 11 | u ← u*rho，惩罚加大。 |
-| 12 | **仅第一轮**估迭代次数 thd。 |
-| 13-14 | 计数；满 thd 退出。 |
-| 15 | 返回优化光照。 |
 
 ---
 
@@ -1202,14 +972,6 @@ normalize 到 [0.2,1]                     // 关键安全
 reshape1D 成 HxW
 ```
 
-**逐概念行**：
-
-| 步骤 | 为何 |
-|------|------|
-| 用 G,Z,u 组方程右端 | ADMM 子问题闭式解的分子 |
-| DFT | 把卷积/循环结构变成频域点除 |
-| normalize 0.2 | 避免 T 过小导致通道/T 爆炸 |
-| reshape | 向量变回图 |
 
 ### solveG
 
@@ -1243,49 +1005,31 @@ return u * rho;  // rho 默认 2
 ```cpp
 LSTR::LSTR()
 {
-    const ORTCHAR_T* model_path = "../lstr_360x640.onnx";          // 1
-    sessionOptions.SetGraphOptimizationLevel(ORT_ENABLE_BASIC);    // 2
-    ort_session = new Session(env, model_path, sessionOptions);    // 3
-    size_t numInputNodes = ort_session->GetInputCount();           // 4
-    size_t numOutputNodes = ort_session->GetOutputCount();         // 5
-    AllocatorWithDefaultOptions allocator;                         // 6
-    for (int i = 0; i < numInputNodes; i++) {                      // 7
-        auto input_name_Ptr = ort_session->GetInputNameAllocated(i, allocator); // 8
-        inputNodeNameAllocatedStrings.push_back(std::move(input_name_Ptr));     // 9
-        input_names.push_back(inputNodeNameAllocatedStrings.back().get());      // 10
-        auto input_type_info = ort_session->GetInputTypeInfo(i);   // 11
-        auto input_tensor_info = input_type_info.GetTensorTypeAndShapeInfo(); // 12
-        auto input_dims = input_tensor_info.GetShape();            // 13
-        input_node_dims.push_back(input_dims);                     // 14
+    const ORTCHAR_T* model_path = "../lstr_360x640.onnx";  // 路径相对当前工作目录（Qt 已 cd 到 build）
+    sessionOptions.SetGraphOptimizationLevel(ORT_ENABLE_BASIC); // 基础图优化（算子融合等）
+    ort_session = new Session(env, model_path, sessionOptions); // ★ 磁盘读入 onnx，构建可执行 Session——最重的一步
+    size_t numInputNodes = ort_session->GetInputCount();   // 输入个数
+    size_t numOutputNodes = ort_session->GetOutputCount(); // 输出个数（LSTR 各为 2）
+    AllocatorWithDefaultOptions allocator;                 // ORT 分配器，用于取节点名字符串
+    for (int i = 0; i < numInputNodes; i++) {              // 遍历每个输入
+        auto input_name_Ptr = ort_session->GetInputNameAllocated(i, allocator); // 分配并返回输入名
+        inputNodeNameAllocatedStrings.push_back(std::move(input_name_Ptr));     // move 进成员容器保活
+        input_names.push_back(inputNodeNameAllocatedStrings.back().get());      // const char* 供 Run 使用，指向上面字符串
+        auto input_type_info = ort_session->GetInputTypeInfo(i);   // 获取类型信息
+        auto input_tensor_info = input_type_info.GetTensorTypeAndShapeInfo(); // 如 [1,3,360,640]
+        auto input_dims = input_tensor_info.GetShape();
+        input_node_dims.push_back(input_dims);             // 存 dims
     }
-    // 对 output 做 8-14 的对称循环…                                    // 15
-    this->inpHeight = input_node_dims[0][2];                       // 16
-    this->inpWidth  = input_node_dims[0][3];                       // 17
-    this->mask_tensor.resize(inpHeight * inpWidth, 0.0);           // 18
-    log_space = new float[len_log_space];                          // 19
-    FILE* fp = fopen("../log_space.bin", "rb");                    // 20
-    fread(log_space, sizeof(float), len_log_space, fp);            // 21
-    fclose(fp);                                                    // 22
+    // 对 output 做上述对称循环，得到 pred 相关名与 dims
+    this->inpHeight = input_node_dims[0][2];               // NCHW：下标 2=H
+    this->inpWidth  = input_node_dims[0][3];               // 下标 3=W
+    this->mask_tensor.resize(inpHeight * inpWidth, 0.0);   // 第二输入全 0 缓冲
+    log_space = new float[len_log_space];                  // ⚠️ 读 50 个 float 采样表，未检查 fp 是否 NULL
+    FILE* fp = fopen("../log_space.bin", "rb");
+    fread(log_space, sizeof(float), len_log_space, fp);
+    fclose(fp);
 }
 ```
-
-| # | 说明 |
-|---|------|
-| 1 | 模型相对 **当前工作目录**（Qt 已 cd 到 build）。 |
-| 2 | 基础图优化（算子融合等）。 |
-| 3 | **磁盘读入 onnx，构建可执行 Session**——最重的一步。 |
-| 4-5 | 输入/输出个数（LSTR 一般为 2 和 2）。 |
-| 6 | ORT 分配器，用于取节点名字符串。 |
-| 7 | 遍历每个输入。 |
-| 8 | 分配并返回输入名。 |
-| 9 | **move 进成员容器**保活。 |
-| 10 | `const char*` 列表供 Run 使用；指向 9 中字符串。 |
-| 11-13 | 类型与形状，如 [1,3,360,640]。 |
-| 14 | 存 dims。 |
-| 15 | 输出同理，得到 pred 相关名与 dims。 |
-| 16-17 | NCHW：下标 2=H, 3=W。 |
-| 18 | 第二输入缓冲，元素全 0。 |
-| 19-22 | 读 50 个 float 采样表；不检查 fp 是否 NULL（隐患）。 |
 
 ---
 
@@ -1294,29 +1038,19 @@ LSTR::LSTR()
 ```cpp
 void LSTR::normalize_(Mat img)
 {
-    int row = img.rows;                                              // 1
-    int col = img.cols;                                              // 2
-    this->input_image_.resize(row * col * img.channels());           // 3
-    for (int c = 0; c < 3; c++)                                      // 4
-      for (int i = 0; i < row; i++)                                  // 5
-        for (int j = 0; j < col; j++)                                // 6
+    int row = img.rows;                                    // 已 resize 到网络输入的图高
+    int col = img.cols;                                    // 宽
+    this->input_image_.resize(row * col * img.channels()); // 缓冲长度 = H*W*3
+    for (int c = 0; c < 3; c++)                            // c=0,1,2 → B,G,R（OpenCV 顺序）
+      for (int i = 0; i < row; i++)                        // 行
+        for (int j = 0; j < col; j++)                      // 列
         {
-          float pix = img.ptr<uchar>(i)[j * 3 + c];                  // 7
-          this->input_image_[c * row * col + i * col + j] =          // 8
-              (pix / 255.0 - mean[c]) / std[c];                      // 9
+          float pix = img.ptr<uchar>(i)[j * 3 + c];        // 第 i 行指针 + 像素 j 的第 c 字节
+          this->input_image_[c * row * col + i * col + j] =// CHW 下标：先 c 平面，再 i 行，再 j 列
+              (pix / 255.0 - mean[c]) / std[c];            // /255→[0,1]，再减均值除方差（ImageNet 标准化）
         }
 }
 ```
-
-| # | 说明 |
-|---|------|
-| 1-2 | 当前是 **已 resize 到网络输入** 的图高宽。 |
-| 3 | 缓冲长度 = H*W*3。 |
-| 4 | c=0,1,2 → B,G,R（OpenCV 顺序）。 |
-| 5-6 | 行、列。 |
-| 7 | 第 i 行指针 + 像素 j 的第 c 字节。 |
-| 8 | **CHW 下标**：先 c 平面，再 i 行，再 j 列。 |
-| 9 | 先 /255 到 [0,1]，再减均值除方差（ImageNet）。 |
 
 **若 CHW 写反成 HWC**：网络仍跑但不准，属静默逻辑错误。
 
@@ -1327,42 +1061,27 @@ void LSTR::normalize_(Mat img)
 ### 段 A：预处理
 
 ```cpp
-const int img_height = srcimg.rows;   // A1 保存入口图高（增强图）
-const int img_width  = srcimg.cols;   // A2 宽
+const int img_height = srcimg.rows;   // A1: 保存入口图高（增强图），曲线坐标最后乘这两个，画回enhance图而非网络输入图
+const int img_width  = srcimg.cols;   // A2
 Mat dstimg;
-resize(srcimg, dstimg, Size(inpWidth, inpHeight), INTER_LINEAR); // A3
-normalize_(dstimg);                   // A4
+resize(srcimg, dstimg, Size(inpWidth, inpHeight), INTER_LINEAR); // A3: 拉到onnx输入大小；Size(宽,高)
+normalize_(dstimg);                   // A4: 填 input_image_
 ```
-
-| | 说明 |
-|--|------|
-| A1-A2 | 曲线坐标最后乘这两个，画回 **enhance 后的图** 而不是网络输入图。 |
-| A3 | 拉到 onnx 输入大小；`Size(宽,高)`。 |
-| A4 | 填 `input_image_`。 |
 
 ### 段 B：Tensor 与 Run
 
 ```cpp
-array<int64_t,4> input_shape_{1,3,inpHeight,inpWidth};  // B1
-array<int64_t,4> mask_shape_{1,1,inpHeight,inpWidth};   // B2
-auto allocator_info = MemoryInfo::CreateCpu(...);         // B3
+array<int64_t,4> input_shape_{1,3,inpHeight,inpWidth};  // B1: NCHW 图像 shape
+array<int64_t,4> mask_shape_{1,1,inpHeight,inpWidth};   // B2: NCHW mask，C=1
+auto allocator_info = MemoryInfo::CreateCpu(...);        // B3: CPU 内存类型信息
 vector<Value> ort_inputs;
-ort_inputs.push_back(CreateTensor<>(... input_image_ ...)); // B4
-ort_inputs.push_back(CreateTensor<>(... mask_tensor ...));  // B5
-vector<Value> ort_outputs = ort_session->Run(               // B6
+ort_inputs.push_back(CreateTensor<>(... input_image_ ...)); // B4: 包装图像指针（零拷贝视图语义）
+ort_inputs.push_back(CreateTensor<>(... mask_tensor ...));  // B5: 包装全0 mask
+vector<Value> ort_outputs = ort_session->Run(               // B6: ★ 前向推理，2个输入，取全部输出
     RunOptions{nullptr},
     input_names.data(), ort_inputs.data(), 2,
     output_names.data(), output_names.size());
 ```
-
-| | 说明 |
-|--|------|
-| B1 | NCHW 图像 shape。 |
-| B2 | NCHW mask，C=1。 |
-| B3 | CPU 内存类型信息。 |
-| B4 | 包装图像指针为 ORT Tensor（零拷贝视图语义，取决于实现，数据来自 vector）。 |
-| B5 | 包装全 0 mask。 |
-| B6 | **前向推理**；2 个输入；取出全部输出。 |
 
 ```cpp
 const float* pred_logits = ort_outputs[0].GetTensorMutableData<float>(); // B7
@@ -1375,36 +1094,25 @@ const int curves_w = output_node_dims[1][2];  // B11 参数维
 ### 段 C：解码有效车道
 
 ```cpp
-for (int i = 0; i < logits_h; i++) {           // C1 每个候选
+for (int i = 0; i < logits_h; i++) {           // C1 遍历所有 query/候选
   float max_logits = -10000; int max_id = -1;
   for (int j = 0; j < logits_w; j++) {         // C2 每个类别
-    float data = pred_logits[i*logits_w + j];// C3 行优先
-    if (data > max_logits) { max_logits=data; max_id=j; } // C4 argmax
+    float data = pred_logits[i*logits_w + j];// C3 行优先索引
+    if (data > max_logits) { max_logits=data; max_id=j; } // C4 argmax：找最大 logit 的类别id
   }
-  if (max_id == 1) {                           // C5 有效类
+  if (max_id == 1) {                           // C5 类别 id==1 才当车道（模型约定）
     good_detections.push_back(i);
-    const float *p = pred_curves + i*curves_w; // C6 第 i 组参数
+    const float *p = pred_curves + i*curves_w; // C6 curves 里第 i 行参数指针
     vector<Point> lane_points(50);
-    for (int k = 0; k < 50; k++) {             // C7
-      float y = p[0] + log_space[k]*(p[1]-p[0]); // C8
-      float x = p[2]/powf(y-p[3],2)+p[4]/(y-p[3])+p[5]+p[6]*y-p[7]; // C9
-      lane_points[k] = Point(int(x*img_width), int(y*img_height)); // C10
+    for (int k = 0; k < 50; k++) {             // C7 固定 50 个采样点
+      float y = p[0] + log_space[k]*(p[1]-p[0]); // C8 y 在 p0 与 p1 间按 log_space 插值
+      float x = p[2]/powf(y-p[3],2)+p[4]/(y-p[3])+p[5]+p[6]*y-p[7]; // C9 参数化 x(y) 曲线
+      lane_points[k] = Point(int(x*img_width), int(y*img_height)); // C10 归一化坐标→像素（用 A1/A2 入口尺寸）
     }
     lanes.push_back(lane_points);
   }
 }
 ```
-
-| | 说明 |
-|--|------|
-| C1 | 遍历所有 query/候选。 |
-| C2-C4 | 对该候选的分类向量做 argmax。 |
-| C5 | **类别 id==1 才当车道**（模型约定）。 |
-| C6 | curves 里第 i 行参数指针。 |
-| C7 | 固定 50 个采样点。 |
-| C8 | y 在 p0与p1 间按 log_space 插值。 |
-| C9 | 参数化 x(y) 曲线。 |
-| C10 | 归一化坐标→像素；用的是 **A1/A2 入口尺寸**。 |
 
 ### 段 D：可视化
 
@@ -1481,13 +1189,9 @@ for i in 0..H-1:
     for k in 0..2:
       // k=通道, i=行, j=列
       data[k*H*W + i*W + j] = srcdata[i*W*3 + j*3 + k]
+      // 右端 srcdata：HWC 交错排列；左端 data：CHW 平面排列
 in.reshape(720,720,3)
 ```
-
-| 下标 | 布局 |
-|------|------|
-| 右端 srcdata | HWC 交错 |
-| 左端 data | CHW 平面 |
 
 ## 6.4 推理与 argmax 逐行
 

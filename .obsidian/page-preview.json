@@ -1,6 +1,7 @@
 {
-    "markdown":  false,
-    "search":  false,
-    "fileExplorer":  false,
-    "graph":  false
+  "markdown": false,
+  "search": false,
+  "fileExplorer": false,
+  "graph": false,
+  "preview": true
 }
