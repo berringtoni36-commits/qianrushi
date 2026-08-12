@@ -39,7 +39,7 @@ cssclasses:
 | 8 | UI 怎样读状态，IAP 怎样接收并跳转？ | [[#8. UI 与可选 IAP 升级]] |
 | 9 | 如何用一个真实场景串起全部代码？ | [[#9. 完整场景串联与源码索引]] |
 
-相关入口：[[projects/RTOS项目/index|RTOS 项目导航]] · [[projects/RTOS项目/RTOS项目复习文档|RTOS 项目复习文档]]
+相关入口：[[projects/RTOS项目/index|RTOS 项目导航]] · [[RTOS项目复习文档|RTOS 项目复习文档]]
 
 ---
 
@@ -52,11 +52,11 @@ cssclasses:
 - `vTaskStartScheduler()` **之前**：CPU 沿 `main()` 顺序执行，没有业务任务并行。
 - `vTaskStartScheduler()` **之后**：`StartTask` 先创建业务任务并自删除，之后由调度器、任务阻塞和中断共同推进系统。
 
-![[projects/RTOS项目/assets/code-lifecycle-overview.svg]]
+![[assets/rtos/code-lifecycle-overview.svg]]
 
 ### 1.2 运行期谁和谁协作
 
-![[projects/RTOS项目/assets/runtime-task-topology.svg]]
+![[assets/rtos/runtime-task-topology.svg]]
 
 默认任务按优先级从高到低排列：
 
@@ -72,7 +72,7 @@ SpeedCalc(6) > Motor(5) > Key(4) > Sensor(3) = Wind(3) > AntiBF(2) > UI(1)
 
 ### 1.3 周期任务不是同时执行
 
-![[projects/RTOS项目/assets/task-cadence-timeline.svg]]
+![[assets/rtos/task-cadence-timeline.svg]]
 
 这张图表示“应该多久运行一次”，不是说这些任务占用固定时间片。一次典型调度过程是：
 
@@ -139,7 +139,7 @@ int main(void)
 | `StartTask_Create()` | 就绪列表中只有一个 `StartTask` |
 | `vTaskStartScheduler()` | FreeRTOS 开始调度，正常不会返回 |
 
-![[projects/RTOS项目/assets/main-startup-flow.svg]]
+![[assets/rtos/main-startup-flow.svg]]
 
 ### 2.3 Hardware_Init 调用图
 
@@ -288,7 +288,7 @@ typedef struct {
 } SystemState_t;
 ```
 
-![[projects/RTOS项目/assets/system-state-data-flow.svg]]
+![[assets/rtos/system-state-data-flow.svg]]
 
 ### 3.3 System_Init 完整代码
 
@@ -433,7 +433,7 @@ PB1/PB12 电平
   → MotorControlTask
 ```
 
-![[projects/RTOS项目/assets/gpio-key-state-machine.svg]]
+![[assets/rtos/gpio-key-state-machine.svg]]
 
 ### 4.2 KeyScanTask 完整代码
 
@@ -610,9 +610,9 @@ DHT11 / MQ2
 
 ### 5.2 DHT11 与 MQ2 驱动图
 
-![[projects/RTOS项目/assets/dht11-read-flow.svg]]
+![[assets/rtos/dht11-read-flow.svg]]
 
-![[projects/RTOS项目/assets/mq2-adc-sampling-flow.svg]]
+![[assets/rtos/mq2-adc-sampling-flow.svg]]
 
 ### 5.3 SensorTask 完整代码
 
@@ -778,7 +778,7 @@ else
 - `SpeedCalcTask` 被唤醒后读累计计数，`get_speed()` 约每 50 ms 形成一次新转速。
 - `MotorControlTask` 在手动/防回流模式把目标转速和实际转速送入 PID。
 
-![[projects/RTOS项目/assets/speed-calc-flow.svg]]
+![[assets/rtos/speed-calc-flow.svg]]
 
 ### 6.2 ISR 到任务的时序
 
@@ -919,7 +919,7 @@ float get_speed(int encode_value, u16 ms)
 
 ### 6.5 PID 闭环
 
-![[projects/RTOS项目/assets/pid-closed-loop-flow.svg]]
+![[assets/rtos/pid-closed-loop-flow.svg]]
 
 位置式 PID：
 
@@ -1345,7 +1345,7 @@ void UIDisplayTask(void *pvParameters)
 - `iap_task`
 - `DMA1_Channel5_IRQHandler`
 
-![[projects/RTOS项目/assets/flash-ram-layout.svg]]
+![[assets/rtos/flash-ram-layout.svg]]
 
 ### 8.3 IAP 的实际源码路径
 
@@ -1562,13 +1562,13 @@ sequenceDiagram
 
 ### 9.4 深入专题
 
-- [[projects/RTOS项目/文档/2 系统架构与设计/2.3 系统启动流程与初始化顺序|系统启动流程与初始化顺序]]
-- [[projects/RTOS项目/文档/2 系统架构与设计/2.4 任务间通信：互斥信号量与全局状态管理|互斥信号量与全局状态管理]]
-- [[projects/RTOS项目/文档/3 FreeRTOS 内核与任务设计/3.2 任务创建、调度与优先级设计|任务创建、调度与优先级设计]]
-- [[projects/RTOS项目/文档/3 FreeRTOS 内核与任务设计/3.3 中断优先级配置与临界区保护|中断优先级与临界区]]
-- [[projects/RTOS项目/文档/4 硬件驱动开发/4.1 电机控制与反馈/4.1.3 PID闭环调速算法实现与调参|PID 闭环调速]]
-- [[projects/RTOS项目/文档/5 系统功能实现/5.2 自动模式状态机与Cooking Event检测|自动模式与 Cooking Event]]
-- [[projects/RTOS项目/文档/5 系统功能实现/5.3 固件升级（IAP）：Boot + 单APP分区与串口DMA传输|IAP 固件升级]]
+- [[2.3 系统启动流程与初始化顺序|系统启动流程与初始化顺序]]
+- [[2.4 任务间通信：互斥信号量与全局状态管理|互斥信号量与全局状态管理]]
+- [[3.2 任务创建、调度与优先级设计|任务创建、调度与优先级设计]]
+- [[3.3 中断优先级配置与临界区保护|中断优先级与临界区]]
+- [[4.1.3 PID闭环调速算法实现与调参|PID 闭环调速]]
+- [[5.2 自动模式状态机与Cooking Event检测|自动模式与 Cooking Event]]
+- [[5.3 固件升级（IAP）：Boot + 单APP分区与串口DMA传输|IAP 固件升级]]
 
 > [!success] 一句话收束
 > `main` 完成硬件与 RTOS 对象初始化，`StartTask` 创建业务任务后退出；此后传感器、按键和编码器分别把环境、用户意图和速度反馈写入系统，`MotorControlTask` 再依据模式选择开环 PWM 或 PID 闭环，最终通过 TIM1 和 H 桥驱动电机。

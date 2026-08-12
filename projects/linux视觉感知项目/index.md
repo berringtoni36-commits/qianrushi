@@ -93,3 +93,8 @@ summary: "Linux 视觉感知项目的 Obsidian 学习导航，按系统数据流
 - [[projects/Linux视觉感知项目/05 面试与复习/6.4 LSTR与Unet部署面试要点|6.4 LSTR与Unet部署面试要点]]
 - [[projects/Linux视觉感知项目/05 面试与复习/6.5 系统设计决策与追问应对|6.5 系统设计决策与追问应对]]
 - [[linux视觉感知面试题|6.6 高频面试总复习（唯一主文档）]]
+
+## 番外
+
+- [[projects/linux视觉感知项目/番外/index|番外：CMake 与补充教程]]
+- [[大丙Linux 教程（Subingwen 专栏合并）-Defuddle提取|Linux + CMake 教程·合并复习文档]]

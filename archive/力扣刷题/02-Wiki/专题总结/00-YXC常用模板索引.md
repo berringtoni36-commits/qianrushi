@@ -17,9 +17,9 @@ summary: "从 YXC 基础课常用模板中筛选当前 LeetCode Hot 100 真正�
 ## 原始资料
 
 - [AcWing 算法基础课](https://www.acwing.com/activity/content/introduction/11/)
-- ![[yxc-常用代码模板1-基础算法.jpeg]]
-- ![[yxc-常用代码模板2-数据结构.jpeg]]
-- ![[yxc-常用代码模板3-搜索与图论.jpeg]]
+- ![[assets/leetcode/yxc-常用代码模板1-基础算法.jpeg]]
+- ![[assets/leetcode/yxc-常用代码模板2-数据结构.jpeg]]
+- ![[assets/leetcode/yxc-常用代码模板3-搜索与图论.jpeg]]
 
 ## Hot 100 主线模板
 

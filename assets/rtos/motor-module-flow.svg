@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1050" viewBox="0 0 1500 1050" role="img">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 z" fill="#64748b"/></marker>
+    <marker id="fbArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 z" fill="#0ea5e9"/></marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.12"/></filter>
+    <style>
+      .bg{fill:#f8fafc} .card{fill:#fff;stroke:#dbe3ee;stroke-width:1.5;filter:url(#shadow)}
+      .section{fill:#ffffff;stroke:#e2e8f0;stroke-width:1.4}
+      .title{font:700 34px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#0f172a}
+      .sub{font:500 18px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#64748b}
+      .secTitle{font:700 20px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#334155}
+      .box{stroke-width:2.2;rx:18;ry:18} .init{fill:#eff6ff;stroke:#3b82f6} .ctrl{fill:#ecfdf5;stroke:#10b981} .calc{fill:#fff7ed;stroke:#f97316} .state{fill:#fef9c3;stroke:#ca8a04} .out{fill:#fef2f2;stroke:#fb7185} .fb{fill:#f0f9ff;stroke:#0ea5e9}
+      .main{font:700 22px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#0f172a}
+      .small{font:500 17px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#334155}
+      .code{font:700 20px Consolas,'Microsoft YaHei',monospace;fill:#0f172a}
+      .codeSmall{font:500 16px Consolas,'Microsoft YaHei',monospace;fill:#334155}
+      .arrow{fill:none;stroke:#64748b;stroke-width:2.5;marker-end:url(#arrow)}
+      .feedback{fill:none;stroke:#0ea5e9;stroke-width:2.7;stroke-dasharray:9 9;marker-end:url(#fbArrow)}
+      .fbText{font:700 17px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#0284c7}
+      .hint{fill:#f1f5f9;stroke:#cbd5e1;stroke-width:1.4} .hintText{font:600 16px 'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',Arial,sans-serif;fill:#334155}
+    </style>
+  </defs>
+
+  <rect width="1500" height="1050" rx="24" class="bg"/>
+  <rect x="28" y="24" width="1444" height="1000" rx="24" class="card"/>
+  <text x="66" y="78" class="title">motor.c 模块调用关系</text>
+  <text x="66" y="112" class="sub">初始化、控制、反馈三条线分层展示：不让箭头压住文字，也不让函数名被截断。</text>
+
+  <!-- Section 1 -->
+  <rect x="58" y="145" width="1384" height="170" rx="20" class="section"/>
+  <text x="78" y="178" class="secTitle">① 硬件初始化顺序</text>
+  <g transform="translate(78,205)"><rect width="220" height="78" class="box init"/><text x="110" y="48" text-anchor="middle" class="code">Hardware_Init()</text></g>
+  <g transform="translate(345,205)"><rect width="250" height="78" class="box init"/><text x="125" y="34" text-anchor="middle" class="code">TIM1_dead_pwm_init()</text><text x="125" y="59" text-anchor="middle" class="small">1kHz PWM + 死区</text></g>
+  <g transform="translate(642,205)"><rect width="215" height="78" class="box init"/><text x="107" y="34" text-anchor="middle" class="code">motor_init()</text><text x="107" y="59" text-anchor="middle" class="small">默认正转，然后停止</text></g>
+  <g transform="translate(904,205)"><rect width="230" height="78" class="box init"/><text x="115" y="34" text-anchor="middle" class="code">TIM2_encode_init()</text><text x="115" y="59" text-anchor="middle" class="small">编码器 A/B 相输入</text></g>
+  <g transform="translate(1180,205)"><rect width="225" height="78" class="box init"/><text x="112" y="32" text-anchor="middle" class="main">StartTask 内初始化 TIM4</text><text x="112" y="58" text-anchor="middle" class="small">任务和信号量创建后再开中断</text></g>
+  <path d="M298 244 L335 244" class="arrow"/><path d="M595 244 L632 244" class="arrow"/><path d="M857 244 L894 244" class="arrow"/><path d="M1134 244 L1170 244" class="arrow"/>
+
+  <!-- Section 2 -->
+  <rect x="58" y="345" width="1384" height="345" rx="20" class="section"/>
+  <text x="78" y="378" class="secTitle">② 控制链：目标转速 → PID → PWM 输出</text>
+  <g transform="translate(78,410)"><rect width="230" height="118" class="box state"/><text x="115" y="34" text-anchor="middle" class="code">g_systemState</text><text x="115" y="62" text-anchor="middle" class="codeSmall">targetRPM</text><text x="115" y="84" text-anchor="middle" class="codeSmall">actualRPM</text><text x="115" y="106" text-anchor="middle" class="codeSmall">motorRunning</text></g>
+  <g transform="translate(370,420)"><rect width="235" height="98" class="box ctrl"/><text x="117" y="36" text-anchor="middle" class="code">MotorControlTask</text><text x="117" y="66" text-anchor="middle" class="small">读取 targetRPM / actualRPM</text></g>
+  <g transform="translate(665,420)"><rect width="185" height="98" class="box ctrl"/><text x="92" y="36" text-anchor="middle" class="main">PID 计算</text><text x="92" y="66" text-anchor="middle" class="small">得到 PWM 调整量</text></g>
+  <g transform="translate(910,420)"><rect width="235" height="98" class="box ctrl"/><text x="117" y="36" text-anchor="middle" class="code">motor_pwm_set(val)</text><text x="117" y="66" text-anchor="middle" class="small">统一电机输出接口</text></g>
+  <g transform="translate(1195,390)"><rect width="210" height="78" class="box ctrl"/><text x="105" y="32" text-anchor="middle" class="code">motor_dir()</text><text x="105" y="58" text-anchor="middle" class="small">先关 CH1/CH1N，再切方向</text></g>
+  <g transform="translate(1195,500)"><rect width="210" height="78" class="box ctrl"/><text x="105" y="32" text-anchor="middle" class="code">motor_speed()</text><text x="105" y="58" text-anchor="middle" class="small">写 TIM1 CCR1 改占空比</text></g>
+  <g transform="translate(370,565)"><rect width="235" height="78" class="box ctrl"/><text x="117" y="32" text-anchor="middle" class="code">motor_start() / motor_stop()</text><text x="117" y="58" text-anchor="middle" class="small">PA2 使能 / 断电</text></g>
+  <g transform="translate(910,595)"><rect width="210" height="72" class="box out"/><text x="105" y="30" text-anchor="middle" class="code">TIM1 CH1 / CH1N</text><text x="105" y="55" text-anchor="middle" class="small">互补 PWM 输出</text></g>
+  <g transform="translate(665,595)"><rect width="185" height="72" class="box out"/><text x="92" y="43" text-anchor="middle" class="main">H 桥驱动</text></g>
+  <g transform="translate(420,600)"><rect width="185" height="62" class="box out"/><text x="92" y="38" text-anchor="middle" class="main">电机实际转速</text></g>
+  <path d="M308 469 L360 469" class="arrow"/><path d="M605 469 L655 469" class="arrow"/><path d="M850 469 L900 469" class="arrow"/>
+  <path d="M1145 469 C1170 469, 1170 429, 1185 429" class="arrow"/>
+  <path d="M1145 469 C1170 469, 1170 539, 1185 539" class="arrow"/>
+  <path d="M1300 578 C1300 632, 1180 632, 1130 632" class="arrow"/>
+  <path d="M910 632 L860 632" class="arrow"/><path d="M665 632 L615 632" class="arrow"/>
+  <path d="M488 518 L488 555" class="arrow"/>
+
+  <!-- Section 3 -->
+  <rect x="58" y="720" width="1384" height="205" rx="20" class="section"/>
+  <text x="78" y="753" class="secTitle">③ 反馈链：编码器计数 → 实际转速</text>
+  <g transform="translate(78,780)"><rect width="220" height="78" class="box fb"/><text x="110" y="34" text-anchor="middle" class="code">TIM4_IRQHandler()</text><text x="110" y="59" text-anchor="middle" class="small">周期释放信号量</text></g>
+  <g transform="translate(345,780)"><rect width="245" height="78" class="box fb"/><text x="122" y="34" text-anchor="middle" class="code">g_speedCalcSemaphore</text><text x="122" y="59" text-anchor="middle" class="small">唤醒测速任务</text></g>
+  <g transform="translate(637,780)"><rect width="235" height="78" class="box fb"/><text x="117" y="34" text-anchor="middle" class="code">SpeedCalcTask</text><text x="117" y="59" text-anchor="middle" class="small">收到信号后运行</text></g>
+  <g transform="translate(918,780)"><rect width="245" height="78" class="box calc"/><text x="122" y="34" text-anchor="middle" class="code">get_encoder_value()</text><text x="122" y="59" text-anchor="middle" class="codeSmall">TIM2_CNT + overflow * 65536</text></g>
+  <g transform="translate(1200,780)"><rect width="190" height="78" class="box calc"/><text x="95" y="34" text-anchor="middle" class="code">get_speed()</text><text x="95" y="59" text-anchor="middle" class="small">计数差 → RPM，再滤波</text></g>
+  <g transform="translate(650,880)"><rect width="200" height="62" class="box state"/><text x="100" y="38" text-anchor="middle" class="main">更新 actualRPM</text></g>
+  <path d="M298 819 L335 819" class="arrow"/><path d="M590 819 L627 819" class="arrow"/><path d="M872 819 L908 819" class="arrow"/><path d="M1163 819 L1190 819" class="arrow"/>
+  <path d="M1295 858 C1295 910, 950 910, 860 910" class="arrow"/>
+  <path d="M650 910 C430 910, 230 875, 190 858" class="feedback"/>
+  <path d="M512 600 C300 690, 835 725, 1010 780" class="feedback"/>
+  <text x="680" y="735" class="fbText">编码器反馈</text>
+
+  <!-- Hints -->
+  <g transform="translate(58,945)"><rect width="435" height="48" rx="14" class="hint"/><text x="18" y="30" class="hintText">记忆 1：motor.c 只管驱动电机，目标 RPM 来自上层业务逻辑。</text></g>
+  <g transform="translate(532,945)"><rect width="435" height="48" rx="14" class="hint"/><text x="18" y="30" class="hintText">记忆 2：TIM4 只唤醒 SpeedCalcTask，真正的 RPM 计算放在任务里。</text></g>
+  <g transform="translate(1006,945)"><rect width="435" height="48" rx="14" class="hint"/><text x="18" y="30" class="hintText">记忆 3：actualRPM 回到 g_systemState，PID 才能形成闭环。</text></g>
+</svg>

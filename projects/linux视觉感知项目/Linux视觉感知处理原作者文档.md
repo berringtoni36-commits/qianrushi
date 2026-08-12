@@ -22,7 +22,7 @@ tags:
 
 ### 1.1 简历介绍
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档.png]]
 
 文字模板：
 
@@ -63,7 +63,7 @@ tags:
 
 本项目采用配备摄像头的车载系统实时采集车道行驶画面，将摄像头采集到的图片进行图像预处理，预处理算法是基于论文《LIME: Low-Light Image Enhancement via Illumination Map Estimation》中算法进行改进的方法，对采集到的实时图像进行低照度增强，再将处理后的图像传输到卷积神经网络当中进行车道线识别，最后将识别后的图像以视频帧的形式输出到上位机上。系统可以将采集画面中的车道线识别出来，为汽车自动驾驶提供参考，也可以用于对人类驾驶员进行实时安全监测，防止由于疲劳驾驶、酒后驾驶等造成的偏离应驶车道，对于交通秩序维持、车载人员生命安全防护具有广泛的应用前景。系统总体功能设计框图如所示。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 1.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 1.png]]
 
 *图 1｜总体功能设计*
 
@@ -75,13 +75,13 @@ tags:
 
 本系统采用基于国产飞腾FT2000/4（兼容D2000/8）处理器平台研制天乾C216F教育开发板套件作为主控单元，采用海康威视DE-E12摄像头实时采集车道线画面信息，利用板载AMD-R5-230型号显卡实时处理CPU输送的图像信息，并在QT编写的上位机中通过外接显示器分别显示原始采集画面和识别后的画面。各部分的硬件连接图如。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 2.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 2.png]]
 
 *图 2｜硬件连接图*
 
 在硬件基础上，为实现总体功能，将系统分为图像采集模块、图像预处理模块、图像识别模块、上位机显示模块。各模块间的功能联系如所示。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 3.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 3.png]]
 
 *图 3｜系统模块关系图*
 
@@ -99,7 +99,7 @@ tags:
 
 作为连接软硬件的桥梁，主控板运转是否稳定、接口是否完善、中心控制单元运算性能是否快速是决定项目成败的关键。天乾C216F教育开发板实物图如，其拥有集成了4个FTC663内核、主频达到2.6GHz的CPU，运算速度能够满足本项目要求。开发板拥有两个SODIMM插槽，单条最大支持16GBDDR4的大内存配置进一步提高了文件处理速度，使运行中的系统稳定性、安全性增强。此外，健全的系统接口为项目开发提供了极大的便捷。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档.jpeg]]
 
 *图 4｜主控板实物图*
 
@@ -107,7 +107,7 @@ tags:
 
 车道线识别一般将摄像头装载与车身前方，考虑到扩展性和便携性等因素，本系统选用一款便于安置、接口通用、分辨率匹配的图像采集设备。HIKVISION的DS-E12摄像头实物如，其质量轻、体积小，并且能够稳定的安置在移动设备上。接口采用USB2.0，能够与开发板适配，并且采集到的图像分辨率为1920*1080，满足项目中对分辨率的要求，且其支持JPEG格式图像采集，为接下来图像的预处理和车道线识别操作提供前提。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 4.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 4.png]]
 
 *图 5｜摄像头实物图*
 
@@ -137,13 +137,13 @@ tags:
 
 ### 3.1 算法理论基础（论文按名称查找）
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 5.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 5.png]]
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 6.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 6.png]]
 
 ### 3.2 预处理代码实现流程
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 7.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 7.png]]
 
 *图 6｜预处理代码实现流程*
 
@@ -203,7 +203,7 @@ for (int i = 0; i < rows; ++i) {
 
 NEON指令集基于SIMD（SingleInstructionMultipleData）指令架构，即单指令多数据的指令架构，如中所示，相比于SISD（SingleInstructionSingleData）指令架构，SIMD能够利用单条指令处理同数据类型和长度的N个数据进行并行处理，并且仅需单条指令的执行时间，将指令执行时间缩短了N倍。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 1.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 1.jpeg]]
 
 *图 7｜SISD指令集与SIMD指令集示意图*
 
@@ -211,7 +211,7 @@ NEON指令集基于SIMD（SingleInstructionMultipleData）指令架构，即单�
 
 NEON协处理器拥有独立的寄存器系统和硬件执行单元，利用16个128位寄存器q0~q15与32个64位寄存器d0~d31协助并行计算。但两套寄存器为重叠结构，其关系为qn表示d2n和d2n+1，对应关系如图 8，运用时需注意误覆盖问题。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 8.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 8.png]]
 
 *图 8｜NEON寄存器示意图*
 
@@ -219,7 +219,7 @@ NEON协处理器拥有独立的寄存器系统和硬件执行单元，利用16�
 
 NEON指令集本项目采用功能灵活、移植性好的内联函数优化方式处理编解码过程。内联函数法需引入neon官方头文件"arm_neon.h"。其中包含NEON官方指令声明，每条指令由指令码、指令模式、寄存器位数、操作数构成。按照指令功能可以分为：结构加载与存储、逻辑运算、算术运算、移位运算等。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 9.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 9.png]]
 
 *图 9｜NEON指令构成*
 
@@ -236,15 +236,15 @@ NEON指令集本项目采用功能灵活、移植性好的内联函数优化方�
 
 其中代码优化中使用较多的加载存储指令vld和vst，作用是将图像的RGB颜色数据以线性或者结构化的方式加载到向量存储器当中，并且进行交叉存储。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 10.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 10.png]]
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 11.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 11.png]]
 
 *图 10｜两种不同的加载方式*
 
 交叉存储是NEON向量处理器中的一种数据存储方式，它可以提高内存访问的效率和数据处理的并行性。NEON交叉存储方式将多个数据向量交错存储在连续的内存块中，以便利用SIMD指令同时处理多个数据。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 12.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 12.png]]
 
 *图 11｜交叉存储示意图*
 
@@ -276,7 +276,7 @@ cv::Mat lime::getMax(const cv::Mat& bgr){//求RGB三个通道的最大值用于�
 ```
 该函数的核心部分是通过一个双层for循环遍历图像的像素点，比较求出三个通道的最大值。每个像素点遍历的操作会极大的影响到代码的运行速度，基于NEON指令向量化操作的并行加速特性，本项目采取了一种加速方法，通过在循环中一次取四个元素加快遍历过程。加速原理如所示。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 13.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 13.png]]
 
 *图 12｜NEON向量化加速原理图*
 
@@ -354,7 +354,7 @@ vpaddq_f32(vget_low_f32(total_sum), vget_high_f32(total_sum);
 ```
 其中vmulq_f32是NEON INTRINSICS中用于执行乘法运算的函数。优化代码首先使用向量化操作一次从内层循环加载四个32位浮点数到寄存器当中，然后使用乘法运算对向量寄存器中的数据进行乘方，然后使用vaddq_f32函数进行累加求得乘方和。但是，total_sum向量寄存器中包含4个部分的和。为了将这4个部分的和转化为单个值，我们需要进行向量求和操作。这里使用了vpaddq_f32函数进行部分求和。该函数将总和的低两个元素和高两个元素分别相加，得到两个部分的和。然后再次使用vpaddq_f32函数对这两个部分的和进行求和，得到总和。最终，我们从total_sum向量中提取出最终的平方和。运算过程图解如图 13所示。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 14.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 14.png]]
 
 *图 13｜NEON优化求平方和过程图解*
 
@@ -479,7 +479,7 @@ void lime::fft2_neon(const cv::Mat& input, cv::Mat& output, int opt)
 
 在本项目中，我们采用了面向多核平台的并行优化算法，以利用天乾C216F教育开发板的四核处理器。通过利用多核平台的优势，我们可以在相同的时间内处理更多的任务量，从而提高图像处理过程的效率和运行时间。这种优化方法特别适用于本项目中的图像处理任务，因为图像处理通常涉及大量的数据和重复的操作。通过将LIME图像增强过程中的部分代码合理地并行化，我们可以更充分地利用开发板的CPU资源，提高系统的整体性能。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 15.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 15.png]]
 
 *图 14｜多核串行与并行示意图*
 
@@ -489,7 +489,7 @@ OpenMP（Open Multi-Processing）是一种用于并行编程的API，旨在简�
 
 OpenMP采用fork-join的执行模式。开始的时候只存在一个主线程，当需要进行并行计算的时候，派生出若干个分支线程来执行并行任务。当并行代码执行完成之后，分支线程会合，并把控制流程交给单独的主线程。一个典型的fork-join执行模型的如图 15所示。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 16.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 16.png]]
 
 *图 15｜OpenMP运行原理示意图*
 
@@ -530,7 +530,7 @@ cv::Mat lime:Mat2Vec(cv::Mat mat){  //将多维矩阵压缩成一维
 ```
 如果采用多线程将外层的循环分给多个线程执行，由于线程的开闭需要一定的时间，因此可能出现外层循环进入到下一个轮次，而内层循环的上一个轮次还未完成的情况，这样，系统就会访问到重复的元素，由于执行操作涉及到图像像素点，因此这样一个错误很有可能造成程序执行错误。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 17.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 17.png]]
 
 *图 16｜OpenMP内存访问错误的情况*
 
@@ -571,7 +571,7 @@ cv::Mat lime::enhance(cv::Mat &src){
 ```
 代码段中对RGB三通道分别拆开计算增强后的值然后合并到一起，使用的传统的串行写法，先后计算了绿色、蓝色和红色通道。但是这三个通道实际上是互相独立的，彼此之间并不存在数据耦合关系，不会因为内存访问错误而造成程序执行异常。因此，采用色彩通道分离，此段代码可以使用OpenMP进行多线程并行加速优化。色彩通道分离方法如图 17所示。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 18.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 18.png]]
 
 *图 17｜色彩通道分离图解*
 
@@ -623,7 +623,7 @@ cv::Mat lime::enhance(cv::Mat &src){
 
 由于LIME算法处理的图片宽高像素值通常是上百上千的规模，在实际参与运算过程中对于CPU是一笔不小的负荷，尽管在3.3.3节中已经采取了NEON指令集进行向量化操作对代码中的for循环遍历进行加速，但是面对千百像素规模的图片尺寸，容量为4的NEON向量寄存器显然不能做到规模化的加速效果。为了对这样尺寸的图像做进一步的加速优化，本项目充分利用了OpenMP的多线程并行功能，把算法处理的图像分为四等份，即左上、右上、左下、右下四个部分。每个部分用一个线程去执行，OpenMP的parallel section指令默认调用一个CPU核进行处理，因此对图像四等分之后，使用OpenMP可以充分调度开发板的4个CPU核心进行并行工作，从而提高程序运行效率。OpenMP对图像进行分块处理的原理可以表示为图 18。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 19.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 19.png]]
 
 *图 18｜图像分块并行处理原理图*
 
@@ -766,7 +766,7 @@ NEON，OpenMP，循环展开、循环重排原理和用法（理解的越深入�
 
 OpenMP多少个线程比较好？4个，因为是四核CPU，测试过多和少都会效果正常原因如下：
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 20.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 20.png]]
 
 **对比pthread优势**
 
@@ -831,7 +831,7 @@ PNNX（Pytorch to NCNN eXchanger）是一款一站式模型转换与量化工具
 
 对于算法科研人员来说，熟练掌握并应用一种深度学习框架是一项必备技能。学术研究人员关心的是研究中算法的迭代速度，其应用场景通常是相对较小的数据集上，最大的限制因素不是性能，而是快速实现并验证假设的能力，使得学术研究倾向于PyTorch。PyTorch是一个针对深度学习，并且使用GPU和CPU来优化的tensor library(张量库)。ncnn（N-CNN）是一个高效的深度学习推理框架，专门针对移动端和嵌入式设备进行优化。它的全称是"网络通道卷积神经网络"（Network Convolutional Neural Network），旨在提供一个轻量级、快速和低功耗的解决方案，以满足在资源受限的设备上进行深度学习推理的需求。此外，ncnn支持混合精度计算，可以在保证模型精度的前提下，使用更低的数值精度进行计算，以减少计算量和内存占用。它还支持多线程并行计算，在多核处理器上充分利用并行计算能力，提高推理速度。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 21.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 21.png]]
 
 *图 19｜模型部署框架*
 
@@ -858,13 +858,13 @@ PNNX（Pytorch to NCNN eXchanger）是一款一站式模型转换与量化工具
 
 为增强网络模型的鲁棒性和泛化能力，此车道线识别数据集集合了多种开源数据集的5000多张图片，包含2684张原图和2684车道线掩码图，其中图片中既有大场景多车道的图片也有夜晚可见度较低的图片，经过训练的模型能够避免尤其是传统车道线拟合算法鲁棒性非常差的特点。如图 20所示则为数据集中的其中一张图进行举例。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 2.jpeg]] ![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 22.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 2.jpeg]] ![[assets/linux-vision/Linux视觉感知处理原作者文档 22.png]]
 
 *图 20｜数据集的场景原图与车道线掩码图*
 
 #### 4.2.2 Unet网络结构设计与功能
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 23.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 23.png]]
 
 *图 21｜U-Net结构图*
 
@@ -893,7 +893,7 @@ U-Net结构形似字母"U"，被大量应用在分割领域。它是在FCN的基
 
 #### 4.2.3 底层网络的创新
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 24.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 24.png]]
 
 *图 22｜原始unet权重文件大小*
 
@@ -934,7 +934,7 @@ class DepthWiseConv(nn.Module):
 
 上述代码实现了深度可分离卷积替换普通卷积，我们首先采用x86平台下先进行测试。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 25.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 25.png]]
 
 *图 23｜经过通道可分离后unet权重文件大小*
 
@@ -958,25 +958,25 @@ DICE指标在图像分割中具有以下优点：
 
 以下是一张原图，与数据标注图，和更改后的网络之间预测效果对比图。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 3.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 3.jpeg]]
 
 *图 24｜测试集原始图*
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 26.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 26.png]]
 
 (a) ground truth
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 27.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 27.png]]
 
 (b) 原始unet
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 28.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 28.png]]
 
 (c) 经过通道可分离
 
 *图 25｜数据标注图*
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 29.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 29.png]]
 
 *图 26｜测试集准确率和推理时间的对比*
 
@@ -1009,7 +1009,7 @@ traced_script_module = torch.jit.trace(net, input)
 traced_script_module.save("model.pt")
 ```
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 30.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 30.png]]
 
 *图 27｜通过调用pytorch api实现的model.pt文件*
 
@@ -1057,7 +1057,7 @@ make -j4
 sudo make install
 ```
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 31.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 31.png]]
 
 *图 28｜ncnn安装成功后build文件夹下的工具*
 
@@ -1077,7 +1077,7 @@ pytorch的模型还需要使用jit序列化为libtorch的pt模型后才可以使
 
 就可以得到如图 29 model.ncnn.bin和model.ncnn.param两个文件，这两个文件便是ncnn框架下的权重文件和网络的结构文件。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 32.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 32.png]]
 
 *图 29｜model.ncnn.bin和model.ncnn.param*
 
@@ -1205,7 +1205,7 @@ ncnn::Mat in(image.rows*image.cols*3, data);
 
 即可生成对应的推理图。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 33.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 33.png]]
 
 *图 30｜轻量级模型文件生成的预测图*
 
@@ -1213,21 +1213,21 @@ ncnn::Mat in(image.rows*image.cols*3, data);
 
 对同一张车道线场景图，分别使用pytorch框架和ncnn框架部署unet模型，对进行识别的效果和速度进行比较，结果如图 31和图 32所示：
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 4.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 4.jpeg]]
 
 (a) 基于pytorch框架的识别效果
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 5.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 5.jpeg]]
 
 (b) 基于ncnn框架的识别效果
 
 *图 31｜不同框架的识别效果*
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 34.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 34.png]]
 
 (a) 基于pytorch框架的识别时间
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 6.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 6.jpeg]]
 
 (b) 基于ncnn框架的识别时间
 
@@ -1243,7 +1243,7 @@ ncnn::Mat in(image.rows*image.cols*3, data);
 
 LSTR是2021年提出的基于Transformer的车道线检测模型，核心优势是利用Transformer的全局注意力机制捕捉车道线的长距离连续性，适配低光照、雨天等复杂场景，同时可通过轻量化改造实现高效部署。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 35.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 35.png]]
 
 *图 33｜LSTR结构图*
 
@@ -1429,7 +1429,7 @@ torch.onnx.export(model, input_data, 'lstr_360x640.onnx', opset_version=9, verbo
 
 在onnxruntime github官网仓库下载源码包进行编译，安装框架到开发板上。从编译好的文件夹下面拷贝出onnx模型运行需要的所有头文件，如图 34所示：
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 7.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 7.jpeg]]
 
 *图 34｜onnx框架依赖*
 
@@ -1693,31 +1693,31 @@ return visualization_img; // 返回可视化结果图像
 
 使用部署好的onnx模型分别对两张白天、一张夜晚使用LIME算法增强的车道线图片进行识别，识别结果如图 35、图 36、图 37所示。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 8.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 8.jpeg]]
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 9.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 9.jpeg]]
 
 *图 35｜LSTR-onnx模型识别效果图（一）*
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 10.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 10.jpeg]]
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 36.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 36.png]]
 
 *图 36｜LSTR-onnx模型识别效果图（二）*
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 11.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 11.jpeg]]
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 37.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 37.png]]
 
 *图 37｜LSTR-onnx模型识别效果图（三）*
 
 模型识别三张图的时间如图 38所示：
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 12.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 12.jpeg]]
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 13.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 13.jpeg]]
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 14.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 14.jpeg]]
 
 *图 38｜模型识别时间*
 
@@ -1763,21 +1763,21 @@ Unet模型的平均推理用时从17.386s缩减至4.676s，优化比为371.8%，
 
 选取几张车道线图片分别使用Unet和LSTR进行识别，识别效果如图 39~图 41所示。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 38.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 38.png]]
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 15.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 15.jpeg]]
 
 *图 39｜测试效果对比（一）*
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 39.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 39.png]]
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 40.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 40.png]]
 
 *图 40｜测试效果对比（二）*
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 41.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 41.png]]
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 42.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 42.png]]
 
 *图 41｜测试效果对比（三）*
 
@@ -1829,7 +1829,7 @@ QT这部分可以简单看看视频，看是如何应用的，面试会有极少
 
 上位机界面如图6-1所示。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 43.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 43.png]]
 
 *图 42｜上位机界面*
 
@@ -1849,13 +1849,13 @@ QT这部分可以简单看看视频，看是如何应用的，面试会有极少
 
 在银河麒麟系统下，通过命令 cat /proc/stat 可以查看从系统运行到目前位置的系统滴答时间，如图 43所示。
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 16.jpeg]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 16.jpeg]]
 
 *图 43｜系统/proc/stat 文件内容*
 
 文件每一列的内容含义如图 44所示：
 
-![[projects/linux视觉感知项目/Attachments/Linux视觉感知处理原作者文档 44.png]]
+![[assets/linux-vision/Linux视觉感知处理原作者文档 44.png]]
 
 *图 44｜系统CPU指标含义*
 

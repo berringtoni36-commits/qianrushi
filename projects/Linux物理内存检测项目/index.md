@@ -64,4 +64,4 @@ summary: "Linux 物理内存碎片检测项目的编号式 Obsidian 复习导航
 
 ## 补充资料
 
-- [[projects/Linux物理内存检测项目/linux物理内存检测工具：_带目录.pdf|原始 PDF 文档]] — 保留原始排版的项目资料
+- [[linux物理内存检测工具：_带目录.pdf|原始 PDF 文档]] — 保留原始排版的项目资料

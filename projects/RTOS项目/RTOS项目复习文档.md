@@ -109,7 +109,7 @@ USER/main.c                  → 硬件初始化顺序 + 启动调度器
 ---
 
 ### main.c 启动流程
-![[projects/RTOS项目/assets/main-startup-flow.svg]]
+![[assets/rtos/main-startup-flow.svg]]
 
 
 **Hardware_Init 初始化顺序**（顺序很重要）：
@@ -128,7 +128,7 @@ NVIC分组4 → delay → TIM1 PWM → TIM2编码器 → 蜂鸣器 → 按键
 ---
 
 ### 三层架构
-![[projects/RTOS项目/assets/three-layer-architecture.svg]]
+![[assets/rtos/three-layer-architecture.svg]]
 
 
 **改代码该找谁**：
@@ -139,7 +139,7 @@ NVIC分组4 → delay → TIM1 PWM → TIM2编码器 → 蜂鸣器 → 按键
 ---
 
 ### 系统数据流
-![[projects/RTOS项目/assets/system-data-flow.svg]]
+![[assets/rtos/system-data-flow.svg]]
 
 
 **g_systemState 关键字段**：
@@ -248,7 +248,7 @@ void Buzzer_Beep(u16 duration_ms, led_d *io)
 ---
 
 #### 按键状态机
-![[projects/RTOS项目/assets/gpio-key-state-machine.svg]]
+![[assets/rtos/gpio-key-state-machine.svg]]
 
 **为什么需要状态机**：
 - 问题1：按键按下瞬间会抖动（电平跳动），需要消抖
@@ -362,7 +362,7 @@ switch (key->state)
 #### 通信流程
 
 **完整时序**：
-![[projects/RTOS项目/assets/dht11-timing.svg]]
+![[assets/rtos/dht11-timing.svg]]
 
 
 
@@ -378,7 +378,7 @@ switch (key->state)
 
 
 **单 bit 判定图**：
-![[projects/RTOS项目/assets/dht11-bit-decision.svg]]
+![[assets/rtos/dht11-bit-decision.svg]]
 
 
 
@@ -399,7 +399,7 @@ switch (key->state)
 ---
 
 #### DHT11 核心代码
-![[projects/RTOS项目/assets/dht11-read-flow.svg]]
+![[assets/rtos/dht11-read-flow.svg]]
 
 **起始信号**：
 ```c
@@ -515,7 +515,7 @@ u8 DHT_Read_Data(u8 *temp, u8 *humi, gpioled port, u16 pin, led_d *io)
 ---
 
 #### MQ2是什么
-![[projects/RTOS项目/assets/mq2-adc-sampling-flow.svg]]
+![[assets/rtos/mq2-adc-sampling-flow.svg]]
 
 **是什么**：
 - 气体传感器，能检测烟雾、可燃气体等
@@ -537,7 +537,7 @@ u8 DHT_Read_Data(u8 *temp, u8 *humi, gpioled port, u16 pin, led_d *io)
 ---
 
 #### ADC原理
-![[projects/RTOS项目/assets/adc-conversion-principle.svg]]
+![[assets/rtos/adc-conversion-principle.svg]]
 
 **ADC 是什么**：
 - ADC = 模数转换器，把模拟电压变成数字
@@ -552,7 +552,7 @@ ADC值 = Voltage / 3.3 × 4096
 ```
 
 **ADC 初始化 5 步（MQ2_Init）**：
-![[projects/RTOS项目/assets/adc-init-flow.svg]]
+![[assets/rtos/adc-init-flow.svg]]
 
 **为什么 PA4 必须设为模拟输入？**
 - 如果不是 AIN 模式，引脚内部的上下拉或数字输入结构会干扰模拟信号
@@ -668,7 +668,7 @@ xSemaphoreGive(g_dataMutex);
 - MISO/PA6 虽然初始化了但没用到，LCD 只接收不发送
 
 **调用链**：
-![[projects/RTOS项目/assets/lcd-spi-display-flow.svg]]
+![[assets/rtos/lcd-spi-display-flow.svg]]
 
 
 ---
@@ -775,7 +775,7 @@ void UIDisplayTask(void *pvParameters)
 
 ---
 ### TIM1 PWM + 有刷直流电机
-![[projects/RTOS项目/assets/tim1-hbridge-pwm.svg]]
+![[assets/rtos/tim1-hbridge-pwm.svg]]
 
 > 面试高频考点详见 rtos项目高频面试点.md（8.8 直流有刷电机驱动原理、8.14 编写PWM驱动的步骤）
 
@@ -788,16 +788,16 @@ void UIDisplayTask(void *pvParameters)
 5. **安全设计**：初始化 CCR=0 不转，速度由运行时任务决定
 
 **H 桥电路图**：
-![[projects/RTOS项目/assets/hbridge-circuit.svg]]
-![[projects/RTOS项目/assets/h-bridge-motor-driver.svg]]
+![[assets/rtos/hbridge-circuit.svg]]
+![[assets/rtos/h-bridge-motor-driver.svg]]
 
 
 **PWM 波形生成原理**：
-![[projects/RTOS项目/assets/pwm-wave-principle.svg]]
+![[assets/rtos/pwm-wave-principle.svg]]
 
 
 **互补输出 + 死区**：
-![[projects/RTOS项目/assets/complementary-deadtime.svg]]
+![[assets/rtos/complementary-deadtime.svg]]
 
 
 **关键公式**：
@@ -881,7 +881,7 @@ void motor_dir(direction para) {
 为什么先全关：不先关可能短暂两路同时输出 → H 桥冲突 → 电机抖动甚至短路。
 
 **motor.c 模块调用关系**：
-![[projects/RTOS项目/assets/motor-module-flow.svg]]
+![[assets/rtos/motor-module-flow.svg]]
 
 
 **常见问题排查**：
@@ -907,7 +907,7 @@ void motor_dir(direction para) {
 
 
 ### TIM2编码器测速
-![[projects/RTOS项目/assets/speed-calc-flow.svg]]
+![[assets/rtos/speed-calc-flow.svg]]
 
 **核心知识点**：
 
@@ -1054,7 +1054,7 @@ delta = 65538 - 65530 = 8
 ---
 
 ## PID闭环调速
-![[projects/RTOS项目/assets/encoder-pid-loop_animated.svg]]
+![[assets/rtos/encoder-pid-loop_animated.svg]]
 
 ### 核心知识点
 - 固定 PWM 只能控制电机输入的平均电压，不能保证固定转速；负载、风阻、电源电压和电机差异都会让实际 RPM 偏离目标 RPM。
@@ -1100,7 +1100,7 @@ Kd 最后考虑，本项目为了避免放大测速噪声，设为 0。
 | `Kd` | 抑制超调能力弱 | 放大测速噪声，PWM 抖动 | `0.0` |
 
 ### 闭环数据流
-![[projects/RTOS项目/assets/pid-closed-loop-flow.svg]]
+![[assets/rtos/pid-closed-loop-flow.svg]]
 
 
 **闭环一句话**：
@@ -1271,7 +1271,7 @@ integral_max = output_max / 2 = 500
 ## FreeRTOS移植 + 应用层任务框架
 
 ### 3分钟速查版
-![[projects/RTOS项目/assets/boot-vs-freertos-startup.svg]]
+![[assets/rtos/boot-vs-freertos-startup.svg]]
 
 复习时先背这几条，能说顺就算抓住第4阶段主线。
 
@@ -1418,7 +1418,7 @@ APP_TASK/app_tasks.c     -> 任务怎么协作
 `APP_TASK/app_tasks.h` 是旁边必须带着看的“任务目录”。
 
 ### 启动链路：main 到 StartTask
-![[projects/RTOS项目/assets/freertos-startup_animated.svg]]
+![[assets/rtos/freertos-startup_animated.svg]]
 
 ```c
 int main(void)
@@ -1898,8 +1898,8 @@ while (1)
 ### 状态协作：g_systemState 和 g_dataMutex
 
 #### 共享状态的数据流
-![[projects/RTOS项目/assets/system-state-data-flow.svg]]
-![[projects/RTOS项目/assets/state-sharing_animated.svg]]
+![[assets/rtos/system-state-data-flow.svg]]
+![[assets/rtos/state-sharing_animated.svg]]
 
 
 核心思想：
@@ -2157,7 +2157,7 @@ temp 和 humidity 是整数，当前归一化表达式有整数除法风险。
 | 手动模式也用风速融合 PWM           | 手动模式主要用档位目标 RPM + PID；自动模式才用融合 PWM                 |
 
 ### 中断通知链路：TIM4/DMA 到任务
-![[projects/RTOS项目/assets/isr-task-handoff_animated.svg]]
+![[assets/rtos/isr-task-handoff_animated.svg]]
 
 #### SpeedCalcTask 与 TIM4 中断
 
@@ -2221,7 +2221,7 @@ DMA1_Channel5_IRQHandler
 > 面试高频考点详见 `rtos项目高频面试点.md`：8.18、8.28。
 
 ### 移植底层：FreeRTOSConfig、SVC、SysTick、PendSV
-![[projects/RTOS项目/assets/freertos-porting-steps.svg]]
+![[assets/rtos/freertos-porting-steps.svg]]
 
 #### FreeRTOSConfig.h 关键配置
 
@@ -2253,7 +2253,7 @@ DMA1_Channel5_IRQHandler
 凡是在 ISR 里调用 FreeRTOS `FromISR` API 的中断，优先级必须在 FreeRTOS 允许范围内。优先级数字越小，逻辑优先级越高；不能让调用 FreeRTOS API 的中断高过 `configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY` 的边界。
 
 #### SVC / SysTick / PendSV
-![[projects/RTOS项目/assets/context-switch_animated.svg]]
+![[assets/rtos/context-switch_animated.svg]]
 
 最简记忆：
 
@@ -2309,7 +2309,7 @@ xPortPendSVHandler()    -> 保存旧任务现场，切换 TCB，恢复新任务�
 ## Bootloader/IAP固件升级
 
 ### 核心概念
-![[projects/RTOS项目/assets/iap-power-recovery_animated.svg]]
+![[assets/rtos/iap-power-recovery_animated.svg]]
 - **Bootloader**：上电后先运行的引导程序，负责接收新固件、校验完整性、写入 APP 区，并跳转到 APP。
 - **APP**：真正的业务程序，负责油烟机的电机控制、传感器采集、LCD 显示、PID 调速等功能。
 - **IAP**：In Application Programming，在应用编程。项目中体现为通过 USART + DMA 接收 `APP_crc.bin`，校验通过后更新 Flash 中的 APP。
@@ -2317,7 +2317,7 @@ xPortPendSVHandler()    -> 保存旧任务现场，切换 TCB，恢复新任务�
 > 面试高频考点详见 `rtos项目高频面试点.md`：8.6 Bootloader 与 STM32 上电启动流程、8.30 升级断电恢复。
 
 ### 总体流程图
-![[projects/RTOS项目/assets/iap-upgrade-flow.svg]]
+![[assets/rtos/iap-upgrade-flow.svg]]
 
 一句话主线：
 ```text
@@ -2325,7 +2325,7 @@ xPortPendSVHandler()    -> 保存旧任务现场，切换 TCB，恢复新任务�
 ```
 
 ### Flash分区
-![[projects/RTOS项目/assets/flash-ram-layout.svg]]
+![[assets/rtos/flash-ram-layout.svg]]
 ```text
 Flash:
 0x08000000  Bootloader 区
