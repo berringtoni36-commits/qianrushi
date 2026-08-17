@@ -1,0 +1,817 @@
+{
+  "problemId": 45,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 45,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "variables": {
+        "j": 1
+      },
+      "structure": {
+        "f": [
+          0,
+          1,
+          1,
+          2,
+          2
+        ]
+      },
+      "result": [
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "d118bc93c6f4165e303fecf49f686171bfeeb61f6c2fe4d5ace105528650e463",
+    "sourceSemanticTokenHash": "d2f1ef3018edf07541c571217424b3acb125ecf42c660400b4c5b01d088d8c00",
+    "sourceCodeLineCount": 14
+  },
+  "sourceCodeSha256": "d118bc93c6f4165e303fecf49f686171bfeeb61f6c2fe4d5ace105528650e463",
+  "sourceSemanticTokenHash": "d2f1ef3018edf07541c571217424b3acb125ecf42c660400b4c5b01d088d8c00",
+  "steps": [
+    {
+      "id": "45-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "用 f 记录到达每个位置的最少跳数",
+      "body": "j 始终是能覆盖当前位置的最早跳点。 题解原意：思路讲解： 定义 f[i] 为到达位置 i 的最小跳跃次数。用 j 指针维护当前能跳到 i 的最左起点。由于 nums[j] + j < i 时 j 无法跳到 i，需要向右移动 j 直到找到第一个能跳到 i 的位置。由于 j 单调递增，整体时间复杂度 O(n)。 核心推理： 维护指针 j 表示当前能覆盖到 i 的最左起跳点。 如果 j + nums[j] < i，说明从 j 起跳无法到达 i，j 向右移动。 到达 i…",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · greedy",
+        "badge": "j=0",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "j 始终是能覆盖当前位置的最早跳点。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "j": 0
+        },
+        "structure": {
+          "f": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "45-trace-002",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "计算 f[1]=1",
+      "body": "当前 j=0 可以覆盖 i，最少跳数为 f[j]+1=1。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=1 · j=0 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "label": "j",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "当前 j=0 可以覆盖 i，最少跳数为 f[j]+1=1。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "f": [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "45-trace-003",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "计算 f[2]=1",
+      "body": "当前 j=0 可以覆盖 i，最少跳数为 f[j]+1=1。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=2 · j=0 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "label": "j",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "当前 j=0 可以覆盖 i，最少跳数为 f[j]+1=1。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 2,
+          "j": 0
+        },
+        "structure": {
+          "f": [
+            0,
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "45-trace-004",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "计算 f[3]=2",
+      "body": "当前 j=1 可以覆盖 i，最少跳数为 f[j]+1=2。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=3 · j=1 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              0
+            ]
+          },
+          {
+            "label": "j",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "当前 j=1 可以覆盖 i，最少跳数为 f[j]+1=2。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "j": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            1,
+            1,
+            2,
+            0
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "45-trace-005",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "计算 f[4]=2",
+      "body": "当前 j=1 可以覆盖 i，最少跳数为 f[j]+1=2。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=4 · j=1 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          },
+          {
+            "label": "j",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "当前 j=1 可以覆盖 i，最少跳数为 f[j]+1=2。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "j": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            1,
+            1,
+            2,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "45-trace-check-007",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。到达末尾最少需要 2 跳。",
+      "kind": "greedy",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=4 · j=1 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          },
+          {
+            "label": "j",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。到达末尾最少需要 2 跳。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "j": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            1,
+            1,
+            2,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "45-trace-check-008",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。到达末尾最少需要 2 跳。",
+      "kind": "greedy",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=4 · j=1 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          },
+          {
+            "label": "j",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。到达末尾最少需要 2 跳。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "j": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            1,
+            1,
+            2,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "45-trace-check-009",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。到达末尾最少需要 2 跳。",
+      "kind": "greedy",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=4 · j=1 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          },
+          {
+            "label": "j",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。到达末尾最少需要 2 跳。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "j": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            1,
+            1,
+            2,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "45-trace-check-010",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。到达末尾最少需要 2 跳。 易错提醒：数组长度为 1：循环 for (int i = 1; i < n; i ++ ) 不会执行，f[n-1] = f[0] = 0，直接返回 0。 j 的单调性： j 只增不减，因为后面位置的起跳起点一定不会比前面位置的起跳起点更靠左。 j + nums[j] < i 的判断： 如果这个条件成立，说明 j 无法跳到 i，需要继续向右寻找新起点…",
+      "kind": "greedy",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=4 · j=1 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          },
+          {
+            "label": "j",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。到达末尾最少需要 2 跳。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "j": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            1,
+            1,
+            2,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "45-trace-006",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "到达末尾最少需要 2 跳。",
+      "kind": "greedy",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · greedy",
+        "badge": "j=1 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "到达末尾最少需要 2 跳。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "j": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            1,
+            1,
+            2,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,752 @@
+{
+  "problemId": 207,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 207,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        0,
+        1
+      ],
+      "variables": {
+        "count": 2,
+        "n": 2
+      },
+      "structure": {
+        "indegree": [
+          0,
+          0
+        ],
+        "order": [
+          0,
+          1
+        ]
+      },
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "8b33f21c96b41a7b09d1e357f2616a1a1c87ea7bb82d95c29bcc2cdfa6c78238",
+    "sourceSemanticTokenHash": "ca7f1a98715b42ffac946682fc8f3cd8aee71fbbc1308827a345100458a64830",
+    "sourceCodeLineCount": 29
+  },
+  "sourceCodeSha256": "8b33f21c96b41a7b09d1e357f2616a1a1c87ea7bb82d95c29bcc2cdfa6c78238",
+  "sourceSemanticTokenHash": "ca7f1a98715b42ffac946682fc8f3cd8aee71fbbc1308827a345100458a64830",
+  "steps": [
+    {
+      "id": "207-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "统计入度并把零入度课程入队",
+      "body": "只有入度为 0 的课程可以先修；处理它时会解除后续课程的一条依赖。 题解原意：核心思想： 把\"先修关系\"看成有向边，课程是节点。统计每门课的\"入度\"（需要先修的课程数量）。不断删除入度为 0 的课程（可以学的课），每删除一门课就把它指向的后续课程的入度减 1。如果最后所有课程都被删除了，说明无环。 为什么这个方法有效？入度为 0 意味着没有前置依赖，可以先学。学完之后它作为前置的影响就消失了，后续课程的依赖数减 1。这个过程不断重复，如果所有课程都能被\"解放\"，说明不存在循环依赖。 复杂度…",
+      "kind": "graph",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · graph",
+        "badge": "indegree",
+        "tokens": [
+          "0",
+          "1"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 2
+        },
+        "rows": [
+          {
+            "label": "indegree",
+            "values": [
+              0,
+              1
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "只有入度为 0 的课程可以先修；处理它时会解除后续课程的一条依赖。"
+      },
+      "state": {
+        "values": [
+          0,
+          1
+        ],
+        "variables": {
+          "n": 2
+        },
+        "structure": {
+          "indegree": [
+            0,
+            1
+          ],
+          "queue": [
+            0
+          ],
+          "order": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "207-trace-002",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "mutate",
+      "title": "完成课程 0",
+      "body": "从队列取出 0，完成顺序为 [0]。",
+      "kind": "graph",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · graph",
+        "badge": "结果 1 项",
+        "tokens": [
+          "0",
+          "1"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "course": 0
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "从队列取出 0，完成顺序为 [0]。"
+      },
+      "state": {
+        "values": [
+          0,
+          1
+        ],
+        "variables": {
+          "course": 0
+        },
+        "structure": {
+          "indegree": [
+            0,
+            1
+          ],
+          "queue": [],
+          "order": [
+            0
+          ]
+        },
+        "result": [
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "207-trace-003",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "update",
+      "title": "解除课程 1 的依赖",
+      "body": "indegree[1] 降为 0，因此加入 queue。",
+      "kind": "graph",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · graph",
+        "badge": "结果 1 项",
+        "tokens": [
+          "0",
+          "1"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "course": 0,
+          "next": 1
+        },
+        "rows": [
+          {
+            "label": "indegree",
+            "values": [
+              0,
+              0
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "indegree[1] 降为 0，因此加入 queue。"
+      },
+      "state": {
+        "values": [
+          0,
+          1
+        ],
+        "variables": {
+          "course": 0,
+          "next": 1
+        },
+        "structure": {
+          "indegree": [
+            0,
+            0
+          ],
+          "queue": [
+            1
+          ],
+          "order": [
+            0
+          ]
+        },
+        "result": [
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "207-trace-004",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "mutate",
+      "title": "完成课程 1",
+      "body": "从队列取出 1，完成顺序为 [0, 1]。",
+      "kind": "graph",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · graph",
+        "badge": "结果 2 项",
+        "tokens": [
+          "0",
+          "1"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "course": 1
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              0,
+              1
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          1
+        ],
+        "note": "从队列取出 1，完成顺序为 [0, 1]。"
+      },
+      "state": {
+        "values": [
+          0,
+          1
+        ],
+        "variables": {
+          "course": 1
+        },
+        "structure": {
+          "indegree": [
+            0,
+            0
+          ],
+          "queue": [],
+          "order": [
+            0,
+            1
+          ]
+        },
+        "result": [
+          0,
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "207-trace-check-006",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。处理了 2/2 门课程，返回 true。",
+      "kind": "graph",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 2 项",
+        "tokens": [
+          "0",
+          "1"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "course": 1
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              0,
+              1
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。处理了 2/2 门课程，返回 true。"
+      },
+      "state": {
+        "values": [
+          0,
+          1
+        ],
+        "variables": {
+          "course": 1
+        },
+        "structure": {
+          "indegree": [
+            0,
+            0
+          ],
+          "queue": [],
+          "order": [
+            0,
+            1
+          ]
+        },
+        "result": [
+          0,
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "207-trace-check-007",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。处理了 2/2 门课程，返回 true。",
+      "kind": "graph",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 2 项",
+        "tokens": [
+          "0",
+          "1"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "course": 1
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              0,
+              1
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。处理了 2/2 门课程，返回 true。"
+      },
+      "state": {
+        "values": [
+          0,
+          1
+        ],
+        "variables": {
+          "course": 1
+        },
+        "structure": {
+          "indegree": [
+            0,
+            0
+          ],
+          "queue": [],
+          "order": [
+            0,
+            1
+          ]
+        },
+        "result": [
+          0,
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "207-trace-check-008",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。处理了 2/2 门课程，返回 true。",
+      "kind": "graph",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 2 项",
+        "tokens": [
+          "0",
+          "1"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "course": 1
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              0,
+              1
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。处理了 2/2 门课程，返回 true。"
+      },
+      "state": {
+        "values": [
+          0,
+          1
+        ],
+        "variables": {
+          "course": 1
+        },
+        "structure": {
+          "indegree": [
+            0,
+            0
+          ],
+          "queue": [],
+          "order": [
+            0,
+            1
+          ]
+        },
+        "result": [
+          0,
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "207-trace-check-009",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。处理了 2/2 门课程，返回 true。",
+      "kind": "graph",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 2 项",
+        "tokens": [
+          "0",
+          "1"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "course": 1
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              0,
+              1
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。处理了 2/2 门课程，返回 true。"
+      },
+      "state": {
+        "values": [
+          0,
+          1
+        ],
+        "variables": {
+          "course": 1
+        },
+        "structure": {
+          "indegree": [
+            0,
+            0
+          ],
+          "queue": [],
+          "order": [
+            0,
+            1
+          ]
+        },
+        "result": [
+          0,
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "207-trace-check-010",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。处理了 2/2 门课程，返回 true。 易错提醒：入度方向： 先修关系 prerequisites[i] = [a_i, b_i] 表示学 a_i 必须先学 b_i，即 b_i → a_i 的有向边。容易弄反方向导致建图错误。 孤立节点： 有些课程可能没有任何先修关系（也不被任何课程需要），它们入度为 0，也应加入队列参与拓扑排序。 重复边： 如果有重复的先修关系，入度会被重复计算导致拓…",
+      "kind": "graph",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 2 项",
+        "tokens": [
+          "0",
+          "1"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "course": 1
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              0,
+              1
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。处理了 2/2 门课程，返回 true。"
+      },
+      "state": {
+        "values": [
+          0,
+          1
+        ],
+        "variables": {
+          "course": 1
+        },
+        "structure": {
+          "indegree": [
+            0,
+            0
+          ],
+          "queue": [],
+          "order": [
+            0,
+            1
+          ]
+        },
+        "result": [
+          0,
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "207-trace-005",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "处理了 2/2 门课程，返回 true。",
+      "kind": "graph",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · graph",
+        "badge": "count=2 · 结果 1 项",
+        "tokens": [
+          "0",
+          "1"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "count": 2,
+          "n": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "处理了 2/2 门课程，返回 true。"
+      },
+      "state": {
+        "values": [
+          0,
+          1
+        ],
+        "variables": {
+          "count": 2,
+          "n": 2
+        },
+        "structure": {
+          "indegree": [
+            0,
+            0
+          ],
+          "order": [
+            0,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

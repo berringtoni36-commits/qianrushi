@@ -1,0 +1,1254 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "网格 DFS 沉岛",
+    "sceneKind": "matrix-grid",
+    "input": [
+      [
+        "1",
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "1",
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "1",
+        "1"
+      ]
+    ],
+    "expected": 3,
+    "exampleText": "[[1,1,0,0,0],[1,1,0,0,0],[0,0,1,0,0],[0,0,0,1,1]]",
+    "expectedText": "岛屿数量 = 3",
+    "invariant": "变为 0 的陆地已被且只被一个岛屿访问",
+    "aha": "发现一个 1 时一次 DFS 消费整个连通分量",
+    "time": "O(mn)",
+    "space": "O(mn)",
+    "problemId": 200,
+    "title": "岛屿数量",
+    "day": "Day 8：图论 + 栈",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "506dc63df7e4d4e39834c58d9a110414615a24a2b720cca080d82548b633f857",
+    "semanticTokenHash": "a53288902bbd3515919189b728240ca96413804eb7b4b919043fb1cad351fe83",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每次发现 1 就沉没整个连通分量。",
+        "review": "扫描网格寻找未访问陆地"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "cnt": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "扫描网格寻找未访问陆地",
+            "status": "running",
+            "matrix": [
+              [
+                "1",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "1",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "每次发现 1 就沉没整个连通分量。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "此格未被此前 DFS 覆盖，因此属于新岛。",
+        "review": "cell=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "cnt": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "cell=1",
+            "action": "发现新岛屿起点 (0,0)",
+            "status": "running",
+            "matrix": [
+              [
+                "1",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "1",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [
+              "0,0"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "此格未被此前 DFS 覆盖，因此属于新岛。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "访问即标零，防止重复进入。",
+        "review": "1→0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 0,
+              "y": 0,
+              "cnt": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→0",
+            "action": "沉没陆地 (0,0)",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "1",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [
+              "0,0"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "stack": []
+          },
+          "caption": "访问即标零，防止重复进入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "访问即标零，防止重复进入。",
+        "review": "1→0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 1,
+              "y": 0,
+              "cnt": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→0",
+            "action": "沉没陆地 (1,0)",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "stack": [
+              "-1,0",
+              "0,1"
+            ]
+          },
+          "caption": "访问即标零，防止重复进入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "访问即标零，防止重复进入。",
+        "review": "1→0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 1,
+              "y": 1,
+              "cnt": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→0",
+            "action": "沉没陆地 (1,1)",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "stack": [
+              "-1,0",
+              "0,1",
+              "0,0"
+            ]
+          },
+          "caption": "访问即标零，防止重复进入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "访问即标零，防止重复进入。",
+        "review": "1→0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 0,
+              "y": 1,
+              "cnt": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→0",
+            "action": "沉没陆地 (0,1)",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "stack": [
+              "-1,0",
+              "0,1",
+              "0,0"
+            ]
+          },
+          "caption": "访问即标零，防止重复进入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "一个连通分量只计数一次。",
+        "review": "cnt=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "cnt": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=1",
+            "action": "岛屿计数更新为 1",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "一个连通分量只计数一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "此格未被此前 DFS 覆盖，因此属于新岛。",
+        "review": "cell=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 2,
+              "cnt": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "cell=1",
+            "action": "发现新岛屿起点 (2,2)",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "此格未被此前 DFS 覆盖，因此属于新岛。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "访问即标零，防止重复进入。",
+        "review": "1→0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 2,
+              "y": 2,
+              "cnt": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→0",
+            "action": "沉没陆地 (2,2)",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "stack": []
+          },
+          "caption": "访问即标零，防止重复进入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "一个连通分量只计数一次。",
+        "review": "cnt=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 2,
+              "cnt": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=2",
+            "action": "岛屿计数更新为 2",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "一个连通分量只计数一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "此格未被此前 DFS 覆盖，因此属于新岛。",
+        "review": "cell=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 3,
+              "j": 3,
+              "cnt": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "cell=1",
+            "action": "发现新岛屿起点 (3,3)",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1"
+              ]
+            ],
+            "activeCells": [
+              "3,3"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "此格未被此前 DFS 覆盖，因此属于新岛。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "访问即标零，防止重复进入。",
+        "review": "1→0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 3,
+              "y": 3,
+              "cnt": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→0",
+            "action": "沉没陆地 (3,3)",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "activeCells": [
+              "3,3"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "stack": []
+          },
+          "caption": "访问即标零，防止重复进入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "访问即标零，防止重复进入。",
+        "review": "1→0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 3,
+              "y": 4,
+              "cnt": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→0",
+            "action": "沉没陆地 (3,4)",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ],
+            "activeCells": [
+              "3,4"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "stack": [
+              "2,3"
+            ]
+          },
+          "caption": "访问即标零，防止重复进入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "一个连通分量只计数一次。",
+        "review": "cnt=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 3,
+              "j": 3,
+              "cnt": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=3",
+            "action": "岛屿计数更新为 3",
+            "status": "running",
+            "matrix": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "一个连通分量只计数一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "所有陆地均已沉没并归入三个分量。",
+        "review": "return 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "cnt": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "return 3",
+            "action": "返回岛屿数量 3",
+            "status": "return",
+            "matrix": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "0,3",
+              "0,4",
+              "1,0",
+              "1,1",
+              "1,2",
+              "1,3",
+              "1,4",
+              "2,0",
+              "2,1",
+              "2,2",
+              "2,3",
+              "2,4",
+              "3,0",
+              "3,1",
+              "3,2",
+              "3,3",
+              "3,4"
+            ],
+            "output": 3
+          },
+          "caption": "所有陆地均已沉没并归入三个分量。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<vector<char>> g;\n    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};\n\n    int numIslands(vector<vector<char>>& grid) {\n        g = grid;\n        int cnt = 0;\n        for (int i = 0; i < g.size(); i ++ )\n            for (int j = 0; j < g[i].size(); j ++ )\n                if (g[i][j] == '1') {\n                    dfs(i, j);\n                    cnt ++ ;\n                }\n        return cnt;\n    }\n\n    void dfs(int x, int y) {                                     // 深度优先搜索\n        g[x][y] = '0';  // 沉岛：将'1'标记为'0'，避免重复访问\n        for (int i = 0; i < 4; i ++ ) {\n            int a = x + dx[i], b = y + dy[i];\n            if (a >= 0 && a < g.size() && b >= 0 && b < g[a].size() && g[a][b] == '1')\n                dfs(a, b);\n        }\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2891,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2892,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2893,
+        "text": "    vector<vector<char>> g;"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2894,
+        "text": "    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2895,
+        "text": ""
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2896,
+        "text": "    int numIslands(vector<vector<char>>& grid) {"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2897,
+        "text": "        g = grid;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2898,
+        "text": "        int cnt = 0;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2899,
+        "text": "        for (int i = 0; i < g.size(); i ++ )"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2900,
+        "text": "            for (int j = 0; j < g[i].size(); j ++ )"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2901,
+        "text": "                if (g[i][j] == '1') {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2902,
+        "text": "                    dfs(i, j);"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2903,
+        "text": "                    cnt ++ ;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2904,
+        "text": "                }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2905,
+        "text": "        return cnt;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2906,
+        "text": "    }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2907,
+        "text": ""
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2908,
+        "text": "    void dfs(int x, int y) {                                     // 深度优先搜索"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2909,
+        "text": "        g[x][y] = '0';  // 沉岛：将'1'标记为'0'，避免重复访问"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2910,
+        "text": "        for (int i = 0; i < 4; i ++ ) {"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2911,
+        "text": "            int a = x + dx[i], b = y + dy[i];"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2912,
+        "text": "            if (a >= 0 && a < g.size() && b >= 0 && b < g[a].size() && g[a][b] == '1')"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 2913,
+        "text": "                dfs(a, b);"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 2914,
+        "text": "        }"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 2915,
+        "text": "    }"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 2916,
+        "text": "};"
+      }
+    ]
+  }
+}

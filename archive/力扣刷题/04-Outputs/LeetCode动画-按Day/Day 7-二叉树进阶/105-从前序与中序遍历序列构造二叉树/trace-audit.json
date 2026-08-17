@@ -1,0 +1,983 @@
+{
+  "problemId": 105,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 105,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        3,
+        9,
+        20,
+        15,
+        7
+      ],
+      "variables": {
+        "root": 3
+      },
+      "structure": {
+        "built": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ]
+      },
+      "result": [
+        3,
+        9,
+        20,
+        15,
+        7
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "8f70ca29a4f3b54b319a072565460f51888a7b38a72a82f9fddb0efc75241424",
+    "sourceSemanticTokenHash": "655a68e23554af71174c44f92e67edf127aba8831a7b90930f4f0bf3b2440831",
+    "sourceCodeLineCount": 27
+  },
+  "sourceCodeSha256": "8f70ca29a4f3b54b319a072565460f51888a7b38a72a82f9fddb0efc75241424",
+  "sourceSemanticTokenHash": "655a68e23554af71174c44f92e67edf127aba8831a7b90930f4f0bf3b2440831",
+  "steps": [
+    {
+      "id": "105-trace-001",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "setup",
+      "title": "用前序确定根，用中序切分左右子树",
+      "body": "当前子树的前序首元素是根；在中序中找到它即可确定左右范围。 题解原意：核心思想： 1. 前序的第一个元素是根节点。 2. 在中序中找到根节点的位置，左边是左子树的中序，右边是右子树的中序。 3. 根据左子树的节点数，可以从前序中划分出左子树的前序和右子树的前序。 4. 递归构建左右子树。 关键： 用哈希表（字典）存储中序数组中每个值的索引，这样查找根节点在中序中的位置就是 O(1)。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "preorder",
+        "tokens": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "pre": 0,
+          "inL": 0,
+          "inR": 4
+        },
+        "rows": [
+          {
+            "label": "preorder",
+            "values": [
+              3,
+              9,
+              20,
+              15,
+              7
+            ]
+          },
+          {
+            "label": "inorder",
+            "values": [
+              9,
+              3,
+              15,
+              20,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前子树的前序首元素是根；在中序中找到它即可确定左右范围。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "variables": {
+          "pre": 0,
+          "inL": 0,
+          "inR": 4
+        },
+        "structure": {
+          "preorder": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ],
+          "inorder": [
+            9,
+            3,
+            15,
+            20,
+            7
+          ],
+          "built": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "105-trace-002",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "mutate",
+      "title": "构造根节点 3",
+      "body": "在中序中定位 3，左右子树范围为 (0, 0) / (2, 4)。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "root": 3
+        },
+        "rows": [
+          {
+            "label": "built",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "ranges",
+            "values": [
+              "(0, 0)",
+              "(2, 4)"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "在中序中定位 3，左右子树范围为 (0, 0) / (2, 4)。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "variables": {
+          "root": 3
+        },
+        "structure": {
+          "preorder": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ],
+          "inorder": [
+            9,
+            3,
+            15,
+            20,
+            7
+          ],
+          "built": [
+            3
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "105-trace-003",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "mutate",
+      "title": "构造根节点 9",
+      "body": "在中序中定位 9，左右子树范围为 (0, 0) / None。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 2 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "root": 9
+        },
+        "rows": [
+          {
+            "label": "built",
+            "values": [
+              3,
+              9
+            ]
+          },
+          {
+            "label": "ranges",
+            "values": [
+              "(0, 0)",
+              "—"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          9
+        ],
+        "note": "在中序中定位 9，左右子树范围为 (0, 0) / None。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "variables": {
+          "root": 9
+        },
+        "structure": {
+          "preorder": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ],
+          "inorder": [
+            9,
+            3,
+            15,
+            20,
+            7
+          ],
+          "built": [
+            3,
+            9
+          ]
+        },
+        "result": [
+          3,
+          9
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "105-trace-004",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "mutate",
+      "title": "构造根节点 20",
+      "body": "在中序中定位 20，左右子树范围为 (2, 2) / (3, 4)。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 3 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "root": 20
+        },
+        "rows": [
+          {
+            "label": "built",
+            "values": [
+              3,
+              9,
+              20
+            ]
+          },
+          {
+            "label": "ranges",
+            "values": [
+              "(2, 2)",
+              "(3, 4)"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          9,
+          20
+        ],
+        "note": "在中序中定位 20，左右子树范围为 (2, 2) / (3, 4)。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "variables": {
+          "root": 20
+        },
+        "structure": {
+          "preorder": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ],
+          "inorder": [
+            9,
+            3,
+            15,
+            20,
+            7
+          ],
+          "built": [
+            3,
+            9,
+            20
+          ]
+        },
+        "result": [
+          3,
+          9,
+          20
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "105-trace-005",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "mutate",
+      "title": "构造根节点 15",
+      "body": "在中序中定位 15，左右子树范围为 (3, 3) / None。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 4 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "root": 15
+        },
+        "rows": [
+          {
+            "label": "built",
+            "values": [
+              3,
+              9,
+              20,
+              15
+            ]
+          },
+          {
+            "label": "ranges",
+            "values": [
+              "(3, 3)",
+              "—"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          9,
+          20,
+          15
+        ],
+        "note": "在中序中定位 15，左右子树范围为 (3, 3) / None。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "variables": {
+          "root": 15
+        },
+        "structure": {
+          "preorder": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ],
+          "inorder": [
+            9,
+            3,
+            15,
+            20,
+            7
+          ],
+          "built": [
+            3,
+            9,
+            20,
+            15
+          ]
+        },
+        "result": [
+          3,
+          9,
+          20,
+          15
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "105-trace-006",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "mutate",
+      "title": "构造根节点 7",
+      "body": "在中序中定位 7，左右子树范围为 (4, 4) / None。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 5 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "root": 7
+        },
+        "rows": [
+          {
+            "label": "built",
+            "values": [
+              3,
+              9,
+              20,
+              15,
+              7
+            ]
+          },
+          {
+            "label": "ranges",
+            "values": [
+              "(4, 4)",
+              "—"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "note": "在中序中定位 7，左右子树范围为 (4, 4) / None。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "variables": {
+          "root": 7
+        },
+        "structure": {
+          "preorder": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ],
+          "inorder": [
+            9,
+            3,
+            15,
+            20,
+            7
+          ],
+          "built": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ]
+        },
+        "result": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "105-trace-check-008",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。递归切分完成，返回根为 3 的二叉树。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 5 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "root": 7
+        },
+        "rows": [
+          {
+            "label": "built",
+            "values": [
+              3,
+              9,
+              20,
+              15,
+              7
+            ]
+          },
+          {
+            "label": "ranges",
+            "values": [
+              "(4, 4)",
+              "—"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。递归切分完成，返回根为 3 的二叉树。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "variables": {
+          "root": 7
+        },
+        "structure": {
+          "preorder": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ],
+          "inorder": [
+            9,
+            3,
+            15,
+            20,
+            7
+          ],
+          "built": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ]
+        },
+        "result": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "105-trace-check-009",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。递归切分完成，返回根为 3 的二叉树。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 5 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "root": 7
+        },
+        "rows": [
+          {
+            "label": "built",
+            "values": [
+              3,
+              9,
+              20,
+              15,
+              7
+            ]
+          },
+          {
+            "label": "ranges",
+            "values": [
+              "(4, 4)",
+              "—"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。递归切分完成，返回根为 3 的二叉树。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "variables": {
+          "root": 7
+        },
+        "structure": {
+          "preorder": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ],
+          "inorder": [
+            9,
+            3,
+            15,
+            20,
+            7
+          ],
+          "built": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ]
+        },
+        "result": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "105-trace-check-010",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。递归切分完成，返回根为 3 的二叉树。 易错提醒：左子树大小的计算： left_size = in_idx - in_l（中序中根的位置减左边界），然后用 left_size 来分割前序数组。 前序数组边界： 左子树前序区间是 [pre_l + 1, pre_l + left_size]，右子树前序区间是 [pre_l + left_size + 1, pre_r]。注意 +1 和 -1…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 5 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "root": 7
+        },
+        "rows": [
+          {
+            "label": "built",
+            "values": [
+              3,
+              9,
+              20,
+              15,
+              7
+            ]
+          },
+          {
+            "label": "ranges",
+            "values": [
+              "(4, 4)",
+              "—"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。递归切分完成，返回根为 3 的二叉树。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "variables": {
+          "root": 7
+        },
+        "structure": {
+          "preorder": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ],
+          "inorder": [
+            9,
+            3,
+            15,
+            20,
+            7
+          ],
+          "built": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ]
+        },
+        "result": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "105-trace-007",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "递归切分完成，返回根为 3 的二叉树。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "结果 5 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "root": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3,
+              9,
+              20,
+              15,
+              7
+            ]
+          }
+        ],
+        "result": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "note": "递归切分完成，返回根为 3 的二叉树。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "variables": {
+          "root": 3
+        },
+        "structure": {
+          "built": [
+            3,
+            9,
+            20,
+            15,
+            7
+          ]
+        },
+        "result": [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

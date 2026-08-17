@@ -1,0 +1,980 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "降序快速选择",
+    "sceneKind": "array-pointers",
+    "input": {
+      "nums": [
+        3,
+        2,
+        1,
+        5,
+        6,
+        4
+      ],
+      "k": 2
+    },
+    "expected": 5,
+    "exampleText": "[3,2,1,5,6,4], k=2",
+    "expectedText": "第 2 大 = 5",
+    "invariant": "目标下标 k 始终位于当前闭区间",
+    "aha": "分区后只递归包含 k 的一侧",
+    "time": "O(n) average",
+    "space": "O(log n)",
+    "problemId": 215,
+    "title": "数组中的第 K 个最大元素",
+    "day": "Day 9：单调栈 + 堆",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "6d8c46c8b84408aca29e800c8950a9e216497b1a74246c09dd3c6337839c46f1",
+    "semanticTokenHash": "95e6580abf94c6bfa6651ffdbb1879ba31bcaf8adc0030235a70c6a0654d5d87",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "快速选择只递归包含 k 的分区。",
+        "review": "第 2 大对应降序下标 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              3,
+              2,
+              1,
+              5,
+              6,
+              4
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "k": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "第 2 大对应降序下标 1",
+            "status": "running"
+          },
+          "caption": "快速选择只递归包含 k 的分区。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "i 停在不大于基准处，j 停在不小于基准处。",
+        "review": "pivot=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              3,
+              2,
+              1,
+              5,
+              6,
+              4
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "k": 1,
+              "x": 3,
+              "i": 0,
+              "j": 5
+            },
+            "pointers": {
+              "i": 0,
+              "j": 5
+            },
+            "active": [],
+            "compared": [
+              0,
+              5
+            ],
+            "result": [],
+            "formula": "pivot=3",
+            "action": "分区指针 i=0, j=5",
+            "status": "running"
+          },
+          "caption": "i 停在不大于基准处，j 停在不小于基准处。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "交换恢复左大右小分区。",
+        "review": "partition swap"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              4,
+              2,
+              1,
+              5,
+              6,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "k": 1,
+              "x": 3
+            },
+            "pointers": {},
+            "active": [
+              0,
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "partition swap",
+            "action": "交换 0 与 5",
+            "status": "running"
+          },
+          "caption": "交换恢复左大右小分区。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "i 停在不大于基准处，j 停在不小于基准处。",
+        "review": "pivot=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              4,
+              2,
+              1,
+              5,
+              6,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "k": 1,
+              "x": 3,
+              "i": 1,
+              "j": 4
+            },
+            "pointers": {
+              "i": 1,
+              "j": 4
+            },
+            "active": [],
+            "compared": [
+              1,
+              4
+            ],
+            "result": [],
+            "formula": "pivot=3",
+            "action": "分区指针 i=1, j=4",
+            "status": "running"
+          },
+          "caption": "i 停在不大于基准处，j 停在不小于基准处。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "交换恢复左大右小分区。",
+        "review": "partition swap"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              4,
+              6,
+              1,
+              5,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "k": 1,
+              "x": 3
+            },
+            "pointers": {},
+            "active": [
+              1,
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "partition swap",
+            "action": "交换 1 与 4",
+            "status": "running"
+          },
+          "caption": "交换恢复左大右小分区。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "i 停在不大于基准处，j 停在不小于基准处。",
+        "review": "pivot=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              4,
+              6,
+              1,
+              5,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "k": 1,
+              "x": 3,
+              "i": 2,
+              "j": 3
+            },
+            "pointers": {
+              "i": 2,
+              "j": 3
+            },
+            "active": [],
+            "compared": [
+              2,
+              3
+            ],
+            "result": [],
+            "formula": "pivot=3",
+            "action": "分区指针 i=2, j=3",
+            "status": "running"
+          },
+          "caption": "i 停在不大于基准处，j 停在不小于基准处。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "交换恢复左大右小分区。",
+        "review": "partition swap"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "k": 1,
+              "x": 3
+            },
+            "pointers": {},
+            "active": [
+              2,
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "partition swap",
+            "action": "交换 2 与 3",
+            "status": "running"
+          },
+          "caption": "交换恢复左大右小分区。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "i 停在不大于基准处，j 停在不小于基准处。",
+        "review": "pivot=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "k": 1,
+              "x": 3,
+              "i": 3,
+              "j": 2
+            },
+            "pointers": {
+              "i": 3,
+              "j": 2
+            },
+            "active": [],
+            "compared": [
+              3,
+              2
+            ],
+            "result": [],
+            "formula": "pivot=3",
+            "action": "分区指针 i=3, j=2",
+            "status": "running"
+          },
+          "caption": "i 停在不大于基准处，j 停在不小于基准处。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "另一侧分区无需排序。",
+        "review": "k=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 2,
+              "k": 1,
+              "j": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "k=1",
+            "action": "k 位于新区间 [0,2]",
+            "status": "running"
+          },
+          "caption": "另一侧分区无需排序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "i 停在不大于基准处，j 停在不小于基准处。",
+        "review": "pivot=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 2,
+              "k": 1,
+              "x": 4,
+              "i": 0,
+              "j": 2
+            },
+            "pointers": {
+              "i": 0,
+              "j": 2
+            },
+            "active": [],
+            "compared": [
+              0,
+              2
+            ],
+            "result": [],
+            "formula": "pivot=4",
+            "action": "分区指针 i=0, j=2",
+            "status": "running"
+          },
+          "caption": "i 停在不大于基准处，j 停在不小于基准处。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "交换恢复左大右小分区。",
+        "review": "partition swap"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              5,
+              6,
+              4,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 2,
+              "k": 1,
+              "x": 4
+            },
+            "pointers": {},
+            "active": [
+              0,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "partition swap",
+            "action": "交换 0 与 2",
+            "status": "running"
+          },
+          "caption": "交换恢复左大右小分区。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "i 停在不大于基准处，j 停在不小于基准处。",
+        "review": "pivot=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              5,
+              6,
+              4,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 2,
+              "k": 1,
+              "x": 4,
+              "i": 2,
+              "j": 1
+            },
+            "pointers": {
+              "i": 2,
+              "j": 1
+            },
+            "active": [],
+            "compared": [
+              2,
+              1
+            ],
+            "result": [],
+            "formula": "pivot=4",
+            "action": "分区指针 i=2, j=1",
+            "status": "running"
+          },
+          "caption": "i 停在不大于基准处，j 停在不小于基准处。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "另一侧分区无需排序。",
+        "review": "k=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              5,
+              6,
+              4,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 1,
+              "k": 1,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "k=1",
+            "action": "k 位于新区间 [0,1]",
+            "status": "running"
+          },
+          "caption": "另一侧分区无需排序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "i 停在不大于基准处，j 停在不小于基准处。",
+        "review": "pivot=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              5,
+              6,
+              4,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 1,
+              "k": 1,
+              "x": 5,
+              "i": 0,
+              "j": 1
+            },
+            "pointers": {
+              "i": 0,
+              "j": 1
+            },
+            "active": [],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "pivot=5",
+            "action": "分区指针 i=0, j=1",
+            "status": "running"
+          },
+          "caption": "i 停在不大于基准处，j 停在不小于基准处。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "交换恢复左大右小分区。",
+        "review": "partition swap"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              6,
+              5,
+              4,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 1,
+              "k": 1,
+              "x": 5
+            },
+            "pointers": {},
+            "active": [
+              0,
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "partition swap",
+            "action": "交换 0 与 1",
+            "status": "running"
+          },
+          "caption": "交换恢复左大右小分区。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "i 停在不大于基准处，j 停在不小于基准处。",
+        "review": "pivot=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              6,
+              5,
+              4,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 0,
+              "r": 1,
+              "k": 1,
+              "x": 5,
+              "i": 1,
+              "j": 0
+            },
+            "pointers": {
+              "i": 1,
+              "j": 0
+            },
+            "active": [],
+            "compared": [
+              1,
+              0
+            ],
+            "result": [],
+            "formula": "pivot=5",
+            "action": "分区指针 i=1, j=0",
+            "status": "running"
+          },
+          "caption": "i 停在不大于基准处，j 停在不小于基准处。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "另一侧分区无需排序。",
+        "review": "k=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              6,
+              5,
+              4,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 1,
+              "r": 1,
+              "k": 1,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "k=1",
+            "action": "k 位于新区间 [1,1]",
+            "status": "running"
+          },
+          "caption": "另一侧分区无需排序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "候选区间收缩为单点。",
+        "review": "nums[1]=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              6,
+              5,
+              4,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "l": 1,
+              "r": 1,
+              "k": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "nums[1]=5",
+            "action": "返回第 2 大元素 5",
+            "status": "return",
+            "output": 5
+          },
+          "caption": "候选区间收缩为单点。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n\n    int quick_sort(vector<int>& nums, int l, int r, int k) {\n        if (l == r) return nums[k];\n        int x = nums[l], i = l - 1, j = r + 1;\n        while (i < j) {\n            do i ++ ; while (nums[i] > x);\n            do j -- ; while (nums[j] < x);\n            if (i < j) swap(nums[i], nums[j]);\n        }\n        if (k <= j) return quick_sort(nums, l, j, k);\n        else return quick_sort(nums, j + 1, r, k);\n    }\n\n    int findKthLargest(vector<int>& nums, int k) {\n        return quick_sort(nums, 0, nums.size() - 1, k - 1);\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3449,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3450,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3451,
+        "text": ""
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3452,
+        "text": "    int quick_sort(vector<int>& nums, int l, int r, int k) {"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3453,
+        "text": "        if (l == r) return nums[k];"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3454,
+        "text": "        int x = nums[l], i = l - 1, j = r + 1;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3455,
+        "text": "        while (i < j) {"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3456,
+        "text": "            do i ++ ; while (nums[i] > x);"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3457,
+        "text": "            do j -- ; while (nums[j] < x);"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3458,
+        "text": "            if (i < j) swap(nums[i], nums[j]);"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3459,
+        "text": "        }"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3460,
+        "text": "        if (k <= j) return quick_sort(nums, l, j, k);"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3461,
+        "text": "        else return quick_sort(nums, j + 1, r, k);"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3462,
+        "text": "    }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3463,
+        "text": ""
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3464,
+        "text": "    int findKthLargest(vector<int>& nums, int k) {"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3465,
+        "text": "        return quick_sort(nums, 0, nums.size() - 1, k - 1);"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3466,
+        "text": "    }"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3467,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "skill": "rtos-key-event-state-machine",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"按键偶尔一次按下触发两次，怎么审计消抖、扫描周期和事件清除？","expected_behavior":"激活本 skill，检查电平、30ms消抖、10ms扫描和单字段事件消费","notes":"消抖排障"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"请解释 KEY1/KEY2 的短按、长按、持续长按和释放事件如何映射到烟机业务","expected_behavior":"激活本 skill，给出状态机和 KeyScanTask 映射","notes":"事件映射"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"头文件里有 KEY_STATE_WAIT_RELEASE，源码真的走这个状态吗？","expected_behavior":"激活本 skill，核对枚举与 key.c 分支，指出当前未专门使用","notes":"文档源码审计"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"自动模式 Cooking Event 消失后为什么延时 10 秒关闭？","expected_behavior":"不优先激活本 skill，转 rtos-auto-mode-state-machine","notes":"兄弟 Skill 诱饵"},
+    {"id":"should_not_trigger_02","type":"should_not_trigger","prompt":"FreeRTOS 按键任务优先级应该怎么设置？","expected_behavior":"不优先激活本 skill，转 rtos-task-and-isr-design","notes":"调度边界"},
+    {"id":"edge-01","type":"edge_case","prompt":"我只想知道机械按键为什么要消抖，不需要这个项目的代码映射","expected_behavior":"可做通用概念解释，不强行套用项目事件链","notes":"通用概念边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Crisp Focus - Spring-Eased Cursor & Local Ambient Engine (v1.1.11)
+   Crisp Focus - Spring-Eased Cursor & Local Ambient Engine (v1.3.2)
    Crafted by letschips (Xiaohongshu)
    ========================================================================== */
 
@@ -9,6 +9,17 @@ const { requestUrl } = obsidian;
 const CRISP_PUBLIC_KEY_PEM = `-----BEGIN PUBLIC KEY-----
 MCowBQYDK2VwAyEAiz41HIDpD59SH3DjKnovUO+EEhTJXjvmiug/ev9t4ZQ=
 -----END PUBLIC KEY-----`;
+
+const CRISP_LICENSE_PRODUCTS = [
+  "Crisp Suite",
+  "Crisp Organize",
+  "Crisp ASR",
+  "Crisp Annotations",
+  "Crisp File Explorer",
+  "Crisp Focus",
+  "Crisp Reading Rail",
+  "Crisp Base",
+];
 
 
 function base64UrlToUint8Array(base64url) {
@@ -23,13 +34,23 @@ function base64UrlToUint8Array(base64url) {
   return buffer;
 }
 
-async function importEd25519PublicKey(pem) {
+function getCryptoSubtle(windowObj = window) {
+  return windowObj && windowObj.crypto && windowObj.crypto.subtle
+    ? windowObj.crypto.subtle
+    : null;
+}
+
+async function importEd25519PublicKey(pem, windowObj = window) {
+  const subtle = getCryptoSubtle(windowObj);
+  if (!subtle) {
+    throw new Error("当前 Obsidian 版本不支持 WebCrypto Ed25519");
+  }
   const pemContents = pem
     .replace("-----BEGIN PUBLIC KEY-----", "")
     .replace("-----END PUBLIC KEY-----", "")
     .replace(/\s/g, "");
   const der = base64UrlToUint8Array(pemContents);
-  return await window.crypto.subtle.importKey(
+  return await subtle.importKey(
     "spki",
     der.buffer,
     { name: "Ed25519" },
@@ -38,7 +59,7 @@ async function importEd25519PublicKey(pem) {
   );
 }
 
-async function verifyLicenseCode(licenseCode, targetPluginId = "crisp-focus") {
+async function verifyLicenseCode(licenseCode, targetPluginId = "crisp-focus", app = null, windowObj = window) {
   const trimmed = (licenseCode || "").trim();
   if (!trimmed) return { valid: false, reason: "授权码为空" };
   const parts = trimmed.split(".");
@@ -47,17 +68,25 @@ async function verifyLicenseCode(licenseCode, targetPluginId = "crisp-focus") {
   try {
     const payloadJson = new TextDecoder().decode(base64UrlToUint8Array(payloadBase64));
     const payload = JSON.parse(payloadJson);
-    const validProducts = ["Crisp Suite", "Crisp ASR", "Crisp Annotations", "Crisp File Explorer", "Crisp Focus", "Crisp Reading Rail"];
-    if (!validProducts.includes(payload.product)) return { valid: false, reason: "授权码不属于 Crisp 系列插件" };
+    if (!payload || typeof payload !== "object") {
+      return { valid: false, reason: "授权数据无效" };
+    }
+    if (!CRISP_LICENSE_PRODUCTS.includes(payload.product)) return { valid: false, reason: "授权码不属于 Crisp 系列插件" };
     const features = Array.isArray(payload.features) ? payload.features : [];
     if (!features.includes("all") && !features.includes(targetPluginId)) {
       return { valid: false, reason: `该授权码未包含 ${targetPluginId} 权限` };
     }
-    if (payload.expiresAt && new Date(payload.expiresAt).getTime() < Date.now()) {
-      return { valid: false, reason: `授权已于 ${payload.expiresAt.split("T")[0]} 到期` };
+    if (payload.expiresAt) {
+      const expiresAt = new Date(payload.expiresAt).getTime();
+      if (!Number.isFinite(expiresAt)) {
+        return { valid: false, reason: "授权到期时间无效" };
+      }
+      if (expiresAt < Date.now()) {
+        return { valid: false, reason: `授权已于 ${String(payload.expiresAt).split("T")[0]} 到期` };
+      }
     }
-    const publicKey = await importEd25519PublicKey(CRISP_PUBLIC_KEY_PEM);
-    const isValid = await window.crypto.subtle.verify(
+    const publicKey = await importEd25519PublicKey(CRISP_PUBLIC_KEY_PEM, windowObj);
+    const isValid = await getCryptoSubtle(windowObj).verify(
       "Ed25519",
       publicKey,
       base64UrlToUint8Array(signatureBase64),
@@ -66,7 +95,6 @@ async function verifyLicenseCode(licenseCode, targetPluginId = "crisp-focus") {
     if (!isValid) return { valid: false, reason: "授权签名无效" };
 
     try {
-      const app = (window.app);
       const deviceId = app?.appId || (app?.vault?.getName ? "vault-" + encodeURIComponent(app.vault.getName()) : "device-default");
       const res = await requestUrl({
         url: "https://crisp-license.helloherve-xsn.workers.dev/api/verify-device",
@@ -84,13 +112,68 @@ async function verifyLicenseCode(licenseCode, targetPluginId = "crisp-focus") {
         if (cloudResult.valid === false) {
           return { valid: false, reason: cloudResult.reason || "设备数已达上限" };
         }
-        return { valid: true, payload, message: cloudResult.message };
+        return { valid: true, payload, message: cloudResult.message, source: "online" };
       }
-    } catch (netErr) {}
+    } catch (netErr) {
+      return { valid: true, payload, message: "离线验证成功", source: "offline" };
+    }
 
-    return { valid: true, payload };
+    return { valid: true, payload, message: "离线验证成功", source: "offline" };
   } catch (e) {
     return { valid: false, reason: `解析授权码失败: ${e.message}` };
+  }
+}
+
+class CrispFocusLicenseManager {
+  constructor(app, settings, options = {}) {
+    this.app = app;
+    this.settings = settings;
+    this.verifier = options.verifier || verifyLicenseCode;
+    this.now = options.now || (() => Date.now());
+    this.onEntitlementLost = options.onEntitlementLost || (() => {});
+    this.windowObj = options.windowObj || window;
+    this.status = { valid: false, reason: "尚未验证" };
+
+    if (this.settings && this.settings.licenseCode && typeof this.settings.licenseCode === "string" && this.settings.licenseCode.includes(".")) {
+      try {
+        const payloadBase64 = this.settings.licenseCode.split(".")[0];
+        const payloadJson = new TextDecoder().decode(base64UrlToUint8Array(payloadBase64));
+        const payload = JSON.parse(payloadJson);
+        if (CRISP_LICENSE_PRODUCTS.includes(payload.product)) {
+          this.status = { valid: true, payload, message: "本地验证成功", source: "offline" };
+        }
+      } catch (e) {
+        // ignore decode error during early constructor init
+      }
+    }
+  }
+
+  isEntitled() {
+    return this.status.valid === true;
+  }
+
+  getStatus() {
+    return this.status;
+  }
+
+  async verify(code = this.settings.licenseCode) {
+    const wasEntitled = this.isEntitled();
+    let result;
+    try {
+      result = await this.verifier(code, "crisp-focus", this.app, this.windowObj);
+    } catch (error) {
+      result = { valid: false, reason: `授权验证失败: ${error.message || error}` };
+    }
+
+    if (result.valid && result.source === "online") {
+      this.settings.licenseLastOnlineAt = this.now();
+    }
+
+    this.status = result;
+    if (wasEntitled && !this.isEntitled()) {
+      this.onEntitlementLost(result);
+    }
+    return result;
   }
 }
 
@@ -147,6 +230,7 @@ class CrispFocusAudioEngine {
   }
 
   handleUserGesture() {
+    if (!this.getEnabled() && this.getAmbientSound() === "off") return;
     this.unlock();
     this.updateAmbient();
   }
@@ -609,6 +693,8 @@ class CrispFocusAudioEngine {
   stopAmbient() {
     if (this.ambientAudioEl) {
       this.ambientAudioEl.pause();
+      this.ambientAudioEl.src = "";
+      this.ambientAudioEl = null;
       this.currentAmbientSound = null;
     }
   }
@@ -719,19 +805,228 @@ function ensureCursorLayerPatched(editorView, plugin, patchUninstallers) {
 // --------------------------------------------------------------------------
 // 3. Settings Schema & Apple Spring Accordion Settings Tab
 // --------------------------------------------------------------------------
+const FOCUS_SCENES = Object.freeze({
+  "silent-writing": Object.freeze({
+    name: "静默写作",
+    description: "只保留平滑光标，不播放任何声音。",
+    settings: Object.freeze({
+      ambientSound: "off",
+      ambientVolume: 0.45,
+      animatedCursorEnabled: true,
+      blinkCount: 10,
+      blinkRate: 1000,
+      cursorSpeed: 80,
+      focusModeEnabled: true,
+      soundTheme: "typewriter",
+      typewriterAudioEnabled: false,
+      typewriterBellEnabled: false,
+      typewriterVolume: 0.35,
+    }),
+  }),
+  "vintage-typewriter": Object.freeze({
+    name: "复古打字机",
+    description: "敏捷光标与清晰的复古打字机反馈。",
+    settings: Object.freeze({
+      ambientSound: "off",
+      ambientVolume: 0.45,
+      animatedCursorEnabled: true,
+      blinkCount: 10,
+      blinkRate: 900,
+      cursorSpeed: 75,
+      focusModeEnabled: true,
+      soundTheme: "typewriter",
+      typewriterAudioEnabled: true,
+      typewriterBellEnabled: true,
+      typewriterVolume: 0.55,
+    }),
+  }),
+  "rainy-writing": Object.freeze({
+    name: "雨天写作",
+    description: "轻柔雨滴按键音与本地雨声环境。",
+    settings: Object.freeze({
+      ambientSound: "rain",
+      ambientVolume: 0.45,
+      animatedCursorEnabled: true,
+      blinkCount: 8,
+      blinkRate: 1100,
+      cursorSpeed: 95,
+      focusModeEnabled: true,
+      soundTheme: "raindrop",
+      typewriterAudioEnabled: true,
+      typewriterBellEnabled: false,
+      typewriterVolume: 0.35,
+    }),
+  }),
+  "ocean-zen": Object.freeze({
+    name: "海边禅写",
+    description: "舒缓光标、木鱼反馈与低音量海浪。",
+    settings: Object.freeze({
+      ambientSound: "ocean",
+      ambientVolume: 0.4,
+      animatedCursorEnabled: true,
+      blinkCount: 6,
+      blinkRate: 1250,
+      cursorSpeed: 110,
+      focusModeEnabled: true,
+      soundTheme: "woodenFish",
+      typewriterAudioEnabled: true,
+      typewriterBellEnabled: true,
+      typewriterVolume: 0.4,
+    }),
+  }),
+});
+
+function sceneRequiresLicense(scene) {
+  return scene.settings.typewriterAudioEnabled || scene.settings.ambientSound !== "off";
+}
+
+class FocusSessionController {
+  constructor(options = {}) {
+    this.now = options.now || (() => Date.now());
+    this.setInterval = options.setInterval || ((callback, delay) => setInterval(callback, delay));
+    this.clearInterval = options.clearInterval || ((timer) => clearInterval(timer));
+    this.onUpdate = options.onUpdate || (() => {});
+    this.onComplete = options.onComplete || (() => {});
+    this.timer = null;
+    this.state = { status: "idle", endAt: 0, remainingMs: 0 };
+  }
+
+  getSnapshot() {
+    return { ...this.state };
+  }
+
+  emit(reason) {
+    this.onUpdate(this.getSnapshot(), reason);
+  }
+
+  schedule() {
+    this.clearTimer();
+    this.timer = this.setInterval(() => this.tick(), 1000);
+  }
+
+  clearTimer() {
+    if (this.timer !== null) {
+      this.clearInterval(this.timer);
+      this.timer = null;
+    }
+  }
+
+  start(minutes) {
+    const durationMinutes = Math.max(1, Math.min(240, Math.round(Number(minutes) || 25)));
+    const durationMs = durationMinutes * 60 * 1000;
+    this.state = {
+      status: "running",
+      endAt: this.now() + durationMs,
+      remainingMs: durationMs,
+    };
+    this.schedule();
+    this.emit("start");
+    return this.getSnapshot();
+  }
+
+  tick() {
+    if (this.state.status !== "running") return this.getSnapshot();
+    const remainingMs = Math.max(0, this.state.endAt - this.now());
+    if (remainingMs === 0) {
+      this.complete();
+      return this.getSnapshot();
+    }
+    this.state = { ...this.state, remainingMs };
+    this.emit("tick");
+    return this.getSnapshot();
+  }
+
+  pause() {
+    if (this.state.status !== "running") return this.getSnapshot();
+    const remainingMs = Math.max(0, this.state.endAt - this.now());
+    if (remainingMs === 0) {
+      this.complete();
+      return this.getSnapshot();
+    }
+    this.clearTimer();
+    this.state = { status: "paused", endAt: 0, remainingMs };
+    this.emit("pause");
+    return this.getSnapshot();
+  }
+
+  resume() {
+    if (this.state.status !== "paused" || this.state.remainingMs <= 0) {
+      return this.getSnapshot();
+    }
+    this.state = {
+      status: "running",
+      endAt: this.now() + this.state.remainingMs,
+      remainingMs: this.state.remainingMs,
+    };
+    this.schedule();
+    this.emit("resume");
+    return this.getSnapshot();
+  }
+
+  stop() {
+    this.clearTimer();
+    this.state = { status: "idle", endAt: 0, remainingMs: 0 };
+    this.emit("stop");
+    return this.getSnapshot();
+  }
+
+  complete() {
+    if (this.state.status === "idle") return;
+    this.clearTimer();
+    this.state = { status: "idle", endAt: 0, remainingMs: 0 };
+    this.emit("complete");
+    this.onComplete();
+  }
+
+  restore(savedState) {
+    if (!savedState || typeof savedState !== "object") return this.getSnapshot();
+    if (savedState.status === "running") {
+      const endAt = Number(savedState.endAt) || 0;
+      const remainingMs = Math.max(0, endAt - this.now());
+      if (remainingMs > 0) {
+        this.state = { status: "running", endAt, remainingMs };
+        this.schedule();
+        this.emit("restore");
+      }
+    } else if (savedState.status === "paused") {
+      const remainingMs = Math.max(0, Number(savedState.remainingMs) || 0);
+      if (remainingMs > 0) {
+        this.state = { status: "paused", endAt: 0, remainingMs };
+        this.emit("restore");
+      }
+    }
+    return this.getSnapshot();
+  }
+
+  destroy() {
+    this.clearTimer();
+  }
+}
+
+function formatSessionRemaining(remainingMs) {
+  const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = String(totalSeconds % 60).padStart(2, "0");
+  return `${minutes}:${seconds}`;
+}
+
 const DEFAULT_SETTINGS = {
+  activeSceneId: "silent-writing",
   focusModeEnabled: true,
   animatedCursorEnabled: true,
   cursorSpeed: 80,
   blinkRate: 1000,
   blinkCount: 10,
-  typewriterAudioEnabled: true,
+  typewriterAudioEnabled: false,
   soundTheme: "typewriter", // typewriter, mechanical, raindrop, retro8bit, woodenFish
   typewriterVolume: 0.7,
   typewriterBellEnabled: true,
   ambientSound: "off", // off, rain, campfire, ocean, wind
   ambientVolume: 0.65,
-  licenseCode: ""
+  licenseCode: "",
+  licenseLastOnlineAt: 0,
+  sessionDurationMinutes: 25,
+  sessionState: { status: "idle", endAt: 0, remainingMs: 0 }
 };
 
 function renderAboutCard(container, pluginName, description) {
@@ -741,7 +1036,7 @@ function renderAboutCard(container, pluginName, description) {
 
   const title = document.createElement("h3");
   title.className = "crisp-focus-about__title";
-  title.textContent = `About ${pluginName}`;
+  title.textContent = `关于 ${pluginName}`;
 
   const copy = document.createElement("p");
   copy.className = "crisp-focus-about__description";
@@ -767,6 +1062,7 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.plugin = plugin;
+    this.licenseDraft = plugin.settings?.licenseCode || "";
   }
 
   display() {
@@ -778,8 +1074,8 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       .setHeading();
 
     new obsidian.Setting(containerEl)
-      .setName("Focus mode")
-      .setDesc("Master switch for the animated cursor, typing feedback, and ambient sound.")
+      .setName("专注模式")
+      .setDesc("动效光标、打字音效与环境音的总体开关。")
       .addToggle((toggle) =>
         toggle
           .setValue(this.plugin.settings.focusModeEnabled)
@@ -833,9 +1129,88 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       return body;
     };
 
+    const sceneGroup = createGroup(
+      "专注场景",
+      "一键同步光标、打字反馈与环境音组合。",
+      true
+    );
+
+    new obsidian.Setting(sceneGroup)
+      .setName("当前场景")
+      .setDesc("静默写作免费可用；包含音效的场景需要激活。")
+      .addDropdown((dropdown) => {
+        dropdown.addOption("custom", "自定义（当前设置）");
+        Object.entries(FOCUS_SCENES).forEach(([sceneId, scene]) => {
+          dropdown.addOption(sceneId, scene.name);
+        });
+        dropdown
+          .setValue(this.plugin.settings.activeSceneId || "custom")
+          .onChange(async (sceneId) => {
+            if (sceneId === "custom") return;
+            const result = await this.plugin.applyScene(sceneId);
+            if (!result.applied) {
+              new obsidian.Notice(`🔒 ${result.reason}`);
+              this.display();
+              return;
+            }
+            new obsidian.Notice(`Crisp Focus 已切换到“${result.scene.name}”`);
+            this.display();
+          });
+      });
+
+    const sessionGroup = createGroup(
+      "专注会话",
+      "用状态栏倒计时完成一段有边界的写作时间。",
+      true
+    );
+    const sessionSnapshot = this.plugin.session.getSnapshot();
+
+    new obsidian.Setting(sessionGroup)
+      .setName("默认时长")
+      .setDesc("设置 1–240 分钟；命令面板另提供 25 与 50 分钟快捷入口。")
+      .addText((text) => text
+        .setValue(String(this.plugin.settings.sessionDurationMinutes || 25))
+        .onChange(async (value) => {
+          const minutes = Math.max(1, Math.min(240, Math.round(Number(value) || 25)));
+          this.plugin.settings.sessionDurationMinutes = minutes;
+          await this.plugin.saveSettings();
+          this.plugin.renderSessionStatus(this.plugin.session.getSnapshot());
+        }));
+
+    new obsidian.Setting(sessionGroup)
+      .setName("会话控制")
+      .setDesc(sessionSnapshot.status === "idle"
+        ? "当前没有进行中的会话。"
+        : `剩余 ${formatSessionRemaining(sessionSnapshot.remainingMs)}`)
+      .addButton((button) => button
+        .setButtonText(sessionSnapshot.status === "idle" ? "开始" : "重新开始")
+        .setCta()
+        .onClick(async () => {
+          await this.plugin.startFocusSession(this.plugin.settings.sessionDurationMinutes);
+          this.display();
+        }))
+      .addButton((button) => button
+        .setButtonText(sessionSnapshot.status === "paused" ? "继续" : "暂停")
+        .setDisabled(sessionSnapshot.status === "idle")
+        .onClick(async () => {
+          if (sessionSnapshot.status === "paused") {
+            await this.plugin.resumeFocusSession();
+          } else {
+            await this.plugin.pauseFocusSession();
+          }
+          this.display();
+        }))
+      .addButton((button) => button
+        .setButtonText("结束")
+        .setDisabled(sessionSnapshot.status === "idle")
+        .onClick(async () => {
+          await this.plugin.stopFocusSession();
+          this.display();
+        }));
+
     const licenseGroup = createGroup(
       "软件授权",
-      "纯离线 Ed25519 密钥激活验证",
+      "本地 Ed25519 签名验证与在线设备校验，支持离线使用",
       true
     );
 
@@ -843,39 +1218,39 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       .setName("当前激活状态")
       .setDesc("正在验证授权状态...");
 
-    if (this.plugin.settings.licenseCode) {
-      verifyLicenseCode(this.plugin.settings.licenseCode, "crisp-focus").then((verifyRes) => {
-        if (verifyRes.valid && verifyRes.payload) {
-          statusSetting.setDesc(
-            `✅ 已激活（授权给: ${verifyRes.payload.userName}，到期时间: ${verifyRes.payload.expiresAt.split("T")[0]}）`
-          );
-        } else {
-          statusSetting.setDesc(
-            `❌ 未激活（${verifyRes.reason || "授权码无效"}）`
-          );
-        }
-      });
+    const licenseStatus = this.plugin.licenseManager.getStatus();
+    if (licenseStatus.valid && licenseStatus.payload) {
+      const owner = licenseStatus.payload.userName || "Crisp 用户";
+      const expiry = licenseStatus.payload.expiresAt
+        ? `，到期时间: ${String(licenseStatus.payload.expiresAt).split("T")[0]}`
+        : "";
+      const verification = licenseStatus.source === "offline" ? "离线验证" : "在线验证";
+      statusSetting.setDesc(`✅ 已激活（${verification}，授权给: ${owner}${expiry}）`);
+    } else if (this.plugin.settings.licenseCode) {
+      statusSetting.setDesc(`❌ 未激活（${licenseStatus.reason || "授权码无效"}）`);
     } else {
-      statusSetting.setDesc("❌ 未激活（可免费使用物理动效光标，激活解锁打字音效与 HD 白噪音）");
+      statusSetting.setDesc("❌ 未激活（可免费使用动效光标，激活后解锁打字音效与 HD 环境音）");
     }
 
     new obsidian.Setting(licenseGroup)
       .setName("输入授权码")
-      .setDesc("粘贴购买获取的 Crisp Suite 授权字符串进行离线激活。")
-      .addText((text) => text
-        .setPlaceholder("粘贴 Crisp 授权码...")
-        .setValue(this.plugin.settings.licenseCode)
-        .onChange(async (value) => {
-          this.plugin.settings.licenseCode = value.trim();
-          await this.plugin.saveSettings();
-        }))
+      .setDesc("授权码会先在本地验签，再发送授权码、设备标识与插件 ID 完成在线设备校验。")
+      .addText((text) => {
+        text.inputEl.type = "password";
+        text
+          .setPlaceholder("粘贴 Crisp 授权码...")
+          .setValue(this.licenseDraft || this.plugin.settings.licenseCode)
+          .onChange((value) => {
+            this.licenseDraft = value;
+          });
+      })
       .addButton((button) => button
         .setButtonText("激活 / 重新验证")
         .setCta()
         .onClick(async () => {
-          const result = await verifyLicenseCode(this.plugin.settings.licenseCode, "crisp-focus");
+          const result = await this.plugin.activateLicense(this.licenseDraft);
           if (result.valid && result.payload) {
-            new obsidian.Notice(`🎉 Crisp Focus 激活成功！欢迎使用，${result.payload.userName}`);
+            new obsidian.Notice(`🎉 Crisp Focus 激活成功！欢迎使用，${result.payload.userName || "Crisp 用户"}`);
             this.display();
           } else {
             new obsidian.Notice(`❌ 激活失败: ${result.reason}`);
@@ -884,14 +1259,14 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
 
     // Card 1: Smooth Animated Cursor
     const cursorCard = createGroup(
-      "Animated cursor",
-      "Configure spring-eased caret movement, transition speed, and blink timing.",
+      "动效光标",
+      "设置光标的弹簧移动、过渡速度与闪烁节奏。",
       true
     );
 
     new obsidian.Setting(cursorCard)
-      .setName("Enable animated cursor")
-      .setDesc("Smoothly interpolates caret movement across text, line breaks, and selections.")
+      .setName("启用动效光标")
+      .setDesc("光标在文字、换行与选区之间平滑移动。")
       .addToggle((toggle) =>
         toggle
           .setValue(this.plugin.settings.animatedCursorEnabled)
@@ -901,14 +1276,15 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       );
 
     new obsidian.Setting(cursorCard)
-      .setName("Cursor speed")
-      .setDesc("The speed of each cursor movement in miliseconds.")
+      .setName("光标速度")
+      .setDesc("每次光标移动的速度（毫秒）。")
       .addText((text) =>
         text
           .setValue(String(this.plugin.settings.cursorSpeed ?? 80))
           .onChange(async (val) => {
             const num = parseInt(val, 10);
             if (!isNaN(num) && num >= 0) {
+              this.plugin.markSceneCustom();
               this.plugin.settings.cursorSpeed = num;
               await this.plugin.saveSettings();
             }
@@ -917,8 +1293,9 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       .addExtraButton((btn) =>
         btn
           .setIcon("reset")
-          .setTooltip("Reset to default (80)")
+          .setTooltip("恢复默认值（80）")
           .onClick(async () => {
+            this.plugin.markSceneCustom();
             this.plugin.settings.cursorSpeed = 80;
             await this.plugin.saveSettings();
             this.display();
@@ -926,14 +1303,15 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       );
 
     new obsidian.Setting(cursorCard)
-      .setName("Blink rate")
-      .setDesc("The length of a full cursor blink cycle in miliseconds.")
+      .setName("闪烁频率")
+      .setDesc("光标完整闪烁一次的时间（毫秒）。")
       .addText((text) =>
         text
           .setValue(String(this.plugin.settings.blinkRate ?? 1000))
           .onChange(async (val) => {
             const num = parseInt(val, 10);
             if (!isNaN(num) && num >= 0) {
+              this.plugin.markSceneCustom();
               this.plugin.settings.blinkRate = num;
               await this.plugin.saveSettings();
             }
@@ -942,8 +1320,9 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       .addExtraButton((btn) =>
         btn
           .setIcon("reset")
-          .setTooltip("Reset to default (1000)")
+          .setTooltip("恢复默认值（1000）")
           .onClick(async () => {
+            this.plugin.markSceneCustom();
             this.plugin.settings.blinkRate = 1000;
             await this.plugin.saveSettings();
             this.display();
@@ -951,14 +1330,15 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       );
 
     new obsidian.Setting(cursorCard)
-      .setName("Blink count")
-      .setDesc("The limit of blink counts in a sequence. Resetted each time it's moving. Stop blinking when it sets to 0.")
+      .setName("闪烁次数")
+      .setDesc("一次连续闪烁的上限；每次移动后重置，设为 0 时停止闪烁。")
       .addText((text) =>
         text
           .setValue(String(this.plugin.settings.blinkCount ?? 10))
           .onChange(async (val) => {
             const num = parseInt(val, 10);
             if (!isNaN(num) && num >= 0) {
+              this.plugin.markSceneCustom();
               this.plugin.settings.blinkCount = num;
               await this.plugin.saveSettings();
             }
@@ -967,8 +1347,9 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       .addExtraButton((btn) =>
         btn
           .setIcon("reset")
-          .setTooltip("Reset to default (10)")
+          .setTooltip("恢复默认值（10）")
           .onClick(async () => {
+            this.plugin.markSceneCustom();
             this.plugin.settings.blinkCount = 10;
             await this.plugin.saveSettings();
             this.display();
@@ -977,36 +1358,34 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
 
     // Card 2: Multi-Theme Audio Engine
     const audioCard = createGroup(
-      "Sound feedback",
-      "Tactile keypress themes and an optional carriage return bell.",
+      "声音反馈",
+      "选择有触感的按键音主题，并可启用回车提示音。",
       false
     );
 
     new obsidian.Setting(audioCard)
-      .setName("Enable sound effects")
-      .setDesc("Play tactile keypress and confirmation sound feedback while typing.")
+      .setName("启用音效")
+      .setDesc("打字时播放触感按键与确认音反馈。")
       .addToggle((toggle) =>
         toggle
           .setValue(this.plugin.settings.typewriterAudioEnabled)
           .onChange(async (val) => {
-            if (val) {
-              const check = await verifyLicenseCode(this.plugin.settings.licenseCode, "crisp-focus");
-              if (!check.valid) {
-                new obsidian.Notice("🔒 开启打字音效属于 Crisp 激活用户专属功能");
-                this.plugin.settings.typewriterAudioEnabled = false;
-                await this.plugin.saveSettings();
-                this.display();
-                return;
-              }
+            if (val && !this.plugin.licenseManager.isEntitled()) {
+              new obsidian.Notice("🔒 开启打字音效属于 Crisp 激活用户专属功能");
+              this.plugin.settings.typewriterAudioEnabled = false;
+              await this.plugin.saveSettings();
+              this.display();
+              return;
             }
+            this.plugin.markSceneCustom();
             this.plugin.settings.typewriterAudioEnabled = val;
             await this.plugin.saveSettings();
           })
       );
 
     new obsidian.Setting(audioCard)
-      .setName("Sound theme")
-      .setDesc("Choose your preferred audio preset theme for keypress feedback.")
+      .setName("音效主题")
+      .setDesc("选择按键反馈的预设音色。")
       .addDropdown((dropdown) =>
         dropdown
           .addOption("typewriter", "📜 Vintage Typewriter (复古打字机)")
@@ -1016,12 +1395,12 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
           .addOption("woodenFish", "🪵 Zen Wooden Fish (功德木鱼与磬)")
           .setValue(this.plugin.settings.soundTheme || "typewriter")
           .onChange(async (val) => {
-            const check = await verifyLicenseCode(this.plugin.settings.licenseCode, "crisp-focus");
-            if (!check.valid) {
+            if (!this.plugin.licenseManager.isEntitled()) {
               new obsidian.Notice("🔒 切换音效主题属于 Crisp 激活用户专属功能");
               this.display();
               return;
             }
+            this.plugin.markSceneCustom();
             this.plugin.settings.soundTheme = val;
             await this.plugin.saveSettings();
             this.plugin.audio.playCharKey();
@@ -1029,26 +1408,28 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       );
 
     new obsidian.Setting(audioCard)
-      .setName("Master volume")
-      .setDesc("Adjust overall keypress and confirmation sound volume.")
+      .setName("主音量")
+      .setDesc("调节按键与确认音的整体音量。")
       .addSlider((slider) =>
         slider
           .setLimits(0, 1, 0.05)
           .setValue(this.plugin.settings.typewriterVolume)
           .setDynamicTooltip()
           .onChange(async (val) => {
+            this.plugin.markSceneCustom();
             this.plugin.settings.typewriterVolume = val;
             await this.plugin.saveSettings();
           })
       );
 
     new obsidian.Setting(audioCard)
-      .setName("Carriage return bell")
-      .setDesc("Ring a bell or chime when pressing Enter key.")
+      .setName("回车提示音")
+      .setDesc("按 Enter 时播放铃声或提示音。")
       .addToggle((toggle) =>
         toggle
           .setValue(this.plugin.settings.typewriterBellEnabled)
           .onChange(async (val) => {
+            this.plugin.markSceneCustom();
             this.plugin.settings.typewriterBellEnabled = val;
             await this.plugin.saveSettings();
           })
@@ -1056,14 +1437,14 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
 
     // Card 3: Zen Ambient Audio Generator
     const ambientCard = createGroup(
-      "Ambient sound",
-      "Play a continuous local soundscape while Focus mode is active.",
+      "环境音",
+      "在专注模式开启时循环播放本地环境音。",
       false
     );
 
     new obsidian.Setting(ambientCard)
-      .setName("Background ambient sound")
-      .setDesc("Choose an HD background ambient soundscape.")
+      .setName("背景环境音")
+      .setDesc("选择高清背景环境音。")
       .addDropdown((dropdown) =>
         dropdown
           .addOption("off", "Off (关闭)")
@@ -1073,16 +1454,14 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
           .addOption("wind", "❄️ Arctic Cold Wind (极地寒风呼啸)")
           .setValue(this.plugin.settings.ambientSound || "off")
           .onChange(async (val) => {
-            if (val !== "off") {
-              const check = await verifyLicenseCode(this.plugin.settings.licenseCode, "crisp-focus");
-              if (!check.valid) {
-                new obsidian.Notice("🔒 播放 HD 白噪音属于 Crisp 激活用户专属功能");
-                this.plugin.settings.ambientSound = "off";
-                await this.plugin.saveSettings();
-                this.display();
-                return;
-              }
+            if (val !== "off" && !this.plugin.licenseManager.isEntitled()) {
+              new obsidian.Notice("🔒 播放 HD 环境音属于 Crisp 激活用户专属功能");
+              this.plugin.settings.ambientSound = "off";
+              await this.plugin.saveSettings();
+              this.display();
+              return;
             }
+            this.plugin.markSceneCustom();
             this.plugin.settings.ambientSound = val;
             await this.plugin.saveSettings();
             this.plugin.audio.updateAmbient();
@@ -1090,14 +1469,15 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
       );
 
     new obsidian.Setting(ambientCard)
-      .setName("Ambient sound volume")
-      .setDesc("Adjust background ambient sound volume.")
+      .setName("环境音音量")
+      .setDesc("调节背景环境音音量。")
       .addSlider((slider) =>
         slider
           .setLimits(0, 1, 0.05)
           .setValue(this.plugin.settings.ambientVolume ?? 0.65)
           .setDynamicTooltip()
           .onChange(async (val) => {
+            this.plugin.markSceneCustom();
             this.plugin.settings.ambientVolume = val;
             await this.plugin.saveSettings();
             this.plugin.audio.updateAmbient();
@@ -1117,20 +1497,65 @@ class CrispFocusSettingTab extends obsidian.PluginSettingTab {
 // --------------------------------------------------------------------------
 class CrispFocusPlugin extends obsidian.Plugin {
   async onload() {
-    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    const savedSettings = await this.loadData() || {};
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, savedSettings);
+    if (!Object.prototype.hasOwnProperty.call(savedSettings, "activeSceneId")) {
+      this.settings.activeSceneId = Object.keys(savedSettings).length > 0
+        ? "custom"
+        : "silent-writing";
+    }
 
     const winObj = this.app.workspace.containerEl.ownerDocument.defaultView || window;
     this.mainWindow = winObj;
+    this.licenseManager = new CrispFocusLicenseManager(this.app, this.settings, {
+      verifier: this.licenseVerifier || verifyLicenseCode,
+      windowObj: winObj,
+      onEntitlementLost: () => {
+        if (this.audio) this.audio.stopAmbient();
+      },
+    });
+    if (this.licenseVerifier) {
+      await this.refreshLicense();
+    } else {
+      void this.refreshLicense();
+    }
     this.audio = new CrispFocusAudioEngine(
       this.app,
-      () => this.settings.focusModeEnabled && this.settings.typewriterAudioEnabled,
+      () => this.settings.focusModeEnabled
+        && this.settings.typewriterAudioEnabled
+        && this.licenseManager.isEntitled(),
       () => this.settings.soundTheme || "typewriter",
       () => this.settings.typewriterVolume,
       () => this.settings.typewriterBellEnabled,
-      () => this.settings.focusModeEnabled ? (this.settings.ambientSound || "off") : "off",
+      () => this.settings.focusModeEnabled && this.licenseManager.isEntitled()
+        ? (this.settings.ambientSound || "off")
+        : "off",
       () => this.settings.ambientVolume ?? 0.65,
       winObj
     );
+    this.statusBarEl = this.addStatusBarItem();
+    this.statusBarEl.classList.add("crisp-focus-session-status");
+    this.statusBarEl.setAttr("aria-label", "Crisp Focus 专注会话");
+    this.statusBarEl.addEventListener("click", () => {
+      const status = this.session.getSnapshot().status;
+      if (status === "running") {
+        void this.pauseFocusSession();
+      } else if (status === "paused") {
+        void this.resumeFocusSession();
+      } else {
+        void this.startFocusSession(this.settings.sessionDurationMinutes);
+      }
+    });
+    this.session = new FocusSessionController({
+      setInterval: (callback, delay) => winObj.setInterval(callback, delay),
+      clearInterval: (timer) => winObj.clearInterval(timer),
+      onUpdate: (snapshot, reason) => this.onSessionUpdate(snapshot, reason),
+      onComplete: () => {
+        void this.completeFocusSession();
+      },
+    });
+    this.session.restore(this.settings.sessionState);
+    this.renderSessionStatus(this.session.getSnapshot());
     this.windowBindings = new Map();
     this.attachWindow(winObj);
     this.registerEvent(this.app.workspace.on("window-open", (_workspaceWindow, windowObj) => {
@@ -1184,10 +1609,53 @@ class CrispFocusPlugin extends obsidian.Plugin {
       id: "toggle-typewriter-audio",
       name: "Toggle sound effects",
       callback: async () => {
+        if (!this.settings.typewriterAudioEnabled && !this.licenseManager.isEntitled()) {
+          new obsidian.Notice("🔒 开启打字音效属于 Crisp 激活用户专属功能");
+          return;
+        }
+        this.markSceneCustom();
         this.settings.typewriterAudioEnabled = !this.settings.typewriterAudioEnabled;
         await this.saveSettings();
-        new obsidian.Notice(`Crisp Focus audio ${this.settings.typewriterAudioEnabled ? "enabled" : "muted"}`);
+        new obsidian.Notice(`Crisp Focus 音效已${this.settings.typewriterAudioEnabled ? "开启" : "静音"}`);
       }
+    });
+
+    Object.entries(FOCUS_SCENES).forEach(([sceneId, scene]) => {
+      this.addCommand({
+        id: `apply-scene-${sceneId}`,
+        name: `Apply scene: ${scene.name}`,
+        callback: async () => {
+          const result = await this.applyScene(sceneId);
+          if (result.applied) {
+            new obsidian.Notice(`Crisp Focus 已切换到“${scene.name}”`);
+          } else {
+            new obsidian.Notice(`🔒 ${result.reason}`);
+          }
+        },
+      });
+    });
+
+    this.addCommand({
+      id: "start-focus-session-25",
+      name: "Start 25-minute focus session",
+      callback: () => this.startFocusSession(25),
+    });
+    this.addCommand({
+      id: "start-focus-session-50",
+      name: "Start 50-minute focus session",
+      callback: () => this.startFocusSession(50),
+    });
+    this.addCommand({
+      id: "pause-resume-focus-session",
+      name: "Pause or resume focus session",
+      callback: () => this.session.getSnapshot().status === "running"
+        ? this.pauseFocusSession()
+        : this.resumeFocusSession(),
+    });
+    this.addCommand({
+      id: "stop-focus-session",
+      name: "Stop focus session",
+      callback: () => this.stopFocusSession(),
     });
   }
 
@@ -1211,10 +1679,129 @@ class CrispFocusPlugin extends obsidian.Plugin {
     if (this.audio) {
       this.audio.destroy();
     }
+    if (this.session) {
+      this.session.destroy();
+    }
   }
 
   async saveSettings() {
     await this.saveData(this.settings);
+  }
+
+  async refreshLicense() {
+    const previousLastOnlineAt = this.settings.licenseLastOnlineAt;
+    const result = await this.licenseManager.verify();
+    if (this.settings.licenseLastOnlineAt !== previousLastOnlineAt) {
+      await this.saveSettings();
+    }
+    if (!result.valid && this.audio) {
+      this.audio.stopAmbient();
+    }
+    return result;
+  }
+
+  async activateLicense(code) {
+    const trimmed = (code || "").trim();
+    const savedCode = this.settings.licenseCode;
+    const result = await this.licenseManager.verify(trimmed);
+    if (result.valid) {
+      this.settings.licenseCode = trimmed;
+      await this.saveSettings();
+      return result;
+    }
+    if (savedCode && savedCode !== trimmed) {
+      await this.licenseManager.verify(savedCode);
+    }
+    return result;
+  }
+
+  async applyScene(sceneId) {
+    const scene = FOCUS_SCENES[sceneId];
+    if (!scene) {
+      return { applied: false, reason: "未知的专注场景" };
+    }
+    if (sceneRequiresLicense(scene) && !this.licenseManager.isEntitled()) {
+      return { applied: false, reason: "此场景包含音效，需要先激活 Crisp Focus" };
+    }
+
+    Object.assign(this.settings, scene.settings, { activeSceneId: sceneId });
+    await this.saveSettings();
+    if (this.audio) {
+      this.audio.updateAmbient();
+    }
+    if (!this.settings.animatedCursorEnabled) {
+      this.clearCursorStyles();
+    }
+    return { applied: true, scene };
+  }
+
+  markSceneCustom() {
+    this.settings.activeSceneId = "custom";
+  }
+
+  onSessionUpdate(snapshot, reason) {
+    this.settings.sessionState = snapshot;
+    this.renderSessionStatus(snapshot);
+    if (reason !== "tick") {
+      void this.saveSettings();
+    }
+  }
+
+  renderSessionStatus(snapshot) {
+    if (!this.statusBarEl) return;
+    this.statusBarEl.classList.toggle("is-running", snapshot.status === "running");
+    this.statusBarEl.classList.toggle("is-paused", snapshot.status === "paused");
+    if (snapshot.status === "running") {
+      this.statusBarEl.setText(`专注 ${formatSessionRemaining(snapshot.remainingMs)}`);
+      this.statusBarEl.title = "点击暂停专注会话";
+    } else if (snapshot.status === "paused") {
+      this.statusBarEl.setText(`专注 暂停 ${formatSessionRemaining(snapshot.remainingMs)}`);
+      this.statusBarEl.title = "点击继续专注会话";
+    } else {
+      this.statusBarEl.setText("专注");
+      this.statusBarEl.title = `点击开始 ${this.settings.sessionDurationMinutes} 分钟专注会话`;
+    }
+  }
+
+  async startFocusSession(minutes = this.settings.sessionDurationMinutes) {
+    const duration = Math.max(1, Math.min(240, Math.round(Number(minutes) || 25)));
+    this.settings.sessionDurationMinutes = duration;
+    await this.setFocusModeEnabled(true);
+    this.session.start(duration);
+    await this.saveSettings();
+    return this.session.getSnapshot();
+  }
+
+  async pauseFocusSession() {
+    const snapshot = this.session.pause();
+    if (snapshot.status === "paused" && this.audio) {
+      this.audio.stopAmbient();
+    }
+    await this.saveSettings();
+    return snapshot;
+  }
+
+  async resumeFocusSession() {
+    const snapshot = this.session.resume();
+    if (snapshot.status === "running") {
+      await this.setFocusModeEnabled(true);
+      this.audio.updateAmbient();
+    }
+    await this.saveSettings();
+    return snapshot;
+  }
+
+  async stopFocusSession() {
+    const snapshot = this.session.stop();
+    await this.setFocusModeEnabled(false);
+    await this.saveSettings();
+    return snapshot;
+  }
+
+  async completeFocusSession() {
+    await this.setFocusModeEnabled(false);
+    await this.saveSettings();
+    new obsidian.Notice("Crisp Focus 专注会话完成");
   }
 
   clearCursorStyles() {
@@ -1330,6 +1917,7 @@ class CrispFocusPlugin extends obsidian.Plugin {
   }
 
   async setAnimatedCursorEnabled(enabled) {
+    this.markSceneCustom();
     this.settings.animatedCursorEnabled = enabled;
     await this.saveSettings();
     if (!enabled) {

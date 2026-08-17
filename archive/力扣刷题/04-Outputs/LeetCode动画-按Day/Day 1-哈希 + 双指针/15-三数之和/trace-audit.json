@@ -1,0 +1,1400 @@
+{
+  "problemId": 15,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 15,
+    "stepCount": 16,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        -4,
+        -1,
+        -1,
+        0,
+        1,
+        2
+      ],
+      "variables": {
+        "i": null,
+        "j": null,
+        "k": null
+      },
+      "structure": {},
+      "result": [
+        [
+          -1,
+          -1,
+          2
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "8104147c07895d4f480e8f5f0ccae089db1f692d6df47fccf19b2fc004692570",
+    "sourceSemanticTokenHash": "64922da4c5422e953eb44ae2f7a7748a45ddc94e5feb7ab9009a5db64be6b40f",
+    "sourceCodeLineCount": 19
+  },
+  "sourceCodeSha256": "8104147c07895d4f480e8f5f0ccae089db1f692d6df47fccf19b2fc004692570",
+  "sourceSemanticTokenHash": "64922da4c5422e953eb44ae2f7a7748a45ddc94e5feb7ab9009a5db64be6b40f",
+  "steps": [
+    {
+      "id": "15-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "排序三元组输入",
+      "body": "排序后，固定 nums[i]，左右指针可以利用三数和的单调性移动。 题解原意：核心想法： 排序后，固定一个数 nums[i]，在 [i+1, n-1] 区间内用对撞指针找两数之和为 -nums[i]。 关键洞察： 排序带来了三个好处： 1. 双指针可以 O(n) 找两数之和（有序数组两数之和的标准解法）。 2. 去重变得简单——相邻重复元素可以直接跳过。 3. 可以剪枝——nums[i] > 0 时直接结束。 去重策略（三个层面）： 外层 i：如果 nums[i] == nums[i-1]，跳…",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · two-ptr",
+        "badge": "i=None · j=None",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": null,
+          "j": null,
+          "k": null
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "排序后，固定 nums[i]，左右指针可以利用三数和的单调性移动。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": null,
+          "j": null,
+          "k": null
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-002",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "compare",
+      "title": "固定 -4，比较 j=1, k=5",
+      "body": "三数和 = -4 + -1 + 2 = -3。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=0 · j=1",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          0,
+          1,
+          5
+        ],
+        "compared": [
+          0,
+          1,
+          5
+        ],
+        "variables": {
+          "i": 0,
+          "j": 1,
+          "k": 5,
+          "sum": -3
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "三数和 = -4 + -1 + 2 = -3。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 0,
+          "j": 1,
+          "k": 5,
+          "sum": -3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "和太小，右移 j",
+      "body": "排序保证增大 nums[j] 才可能把三数和推到 0。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=0 · j=2",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          0,
+          2,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 2,
+          "k": 5
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "排序保证增大 nums[j] 才可能把三数和推到 0。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 0,
+          "j": 2,
+          "k": 5
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-004",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "compare",
+      "title": "固定 -4，比较 j=2, k=5",
+      "body": "三数和 = -4 + -1 + 2 = -3。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=0 · j=2",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          0,
+          2,
+          5
+        ],
+        "compared": [
+          0,
+          2,
+          5
+        ],
+        "variables": {
+          "i": 0,
+          "j": 2,
+          "k": 5,
+          "sum": -3
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "三数和 = -4 + -1 + 2 = -3。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 0,
+          "j": 2,
+          "k": 5,
+          "sum": -3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-005",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "和太小，右移 j",
+      "body": "排序保证增大 nums[j] 才可能把三数和推到 0。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=0 · j=3",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          0,
+          3,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 3,
+          "k": 5
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "排序保证增大 nums[j] 才可能把三数和推到 0。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 0,
+          "j": 3,
+          "k": 5
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-006",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "compare",
+      "title": "固定 -4，比较 j=3, k=5",
+      "body": "三数和 = -4 + 0 + 2 = -2。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=0 · j=3",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          0,
+          3,
+          5
+        ],
+        "compared": [
+          0,
+          3,
+          5
+        ],
+        "variables": {
+          "i": 0,
+          "j": 3,
+          "k": 5,
+          "sum": -2
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "三数和 = -4 + 0 + 2 = -2。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 0,
+          "j": 3,
+          "k": 5,
+          "sum": -2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-007",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "和太小，右移 j",
+      "body": "排序保证增大 nums[j] 才可能把三数和推到 0。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=0 · j=4",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          0,
+          4,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 4,
+          "k": 5
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "排序保证增大 nums[j] 才可能把三数和推到 0。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 0,
+          "j": 4,
+          "k": 5
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-008",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "compare",
+      "title": "固定 -4，比较 j=4, k=5",
+      "body": "三数和 = -4 + 1 + 2 = -1。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=0 · j=4",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          0,
+          4,
+          5
+        ],
+        "compared": [
+          0,
+          4,
+          5
+        ],
+        "variables": {
+          "i": 0,
+          "j": 4,
+          "k": 5,
+          "sum": -1
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "三数和 = -4 + 1 + 2 = -1。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 0,
+          "j": 4,
+          "k": 5,
+          "sum": -1
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-009",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "和太小，右移 j",
+      "body": "排序保证增大 nums[j] 才可能把三数和推到 0。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=0 · j=5",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          0,
+          5,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 5,
+          "k": 5
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "排序保证增大 nums[j] 才可能把三数和推到 0。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 0,
+          "j": 5,
+          "k": 5
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-010",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "compare",
+      "title": "固定 -1，比较 j=2, k=5",
+      "body": "三数和 = -1 + -1 + 2 = 0。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=1 · j=2",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          1,
+          2,
+          5
+        ],
+        "compared": [
+          1,
+          2,
+          5
+        ],
+        "variables": {
+          "i": 1,
+          "j": 2,
+          "k": 5,
+          "sum": 0
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "三数和 = -1 + -1 + 2 = 0。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 1,
+          "j": 2,
+          "k": 5,
+          "sum": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-011",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "记录一个零和三元组",
+      "body": "找到 [-1, -1, 2]，加入结果；随后跳过重复值。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=1 · j=2 · 结果 1 项",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          1,
+          2,
+          5
+        ],
+        "compared": [
+          1,
+          2,
+          5
+        ],
+        "variables": {
+          "i": 1,
+          "j": 2,
+          "k": 5,
+          "sum": 0
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[-1, -1, 2]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ]
+        ],
+        "note": "找到 [-1, -1, 2]，加入结果；随后跳过重复值。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 1,
+          "j": 2,
+          "k": 5,
+          "sum": 0
+        },
+        "structure": {},
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "15-trace-012",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "compare",
+      "title": "固定 -1，比较 j=3, k=4",
+      "body": "三数和 = -1 + 0 + 1 = 0。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=1 · j=3 · 结果 1 项",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          1,
+          3,
+          4
+        ],
+        "compared": [
+          1,
+          3,
+          4
+        ],
+        "variables": {
+          "i": 1,
+          "j": 3,
+          "k": 4,
+          "sum": 0
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[-1, -1, 2]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ]
+        ],
+        "note": "三数和 = -1 + 0 + 1 = 0。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 1,
+          "j": 3,
+          "k": 4,
+          "sum": 0
+        },
+        "structure": {},
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ]
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-013",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "记录一个零和三元组",
+      "body": "找到 [-1, 0, 1]，加入结果；随后跳过重复值。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=1 · j=3 · 结果 2 项",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          1,
+          3,
+          4
+        ],
+        "compared": [
+          1,
+          3,
+          4
+        ],
+        "variables": {
+          "i": 1,
+          "j": 3,
+          "k": 4,
+          "sum": 0
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[-1, -1, 2]",
+              "[-1, 0, 1]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "note": "找到 [-1, 0, 1]，加入结果；随后跳过重复值。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 1,
+          "j": 3,
+          "k": 4,
+          "sum": 0
+        },
+        "structure": {},
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "15-trace-014",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "compare",
+      "title": "固定 0，比较 j=4, k=5",
+      "body": "三数和 = 0 + 1 + 2 = 3。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=3 · j=4 · 结果 2 项",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          3,
+          4,
+          5
+        ],
+        "compared": [
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "i": 3,
+          "j": 4,
+          "k": 5,
+          "sum": 3
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[-1, -1, 2]",
+              "[-1, 0, 1]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "note": "三数和 = 0 + 1 + 2 = 3。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 3,
+          "j": 4,
+          "k": 5,
+          "sum": 3
+        },
+        "structure": {},
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-015",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "和太大，左移 k",
+      "body": "排序保证减小 nums[k] 才可能把三数和降到 0。 易错提醒：去重时机： 外层去重要在进入循环时判断（if i > 0 and nums[i] == nums[i-1]: continue），而不是找到答案后再去重。内层去重要在找到答案后进行。 去重遗漏： 如果只在外层去重，内层可能产生重复。比如 nums = [-2, 0, 0, 2, 2]，固定 -2 后，left=0, right=2 得到…",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=3 · j=4 · 结果 2 项",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          3,
+          4,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 4,
+          "k": 4
+        },
+        "rows": [
+          {
+            "label": "sorted",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[-1, -1, 2]",
+              "[-1, 0, 1]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "note": "排序保证减小 nums[k] 才可能把三数和降到 0。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 3,
+          "j": 4,
+          "k": 4
+        },
+        "structure": {},
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "15-trace-016",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "扫描完成，返回 [[-1, -1, 2], [-1, 0, 1]]。",
+      "kind": "two-ptr",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · two-ptr",
+        "badge": "i=None · j=None · 结果 2 项",
+        "tokens": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": null,
+          "j": null,
+          "k": null
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[-1, -1, 2]",
+              "[-1, 0, 1]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "note": "扫描完成，返回 [[-1, -1, 2], [-1, 0, 1]]。"
+      },
+      "state": {
+        "values": [
+          -4,
+          -1,
+          -1,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "i": null,
+          "j": null,
+          "k": null
+        },
+        "structure": {},
+        "result": [
+          [
+            -1,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,685 @@
+{
+  "problemId": 34,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 34,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "variables": {
+        "L": 3,
+        "r": 4
+      },
+      "structure": {},
+      "result": [
+        3,
+        4
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "18ab56601a88c2bfeb4e7bcb26a9f1685922197840cd2fbcfa7f88834f00e51d",
+    "sourceSemanticTokenHash": "f564e168e0a49b20128cbbe94676a0e8b6cdd4ffe0c3d5cd93194bfae8e2add4",
+    "sourceCodeLineCount": 25
+  },
+  "sourceCodeSha256": "18ab56601a88c2bfeb4e7bcb26a9f1685922197840cd2fbcfa7f88834f00e51d",
+  "sourceSemanticTokenHash": "f564e168e0a49b20128cbbe94676a0e8b6cdd4ffe0c3d5cd93194bfae8e2add4",
+  "steps": [
+    {
+      "id": "34-trace-001",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "setup",
+      "title": "先找第一个 target",
+      "body": "第一轮使用 nums[mid] >= target，寻找左边界。 题解原意：核心思想： 分别用两个二分查找函数找左边界和右边界。 左边界（lower_bound）：找第一个 >= target 的位置。nums[mid] < target 时排除左半，否则排除右半。 右边界（upper_bound）：找最后一个 <= target 的位置。nums[mid] <= target 时排除左半，否则排除右半。 或者找第一个 > target 的位置，然后减 1 得到右边界。 搜索过程可视化（以…",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · binary",
+        "badge": "l=0 · r=5",
+        "tokens": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "target": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,5]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "第一轮使用 nums[mid] >= target，寻找左边界。"
+      },
+      "state": {
+        "values": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "target": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "34-trace-002",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "左边界二分到 [3,5]",
+      "body": "mid=2，保持第一个 >= 8 的位置在区间内。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=3 · r=5 · mid=2",
+        "tokens": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 5,
+          "mid": 2,
+          "target": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,5]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=2，保持第一个 >= 8 的位置在区间内。"
+      },
+      "state": {
+        "values": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "variables": {
+          "l": 3,
+          "r": 5,
+          "mid": 2,
+          "target": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "34-trace-003",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "左边界二分到 [3,4]",
+      "body": "mid=4，保持第一个 >= 8 的位置在区间内。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=3 · r=4 · mid=4",
+        "tokens": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 4,
+          "mid": 4,
+          "target": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=4，保持第一个 >= 8 的位置在区间内。"
+      },
+      "state": {
+        "values": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "variables": {
+          "l": 3,
+          "r": 4,
+          "mid": 4,
+          "target": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "34-trace-004",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "左边界二分到 [3,3]",
+      "body": "mid=3，保持第一个 >= 8 的位置在区间内。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=3 · r=3 · mid=3",
+        "tokens": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3,
+          "target": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=3，保持第一个 >= 8 的位置在区间内。"
+      },
+      "state": {
+        "values": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3,
+          "target": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "34-trace-005",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "mutate",
+      "title": "确定左边界 L=3",
+      "body": "nums[3]=8 命中 target，开始找最后一个边界。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=0 · r=5",
+        "tokens": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "L": 3,
+          "l": 0,
+          "r": 5,
+          "target": 8
+        },
+        "rows": [
+          {
+            "label": "L",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[3]=8 命中 target，开始找最后一个边界。"
+      },
+      "state": {
+        "values": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "variables": {
+          "L": 3,
+          "l": 0,
+          "r": 5,
+          "target": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "34-trace-006",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右边界二分到 [3,5]",
+      "body": "mid=3，保持最后一个 <= 8 的位置在区间内。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=3 · r=5 · mid=3",
+        "tokens": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "L": 3,
+          "l": 3,
+          "r": 5,
+          "mid": 3,
+          "target": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,5]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=3，保持最后一个 <= 8 的位置在区间内。"
+      },
+      "state": {
+        "values": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "variables": {
+          "L": 3,
+          "l": 3,
+          "r": 5,
+          "mid": 3,
+          "target": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "34-trace-007",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右边界二分到 [4,5]",
+      "body": "mid=4，保持最后一个 <= 8 的位置在区间内。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=4 · r=5 · mid=4",
+        "tokens": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "L": 3,
+          "l": 4,
+          "r": 5,
+          "mid": 4,
+          "target": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[4,5]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=4，保持最后一个 <= 8 的位置在区间内。"
+      },
+      "state": {
+        "values": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "variables": {
+          "L": 3,
+          "l": 4,
+          "r": 5,
+          "mid": 4,
+          "target": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "34-trace-008",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "mutate",
+      "title": "右边界二分到 [4,4]",
+      "body": "mid=5，保持最后一个 <= 8 的位置在区间内。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=4 · r=4 · mid=5",
+        "tokens": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "L": 3,
+          "l": 4,
+          "r": 4,
+          "mid": 5,
+          "target": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[4,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=5，保持最后一个 <= 8 的位置在区间内。"
+      },
+      "state": {
+        "values": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "variables": {
+          "L": 3,
+          "l": 4,
+          "r": 4,
+          "mid": 5,
+          "target": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "34-trace-check-010",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回范围 [3, 4]。 易错提醒：1. 左边界模板的 if 条件区别： 左边界：nums[mid] < target → l = mid + 1 右边界：nums[mid] <= target → l = mid + 1 仅仅是一个等号的差别！等号在哪边决定了是找左边界还是右边界。 2. 验证逻辑：必须检查 left >= len(nums)（越界）或 nums[left…",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=4 · r=4 · mid=5",
+        "tokens": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "L": 3,
+          "l": 4,
+          "r": 4,
+          "mid": 5,
+          "target": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[4,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回范围 [3, 4]。"
+      },
+      "state": {
+        "values": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "variables": {
+          "L": 3,
+          "l": 4,
+          "r": 4,
+          "mid": 5,
+          "target": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "34-trace-009",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回范围 [3, 4]。",
+      "kind": "binary",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · binary",
+        "badge": "r=4 · 结果 2 项",
+        "tokens": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "L": 3,
+          "r": 4
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          3,
+          4
+        ],
+        "note": "返回范围 [3, 4]。"
+      },
+      "state": {
+        "values": [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        "variables": {
+          "L": 3,
+          "r": 4
+        },
+        "structure": {},
+        "result": [
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

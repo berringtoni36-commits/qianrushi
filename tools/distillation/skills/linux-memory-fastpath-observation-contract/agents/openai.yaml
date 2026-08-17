@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linux Memory Fastpath Observation Contract"
+  short_description: "Audit entry samples, requests, and final outcomes"
+  default_prompt: "Use $linux-memory-fastpath-observation-contract to audit whether a fast-path probe proves an entry, a request, or a final allocation outcome."

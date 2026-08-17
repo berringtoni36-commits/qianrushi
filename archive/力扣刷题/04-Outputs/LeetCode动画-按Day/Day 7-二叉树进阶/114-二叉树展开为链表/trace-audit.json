@@ -1,0 +1,857 @@
+{
+  "problemId": 114,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 114,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": false,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        2,
+        5,
+        3,
+        4,
+        null,
+        6
+      ],
+      "variables": {},
+      "structure": {
+        "flat": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "result": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "767e1ec8702ece2614fd9a794501099930bc33ea2a550aec0c2f3f81d624bcb0",
+    "sourceSemanticTokenHash": "692b4b6d3a2dc9ad3192b9039968f747b5dbff03616de8cd205011fdb6bc29cb",
+    "sourceCodeLineCount": 26
+  },
+  "sourceCodeSha256": "767e1ec8702ece2614fd9a794501099930bc33ea2a550aec0c2f3f81d624bcb0",
+  "sourceSemanticTokenHash": "692b4b6d3a2dc9ad3192b9039968f747b5dbff03616de8cd205011fdb6bc29cb",
+  "steps": [
+    {
+      "id": "114-trace-001",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "setup",
+      "title": "按前序顺序展开",
+      "body": "展开后的链表顺序必须是 root → left → right，并且所有 left 置空。 题解原意：核心思想： 按照 右→左→根 的顺序（后序遍历变体）处理节点。用一个 prev 指针记录上一个处理完的节点。每处理一个节点，就把它的 right 指向 prev，left 置空。 为什么用这个遍历顺序？ 前序遍历的顺序是「根→左→右」。如果按这个顺序正着处理，根节点的右指针需要指向左子树的根，但此时左子树还没处理完。如果我们反过来想——从最后一个节点开始往前串，前序遍历序列的最后一个节点是右子树的最右节点。按「右→左…",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "tree",
+        "tokens": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "node": 1
+        },
+        "rows": [
+          {
+            "label": "tree",
+            "values": [
+              1,
+              2,
+              5,
+              3,
+              4,
+              null,
+              6
+            ]
+          },
+          {
+            "label": "flat",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "展开后的链表顺序必须是 root → left → right，并且所有 left 置空。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "variables": {
+          "node": 1
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            5,
+            3,
+            4,
+            null,
+            6
+          ],
+          "flat": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "114-trace-002",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "把节点 1 接到展开链",
+      "body": "前序结果前缀为 [1]；当前节点 left=null。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1
+        },
+        "rows": [
+          {
+            "label": "flat",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "前序结果前缀为 [1]；当前节点 left=null。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "variables": {
+          "node": 1
+        },
+        "structure": {
+          "flat": [
+            1
+          ],
+          "left": null
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "114-trace-003",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "把节点 2 接到展开链",
+      "body": "前序结果前缀为 [1, 2]；当前节点 left=null。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 2 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2
+        },
+        "rows": [
+          {
+            "label": "flat",
+            "values": [
+              1,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2
+        ],
+        "note": "前序结果前缀为 [1, 2]；当前节点 left=null。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "variables": {
+          "node": 2
+        },
+        "structure": {
+          "flat": [
+            1,
+            2
+          ],
+          "left": null
+        },
+        "result": [
+          1,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "114-trace-004",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "把节点 3 接到展开链",
+      "body": "前序结果前缀为 [1, 2, 3]；当前节点 left=null。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3
+        },
+        "rows": [
+          {
+            "label": "flat",
+            "values": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3
+        ],
+        "note": "前序结果前缀为 [1, 2, 3]；当前节点 left=null。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "variables": {
+          "node": 3
+        },
+        "structure": {
+          "flat": [
+            1,
+            2,
+            3
+          ],
+          "left": null
+        },
+        "result": [
+          1,
+          2,
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "114-trace-005",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "把节点 4 接到展开链",
+      "body": "前序结果前缀为 [1, 2, 3, 4]；当前节点 left=null。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "node": 4
+        },
+        "rows": [
+          {
+            "label": "flat",
+            "values": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "前序结果前缀为 [1, 2, 3, 4]；当前节点 left=null。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "variables": {
+          "node": 4
+        },
+        "structure": {
+          "flat": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "left": null
+        },
+        "result": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "114-trace-006",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "把节点 5 接到展开链",
+      "body": "前序结果前缀为 [1, 2, 3, 4, 5]；当前节点 left=null。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 5 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "node": 5
+        },
+        "rows": [
+          {
+            "label": "flat",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "note": "前序结果前缀为 [1, 2, 3, 4, 5]；当前节点 left=null。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "variables": {
+          "node": 5
+        },
+        "structure": {
+          "flat": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "left": null
+        },
+        "result": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "114-trace-007",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "把节点 6 接到展开链",
+      "body": "前序结果前缀为 [1, 2, 3, 4, 5, 6]；当前节点 left=null。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 6 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "node": 6
+        },
+        "rows": [
+          {
+            "label": "flat",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "note": "前序结果前缀为 [1, 2, 3, 4, 5, 6]；当前节点 left=null。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "variables": {
+          "node": 6
+        },
+        "structure": {
+          "flat": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "left": null
+        },
+        "result": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "114-trace-check-009",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地展开为 [1, 2, 3, 4, 5, 6]。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 6 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "node": 6
+        },
+        "rows": [
+          {
+            "label": "flat",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地展开为 [1, 2, 3, 4, 5, 6]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "variables": {
+          "node": 6
+        },
+        "structure": {
+          "flat": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "left": null
+        },
+        "result": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "114-trace-check-010",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地展开为 [1, 2, 3, 4, 5, 6]。 易错提醒：后序法的遍历顺序不是标准后序： 标准后序是「左→右→根」，这里用的是「右→左→根」。目的是先处理序列末尾的节点，从后往前串联。 迭代法找到前驱后，要记得把左子树置空： cur->left = nullptr 很容易忘记。不置空的话树结构没有被完全展开。 迭代法循环条件： 循环条件是 cur（不断走 right），而不是 cur.right…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 6 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "node": 6
+        },
+        "rows": [
+          {
+            "label": "flat",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地展开为 [1, 2, 3, 4, 5, 6]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "variables": {
+          "node": 6
+        },
+        "structure": {
+          "flat": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "left": null
+        },
+        "result": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "114-trace-008",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "原地展开为 [1, 2, 3, 4, 5, 6]。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "结果 6 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "note": "原地展开为 [1, 2, 3, 4, 5, 6]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ],
+        "variables": {},
+        "structure": {
+          "flat": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,611 @@
+{
+  "problemId": 70,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 70,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [],
+      "variables": {
+        "n": 5,
+        "b": 8
+      },
+      "structure": {},
+      "result": [
+        8
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "a028463c8c56544a00bbeb94d930450f94bea8005b36bd38b8aacadce5f4f4cb",
+    "sourceSemanticTokenHash": "4962cbaacccca877cc953d9bf0f7d2464efd3046ddd5a1b44b1f2096b70cc953",
+    "sourceCodeLineCount": 11
+  },
+  "sourceCodeSha256": "a028463c8c56544a00bbeb94d930450f94bea8005b36bd38b8aacadce5f4f4cb",
+  "sourceSemanticTokenHash": "4962cbaacccca877cc953d9bf0f7d2464efd3046ddd5a1b44b1f2096b70cc953",
+  "steps": [
+    {
+      "id": "70-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "初始化前两阶方法数",
+      "body": "a、b 分别代表到前两级的方案数；每次 c=a+b。 题解原意：核心洞察：爬到第 i 阶的最后一步有两种可能——从第 i-1 阶走 1 步，或者从第 i-2 阶走 2 步。因此 dp[i] = dp[i-1] + dp[i-2]。 DP 五步法： 1. dp 定义：dp[i] 表示爬到第 i 阶的方法数 2. 递推公式：dp[i] = dp[i-1] + dp[i-2] 3. 初始化：dp[1] = 1（1 步到第 1 阶），dp[2] = 2（1+1 或 2） 4. 遍历顺序…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp1d",
+        "badge": "",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 5,
+          "a": 1,
+          "b": 1
+        },
+        "rows": [
+          {
+            "label": "a / b",
+            "values": [
+              1,
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "a、b 分别代表到前两级的方案数；每次 c=a+b。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 5,
+          "a": 1,
+          "b": 1
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "70-trace-002",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "update",
+      "title": "计算到第 2 阶",
+      "body": "c = a + b = 1 + 1 = 2；下一轮继续滚动两个状态。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "n": 4,
+          "a": 1,
+          "b": 2
+        },
+        "rows": [
+          {
+            "label": "a / b",
+            "values": [
+              1,
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "c = a + b = 1 + 1 = 2；下一轮继续滚动两个状态。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 4,
+          "a": 1,
+          "b": 2
+        },
+        "structure": {},
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "70-trace-003",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "update",
+      "title": "计算到第 3 阶",
+      "body": "c = a + b = 2 + 1 = 3；下一轮继续滚动两个状态。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "n": 3,
+          "a": 2,
+          "b": 3
+        },
+        "rows": [
+          {
+            "label": "a / b",
+            "values": [
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "c = a + b = 2 + 1 = 3；下一轮继续滚动两个状态。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 3,
+          "a": 2,
+          "b": 3
+        },
+        "structure": {},
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "70-trace-004",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "update",
+      "title": "计算到第 4 阶",
+      "body": "c = a + b = 3 + 2 = 5；下一轮继续滚动两个状态。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "n": 2,
+          "a": 3,
+          "b": 5
+        },
+        "rows": [
+          {
+            "label": "a / b",
+            "values": [
+              3,
+              5
+            ]
+          }
+        ],
+        "result": [
+          5
+        ],
+        "note": "c = a + b = 3 + 2 = 5；下一轮继续滚动两个状态。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 2,
+          "a": 3,
+          "b": 5
+        },
+        "structure": {},
+        "result": [
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "70-trace-005",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "update",
+      "title": "计算到第 5 阶",
+      "body": "c = a + b = 5 + 3 = 8；下一轮继续滚动两个状态。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "n": 1,
+          "a": 5,
+          "b": 8
+        },
+        "rows": [
+          {
+            "label": "a / b",
+            "values": [
+              5,
+              8
+            ]
+          }
+        ],
+        "result": [
+          8
+        ],
+        "note": "c = a + b = 5 + 3 = 8；下一轮继续滚动两个状态。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 1,
+          "a": 5,
+          "b": 8
+        },
+        "structure": {},
+        "result": [
+          8
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "70-trace-check-007",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。爬到第 5 阶共有 8 种方法。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "n": 1,
+          "a": 5,
+          "b": 8
+        },
+        "rows": [
+          {
+            "label": "a / b",
+            "values": [
+              5,
+              8
+            ]
+          }
+        ],
+        "result": [
+          8
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。爬到第 5 阶共有 8 种方法。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 1,
+          "a": 5,
+          "b": 8
+        },
+        "structure": {},
+        "result": [
+          8
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "70-trace-check-008",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。爬到第 5 阶共有 8 种方法。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "n": 1,
+          "a": 5,
+          "b": 8
+        },
+        "rows": [
+          {
+            "label": "a / b",
+            "values": [
+              5,
+              8
+            ]
+          }
+        ],
+        "result": [
+          8
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。爬到第 5 阶共有 8 种方法。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 1,
+          "a": 5,
+          "b": 8
+        },
+        "structure": {},
+        "result": [
+          8
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "70-trace-check-009",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。爬到第 5 阶共有 8 种方法。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "n": 1,
+          "a": 5,
+          "b": 8
+        },
+        "rows": [
+          {
+            "label": "a / b",
+            "values": [
+              5,
+              8
+            ]
+          }
+        ],
+        "result": [
+          8
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。爬到第 5 阶共有 8 种方法。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 1,
+          "a": 5,
+          "b": 8
+        },
+        "structure": {},
+        "result": [
+          8
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "70-trace-check-010",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。爬到第 5 阶共有 8 种方法。 易错提醒：n 的范围：题目 n 从 1 开始，要处理 n=1 直接返回 1，不要访问 dp[2] 导致越界。 初始化值：dp[0] 在数学上有定义（dp[0]=1 表示空楼梯），但实际遍历中从 i=3 开始更直观。 结果溢出：虽然 n<=45 不会溢出，但大数场景需注意类型。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "n": 1,
+          "a": 5,
+          "b": 8
+        },
+        "rows": [
+          {
+            "label": "a / b",
+            "values": [
+              5,
+              8
+            ]
+          }
+        ],
+        "result": [
+          8
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。爬到第 5 阶共有 8 种方法。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 1,
+          "a": 5,
+          "b": 8
+        },
+        "structure": {},
+        "result": [
+          8
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "70-trace-006",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "爬到第 5 阶共有 8 种方法。",
+      "kind": "dp1d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 5,
+          "b": 8
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              8
+            ]
+          }
+        ],
+        "result": [
+          8
+        ],
+        "note": "爬到第 5 阶共有 8 种方法。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 5,
+          "b": 8
+        },
+        "structure": {},
+        "result": [
+          8
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

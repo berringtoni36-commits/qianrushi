@@ -1,0 +1,812 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "原地哈希归位",
+    "sceneKind": "generic-array",
+    "input": [
+      3,
+      4,
+      -1,
+      1
+    ],
+    "expected": 2,
+    "exampleText": "[3,4,-1,1]",
+    "expectedText": "第一个缺失正数 = 2",
+    "invariant": "已归位位置 i 满足 nums[i]=i",
+    "aha": "把值域 [1,n] 映射到下标 [0,n-1]",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 41,
+    "title": "缺失的第一个正数",
+    "day": "Day 3：数组技巧 + 矩阵",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "f409b91b4bc5bee57d17736abc9a3b925ba56eaec22ae2c4fbbcfd6e86635622",
+    "semanticTokenHash": "f4f984a71bc78c17aa84ea3799e0e698e7af634efe14b8bf4e531a96ba8cc04e",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "原值 v 应放到下标 v-1，减一后变成值等于下标。",
+        "review": "所有值减 1，目标值映射到同下标"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              -2,
+              0
+            ],
+            "variables": {
+              "n": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "所有值减 1，目标值映射到同下标",
+            "status": "running"
+          },
+          "caption": "原值 v 应放到下标 v-1，减一后变成值等于下标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              -2,
+              0
+            ],
+            "variables": {
+              "n": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 5",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不断把合法值送回自己的下标。",
+        "review": "处理下标 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              -2,
+              0
+            ],
+            "variables": {
+              "i": 0
+            },
+            "pointers": {
+              "i": 0
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "处理下标 0",
+            "status": "running"
+          },
+          "caption": "不断把合法值送回自己的下标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "一次交换至少让一个合法值归位。",
+        "review": "swap(2,-2)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              -2,
+              3,
+              2,
+              0
+            ],
+            "variables": {
+              "i": 0,
+              "target": 2
+            },
+            "pointers": {
+              "i": 0,
+              "target": 2
+            },
+            "active": [
+              0,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "swap(2,-2)",
+            "action": "把值 2 交换到下标 2",
+            "status": "running"
+          },
+          "caption": "一次交换至少让一个合法值归位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              -2,
+              3,
+              2,
+              0
+            ],
+            "variables": {
+              "i": 0,
+              "target": 2
+            },
+            "pointers": {
+              "i": 0,
+              "target": 2
+            },
+            "active": [
+              0,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "swap(2,-2)",
+            "action": "不变量检查 4",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不断把合法值送回自己的下标。",
+        "review": "处理下标 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              -2,
+              3,
+              2,
+              0
+            ],
+            "variables": {
+              "i": 1
+            },
+            "pointers": {
+              "i": 1
+            },
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "处理下标 1",
+            "status": "running"
+          },
+          "caption": "不断把合法值送回自己的下标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "一次交换至少让一个合法值归位。",
+        "review": "swap(3,0)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              -2,
+              0,
+              2,
+              3
+            ],
+            "variables": {
+              "i": 1,
+              "target": 3
+            },
+            "pointers": {
+              "i": 1,
+              "target": 3
+            },
+            "active": [
+              1,
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "swap(3,0)",
+            "action": "把值 3 交换到下标 3",
+            "status": "running"
+          },
+          "caption": "一次交换至少让一个合法值归位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              -2,
+              0,
+              2,
+              3
+            ],
+            "variables": {
+              "i": 1,
+              "target": 3
+            },
+            "pointers": {
+              "i": 1,
+              "target": 3
+            },
+            "active": [
+              1,
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "swap(3,0)",
+            "action": "不变量检查 3",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "一次交换至少让一个合法值归位。",
+        "review": "swap(0,-2)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ],
+            "variables": {
+              "i": 1,
+              "target": 0
+            },
+            "pointers": {
+              "i": 1,
+              "target": 0
+            },
+            "active": [
+              1,
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "swap(0,-2)",
+            "action": "把值 0 交换到下标 0",
+            "status": "running"
+          },
+          "caption": "一次交换至少让一个合法值归位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不断把合法值送回自己的下标。",
+        "review": "处理下标 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ],
+            "variables": {
+              "i": 2
+            },
+            "pointers": {
+              "i": 2
+            },
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "处理下标 2",
+            "status": "running"
+          },
+          "caption": "不断把合法值送回自己的下标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ],
+            "variables": {
+              "i": 2
+            },
+            "pointers": {
+              "i": 2
+            },
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 2",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不断把合法值送回自己的下标。",
+        "review": "处理下标 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ],
+            "variables": {
+              "i": 3
+            },
+            "pointers": {
+              "i": 3
+            },
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "处理下标 3",
+            "status": "running"
+          },
+          "caption": "不断把合法值送回自己的下标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "第一个不匹配位置就是最小缺失正数。",
+        "review": "0 != 0 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ],
+            "variables": {
+              "i": 0
+            },
+            "pointers": {
+              "i": 0
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "0 != 0 → False",
+            "action": "检查 nums[0] 是否等于 0",
+            "status": "running"
+          },
+          "caption": "第一个不匹配位置就是最小缺失正数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ],
+            "variables": {
+              "i": 0
+            },
+            "pointers": {
+              "i": 0
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "0 != 0 → False",
+            "action": "不变量检查 1",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "第一个不匹配位置就是最小缺失正数。",
+        "review": "-2 != 1 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ],
+            "variables": {
+              "i": 1
+            },
+            "pointers": {
+              "i": 1
+            },
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "-2 != 1 → True",
+            "action": "检查 nums[1] 是否等于 1",
+            "status": "running"
+          },
+          "caption": "第一个不匹配位置就是最小缺失正数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "1 已归位而 2 缺失。",
+        "review": "index 1 → value 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ],
+            "variables": {
+              "answer": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "index 1 → value 2",
+            "action": "返回第一个缺失正数 2",
+            "status": "return",
+            "output": 2
+          },
+          "caption": "1 已归位而 2 缺失。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int firstMissingPositive(vector<int>& nums) {\n        int n = nums.size();\n        if (!n) return 1;\n\n        for (auto& x : nums)\n            if (x != INT_MIN) x -- ;                             // 初始化为最小可能值\n\n        for (int i = 0; i < n; i ++ ) {                          // 遍历\n            while (nums[i] >= 0 && nums[i] < n && nums[i] != i && nums[i] != nums[nums[i]]) // 将元素放到正确位置（原地哈希）\n                swap(nums[i], nums[nums[i]]);                    // 交换\n        }\n\n        for (int i = 0; i < n; i ++ )                            // 遍历\n            if (nums[i] != i)\n                return i + 1;\n\n        return n + 1;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 885,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 886,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 887,
+        "text": "    int firstMissingPositive(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 888,
+        "text": "        int n = nums.size();"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 889,
+        "text": "        if (!n) return 1;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 890,
+        "text": ""
+      },
+      {
+        "id": "L7",
+        "sourceLine": 891,
+        "text": "        for (auto& x : nums)"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 892,
+        "text": "            if (x != INT_MIN) x -- ;                             // 初始化为最小可能值"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 893,
+        "text": ""
+      },
+      {
+        "id": "L10",
+        "sourceLine": 894,
+        "text": "        for (int i = 0; i < n; i ++ ) {                          // 遍历"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 895,
+        "text": "            while (nums[i] >= 0 && nums[i] < n && nums[i] != i && nums[i] != nums[nums[i]]) // 将元素放到正确位置（原地哈希）"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 896,
+        "text": "                swap(nums[i], nums[nums[i]]);                    // 交换"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 897,
+        "text": "        }"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 898,
+        "text": ""
+      },
+      {
+        "id": "L15",
+        "sourceLine": 899,
+        "text": "        for (int i = 0; i < n; i ++ )                            // 遍历"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 900,
+        "text": "            if (nums[i] != i)"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 901,
+        "text": "                return i + 1;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 902,
+        "text": ""
+      },
+      {
+        "id": "L19",
+        "sourceLine": 903,
+        "text": "        return n + 1;"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 904,
+        "text": "    }"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 905,
+        "text": "};"
+      }
+    ]
+  }
+}

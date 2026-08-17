@@ -1,0 +1,748 @@
+{
+  "problemId": 169,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 169,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "variables": {
+        "candidate": 2,
+        "count": 1
+      },
+      "structure": {},
+      "result": [
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "a3ca705b866b0479e61564a4322e10e991c253e05efd09a84f7be5a0f1908093",
+    "sourceSemanticTokenHash": "158a4dab3ac73c32c653de720ad5d32d0d29251028f1a7f6cc43360424ff97c2",
+    "sourceCodeLineCount": 11
+  },
+  "sourceCodeSha256": "a3ca705b866b0479e61564a4322e10e991c253e05efd09a84f7be5a0f1908093",
+  "sourceSemanticTokenHash": "158a4dab3ac73c32c653de720ad5d32d0d29251028f1a7f6cc43360424ff97c2",
+  "steps": [
+    {
+      "id": "169-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "初始化候选与票数",
+      "body": "Boyer-Moore 把不同元素互相抵消，最后候选一定是多数元素。 题解原意：思路讲解： 核心思想是\"正负抵消\"。维护两个变量： candidate：当前候选的多数元素 count：候选元素的\"净胜票数\" 遍历数组： 1. 如果 count == 0，将当前元素设为新的候选人 2. 如果当前元素 == candidate，则 count += 1 3. 否则 count -= 1 为什么正确？ 多数元素出现次数超过一半，所以它的净胜票数一定为正。无论其他元素如何\"围攻\"，多数元素最终一定能保持…",
+      "kind": "boyer",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · boyer",
+        "badge": "count=0",
+        "tokens": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "candidate": null,
+          "count": 0
+        },
+        "rows": [
+          {
+            "label": "candidate",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "Boyer-Moore 把不同元素互相抵消，最后候选一定是多数元素。"
+      },
+      "state": {
+        "values": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "candidate": null,
+          "count": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "169-trace-002",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[0]=2",
+      "body": "candidate=2，count=1。",
+      "kind": "boyer",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · boyer",
+        "badge": "i=0 · count=1",
+        "tokens": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "x": 2,
+          "candidate": 2,
+          "count": 1
+        },
+        "rows": [
+          {
+            "label": "candidate",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "candidate=2，count=1。"
+      },
+      "state": {
+        "values": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 0,
+          "x": 2,
+          "candidate": 2,
+          "count": 1
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "169-trace-003",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "update",
+      "title": "处理 nums[1]=2",
+      "body": "candidate=2，count=2。",
+      "kind": "boyer",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · boyer",
+        "badge": "i=1 · count=2",
+        "tokens": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "x": 2,
+          "candidate": 2,
+          "count": 2
+        },
+        "rows": [
+          {
+            "label": "candidate",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [],
+        "note": "candidate=2，count=2。"
+      },
+      "state": {
+        "values": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 1,
+          "x": 2,
+          "candidate": 2,
+          "count": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "169-trace-004",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "处理 nums[2]=1",
+      "body": "candidate=2，count=1。",
+      "kind": "boyer",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · boyer",
+        "badge": "i=2 · count=1",
+        "tokens": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "x": 1,
+          "candidate": 2,
+          "count": 1
+        },
+        "rows": [
+          {
+            "label": "candidate",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "candidate=2，count=1。"
+      },
+      "state": {
+        "values": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 2,
+          "x": 1,
+          "candidate": 2,
+          "count": 1
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "169-trace-005",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "处理 nums[3]=1",
+      "body": "candidate=2，count=0。",
+      "kind": "boyer",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · boyer",
+        "badge": "i=3 · count=0",
+        "tokens": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "x": 1,
+          "candidate": 2,
+          "count": 0
+        },
+        "rows": [
+          {
+            "label": "candidate",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "candidate=2，count=0。"
+      },
+      "state": {
+        "values": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 3,
+          "x": 1,
+          "candidate": 2,
+          "count": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "169-trace-006",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[4]=1",
+      "body": "candidate=1，count=1。",
+      "kind": "boyer",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · boyer",
+        "badge": "i=4 · count=1",
+        "tokens": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "x": 1,
+          "candidate": 1,
+          "count": 1
+        },
+        "rows": [
+          {
+            "label": "candidate",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "candidate=1，count=1。"
+      },
+      "state": {
+        "values": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 4,
+          "x": 1,
+          "candidate": 1,
+          "count": 1
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "169-trace-007",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "处理 nums[5]=2",
+      "body": "candidate=1，count=0。",
+      "kind": "boyer",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · boyer",
+        "badge": "i=5 · count=0",
+        "tokens": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "x": 2,
+          "candidate": 1,
+          "count": 0
+        },
+        "rows": [
+          {
+            "label": "candidate",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "candidate=1，count=0。"
+      },
+      "state": {
+        "values": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 5,
+          "x": 2,
+          "candidate": 1,
+          "count": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "169-trace-008",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[6]=2",
+      "body": "candidate=2，count=1。",
+      "kind": "boyer",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · boyer",
+        "badge": "i=6 · count=1 · 结果 1 项",
+        "tokens": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "x": 2,
+          "candidate": 2,
+          "count": 1
+        },
+        "rows": [
+          {
+            "label": "candidate",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "candidate=2，count=1。"
+      },
+      "state": {
+        "values": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 6,
+          "x": 2,
+          "candidate": 2,
+          "count": 1
+        },
+        "structure": {},
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "169-trace-check-010",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。多数元素为 2。 易错提醒：题目保证存在多数元素：如果不保证，Boyer-Moore 算法得到的 candidate 需要再遍历一次验证是否真的 > ⌊n/2⌋ count 归零时的处理：if count == 0: candidate = num，然后下一句应该是 count += 1（因为当前票投给了新候选人）。在实现中需要注意不要写反顺序 ⌊n/2⌋ 的理解…",
+      "kind": "boyer",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=6 · count=1 · 结果 1 项",
+        "tokens": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "x": 2,
+          "candidate": 2,
+          "count": 1
+        },
+        "rows": [
+          {
+            "label": "candidate",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。多数元素为 2。"
+      },
+      "state": {
+        "values": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 6,
+          "x": 2,
+          "candidate": 2,
+          "count": 1
+        },
+        "structure": {},
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "169-trace-009",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "多数元素为 2。",
+      "kind": "boyer",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · boyer",
+        "badge": "count=1 · 结果 1 项",
+        "tokens": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "candidate": 2,
+          "count": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "多数元素为 2。"
+      },
+      "state": {
+        "values": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "candidate": 2,
+          "count": 1
+        },
+        "structure": {},
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,1058 @@
+{
+  "problemId": 79,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 79,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "S",
+        "F",
+        "C",
+        "S",
+        "A",
+        "D",
+        "E",
+        "E"
+      ],
+      "variables": {},
+      "structure": {
+        "path": [
+          "A",
+          "B",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "visited": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      },
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "afc8f4fa0e0bdfcf44405dd28bf04b438364c9e7e1d7cd368477277e414573af",
+    "sourceSemanticTokenHash": "0655d7b9b7ac368bb0868ddbbf9107017ba4960fa7fd227148549f51973980b4",
+    "sourceCodeLineCount": 28
+  },
+  "sourceCodeSha256": "afc8f4fa0e0bdfcf44405dd28bf04b438364c9e7e1d7cd368477277e414573af",
+  "sourceSemanticTokenHash": "0655d7b9b7ac368bb0868ddbbf9107017ba4960fa7fd227148549f51973980b4",
+  "steps": [
+    {
+      "id": "79-trace-001",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "setup",
+      "title": "从首字符 A 开始 DFS",
+      "body": "每次只能走上下左右，当前格标记为 '.' 防止同一路径重复使用。 题解原意：核心思想： 从每个格子出发，进行深度优先搜索（DFS）。用 # 临时覆盖格子值来标记已访问（省去 visited 数组），回溯时恢复。 搜索路径可视化（以 board=[[\"A\",\"B\",\"C\"],[\"S\",\"F\",\"C\"],[\"A\",\"D\",\"E\"] ], word=\"ABC\" 为例）：",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · backtrack",
+        "badge": "path",
+        "tokens": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "u": 0,
+          "word": "ABCCED"
+        },
+        "rows": [
+          {
+            "label": "word",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ]
+          },
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "每次只能走上下左右，当前格标记为 '.' 防止同一路径重复使用。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "variables": {
+          "u": 0,
+          "word": "ABCCED"
+        },
+        "structure": {
+          "path": [],
+          "visited": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "79-trace-002",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "匹配 A at (0, 0)",
+      "body": "u=0，路径为 A，暂时标记访问格。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          "A",
+          "B",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "u": 0,
+          "x": 0,
+          "y": 0
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "A"
+            ]
+          },
+          {
+            "label": "visited",
+            "values": [
+              "(0, 0)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "u=0，路径为 A，暂时标记访问格。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "variables": {
+          "u": 0,
+          "x": 0,
+          "y": 0
+        },
+        "structure": {
+          "path": [
+            "A"
+          ],
+          "visited": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "79-trace-003",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "匹配 B at (0, 1)",
+      "body": "u=1，路径为 AB，暂时标记访问格。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          "A",
+          "B",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "u": 1,
+          "x": 0,
+          "y": 1
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "AB"
+            ]
+          },
+          {
+            "label": "visited",
+            "values": [
+              "(0, 0)",
+              "(0, 1)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "u=1，路径为 AB，暂时标记访问格。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "variables": {
+          "u": 1,
+          "x": 0,
+          "y": 1
+        },
+        "structure": {
+          "path": [
+            "A",
+            "B"
+          ],
+          "visited": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "79-trace-004",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "匹配 C at (0, 2)",
+      "body": "u=2，路径为 ABC，暂时标记访问格。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          "A",
+          "B",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "u": 2,
+          "x": 0,
+          "y": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "ABC"
+            ]
+          },
+          {
+            "label": "visited",
+            "values": [
+              "(0, 0)",
+              "(0, 1)",
+              "(0, 2)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "u=2，路径为 ABC，暂时标记访问格。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "variables": {
+          "u": 2,
+          "x": 0,
+          "y": 2
+        },
+        "structure": {
+          "path": [
+            "A",
+            "B",
+            "C"
+          ],
+          "visited": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "79-trace-005",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "匹配 C at (1, 2)",
+      "body": "u=3，路径为 ABCC，暂时标记访问格。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          "A",
+          "B",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "u": 3,
+          "x": 1,
+          "y": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "ABCC"
+            ]
+          },
+          {
+            "label": "visited",
+            "values": [
+              "(0, 0)",
+              "(0, 1)",
+              "(0, 2)",
+              "(1, 2)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "u=3，路径为 ABCC，暂时标记访问格。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "variables": {
+          "u": 3,
+          "x": 1,
+          "y": 2
+        },
+        "structure": {
+          "path": [
+            "A",
+            "B",
+            "C",
+            "C"
+          ],
+          "visited": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "79-trace-006",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "匹配 E at (2, 2)",
+      "body": "u=4，路径为 ABCCE，暂时标记访问格。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          "A",
+          "B",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "u": 4,
+          "x": 2,
+          "y": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "ABCCE"
+            ]
+          },
+          {
+            "label": "visited",
+            "values": [
+              "(0, 0)",
+              "(0, 1)",
+              "(0, 2)",
+              "(1, 2)",
+              "(2, 2)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "u=4，路径为 ABCCE，暂时标记访问格。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "variables": {
+          "u": 4,
+          "x": 2,
+          "y": 2
+        },
+        "structure": {
+          "path": [
+            "A",
+            "B",
+            "C",
+            "C",
+            "E"
+          ],
+          "visited": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "79-trace-007",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "匹配 D at (2, 1)",
+      "body": "u=5，路径为 ABCCED，暂时标记访问格。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          "A",
+          "B",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "u": 5,
+          "x": 2,
+          "y": 1
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "ABCCED"
+            ]
+          },
+          {
+            "label": "visited",
+            "values": [
+              "(0, 0)",
+              "(0, 1)",
+              "(0, 2)",
+              "(1, 2)",
+              "(2, 2)",
+              "(2, 1)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "u=5，路径为 ABCCED，暂时标记访问格。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "variables": {
+          "u": 5,
+          "x": 2,
+          "y": 1
+        },
+        "structure": {
+          "path": [
+            "A",
+            "B",
+            "C",
+            "C",
+            "E",
+            "D"
+          ],
+          "visited": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "79-trace-008",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "匹配到单词末尾",
+      "body": "u 到达 word.size()-1，路径已经完整覆盖目标单词。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 1 项",
+        "tokens": [
+          "A",
+          "B",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "u": 5
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "u 到达 word.size()-1，路径已经完整覆盖目标单词。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "variables": {
+          "u": 5
+        },
+        "structure": {
+          "path": [
+            "A",
+            "B",
+            "C",
+            "C",
+            "E",
+            "D"
+          ],
+          "visited": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "79-trace-check-010",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：找到路径 ABCCED。 易错提醒：1. 忘记回溯还原：标记 visited 后必须在返回前恢复，否则其他起点无法使用该格子。这是网格回溯最常见的问题。 2. 四方向顺序优化：先搜索最可能的方向（虽然没有通用规则），但短路或 or 天然带剪枝——找到一个就返回。 3. 索引越界检查顺序：必须先检查越界再访问 board。写成 board[i][j] != word[k] o…",
+      "kind": "backtrack",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          "A",
+          "B",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "u": 5
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：找到路径 ABCCED。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "variables": {
+          "u": 5
+        },
+        "structure": {
+          "path": [
+            "A",
+            "B",
+            "C",
+            "C",
+            "E",
+            "D"
+          ],
+          "visited": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "79-trace-009",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 true：找到路径 ABCCED。",
+      "kind": "backtrack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · backtrack",
+        "badge": "结果 1 项",
+        "tokens": [
+          "A",
+          "B",
+          "C",
+          "C",
+          "E",
+          "D"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "返回 true：找到路径 ABCCED。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "S",
+          "F",
+          "C",
+          "S",
+          "A",
+          "D",
+          "E",
+          "E"
+        ],
+        "variables": {},
+        "structure": {
+          "path": [
+            "A",
+            "B",
+            "C",
+            "C",
+            "E",
+            "D"
+          ],
+          "visited": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

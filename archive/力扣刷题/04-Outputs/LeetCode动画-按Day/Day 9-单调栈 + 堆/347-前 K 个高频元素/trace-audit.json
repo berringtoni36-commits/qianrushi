@@ -1,0 +1,2682 @@
+{
+  "problemId": 347,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 347,
+    "stepCount": 26,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "variables": {
+        "n": 6,
+        "k": 2,
+        "i": 1,
+        "t": 2
+      },
+      "structure": {
+        "cnt": {
+          "1": 3,
+          "2": 2,
+          "3": 1
+        },
+        "s": [
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "result": [
+        1,
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "f2e2e06b461ec3c7588cfe0af70322a8ca42618f8a544b8df318c38bc008ed26",
+    "sourceSemanticTokenHash": "b8b86ed3c7552663600c33a9bd08c2a23801da2b5fbafe18732c5e43c9b4f080",
+    "sourceCodeLineCount": 17
+  },
+  "sourceCodeSha256": "f2e2e06b461ec3c7588cfe0af70322a8ca42618f8a544b8df318c38bc008ed26",
+  "sourceSemanticTokenHash": "b8b86ed3c7552663600c33a9bd08c2a23801da2b5fbafe18732c5e43c9b4f080",
+  "steps": [
+    {
+      "id": "347-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立频次表 cnt",
+      "body": "先把每个数字出现了多少次记录下来；此时还没有扫描频率边界。 题解原意：核心思想： 先用 unordered_map 统计每个数字的频率，然后构建一个大小为 k 的小根堆（按频率排序）。堆中始终保持当前频率最高的 k 个元素。 为什么用最小堆不是最大堆？因为我们要保留前 k 高的元素，用最小堆可以把堆顶（最小的频率）弹出，而较大的频率留在堆中。如果用最大堆，我们需要把所有元素都入堆，复杂度为 O(n log n)。 复杂度： 时间 O(n log k)，空间 O(n)",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "全 0"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "先把每个数字出现了多少次记录下来；此时还没有扫描频率边界。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {},
+          "s": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-002",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "mutate",
+      "title": "cnt[1] 增加到 1",
+      "body": "执行 cnt[x]++：当前输入位置 0 的值为 1，频次表变成 {1: 1}。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "全 0"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 cnt[x]++：当前输入位置 0 的值为 1，频次表变成 {1: 1}。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 1
+          },
+          "s": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-003",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "mutate",
+      "title": "cnt[1] 增加到 2",
+      "body": "执行 cnt[x]++：当前输入位置 1 的值为 1，频次表变成 {1: 2}。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 2"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "全 0"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 cnt[x]++：当前输入位置 1 的值为 1，频次表变成 {1: 2}。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 2
+          },
+          "s": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-004",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "mutate",
+      "title": "cnt[1] 增加到 3",
+      "body": "执行 cnt[x]++：当前输入位置 2 的值为 1，频次表变成 {1: 3}。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "全 0"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 cnt[x]++：当前输入位置 2 的值为 1，频次表变成 {1: 3}。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3
+          },
+          "s": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-005",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "mutate",
+      "title": "cnt[2] 增加到 1",
+      "body": "执行 cnt[x]++：当前输入位置 3 的值为 2，频次表变成 {1: 3, 2: 1}。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "全 0"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 cnt[x]++：当前输入位置 3 的值为 2，频次表变成 {1: 3, 2: 1}。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 1
+          },
+          "s": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-006",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "mutate",
+      "title": "cnt[2] 增加到 2",
+      "body": "执行 cnt[x]++：当前输入位置 4 的值为 2，频次表变成 {1: 3, 2: 2}。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "全 0"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 cnt[x]++：当前输入位置 4 的值为 2，频次表变成 {1: 3, 2: 2}。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2
+          },
+          "s": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-007",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "mutate",
+      "title": "cnt[3] 增加到 1",
+      "body": "执行 cnt[x]++：当前输入位置 5 的值为 3，频次表变成 {1: 3, 2: 2, 3: 1}。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "全 0"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 cnt[x]++：当前输入位置 5 的值为 3，频次表变成 {1: 3, 2: 2, 3: 1}。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-008",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "setup",
+      "title": "记录 n = 6",
+      "body": "频次数组 s 需要 n+1 个位置，因为任何数字的频率最多是 n=6。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "全 0"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "频次数组 s 需要 n+1 个位置，因为任何数字的频率最多是 n=6。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-009",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "setup",
+      "title": "建立频次数组 s",
+      "body": "s[c] 表示恰好出现 c 次的数字有多少个。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "全 0"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "s[c] 表示恰好出现 c 次的数字有多少个。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-010",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "把数字 1 的频率 3 计入 s",
+      "body": "执行 s[c]++，所以 s[3]=1；这里只按 cnt 的一项更新频次数组。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 s[c]++，所以 s[3]=1；这里只按 cnt 的一项更新频次数组。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-011",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "把数字 2 的频率 2 计入 s",
+      "body": "执行 s[c]++，所以 s[2]=1；这里只按 cnt 的一项更新频次数组。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 s[c]++，所以 s[2]=1；这里只按 cnt 的一项更新频次数组。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-012",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "把数字 3 的频率 1 计入 s",
+      "body": "执行 s[c]++，所以 s[1]=1；这里只按 cnt 的一项更新频次数组。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 s[c]++，所以 s[1]=1；这里只按 cnt 的一项更新频次数组。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-013",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "setup",
+      "title": "从最高频率向下扫描",
+      "body": "i 从 n 开始，t 累计已经覆盖了多少个元素；目标是覆盖 k=2 个。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · heap",
+        "badge": "i=6",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 6",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i 从 n 开始，t 累计已经覆盖了多少个元素；目标是覆盖 k=2 个。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 6,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-014",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "update",
+      "title": "读取频率 6",
+      "body": "执行 t += s[i--]：s[6]=0，得到 t=0，并把 i 移到 5。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · heap",
+        "badge": "i=5",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 5,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 5",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 t += s[i--]：s[6]=0，得到 t=0，并把 i 移到 5。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 5,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-015",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "update",
+      "title": "读取频率 5",
+      "body": "执行 t += s[i--]：s[5]=0，得到 t=0，并把 i 移到 4。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · heap",
+        "badge": "i=4",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 4,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 4",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 t += s[i--]：s[5]=0，得到 t=0，并把 i 移到 4。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 4,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-016",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "update",
+      "title": "读取频率 4",
+      "body": "执行 t += s[i--]：s[4]=0，得到 t=0，并把 i 移到 3。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · heap",
+        "badge": "i=3",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 3,
+          "t": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 3",
+              "t = 0",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 t += s[i--]：s[4]=0，得到 t=0，并把 i 移到 3。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 3,
+          "t": 0
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-017",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "update",
+      "title": "读取频率 3",
+      "body": "执行 t += s[i--]：s[3]=1，得到 t=1，并把 i 移到 2。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · heap",
+        "badge": "i=2",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 2,
+          "t": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 2",
+              "t = 1",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 t += s[i--]：s[3]=1，得到 t=1，并把 i 移到 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 2,
+          "t": 1
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-018",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "update",
+      "title": "读取频率 2",
+      "body": "执行 t += s[i--]：s[2]=1，得到 t=2，并把 i 移到 1。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · heap",
+        "badge": "i=1",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 1",
+              "t = 2",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 t += s[i--]：s[2]=1，得到 t=2，并把 i 移到 1。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-019",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "setup",
+      "title": "建立结果数组 res",
+      "body": "现在 t 已经覆盖前 k 个元素，阈值边界是 c > i。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · heap",
+        "badge": "i=1",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 1",
+              "t = 2",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "现在 t 已经覆盖前 k 个元素，阈值边界是 c > i。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-020",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "inspect",
+      "title": "检查数字 1 的频率 3",
+      "body": "进入结果遍历；条件 c > i 即 3 > 1，决定它是否属于前 2 高频。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · heap",
+        "badge": "i=1",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 1",
+              "t = 2",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "进入结果遍历；条件 c > i 即 3 > 1，决定它是否属于前 2 高频。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "347-trace-021",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "把 1 加入 res",
+      "body": "3 > 1，执行 res.push_back(x)；当前结果为 [1]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 1",
+              "t = 2",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "3 > 1，执行 res.push_back(x)；当前结果为 [1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "347-trace-022",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "inspect",
+      "title": "检查数字 2 的频率 2",
+      "body": "进入结果遍历；条件 c > i 即 2 > 1，决定它是否属于前 2 高频。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · heap",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 1",
+              "t = 2",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "进入结果遍历；条件 c > i 即 2 > 1，决定它是否属于前 2 高频。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "347-trace-023",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "把 2 加入 res",
+      "body": "2 > 1，执行 res.push_back(x)；当前结果为 [1, 2]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=1 · 结果 2 项",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 1",
+              "t = 2",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2
+        ],
+        "note": "2 > 1，执行 res.push_back(x)；当前结果为 [1, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "347-trace-024",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "inspect",
+      "title": "检查数字 3 的频率 1",
+      "body": "进入结果遍历；条件 c > i 即 1 > 1，决定它是否属于前 2 高频。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · heap",
+        "badge": "i=1 · 结果 2 项",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 1",
+              "t = 2",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2
+        ],
+        "note": "进入结果遍历；条件 c > i 即 1 > 1，决定它是否属于前 2 高频。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "347-trace-025",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "branch",
+      "title": "跳过 3",
+      "body": "1 不大于 1，不执行 push_back；res 保持 [1, 2]。 易错提醒：堆中存储的是元组 (freq, num)： 需要按频率排序，所以元组的第一个元素必须是频率。C++ 的 heap 默认按元组第一个元素排序。 最小堆保留的是高频元素： 每次弹出的是堆顶（最小频率），最后堆中留下的就是频率最高的 k 个。不要把逻辑搞反。 桶排序的索引范围： 频率最大为 n（所有元素相同），所以桶数组大小为 n+1（索引从…",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · heap",
+        "badge": "i=1 · 结果 2 项",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "1 → 3",
+              "2 → 2",
+              "3 → 1"
+            ]
+          },
+          {
+            "label": "s[freq]",
+            "values": [
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "boundary",
+            "values": [
+              "i = 1",
+              "t = 2",
+              "k = 2"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2
+        ],
+        "note": "1 不大于 1，不执行 push_back；res 保持 [1, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "347-trace-026",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "遍历结束，返回前 2 个高频元素 [1, 2]。",
+      "kind": "heap",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · heap",
+        "badge": "i=1 · 结果 2 项",
+        "tokens": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2
+        ],
+        "note": "遍历结束，返回前 2 个高频元素 [1, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "variables": {
+          "n": 6,
+          "k": 2,
+          "i": 1,
+          "t": 2
+        },
+        "structure": {
+          "cnt": {
+            "1": 3,
+            "2": 2,
+            "3": 1
+          },
+          "s": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,3475 @@
+{
+  "problemId": 46,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 46,
+    "stepCount": 32,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        2,
+        3
+      ],
+      "variables": {},
+      "structure": {
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ]
+      },
+      "result": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          3,
+          2
+        ],
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          2,
+          3,
+          1
+        ],
+        [
+          3,
+          1,
+          2
+        ],
+        [
+          3,
+          2,
+          1
+        ]
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "7e97e95fb1d75bbcd28bad1fe55f2058f9f7e79260306c256dab3663c73ff3e4",
+    "sourceSemanticTokenHash": "66f858fb2639b144f5288af232c4d7f9a38283f523799e22bb62cb370c30b9ee",
+    "sourceCodeLineCount": 32
+  },
+  "sourceCodeSha256": "7e97e95fb1d75bbcd28bad1fe55f2058f9f7e79260306c256dab3663c73ff3e4",
+  "sourceSemanticTokenHash": "66f858fb2639b144f5288af232c4d7f9a38283f523799e22bb62cb370c30b9ee",
+  "steps": [
+    {
+      "id": "46-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "从空路径开始",
+      "body": "每层选择一个未使用数字；到达长度 n 时记录一组排列，再撤销最后选择。 题解原意：核心思想： 标准的回溯算法，用 visited 数组标记已经选过的元素，每一层在\"未使用\"的元素中选择一个，递归到下一层。 每个叶子节点就是一个排列。 算法流程： 1. 初始化 vector<vector<int>> res 存放结果，vector<bool> used(n, false) 标记使用状态。 2. 定义回溯函数 backtrack(path)： 如果 len(path) == n，找到一个排列，加入结果…",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 0
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "每层选择一个未使用数字；到达长度 n 时记录一组排列，再撤销最后选择。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 0
+        },
+        "structure": {
+          "path": [],
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-002",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 1 进入第 0 层",
+      "body": "当前路径 [1]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 1,
+          "choice": 1
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "choices",
+            "values": [
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 1,
+          "choice": 1
+        },
+        "structure": {
+          "path": [
+            1
+          ],
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-003",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 2 进入第 1 层",
+      "body": "当前路径 [1, 2]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "choice": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2
+            ]
+          },
+          {
+            "label": "choices",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 2,
+          "choice": 2
+        },
+        "structure": {
+          "path": [
+            1,
+            2
+          ],
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-004",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 3 进入第 2 层",
+      "body": "当前路径 [1, 2, 3]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 3,
+          "choice": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3,
+          "choice": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            3
+          ],
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-005",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "记录排列 [1, 2, 3]",
+      "body": "路径长度达到 n，当前排列被确认。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "note": "路径长度达到 n，当前排列被确认。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            3
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-006",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "mutate",
+      "title": "撤销最后选择",
+      "body": "回到上一层，尝试同层的下一个未使用数字。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "note": "回到上一层，尝试同层的下一个未使用数字。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 2
+        },
+        "structure": {
+          "path": [
+            1,
+            2
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-007",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 1 进入第 0 层",
+      "body": "当前路径 [1, 2, 1]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 1,
+          "choice": 1
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1
+            ]
+          },
+          {
+            "label": "choices",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 1,
+          "choice": 1
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-008",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 3 进入第 1 层",
+      "body": "当前路径 [1, 2, 1, 3]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "choice": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 2,
+          "choice": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-009",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 2 进入第 2 层",
+      "body": "当前路径 [1, 2, 1, 3, 2]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 3,
+          "choice": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3,
+          "choice": 2
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-010",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "记录排列 [1, 3, 2]",
+      "body": "路径长度达到 n，当前排列被确认。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ]
+        ],
+        "note": "路径长度达到 n，当前排列被确认。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-011",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "mutate",
+      "title": "撤销最后选择",
+      "body": "回到上一层，尝试同层的下一个未使用数字。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 4
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ]
+        ],
+        "note": "回到上一层，尝试同层的下一个未使用数字。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 4
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-012",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 2 进入第 0 层",
+      "body": "当前路径 [1, 2, 1, 3, 2]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 1,
+          "choice": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 1,
+          "choice": 2
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-013",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 1 进入第 1 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "choice": 1
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 2,
+          "choice": 1
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-014",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 3 进入第 2 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1, 3]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 3,
+          "choice": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              3
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1, 3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3,
+          "choice": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            3
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-015",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "记录排列 [2, 1, 3]",
+      "body": "路径长度达到 n，当前排列被确认。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              3
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]",
+              "[2, 1, 3]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ]
+        ],
+        "note": "路径长度达到 n，当前排列被确认。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            3
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-016",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "mutate",
+      "title": "撤销最后选择",
+      "body": "回到上一层，尝试同层的下一个未使用数字。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 6
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]",
+              "[2, 1, 3]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ]
+        ],
+        "note": "回到上一层，尝试同层的下一个未使用数字。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 6
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-017",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 2 进入第 0 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1, 2]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 1,
+          "choice": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 1,
+          "choice": 2
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-018",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 3 进入第 1 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "choice": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 2,
+          "choice": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-019",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 1 进入第 2 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 1]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 3,
+          "choice": 1
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              1
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3,
+          "choice": 1
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            1
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-020",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "记录排列 [2, 3, 1]",
+      "body": "路径长度达到 n，当前排列被确认。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              1
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]",
+              "[2, 1, 3]",
+              "[2, 3, 1]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ]
+        ],
+        "note": "路径长度达到 n，当前排列被确认。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            1
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-021",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "mutate",
+      "title": "撤销最后选择",
+      "body": "回到上一层，尝试同层的下一个未使用数字。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 8
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]",
+              "[2, 1, 3]",
+              "[2, 3, 1]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ]
+        ],
+        "note": "回到上一层，尝试同层的下一个未使用数字。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 8
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-022",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 3 进入第 0 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 1,
+          "choice": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              3
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 1,
+          "choice": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            3
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-023",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 1 进入第 1 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3, 1]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "choice": 1
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              3,
+              1
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3, 1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 2,
+          "choice": 1
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            3,
+            1
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-024",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 2 进入第 2 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3, 1, 2]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 3,
+          "choice": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              3,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3, 1, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3,
+          "choice": 2
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            3,
+            1,
+            2
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-025",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "记录排列 [3, 1, 2]",
+      "body": "路径长度达到 n，当前排列被确认。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 5 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              3,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]",
+              "[2, 1, 3]",
+              "[2, 3, 1]",
+              "[3, 1, 2]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ]
+        ],
+        "note": "路径长度达到 n，当前排列被确认。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            3,
+            1,
+            2
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ],
+            [
+              3,
+              1,
+              2
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-026",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "mutate",
+      "title": "撤销最后选择",
+      "body": "回到上一层，尝试同层的下一个未使用数字。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 5 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 10
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              3,
+              1
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]",
+              "[2, 1, 3]",
+              "[2, 3, 1]",
+              "[3, 1, 2]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ]
+        ],
+        "note": "回到上一层，尝试同层的下一个未使用数字。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 10
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            3,
+            1
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ],
+            [
+              3,
+              1,
+              2
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-027",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 3 进入第 0 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3, 1, 3]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 1,
+          "choice": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              3,
+              1,
+              3
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3, 1, 3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 1,
+          "choice": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            3,
+            1,
+            3
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ],
+            [
+              3,
+              1,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-028",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 2 进入第 1 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3, 1, 3, 2]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "choice": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              3,
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3, 1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 2,
+          "choice": 2
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            3,
+            1,
+            3,
+            2
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ],
+            [
+              3,
+              1,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-029",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "选择 1 进入第 2 层",
+      "body": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3, 1, 3, 2, 1]。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 3,
+          "choice": 1
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              3,
+              1,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "label": "choices",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "当前路径 [1, 2, 1, 3, 2, 1, 2, 3, 3, 1, 3, 2, 1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3,
+          "choice": 1
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            3,
+            1,
+            3,
+            2,
+            1
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ],
+            [
+              3,
+              1,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "46-trace-030",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "记录排列 [3, 2, 1]",
+      "body": "路径长度达到 n，当前排列被确认。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 6 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              3,
+              1,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]",
+              "[2, 1, 3]",
+              "[2, 3, 1]",
+              "[3, 1, 2]",
+              "[3, 2, 1]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ],
+        "note": "路径长度达到 n，当前排列被确认。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 3
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            3,
+            1,
+            3,
+            2,
+            1
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ],
+            [
+              3,
+              1,
+              2
+            ],
+            [
+              3,
+              2,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-031",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "mutate",
+      "title": "撤销最后选择",
+      "body": "回到上一层，尝试同层的下一个未使用数字。 易错提醒：1. 引用传递问题：res.push_back(path[:]) 而不是 res.push_back(path)。path 在回溯过程中会被修改，如果不创建副本，最终 res 中所有元素都会指向同一个空列表。 2. 忘记撤销选择：used[i] = false 和 path.pop_back() 必须成对出现。遗漏撤销会导致状态污染，使后…",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 6 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 12
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              1,
+              2,
+              1,
+              3,
+              2,
+              1,
+              2,
+              3,
+              3,
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]",
+              "[2, 1, 3]",
+              "[2, 3, 1]",
+              "[3, 1, 2]",
+              "[3, 2, 1]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ],
+        "note": "回到上一层，尝试同层的下一个未使用数字。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "depth": 12
+        },
+        "structure": {
+          "path": [
+            1,
+            2,
+            1,
+            3,
+            2,
+            1,
+            2,
+            3,
+            3,
+            1,
+            3,
+            2
+          ],
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ],
+            [
+              3,
+              1,
+              2
+            ],
+            [
+              3,
+              2,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "46-trace-032",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "共生成 6 个排列。",
+      "kind": "backtrack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · backtrack",
+        "badge": "结果 6 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[1, 2, 3]",
+              "[1, 3, 2]",
+              "[2, 1, 3]",
+              "[2, 3, 1]",
+              "[3, 1, 2]",
+              "[3, 2, 1]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ],
+        "note": "共生成 6 个排列。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {},
+        "structure": {
+          "result": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              3,
+              1
+            ],
+            [
+              3,
+              1,
+              2
+            ],
+            [
+              3,
+              2,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

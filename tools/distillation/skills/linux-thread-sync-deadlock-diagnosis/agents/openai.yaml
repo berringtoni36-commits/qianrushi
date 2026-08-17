@@ -1,0 +1,3 @@
+interface:
+  display_name: "Linux Thread Sync Deadlock Diagnosis"
+  short_description: "Help with Linux Thread Sync Deadlock Diagnosis tasks"

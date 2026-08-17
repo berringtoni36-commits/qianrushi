@@ -1,0 +1,46 @@
+{
+  "question": "Q007",
+  "topic": "sizeof-strlen",
+  "duration_frames": 6780,
+  "fps": 30,
+  "scene_ranges": [
+    {"id": "opening", "start_frame": 0, "end_frame": 479},
+    {"id": "map", "start_frame": 480, "end_frame": 1019},
+    {"id": "string", "start_frame": 1020, "end_frame": 2339},
+    {"id": "buffer", "start_frame": 2340, "end_frame": 3539},
+    {"id": "traps", "start_frame": 3540, "end_frame": 4559},
+    {"id": "followups", "start_frame": 4560, "end_frame": 5999},
+    {"id": "final", "start_frame": 6000, "end_frame": 6779}
+  ],
+  "string_states": [
+    {"phase": "array_created", "local_start": 0, "local_end": 209, "str": "a b c \\0"},
+    {"phase": "sizeof_array", "local_start": 210, "local_end": 419, "expression": "sizeof(str)", "result": 4},
+    {"phase": "strlen_scan", "local_start": 420, "local_end": 629, "expression": "strlen(str)", "result": 3},
+    {"phase": "pointer_alias", "local_start": 630, "local_end": 839, "expression": "char *p = str", "result": "same characters"},
+    {"phase": "sizeof_pointer", "local_start": 840, "local_end": 1319, "expression": "sizeof(p)", "result": "sizeof(char*)"}
+  ],
+  "buffer_states": [
+    {"phase": "buffer_ready", "local_start": 0, "local_end": 179, "bytes": ["0x41", "0x00", "0x42"], "actual_length": 3},
+    {"phase": "scan_first_byte", "local_start": 180, "local_end": 419, "strlen_count": 1, "active_byte": 0},
+    {"phase": "stop_at_zero", "local_start": 420, "local_end": 659, "strlen_count": 1, "active_byte": 1},
+    {"phase": "explicit_length", "local_start": 660, "local_end": 1199, "send_length": 3, "active_byte": 2}
+  ],
+  "trap_states": [
+    {"index": 0, "local_start": 0, "local_end": 149, "topic": "array_parameter_decay"},
+    {"index": 1, "local_start": 150, "local_end": 359, "topic": "binary_zero"},
+    {"index": 2, "local_start": 360, "local_end": 569, "topic": "vla_runtime_sizeof"},
+    {"index": 3, "local_start": 570, "local_end": 1019, "topic": "empty_type_boundary"}
+  ],
+  "followup_states": [
+    {"index": 0, "local_start": 0, "local_end": 359, "answer_start": 150, "question": "sizeof 是编译期还是运行时？"},
+    {"index": 1, "local_start": 360, "local_end": 719, "answer_start": 510, "question": "str 和 p 的 sizeof 为什么不同？"},
+    {"index": 2, "local_start": 720, "local_end": 1079, "answer_start": 870, "question": "为什么二进制不能随便 strlen？"},
+    {"index": 3, "local_start": 1080, "local_end": 1439, "answer_start": 1230, "question": "DMA 接收长度怎么判断？"}
+  ],
+  "final_recall_states": [
+    {"index": 0, "local_start": 0, "local_end": 194, "answer_start": 126, "question": "一句话本质？"},
+    {"index": 1, "local_start": 195, "local_end": 389, "answer_start": 321, "question": "abc 的两个结果？"},
+    {"index": 2, "local_start": 390, "local_end": 584, "answer_start": 516, "question": "换成 char *p 呢？"},
+    {"index": 3, "local_start": 585, "local_end": 779, "answer_start": 711, "question": "嵌入式怎么选？"}
+  ]
+}

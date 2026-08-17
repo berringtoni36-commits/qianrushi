@@ -1,0 +1,689 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "左括号栈",
+    "sceneKind": "stack-sequence",
+    "input": "([{}])",
+    "expected": true,
+    "exampleText": "s = \"([{}])\"",
+    "expectedText": "括号有效 → true",
+    "invariant": "栈从底到顶是尚未闭合的嵌套顺序",
+    "aha": "右括号只能匹配最近的未闭合左括号",
+    "time": "O(n)",
+    "space": "O(n)",
+    "problemId": 20,
+    "title": "有效的括号",
+    "day": "Day 8：图论 + 栈",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "bd4c215543220de1ae0daead15e849f999384802d27a2b6656c9d0c949b82167",
+    "semanticTokenHash": "bfb95d1f265aa2ce00cfc30c380d681cebdb2724266f0f9102fa53266f8ca51c",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "栈顶必须匹配下一枚右括号。",
+        "review": "括号栈为空"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": null
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "括号栈为空",
+            "status": "running",
+            "stack": []
+          },
+          "caption": "栈顶必须匹配下一枚右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "处理后栈仍只含未闭合左括号。",
+        "review": "['(']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": 0,
+              "char": "("
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "['(']",
+            "action": "左括号 ( 入栈",
+            "status": "running",
+            "stack": [
+              "("
+            ]
+          },
+          "caption": "处理后栈仍只含未闭合左括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "处理后栈仍只含未闭合左括号。",
+        "review": "['(', '[']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": 1,
+              "char": "["
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "['(', '[']",
+            "action": "左括号 [ 入栈",
+            "status": "running",
+            "stack": [
+              "(",
+              "["
+            ]
+          },
+          "caption": "处理后栈仍只含未闭合左括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "处理后栈仍只含未闭合左括号。",
+        "review": "['(', '[', '{']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": 2,
+              "char": "{"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "['(', '[', '{']",
+            "action": "左括号 { 入栈",
+            "status": "running",
+            "stack": [
+              "(",
+              "[",
+              "{"
+            ]
+          },
+          "caption": "处理后栈仍只含未闭合左括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "必须与最近未闭合的左括号匹配。",
+        "review": "top={, need={"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": 3,
+              "char": "}",
+              "match": true
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "top={, need={",
+            "action": "右括号 } 检查栈顶",
+            "status": "running",
+            "stack": [
+              "(",
+              "[",
+              "{"
+            ]
+          },
+          "caption": "必须与最近未闭合的左括号匹配。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "处理后栈仍只含未闭合左括号。",
+        "review": "['(', '[']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": 3,
+              "char": "}"
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "['(', '[']",
+            "action": "匹配成功，弹出 {",
+            "status": "running",
+            "stack": [
+              "(",
+              "["
+            ]
+          },
+          "caption": "处理后栈仍只含未闭合左括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "必须与最近未闭合的左括号匹配。",
+        "review": "top=[, need=["
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": 4,
+              "char": "]",
+              "match": true
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "top=[, need=[",
+            "action": "右括号 ] 检查栈顶",
+            "status": "running",
+            "stack": [
+              "(",
+              "["
+            ]
+          },
+          "caption": "必须与最近未闭合的左括号匹配。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "处理后栈仍只含未闭合左括号。",
+        "review": "['(']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": 4,
+              "char": "]"
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "['(']",
+            "action": "匹配成功，弹出 [",
+            "status": "running",
+            "stack": [
+              "("
+            ]
+          },
+          "caption": "处理后栈仍只含未闭合左括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "必须与最近未闭合的左括号匹配。",
+        "review": "top=(, need=("
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": 5,
+              "char": ")",
+              "match": true
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "top=(, need=(",
+            "action": "右括号 ) 检查栈顶",
+            "status": "running",
+            "stack": [
+              "("
+            ]
+          },
+          "caption": "必须与最近未闭合的左括号匹配。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": 5,
+              "char": ")",
+              "match": true
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "top=(, need=(",
+            "action": "不变量检查 1",
+            "status": "running",
+            "stack": [
+              "("
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "处理后栈仍只含未闭合左括号。",
+        "review": "[]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "i": 5,
+              "char": ")"
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[]",
+            "action": "匹配成功，弹出 (",
+            "status": "running",
+            "stack": []
+          },
+          "caption": "处理后栈仍只含未闭合左括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "所有左括号都按正确嵌套顺序闭合。",
+        "review": "empty=true"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "[",
+              "{",
+              "}",
+              "]",
+              ")"
+            ],
+            "variables": {
+              "empty": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "formula": "empty=true",
+            "action": "栈为空，括号串有效",
+            "status": "return",
+            "stack": [],
+            "output": true
+          },
+          "caption": "所有左括号都按正确嵌套顺序闭合。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> stk;\n        unordered_map<char, char> pairs = {  // 右括号→左括号的映射\n            {')', '('}, {']', '['}, {'}', '{'}\n        };\n\n        for (auto c : s) {\n            if (!pairs.count(c)) {  // 左括号，入栈\n                stk.push(c);                                     // 入栈\n            } else {  // 右括号，检查栈顶是否匹配\n                if (stk.size() && stk.top() == pairs[c])\n                    stk.pop();                                   // 出栈\n                else\n                    return false;\n            }\n        }\n\n        return stk.empty();  // 栈空说明所有括号都闭合了\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3164,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3165,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3166,
+        "text": "    bool isValid(string s) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3167,
+        "text": "        stack<char> stk;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3168,
+        "text": "        unordered_map<char, char> pairs = {  // 右括号→左括号的映射"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3169,
+        "text": "            {')', '('}, {']', '['}, {'}', '{'}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3170,
+        "text": "        };"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3171,
+        "text": ""
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3172,
+        "text": "        for (auto c : s) {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3173,
+        "text": "            if (!pairs.count(c)) {  // 左括号，入栈"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3174,
+        "text": "                stk.push(c);                                     // 入栈"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3175,
+        "text": "            } else {  // 右括号，检查栈顶是否匹配"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3176,
+        "text": "                if (stk.size() && stk.top() == pairs[c])"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3177,
+        "text": "                    stk.pop();                                   // 出栈"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3178,
+        "text": "                else"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3179,
+        "text": "                    return false;"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3180,
+        "text": "            }"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3181,
+        "text": "        }"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3182,
+        "text": ""
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3183,
+        "text": "        return stk.empty();  // 栈空说明所有括号都闭合了"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3184,
+        "text": "    }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3185,
+        "text": "};"
+      }
+    ]
+  }
+}

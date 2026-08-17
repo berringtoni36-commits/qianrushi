@@ -1,0 +1,920 @@
+{
+  "problemId": 101,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 101,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        2,
+        2,
+        3,
+        4,
+        4,
+        3
+      ],
+      "variables": {},
+      "structure": {
+        "tree": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "checked": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ]
+        ]
+      },
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "5aac9701f0bfc4f4874b2c712095e451945358d38d43fbbff607f8b0c55286f2",
+    "sourceSemanticTokenHash": "bf21ae5765db4d50c744f7f130a08ca9ab49258d761f4acffa98220b0281196d",
+    "sourceCodeLineCount": 22
+  },
+  "sourceCodeSha256": "5aac9701f0bfc4f4874b2c712095e451945358d38d43fbbff607f8b0c55286f2",
+  "sourceSemanticTokenHash": "bf21ae5765db4d50c744f7f130a08ca9ab49258d761f4acffa98220b0281196d",
+  "steps": [
+    {
+      "id": "101-trace-001",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "setup",
+      "title": "从根的左右子树成对比较",
+      "body": "镜像递归要求左子树的左边对应右子树的右边，值与结构都要一致。 题解原意：核心思想： 同时用两个指针 p 和 q，p 从根节点的左子树出发，q 从根节点的右子树出发。p 往左走时 q 往右走（镜像对称），p 往右走时 q 往左走。 为什么用这种特殊的遍历顺序？ 普通的单指针遍历无法检查镜像对称——因为对称是需要「交叉对比」的。双指针法让两个指针按镜像轨迹移动，完美匹配对称的定义。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "left=2 · right=2",
+        "tokens": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "left": 2,
+          "right": 2
+        },
+        "rows": [
+          {
+            "label": "tree",
+            "values": [
+              1,
+              2,
+              2,
+              3,
+              4,
+              4,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "镜像递归要求左子树的左边对应右子树的右边，值与结构都要一致。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "variables": {
+          "left": 2,
+          "right": 2
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "101-trace-002",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "compare",
+      "title": "比较镜像节点 1 与 2",
+      "body": "两侧值相等，继续向外层递归；已检查 [[1, 2]]。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · tree",
+        "badge": "left=1 · right=2",
+        "tokens": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "active": [
+          0,
+          1
+        ],
+        "compared": [
+          0,
+          1
+        ],
+        "variables": {
+          "left": 1,
+          "right": 2
+        },
+        "rows": [
+          {
+            "label": "pairs",
+            "values": [
+              "[1, 2]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两侧值相等，继续向外层递归；已检查 [[1, 2]]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "variables": {
+          "left": 1,
+          "right": 2
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            3
+          ],
+          "checked": [
+            [
+              1,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "101-trace-003",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "compare",
+      "title": "比较镜像节点 3 与 3",
+      "body": "两侧值相等，继续向外层递归；已检查 [[1, 2], [3, 3]]。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · tree",
+        "badge": "left=3 · right=3",
+        "tokens": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "active": [
+          3,
+          3
+        ],
+        "compared": [
+          3,
+          3
+        ],
+        "variables": {
+          "left": 3,
+          "right": 3
+        },
+        "rows": [
+          {
+            "label": "pairs",
+            "values": [
+              "[1, 2]",
+              "[3, 3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两侧值相等，继续向外层递归；已检查 [[1, 2], [3, 3]]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "variables": {
+          "left": 3,
+          "right": 3
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            3
+          ],
+          "checked": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "101-trace-004",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "compare",
+      "title": "比较镜像节点 4 与 4",
+      "body": "两侧值相等，继续向外层递归；已检查 [[1, 2], [3, 3], [4, 4]]。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · tree",
+        "badge": "left=4 · right=4",
+        "tokens": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "active": [
+          4,
+          4
+        ],
+        "compared": [
+          4,
+          4
+        ],
+        "variables": {
+          "left": 4,
+          "right": 4
+        },
+        "rows": [
+          {
+            "label": "pairs",
+            "values": [
+              "[1, 2]",
+              "[3, 3]",
+              "[4, 4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两侧值相等，继续向外层递归；已检查 [[1, 2], [3, 3], [4, 4]]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "variables": {
+          "left": 4,
+          "right": 4
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            3
+          ],
+          "checked": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "101-trace-005",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "所有镜像节点匹配",
+      "body": "递归没有发现不对称分支，答案被确认。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "left=None · right=None · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "left": null,
+          "right": null
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "递归没有发现不对称分支，答案被确认。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "variables": {
+          "left": null,
+          "right": null
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            3
+          ],
+          "checked": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "101-trace-check-007",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：二叉树关于中心轴对称。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "left=None · right=None · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "left": null,
+          "right": null
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：二叉树关于中心轴对称。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "variables": {
+          "left": null,
+          "right": null
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            3
+          ],
+          "checked": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "101-trace-check-008",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：二叉树关于中心轴对称。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "left=None · right=None · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "left": null,
+          "right": null
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：二叉树关于中心轴对称。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "variables": {
+          "left": null,
+          "right": null
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            3
+          ],
+          "checked": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "101-trace-check-009",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：二叉树关于中心轴对称。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "left=None · right=None · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "left": null,
+          "right": null
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：二叉树关于中心轴对称。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "variables": {
+          "left": null,
+          "right": null
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            3
+          ],
+          "checked": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "101-trace-check-010",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：二叉树关于中心轴对称。 易错提醒：比较方向搞反： 不是 check(p.left, q.left)，而是 check(p.left, q.right)——因为是对称比较，左的左 vs 右的右。 空节点判断顺序： 先判断「两者都空→true」，再判断「一个空→false」，顺序不能乱。如果先判断一个空会把两个都空的情况误判为 false。 迭代法 continue 而非 r…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "left=None · right=None · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "left": null,
+          "right": null
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：二叉树关于中心轴对称。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "variables": {
+          "left": null,
+          "right": null
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            3
+          ],
+          "checked": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "101-trace-006",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 true：二叉树关于中心轴对称。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "返回 true：二叉树关于中心轴对称。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ],
+        "variables": {},
+        "structure": {
+          "tree": [
+            1,
+            2,
+            2,
+            3,
+            4,
+            4,
+            3
+          ],
+          "checked": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

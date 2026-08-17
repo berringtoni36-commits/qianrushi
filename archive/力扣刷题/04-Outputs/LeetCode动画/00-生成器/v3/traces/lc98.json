@@ -1,0 +1,1004 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "后序返回子树极值",
+    "sceneKind": "tree-graph",
+    "input": "[2,1,3]",
+    "expected": true,
+    "exampleText": "[2,1,3]",
+    "expectedText": "合法 BST → true",
+    "invariant": "dfs 返回 [合法,最小值,最大值] 的完整摘要",
+    "aha": "不能只比较直接孩子，必须携带整棵子树极值",
+    "time": "O(n)",
+    "space": "O(h)",
+    "problemId": 98,
+    "title": "验证二叉搜索树",
+    "day": "Day 6：二叉树基础",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "2a49385869a624b7e6cfec2fd09a8b98f8b3d58da2ec37640e8c9de2e6990184",
+    "semanticTokenHash": "09e122aed018621c0c2c5729c0bdd4f3b1b5d0717c1c8c2055d008b2dae87d30",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "父节点只需左右子树最小/最大值。",
+        "review": "后序收集每棵子树的合法性与极值"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "后序收集每棵子树的合法性与极值",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "父节点只需左右子树最小/最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "极值摘要供父节点跨层验证。",
+        "review": "[1, 1, 1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "valid": true,
+              "min": 1,
+              "max": 1
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1, 1]",
+            "action": "子树 n1 返回 [1,1,1]",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "极值摘要供父节点跨层验证。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左子树所有值必须小于根。",
+        "review": "1<2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "valid": true,
+              "min": 1,
+              "max": 2
+            },
+            "pointers": {},
+            "active": [
+              "n2",
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1<2",
+            "action": "左子树最大值 1 < 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "左子树所有值必须小于根。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "valid": true,
+              "min": 1,
+              "max": 2
+            },
+            "pointers": {},
+            "active": [
+              "n2",
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1<2",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "极值摘要供父节点跨层验证。",
+        "review": "[1, 3, 3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3",
+              "valid": true,
+              "min": 3,
+              "max": 3
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 3, 3]",
+            "action": "子树 n3 返回 [1,3,3]",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "极值摘要供父节点跨层验证。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "右子树所有值必须大于根。",
+        "review": "3>2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "valid": true,
+              "min": 1,
+              "max": 3
+            },
+            "pointers": {},
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "3>2",
+            "action": "右子树最小值 3 > 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "右子树所有值必须大于根。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "valid": true,
+              "min": 1,
+              "max": 3
+            },
+            "pointers": {},
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "3>2",
+            "action": "不变量检查 5",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "valid": true,
+              "min": 1,
+              "max": 3
+            },
+            "pointers": {},
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "3>2",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "极值摘要供父节点跨层验证。",
+        "review": "[1, 1, 3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "valid": true,
+              "min": 1,
+              "max": 3
+            },
+            "pointers": {},
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1, 3]",
+            "action": "子树 n2 返回 [1,1,3]",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "极值摘要供父节点跨层验证。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "valid": true,
+              "min": 1,
+              "max": 3
+            },
+            "pointers": {},
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1, 3]",
+            "action": "不变量检查 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "每个节点均满足全子树边界。",
+        "review": "true"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "n1",
+              "n2",
+              "n3"
+            ],
+            "formula": "true",
+            "action": "返回合法 BST=true",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ],
+            "output": true
+          },
+          "caption": "每个节点均满足全子树边界。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    bool isValidBST(TreeNode* root) {\n        if (!root) return true;\n        return dfs(root)[0];\n    }\n\n    vector<int> dfs(TreeNode* root) {\n        vector<int> res({1, root->val, root->val});  // [是否BST, 子树最小值, 子树最大值]\n        if (root->left) {\n            auto t = dfs(root->left);\n            if (!t[0] || t[2] >= root->val) res[0] = 0;  // 左子树最大值 ≥ 当前值 → 不是BST\n            res[1] = min(res[1], t[1]);\n            res[2] = max(res[2], t[2]);\n        }\n        if (root->right) {\n            auto t = dfs(root->right);\n            if (!t[0] || t[1] <= root->val) res[0] = 0;  // 右子树最小值 ≤ 当前值 → 不是BST\n            res[1] = min(res[1], t[1]);\n            res[2] = max(res[2], t[2]);\n        }\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2404,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2405,
+        "text": " * Definition for a binary tree node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2406,
+        "text": " * struct TreeNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2407,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2408,
+        "text": " *     TreeNode *left;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2409,
+        "text": " *     TreeNode *right;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2410,
+        "text": " *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2411,
+        "text": " * };"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2412,
+        "text": " */"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2413,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2414,
+        "text": "public:"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2415,
+        "text": "    bool isValidBST(TreeNode* root) {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2416,
+        "text": "        if (!root) return true;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2417,
+        "text": "        return dfs(root)[0];"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2418,
+        "text": "    }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2419,
+        "text": ""
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2420,
+        "text": "    vector<int> dfs(TreeNode* root) {"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2421,
+        "text": "        vector<int> res({1, root->val, root->val});  // [是否BST, 子树最小值, 子树最大值]"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2422,
+        "text": "        if (root->left) {"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2423,
+        "text": "            auto t = dfs(root->left);"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2424,
+        "text": "            if (!t[0] || t[2] >= root->val) res[0] = 0;  // 左子树最大值 ≥ 当前值 → 不是BST"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2425,
+        "text": "            res[1] = min(res[1], t[1]);"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 2426,
+        "text": "            res[2] = max(res[2], t[2]);"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 2427,
+        "text": "        }"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 2428,
+        "text": "        if (root->right) {"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 2429,
+        "text": "            auto t = dfs(root->right);"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 2430,
+        "text": "            if (!t[0] || t[1] <= root->val) res[0] = 0;  // 右子树最小值 ≤ 当前值 → 不是BST"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 2431,
+        "text": "            res[1] = min(res[1], t[1]);"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 2432,
+        "text": "            res[2] = max(res[2], t[2]);"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 2433,
+        "text": "        }"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 2434,
+        "text": "        return res;"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 2435,
+        "text": "    }"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 2436,
+        "text": "};"
+      }
+    ]
+  }
+}

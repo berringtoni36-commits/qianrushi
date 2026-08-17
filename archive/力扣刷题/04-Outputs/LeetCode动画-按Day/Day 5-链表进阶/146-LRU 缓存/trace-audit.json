@@ -1,0 +1,752 @@
+{
+  "problemId": 146,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 146,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [],
+      "variables": {
+        "capacity": 2
+      },
+      "structure": {
+        "order": [
+          3,
+          1
+        ],
+        "hash": {
+          "1": 1,
+          "3": 3
+        }
+      },
+      "result": [
+        1,
+        -1
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "d8c0ead7e8d1d560c7a072c456d87578897cd2d5b9beb557e019bf10c75caf6b",
+    "sourceSemanticTokenHash": "f61f4a6378f696bd49a91937350f864f73afbc239701e59ece40dd9f60057b53",
+    "sourceCodeLineCount": 62
+  },
+  "sourceCodeSha256": "d8c0ead7e8d1d560c7a072c456d87578897cd2d5b9beb557e019bf10c75caf6b",
+  "sourceSemanticTokenHash": "f61f4a6378f696bd49a91937350f864f73afbc239701e59ece40dd9f60057b53",
+  "steps": [
+    {
+      "id": "146-trace-001",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "setup",
+      "title": "初始化容量为 2 的双向链表",
+      "body": "L/R 是哨兵；链表从左到右表示最近使用到最久未使用。 题解原意：为什么这样想： 我们需要同时满足 O(1) 查找和 O(1) 插入/删除。哈希表提供 O(1) 查找（key → 节点），双向链表提供 O(1) 的节点移动和删除。两者结合正好互补。 关键洞察： 双向链表维护使用顺序。最近使用的节点在头部，最久未使用的在尾部。每次访问（get/put）一个节点，就把它移动到头部。当容量满时，删除尾部节点。 为什么要用「虚拟头尾节点」？避免处理空链表和边界条件时的 nullptr 检查…",
+      "kind": "lru",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · lru",
+        "badge": "order",
+        "tokens": [],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "capacity": 2
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              "L ↔ R"
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "L/R 是哨兵；链表从左到右表示最近使用到最久未使用。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "capacity": 2
+        },
+        "structure": {
+          "order": [],
+          "hash": {}
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "146-trace-002",
+      "line": 37,
+      "lineIds": [
+        37
+      ],
+      "phase": "mutate",
+      "title": "put(1,1)",
+      "body": "写入后最近使用顺序为 [1]；尾部是最久未用项。",
+      "kind": "lru",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · lru",
+        "badge": "order",
+        "tokens": [
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "op": "put",
+          "key": 1,
+          "value": 1,
+          "capacity": 2
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              "L",
+              1,
+              "R"
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "1:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "写入后最近使用顺序为 [1]；尾部是最久未用项。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "put",
+          "key": 1,
+          "value": 1,
+          "capacity": 2
+        },
+        "structure": {
+          "order": [
+            1
+          ],
+          "hash": {
+            "1": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "146-trace-003",
+      "line": 37,
+      "lineIds": [
+        37
+      ],
+      "phase": "mutate",
+      "title": "put(2,2)",
+      "body": "写入后最近使用顺序为 [2, 1]；尾部是最久未用项。",
+      "kind": "lru",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · lru",
+        "badge": "order",
+        "tokens": [
+          2,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "op": "put",
+          "key": 2,
+          "value": 2,
+          "capacity": 2
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              "L",
+              2,
+              1,
+              "R"
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "1:1",
+              "2:2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "写入后最近使用顺序为 [2, 1]；尾部是最久未用项。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "put",
+          "key": 2,
+          "value": 2,
+          "capacity": 2
+        },
+        "structure": {
+          "order": [
+            2,
+            1
+          ],
+          "hash": {
+            "1": 1,
+            "2": 2
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "146-trace-004",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "lookup",
+      "title": "get(1) → 1",
+      "body": "命中并移动到头部；当前顺序 [1, 2]。",
+      "kind": "lru",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "lookup · lru",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "op": "get",
+          "key": 1,
+          "value": 1,
+          "capacity": 2
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              "L",
+              1,
+              2,
+              "R"
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "命中并移动到头部；当前顺序 [1, 2]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "get",
+          "key": 1,
+          "value": 1,
+          "capacity": 2
+        },
+        "structure": {
+          "order": [
+            1,
+            2
+          ],
+          "hash": {
+            "1": 1,
+            "2": 2
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "146-trace-005",
+      "line": 37,
+      "lineIds": [
+        37
+      ],
+      "phase": "mutate",
+      "title": "put(3,3)",
+      "body": "写入后最近使用顺序为 [3, 1]；尾部是最久未用项。",
+      "kind": "lru",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · lru",
+        "badge": "order",
+        "tokens": [
+          3,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "op": "put",
+          "key": 3,
+          "value": 3,
+          "capacity": 2
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              "L",
+              3,
+              1,
+              "R"
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "1:1",
+              "3:3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "写入后最近使用顺序为 [3, 1]；尾部是最久未用项。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "put",
+          "key": 3,
+          "value": 3,
+          "capacity": 2
+        },
+        "structure": {
+          "order": [
+            3,
+            1
+          ],
+          "hash": {
+            "1": 1,
+            "3": 3
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "146-trace-006",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "lookup",
+      "title": "get(2) → -1",
+      "body": "未命中，返回 -1；当前顺序 [3, 1]。",
+      "kind": "lru",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "lookup · lru",
+        "badge": "结果 2 项",
+        "tokens": [
+          3,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "get",
+          "key": 2,
+          "value": -1,
+          "capacity": 2
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              "L",
+              3,
+              1,
+              "R"
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              1,
+              -1
+            ]
+          }
+        ],
+        "result": [
+          1,
+          -1
+        ],
+        "note": "未命中，返回 -1；当前顺序 [3, 1]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "get",
+          "key": 2,
+          "value": -1,
+          "capacity": 2
+        },
+        "structure": {
+          "order": [
+            3,
+            1
+          ],
+          "hash": {
+            "1": 1,
+            "3": 3
+          }
+        },
+        "result": [
+          1,
+          -1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "146-trace-check-008",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作序列完成，get 结果为 [1, -1]。",
+      "kind": "lru",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 2 项",
+        "tokens": [
+          3,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "get",
+          "key": 2,
+          "value": -1,
+          "capacity": 2
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              "L",
+              3,
+              1,
+              "R"
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              1,
+              -1
+            ]
+          }
+        ],
+        "result": [
+          1,
+          -1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作序列完成，get 结果为 [1, -1]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "get",
+          "key": 2,
+          "value": -1,
+          "capacity": 2
+        },
+        "structure": {
+          "order": [
+            3,
+            1
+          ],
+          "hash": {
+            "1": 1,
+            "3": 3
+          }
+        },
+        "result": [
+          1,
+          -1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "146-trace-check-009",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作序列完成，get 结果为 [1, -1]。",
+      "kind": "lru",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 2 项",
+        "tokens": [
+          3,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "get",
+          "key": 2,
+          "value": -1,
+          "capacity": 2
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              "L",
+              3,
+              1,
+              "R"
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              1,
+              -1
+            ]
+          }
+        ],
+        "result": [
+          1,
+          -1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作序列完成，get 结果为 [1, -1]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "get",
+          "key": 2,
+          "value": -1,
+          "capacity": 2
+        },
+        "structure": {
+          "order": [
+            3,
+            1
+          ],
+          "hash": {
+            "1": 1,
+            "3": 3
+          }
+        },
+        "result": [
+          1,
+          -1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "146-trace-check-010",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作序列完成，get 结果为 [1, -1]。 易错提醒：双向链表指针修改顺序： 修改 4 个指针的顺序不能错。先连接新节点和 head->next，再连接 head 和新节点。建议画图确认 head 和 tail 是虚拟节点： 不是实际数据节点，所以 cache 中存的 key 不会等于 head 或 tail 淘汰时哈希表和链表都要删： 删除尾部节点后，一定要执行 del self.cach…",
+      "kind": "lru",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 2 项",
+        "tokens": [
+          3,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "get",
+          "key": 2,
+          "value": -1,
+          "capacity": 2
+        },
+        "rows": [
+          {
+            "label": "order",
+            "values": [
+              "L",
+              3,
+              1,
+              "R"
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              1,
+              -1
+            ]
+          }
+        ],
+        "result": [
+          1,
+          -1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作序列完成，get 结果为 [1, -1]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "get",
+          "key": 2,
+          "value": -1,
+          "capacity": 2
+        },
+        "structure": {
+          "order": [
+            3,
+            1
+          ],
+          "hash": {
+            "1": 1,
+            "3": 3
+          }
+        },
+        "result": [
+          1,
+          -1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "146-trace-007",
+      "line": 34,
+      "lineIds": [
+        34
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "操作序列完成，get 结果为 [1, -1]。",
+      "kind": "lru",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · lru",
+        "badge": "结果 2 项",
+        "tokens": [
+          3,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "capacity": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              -1
+            ]
+          },
+          {
+            "label": "order",
+            "values": [
+              "L",
+              3,
+              1,
+              "R"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          -1
+        ],
+        "note": "操作序列完成，get 结果为 [1, -1]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "capacity": 2
+        },
+        "structure": {
+          "order": [
+            3,
+            1
+          ],
+          "hash": {
+            "1": 1,
+            "3": 3
+          }
+        },
+        "result": [
+          1,
+          -1
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

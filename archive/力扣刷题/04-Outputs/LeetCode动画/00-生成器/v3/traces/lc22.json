@@ -1,0 +1,1394 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "合法前缀约束 DFS",
+    "sceneKind": "backtracking",
+    "input": 3,
+    "expected": [
+      "((()))",
+      "(()())",
+      "(())()",
+      "()(())",
+      "()()()"
+    ],
+    "exampleText": "n = 3",
+    "expectedText": "5 个合法括号串",
+    "invariant": "0≤rc≤lc≤n",
+    "aha": "在生成过程中剪掉右括号过多的非法前缀",
+    "time": "O(Catalan(n))",
+    "space": "O(n)",
+    "problemId": 22,
+    "title": "括号生成",
+    "day": "Day 10：回溯",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "39af27ac0c08cfe0944fdc1d47622d41e6d21b39a7dc2a8b432264631430c5e0",
+    "semanticTokenHash": "581633e0521f170980748138cc603ead1565321abbdd80b4f9028a3770ec43f0",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "左括号未满即可选择。",
+        "review": "("
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 0,
+              "rc": 0,
+              "n": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "左右括号计数从 0 开始",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "任意前缀必须满足 lc≥rc。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 1,
+              "rc": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "(",
+            "action": "添加左括号",
+            "status": "running",
+            "path": [
+              "("
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左括号未满即可选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "左括号未满即可选择。",
+        "review": "((("
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 2,
+              "rc": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "((",
+            "action": "添加左括号",
+            "status": "running",
+            "path": [
+              "(",
+              "("
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左括号未满即可选择。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "(((",
+            "action": "添加左括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              "("
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左括号未满即可选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "只有已有未闭合左括号时才能添加右括号。",
+        "review": "((())"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "((()",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              "(",
+              ")"
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "((())",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              "(",
+              ")",
+              ")"
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "accept",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "左右括号都用满时得到合法串。",
+        "review": "((()))"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "((()))",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              "(",
+              ")",
+              ")",
+              ")"
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "formula": "((()))",
+            "action": "记录 ((()))",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              "(",
+              ")",
+              ")",
+              ")"
+            ],
+            "output": [
+              "((()))"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左右括号都用满时得到合法串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "左括号未满即可选择。",
+        "review": "(()("
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 2,
+              "rc": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "(()",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              ")"
+            ],
+            "output": [
+              "((()))"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "(()(",
+            "action": "添加左括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              ")",
+              "("
+            ],
+            "output": [
+              "((()))"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左括号未满即可选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "只有已有未闭合左括号时才能添加右括号。",
+        "review": "(()())"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "(()()",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              ")",
+              "(",
+              ")"
+            ],
+            "output": [
+              "((()))"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "(()())",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              ")",
+              "(",
+              ")",
+              ")"
+            ],
+            "output": [
+              "((()))"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "只有已有未闭合左括号时才能添加右括号。",
+        "review": "(())"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "formula": "(()())",
+            "action": "记录 (()())",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              ")",
+              "(",
+              ")",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左右括号都用满时得到合法串。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 2,
+              "rc": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "(())",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              ")",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "只有已有未闭合左括号时才能添加右括号。",
+        "review": "(())()"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "(())(",
+            "action": "添加左括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              ")",
+              ")",
+              "("
+            ],
+            "output": [
+              "((()))",
+              "(()())"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左括号未满即可选择。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "(())()",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              ")",
+              ")",
+              "(",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "只有已有未闭合左括号时才能添加右括号。",
+        "review": "()"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "formula": "(())()",
+            "action": "记录 (())()",
+            "status": "running",
+            "path": [
+              "(",
+              "(",
+              ")",
+              ")",
+              "(",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左右括号都用满时得到合法串。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 1,
+              "rc": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "()",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "左括号未满即可选择。",
+        "review": "()(("
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 2,
+              "rc": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "()(",
+            "action": "添加左括号",
+            "status": "running",
+            "path": [
+              "(",
+              ")",
+              "("
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左括号未满即可选择。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "()((",
+            "action": "添加左括号",
+            "status": "running",
+            "path": [
+              "(",
+              ")",
+              "(",
+              "("
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左括号未满即可选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只有已有未闭合左括号时才能添加右括号。",
+        "review": "()(()"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "()(()",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              ")",
+              "(",
+              "(",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只有已有未闭合左括号时才能添加右括号。",
+        "review": "()(())"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "()(())",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              ")",
+              "(",
+              "(",
+              ")",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左右括号都用满时得到合法串。",
+        "review": "()(())"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "formula": "()(())",
+            "action": "记录 ()(())",
+            "status": "running",
+            "path": [
+              "(",
+              ")",
+              "(",
+              "(",
+              ")",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()",
+              "()(())"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左右括号都用满时得到合法串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只有已有未闭合左括号时才能添加右括号。",
+        "review": "()()"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 2,
+              "rc": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "()()",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              ")",
+              "(",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()",
+              "()(())"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左括号未满即可选择。",
+        "review": "()()("
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "()()(",
+            "action": "添加左括号",
+            "status": "running",
+            "path": [
+              "(",
+              ")",
+              "(",
+              ")",
+              "("
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()",
+              "()(())"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左括号未满即可选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只有已有未闭合左括号时才能添加右括号。",
+        "review": "()()()"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "()()()",
+            "action": "添加右括号",
+            "status": "running",
+            "path": [
+              "(",
+              ")",
+              "(",
+              ")",
+              "(",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()",
+              "()(())"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "只有已有未闭合左括号时才能添加右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左右括号都用满时得到合法串。",
+        "review": "()()()"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "lc": 3,
+              "rc": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "formula": "()()()",
+            "action": "记录 ()()()",
+            "status": "running",
+            "path": [
+              "(",
+              ")",
+              "(",
+              ")",
+              "(",
+              ")"
+            ],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()",
+              "()(())",
+              "()()()"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "左右括号都用满时得到合法串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "所有合法前缀分支都走到叶子。",
+        "review": "['((()))', '(()())', '(())()', '()(())', '()()()']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "(",
+              ")"
+            ],
+            "variables": {
+              "count": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "['((()))', '(()())', '(())()', '()(())', '()()()']",
+            "action": "返回 5 个合法括号串",
+            "status": "return",
+            "path": [],
+            "output": [
+              "((()))",
+              "(()())",
+              "(())()",
+              "()(())",
+              "()()()"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "所有合法前缀分支都走到叶子。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n\n    vector<string> ans;\n\n    vector<string> generateParenthesis(int n) {\n        dfs(n, 0, 0, \"\");\n        return ans;\n    }\n\n    void dfs(int n, int lc, int rc, string seq) {                // 深度优先搜索\n        if (lc == n && rc == n) ans.push_back(seq);              // 记录结果\n        else {\n            if (lc < n) dfs(n, lc + 1, rc, seq + '(');\n            if (rc < n && lc > rc) dfs(n, lc, rc + 1, seq + ')');\n        }\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3844,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3845,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3846,
+        "text": ""
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3847,
+        "text": "    vector<string> ans;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3848,
+        "text": ""
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3849,
+        "text": "    vector<string> generateParenthesis(int n) {"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3850,
+        "text": "        dfs(n, 0, 0, \"\");"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3851,
+        "text": "        return ans;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3852,
+        "text": "    }"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3853,
+        "text": ""
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3854,
+        "text": "    void dfs(int n, int lc, int rc, string seq) {                // 深度优先搜索"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3855,
+        "text": "        if (lc == n && rc == n) ans.push_back(seq);              // 记录结果"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3856,
+        "text": "        else {"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3857,
+        "text": "            if (lc < n) dfs(n, lc + 1, rc, seq + '(');"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3858,
+        "text": "            if (rc < n && lc > rc) dfs(n, lc, rc + 1, seq + ')');"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3859,
+        "text": "        }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3860,
+        "text": "    }"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3861,
+        "text": "};"
+      }
+    ]
+  }
+}

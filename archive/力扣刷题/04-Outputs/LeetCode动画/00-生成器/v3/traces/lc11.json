@@ -1,0 +1,1004 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "两端对撞并排除较矮柱",
+    "sceneKind": "array-pointers",
+    "input": [
+      1,
+      8,
+      6,
+      2,
+      5,
+      4,
+      8,
+      3,
+      7
+    ],
+    "expected": 49,
+    "exampleText": "[1, 8, 6, 2, 5, 4, 8, 3, 7]",
+    "expectedText": "最大面积 = 49",
+    "invariant": "被排除端点不可能参与更大面积",
+    "aha": "宽度缩小时只有提高短板才可能改进答案",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 11,
+    "title": "盛最多水的容器",
+    "day": "Day 1：哈希 + 双指针",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "f7a06f247f23868d99f198def6eb0dc65bac87cad9725e974b4396059dd96f5c",
+    "semanticTokenHash": "fa13efc7d1e28097f849fba3d8b01cbdfffefae0c3f59162a8bf55cdec2814a8",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最大候选区间从两端开始。",
+        "review": "双指针夹住全部柱子"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 0,
+              "j": 8,
+              "res": 0
+            },
+            "pointers": {
+              "i": 0,
+              "j": 8
+            },
+            "active": [],
+            "compared": [
+              0,
+              8
+            ],
+            "result": [],
+            "formula": "",
+            "action": "双指针夹住全部柱子",
+            "status": "running"
+          },
+          "caption": "最大候选区间从两端开始。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度乘较矮柱得到当前面积。",
+        "review": "min(1,7)×8=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 0,
+              "j": 8,
+              "res": 8
+            },
+            "pointers": {
+              "i": 0,
+              "j": 8
+            },
+            "active": [],
+            "compared": [
+              0,
+              8
+            ],
+            "result": [
+              0,
+              8
+            ],
+            "formula": "min(1,7)×8=8",
+            "action": "计算 [0,8] 面积 8",
+            "status": "running"
+          },
+          "caption": "宽度乘较矮柱得到当前面积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度必减，只移动较矮端才可能提高高度上限。",
+        "review": "next range=[1,8]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 1,
+              "j": 8,
+              "res": 8
+            },
+            "pointers": {
+              "i": 1,
+              "j": 8
+            },
+            "active": [
+              1,
+              8
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next range=[1,8]",
+            "action": "排除较矮端点 0",
+            "status": "running"
+          },
+          "caption": "宽度必减，只移动较矮端才可能提高高度上限。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度乘较矮柱得到当前面积。",
+        "review": "min(8,7)×7=49"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 1,
+              "j": 8,
+              "res": 49
+            },
+            "pointers": {
+              "i": 1,
+              "j": 8
+            },
+            "active": [],
+            "compared": [
+              1,
+              8
+            ],
+            "result": [
+              1,
+              8
+            ],
+            "formula": "min(8,7)×7=49",
+            "action": "计算 [1,8] 面积 49",
+            "status": "running"
+          },
+          "caption": "宽度乘较矮柱得到当前面积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度必减，只移动较矮端才可能提高高度上限。",
+        "review": "next range=[1,7]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 1,
+              "j": 7,
+              "res": 49
+            },
+            "pointers": {
+              "i": 1,
+              "j": 7
+            },
+            "active": [
+              1,
+              7
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next range=[1,7]",
+            "action": "排除较矮端点 8",
+            "status": "running"
+          },
+          "caption": "宽度必减，只移动较矮端才可能提高高度上限。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度乘较矮柱得到当前面积。",
+        "review": "min(8,3)×6=18"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 1,
+              "j": 7,
+              "res": 49
+            },
+            "pointers": {
+              "i": 1,
+              "j": 7
+            },
+            "active": [],
+            "compared": [
+              1,
+              7
+            ],
+            "result": [],
+            "formula": "min(8,3)×6=18",
+            "action": "计算 [1,7] 面积 18",
+            "status": "running"
+          },
+          "caption": "宽度乘较矮柱得到当前面积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度必减，只移动较矮端才可能提高高度上限。",
+        "review": "next range=[1,6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 1,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 1,
+              "j": 6
+            },
+            "active": [
+              1,
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next range=[1,6]",
+            "action": "排除较矮端点 7",
+            "status": "running"
+          },
+          "caption": "宽度必减，只移动较矮端才可能提高高度上限。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度乘较矮柱得到当前面积。",
+        "review": "min(8,8)×5=40"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 1,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 1,
+              "j": 6
+            },
+            "active": [],
+            "compared": [
+              1,
+              6
+            ],
+            "result": [],
+            "formula": "min(8,8)×5=40",
+            "action": "计算 [1,6] 面积 40",
+            "status": "running"
+          },
+          "caption": "宽度乘较矮柱得到当前面积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度必减，只移动较矮端才可能提高高度上限。",
+        "review": "next range=[2,6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 2,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 2,
+              "j": 6
+            },
+            "active": [
+              2,
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next range=[2,6]",
+            "action": "排除较矮端点 1",
+            "status": "running"
+          },
+          "caption": "宽度必减，只移动较矮端才可能提高高度上限。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度乘较矮柱得到当前面积。",
+        "review": "min(6,8)×4=24"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 2,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 2,
+              "j": 6
+            },
+            "active": [],
+            "compared": [
+              2,
+              6
+            ],
+            "result": [],
+            "formula": "min(6,8)×4=24",
+            "action": "计算 [2,6] 面积 24",
+            "status": "running"
+          },
+          "caption": "宽度乘较矮柱得到当前面积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度必减，只移动较矮端才可能提高高度上限。",
+        "review": "next range=[3,6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 3,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 3,
+              "j": 6
+            },
+            "active": [
+              3,
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next range=[3,6]",
+            "action": "排除较矮端点 2",
+            "status": "running"
+          },
+          "caption": "宽度必减，只移动较矮端才可能提高高度上限。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度乘较矮柱得到当前面积。",
+        "review": "min(2,8)×3=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 3,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 3,
+              "j": 6
+            },
+            "active": [],
+            "compared": [
+              3,
+              6
+            ],
+            "result": [],
+            "formula": "min(2,8)×3=6",
+            "action": "计算 [3,6] 面积 6",
+            "status": "running"
+          },
+          "caption": "宽度乘较矮柱得到当前面积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度必减，只移动较矮端才可能提高高度上限。",
+        "review": "next range=[4,6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 4,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 4,
+              "j": 6
+            },
+            "active": [
+              4,
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next range=[4,6]",
+            "action": "排除较矮端点 3",
+            "status": "running"
+          },
+          "caption": "宽度必减，只移动较矮端才可能提高高度上限。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度乘较矮柱得到当前面积。",
+        "review": "min(5,8)×2=10"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 4,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 4,
+              "j": 6
+            },
+            "active": [],
+            "compared": [
+              4,
+              6
+            ],
+            "result": [],
+            "formula": "min(5,8)×2=10",
+            "action": "计算 [4,6] 面积 10",
+            "status": "running"
+          },
+          "caption": "宽度乘较矮柱得到当前面积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度必减，只移动较矮端才可能提高高度上限。",
+        "review": "next range=[5,6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 5,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 5,
+              "j": 6
+            },
+            "active": [
+              5,
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next range=[5,6]",
+            "action": "排除较矮端点 4",
+            "status": "running"
+          },
+          "caption": "宽度必减，只移动较矮端才可能提高高度上限。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度乘较矮柱得到当前面积。",
+        "review": "min(4,8)×1=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 5,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 5,
+              "j": 6
+            },
+            "active": [],
+            "compared": [
+              5,
+              6
+            ],
+            "result": [],
+            "formula": "min(4,8)×1=4",
+            "action": "计算 [5,6] 面积 4",
+            "status": "running"
+          },
+          "caption": "宽度乘较矮柱得到当前面积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "宽度必减，只移动较矮端才可能提高高度上限。",
+        "review": "next range=[6,6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 6,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {
+              "i": 6,
+              "j": 6
+            },
+            "active": [
+              6,
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next range=[6,6]",
+            "action": "排除较矮端点 5",
+            "status": "running"
+          },
+          "caption": "宽度必减，只移动较矮端才可能提高高度上限。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "最优容器由下标 1 和 8 构成。",
+        "review": "7×7=49"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ],
+            "variables": {
+              "i": 6,
+              "j": 6,
+              "res": 49
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1,
+              8
+            ],
+            "formula": "7×7=49",
+            "action": "返回最大面积 49",
+            "status": "return",
+            "output": 49
+          },
+          "caption": "最优容器由下标 1 和 8 构成。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int maxArea(vector<int>& height) {\n        int res = 0;\n        for (int i = 0, j = height.size() - 1; i < j;) {\n            res = max(res, min(height[i], height[j]) * (j - i));\n            if (height[i] > height[j]) j -- ;\n            else i ++ ;  // 当前值太小，排除当前行\n        }\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 254,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 255,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 256,
+        "text": "    int maxArea(vector<int>& height) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 257,
+        "text": "        int res = 0;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 258,
+        "text": "        for (int i = 0, j = height.size() - 1; i < j;) {"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 259,
+        "text": "            res = max(res, min(height[i], height[j]) * (j - i));"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 260,
+        "text": "            if (height[i] > height[j]) j -- ;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 261,
+        "text": "            else i ++ ;  // 当前值太小，排除当前行"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 262,
+        "text": "        }"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 263,
+        "text": "        return res;"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 264,
+        "text": "    }"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 265,
+        "text": "};"
+      }
+    ]
+  }
+}

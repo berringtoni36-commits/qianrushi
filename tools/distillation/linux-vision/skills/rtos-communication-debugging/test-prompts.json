@@ -1,0 +1,14 @@
+{
+  "skill": "rtos-communication-debugging",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"DMA 完成中断触发了，但 FreeRTOS 任务一直没有醒，怎么排查？","expected_behavior":"激活本 skill，沿外设→DMA→ISR→信号量→任务逐段验证","notes":"事件链"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"STM32 串口收不到数据且偶发乱码，请给出证据驱动的排障顺序","expected_behavior":"激活本 skill，检查波形、电平、外设、DMA、中断和消费任务","notes":"通信故障"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"共享状态偶发不一致，怀疑互斥量和信号量用错了","expected_behavior":"激活本 skill，区分数据保护和事件通知并检查读写范围","notes":"并发故障"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"长距离多节点通信应该选 RS485 还是 CAN？","expected_behavior":"不激活本 skill，优先激活 embedded-bus-selection","notes":"跨 skill 混淆"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"帮我介绍这个烟机 RTOS 项目","expected_behavior":"不激活本 skill，优先激活 rtos-project-storytelling","notes":"项目表达"},
+    {"id":"edge-01","type":"edge_case","prompt":"我只想知道 DMA 是什么，不需要排查故障","expected_behavior":"不激活本 skill，做普通概念解释","notes":"故障触发边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

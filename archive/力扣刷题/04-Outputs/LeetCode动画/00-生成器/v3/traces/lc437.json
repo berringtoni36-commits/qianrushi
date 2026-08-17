@@ -1,0 +1,3918 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "DFS 路径前缀和计数",
+    "sceneKind": "tree-graph",
+    "input": "树根 10，target = 8",
+    "expected": 3,
+    "exampleText": "树根 10，target = 8",
+    "expectedText": "路径条数 = 3",
+    "invariant": "cnt 只包含当前根到节点路径上的前缀和",
+    "aha": "路径和 target 等价于寻找祖先前缀 cur-target",
+    "time": "O(n)",
+    "space": "O(h)",
+    "problemId": 437,
+    "title": "路径总和 III",
+    "day": "Day 7：二叉树进阶",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "e99422f7a9483e11696b6aadcb0a99bd2033cdb39b5167723e094378786002f0",
+    "semanticTokenHash": "6c45b3fc5b83d60b3b178e919b23891c8f3d5c5ec4e30b0ee7fd46fb67ebb1cc",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+        "review": "cnt[10-8]=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "target": 8,
+              "cur": 0,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "空前缀和 0 出现一次",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1
+            }
+          },
+          "caption": "它允许从根开始的路径被匹配。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n10",
+              "cur": 10,
+              "need": 2,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              "n10"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt[10-8]=0",
+            "action": "到 10 前缀和 10，新增 0 条路径",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1
+            }
+          },
+          "caption": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+        "review": "cnt[15-8]=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n10",
+              "cur": 10,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              "n10"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录当前前缀和 10",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1
+            }
+          },
+          "caption": "哈希只保存当前根到节点路径上的前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n5",
+              "cur": 15,
+              "need": 7,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt[15-8]=0",
+            "action": "到 5 前缀和 15，新增 0 条路径",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1
+            }
+          },
+          "caption": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+        "review": "cnt[18-8]=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n5",
+              "cur": 15,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录当前前缀和 15",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1
+            }
+          },
+          "caption": "哈希只保存当前根到节点路径上的前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3",
+              "cur": 18,
+              "need": 10,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n10",
+              "n5",
+              "n3"
+            ],
+            "formula": "cnt[18-8]=1",
+            "action": "到 3 前缀和 18，新增 1 条路径",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1
+            }
+          },
+          "caption": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+        "review": "cnt[21-8]=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3",
+              "cur": 18,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录当前前缀和 18",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 1
+            }
+          },
+          "caption": "哈希只保存当前根到节点路径上的前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3b",
+              "cur": 21,
+              "need": 13,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "n3b"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt[21-8]=0",
+            "action": "到 3 前缀和 21，新增 0 条路径",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 1
+            }
+          },
+          "caption": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "回溯避免兄弟子树共享不在同一路径的前缀。",
+        "review": "离开 n3b，移除前缀和 21"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3b",
+              "cur": 21,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "n3b"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录当前前缀和 21",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 1,
+              "21": 1
+            }
+          },
+          "caption": "哈希只保存当前根到节点路径上的前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3b",
+              "cur": 21,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "n3b"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "离开 n3b，移除前缀和 21",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 1
+            }
+          },
+          "caption": "回溯避免兄弟子树共享不在同一路径的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "哈希只保存当前根到节点路径上的前缀。",
+        "review": "记录当前前缀和 16"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "nm2",
+              "cur": 16,
+              "need": 8,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "nm2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt[16-8]=0",
+            "action": "到 -2 前缀和 16，新增 0 条路径",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 1,
+              "21": 0
+            }
+          },
+          "caption": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "nm2",
+              "cur": 16,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "nm2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录当前前缀和 16",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 1,
+              "21": 0,
+              "16": 1
+            }
+          },
+          "caption": "哈希只保存当前根到节点路径上的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "回溯避免兄弟子树共享不在同一路径的前缀。",
+        "review": "离开 n3，移除前缀和 18"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "nm2",
+              "cur": 16,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "nm2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "离开 nm2，移除前缀和 16",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 1
+            }
+          },
+          "caption": "回溯避免兄弟子树共享不在同一路径的前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3",
+              "cur": 18,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "离开 n3，移除前缀和 18",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1
+            }
+          },
+          "caption": "回溯避免兄弟子树共享不在同一路径的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "哈希只保存当前根到节点路径上的前缀。",
+        "review": "记录当前前缀和 17"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "cur": 17,
+              "need": 9,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt[17-8]=0",
+            "action": "到 2 前缀和 17，新增 0 条路径",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 0,
+              "21": 0,
+              "16": 0
+            }
+          },
+          "caption": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "cur": 17,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录当前前缀和 17",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 0,
+              "21": 0,
+              "16": 0,
+              "17": 1
+            }
+          },
+          "caption": "哈希只保存当前根到节点路径上的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "哈希只保存当前根到节点路径上的前缀。",
+        "review": "记录当前前缀和 18"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "cur": 18,
+              "need": 10,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n10",
+              "n5",
+              "n2",
+              "n1"
+            ],
+            "formula": "cnt[18-8]=1",
+            "action": "到 1 前缀和 18，新增 1 条路径",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 0,
+              "21": 0,
+              "16": 0,
+              "17": 1
+            }
+          },
+          "caption": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "cur": 18,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录当前前缀和 18",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "18": 1,
+              "21": 0,
+              "16": 0,
+              "17": 1
+            }
+          },
+          "caption": "哈希只保存当前根到节点路径上的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "回溯避免兄弟子树共享不在同一路径的前缀。",
+        "review": "离开 n2，移除前缀和 17"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "cur": 18,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "离开 n1，移除前缀和 18",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1,
+              "17": 1
+            }
+          },
+          "caption": "回溯避免兄弟子树共享不在同一路径的前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "cur": 17,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "离开 n2，移除前缀和 17",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 1
+            }
+          },
+          "caption": "回溯避免兄弟子树共享不在同一路径的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+        "review": "cnt[7-8]=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n5",
+              "cur": 15,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "离开 n5，移除前缀和 15",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1
+            }
+          },
+          "caption": "回溯避免兄弟子树共享不在同一路径的前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "nm3",
+              "cur": 7,
+              "need": -1,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [
+              "nm3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt[7-8]=0",
+            "action": "到 -3 前缀和 7，新增 0 条路径",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 0,
+              "18": 0,
+              "21": 0,
+              "16": 0,
+              "17": 0
+            }
+          },
+          "caption": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "哈希只保存当前根到节点路径上的前缀。",
+        "review": "记录当前前缀和 7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "nm3",
+              "cur": 7,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [
+              "nm3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录当前前缀和 7",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 0,
+              "18": 0,
+              "21": 0,
+              "16": 0,
+              "17": 0,
+              "7": 1
+            }
+          },
+          "caption": "哈希只保存当前根到节点路径上的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+        "review": "cnt[18-8]=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n11",
+              "cur": 18,
+              "need": 10,
+              "res": 3
+            },
+            "pointers": {},
+            "active": [
+              "n11"
+            ],
+            "compared": [],
+            "result": [
+              "n10",
+              "nm3",
+              "n11"
+            ],
+            "formula": "cnt[18-8]=1",
+            "action": "到 11 前缀和 18，新增 1 条路径",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 0,
+              "18": 0,
+              "21": 0,
+              "16": 0,
+              "17": 0,
+              "7": 1
+            }
+          },
+          "caption": "祖先前缀 cur-target 的出现次数就是以当前节点结尾的答案数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "哈希只保存当前根到节点路径上的前缀。",
+        "review": "记录当前前缀和 18"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n11",
+              "cur": 18,
+              "res": 3
+            },
+            "pointers": {},
+            "active": [
+              "n11"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录当前前缀和 18",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "15": 0,
+              "18": 1,
+              "21": 0,
+              "16": 0,
+              "17": 0,
+              "7": 1
+            }
+          },
+          "caption": "哈希只保存当前根到节点路径上的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "回溯避免兄弟子树共享不在同一路径的前缀。",
+        "review": "离开 n11，移除前缀和 18"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n11",
+              "cur": 18,
+              "res": 3
+            },
+            "pointers": {},
+            "active": [
+              "n11"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "离开 n11，移除前缀和 18",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1,
+              "7": 1
+            }
+          },
+          "caption": "回溯避免兄弟子树共享不在同一路径的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "回溯避免兄弟子树共享不在同一路径的前缀。",
+        "review": "离开 nm3，移除前缀和 7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "nm3",
+              "cur": 7,
+              "res": 3
+            },
+            "pointers": {},
+            "active": [
+              "nm3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "离开 nm3，移除前缀和 7",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1,
+              "10": 1
+            }
+          },
+          "caption": "回溯避免兄弟子树共享不在同一路径的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "回溯避免兄弟子树共享不在同一路径的前缀。",
+        "review": "离开 n10，移除前缀和 10"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n10",
+              "cur": 10,
+              "res": 3
+            },
+            "pointers": {},
+            "active": [
+              "n10"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "离开 n10，移除前缀和 10",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "hash": {
+              "0": 1
+            }
+          },
+          "caption": "回溯避免兄弟子树共享不在同一路径的前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "三条向下路径和为 8。",
+        "review": "return 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "res": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "n5",
+              "n3",
+              "n2",
+              "n1",
+              "nm3",
+              "n11"
+            ],
+            "formula": "return 3",
+            "action": "返回路径条数 3",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "n10",
+                "value": 10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "nm3",
+                "value": -3,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n11",
+                "value": 11,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n3b",
+                "value": 3,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "nm2",
+                "value": -2,
+                "level": 3,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 3,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n5"
+              },
+              {
+                "from": "n10",
+                "to": "nm3"
+              },
+              {
+                "from": "n5",
+                "to": "n3"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "nm3",
+                "to": "n11"
+              },
+              {
+                "from": "n3",
+                "to": "n3b"
+              },
+              {
+                "from": "n3",
+                "to": "nm2"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "output": 3
+          },
+          "caption": "三条向下路径和为 8。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode() : val(0), left(nullptr), right(nullptr) {}\n *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}\n *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}\n * };\n */\nclass Solution {\npublic:\n    unordered_map<int, int> cnt;                                 // 哈希表，O(1)查找\n    int res = 0;\n\n    int pathSum(TreeNode* root, int sum) {\n        cnt[0] ++ ;\n        dfs(root, sum, 0);\n        return res;\n    }\n\n    void dfs(TreeNode* root, int sum, int cur) {                 // 深度优先搜索\n        if (!root) return;\n        cur += root->val;\n        res += cnt[cur - sum];  // 当前路径和 - target 的出现次数即为答案\n        cnt[cur] ++ ;  // 记录当前前缀和\n        dfs(root->left, sum, cur), dfs(root->right, sum, cur);\n        cnt[cur] -- ;  // 回溯：移除当前前缀和\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2702,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2703,
+        "text": " * Definition for a binary tree node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2704,
+        "text": " * struct TreeNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2705,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2706,
+        "text": " *     TreeNode *left;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2707,
+        "text": " *     TreeNode *right;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2708,
+        "text": " *     TreeNode() : val(0), left(nullptr), right(nullptr) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2709,
+        "text": " *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2710,
+        "text": " *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2711,
+        "text": " * };"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2712,
+        "text": " */"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2713,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2714,
+        "text": "public:"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2715,
+        "text": "    unordered_map<int, int> cnt;                                 // 哈希表，O(1)查找"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2716,
+        "text": "    int res = 0;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2717,
+        "text": ""
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2718,
+        "text": "    int pathSum(TreeNode* root, int sum) {"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2719,
+        "text": "        cnt[0] ++ ;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2720,
+        "text": "        dfs(root, sum, 0);"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2721,
+        "text": "        return res;"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2722,
+        "text": "    }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2723,
+        "text": ""
+      },
+      {
+        "id": "L23",
+        "sourceLine": 2724,
+        "text": "    void dfs(TreeNode* root, int sum, int cur) {                 // 深度优先搜索"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 2725,
+        "text": "        if (!root) return;"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 2726,
+        "text": "        cur += root->val;"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 2727,
+        "text": "        res += cnt[cur - sum];  // 当前路径和 - target 的出现次数即为答案"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 2728,
+        "text": "        cnt[cur] ++ ;  // 记录当前前缀和"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 2729,
+        "text": "        dfs(root->left, sum, cur), dfs(root->right, sum, cur);"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 2730,
+        "text": "        cnt[cur] -- ;  // 回溯：移除当前前缀和"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 2731,
+        "text": "    }"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 2732,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "skill": "linux-memory-source-audit",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"last_time_map 的 key 设计是否真的实现了节流？","expected_behavior":"激活本 skill，追踪 lookup/update 路径并给事实分级","notes":"源码审计"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"文档说摄像头会进入 LSTR，但代码路径真的连上了吗？","expected_behavior":"激活本 skill，对照写入和读取目录给出证据","notes":"跨项目审计"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"这个项目哪些功能能写进简历，哪些只是设计意图？","expected_behavior":"激活本 skill，建立 claim-证据-状态表","notes":"面试事实边界"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"请解释伙伴系统为什么会有外部碎片","expected_behavior":"不激活本 skill，优先激活 linux-buddy-fragmentation-diagnosis","notes":"跨 skill 混淆"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"从 BCC 加载到 TUI 的项目运行链是什么？","expected_behavior":"不激活本 skill，优先激活 linux-memory-ebpf-pipeline","notes":"跨 skill 混淆"},
+    {"id":"edge-01","type":"edge_case","prompt":"我只有一段文档，没有源码，能审计实现吗？","expected_behavior":"只能审计文档内部一致性，不能断言源码实际行为","notes":"证据边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

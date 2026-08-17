@@ -1,0 +1,791 @@
+{
+  "problemId": 141,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 141,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        3,
+        2,
+        0,
+        -4
+      ],
+      "variables": {
+        "slow": 2,
+        "fast": 2
+      },
+      "structure": {
+        "next": [
+          1,
+          2,
+          3,
+          1
+        ]
+      },
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "4598886a392db2d3173622ba69d5dd879623023d42ec7baefa0eebd1d02367c2",
+    "sourceSemanticTokenHash": "253346f344c350d8901ed257e22dca63e2605f0547976b50fd6107b41757c10c",
+    "sourceCodeLineCount": 22
+  },
+  "sourceCodeSha256": "4598886a392db2d3173622ba69d5dd879623023d42ec7baefa0eebd1d02367c2",
+  "sourceSemanticTokenHash": "253346f344c350d8901ed257e22dca63e2605f0547976b50fd6107b41757c10c",
+  "steps": [
+    {
+      "id": "141-trace-001",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "setup",
+      "title": "放置快慢指针",
+      "body": "s 每次走一步，f 每次走两步；如果相遇，说明存在环。 题解原意：为什么这样想： 如果链表中存在环，遍历就会无限循环。我们需要一种在不使用额外空间的情况下检测循环的方法。快慢指针的核心思想是：在环中，快指针每次比慢指针多走一步，相对速度差为 1，所以快指针一定会追上慢指针。 关键洞察： 为什么快指针要走两步而不是三步或更多？因为步数差为 1 能保证快指针不会「跳过」慢指针（在环中每轮追一步）。如果步差大于 1，在某些环长的情况下可能永远追不上。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · cycle",
+        "badge": "next",
+        "tokens": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "active": [
+          0,
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 0,
+          "fast": 1
+        },
+        "rows": [
+          {
+            "label": "next",
+            "values": [
+              "0→1",
+              "1→2",
+              "2→3",
+              "3→1"
+            ]
+          },
+          {
+            "label": "pointers",
+            "values": [
+              "s=0",
+              "f=1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "s 每次走一步，f 每次走两步；如果相遇，说明存在环。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "variables": {
+          "slow": 0,
+          "fast": 1
+        },
+        "structure": {
+          "next": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "141-trace-002",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "mutate",
+      "title": "第 1 次追赶",
+      "body": "slow 到 1，fast 到 3；继续检查是否相遇。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · cycle",
+        "badge": "next",
+        "tokens": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "active": [
+          1,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 1,
+          "fast": 3,
+          "step": 1
+        },
+        "rows": [
+          {
+            "label": "next",
+            "values": [
+              "0→1",
+              "1→2",
+              "2→3",
+              "3→1"
+            ]
+          },
+          {
+            "label": "pointers",
+            "values": [
+              "s=1",
+              "f=3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "slow 到 1，fast 到 3；继续检查是否相遇。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "variables": {
+          "slow": 1,
+          "fast": 3,
+          "step": 1
+        },
+        "structure": {
+          "next": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "141-trace-003",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "mutate",
+      "title": "第 2 次追赶",
+      "body": "slow 到 2，fast 到 2；继续检查是否相遇。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · cycle",
+        "badge": "next",
+        "tokens": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "active": [
+          2,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "step": 2
+        },
+        "rows": [
+          {
+            "label": "next",
+            "values": [
+              "0→1",
+              "1→2",
+              "2→3",
+              "3→1"
+            ]
+          },
+          {
+            "label": "pointers",
+            "values": [
+              "s=2",
+              "f=2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "slow 到 2，fast 到 2；继续检查是否相遇。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "step": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "141-trace-004",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "branch",
+      "title": "快慢指针在 2 相遇",
+      "body": "链表存在环；接下来根据题目决定直接返回 true，或继续寻找入口。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · cycle",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "active": [
+          2,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "rows": [
+          {
+            "label": "cycle",
+            "values": [
+              "存在"
+            ]
+          },
+          {
+            "label": "meet",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "链表存在环；接下来根据题目决定直接返回 true，或继续寻找入口。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "141-trace-check-006",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：快慢指针相遇。",
+      "kind": "cycle",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "active": [
+          2,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "rows": [
+          {
+            "label": "cycle",
+            "values": [
+              "存在"
+            ]
+          },
+          {
+            "label": "meet",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：快慢指针相遇。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "141-trace-check-007",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：快慢指针相遇。",
+      "kind": "cycle",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "active": [
+          2,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "rows": [
+          {
+            "label": "cycle",
+            "values": [
+              "存在"
+            ]
+          },
+          {
+            "label": "meet",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：快慢指针相遇。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "141-trace-check-008",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：快慢指针相遇。",
+      "kind": "cycle",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "active": [
+          2,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "rows": [
+          {
+            "label": "cycle",
+            "values": [
+              "存在"
+            ]
+          },
+          {
+            "label": "meet",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：快慢指针相遇。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "141-trace-check-009",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：快慢指针相遇。",
+      "kind": "cycle",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "active": [
+          2,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "rows": [
+          {
+            "label": "cycle",
+            "values": [
+              "存在"
+            ]
+          },
+          {
+            "label": "meet",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：快慢指针相遇。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "141-trace-check-010",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：快慢指针相遇。 易错提醒：fast->next 的空指针检查： while (fast && fast->next) 两者都必须检查，因为 fast = fast->next->next 需要 fast->next 不为空 空链表和单节点无环： head 为空或 head->next 为空时，不可能有环，直接返回 false 自环（单节点成环）： 一个节点且 ne…",
+      "kind": "cycle",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "active": [
+          2,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "rows": [
+          {
+            "label": "cycle",
+            "values": [
+              "存在"
+            ]
+          },
+          {
+            "label": "meet",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true：快慢指针相遇。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "variables": {
+          "slow": 2,
+          "fast": 2,
+          "meet": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "141-trace-005",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 true：快慢指针相遇。",
+      "kind": "cycle",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · cycle",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "slow": 2,
+          "fast": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "返回 true：快慢指针相遇。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "variables": {
+          "slow": 2,
+          "fast": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            2,
+            3,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

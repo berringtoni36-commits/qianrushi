@@ -1,0 +1,5816 @@
+{
+  "problemId": 42,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 42,
+    "frameCount": 14,
+    "beatCount": 82,
+    "validLineMappings": true,
+    "resMatchesWater": true,
+    "resMonotonic": true,
+    "stackInvariant": true,
+    "finalPhase": "return",
+    "finalRes": 6,
+    "finalWater": [
+      0,
+      0,
+      1,
+      0,
+      1,
+      2,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "sourceCodeSha256": "46ed51e741c9f0be378f573e814fa662975bfb89fa1bfb17dfab170de2ccb211",
+    "sourceSemanticTokenHash": "6fa23a0a17e9dd98df9b139bc0182f62be08088eb11a354a1637c3db2a1445a6",
+    "referenceTraceVersion": "V3"
+  },
+  "sourceCodeSha256": null,
+  "sourceSemanticTokenHash": null,
+  "steps": [
+    {
+      "id": "lc42-1-1",
+      "line": 4,
+      "lineIds": [
+        4,
+        5
+      ],
+      "phase": "初始化",
+      "framePhase": "setup",
+      "frameIndex": 0,
+      "frameTitle": "初始化单调栈",
+      "beatIndex": 0,
+      "frameBeatCount": 1,
+      "title": "建立空栈",
+      "body": "栈保存还没有找到右边界的柱子，res 只累计已经被左右边界封住的水层。 初始化单调栈和答案。 当前动作：建立空栈，res=0。",
+      "reviewBody": "stk = [], res = 0 · 建立空栈，res=0",
+      "caption": "初始化单调栈和答案。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "初始化单调栈 · 单调栈接水",
+        "badge": "待开始 · stk.size = 0",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [],
+        "variables": {
+          "i": null,
+          "last": 0,
+          "res": 0,
+          "top": null
+        },
+        "active": [],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "建立空栈，res=0"
+      }
+    },
+    {
+      "id": "lc42-2-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 1,
+      "frameTitle": "扫描 i = 0",
+      "beatIndex": 0,
+      "frameBeatCount": 3,
+      "title": "开始本轮",
+      "body": "i=0 的柱高为 0。当前还没有新增可确认的水层，累计 res=0。 扫描高度 0，本轮尚未结算任何高度层。 当前动作：i=0，本轮 last 从 0 开始。",
+      "reviewBody": "i=0, +0, res=0 · i=0，本轮 last 从 0 开始",
+      "caption": "扫描高度 0，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 0 · 单调栈接水",
+        "badge": "i = 0 · stk.size = 0",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [],
+        "variables": {
+          "i": 0,
+          "last": 0,
+          "res": 0,
+          "top": null
+        },
+        "active": [
+          0
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=0，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-2-2",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 1,
+      "frameTitle": "扫描 i = 0",
+      "beatIndex": 1,
+      "frameBeatCount": 3,
+      "title": "当前下标入栈",
+      "body": "i=0 的柱高为 0。当前还没有新增可确认的水层，累计 res=0。 栈为空时无法形成凹槽，这一段不再加水。 当前动作：栈为空，没有左边界。",
+      "reviewBody": "i=0, +0, res=0 · 栈为空，没有左边界",
+      "caption": "栈为空时无法形成凹槽，这一段不再加水。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 0 · 单调栈接水",
+        "badge": "i = 0 · stk.size = 0",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [],
+        "variables": {
+          "i": 0,
+          "last": 0,
+          "res": 0,
+          "top": null
+        },
+        "active": [
+          0
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "stk.empty()",
+        "note": "栈为空，没有左边界"
+      }
+    },
+    {
+      "id": "lc42-2-3",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 1,
+      "frameTitle": "扫描 i = 0",
+      "beatIndex": 2,
+      "frameBeatCount": 3,
+      "title": "下标 0 入栈",
+      "body": "i=0 的柱高为 0。当前还没有新增可确认的水层，累计 res=0。 把当前柱 0:0 压栈，等待未来右边界。 当前动作：下标 0 入栈。",
+      "reviewBody": "i=0, +0, res=0 · 下标 0 入栈",
+      "caption": "把当前柱 0:0 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 0 · 单调栈接水",
+        "badge": "i = 0 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          0
+        ],
+        "variables": {
+          "i": 0,
+          "last": 0,
+          "res": 0,
+          "top": 0
+        },
+        "active": [
+          0
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 0 入栈"
+      }
+    },
+    {
+      "id": "lc42-3-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 2,
+      "frameTitle": "扫描 i = 1",
+      "beatIndex": 0,
+      "frameBeatCount": 7,
+      "title": "开始本轮",
+      "body": "i=1 的柱高为 1。当前还没有新增可确认的水层，累计 res=0。 扫描高度 1，本轮尚未结算任何高度层。 当前动作：i=1，本轮 last 从 0 开始。",
+      "reviewBody": "i=1, +0, res=0 · i=1，本轮 last 从 0 开始",
+      "caption": "扫描高度 1，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 1 · 单调栈接水",
+        "badge": "i = 1 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          0
+        ],
+        "variables": {
+          "i": 1,
+          "last": 0,
+          "res": 0,
+          "top": 0
+        },
+        "active": [
+          1
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=1，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-3-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 2,
+      "frameTitle": "扫描 i = 1",
+      "beatIndex": 1,
+      "frameBeatCount": 7,
+      "title": "判断 while 条件",
+      "body": "i=1 的柱高为 1。当前还没有新增可确认的水层，累计 res=0。 栈顶 0 的高度不高于当前柱，开始结算这一层。 当前动作：0 ≤ 1，右边界出现。",
+      "reviewBody": "i=1, +0, res=0 · 0 ≤ 1，右边界出现",
+      "caption": "栈顶 0 的高度不高于当前柱，开始结算这一层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 1 · 单调栈接水",
+        "badge": "i = 1 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          0
+        ],
+        "variables": {
+          "i": 1,
+          "last": 0,
+          "res": 0,
+          "top": 0
+        },
+        "active": [
+          1
+        ],
+        "compared": [
+          0,
+          1
+        ],
+        "result": [],
+        "formula": "height[0] ≤ height[1]",
+        "note": "0 ≤ 1，右边界出现"
+      }
+    },
+    {
+      "id": "lc42-3-3",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 2,
+      "frameTitle": "扫描 i = 1",
+      "beatIndex": 2,
+      "frameBeatCount": 7,
+      "title": "结算高度层面积",
+      "body": "i=1 的柱高为 1。当前还没有新增可确认的水层，累计 res=0。 高度层 0→0，宽度 0，res 变为 0。 当前动作：结算 0 单位水。 只有这行加法执行后，res 和 water[] 才会更新。",
+      "reviewBody": "i=1, +0, res=0 · 结算 0 单位水",
+      "caption": "高度层 0→0，宽度 0，res 变为 0。",
+      "kind": "water-stack",
+      "durationMs": 1000,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 1 · 单调栈接水",
+        "badge": "i = 1 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          0
+        ],
+        "variables": {
+          "i": 1,
+          "last": 0,
+          "res": 0,
+          "top": 0
+        },
+        "active": [
+          1
+        ],
+        "compared": [
+          0,
+          1
+        ],
+        "result": [],
+        "formula": "(0-0)×(1-0-1)=0",
+        "note": "结算 0 单位水"
+      }
+    },
+    {
+      "id": "lc42-3-4",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 2,
+      "frameTitle": "扫描 i = 1",
+      "beatIndex": 3,
+      "frameBeatCount": 7,
+      "title": "更新 last",
+      "body": "i=1 的柱高为 1。当前还没有新增可确认的水层，累计 res=0。 last 记住刚结算到的高度，避免下一层重复计算。 当前动作：last 更新为 0。",
+      "reviewBody": "i=1, +0, res=0 · last 更新为 0",
+      "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 1 · 单调栈接水",
+        "badge": "i = 1 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          0
+        ],
+        "variables": {
+          "i": 1,
+          "last": 0,
+          "res": 0,
+          "top": 0
+        },
+        "active": [
+          1
+        ],
+        "compared": [
+          0,
+          1
+        ],
+        "result": [],
+        "formula": "last = height[0] = 0",
+        "note": "last 更新为 0"
+      }
+    },
+    {
+      "id": "lc42-3-5",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 2,
+      "frameTitle": "扫描 i = 1",
+      "beatIndex": 4,
+      "frameBeatCount": 7,
+      "title": "弹出栈顶",
+      "body": "i=1 的柱高为 1。当前还没有新增可确认的水层，累计 res=0。 下标 0 的右边界已经确定，移出栈。 当前动作：弹出下标 0。",
+      "reviewBody": "i=1, +0, res=0 · 弹出下标 0",
+      "caption": "下标 0 的右边界已经确定，移出栈。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 1 · 单调栈接水",
+        "badge": "i = 1 · stk.size = 0",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [],
+        "variables": {
+          "i": 1,
+          "last": 0,
+          "res": 0,
+          "top": null
+        },
+        "active": [
+          1
+        ],
+        "compared": [
+          0,
+          1
+        ],
+        "result": [],
+        "formula": "",
+        "note": "弹出下标 0"
+      }
+    },
+    {
+      "id": "lc42-3-6",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 2,
+      "frameTitle": "扫描 i = 1",
+      "beatIndex": 5,
+      "frameBeatCount": 7,
+      "title": "当前下标入栈",
+      "body": "i=1 的柱高为 1。当前还没有新增可确认的水层，累计 res=0。 栈为空时无法形成凹槽，这一段不再加水。 当前动作：栈为空，没有左边界。",
+      "reviewBody": "i=1, +0, res=0 · 栈为空，没有左边界",
+      "caption": "栈为空时无法形成凹槽，这一段不再加水。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 1 · 单调栈接水",
+        "badge": "i = 1 · stk.size = 0",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [],
+        "variables": {
+          "i": 1,
+          "last": 0,
+          "res": 0,
+          "top": null
+        },
+        "active": [
+          1
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "stk.empty()",
+        "note": "栈为空，没有左边界"
+      }
+    },
+    {
+      "id": "lc42-3-7",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 2,
+      "frameTitle": "扫描 i = 1",
+      "beatIndex": 6,
+      "frameBeatCount": 7,
+      "title": "下标 1 入栈",
+      "body": "i=1 的柱高为 1。当前还没有新增可确认的水层，累计 res=0。 把当前柱 1:1 压栈，等待未来右边界。 当前动作：下标 1 入栈。",
+      "reviewBody": "i=1, +0, res=0 · 下标 1 入栈",
+      "caption": "把当前柱 1:1 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 1 · 单调栈接水",
+        "badge": "i = 1 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1
+        ],
+        "variables": {
+          "i": 1,
+          "last": 0,
+          "res": 0,
+          "top": 1
+        },
+        "active": [
+          1
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 1 入栈"
+      }
+    },
+    {
+      "id": "lc42-4-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 3,
+      "frameTitle": "扫描 i = 2",
+      "beatIndex": 0,
+      "frameBeatCount": 4,
+      "title": "开始本轮",
+      "body": "i=2 的柱高为 0。当前还没有新增可确认的水层，累计 res=0。 扫描高度 0，本轮尚未结算任何高度层。 当前动作：i=2，本轮 last 从 0 开始。",
+      "reviewBody": "i=2, +0, res=0 · i=2，本轮 last 从 0 开始",
+      "caption": "扫描高度 0，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 2 · 单调栈接水",
+        "badge": "i = 2 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1
+        ],
+        "variables": {
+          "i": 2,
+          "last": 0,
+          "res": 0,
+          "top": 1
+        },
+        "active": [
+          2
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=2，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-4-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 3,
+      "frameTitle": "扫描 i = 2",
+      "beatIndex": 1,
+      "frameBeatCount": 4,
+      "title": "判断 while 条件",
+      "body": "i=2 的柱高为 0。当前还没有新增可确认的水层，累计 res=0。 新的栈顶更高，while 结束。 当前动作：1 > 0，停止弹栈。",
+      "reviewBody": "i=2, +0, res=0 · 1 > 0，停止弹栈",
+      "caption": "新的栈顶更高，while 结束。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 2 · 单调栈接水",
+        "badge": "i = 2 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1
+        ],
+        "variables": {
+          "i": 2,
+          "last": 0,
+          "res": 0,
+          "top": 1
+        },
+        "active": [
+          2
+        ],
+        "compared": [
+          1,
+          2
+        ],
+        "result": [],
+        "formula": "height[1] > height[2]",
+        "note": "1 > 0，停止弹栈"
+      }
+    },
+    {
+      "id": "lc42-4-3",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 3,
+      "frameTitle": "扫描 i = 2",
+      "beatIndex": 2,
+      "frameBeatCount": 4,
+      "title": "当前下标入栈",
+      "body": "i=2 的柱高为 0。当前还没有新增可确认的水层，累计 res=0。 左边界仍存在，补齐到当前高度 0，res=0。 当前动作：左边界 1 再封住 0 单位。",
+      "reviewBody": "i=2, +0, res=0 · 左边界 1 再封住 0 单位",
+      "caption": "左边界仍存在，补齐到当前高度 0，res=0。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 2 · 单调栈接水",
+        "badge": "i = 2 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1
+        ],
+        "variables": {
+          "i": 2,
+          "last": 0,
+          "res": 0,
+          "top": 1
+        },
+        "active": [
+          2
+        ],
+        "compared": [
+          1,
+          2
+        ],
+        "result": [],
+        "formula": "(2-1-1)×(0-0)=0",
+        "note": "左边界 1 再封住 0 单位"
+      }
+    },
+    {
+      "id": "lc42-4-4",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 3,
+      "frameTitle": "扫描 i = 2",
+      "beatIndex": 3,
+      "frameBeatCount": 4,
+      "title": "下标 2 入栈",
+      "body": "i=2 的柱高为 0。当前还没有新增可确认的水层，累计 res=0。 把当前柱 2:0 压栈，等待未来右边界。 当前动作：下标 2 入栈。",
+      "reviewBody": "i=2, +0, res=0 · 下标 2 入栈",
+      "caption": "把当前柱 2:0 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 2 · 单调栈接水",
+        "badge": "i = 2 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1,
+          2
+        ],
+        "variables": {
+          "i": 2,
+          "last": 0,
+          "res": 0,
+          "top": 2
+        },
+        "active": [
+          2
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 2 入栈"
+      }
+    },
+    {
+      "id": "lc42-5-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 0,
+      "frameBeatCount": 11,
+      "title": "开始本轮",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 扫描高度 2，本轮尚未结算任何高度层。 当前动作：i=3，本轮 last 从 0 开始。",
+      "reviewBody": "i=3, +1, res=1 · i=3，本轮 last 从 0 开始",
+      "caption": "扫描高度 2，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1,
+          2
+        ],
+        "variables": {
+          "i": 3,
+          "last": 0,
+          "res": 0,
+          "top": 2
+        },
+        "active": [
+          3
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=3，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-5-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 1,
+      "frameBeatCount": 11,
+      "title": "判断 while 条件",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 栈顶 2 的高度不高于当前柱，开始结算这一层。 当前动作：0 ≤ 2，右边界出现。",
+      "reviewBody": "i=3, +1, res=1 · 0 ≤ 2，右边界出现",
+      "caption": "栈顶 2 的高度不高于当前柱，开始结算这一层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1,
+          2
+        ],
+        "variables": {
+          "i": 3,
+          "last": 0,
+          "res": 0,
+          "top": 2
+        },
+        "active": [
+          3
+        ],
+        "compared": [
+          2,
+          3
+        ],
+        "result": [],
+        "formula": "height[2] ≤ height[3]",
+        "note": "0 ≤ 2，右边界出现"
+      }
+    },
+    {
+      "id": "lc42-5-3",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 2,
+      "frameBeatCount": 11,
+      "title": "结算高度层面积",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 高度层 0→0，宽度 0，res 变为 0。 当前动作：结算 0 单位水。 只有这行加法执行后，res 和 water[] 才会更新。",
+      "reviewBody": "i=3, +1, res=1 · 结算 0 单位水",
+      "caption": "高度层 0→0，宽度 0，res 变为 0。",
+      "kind": "water-stack",
+      "durationMs": 1000,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1,
+          2
+        ],
+        "variables": {
+          "i": 3,
+          "last": 0,
+          "res": 0,
+          "top": 2
+        },
+        "active": [
+          3
+        ],
+        "compared": [
+          2,
+          3
+        ],
+        "result": [],
+        "formula": "(0-0)×(3-2-1)=0",
+        "note": "结算 0 单位水"
+      }
+    },
+    {
+      "id": "lc42-5-4",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 3,
+      "frameBeatCount": 11,
+      "title": "更新 last",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 last 记住刚结算到的高度，避免下一层重复计算。 当前动作：last 更新为 0。",
+      "reviewBody": "i=3, +1, res=1 · last 更新为 0",
+      "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1,
+          2
+        ],
+        "variables": {
+          "i": 3,
+          "last": 0,
+          "res": 0,
+          "top": 2
+        },
+        "active": [
+          3
+        ],
+        "compared": [
+          2,
+          3
+        ],
+        "result": [],
+        "formula": "last = height[2] = 0",
+        "note": "last 更新为 0"
+      }
+    },
+    {
+      "id": "lc42-5-5",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 4,
+      "frameBeatCount": 11,
+      "title": "弹出栈顶",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 下标 2 的右边界已经确定，移出栈。 当前动作：弹出下标 2。",
+      "reviewBody": "i=3, +1, res=1 · 弹出下标 2",
+      "caption": "下标 2 的右边界已经确定，移出栈。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1
+        ],
+        "variables": {
+          "i": 3,
+          "last": 0,
+          "res": 0,
+          "top": 1
+        },
+        "active": [
+          3
+        ],
+        "compared": [
+          2,
+          3
+        ],
+        "result": [],
+        "formula": "",
+        "note": "弹出下标 2"
+      }
+    },
+    {
+      "id": "lc42-5-6",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 5,
+      "frameBeatCount": 11,
+      "title": "判断 while 条件",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 栈顶 1 的高度不高于当前柱，开始结算这一层。 当前动作：1 ≤ 2，右边界出现。",
+      "reviewBody": "i=3, +1, res=1 · 1 ≤ 2，右边界出现",
+      "caption": "栈顶 1 的高度不高于当前柱，开始结算这一层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1
+        ],
+        "variables": {
+          "i": 3,
+          "last": 0,
+          "res": 0,
+          "top": 1
+        },
+        "active": [
+          3
+        ],
+        "compared": [
+          1,
+          3
+        ],
+        "result": [],
+        "formula": "height[1] ≤ height[3]",
+        "note": "1 ≤ 2，右边界出现"
+      }
+    },
+    {
+      "id": "lc42-5-7",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 6,
+      "frameBeatCount": 11,
+      "title": "结算高度层面积",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 高度层 0→1，宽度 1，res 变为 1。 当前动作：结算 1 单位水。 只有这行加法执行后，res 和 water[] 才会更新。",
+      "reviewBody": "i=3, +1, res=1 · 结算 1 单位水",
+      "caption": "高度层 0→1，宽度 1，res 变为 1。",
+      "kind": "water-stack",
+      "durationMs": 1000,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1
+        ],
+        "variables": {
+          "i": 3,
+          "last": 0,
+          "res": 1,
+          "top": 1
+        },
+        "active": [
+          3
+        ],
+        "compared": [
+          1,
+          3
+        ],
+        "result": [],
+        "formula": "(1-0)×(3-1-1)=1",
+        "note": "结算 1 单位水"
+      }
+    },
+    {
+      "id": "lc42-5-8",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 7,
+      "frameBeatCount": 11,
+      "title": "更新 last",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 last 记住刚结算到的高度，避免下一层重复计算。 当前动作：last 更新为 1。",
+      "reviewBody": "i=3, +1, res=1 · last 更新为 1",
+      "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          1
+        ],
+        "variables": {
+          "i": 3,
+          "last": 1,
+          "res": 1,
+          "top": 1
+        },
+        "active": [
+          3
+        ],
+        "compared": [
+          1,
+          3
+        ],
+        "result": [],
+        "formula": "last = height[1] = 1",
+        "note": "last 更新为 1"
+      }
+    },
+    {
+      "id": "lc42-5-9",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 8,
+      "frameBeatCount": 11,
+      "title": "弹出栈顶",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 下标 1 的右边界已经确定，移出栈。 当前动作：弹出下标 1。",
+      "reviewBody": "i=3, +1, res=1 · 弹出下标 1",
+      "caption": "下标 1 的右边界已经确定，移出栈。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 0",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [],
+        "variables": {
+          "i": 3,
+          "last": 1,
+          "res": 1,
+          "top": null
+        },
+        "active": [
+          3
+        ],
+        "compared": [
+          1,
+          3
+        ],
+        "result": [],
+        "formula": "",
+        "note": "弹出下标 1"
+      }
+    },
+    {
+      "id": "lc42-5-10",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 9,
+      "frameBeatCount": 11,
+      "title": "当前下标入栈",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 栈为空时无法形成凹槽，这一段不再加水。 当前动作：栈为空，没有左边界。",
+      "reviewBody": "i=3, +1, res=1 · 栈为空，没有左边界",
+      "caption": "栈为空时无法形成凹槽，这一段不再加水。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 0",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [],
+        "variables": {
+          "i": 3,
+          "last": 1,
+          "res": 1,
+          "top": null
+        },
+        "active": [
+          3
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "stk.empty()",
+        "note": "栈为空，没有左边界"
+      }
+    },
+    {
+      "id": "lc42-5-11",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 4,
+      "frameTitle": "扫描 i = 3",
+      "beatIndex": 10,
+      "frameBeatCount": 11,
+      "title": "下标 3 入栈",
+      "body": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。 把当前柱 3:2 压栈，等待未来右边界。 当前动作：下标 3 入栈。",
+      "reviewBody": "i=3, +1, res=1 · 下标 3 入栈",
+      "caption": "把当前柱 3:2 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 3 · 单调栈接水",
+        "badge": "i = 3 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 3,
+          "last": 1,
+          "res": 1,
+          "top": 3
+        },
+        "active": [
+          3
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 3 入栈"
+      }
+    },
+    {
+      "id": "lc42-6-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 5,
+      "frameTitle": "扫描 i = 4",
+      "beatIndex": 0,
+      "frameBeatCount": 4,
+      "title": "开始本轮",
+      "body": "i=4 的柱高为 1。当前还没有新增可确认的水层，累计 res=1。 扫描高度 1，本轮尚未结算任何高度层。 当前动作：i=4，本轮 last 从 0 开始。",
+      "reviewBody": "i=4, +0, res=1 · i=4，本轮 last 从 0 开始",
+      "caption": "扫描高度 1，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 4 · 单调栈接水",
+        "badge": "i = 4 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 4,
+          "last": 0,
+          "res": 1,
+          "top": 3
+        },
+        "active": [
+          4
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=4，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-6-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 5,
+      "frameTitle": "扫描 i = 4",
+      "beatIndex": 1,
+      "frameBeatCount": 4,
+      "title": "判断 while 条件",
+      "body": "i=4 的柱高为 1。当前还没有新增可确认的水层，累计 res=1。 新的栈顶更高，while 结束。 当前动作：2 > 1，停止弹栈。",
+      "reviewBody": "i=4, +0, res=1 · 2 > 1，停止弹栈",
+      "caption": "新的栈顶更高，while 结束。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 4 · 单调栈接水",
+        "badge": "i = 4 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 4,
+          "last": 0,
+          "res": 1,
+          "top": 3
+        },
+        "active": [
+          4
+        ],
+        "compared": [
+          3,
+          4
+        ],
+        "result": [],
+        "formula": "height[3] > height[4]",
+        "note": "2 > 1，停止弹栈"
+      }
+    },
+    {
+      "id": "lc42-6-3",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 5,
+      "frameTitle": "扫描 i = 4",
+      "beatIndex": 2,
+      "frameBeatCount": 4,
+      "title": "当前下标入栈",
+      "body": "i=4 的柱高为 1。当前还没有新增可确认的水层，累计 res=1。 左边界仍存在，补齐到当前高度 1，res=1。 当前动作：左边界 3 再封住 0 单位。",
+      "reviewBody": "i=4, +0, res=1 · 左边界 3 再封住 0 单位",
+      "caption": "左边界仍存在，补齐到当前高度 1，res=1。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 4 · 单调栈接水",
+        "badge": "i = 4 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 4,
+          "last": 0,
+          "res": 1,
+          "top": 3
+        },
+        "active": [
+          4
+        ],
+        "compared": [
+          3,
+          4
+        ],
+        "result": [],
+        "formula": "(4-3-1)×(1-0)=0",
+        "note": "左边界 3 再封住 0 单位"
+      }
+    },
+    {
+      "id": "lc42-6-4",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 5,
+      "frameTitle": "扫描 i = 4",
+      "beatIndex": 3,
+      "frameBeatCount": 4,
+      "title": "下标 4 入栈",
+      "body": "i=4 的柱高为 1。当前还没有新增可确认的水层，累计 res=1。 把当前柱 4:1 压栈，等待未来右边界。 当前动作：下标 4 入栈。",
+      "reviewBody": "i=4, +0, res=1 · 下标 4 入栈",
+      "caption": "把当前柱 4:1 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 4 · 单调栈接水",
+        "badge": "i = 4 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "last": 0,
+          "res": 1,
+          "top": 4
+        },
+        "active": [
+          4
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 4 入栈"
+      }
+    },
+    {
+      "id": "lc42-7-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 6,
+      "frameTitle": "扫描 i = 5",
+      "beatIndex": 0,
+      "frameBeatCount": 4,
+      "title": "开始本轮",
+      "body": "i=5 的柱高为 0。当前还没有新增可确认的水层，累计 res=1。 扫描高度 0，本轮尚未结算任何高度层。 当前动作：i=5，本轮 last 从 0 开始。",
+      "reviewBody": "i=5, +0, res=1 · i=5，本轮 last 从 0 开始",
+      "caption": "扫描高度 0，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 5 · 单调栈接水",
+        "badge": "i = 5 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4
+        ],
+        "variables": {
+          "i": 5,
+          "last": 0,
+          "res": 1,
+          "top": 4
+        },
+        "active": [
+          5
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=5，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-7-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 6,
+      "frameTitle": "扫描 i = 5",
+      "beatIndex": 1,
+      "frameBeatCount": 4,
+      "title": "判断 while 条件",
+      "body": "i=5 的柱高为 0。当前还没有新增可确认的水层，累计 res=1。 新的栈顶更高，while 结束。 当前动作：1 > 0，停止弹栈。",
+      "reviewBody": "i=5, +0, res=1 · 1 > 0，停止弹栈",
+      "caption": "新的栈顶更高，while 结束。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 5 · 单调栈接水",
+        "badge": "i = 5 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4
+        ],
+        "variables": {
+          "i": 5,
+          "last": 0,
+          "res": 1,
+          "top": 4
+        },
+        "active": [
+          5
+        ],
+        "compared": [
+          4,
+          5
+        ],
+        "result": [],
+        "formula": "height[4] > height[5]",
+        "note": "1 > 0，停止弹栈"
+      }
+    },
+    {
+      "id": "lc42-7-3",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 6,
+      "frameTitle": "扫描 i = 5",
+      "beatIndex": 2,
+      "frameBeatCount": 4,
+      "title": "当前下标入栈",
+      "body": "i=5 的柱高为 0。当前还没有新增可确认的水层，累计 res=1。 左边界仍存在，补齐到当前高度 0，res=1。 当前动作：左边界 4 再封住 0 单位。",
+      "reviewBody": "i=5, +0, res=1 · 左边界 4 再封住 0 单位",
+      "caption": "左边界仍存在，补齐到当前高度 0，res=1。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 5 · 单调栈接水",
+        "badge": "i = 5 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4
+        ],
+        "variables": {
+          "i": 5,
+          "last": 0,
+          "res": 1,
+          "top": 4
+        },
+        "active": [
+          5
+        ],
+        "compared": [
+          4,
+          5
+        ],
+        "result": [],
+        "formula": "(5-4-1)×(0-0)=0",
+        "note": "左边界 4 再封住 0 单位"
+      }
+    },
+    {
+      "id": "lc42-7-4",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 6,
+      "frameTitle": "扫描 i = 5",
+      "beatIndex": 3,
+      "frameBeatCount": 4,
+      "title": "下标 5 入栈",
+      "body": "i=5 的柱高为 0。当前还没有新增可确认的水层，累计 res=1。 把当前柱 5:0 压栈，等待未来右边界。 当前动作：下标 5 入栈。",
+      "reviewBody": "i=5, +0, res=1 · 下标 5 入栈",
+      "caption": "把当前柱 5:0 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 5 · 单调栈接水",
+        "badge": "i = 5 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "i": 5,
+          "last": 0,
+          "res": 1,
+          "top": 5
+        },
+        "active": [
+          5
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 5 入栈"
+      }
+    },
+    {
+      "id": "lc42-8-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 0,
+      "frameBeatCount": 12,
+      "title": "开始本轮",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 扫描高度 1，本轮尚未结算任何高度层。 当前动作：i=6，本轮 last 从 0 开始。",
+      "reviewBody": "i=6, +1, res=2 · i=6，本轮 last 从 0 开始",
+      "caption": "扫描高度 1，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "i": 6,
+          "last": 0,
+          "res": 1,
+          "top": 5
+        },
+        "active": [
+          6
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=6，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-8-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 1,
+      "frameBeatCount": 12,
+      "title": "判断 while 条件",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 栈顶 5 的高度不高于当前柱，开始结算这一层。 当前动作：0 ≤ 1，右边界出现。",
+      "reviewBody": "i=6, +1, res=2 · 0 ≤ 1，右边界出现",
+      "caption": "栈顶 5 的高度不高于当前柱，开始结算这一层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "i": 6,
+          "last": 0,
+          "res": 1,
+          "top": 5
+        },
+        "active": [
+          6
+        ],
+        "compared": [
+          5,
+          6
+        ],
+        "result": [],
+        "formula": "height[5] ≤ height[6]",
+        "note": "0 ≤ 1，右边界出现"
+      }
+    },
+    {
+      "id": "lc42-8-3",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 2,
+      "frameBeatCount": 12,
+      "title": "结算高度层面积",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 高度层 0→0，宽度 0，res 变为 1。 当前动作：结算 0 单位水。 只有这行加法执行后，res 和 water[] 才会更新。",
+      "reviewBody": "i=6, +1, res=2 · 结算 0 单位水",
+      "caption": "高度层 0→0，宽度 0，res 变为 1。",
+      "kind": "water-stack",
+      "durationMs": 1000,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "i": 6,
+          "last": 0,
+          "res": 1,
+          "top": 5
+        },
+        "active": [
+          6
+        ],
+        "compared": [
+          5,
+          6
+        ],
+        "result": [],
+        "formula": "(0-0)×(6-5-1)=0",
+        "note": "结算 0 单位水"
+      }
+    },
+    {
+      "id": "lc42-8-4",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 3,
+      "frameBeatCount": 12,
+      "title": "更新 last",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 last 记住刚结算到的高度，避免下一层重复计算。 当前动作：last 更新为 0。",
+      "reviewBody": "i=6, +1, res=2 · last 更新为 0",
+      "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "i": 6,
+          "last": 0,
+          "res": 1,
+          "top": 5
+        },
+        "active": [
+          6
+        ],
+        "compared": [
+          5,
+          6
+        ],
+        "result": [],
+        "formula": "last = height[5] = 0",
+        "note": "last 更新为 0"
+      }
+    },
+    {
+      "id": "lc42-8-5",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 4,
+      "frameBeatCount": 12,
+      "title": "弹出栈顶",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 下标 5 的右边界已经确定，移出栈。 当前动作：弹出下标 5。",
+      "reviewBody": "i=6, +1, res=2 · 弹出下标 5",
+      "caption": "下标 5 的右边界已经确定，移出栈。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4
+        ],
+        "variables": {
+          "i": 6,
+          "last": 0,
+          "res": 1,
+          "top": 4
+        },
+        "active": [
+          6
+        ],
+        "compared": [
+          5,
+          6
+        ],
+        "result": [],
+        "formula": "",
+        "note": "弹出下标 5"
+      }
+    },
+    {
+      "id": "lc42-8-6",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 5,
+      "frameBeatCount": 12,
+      "title": "判断 while 条件",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 栈顶 4 的高度不高于当前柱，开始结算这一层。 当前动作：1 ≤ 1，右边界出现。",
+      "reviewBody": "i=6, +1, res=2 · 1 ≤ 1，右边界出现",
+      "caption": "栈顶 4 的高度不高于当前柱，开始结算这一层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4
+        ],
+        "variables": {
+          "i": 6,
+          "last": 0,
+          "res": 1,
+          "top": 4
+        },
+        "active": [
+          6
+        ],
+        "compared": [
+          4,
+          6
+        ],
+        "result": [],
+        "formula": "height[4] ≤ height[6]",
+        "note": "1 ≤ 1，右边界出现"
+      }
+    },
+    {
+      "id": "lc42-8-7",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 6,
+      "frameBeatCount": 12,
+      "title": "结算高度层面积",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 高度层 0→1，宽度 1，res 变为 2。 当前动作：结算 1 单位水。 只有这行加法执行后，res 和 water[] 才会更新。",
+      "reviewBody": "i=6, +1, res=2 · 结算 1 单位水",
+      "caption": "高度层 0→1，宽度 1，res 变为 2。",
+      "kind": "water-stack",
+      "durationMs": 1000,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4
+        ],
+        "variables": {
+          "i": 6,
+          "last": 0,
+          "res": 2,
+          "top": 4
+        },
+        "active": [
+          6
+        ],
+        "compared": [
+          4,
+          6
+        ],
+        "result": [],
+        "formula": "(1-0)×(6-4-1)=1",
+        "note": "结算 1 单位水"
+      }
+    },
+    {
+      "id": "lc42-8-8",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 7,
+      "frameBeatCount": 12,
+      "title": "更新 last",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 last 记住刚结算到的高度，避免下一层重复计算。 当前动作：last 更新为 1。",
+      "reviewBody": "i=6, +1, res=2 · last 更新为 1",
+      "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          4
+        ],
+        "variables": {
+          "i": 6,
+          "last": 1,
+          "res": 2,
+          "top": 4
+        },
+        "active": [
+          6
+        ],
+        "compared": [
+          4,
+          6
+        ],
+        "result": [],
+        "formula": "last = height[4] = 1",
+        "note": "last 更新为 1"
+      }
+    },
+    {
+      "id": "lc42-8-9",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 8,
+      "frameBeatCount": 12,
+      "title": "弹出栈顶",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 下标 4 的右边界已经确定，移出栈。 当前动作：弹出下标 4。",
+      "reviewBody": "i=6, +1, res=2 · 弹出下标 4",
+      "caption": "下标 4 的右边界已经确定，移出栈。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 6,
+          "last": 1,
+          "res": 2,
+          "top": 3
+        },
+        "active": [
+          6
+        ],
+        "compared": [
+          4,
+          6
+        ],
+        "result": [],
+        "formula": "",
+        "note": "弹出下标 4"
+      }
+    },
+    {
+      "id": "lc42-8-10",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 9,
+      "frameBeatCount": 12,
+      "title": "判断 while 条件",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 新的栈顶更高，while 结束。 当前动作：2 > 1，停止弹栈。",
+      "reviewBody": "i=6, +1, res=2 · 2 > 1，停止弹栈",
+      "caption": "新的栈顶更高，while 结束。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 6,
+          "last": 1,
+          "res": 2,
+          "top": 3
+        },
+        "active": [
+          6
+        ],
+        "compared": [
+          3,
+          6
+        ],
+        "result": [],
+        "formula": "height[3] > height[6]",
+        "note": "2 > 1，停止弹栈"
+      }
+    },
+    {
+      "id": "lc42-8-11",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 10,
+      "frameBeatCount": 12,
+      "title": "当前下标入栈",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 左边界仍存在，补齐到当前高度 1，res=2。 当前动作：左边界 3 再封住 0 单位。",
+      "reviewBody": "i=6, +1, res=2 · 左边界 3 再封住 0 单位",
+      "caption": "左边界仍存在，补齐到当前高度 1，res=2。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 6,
+          "last": 1,
+          "res": 2,
+          "top": 3
+        },
+        "active": [
+          6
+        ],
+        "compared": [
+          3,
+          6
+        ],
+        "result": [],
+        "formula": "(6-3-1)×(1-1)=0",
+        "note": "左边界 3 再封住 0 单位"
+      }
+    },
+    {
+      "id": "lc42-8-12",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 7,
+      "frameTitle": "扫描 i = 6",
+      "beatIndex": 11,
+      "frameBeatCount": 12,
+      "title": "下标 6 入栈",
+      "body": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。 把当前柱 6:1 压栈，等待未来右边界。 当前动作：下标 6 入栈。",
+      "reviewBody": "i=6, +1, res=2 · 下标 6 入栈",
+      "caption": "把当前柱 6:1 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 6 · 单调栈接水",
+        "badge": "i = 6 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          6
+        ],
+        "variables": {
+          "i": 6,
+          "last": 1,
+          "res": 2,
+          "top": 6
+        },
+        "active": [
+          6
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 6 入栈"
+      }
+    },
+    {
+      "id": "lc42-9-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 0,
+      "frameBeatCount": 11,
+      "title": "开始本轮",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 扫描高度 3，本轮尚未结算任何高度层。 当前动作：i=7，本轮 last 从 0 开始。",
+      "reviewBody": "i=7, +3, res=5 · i=7，本轮 last 从 0 开始",
+      "caption": "扫描高度 3，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          6
+        ],
+        "variables": {
+          "i": 7,
+          "last": 0,
+          "res": 2,
+          "top": 6
+        },
+        "active": [
+          7
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=7，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-9-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 1,
+      "frameBeatCount": 11,
+      "title": "判断 while 条件",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 栈顶 6 的高度不高于当前柱，开始结算这一层。 当前动作：1 ≤ 3，右边界出现。",
+      "reviewBody": "i=7, +3, res=5 · 1 ≤ 3，右边界出现",
+      "caption": "栈顶 6 的高度不高于当前柱，开始结算这一层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          6
+        ],
+        "variables": {
+          "i": 7,
+          "last": 0,
+          "res": 2,
+          "top": 6
+        },
+        "active": [
+          7
+        ],
+        "compared": [
+          6,
+          7
+        ],
+        "result": [],
+        "formula": "height[6] ≤ height[7]",
+        "note": "1 ≤ 3，右边界出现"
+      }
+    },
+    {
+      "id": "lc42-9-3",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 2,
+      "frameBeatCount": 11,
+      "title": "结算高度层面积",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 高度层 0→1，宽度 0，res 变为 2。 当前动作：结算 0 单位水。 只有这行加法执行后，res 和 water[] 才会更新。",
+      "reviewBody": "i=7, +3, res=5 · 结算 0 单位水",
+      "caption": "高度层 0→1，宽度 0，res 变为 2。",
+      "kind": "water-stack",
+      "durationMs": 1000,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          6
+        ],
+        "variables": {
+          "i": 7,
+          "last": 0,
+          "res": 2,
+          "top": 6
+        },
+        "active": [
+          7
+        ],
+        "compared": [
+          6,
+          7
+        ],
+        "result": [],
+        "formula": "(1-0)×(7-6-1)=0",
+        "note": "结算 0 单位水"
+      }
+    },
+    {
+      "id": "lc42-9-4",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 3,
+      "frameBeatCount": 11,
+      "title": "更新 last",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 last 记住刚结算到的高度，避免下一层重复计算。 当前动作：last 更新为 1。",
+      "reviewBody": "i=7, +3, res=5 · last 更新为 1",
+      "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3,
+          6
+        ],
+        "variables": {
+          "i": 7,
+          "last": 1,
+          "res": 2,
+          "top": 6
+        },
+        "active": [
+          7
+        ],
+        "compared": [
+          6,
+          7
+        ],
+        "result": [],
+        "formula": "last = height[6] = 1",
+        "note": "last 更新为 1"
+      }
+    },
+    {
+      "id": "lc42-9-5",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 4,
+      "frameBeatCount": 11,
+      "title": "弹出栈顶",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 下标 6 的右边界已经确定，移出栈。 当前动作：弹出下标 6。",
+      "reviewBody": "i=7, +3, res=5 · 弹出下标 6",
+      "caption": "下标 6 的右边界已经确定，移出栈。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 7,
+          "last": 1,
+          "res": 2,
+          "top": 3
+        },
+        "active": [
+          7
+        ],
+        "compared": [
+          6,
+          7
+        ],
+        "result": [],
+        "formula": "",
+        "note": "弹出下标 6"
+      }
+    },
+    {
+      "id": "lc42-9-6",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 5,
+      "frameBeatCount": 11,
+      "title": "判断 while 条件",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 栈顶 3 的高度不高于当前柱，开始结算这一层。 当前动作：2 ≤ 3，右边界出现。",
+      "reviewBody": "i=7, +3, res=5 · 2 ≤ 3，右边界出现",
+      "caption": "栈顶 3 的高度不高于当前柱，开始结算这一层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 7,
+          "last": 1,
+          "res": 2,
+          "top": 3
+        },
+        "active": [
+          7
+        ],
+        "compared": [
+          3,
+          7
+        ],
+        "result": [],
+        "formula": "height[3] ≤ height[7]",
+        "note": "2 ≤ 3，右边界出现"
+      }
+    },
+    {
+      "id": "lc42-9-7",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 6,
+      "frameBeatCount": 11,
+      "title": "结算高度层面积",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 高度层 1→2，宽度 3，res 变为 5。 当前动作：结算 3 单位水。 只有这行加法执行后，res 和 water[] 才会更新。",
+      "reviewBody": "i=7, +3, res=5 · 结算 3 单位水",
+      "caption": "高度层 1→2，宽度 3，res 变为 5。",
+      "kind": "water-stack",
+      "durationMs": 1000,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 7,
+          "last": 1,
+          "res": 5,
+          "top": 3
+        },
+        "active": [
+          7
+        ],
+        "compared": [
+          3,
+          7
+        ],
+        "result": [],
+        "formula": "(2-1)×(7-3-1)=3",
+        "note": "结算 3 单位水"
+      }
+    },
+    {
+      "id": "lc42-9-8",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 7,
+      "frameBeatCount": 11,
+      "title": "更新 last",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 last 记住刚结算到的高度，避免下一层重复计算。 当前动作：last 更新为 2。",
+      "reviewBody": "i=7, +3, res=5 · last 更新为 2",
+      "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          3
+        ],
+        "variables": {
+          "i": 7,
+          "last": 2,
+          "res": 5,
+          "top": 3
+        },
+        "active": [
+          7
+        ],
+        "compared": [
+          3,
+          7
+        ],
+        "result": [],
+        "formula": "last = height[3] = 2",
+        "note": "last 更新为 2"
+      }
+    },
+    {
+      "id": "lc42-9-9",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 8,
+      "frameBeatCount": 11,
+      "title": "弹出栈顶",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 下标 3 的右边界已经确定，移出栈。 当前动作：弹出下标 3。",
+      "reviewBody": "i=7, +3, res=5 · 弹出下标 3",
+      "caption": "下标 3 的右边界已经确定，移出栈。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 0",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [],
+        "variables": {
+          "i": 7,
+          "last": 2,
+          "res": 5,
+          "top": null
+        },
+        "active": [
+          7
+        ],
+        "compared": [
+          3,
+          7
+        ],
+        "result": [],
+        "formula": "",
+        "note": "弹出下标 3"
+      }
+    },
+    {
+      "id": "lc42-9-10",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 9,
+      "frameBeatCount": 11,
+      "title": "当前下标入栈",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 栈为空时无法形成凹槽，这一段不再加水。 当前动作：栈为空，没有左边界。",
+      "reviewBody": "i=7, +3, res=5 · 栈为空，没有左边界",
+      "caption": "栈为空时无法形成凹槽，这一段不再加水。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 0",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [],
+        "variables": {
+          "i": 7,
+          "last": 2,
+          "res": 5,
+          "top": null
+        },
+        "active": [
+          7
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "stk.empty()",
+        "note": "栈为空，没有左边界"
+      }
+    },
+    {
+      "id": "lc42-9-11",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 8,
+      "frameTitle": "扫描 i = 7",
+      "beatIndex": 10,
+      "frameBeatCount": 11,
+      "title": "下标 7 入栈",
+      "body": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。 把当前柱 7:3 压栈，等待未来右边界。 当前动作：下标 7 入栈。",
+      "reviewBody": "i=7, +3, res=5 · 下标 7 入栈",
+      "caption": "把当前柱 7:3 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 7 · 单调栈接水",
+        "badge": "i = 7 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7
+        ],
+        "variables": {
+          "i": 7,
+          "last": 2,
+          "res": 5,
+          "top": 7
+        },
+        "active": [
+          7
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 7 入栈"
+      }
+    },
+    {
+      "id": "lc42-10-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 9,
+      "frameTitle": "扫描 i = 8",
+      "beatIndex": 0,
+      "frameBeatCount": 4,
+      "title": "开始本轮",
+      "body": "i=8 的柱高为 2。当前还没有新增可确认的水层，累计 res=5。 扫描高度 2，本轮尚未结算任何高度层。 当前动作：i=8，本轮 last 从 0 开始。",
+      "reviewBody": "i=8, +0, res=5 · i=8，本轮 last 从 0 开始",
+      "caption": "扫描高度 2，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 8 · 单调栈接水",
+        "badge": "i = 8 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7
+        ],
+        "variables": {
+          "i": 8,
+          "last": 0,
+          "res": 5,
+          "top": 7
+        },
+        "active": [
+          8
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=8，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-10-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 9,
+      "frameTitle": "扫描 i = 8",
+      "beatIndex": 1,
+      "frameBeatCount": 4,
+      "title": "判断 while 条件",
+      "body": "i=8 的柱高为 2。当前还没有新增可确认的水层，累计 res=5。 新的栈顶更高，while 结束。 当前动作：3 > 2，停止弹栈。",
+      "reviewBody": "i=8, +0, res=5 · 3 > 2，停止弹栈",
+      "caption": "新的栈顶更高，while 结束。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 8 · 单调栈接水",
+        "badge": "i = 8 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7
+        ],
+        "variables": {
+          "i": 8,
+          "last": 0,
+          "res": 5,
+          "top": 7
+        },
+        "active": [
+          8
+        ],
+        "compared": [
+          7,
+          8
+        ],
+        "result": [],
+        "formula": "height[7] > height[8]",
+        "note": "3 > 2，停止弹栈"
+      }
+    },
+    {
+      "id": "lc42-10-3",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 9,
+      "frameTitle": "扫描 i = 8",
+      "beatIndex": 2,
+      "frameBeatCount": 4,
+      "title": "当前下标入栈",
+      "body": "i=8 的柱高为 2。当前还没有新增可确认的水层，累计 res=5。 左边界仍存在，补齐到当前高度 2，res=5。 当前动作：左边界 7 再封住 0 单位。",
+      "reviewBody": "i=8, +0, res=5 · 左边界 7 再封住 0 单位",
+      "caption": "左边界仍存在，补齐到当前高度 2，res=5。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 8 · 单调栈接水",
+        "badge": "i = 8 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7
+        ],
+        "variables": {
+          "i": 8,
+          "last": 0,
+          "res": 5,
+          "top": 7
+        },
+        "active": [
+          8
+        ],
+        "compared": [
+          7,
+          8
+        ],
+        "result": [],
+        "formula": "(8-7-1)×(2-0)=0",
+        "note": "左边界 7 再封住 0 单位"
+      }
+    },
+    {
+      "id": "lc42-10-4",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 9,
+      "frameTitle": "扫描 i = 8",
+      "beatIndex": 3,
+      "frameBeatCount": 4,
+      "title": "下标 8 入栈",
+      "body": "i=8 的柱高为 2。当前还没有新增可确认的水层，累计 res=5。 把当前柱 8:2 压栈，等待未来右边界。 当前动作：下标 8 入栈。",
+      "reviewBody": "i=8, +0, res=5 · 下标 8 入栈",
+      "caption": "把当前柱 8:2 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 8 · 单调栈接水",
+        "badge": "i = 8 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8
+        ],
+        "variables": {
+          "i": 8,
+          "last": 0,
+          "res": 5,
+          "top": 8
+        },
+        "active": [
+          8
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 8 入栈"
+      }
+    },
+    {
+      "id": "lc42-11-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 10,
+      "frameTitle": "扫描 i = 9",
+      "beatIndex": 0,
+      "frameBeatCount": 4,
+      "title": "开始本轮",
+      "body": "i=9 的柱高为 1。当前还没有新增可确认的水层，累计 res=5。 扫描高度 1，本轮尚未结算任何高度层。 当前动作：i=9，本轮 last 从 0 开始。",
+      "reviewBody": "i=9, +0, res=5 · i=9，本轮 last 从 0 开始",
+      "caption": "扫描高度 1，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 9 · 单调栈接水",
+        "badge": "i = 9 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8
+        ],
+        "variables": {
+          "i": 9,
+          "last": 0,
+          "res": 5,
+          "top": 8
+        },
+        "active": [
+          9
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=9，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-11-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 10,
+      "frameTitle": "扫描 i = 9",
+      "beatIndex": 1,
+      "frameBeatCount": 4,
+      "title": "判断 while 条件",
+      "body": "i=9 的柱高为 1。当前还没有新增可确认的水层，累计 res=5。 新的栈顶更高，while 结束。 当前动作：2 > 1，停止弹栈。",
+      "reviewBody": "i=9, +0, res=5 · 2 > 1，停止弹栈",
+      "caption": "新的栈顶更高，while 结束。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 9 · 单调栈接水",
+        "badge": "i = 9 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8
+        ],
+        "variables": {
+          "i": 9,
+          "last": 0,
+          "res": 5,
+          "top": 8
+        },
+        "active": [
+          9
+        ],
+        "compared": [
+          8,
+          9
+        ],
+        "result": [],
+        "formula": "height[8] > height[9]",
+        "note": "2 > 1，停止弹栈"
+      }
+    },
+    {
+      "id": "lc42-11-3",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 10,
+      "frameTitle": "扫描 i = 9",
+      "beatIndex": 2,
+      "frameBeatCount": 4,
+      "title": "当前下标入栈",
+      "body": "i=9 的柱高为 1。当前还没有新增可确认的水层，累计 res=5。 左边界仍存在，补齐到当前高度 1，res=5。 当前动作：左边界 8 再封住 0 单位。",
+      "reviewBody": "i=9, +0, res=5 · 左边界 8 再封住 0 单位",
+      "caption": "左边界仍存在，补齐到当前高度 1，res=5。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 9 · 单调栈接水",
+        "badge": "i = 9 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8
+        ],
+        "variables": {
+          "i": 9,
+          "last": 0,
+          "res": 5,
+          "top": 8
+        },
+        "active": [
+          9
+        ],
+        "compared": [
+          8,
+          9
+        ],
+        "result": [],
+        "formula": "(9-8-1)×(1-0)=0",
+        "note": "左边界 8 再封住 0 单位"
+      }
+    },
+    {
+      "id": "lc42-11-4",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 10,
+      "frameTitle": "扫描 i = 9",
+      "beatIndex": 3,
+      "frameBeatCount": 4,
+      "title": "下标 9 入栈",
+      "body": "i=9 的柱高为 1。当前还没有新增可确认的水层，累计 res=5。 把当前柱 9:1 压栈，等待未来右边界。 当前动作：下标 9 入栈。",
+      "reviewBody": "i=9, +0, res=5 · 下标 9 入栈",
+      "caption": "把当前柱 9:1 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 9 · 单调栈接水",
+        "badge": "i = 9 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8,
+          9
+        ],
+        "variables": {
+          "i": 9,
+          "last": 0,
+          "res": 5,
+          "top": 9
+        },
+        "active": [
+          9
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 9 入栈"
+      }
+    },
+    {
+      "id": "lc42-12-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 0,
+      "frameBeatCount": 12,
+      "title": "开始本轮",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 扫描高度 2，本轮尚未结算任何高度层。 当前动作：i=10，本轮 last 从 0 开始。",
+      "reviewBody": "i=10, +1, res=6 · i=10，本轮 last 从 0 开始",
+      "caption": "扫描高度 2，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8,
+          9
+        ],
+        "variables": {
+          "i": 10,
+          "last": 0,
+          "res": 5,
+          "top": 9
+        },
+        "active": [
+          10
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=10，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-12-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 1,
+      "frameBeatCount": 12,
+      "title": "判断 while 条件",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 栈顶 9 的高度不高于当前柱，开始结算这一层。 当前动作：1 ≤ 2，右边界出现。",
+      "reviewBody": "i=10, +1, res=6 · 1 ≤ 2，右边界出现",
+      "caption": "栈顶 9 的高度不高于当前柱，开始结算这一层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8,
+          9
+        ],
+        "variables": {
+          "i": 10,
+          "last": 0,
+          "res": 5,
+          "top": 9
+        },
+        "active": [
+          10
+        ],
+        "compared": [
+          9,
+          10
+        ],
+        "result": [],
+        "formula": "height[9] ≤ height[10]",
+        "note": "1 ≤ 2，右边界出现"
+      }
+    },
+    {
+      "id": "lc42-12-3",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 2,
+      "frameBeatCount": 12,
+      "title": "结算高度层面积",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 高度层 0→1，宽度 0，res 变为 5。 当前动作：结算 0 单位水。 只有这行加法执行后，res 和 water[] 才会更新。",
+      "reviewBody": "i=10, +1, res=6 · 结算 0 单位水",
+      "caption": "高度层 0→1，宽度 0，res 变为 5。",
+      "kind": "water-stack",
+      "durationMs": 1000,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8,
+          9
+        ],
+        "variables": {
+          "i": 10,
+          "last": 0,
+          "res": 5,
+          "top": 9
+        },
+        "active": [
+          10
+        ],
+        "compared": [
+          9,
+          10
+        ],
+        "result": [],
+        "formula": "(1-0)×(10-9-1)=0",
+        "note": "结算 0 单位水"
+      }
+    },
+    {
+      "id": "lc42-12-4",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 3,
+      "frameBeatCount": 12,
+      "title": "更新 last",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 last 记住刚结算到的高度，避免下一层重复计算。 当前动作：last 更新为 1。",
+      "reviewBody": "i=10, +1, res=6 · last 更新为 1",
+      "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8,
+          9
+        ],
+        "variables": {
+          "i": 10,
+          "last": 1,
+          "res": 5,
+          "top": 9
+        },
+        "active": [
+          10
+        ],
+        "compared": [
+          9,
+          10
+        ],
+        "result": [],
+        "formula": "last = height[9] = 1",
+        "note": "last 更新为 1"
+      }
+    },
+    {
+      "id": "lc42-12-5",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 4,
+      "frameBeatCount": 12,
+      "title": "弹出栈顶",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 下标 9 的右边界已经确定，移出栈。 当前动作：弹出下标 9。",
+      "reviewBody": "i=10, +1, res=6 · 弹出下标 9",
+      "caption": "下标 9 的右边界已经确定，移出栈。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8
+        ],
+        "variables": {
+          "i": 10,
+          "last": 1,
+          "res": 5,
+          "top": 8
+        },
+        "active": [
+          10
+        ],
+        "compared": [
+          9,
+          10
+        ],
+        "result": [],
+        "formula": "",
+        "note": "弹出下标 9"
+      }
+    },
+    {
+      "id": "lc42-12-6",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 5,
+      "frameBeatCount": 12,
+      "title": "判断 while 条件",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 栈顶 8 的高度不高于当前柱，开始结算这一层。 当前动作：2 ≤ 2，右边界出现。",
+      "reviewBody": "i=10, +1, res=6 · 2 ≤ 2，右边界出现",
+      "caption": "栈顶 8 的高度不高于当前柱，开始结算这一层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8
+        ],
+        "variables": {
+          "i": 10,
+          "last": 1,
+          "res": 5,
+          "top": 8
+        },
+        "active": [
+          10
+        ],
+        "compared": [
+          8,
+          10
+        ],
+        "result": [],
+        "formula": "height[8] ≤ height[10]",
+        "note": "2 ≤ 2，右边界出现"
+      }
+    },
+    {
+      "id": "lc42-12-7",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 6,
+      "frameBeatCount": 12,
+      "title": "结算高度层面积",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 高度层 1→2，宽度 1，res 变为 6。 当前动作：结算 1 单位水。 只有这行加法执行后，res 和 water[] 才会更新。",
+      "reviewBody": "i=10, +1, res=6 · 结算 1 单位水",
+      "caption": "高度层 1→2，宽度 1，res 变为 6。",
+      "kind": "water-stack",
+      "durationMs": 1000,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8
+        ],
+        "variables": {
+          "i": 10,
+          "last": 1,
+          "res": 6,
+          "top": 8
+        },
+        "active": [
+          10
+        ],
+        "compared": [
+          8,
+          10
+        ],
+        "result": [],
+        "formula": "(2-1)×(10-8-1)=1",
+        "note": "结算 1 单位水"
+      }
+    },
+    {
+      "id": "lc42-12-8",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 7,
+      "frameBeatCount": 12,
+      "title": "更新 last",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 last 记住刚结算到的高度，避免下一层重复计算。 当前动作：last 更新为 2。",
+      "reviewBody": "i=10, +1, res=6 · last 更新为 2",
+      "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          8
+        ],
+        "variables": {
+          "i": 10,
+          "last": 2,
+          "res": 6,
+          "top": 8
+        },
+        "active": [
+          10
+        ],
+        "compared": [
+          8,
+          10
+        ],
+        "result": [],
+        "formula": "last = height[8] = 2",
+        "note": "last 更新为 2"
+      }
+    },
+    {
+      "id": "lc42-12-9",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 8,
+      "frameBeatCount": 12,
+      "title": "弹出栈顶",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 下标 8 的右边界已经确定，移出栈。 当前动作：弹出下标 8。",
+      "reviewBody": "i=10, +1, res=6 · 弹出下标 8",
+      "caption": "下标 8 的右边界已经确定，移出栈。",
+      "kind": "water-stack",
+      "durationMs": 880,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7
+        ],
+        "variables": {
+          "i": 10,
+          "last": 2,
+          "res": 6,
+          "top": 7
+        },
+        "active": [
+          10
+        ],
+        "compared": [
+          8,
+          10
+        ],
+        "result": [],
+        "formula": "",
+        "note": "弹出下标 8"
+      }
+    },
+    {
+      "id": "lc42-12-10",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 9,
+      "frameBeatCount": 12,
+      "title": "判断 while 条件",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 新的栈顶更高，while 结束。 当前动作：3 > 2，停止弹栈。",
+      "reviewBody": "i=10, +1, res=6 · 3 > 2，停止弹栈",
+      "caption": "新的栈顶更高，while 结束。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7
+        ],
+        "variables": {
+          "i": 10,
+          "last": 2,
+          "res": 6,
+          "top": 7
+        },
+        "active": [
+          10
+        ],
+        "compared": [
+          7,
+          10
+        ],
+        "result": [],
+        "formula": "height[7] > height[10]",
+        "note": "3 > 2，停止弹栈"
+      }
+    },
+    {
+      "id": "lc42-12-11",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 10,
+      "frameBeatCount": 12,
+      "title": "当前下标入栈",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 左边界仍存在，补齐到当前高度 2，res=6。 当前动作：左边界 7 再封住 0 单位。",
+      "reviewBody": "i=10, +1, res=6 · 左边界 7 再封住 0 单位",
+      "caption": "左边界仍存在，补齐到当前高度 2，res=6。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 1",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7
+        ],
+        "variables": {
+          "i": 10,
+          "last": 2,
+          "res": 6,
+          "top": 7
+        },
+        "active": [
+          10
+        ],
+        "compared": [
+          7,
+          10
+        ],
+        "result": [],
+        "formula": "(10-7-1)×(2-2)=0",
+        "note": "左边界 7 再封住 0 单位"
+      }
+    },
+    {
+      "id": "lc42-12-12",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "结算",
+      "framePhase": "mutate",
+      "frameIndex": 11,
+      "frameTitle": "扫描 i = 10",
+      "beatIndex": 11,
+      "frameBeatCount": 12,
+      "title": "下标 10 入栈",
+      "body": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。 把当前柱 10:2 压栈，等待未来右边界。 当前动作：下标 10 入栈。",
+      "reviewBody": "i=10, +1, res=6 · 下标 10 入栈",
+      "caption": "把当前柱 10:2 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 10 · 单调栈接水",
+        "badge": "i = 10 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          10
+        ],
+        "variables": {
+          "i": 10,
+          "last": 2,
+          "res": 6,
+          "top": 10
+        },
+        "active": [
+          10
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 10 入栈"
+      }
+    },
+    {
+      "id": "lc42-13-1",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 12,
+      "frameTitle": "扫描 i = 11",
+      "beatIndex": 0,
+      "frameBeatCount": 4,
+      "title": "开始本轮",
+      "body": "i=11 的柱高为 1。当前还没有新增可确认的水层，累计 res=6。 扫描高度 1，本轮尚未结算任何高度层。 当前动作：i=11，本轮 last 从 0 开始。",
+      "reviewBody": "i=11, +0, res=6 · i=11，本轮 last 从 0 开始",
+      "caption": "扫描高度 1，本轮尚未结算任何高度层。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 11 · 单调栈接水",
+        "badge": "i = 11 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          10
+        ],
+        "variables": {
+          "i": 11,
+          "last": 0,
+          "res": 6,
+          "top": 10
+        },
+        "active": [
+          11
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "i=11，本轮 last 从 0 开始"
+      }
+    },
+    {
+      "id": "lc42-13-2",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 12,
+      "frameTitle": "扫描 i = 11",
+      "beatIndex": 1,
+      "frameBeatCount": 4,
+      "title": "判断 while 条件",
+      "body": "i=11 的柱高为 1。当前还没有新增可确认的水层，累计 res=6。 新的栈顶更高，while 结束。 当前动作：2 > 1，停止弹栈。",
+      "reviewBody": "i=11, +0, res=6 · 2 > 1，停止弹栈",
+      "caption": "新的栈顶更高，while 结束。",
+      "kind": "water-stack",
+      "durationMs": 620,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 11 · 单调栈接水",
+        "badge": "i = 11 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          10
+        ],
+        "variables": {
+          "i": 11,
+          "last": 0,
+          "res": 6,
+          "top": 10
+        },
+        "active": [
+          11
+        ],
+        "compared": [
+          10,
+          11
+        ],
+        "result": [],
+        "formula": "height[10] > height[11]",
+        "note": "2 > 1，停止弹栈"
+      }
+    },
+    {
+      "id": "lc42-13-3",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 12,
+      "frameTitle": "扫描 i = 11",
+      "beatIndex": 2,
+      "frameBeatCount": 4,
+      "title": "当前下标入栈",
+      "body": "i=11 的柱高为 1。当前还没有新增可确认的水层，累计 res=6。 左边界仍存在，补齐到当前高度 1，res=6。 当前动作：左边界 10 再封住 0 单位。",
+      "reviewBody": "i=11, +0, res=6 · 左边界 10 再封住 0 单位",
+      "caption": "左边界仍存在，补齐到当前高度 1，res=6。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 11 · 单调栈接水",
+        "badge": "i = 11 · stk.size = 2",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          10
+        ],
+        "variables": {
+          "i": 11,
+          "last": 0,
+          "res": 6,
+          "top": 10
+        },
+        "active": [
+          11
+        ],
+        "compared": [
+          10,
+          11
+        ],
+        "result": [],
+        "formula": "(11-10-1)×(1-0)=0",
+        "note": "左边界 10 再封住 0 单位"
+      }
+    },
+    {
+      "id": "lc42-13-4",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "扫描",
+      "framePhase": "inspect",
+      "frameIndex": 12,
+      "frameTitle": "扫描 i = 11",
+      "beatIndex": 3,
+      "frameBeatCount": 4,
+      "title": "下标 11 入栈",
+      "body": "i=11 的柱高为 1。当前还没有新增可确认的水层，累计 res=6。 把当前柱 11:1 压栈，等待未来右边界。 当前动作：下标 11 入栈。",
+      "reviewBody": "i=11, +0, res=6 · 下标 11 入栈",
+      "caption": "把当前柱 11:1 压栈，等待未来右边界。",
+      "kind": "water-stack",
+      "durationMs": 720,
+      "visual": {
+        "kind": "water-stack",
+        "label": "扫描 i = 11 · 单调栈接水",
+        "badge": "i = 11 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          10,
+          11
+        ],
+        "variables": {
+          "i": 11,
+          "last": 0,
+          "res": 6,
+          "top": 11
+        },
+        "active": [
+          11
+        ],
+        "compared": [],
+        "result": [],
+        "formula": "",
+        "note": "下标 11 入栈"
+      }
+    },
+    {
+      "id": "lc42-14-1",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "返回",
+      "framePhase": "return",
+      "frameIndex": 13,
+      "frameTitle": "返回最终答案",
+      "beatIndex": 0,
+      "frameBeatCount": 1,
+      "title": "返回答案",
+      "body": "所有能被左右边界确认的高度层都已累计，最终接水总量为 6。 返回 res = 6。 当前动作：扫描完成，返回 6。",
+      "reviewBody": "return 6 · 扫描完成，返回 6",
+      "caption": "返回 res = 6。",
+      "kind": "water-stack",
+      "durationMs": 1900,
+      "visual": {
+        "kind": "water-stack",
+        "label": "返回最终答案 · 单调栈接水",
+        "badge": "扫描完成 · stk.size = 3",
+        "values": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          3,
+          2,
+          1,
+          2,
+          1
+        ],
+        "water": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "stack": [
+          7,
+          10,
+          11
+        ],
+        "variables": {
+          "i": null,
+          "last": null,
+          "res": 6,
+          "top": 11
+        },
+        "active": [
+          11
+        ],
+        "compared": [],
+        "result": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "formula": "return res = 6",
+        "note": "扫描完成，返回 6"
+      }
+    }
+  ]
+}

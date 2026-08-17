@@ -1,0 +1,1556 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "二维编辑距离 DP",
+    "sceneKind": "dp-table",
+    "input": {
+      "a": "horse",
+      "b": "ros"
+    },
+    "expected": 3,
+    "exampleText": "word1=\"horse\", word2=\"ros\"",
+    "expectedText": "编辑距离 = 3",
+    "invariant": "f[i][j] 是两个前缀之间的最小编辑次数",
+    "aha": "枚举最后一次删除、插入或替换",
+    "time": "O(nm)",
+    "space": "O(nm)",
+    "problemId": 72,
+    "title": "编辑距离",
+    "day": "Day 13：多维 DP",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "ce470e10354dbbf238594872379f19d8c5894444eef41b4783f71277fd382f71",
+    "semanticTokenHash": "7f6293aa42984b4c87b173572eaa9e1e778072cae3b3eb73ccae21c817e219d7",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "变成空串只能全删，从空串变来只能全插。",
+        "review": "delete i / insert j"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8",
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "delete i / insert j",
+            "action": "初始化空串边界",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                3,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "1,0",
+              "2,0",
+              "3,0",
+              "4,0",
+              "5,0",
+              "0,0",
+              "0,1",
+              "0,2",
+              "0,3"
+            ]
+          },
+          "caption": "变成空串只能全删，从空串变来只能全插。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=2, diagonal=0+1)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 1,
+              "a": "h",
+              "b": "r",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=2, diagonal=0+1)=1",
+            "action": "把 h 变为 r 需要 1 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                3,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [
+              "0,1",
+              "1,0",
+              "0,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=2, diagonal=1+1)=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 2,
+              "a": "h",
+              "b": "o",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=2, diagonal=1+1)=2",
+            "action": "把 h 变为 ro 需要 2 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                3,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ],
+            "comparedCells": [
+              "0,2",
+              "1,1",
+              "0,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=3, diagonal=2+1)=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 3,
+              "a": "h",
+              "b": "s",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=3, diagonal=2+1)=3",
+            "action": "把 h 变为 ros 需要 3 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                3,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "1,3"
+            ],
+            "comparedCells": [
+              "0,3",
+              "1,2",
+              "0,2"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=2, diagonal=1+1)=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 1,
+              "a": "o",
+              "b": "r",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=2, diagonal=1+1)=2",
+            "action": "把 ho 变为 r 需要 2 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                0,
+                0
+              ],
+              [
+                3,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ],
+            "comparedCells": [
+              "1,1",
+              "2,0",
+              "1,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=3, diagonal=1+0)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 2,
+              "a": "o",
+              "b": "o",
+              "replaceCost": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=3, diagonal=1+0)=1",
+            "action": "把 ho 变为 ro 需要 1 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                0
+              ],
+              [
+                3,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ],
+            "comparedCells": [
+              "1,2",
+              "2,1",
+              "1,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=2, diagonal=2+1)=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 3,
+              "a": "o",
+              "b": "s",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=2, diagonal=2+1)=2",
+            "action": "把 ho 变为 ros 需要 2 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ],
+            "comparedCells": [
+              "1,3",
+              "2,2",
+              "1,2"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=3, diagonal=2+0)=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 3,
+              "j": 1,
+              "a": "r",
+              "b": "r",
+              "replaceCost": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=3, diagonal=2+0)=2",
+            "action": "把 hor 变为 r 需要 2 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "3,1"
+            ],
+            "comparedCells": [
+              "2,1",
+              "3,0",
+              "2,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=2, diagonal=2+1)=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 3,
+              "j": 2,
+              "a": "r",
+              "b": "o",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=2, diagonal=2+1)=2",
+            "action": "把 hor 变为 ro 需要 2 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                2,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "3,2"
+            ],
+            "comparedCells": [
+              "2,2",
+              "3,1",
+              "2,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=3, diagonal=1+1)=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 3,
+              "j": 3,
+              "a": "r",
+              "b": "s",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=3, diagonal=1+1)=2",
+            "action": "把 hor 变为 ros 需要 2 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                2,
+                2
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "3,3"
+            ],
+            "comparedCells": [
+              "2,3",
+              "3,2",
+              "2,2"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=3, diagonal=3+1)=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 4,
+              "j": 1,
+              "a": "s",
+              "b": "r",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=3, diagonal=3+1)=3",
+            "action": "把 hors 变为 r 需要 3 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                2,
+                2
+              ],
+              [
+                4,
+                3,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "4,1"
+            ],
+            "comparedCells": [
+              "3,1",
+              "4,0",
+              "3,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=3, diagonal=2+1)=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 4,
+              "j": 2,
+              "a": "s",
+              "b": "o",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=3, diagonal=2+1)=3",
+            "action": "把 hors 变为 ro 需要 3 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                2,
+                2
+              ],
+              [
+                4,
+                3,
+                3,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "4,2"
+            ],
+            "comparedCells": [
+              "3,2",
+              "4,1",
+              "3,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=3, diagonal=2+0)=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 4,
+              "j": 3,
+              "a": "s",
+              "b": "s",
+              "replaceCost": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=3, diagonal=2+0)=2",
+            "action": "把 hors 变为 ros 需要 2 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                2,
+                2
+              ],
+              [
+                4,
+                3,
+                3,
+                2
+              ],
+              [
+                5,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "4,3"
+            ],
+            "comparedCells": [
+              "3,3",
+              "4,2",
+              "3,2"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=4, diagonal=4+1)=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 5,
+              "j": 1,
+              "a": "e",
+              "b": "r",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=4, diagonal=4+1)=4",
+            "action": "把 horse 变为 r 需要 4 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                2,
+                2
+              ],
+              [
+                4,
+                3,
+                3,
+                2
+              ],
+              [
+                5,
+                4,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "5,1"
+            ],
+            "comparedCells": [
+              "4,1",
+              "5,0",
+              "4,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=4, diagonal=3+1)=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 5,
+              "j": 2,
+              "a": "e",
+              "b": "o",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=4, diagonal=3+1)=4",
+            "action": "把 horse 变为 ro 需要 4 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                2,
+                2
+              ],
+              [
+                4,
+                3,
+                3,
+                2
+              ],
+              [
+                5,
+                4,
+                4,
+                0
+              ]
+            ],
+            "activeCells": [
+              "5,2"
+            ],
+            "comparedCells": [
+              "4,2",
+              "5,1",
+              "4,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+        "review": "min(delete/insert=3, diagonal=3+1)=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 5,
+              "j": 3,
+              "a": "e",
+              "b": "s",
+              "replaceCost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(delete/insert=3, diagonal=3+1)=3",
+            "action": "把 horse 变为 ros 需要 3 步",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                2,
+                2
+              ],
+              [
+                4,
+                3,
+                3,
+                2
+              ],
+              [
+                5,
+                4,
+                4,
+                3
+              ]
+            ],
+            "activeCells": [
+              "5,3"
+            ],
+            "comparedCells": [
+              "4,3",
+              "5,2",
+              "4,2"
+            ],
+            "resultCells": []
+          },
+          "caption": "删除、插入、替换/匹配覆盖全部最后一步选择。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "右下角是完整字符串之间的最少操作数。",
+        "review": "horse → ros = 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 5,
+              "j": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "horse → ros = 3",
+            "action": "返回编辑距离 3",
+            "status": "return",
+            "matrix": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                1,
+                2,
+                3
+              ],
+              [
+                2,
+                2,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                2,
+                2
+              ],
+              [
+                4,
+                3,
+                3,
+                2
+              ],
+              [
+                5,
+                4,
+                4,
+                3
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "5,3"
+            ],
+            "output": 3
+          },
+          "caption": "右下角是完整字符串之间的最少操作数。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int minDistance(string a, string b) {\n        int n = a.size(), m = b.size();\n        a = ' ' + a, b = ' ' + b;\n        vector<vector<int>> f(n + 1, vector<int>(m + 1));\n\n        for (int i = 0; i <= n; i ++ ) f[i][0] = i;\n        for (int i = 1; i <= m; i ++ ) f[0][i] = i;\n\n        for (int i = 1; i <= n; i ++ )\n            for (int j = 1; j <= m; j ++ ) {\n                f[i][j] = min(f[i - 1][j], f[i][j - 1]) + 1;\n                int t = a[i] != b[j];\n                f[i][j] = min(f[i][j], f[i - 1][j - 1] + t);\n            }\n\n        return f[n][m];\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 5347,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 5348,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 5349,
+        "text": "    int minDistance(string a, string b) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 5350,
+        "text": "        int n = a.size(), m = b.size();"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 5351,
+        "text": "        a = ' ' + a, b = ' ' + b;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 5352,
+        "text": "        vector<vector<int>> f(n + 1, vector<int>(m + 1));"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 5353,
+        "text": ""
+      },
+      {
+        "id": "L8",
+        "sourceLine": 5354,
+        "text": "        for (int i = 0; i <= n; i ++ ) f[i][0] = i;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 5355,
+        "text": "        for (int i = 1; i <= m; i ++ ) f[0][i] = i;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 5356,
+        "text": ""
+      },
+      {
+        "id": "L11",
+        "sourceLine": 5357,
+        "text": "        for (int i = 1; i <= n; i ++ )"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 5358,
+        "text": "            for (int j = 1; j <= m; j ++ ) {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 5359,
+        "text": "                f[i][j] = min(f[i - 1][j], f[i][j - 1]) + 1;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 5360,
+        "text": "                int t = a[i] != b[j];"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 5361,
+        "text": "                f[i][j] = min(f[i][j], f[i - 1][j - 1] + t);"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 5362,
+        "text": "            }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 5363,
+        "text": ""
+      },
+      {
+        "id": "L18",
+        "sourceLine": 5364,
+        "text": "        return f[n][m];"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 5365,
+        "text": "    }"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 5366,
+        "text": "};"
+      }
+    ]
+  }
+}

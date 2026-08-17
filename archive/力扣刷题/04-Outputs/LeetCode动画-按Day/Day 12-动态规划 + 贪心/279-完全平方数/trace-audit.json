@@ -1,0 +1,565 @@
+{
+  "problemId": 279,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 279,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [],
+      "variables": {
+        "n": 3
+      },
+      "structure": {},
+      "result": [
+        3
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "5d2be6ac29e968776aac2f67b719e011321079dd99c8ca27eb55eac0c01efd6a",
+    "sourceSemanticTokenHash": "98b0d31391346e2844c91238f2a90d7668d4c722654873ff3b7025c842cb8e03",
+    "sourceCodeLineCount": 19
+  },
+  "sourceCodeSha256": "5d2be6ac29e968776aac2f67b719e011321079dd99c8ca27eb55eac0c01efd6a",
+  "sourceSemanticTokenHash": "98b0d31391346e2844c91238f2a90d7668d4c722654873ff3b7025c842cb8e03",
+  "steps": [
+    {
+      "id": "279-trace-001",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "setup",
+      "title": "先检查一个平方数",
+      "body": "12 不是完全平方数，继续检查能否由两个平方数组成。 题解原意：核心洞察：利用拉格朗日四平方和定理——每个正整数都可以表示为至多 4 个完全平方数的和。且有以下性质： 1. 如果 n 本身是完全平方数，答案为 1。 2. 如果 n 可以表示为 a² + b²（即 n - a² 是完全平方数），答案为 2。 3. 如果 n 满足 n = 4^k × (8m + 7)，答案为 4（勒让德三平方定理的推论）。 4. 其余情况，答案为 3。 算法流程： 1. 先检查 n 是否为完全平方数…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp1d",
+        "badge": "checks",
+        "tokens": [
+          1,
+          4,
+          9,
+          12
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 12
+        },
+        "rows": [
+          {
+            "label": "checks",
+            "values": [
+              "12 → false"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "12 不是完全平方数，继续检查能否由两个平方数组成。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 12
+        },
+        "structure": {
+          "checks": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "279-trace-002",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "compare",
+      "title": "尝试平方数 1",
+      "body": "剩余 11 是否为平方数：false。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · dp1d",
+        "badge": "checks",
+        "tokens": [
+          1,
+          4,
+          9,
+          12
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "n": 12,
+          "a": 1,
+          "remain": 11
+        },
+        "rows": [
+          {
+            "label": "equation",
+            "values": [
+              "12 = 1 + 11"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "剩余 11 是否为平方数：false。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 12,
+          "a": 1,
+          "remain": 11
+        },
+        "structure": {
+          "checks": [
+            "1+11"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "279-trace-003",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "compare",
+      "title": "尝试平方数 4",
+      "body": "剩余 8 是否为平方数：false。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · dp1d",
+        "badge": "checks",
+        "tokens": [
+          1,
+          4,
+          9,
+          12
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "n": 12,
+          "a": 2,
+          "remain": 8
+        },
+        "rows": [
+          {
+            "label": "equation",
+            "values": [
+              "12 = 4 + 8"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "剩余 8 是否为平方数：false。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 12,
+          "a": 2,
+          "remain": 8
+        },
+        "structure": {
+          "checks": [
+            "4+8"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "279-trace-004",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "compare",
+      "title": "尝试平方数 9",
+      "body": "剩余 3 是否为平方数：false。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · dp1d",
+        "badge": "checks",
+        "tokens": [
+          1,
+          4,
+          9,
+          12
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "n": 12,
+          "a": 3,
+          "remain": 3
+        },
+        "rows": [
+          {
+            "label": "equation",
+            "values": [
+              "12 = 9 + 3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "剩余 3 是否为平方数：false。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 12,
+          "a": 3,
+          "remain": 3
+        },
+        "structure": {
+          "checks": [
+            "9+3"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "279-trace-005",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "mutate",
+      "title": "应用四平方定理前的化简",
+      "body": "12 能被 4 整除，先除去因子 4，得到 n=3。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "checks",
+        "tokens": [
+          1,
+          4,
+          9,
+          12
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 3
+        },
+        "rows": [
+          {
+            "label": "n",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "12 能被 4 整除，先除去因子 4，得到 n=3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 3
+        },
+        "structure": {
+          "checks": [
+            "12 / 4 = 3"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "279-trace-006",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "判断三平方条件",
+      "body": "3 % 8 != 7，因此根据定理返回 3。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          4,
+          9,
+          12
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "3 % 8 != 7，因此根据定理返回 3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 3
+        },
+        "structure": {
+          "theorem": "3 squares"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "279-trace-check-008",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最少需要 3 个完全平方数。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          4,
+          9,
+          12
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最少需要 3 个完全平方数。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 3
+        },
+        "structure": {
+          "theorem": "3 squares"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "279-trace-check-009",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最少需要 3 个完全平方数。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          4,
+          9,
+          12
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最少需要 3 个完全平方数。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 3
+        },
+        "structure": {
+          "theorem": "3 squares"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "279-trace-check-010",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最少需要 3 个完全平方数。 易错提醒：完全平方数检查： r = sqrt(x) 后用 r * r == x 判断，注意浮点数精度问题（C++ 的 sqrt 对 int 范围内的数精度足够）。 枚举 a 的范围： a <= n / a 等价于 a * a <= n，用除法可以避免溢出。 n = 4^k × (8m + 7) 的判断： 先不断除以 4 直到不能被 4 整除，再检查…",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          4,
+          9,
+          12
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最少需要 3 个完全平方数。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 3
+        },
+        "structure": {
+          "theorem": "3 squares"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "279-trace-007",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最少需要 3 个完全平方数。",
+      "kind": "dp1d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          4,
+          9,
+          12
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "最少需要 3 个完全平方数。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 3
+        },
+        "structure": {},
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

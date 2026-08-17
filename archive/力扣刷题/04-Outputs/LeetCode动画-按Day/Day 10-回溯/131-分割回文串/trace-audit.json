@@ -1,0 +1,891 @@
+{
+  "problemId": 131,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 131,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "a",
+        "a",
+        "b"
+      ],
+      "variables": {},
+      "structure": {
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ]
+      },
+      "result": [
+        [
+          "a",
+          "a",
+          "b"
+        ],
+        [
+          "aa",
+          "b"
+        ]
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "a02a1b28e018ae856d30dd25ce4eed9578f7a2e0e4b9040c244c76dcb849102f",
+    "sourceSemanticTokenHash": "3d74118998997ac63bf5dc7953ff987a6a9a5b544754adc98626ea04bf4c8541",
+    "sourceCodeLineCount": 32
+  },
+  "sourceCodeSha256": "a02a1b28e018ae856d30dd25ce4eed9578f7a2e0e4b9040c244c76dcb849102f",
+  "sourceSemanticTokenHash": "3d74118998997ac63bf5dc7953ff987a6a9a5b544754adc98626ea04bf4c8541",
+  "steps": [
+    {
+      "id": "131-trace-001",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "setup",
+      "title": "先预计算回文区间",
+      "body": "f[l][r] 为 true 才允许把 s[l..r] 作为一段加入 path。 题解原意：核心思想： 把问题看作\"在字符串上选择切割点\"。每次切割时判断当前子串是否为回文，如果是则继续切割剩余部分。先预处理所有子串的回文状态，让判断 O(1)。 DP 回文预处理思路： dp[i][j] 表示 s[i:j+1] 是否为回文。 递推：s[i]==s[j] and (j-i<=2 or dp[i+1][j-1])。 从下往上、从左往右遍历。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · backtrack",
+        "badge": "palindrome",
+        "tokens": [
+          "a",
+          "a",
+          "b"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 3
+        },
+        "rows": [
+          {
+            "label": "palindrome",
+            "values": [
+              "a",
+              "aa",
+              "b"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "f[l][r] 为 true 才允许把 s[l..r] 作为一段加入 path。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "a",
+          "b"
+        ],
+        "variables": {
+          "n": 3
+        },
+        "structure": {
+          "palindrome": [
+            "a",
+            "aa",
+            "b"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "131-trace-002",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "mutate",
+      "title": "选择分割 ['a', 'a', 'b']",
+      "body": "当前 path=['a', 'a', 'b']，每一段都通过回文表检查。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "a",
+          "b"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "u": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[a, a, b]",
+              "[aa, b]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "note": "当前 path=['a', 'a', 'b']，每一段都通过回文表检查。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "a",
+          "b"
+        ],
+        "variables": {
+          "u": 3
+        },
+        "structure": {
+          "path": [
+            "a",
+            "a",
+            "b"
+          ],
+          "result": [
+            [
+              "a",
+              "a",
+              "b"
+            ],
+            [
+              "aa",
+              "b"
+            ]
+          ]
+        },
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "131-trace-003",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "mutate",
+      "title": "记录分割 ['a', 'a', 'b']",
+      "body": "path 覆盖整个字符串，加入答案后回溯撤销最后一段。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "a",
+          "b"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "u": 3
+        },
+        "rows": [
+          {
+            "label": "result",
+            "values": [
+              "[a, a, b]",
+              "[aa, b]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "note": "path 覆盖整个字符串，加入答案后回溯撤销最后一段。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "a",
+          "b"
+        ],
+        "variables": {
+          "u": 3
+        },
+        "structure": {
+          "path": [
+            "a",
+            "a",
+            "b"
+          ],
+          "result": [
+            [
+              "a",
+              "a",
+              "b"
+            ],
+            [
+              "aa",
+              "b"
+            ]
+          ]
+        },
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "131-trace-004",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "mutate",
+      "title": "撤销当前分割",
+      "body": "恢复到更短前缀，尝试下一种回文切分。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "a",
+          "b"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "u": 0
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "note": "恢复到更短前缀，尝试下一种回文切分。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "a",
+          "b"
+        ],
+        "variables": {
+          "u": 0
+        },
+        "structure": {
+          "path": [],
+          "result": [
+            [
+              "a",
+              "a",
+              "b"
+            ],
+            [
+              "aa",
+              "b"
+            ]
+          ]
+        },
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "131-trace-005",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "mutate",
+      "title": "选择分割 ['aa', 'b']",
+      "body": "当前 path=['aa', 'b']，每一段都通过回文表检查。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "a",
+          "b"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "u": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "aa",
+              "b"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[a, a, b]",
+              "[aa, b]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "note": "当前 path=['aa', 'b']，每一段都通过回文表检查。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "a",
+          "b"
+        ],
+        "variables": {
+          "u": 3
+        },
+        "structure": {
+          "path": [
+            "aa",
+            "b"
+          ],
+          "result": [
+            [
+              "a",
+              "a",
+              "b"
+            ],
+            [
+              "aa",
+              "b"
+            ]
+          ]
+        },
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "131-trace-006",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "mutate",
+      "title": "记录分割 ['aa', 'b']",
+      "body": "path 覆盖整个字符串，加入答案后回溯撤销最后一段。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "a",
+          "b"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "u": 3
+        },
+        "rows": [
+          {
+            "label": "result",
+            "values": [
+              "[a, a, b]",
+              "[aa, b]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "note": "path 覆盖整个字符串，加入答案后回溯撤销最后一段。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "a",
+          "b"
+        ],
+        "variables": {
+          "u": 3
+        },
+        "structure": {
+          "path": [
+            "aa",
+            "b"
+          ],
+          "result": [
+            [
+              "a",
+              "a",
+              "b"
+            ],
+            [
+              "aa",
+              "b"
+            ]
+          ]
+        },
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "131-trace-007",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "mutate",
+      "title": "撤销当前分割",
+      "body": "恢复到更短前缀，尝试下一种回文切分。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "a",
+          "b"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "u": 0
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "note": "恢复到更短前缀，尝试下一种回文切分。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "a",
+          "b"
+        ],
+        "variables": {
+          "u": 0
+        },
+        "structure": {
+          "path": [],
+          "result": [
+            [
+              "a",
+              "a",
+              "b"
+            ],
+            [
+              "aa",
+              "b"
+            ]
+          ]
+        },
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "131-trace-check-009",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。回文分割结果为 [['a', 'a', 'b'], ['aa', 'b']]。",
+      "kind": "backtrack",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "a",
+          "b"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "u": 0
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。回文分割结果为 [['a', 'a', 'b'], ['aa', 'b']]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "a",
+          "b"
+        ],
+        "variables": {
+          "u": 0
+        },
+        "structure": {
+          "path": [],
+          "result": [
+            [
+              "a",
+              "a",
+              "b"
+            ],
+            [
+              "aa",
+              "b"
+            ]
+          ]
+        },
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "131-trace-check-010",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。回文分割结果为 [['a', 'a', 'b'], ['aa', 'b']]。 易错提醒：1. 切割点枚举范围：range(start, n) 中 end 从 start 到 n-1，表示子串 s[start:end+1]。越界是常见错误。 2. 递归参数更新：切割完当前子串后，下一个 start 是 end + 1，而不是 end。传错会导致无限递归或重复切割。 3. DP 数组遍历顺序：dp[i][j] 依赖 dp[i+1…",
+      "kind": "backtrack",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "a",
+          "b"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "u": 0
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。回文分割结果为 [['a', 'a', 'b'], ['aa', 'b']]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "a",
+          "b"
+        ],
+        "variables": {
+          "u": 0
+        },
+        "structure": {
+          "path": [],
+          "result": [
+            [
+              "a",
+              "a",
+              "b"
+            ],
+            [
+              "aa",
+              "b"
+            ]
+          ]
+        },
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "131-trace-008",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "回文分割结果为 [['a', 'a', 'b'], ['aa', 'b']]。",
+      "kind": "backtrack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "a",
+          "b"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[a, a, b]",
+              "[aa, b]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "note": "回文分割结果为 [['a', 'a', 'b'], ['aa', 'b']]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "a",
+          "b"
+        ],
+        "variables": {},
+        "structure": {
+          "result": [
+            [
+              "a",
+              "a",
+              "b"
+            ],
+            [
+              "aa",
+              "b"
+            ]
+          ]
+        },
+        "result": [
+          [
+            "a",
+            "a",
+            "b"
+          ],
+          [
+            "aa",
+            "b"
+          ]
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

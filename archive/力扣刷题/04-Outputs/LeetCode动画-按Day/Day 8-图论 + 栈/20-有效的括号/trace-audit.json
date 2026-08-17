@@ -1,0 +1,736 @@
+{
+  "problemId": 20,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 20,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "(",
+        "[",
+        "{",
+        "}",
+        "]",
+        ")"
+      ],
+      "variables": {
+        "valid": true
+      },
+      "structure": {
+        "stack": []
+      },
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "bd4c215543220de1ae0daead15e849f999384802d27a2b6656c9d0c949b82167",
+    "sourceSemanticTokenHash": "f71022a043d017c47895f20b5ddd6dd4ae726184cad281fa3c1da08f90c5c4fa",
+    "sourceCodeLineCount": 22
+  },
+  "sourceCodeSha256": "bd4c215543220de1ae0daead15e849f999384802d27a2b6656c9d0c949b82167",
+  "sourceSemanticTokenHash": "f71022a043d017c47895f20b5ddd6dd4ae726184cad281fa3c1da08f90c5c4fa",
+  "steps": [
+    {
+      "id": "20-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "从空括号栈开始",
+      "body": "栈顶保存最近一个还没闭合的左括号。 题解原意：核心思想： 遍历字符串，遇到左括号就入栈，遇到右括号就检查栈顶是否是对应的左括号。这利用了栈「后进先出」的特性：最后遇到的左括号需要最先被闭合。 复杂度： 时间 O(n)，空间 O(n)",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · stack",
+        "badge": "i=None",
+        "tokens": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": null,
+          "valid": true
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "栈顶保存最近一个还没闭合的左括号。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "variables": {
+          "i": null,
+          "valid": true
+        },
+        "structure": {
+          "stack": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "20-trace-002",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "处理 (",
+      "body": "读到 (，压入栈顶，stack=['(']。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=0",
+        "tokens": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "char": "(",
+          "valid": true
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "("
+            ]
+          },
+          {
+            "label": "valid",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "读到 (，压入栈顶，stack=['(']。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "variables": {
+          "i": 0,
+          "char": "(",
+          "valid": true
+        },
+        "structure": {
+          "stack": [
+            "("
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "20-trace-003",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "处理 [",
+      "body": "读到 [，压入栈顶，stack=['(', '[']。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=1",
+        "tokens": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "char": "[",
+          "valid": true
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "(",
+              "["
+            ]
+          },
+          {
+            "label": "valid",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "读到 [，压入栈顶，stack=['(', '[']。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "variables": {
+          "i": 1,
+          "char": "[",
+          "valid": true
+        },
+        "structure": {
+          "stack": [
+            "(",
+            "["
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "20-trace-004",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "处理 {",
+      "body": "读到 {，压入栈顶，stack=['(', '[', '{']。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=2",
+        "tokens": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "char": "{",
+          "valid": true
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "(",
+              "[",
+              "{"
+            ]
+          },
+          {
+            "label": "valid",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "读到 {，压入栈顶，stack=['(', '[', '{']。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "variables": {
+          "i": 2,
+          "char": "{",
+          "valid": true
+        },
+        "structure": {
+          "stack": [
+            "(",
+            "[",
+            "{"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "20-trace-005",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "处理 }",
+      "body": "读到 }，栈顶 {，匹配=true，stack=['(', '[']。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=3",
+        "tokens": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "char": "}",
+          "valid": true
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "(",
+              "["
+            ]
+          },
+          {
+            "label": "valid",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "读到 }，栈顶 {，匹配=true，stack=['(', '[']。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "variables": {
+          "i": 3,
+          "char": "}",
+          "valid": true
+        },
+        "structure": {
+          "stack": [
+            "(",
+            "["
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "20-trace-006",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "处理 ]",
+      "body": "读到 ]，栈顶 [，匹配=true，stack=['(']。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=4",
+        "tokens": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "char": "]",
+          "valid": true
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "("
+            ]
+          },
+          {
+            "label": "valid",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "读到 ]，栈顶 [，匹配=true，stack=['(']。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "variables": {
+          "i": 4,
+          "char": "]",
+          "valid": true
+        },
+        "structure": {
+          "stack": [
+            "("
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "20-trace-007",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "处理 )",
+      "body": "读到 )，栈顶 (，匹配=true，stack=[]。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=5",
+        "tokens": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "char": ")",
+          "valid": true
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "valid",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "读到 )，栈顶 (，匹配=true，stack=[]。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "variables": {
+          "i": 5,
+          "char": ")",
+          "valid": true
+        },
+        "structure": {
+          "stack": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "20-trace-008",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "update",
+      "title": "检查输入结束后的空栈",
+      "body": "所有字符处理完，stack=空，合法=true。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · stack",
+        "badge": "结果 1 项",
+        "tokens": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "valid": true
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "所有字符处理完，stack=空，合法=true。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "variables": {
+          "valid": true
+        },
+        "structure": {
+          "stack": []
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "20-trace-check-010",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true。 易错提醒：空栈访问： 遇到右括号时，如果栈是空的（没有对应的左括号），直接返回 false。not stack 检查必不可少。 字符串遍历完后栈非空： 如果有未闭合的左括号，如 ((()，遍历完后栈不为空，说明无效。返回时应该检查 not stack。 不匹配顺序： ([)] 类型——每个左括号都有对应的右括号，但顺序不对。栈特性天然防止这种情况…",
+      "kind": "stack",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "valid": true
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "variables": {
+          "valid": true
+        },
+        "structure": {
+          "stack": []
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "20-trace-009",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 true。",
+      "kind": "stack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · stack",
+        "badge": "结果 1 项",
+        "tokens": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "valid": true
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "返回 true。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "[",
+          "{",
+          "}",
+          "]",
+          ")"
+        ],
+        "variables": {
+          "valid": true
+        },
+        "structure": {
+          "stack": []
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

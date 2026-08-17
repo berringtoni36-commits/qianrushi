@@ -1,0 +1,1020 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "多源分层 BFS",
+    "sceneKind": "matrix-grid",
+    "input": [
+      [
+        2,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "expected": 4,
+    "exampleText": "[[2,1,1],[1,1,0],[0,1,1]]",
+    "expectedText": "最少分钟 = 4",
+    "invariant": "队列每一层恰好对应同一分钟新腐烂的橘子",
+    "aha": "初始所有腐烂点同时作为第 0 层",
+    "time": "O(mn)",
+    "space": "O(mn)",
+    "problemId": 994,
+    "title": "腐烂的橘子",
+    "day": "Day 8：图论 + 栈",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "32dc17b5e72bbda86905632c73b0c53490f9a0c035ee8616e8027979aa761239",
+    "semanticTokenHash": "faa4f99bd0b81973ad139ea4c3b3e05c7fcfc67ba8ae1f1a33477f11694c320e",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "多源 BFS 从全部初始腐烂点同时扩散。",
+        "review": "所有腐烂橘子同时入队"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "所有腐烂橘子同时入队",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0"
+            ],
+            "queue": [
+              "0,0"
+            ]
+          },
+          "caption": "多源 BFS 从全部初始腐烂点同时扩散。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前队列层代表同一分钟腐烂的橘子。",
+        "review": "layer=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 0,
+              "layerSize": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "layer=0",
+            "action": "进入第 0 分钟",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "0,0"
+            ]
+          },
+          "caption": "当前队列层代表同一分钟腐烂的橘子。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+        "review": "1→2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 1,
+              "x": 0,
+              "y": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→2",
+            "action": "橘子 (0,1) 在第 1 分钟腐烂",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "0,1"
+            ]
+          },
+          "caption": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+        "review": "1→2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 1,
+              "x": 1,
+              "y": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→2",
+            "action": "橘子 (1,0) 在第 1 分钟腐烂",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "0,1",
+              "1,0"
+            ]
+          },
+          "caption": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前队列层代表同一分钟腐烂的橘子。",
+        "review": "layer=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 1,
+              "layerSize": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "layer=1",
+            "action": "进入第 1 分钟",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "0,1",
+              "1,0"
+            ]
+          },
+          "caption": "当前队列层代表同一分钟腐烂的橘子。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+        "review": "1→2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 2,
+              "x": 0,
+              "y": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→2",
+            "action": "橘子 (0,2) 在第 2 分钟腐烂",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                2,
+                2
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "1,0",
+              "0,2"
+            ]
+          },
+          "caption": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+        "review": "1→2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 2,
+              "x": 1,
+              "y": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→2",
+            "action": "橘子 (1,1) 在第 2 分钟腐烂",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                2,
+                2
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "1,0",
+              "0,2",
+              "1,1"
+            ]
+          },
+          "caption": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前队列层代表同一分钟腐烂的橘子。",
+        "review": "layer=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 2,
+              "layerSize": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "layer=2",
+            "action": "进入第 2 分钟",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                2,
+                2
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "0,2",
+              "1,1"
+            ]
+          },
+          "caption": "当前队列层代表同一分钟腐烂的橘子。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+        "review": "1→2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 3,
+              "x": 2,
+              "y": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→2",
+            "action": "橘子 (2,1) 在第 3 分钟腐烂",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                2,
+                2
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "2,1"
+            ]
+          },
+          "caption": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前队列层代表同一分钟腐烂的橘子。",
+        "review": "layer=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 3,
+              "layerSize": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "layer=3",
+            "action": "进入第 3 分钟",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                2,
+                2
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "2,1"
+            ]
+          },
+          "caption": "当前队列层代表同一分钟腐烂的橘子。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+        "review": "1→2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 4,
+              "x": 2,
+              "y": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1→2",
+            "action": "橘子 (2,2) 在第 4 分钟腐烂",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                2,
+                2
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "2,2"
+            ]
+          },
+          "caption": "新腐烂橘子进入下一层，不能在本分钟二次传播。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前队列层代表同一分钟腐烂的橘子。",
+        "review": "layer=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 4,
+              "layerSize": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "layer=4",
+            "action": "进入第 4 分钟",
+            "status": "running",
+            "matrix": [
+              [
+                2,
+                2,
+                2
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [],
+            "queue": [
+              "2,2"
+            ]
+          },
+          "caption": "当前队列层代表同一分钟腐烂的橘子。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "扫描确认没有剩余新鲜橘子。",
+        "review": "return 4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L40"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "minute": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "return 4",
+            "action": "全部橘子在 4 分钟腐烂",
+            "status": "return",
+            "matrix": [
+              [
+                2,
+                2,
+                2
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "1,0",
+              "1,1",
+              "2,1",
+              "2,2"
+            ],
+            "output": 4
+          },
+          "caption": "扫描确认没有剩余新鲜橘子。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "#define x first\n#define y second\n\ntypedef pair<int, int> PII;\n\nclass Solution {\npublic:\n    int orangesRotting(vector<vector<int>>& g) {\n        int n = g.size(), m = g[0].size();\n        queue<PII> q;\n        for (int i = 0; i < n; i ++ )                            // 遍历\n            for (int j = 0; j < m; j ++ )\n                if (g[i][j] == 2)\n                    q.push({i, j});                              // 入队\n\n        int dx[] = {-1, 0, 1, 0}, dy[] = {0, 1, 0, -1};\n\n        int res = -1;  // 初始化为-1：第一轮BFS扩散前记作第0分钟\n        if (q.empty()) res = 0;  // 没有腐烂橘子时，0分钟\n        while (q.size()) {\n            res ++ ;  // 每层BFS代表1分钟\n            int sz = q.size();\n            while (sz -- ) {\n                auto t = q.front();\n                q.pop();                                         // 出队\n                for (int i = 0; i < 4; i ++ ) {\n                    int x = t.x + dx[i], y = t.y + dy[i];\n                    if (x < 0 || x >= n || y < 0 || y >= m || g[x][y] != 1)\n                        continue;\n                    g[x][y] = 2;  // 新鲜橘子变腐烂\n                    q.push({x, y});                              // 入队\n                }\n            }\n        }\n\n        for (int i = 0; i < n; i ++ )                            // 遍历\n            for (int j = 0; j < m; j ++ )\n                if (g[i][j] == 1)  // 还有新鲜橘子，不可能全腐烂\n                    return -1;\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2948,
+        "text": "#define x first"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2949,
+        "text": "#define y second"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2950,
+        "text": ""
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2951,
+        "text": "typedef pair<int, int> PII;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2952,
+        "text": ""
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2953,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2954,
+        "text": "public:"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2955,
+        "text": "    int orangesRotting(vector<vector<int>>& g) {"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2956,
+        "text": "        int n = g.size(), m = g[0].size();"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2957,
+        "text": "        queue<PII> q;"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2958,
+        "text": "        for (int i = 0; i < n; i ++ )                            // 遍历"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2959,
+        "text": "            for (int j = 0; j < m; j ++ )"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2960,
+        "text": "                if (g[i][j] == 2)"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2961,
+        "text": "                    q.push({i, j});                              // 入队"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2962,
+        "text": ""
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2963,
+        "text": "        int dx[] = {-1, 0, 1, 0}, dy[] = {0, 1, 0, -1};"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2964,
+        "text": ""
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2965,
+        "text": "        int res = -1;  // 初始化为-1：第一轮BFS扩散前记作第0分钟"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2966,
+        "text": "        if (q.empty()) res = 0;  // 没有腐烂橘子时，0分钟"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2967,
+        "text": "        while (q.size()) {"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2968,
+        "text": "            res ++ ;  // 每层BFS代表1分钟"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2969,
+        "text": "            int sz = q.size();"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 2970,
+        "text": "            while (sz -- ) {"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 2971,
+        "text": "                auto t = q.front();"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 2972,
+        "text": "                q.pop();                                         // 出队"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 2973,
+        "text": "                for (int i = 0; i < 4; i ++ ) {"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 2974,
+        "text": "                    int x = t.x + dx[i], y = t.y + dy[i];"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 2975,
+        "text": "                    if (x < 0 || x >= n || y < 0 || y >= m || g[x][y] != 1)"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 2976,
+        "text": "                        continue;"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 2977,
+        "text": "                    g[x][y] = 2;  // 新鲜橘子变腐烂"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 2978,
+        "text": "                    q.push({x, y});                              // 入队"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 2979,
+        "text": "                }"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 2980,
+        "text": "            }"
+      },
+      {
+        "id": "L34",
+        "sourceLine": 2981,
+        "text": "        }"
+      },
+      {
+        "id": "L35",
+        "sourceLine": 2982,
+        "text": ""
+      },
+      {
+        "id": "L36",
+        "sourceLine": 2983,
+        "text": "        for (int i = 0; i < n; i ++ )                            // 遍历"
+      },
+      {
+        "id": "L37",
+        "sourceLine": 2984,
+        "text": "            for (int j = 0; j < m; j ++ )"
+      },
+      {
+        "id": "L38",
+        "sourceLine": 2985,
+        "text": "                if (g[i][j] == 1)  // 还有新鲜橘子，不可能全腐烂"
+      },
+      {
+        "id": "L39",
+        "sourceLine": 2986,
+        "text": "                    return -1;"
+      },
+      {
+        "id": "L40",
+        "sourceLine": 2987,
+        "text": "        return res;"
+      },
+      {
+        "id": "L41",
+        "sourceLine": 2988,
+        "text": "    }"
+      },
+      {
+        "id": "L42",
+        "sourceLine": 2989,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,734 @@
+{
+  "problemId": 148,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 148,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        4,
+        2,
+        1,
+        3
+      ],
+      "variables": {
+        "width": 4
+      },
+      "structure": {
+        "list": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "result": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "fbd66469a7810958b8e217712db2c941016e6db495c465d9a00593207f11c542",
+    "sourceSemanticTokenHash": "56a0eaa8a36e23f574d52527fbe9d48142a688e4b5d8d7dff4e9d4b0ad52cb51",
+    "sourceCodeLineCount": 36
+  },
+  "sourceCodeSha256": "fbd66469a7810958b8e217712db2c941016e6db495c465d9a00593207f11c542",
+  "sourceSemanticTokenHash": "56a0eaa8a36e23f574d52527fbe9d48142a688e4b5d8d7dff4e9d4b0ad52cb51",
+  "steps": [
+    {
+      "id": "148-trace-001",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "setup",
+      "title": "统计链表并从宽度 1 开始合并",
+      "body": "bottom-up 归并每轮把相邻的两个有序子链表合成更长的有序段。 题解原意：为什么这样想： 链表归并排序天然适合链表结构。找中点可以用快慢指针（O(n)），断开后递归排序，然后合并两个有序链表（复用 21 题）。整体 O(n log n)，但递归栈空间为 O(log n)。 关键洞察： 快慢指针找中点时，fast 初始化为 head->next 可以使 slow 停在「中间偏左」，这样 slow->next 就是右半段的头，然后将 slow->next 断开。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · linked",
+        "badge": "list",
+        "tokens": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 4,
+          "width": 1
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              4,
+              2,
+              1,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "bottom-up 归并每轮把相邻的两个有序子链表合成更长的有序段。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "variables": {
+          "n": 4,
+          "width": 1
+        },
+        "structure": {
+          "list": [
+            4,
+            2,
+            1,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "148-trace-002",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "合并局部段 [4, 2]",
+      "body": "把相邻子段合并为 [2, 4]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 2 项",
+        "tokens": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "active": [
+          0,
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "width": 1,
+          "start": 0
+        },
+        "rows": [
+          {
+            "label": "merged",
+            "values": [
+              2,
+              4
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": [
+              1,
+              3
+            ]
+          }
+        ],
+        "result": [
+          2,
+          4
+        ],
+        "note": "把相邻子段合并为 [2, 4]。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "variables": {
+          "width": 1,
+          "start": 0
+        },
+        "structure": {
+          "list": [
+            2,
+            4,
+            1,
+            3
+          ]
+        },
+        "result": [
+          2,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "148-trace-003",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "合并局部段 [1, 3]",
+      "body": "把相邻子段合并为 [1, 3]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 4 项",
+        "tokens": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "active": [
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "width": 1,
+          "start": 2
+        },
+        "rows": [
+          {
+            "label": "merged",
+            "values": [
+              2,
+              4,
+              1,
+              3
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": []
+          }
+        ],
+        "result": [
+          2,
+          4,
+          1,
+          3
+        ],
+        "note": "把相邻子段合并为 [1, 3]。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "variables": {
+          "width": 1,
+          "start": 2
+        },
+        "structure": {
+          "list": [
+            2,
+            4,
+            1,
+            3
+          ]
+        },
+        "result": [
+          2,
+          4,
+          1,
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "148-trace-004",
+      "line": 31,
+      "lineIds": [
+        31
+      ],
+      "phase": "update",
+      "title": "完成 width=1 的一轮",
+      "body": "新的链表顺序为 [2, 4, 1, 3]，下一轮子链宽度为 2。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · linked",
+        "badge": "list",
+        "tokens": [
+          2,
+          4,
+          1,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "width": 2
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              2,
+              4,
+              1,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "新的链表顺序为 [2, 4, 1, 3]，下一轮子链宽度为 2。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "variables": {
+          "width": 2
+        },
+        "structure": {
+          "list": [
+            2,
+            4,
+            1,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "148-trace-005",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "合并局部段 [2, 4, 1, 3]",
+      "body": "把相邻子段合并为 [1, 2, 3, 4]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 4 项",
+        "tokens": [
+          2,
+          4,
+          1,
+          3
+        ],
+        "active": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "width": 2,
+          "start": 0
+        },
+        "rows": [
+          {
+            "label": "merged",
+            "values": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": []
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "把相邻子段合并为 [1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "variables": {
+          "width": 2,
+          "start": 0
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "148-trace-006",
+      "line": 31,
+      "lineIds": [
+        31
+      ],
+      "phase": "update",
+      "title": "完成 width=2 的一轮",
+      "body": "新的链表顺序为 [1, 2, 3, 4]，下一轮子链宽度为 4。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "width": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "新的链表顺序为 [1, 2, 3, 4]，下一轮子链宽度为 4。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "variables": {
+          "width": 4
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "148-trace-check-008",
+      "line": 31,
+      "lineIds": [
+        31
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。归并排序完成：[1, 2, 3, 4]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "width": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。归并排序完成：[1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "variables": {
+          "width": 4
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "148-trace-check-009",
+      "line": 31,
+      "lineIds": [
+        31
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。归并排序完成：[1, 2, 3, 4]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "width": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。归并排序完成：[1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "variables": {
+          "width": 4
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "148-trace-check-010",
+      "line": 31,
+      "lineIds": [
+        31
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。归并排序完成：[1, 2, 3, 4]。 易错提醒：快慢指针找中点： fast 初始化为 head->next 让 slow 停在左半段的末尾，而不是中点。右半段起点是 slow->next 断开链表： slow->next = nullptr 必须执行，否则递归时会出现无限循环 自顶向下的空间： 自顶向下递归的空间复杂度是 O(log n)（递归栈），不是 O(1) 自底向上的拆分： s…",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "width": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。归并排序完成：[1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "variables": {
+          "width": 4
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "148-trace-007",
+      "line": 34,
+      "lineIds": [
+        34
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "归并排序完成：[1, 2, 3, 4]。",
+      "kind": "linked",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · linked",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "width": 4
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "归并排序完成：[1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          3
+        ],
+        "variables": {
+          "width": 4
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,1232 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "可达前缀 DP + 字符串哈希",
+    "sceneKind": "dp-table",
+    "input": {
+      "s": "leetcode",
+      "dict": [
+        "code",
+        "leet"
+      ]
+    },
+    "expected": true,
+    "exampleText": "s=\"leetcode\", dict=[\"leet\",\"code\"]",
+    "expectedText": "可以拆分 → true",
+    "invariant": "f[j] 仅在存在可达 i 且 s[i:j] 在字典时为真",
+    "aha": "把拆分问题转成前缀位置之间的可达性",
+    "time": "O(n²)",
+    "space": "O(n+|dict|)",
+    "problemId": 139,
+    "title": "单词拆分",
+    "day": "Day 12：动态规划 + 贪心",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "780c397892e93b8f2906d32262205d39e50cb4513a3d1da5b3af898cb40af5ae",
+    "semanticTokenHash": "f7a0c9f4f894cb7dcb604ca55a71a74e9c6f2aa8638681b2cc622e67c6367e74",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "只有可拆分前缀才能继续向后扩展。",
+        "review": "f[0]=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "j": null
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[0]=true",
+            "action": "空前缀可以被拆分",
+            "status": "running"
+          },
+          "caption": "它是后续匹配单词的起点。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "reachable": true
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[0]=True",
+            "action": "检查前缀位置 0 是否可达",
+            "status": "running"
+          },
+          "caption": "只有可拆分前缀才能继续向后扩展。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "哈希值代表当前从 i 开始的子串。",
+        "review": "dict contains le → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "j": 1,
+              "word": "l"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "dict contains l → False",
+            "action": "检查子串 l",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "j": 2,
+              "word": "le"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "dict contains le → False",
+            "action": "检查子串 le",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "哈希值代表当前从 i 开始的子串。",
+        "review": "dict contains leet → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "j": 3,
+              "word": "lee"
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "dict contains lee → False",
+            "action": "检查子串 lee",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "j": 4,
+              "word": "leet"
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "dict contains leet → True",
+            "action": "检查子串 leet",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "哈希值代表当前从 i 开始的子串。",
+        "review": "dict contains leetc → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "j": 4,
+              "word": "leet"
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "f[4]=true",
+            "action": "单词 leet 使 f[4]=true",
+            "status": "running"
+          },
+          "caption": "可达前缀加一个字典单词仍可拆分。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "j": 5,
+              "word": "leetc"
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "dict contains leetc → False",
+            "action": "检查子串 leetc",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "哈希值代表当前从 i 开始的子串。",
+        "review": "dict contains leetcod → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "j": 6,
+              "word": "leetco"
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "dict contains leetco → False",
+            "action": "检查子串 leetco",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "j": 7,
+              "word": "leetcod"
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "dict contains leetcod → False",
+            "action": "检查子串 leetcod",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "只有可拆分前缀才能继续向后扩展。",
+        "review": "f[1]=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 0,
+              "j": 8,
+              "word": "leetcode"
+            },
+            "pointers": {},
+            "active": [
+              8
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "dict contains leetcode → False",
+            "action": "检查子串 leetcode",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 1,
+              "reachable": false
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[1]=False",
+            "action": "检查前缀位置 1 是否可达",
+            "status": "running"
+          },
+          "caption": "只有可拆分前缀才能继续向后扩展。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只有可拆分前缀才能继续向后扩展。",
+        "review": "f[2]=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 2,
+              "reachable": false
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[2]=False",
+            "action": "检查前缀位置 2 是否可达",
+            "status": "running"
+          },
+          "caption": "只有可拆分前缀才能继续向后扩展。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只有可拆分前缀才能继续向后扩展。",
+        "review": "f[3]=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 3,
+              "reachable": false
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[3]=False",
+            "action": "检查前缀位置 3 是否可达",
+            "status": "running"
+          },
+          "caption": "只有可拆分前缀才能继续向后扩展。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只有可拆分前缀才能继续向后扩展。",
+        "review": "f[4]=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 4,
+              "reachable": true
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[4]=True",
+            "action": "检查前缀位置 4 是否可达",
+            "status": "running"
+          },
+          "caption": "只有可拆分前缀才能继续向后扩展。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "哈希值代表当前从 i 开始的子串。",
+        "review": "dict contains c → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 4,
+              "j": 5,
+              "word": "c"
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [
+              4
+            ],
+            "result": [],
+            "formula": "dict contains c → False",
+            "action": "检查子串 c",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "哈希值代表当前从 i 开始的子串。",
+        "review": "dict contains co → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 4,
+              "j": 6,
+              "word": "co"
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [
+              4
+            ],
+            "result": [],
+            "formula": "dict contains co → False",
+            "action": "检查子串 co",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "哈希值代表当前从 i 开始的子串。",
+        "review": "dict contains cod → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 4,
+              "j": 7,
+              "word": "cod"
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [
+              4
+            ],
+            "result": [],
+            "formula": "dict contains cod → False",
+            "action": "检查子串 cod",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "哈希值代表当前从 i 开始的子串。",
+        "review": "dict contains code → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "variables": {
+              "i": 4,
+              "j": 8,
+              "word": "code"
+            },
+            "pointers": {},
+            "active": [
+              8
+            ],
+            "compared": [
+              4
+            ],
+            "result": [],
+            "formula": "dict contains code → True",
+            "action": "检查子串 code",
+            "status": "running"
+          },
+          "caption": "哈希值代表当前从 i 开始的子串。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "可达前缀加一个字典单词仍可拆分。",
+        "review": "f[8]=true"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ],
+            "variables": {
+              "i": 4,
+              "j": 8,
+              "word": "code"
+            },
+            "pointers": {},
+            "active": [
+              8
+            ],
+            "compared": [
+              4
+            ],
+            "result": [],
+            "formula": "f[8]=true",
+            "action": "单词 code 使 f[8]=true",
+            "status": "running"
+          },
+          "caption": "可达前缀加一个字典单词仍可拆分。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只有可拆分前缀才能继续向后扩展。",
+        "review": "f[5]=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ],
+            "variables": {
+              "i": 5,
+              "reachable": false
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[5]=False",
+            "action": "检查前缀位置 5 是否可达",
+            "status": "running"
+          },
+          "caption": "只有可拆分前缀才能继续向后扩展。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只有可拆分前缀才能继续向后扩展。",
+        "review": "f[6]=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ],
+            "variables": {
+              "i": 6,
+              "reachable": false
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[6]=False",
+            "action": "检查前缀位置 6 是否可达",
+            "status": "running"
+          },
+          "caption": "只有可拆分前缀才能继续向后扩展。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只有可拆分前缀才能继续向后扩展。",
+        "review": "f[7]=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ],
+            "variables": {
+              "i": 7,
+              "reachable": false
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[7]=False",
+            "action": "检查前缀位置 7 是否可达",
+            "status": "running"
+          },
+          "caption": "只有可拆分前缀才能继续向后扩展。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "位置 4 和 8 依次被字典单词连接。",
+        "review": "leet + code"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ],
+            "variables": {
+              "n": 8
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              8
+            ],
+            "formula": "leet + code",
+            "action": "返回 leetcode 可以拆分",
+            "status": "return",
+            "output": true
+          },
+          "caption": "位置 4 和 8 依次被字典单词连接。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    bool wordBreak(string s, vector<string>& wordDict) {\n        typedef unsigned long long ULL;\n        const int P = 131;\n        unordered_set<ULL> hash;                                 // 哈希集合，去重+O(1)查找\n        for (auto& word: wordDict) {\n            ULL h = 0;\n            for (auto c: word) h = h * P + c;\n            hash.insert(h);\n        }\n\n        int n = s.size();\n        vector<bool> f(n + 1);\n        f[0] = true;\n        s = ' ' + s;\n        for (int i = 0; i < n; i ++ )                            // 遍历\n            if (f[i]) {\n                ULL h = 0;\n                for (int j = i + 1; j <= n; j ++ ) {\n                    h = h * P + s[j];\n                    if (hash.count(h)) f[j] = true;              // 查找是否在哈希表中\n                }\n            }\n\n        return f[n];\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4859,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4860,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4861,
+        "text": "    bool wordBreak(string s, vector<string>& wordDict) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4862,
+        "text": "        typedef unsigned long long ULL;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4863,
+        "text": "        const int P = 131;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4864,
+        "text": "        unordered_set<ULL> hash;                                 // 哈希集合，去重+O(1)查找"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4865,
+        "text": "        for (auto& word: wordDict) {"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4866,
+        "text": "            ULL h = 0;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4867,
+        "text": "            for (auto c: word) h = h * P + c;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4868,
+        "text": "            hash.insert(h);"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 4869,
+        "text": "        }"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 4870,
+        "text": ""
+      },
+      {
+        "id": "L13",
+        "sourceLine": 4871,
+        "text": "        int n = s.size();"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 4872,
+        "text": "        vector<bool> f(n + 1);"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 4873,
+        "text": "        f[0] = true;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 4874,
+        "text": "        s = ' ' + s;"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 4875,
+        "text": "        for (int i = 0; i < n; i ++ )                            // 遍历"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 4876,
+        "text": "            if (f[i]) {"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 4877,
+        "text": "                ULL h = 0;"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 4878,
+        "text": "                for (int j = i + 1; j <= n; j ++ ) {"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 4879,
+        "text": "                    h = h * P + s[j];"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 4880,
+        "text": "                    if (hash.count(h)) f[j] = true;              // 查找是否在哈希表中"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 4881,
+        "text": "                }"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 4882,
+        "text": "            }"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 4883,
+        "text": ""
+      },
+      {
+        "id": "L26",
+        "sourceLine": 4884,
+        "text": "        return f[n];"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 4885,
+        "text": "    }"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 4886,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1225 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "从右向左单调栈",
+    "sceneKind": "stack-sequence",
+    "input": [
+      73,
+      74,
+      75,
+      71,
+      69,
+      72,
+      76,
+      73
+    ],
+    "expected": [
+      1,
+      1,
+      4,
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    "exampleText": "[73,74,75,71,69,72,76,73]",
+    "expectedText": "[1,1,4,2,1,1,0,0]",
+    "invariant": "栈中下标对应温度从底到顶严格递减",
+    "aha": "弹掉不更暖候选后栈顶即最近更暖日",
+    "time": "O(n)",
+    "space": "O(n)",
+    "problemId": 739,
+    "title": "每日温度",
+    "day": "Day 9：单调栈 + 堆",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "43e3b8b6aefc130e29264387383fa3a0b32fd5be14287fe4a5630a8e36562eea",
+    "semanticTokenHash": "97b71831dde03b2d63c052c8a382603641a052a51b40ed81a8d6471a57f38413",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "accept",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "清理后栈顶就是最近更暖日。",
+        "review": "distance=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": null
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "从右向左建立更暖候选栈",
+            "status": "running",
+            "stack": [],
+            "output": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "caption": "栈顶是右侧第一个更暖日的候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 7,
+              "next": null
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "distance=0",
+            "action": "res[7]=0",
+            "status": "running",
+            "stack": [],
+            "output": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "caption": "清理后栈顶就是最近更暖日。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "不更暖且更远的日子永不可能成为答案。",
+        "review": "76 >= 73"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 7
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[7]",
+            "action": "下标 7 入栈",
+            "status": "running",
+            "stack": [
+              7
+            ]
+          },
+          "caption": "栈从底到顶温度递减。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 6,
+              "removed": 7
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              6,
+              7
+            ],
+            "result": [],
+            "formula": "76 >= 73",
+            "action": "76 淘汰右侧 73",
+            "status": "running",
+            "stack": []
+          },
+          "caption": "不更暖且更远的日子永不可能成为答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "栈从底到顶温度递减。",
+        "review": "[6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 6,
+              "next": null
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "distance=0",
+            "action": "res[6]=0",
+            "status": "running",
+            "stack": [],
+            "output": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "caption": "清理后栈顶就是最近更暖日。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 6
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[6]",
+            "action": "下标 6 入栈",
+            "status": "running",
+            "stack": [
+              6
+            ]
+          },
+          "caption": "栈从底到顶温度递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "栈从底到顶温度递减。",
+        "review": "[6, 5]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 5,
+              "next": 6
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [
+              6
+            ],
+            "formula": "distance=1",
+            "action": "res[5]=1",
+            "status": "running",
+            "stack": [
+              6
+            ],
+            "output": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          "caption": "清理后栈顶就是最近更暖日。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 5
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[6, 5]",
+            "action": "下标 5 入栈",
+            "status": "running",
+            "stack": [
+              6,
+              5
+            ]
+          },
+          "caption": "栈从底到顶温度递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "清理后栈顶就是最近更暖日。",
+        "review": "distance=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 4,
+              "next": 5
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [
+              5
+            ],
+            "formula": "distance=1",
+            "action": "res[4]=1",
+            "status": "running",
+            "stack": [
+              6,
+              5
+            ],
+            "output": [
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          "caption": "清理后栈顶就是最近更暖日。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "栈从底到顶温度递减。",
+        "review": "[6, 5, 4]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 4
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[6, 5, 4]",
+            "action": "下标 4 入栈",
+            "status": "running",
+            "stack": [
+              6,
+              5,
+              4
+            ]
+          },
+          "caption": "栈从底到顶温度递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不更暖且更远的日子永不可能成为答案。",
+        "review": "71 >= 69"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 3,
+              "removed": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              3,
+              4
+            ],
+            "result": [],
+            "formula": "71 >= 69",
+            "action": "71 淘汰右侧 69",
+            "status": "running",
+            "stack": [
+              6,
+              5
+            ]
+          },
+          "caption": "不更暖且更远的日子永不可能成为答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "清理后栈顶就是最近更暖日。",
+        "review": "distance=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 3,
+              "next": 5
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [
+              5
+            ],
+            "formula": "distance=2",
+            "action": "res[3]=2",
+            "status": "running",
+            "stack": [
+              6,
+              5
+            ],
+            "output": [
+              0,
+              0,
+              0,
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          "caption": "清理后栈顶就是最近更暖日。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "栈从底到顶温度递减。",
+        "review": "[6, 5, 3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 3
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[6, 5, 3]",
+            "action": "下标 3 入栈",
+            "status": "running",
+            "stack": [
+              6,
+              5,
+              3
+            ]
+          },
+          "caption": "栈从底到顶温度递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不更暖且更远的日子永不可能成为答案。",
+        "review": "75 >= 71"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 2,
+              "removed": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              2,
+              3
+            ],
+            "result": [],
+            "formula": "75 >= 71",
+            "action": "75 淘汰右侧 71",
+            "status": "running",
+            "stack": [
+              6,
+              5
+            ]
+          },
+          "caption": "不更暖且更远的日子永不可能成为答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不更暖且更远的日子永不可能成为答案。",
+        "review": "75 >= 72"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 2,
+              "removed": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              2,
+              5
+            ],
+            "result": [],
+            "formula": "75 >= 72",
+            "action": "75 淘汰右侧 72",
+            "status": "running",
+            "stack": [
+              6
+            ]
+          },
+          "caption": "不更暖且更远的日子永不可能成为答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "清理后栈顶就是最近更暖日。",
+        "review": "distance=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 2,
+              "next": 6
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [
+              6
+            ],
+            "formula": "distance=4",
+            "action": "res[2]=4",
+            "status": "running",
+            "stack": [
+              6
+            ],
+            "output": [
+              0,
+              0,
+              4,
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          "caption": "清理后栈顶就是最近更暖日。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "栈从底到顶温度递减。",
+        "review": "[6, 2]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 2
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[6, 2]",
+            "action": "下标 2 入栈",
+            "status": "running",
+            "stack": [
+              6,
+              2
+            ]
+          },
+          "caption": "栈从底到顶温度递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "清理后栈顶就是最近更暖日。",
+        "review": "distance=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 1,
+              "next": 2
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [
+              2
+            ],
+            "formula": "distance=1",
+            "action": "res[1]=1",
+            "status": "running",
+            "stack": [
+              6,
+              2
+            ],
+            "output": [
+              0,
+              1,
+              4,
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          "caption": "清理后栈顶就是最近更暖日。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "栈从底到顶温度递减。",
+        "review": "[6, 2, 1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 1
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[6, 2, 1]",
+            "action": "下标 1 入栈",
+            "status": "running",
+            "stack": [
+              6,
+              2,
+              1
+            ]
+          },
+          "caption": "栈从底到顶温度递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "清理后栈顶就是最近更暖日。",
+        "review": "distance=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 0,
+              "next": 1
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "distance=1",
+            "action": "res[0]=1",
+            "status": "running",
+            "stack": [
+              6,
+              2,
+              1
+            ],
+            "output": [
+              1,
+              1,
+              4,
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          "caption": "清理后栈顶就是最近更暖日。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "栈从底到顶温度递减。",
+        "review": "[6, 2, 1, 0]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {
+              "i": 0
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[6, 2, 1, 0]",
+            "action": "下标 0 入栈",
+            "status": "running",
+            "stack": [
+              6,
+              2,
+              1,
+              0
+            ]
+          },
+          "caption": "栈从底到顶温度递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "每天下一个更暖日已经确定。",
+        "review": "[1, 1, 4, 2, 1, 1, 0, 0]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ],
+            "variables": {},
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "formula": "[1, 1, 4, 2, 1, 1, 0, 0]",
+            "action": "返回等待天数",
+            "status": "return",
+            "stack": [
+              6,
+              2,
+              1,
+              0
+            ],
+            "output": [
+              1,
+              1,
+              4,
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          "caption": "每天下一个更暖日已经确定。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<int> dailyTemperatures(vector<int>& T) {\n        stack<int> stk;\n        vector<int> res(T.size());\n        for (int i = T.size() - 1; i >= 0; i -- ) {\n            while (stk.size() && T[i] >= T[stk.top()]) stk.pop();  // 出栈\n            if (stk.size()) res[i] = stk.top() - i;\n            stk.push(i);                                         // 入栈\n        }\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3340,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3341,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3342,
+        "text": "    vector<int> dailyTemperatures(vector<int>& T) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3343,
+        "text": "        stack<int> stk;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3344,
+        "text": "        vector<int> res(T.size());"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3345,
+        "text": "        for (int i = T.size() - 1; i >= 0; i -- ) {"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3346,
+        "text": "            while (stk.size() && T[i] >= T[stk.top()]) stk.pop();  // 出栈"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3347,
+        "text": "            if (stk.size()) res[i] = stk.top() - i;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3348,
+        "text": "            stk.push(i);                                         // 入栈"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3349,
+        "text": "        }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3350,
+        "text": "        return res;"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3351,
+        "text": "    }"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3352,
+        "text": "};"
+      }
+    ]
+  }
+}

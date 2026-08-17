@@ -1,0 +1,716 @@
+{
+  "problemId": 32,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 32,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "(",
+        "(",
+        ")"
+      ],
+      "variables": {
+        "start": -1,
+        "best": 2
+      },
+      "structure": {
+        "stack": [
+          0
+        ]
+      },
+      "result": [
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "5d5c1353592673ca47cb8a8020a7a6b52c67ee4006363f68bc3b14f1ee22926c",
+    "sourceSemanticTokenHash": "5266f6316b74ccde937bd07d078547cf98029b1a998eed51c133935ac6f81f67",
+    "sourceCodeLineCount": 25
+  },
+  "sourceCodeSha256": "5d5c1353592673ca47cb8a8020a7a6b52c67ee4006363f68bc3b14f1ee22926c",
+  "sourceSemanticTokenHash": "5266f6316b74ccde937bd07d078547cf98029b1a998eed51c133935ac6f81f67",
+  "steps": [
+    {
+      "id": "32-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "用栈保存未匹配左括号",
+      "body": "栈为空时 start 是最近一个非法右括号位置，长度由 i - 栈顶/start 得到。 题解原意：核心洞察：dp[i] 表示以 s[i] 结尾的最长有效括号长度。只有 s[i] = ) 才可能非零。分两种情况： 1. s[i-1] = '('：配对，dp[i] = dp[i-2] + 2 2. s[i-1] = ')'：检查是否形如 (...(XXX))，需要找到与 s[i] 配对的位置 DP 五步法： 1. dp 定义：dp[i] 表示以 s[i] 结尾的最长有效括号子串长度 2. 递推公式： s[i] = '…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp1d",
+        "badge": "best=0",
+        "tokens": [
+          "(",
+          "(",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "start": -1,
+          "best": 0
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "栈为空时 start 是最近一个非法右括号位置，长度由 i - 栈顶/start 得到。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "(",
+          ")"
+        ],
+        "variables": {
+          "start": -1,
+          "best": 0
+        },
+        "structure": {
+          "stack": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "32-trace-002",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "处理 s[0]=(",
+      "body": "stack=[0]，start=-1，当前最长长度 best=0。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "i=0 · best=0 · 结果 1 项",
+        "tokens": [
+          "(",
+          "(",
+          ")"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "start": -1,
+          "best": 0
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "stack=[0]，start=-1，当前最长长度 best=0。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "(",
+          ")"
+        ],
+        "variables": {
+          "i": 0,
+          "start": -1,
+          "best": 0
+        },
+        "structure": {
+          "stack": [
+            0
+          ]
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "32-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "处理 s[1]=(",
+      "body": "stack=[0, 1]，start=-1，当前最长长度 best=0。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "i=1 · best=0 · 结果 1 项",
+        "tokens": [
+          "(",
+          "(",
+          ")"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "start": -1,
+          "best": 0
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              0,
+              1
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "stack=[0, 1]，start=-1，当前最长长度 best=0。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "(",
+          ")"
+        ],
+        "variables": {
+          "i": 1,
+          "start": -1,
+          "best": 0
+        },
+        "structure": {
+          "stack": [
+            0,
+            1
+          ]
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "32-trace-004",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "处理 s[2]=)",
+      "body": "stack=[0]，start=-1，当前最长长度 best=2。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "i=2 · best=2 · 结果 1 项",
+        "tokens": [
+          "(",
+          "(",
+          ")"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "stack=[0]，start=-1，当前最长长度 best=2。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "(",
+          ")"
+        ],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "structure": {
+          "stack": [
+            0
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "32-trace-check-006",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长有效括号长度为 2。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=2 · best=2 · 结果 1 项",
+        "tokens": [
+          "(",
+          "(",
+          ")"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长有效括号长度为 2。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "(",
+          ")"
+        ],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "structure": {
+          "stack": [
+            0
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "32-trace-check-007",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长有效括号长度为 2。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=2 · best=2 · 结果 1 项",
+        "tokens": [
+          "(",
+          "(",
+          ")"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长有效括号长度为 2。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "(",
+          ")"
+        ],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "structure": {
+          "stack": [
+            0
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "32-trace-check-008",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长有效括号长度为 2。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=2 · best=2 · 结果 1 项",
+        "tokens": [
+          "(",
+          "(",
+          ")"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长有效括号长度为 2。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "(",
+          ")"
+        ],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "structure": {
+          "stack": [
+            0
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "32-trace-check-009",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长有效括号长度为 2。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=2 · best=2 · 结果 1 项",
+        "tokens": [
+          "(",
+          "(",
+          ")"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长有效括号长度为 2。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "(",
+          ")"
+        ],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "structure": {
+          "stack": [
+            0
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "32-trace-check-010",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长有效括号长度为 2。 易错提醒：dp 仅对 ) 有意义：以 ( 结尾的子串不可能是有效括号，dp 值为 0。 情况 2 的配对位置计算：j = i - dp[i-1] - 1 是核心难点，画图辅助理解。 拼接之前有效长度：最后要加 dp[j-1]，因为 XXX(...(XXX)) 前面可能还有有效括号。 双向扫描：如果只用单向扫描，((()) 这种情况会漏掉。 栈底初始…",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=2 · best=2 · 结果 1 项",
+        "tokens": [
+          "(",
+          "(",
+          ")"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长有效括号长度为 2。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "(",
+          ")"
+        ],
+        "variables": {
+          "i": 2,
+          "start": -1,
+          "best": 2
+        },
+        "structure": {
+          "stack": [
+            0
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "32-trace-005",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最长有效括号长度为 2。",
+      "kind": "dp1d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp1d",
+        "badge": "best=2 · 结果 1 项",
+        "tokens": [
+          "(",
+          "(",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "start": -1,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "最长有效括号长度为 2。"
+      },
+      "state": {
+        "values": [
+          "(",
+          "(",
+          ")"
+        ],
+        "variables": {
+          "start": -1,
+          "best": 2
+        },
+        "structure": {
+          "stack": [
+            0
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

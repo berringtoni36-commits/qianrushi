@@ -1,0 +1,51 @@
+{
+  "question": "Q003",
+  "topic": "volatile",
+  "duration_frames": 7800,
+  "fps": 30,
+  "scene_ranges": [
+    {"id": "opening", "start_frame": 0, "end_frame": 539},
+    {"id": "map", "start_frame": 540, "end_frame": 1259},
+    {"id": "loop", "start_frame": 1260, "end_frame": 2999},
+    {"id": "scenarios", "start_frame": 3000, "end_frame": 4139},
+    {"id": "limits", "start_frame": 4140, "end_frame": 5039},
+    {"id": "followups", "start_frame": 5040, "end_frame": 6479},
+    {"id": "final", "start_frame": 6480, "end_frame": 7799}
+  ],
+  "loop_states": [
+    {"phase": "recall", "local_start": 0, "local_end": 209, "rx_done": null, "external_write": null},
+    {"phase": "first_read", "local_start": 210, "local_end": 569, "rx_done": 0, "external_write": false, "observation": "read #1: rx_done = 0"},
+    {"phase": "optimizer_risk", "local_start": 570, "local_end": 929, "rx_done": 0, "external_write": "possible", "observation": "ordinary cached read cannot express the external update"},
+    {"phase": "isr_write", "local_start": 930, "local_end": 1289, "rx_done": 1, "external_write": true, "observation": "ISR writes rx_done = 1"},
+    {"phase": "next_read", "local_start": 1290, "local_end": 1739, "rx_done": 1, "external_write": true, "observation": "read #2: rx_done = 1, loop exits"}
+  ],
+  "external_actors": [
+    {"index": 0, "name": "interrupt", "example": "volatile uint8_t rx_done"},
+    {"index": 1, "name": "hardware_register", "example": "volatile uint32_t *status_reg"},
+    {"index": 2, "name": "dma_or_rtos_task", "example": "volatile int state"}
+  ],
+  "scenario_states": [
+    {"phase": "recall", "local_start": 0, "local_end": 179, "current": null},
+    {"phase": "interrupt_flag", "local_start": 180, "local_end": 449, "current": 0},
+    {"phase": "hardware_register", "local_start": 450, "local_end": 719, "current": 1},
+    {"phase": "dma_or_rtos", "local_start": 720, "local_end": 1139, "current": 2}
+  ],
+  "limit_states": [
+    {"local_frame": 0, "left_active": false, "right_active": false},
+    {"local_frame": 180, "left_active": true, "right_active": false},
+    {"local_frame": 420, "left_active": true, "right_active": true, "const_volatile": "code does not write, external hardware may change"},
+    {"local_frame": 899, "left_active": true, "right_active": true}
+  ],
+  "followup_states": [
+    {"index": 0, "local_start": 0, "local_end": 359, "answer_start": 150, "question": "volatile 能替代锁吗？"},
+    {"index": 1, "local_start": 360, "local_end": 719, "answer_start": 510, "question": "什么场景必须考虑 volatile？"},
+    {"index": 2, "local_start": 720, "local_end": 1079, "answer_start": 870, "question": "volatile 和 const 能同时用吗？"},
+    {"index": 3, "local_start": 1080, "local_end": 1439, "answer_start": 1230, "question": "缺少 volatile 可能出现什么？"}
+  ],
+  "final_recall_states": [
+    {"index": 0, "local_start": 0, "local_end": 329, "answer_start": 180, "question": "volatile 解决什么问题？"},
+    {"index": 1, "local_start": 330, "local_end": 659, "answer_start": 510, "question": "哪些外部事件会改值？"},
+    {"index": 2, "local_start": 660, "local_end": 989, "answer_start": 840, "question": "volatile 能替代锁吗？"},
+    {"index": 3, "local_start": 990, "local_end": 1319, "answer_start": 1170, "question": "const volatile 是什么？"}
+  ]
+}

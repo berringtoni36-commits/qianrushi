@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linux Vision Qt Image Buffer Adapter Audit"
+  short_description: "Audit Mat to Qt image buffer contracts"
+  default_prompt: "Use $linux-vision-qt-image-buffer-adapter-audit to audit this Mat-to-Qt display boundary."

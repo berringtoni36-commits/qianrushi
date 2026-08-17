@@ -1,0 +1,1075 @@
+{
+  "problemId": 1143,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 1143,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [],
+      "variables": {},
+      "structure": {
+        "f": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            2,
+            2
+          ],
+          [
+            0,
+            1,
+            2,
+            2
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      "result": [
+        3
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "b378c2af5c7b70e5383f45617bdfa648f4e1d581087008a4e99696e74a8b4cd0",
+    "sourceSemanticTokenHash": "caf0fd1ecb26d575de2329ce09e79b908b6d068afc6da9d13630c90364c24b57",
+    "sourceCodeLineCount": 14
+  },
+  "sourceCodeSha256": "b378c2af5c7b70e5383f45617bdfa648f4e1d581087008a4e99696e74a8b4cd0",
+  "sourceSemanticTokenHash": "caf0fd1ecb26d575de2329ce09e79b908b6d068afc6da9d13630c90364c24b57",
+  "steps": [
+    {
+      "id": "1143-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "建立 LCS 二维表",
+      "body": "f[i][j] 表示 a 前 i 个字符与 b 前 j 个字符的最长公共子序列长度。 题解原意：核心洞察：dp[i][j] 表示 text1 前 i 个字符和 text2 前 j 个字符的 LCS 长度。如果 text1[i-1] == text2[j-1]，这个字符计入 LCS；否则从两个字符串各退一个字符的状态中取较大值。 DP 五步法： 1. dp 定义：dp[i][j] 表示 text1[0:i] 和 text2[0:j] 的最长公共子序列长度 2. 递推公式： 字符相等：dp[i][j] = dp[i…",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp2d",
+        "badge": "f",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "a",
+          "c",
+          "e"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "f[i][j] 表示 a 前 i 个字符与 b 前 j 个字符的最长公共子序列长度。"
+      },
+      "state": {
+        "values": [],
+        "variables": {},
+        "structure": {
+          "f": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "a": "abcde",
+          "b": "ace"
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1143-trace-002",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "完成 a[0..1)",
+      "body": "当前行 [0, 1, 1, 1]；相等字符会从左上角加 1。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp2d",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "a",
+          "c",
+          "e"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 0, 0, 0]",
+              "[0, 1, 1, 1]",
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]"
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前行 [0, 1, 1, 1]；相等字符会从左上角加 1。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 1
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "a": "abcde",
+          "b": "ace"
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1143-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "完成 a[0..2)",
+      "body": "当前行 [0, 1, 1, 1]；相等字符会从左上角加 1。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp2d",
+        "badge": "i=2 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "a",
+          "c",
+          "e"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 0, 0, 0]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 1, 1]",
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]"
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前行 [0, 1, 1, 1]；相等字符会从左上角加 1。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 2
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "a": "abcde",
+          "b": "ace"
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1143-trace-004",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "完成 a[0..3)",
+      "body": "当前行 [0, 1, 2, 2]；相等字符会从左上角加 1。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp2d",
+        "badge": "i=3 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "a",
+          "c",
+          "e"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 0, 0, 0]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 2, 2]",
+              "[0, 0, 0, 0]",
+              "[0, 0, 0, 0]"
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前行 [0, 1, 2, 2]；相等字符会从左上角加 1。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 3
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "a": "abcde",
+          "b": "ace"
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1143-trace-005",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "完成 a[0..4)",
+      "body": "当前行 [0, 1, 2, 2]；相等字符会从左上角加 1。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp2d",
+        "badge": "i=4 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "a",
+          "c",
+          "e"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 0, 0, 0]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 2, 2]",
+              "[0, 1, 2, 2]",
+              "[0, 0, 0, 0]"
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前行 [0, 1, 2, 2]；相等字符会从左上角加 1。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 4
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "a": "abcde",
+          "b": "ace"
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1143-trace-006",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "完成 a[0..5)",
+      "body": "当前行 [0, 1, 2, 3]；相等字符会从左上角加 1。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp2d",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "a",
+          "c",
+          "e"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 0, 0, 0]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 2, 2]",
+              "[0, 1, 2, 2]",
+              "[0, 1, 2, 3]"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "当前行 [0, 1, 2, 3]；相等字符会从左上角加 1。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 5
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          "a": "abcde",
+          "b": "ace"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1143-trace-check-008",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。LCS 长度为 3。",
+      "kind": "dp2d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "a",
+          "c",
+          "e"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 0, 0, 0]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 2, 2]",
+              "[0, 1, 2, 2]",
+              "[0, 1, 2, 3]"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。LCS 长度为 3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 5
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          "a": "abcde",
+          "b": "ace"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1143-trace-check-009",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。LCS 长度为 3。",
+      "kind": "dp2d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "a",
+          "c",
+          "e"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 0, 0, 0]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 2, 2]",
+              "[0, 1, 2, 2]",
+              "[0, 1, 2, 3]"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。LCS 长度为 3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 5
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          "a": "abcde",
+          "b": "ace"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1143-trace-check-010",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。LCS 长度为 3。 易错提醒：索引偏移：text1[i-1] 对应 dp[i]（前 i 个字符）。字符串索引和 dp 索引差 1。 遍历顺序不可颠倒：必须先处理 text1 再处理 text2（或反过来都可以，但要一致）。不能提前用 dp[i-1][j-1] 的末初始化值。 相等时取 dp[i-1][j-1] + 1：不是 dp[i-1][j] 或 dp[i][j-1…",
+      "kind": "dp2d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "a",
+          "c",
+          "e"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 0, 0, 0]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 1, 1]",
+              "[0, 1, 2, 2]",
+              "[0, 1, 2, 2]",
+              "[0, 1, 2, 3]"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。LCS 长度为 3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 5
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          "a": "abcde",
+          "b": "ace"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1143-trace-007",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "LCS 长度为 3。",
+      "kind": "dp2d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp2d",
+        "badge": "结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "a",
+          "c",
+          "e"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "LCS 长度为 3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {},
+        "structure": {
+          "f": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

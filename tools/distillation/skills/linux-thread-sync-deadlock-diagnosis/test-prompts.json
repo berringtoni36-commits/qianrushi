@@ -1,0 +1,46 @@
+{
+  "skill": "linux-thread-sync-deadlock-diagnosis",
+  "version": "0.1.0",
+  "source_book": "大丙 Linux 教程（Subingwen 专栏）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "两个 pthread 线程都对全局 number 做读取、加一、写回，偶尔少计数；请按共享状态和临界区定位，而不是只给 mutex API 介绍。",
+      "expected_behavior": "激活本 Skill，指出读改写必须整体受同一互斥锁保护，枚举访问点并给出可验证的线程栈/压力测试证据。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "生产者 pthread_cond_broadcast 后多个消费者偶尔解引用空队列，为什么 if 不够，如何按谓词循环修复？",
+      "expected_behavior": "激活本 Skill，要求在持有保护队列的 mutex 时用 while 重检谓词，并解释唤醒不是资源配额。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Linux C 程序两个线程分别持有 mutexA/mutexB 再等待对方，所有线程卡住；请用 wait-for 图和源码路径诊断死锁。",
+      "expected_behavior": "激活本 Skill，检查锁顺序环、重复加锁、漏解锁、早退和 join 持锁关系，并要求用 gdb 线程栈或等价证据验证。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "父子进程管道一直等不到 EOF，怀疑 fork 后某个继承的写端没有 close，怎么按 fd 生命周期排查？",
+      "expected_behavior": "拒绝本 Skill，优先转给 linux-fd-process-io-debugging；不要把管道端点生命周期重写成 pthread 条件变量问题。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "epoll 收到 TCP 可读事件但业务包经常半包，如何设计长度前缀和接收缓冲状态机？",
+      "expected_behavior": "拒绝本 Skill，优先转给 linux-socket-multiplexing-design；除非另有明确 pthread 锁/线程池故障，不讨论条件变量。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "教程风格线程池 shutdown 后，析构函数只 join manager、signal notEmpty 就 free 队列和 threadIDs；worker 可能还在执行任务。请按源码判断 join/detach、唤醒、free 和同步原语销毁的安全边界。",
+      "expected_behavior": "激活本 Skill，明确这是需要按源码审计的风险而非安全模板；检查所有 joinable worker 的终止确认、notEmpty/notFull 唤醒、回调和池对象生命周期，再给出安全关闭顺序。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "静态路由预期 6/6；未进行真实客户端盲测。"
+}

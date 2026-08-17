@@ -1,0 +1,3064 @@
+{
+  "problemId": 215,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 215,
+    "stepCount": 31,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        6,
+        5,
+        4,
+        1,
+        2,
+        3
+      ],
+      "variables": {
+        "l": 1,
+        "r": 1,
+        "k": 1,
+        "x": null,
+        "i": null,
+        "j": null
+      },
+      "structure": {
+        "range": [
+          1,
+          1
+        ],
+        "partition": [
+          5
+        ]
+      },
+      "result": [
+        5
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "6d8c46c8b84408aca29e800c8950a9e216497b1a74246c09dd3c6337839c46f1",
+    "sourceSemanticTokenHash": "cff90af5167a6673158809c31381930f052882d02ddba0ae06195f7c68d943d2",
+    "sourceCodeLineCount": 19
+  },
+  "sourceCodeSha256": "6d8c46c8b84408aca29e800c8950a9e216497b1a74246c09dd3c6337839c46f1",
+  "sourceSemanticTokenHash": "cff90af5167a6673158809c31381930f052882d02ddba0ae06195f7c68d943d2",
+  "steps": [
+    {
+      "id": "215-trace-001",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "setup",
+      "title": "调用 quick_sort 查找第 k 大",
+      "body": "findKthLargest 把 k=2 转成 0-based 目标下标 k-1=1；数组还没有被分区。 题解原意：核心思想： 维护一个大小为 k 的最小堆。遍历数组元素，将元素加入堆中；当堆大小 > k 时，弹出堆顶（当前最小的元素）。遍历结束后，堆顶就是第 k 大的元素。 为什么最小堆可以找到第 k 大？堆中始终保存着当前最大的 k 个元素，堆顶是这 k 个中最小的一即第 k 大的。 复杂度： 时间 O(n log k)，空间 O(k)。当 k << n 时非常高效。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · heap",
+        "badge": "i=None · j=None · l=0 · r=5",
+        "tokens": [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": null,
+          "i": null,
+          "j": null
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = —",
+              "i = —",
+              "j = —"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              3,
+              2,
+              1,
+              5,
+              6,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "findKthLargest 把 k=2 转成 0-based 目标下标 k-1=1；数组还没有被分区。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": null,
+          "i": null,
+          "j": null
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            3,
+            2,
+            1,
+            5,
+            6,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-002",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "setup",
+      "title": "选定分区基准 x = 3",
+      "body": "进入区间 [0, 5]，基准取 nums[l]=3；i 从左侧外部开始，j 从右侧外部开始。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · heap",
+        "badge": "i=-1 · j=6 · l=0 · r=5",
+        "tokens": [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": -1,
+          "j": 6
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = -1",
+              "j = 6"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              3,
+              2,
+              1,
+              5,
+              6,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "进入区间 [0, 5]，基准取 nums[l]=3；i 从左侧外部开始，j 从右侧外部开始。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": -1,
+          "j": 6
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            3,
+            2,
+            1,
+            5,
+            6,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "compare",
+      "title": "i 停在 0",
+      "body": "nums[0]=3 <= x=3，左扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=0 · j=6 · l=0 · r=5",
+        "tokens": [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [
+          0
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 0,
+          "j": 6
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 0",
+              "j = 6"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              3,
+              2,
+              1,
+              5,
+              6,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[0]=3 <= x=3，左扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 0,
+          "j": 6
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            3,
+            2,
+            1,
+            5,
+            6,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-004",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "j 停在 5",
+      "body": "nums[5]=4 >= x=3，右扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=0 · j=5 · l=0 · r=5",
+        "tokens": [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        "active": [
+          5
+        ],
+        "compared": [
+          5
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 0,
+          "j": 5
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 0",
+              "j = 5"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              3,
+              2,
+              1,
+              5,
+              6,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[5]=4 >= x=3，右扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 0,
+          "j": 5
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            3,
+            2,
+            1,
+            5,
+            6,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-005",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "交换 nums[0] 与 nums[5]",
+      "body": "把较大的 4 放到左侧、较小的 3 放到右侧；当前数组为 [4, 2, 1, 5, 6, 3]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=0 · j=5 · l=0 · r=5",
+        "tokens": [
+          4,
+          2,
+          1,
+          5,
+          6,
+          3
+        ],
+        "active": [
+          0,
+          5
+        ],
+        "compared": [
+          0,
+          5
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 0,
+          "j": 5
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 0",
+              "j = 5"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              2,
+              1,
+              5,
+              6,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把较大的 4 放到左侧、较小的 3 放到右侧；当前数组为 [4, 2, 1, 5, 6, 3]。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          5,
+          6,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 0,
+          "j": 5
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            4,
+            2,
+            1,
+            5,
+            6,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-006",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "compare",
+      "title": "i 停在 1",
+      "body": "nums[1]=2 <= x=3，左扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=1 · j=5 · l=0 · r=5",
+        "tokens": [
+          4,
+          2,
+          1,
+          5,
+          6,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [
+          1
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 1,
+          "j": 5
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 1",
+              "j = 5"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              2,
+              1,
+              5,
+              6,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[1]=2 <= x=3，左扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          5,
+          6,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 1,
+          "j": 5
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            4,
+            2,
+            1,
+            5,
+            6,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-007",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "j 停在 4",
+      "body": "nums[4]=6 >= x=3，右扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=1 · j=4 · l=0 · r=5",
+        "tokens": [
+          4,
+          2,
+          1,
+          5,
+          6,
+          3
+        ],
+        "active": [
+          4
+        ],
+        "compared": [
+          4
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 1,
+          "j": 4
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 1",
+              "j = 4"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              2,
+              1,
+              5,
+              6,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[4]=6 >= x=3，右扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          4,
+          2,
+          1,
+          5,
+          6,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 1,
+          "j": 4
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            4,
+            2,
+            1,
+            5,
+            6,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-008",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "交换 nums[1] 与 nums[4]",
+      "body": "把较大的 6 放到左侧、较小的 2 放到右侧；当前数组为 [4, 6, 1, 5, 2, 3]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=1 · j=4 · l=0 · r=5",
+        "tokens": [
+          4,
+          6,
+          1,
+          5,
+          2,
+          3
+        ],
+        "active": [
+          1,
+          4
+        ],
+        "compared": [
+          1,
+          4
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 1,
+          "j": 4
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 1",
+              "j = 4"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              6,
+              1,
+              5,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把较大的 6 放到左侧、较小的 2 放到右侧；当前数组为 [4, 6, 1, 5, 2, 3]。"
+      },
+      "state": {
+        "values": [
+          4,
+          6,
+          1,
+          5,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 1,
+          "j": 4
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            4,
+            6,
+            1,
+            5,
+            2,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-009",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "compare",
+      "title": "i 停在 2",
+      "body": "nums[2]=1 <= x=3，左扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=2 · j=4 · l=0 · r=5",
+        "tokens": [
+          4,
+          6,
+          1,
+          5,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [
+          2
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 2,
+          "j": 4
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 2",
+              "j = 4"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              6,
+              1,
+              5,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[2]=1 <= x=3，左扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          4,
+          6,
+          1,
+          5,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 2,
+          "j": 4
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            4,
+            6,
+            1,
+            5,
+            2,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-010",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "j 停在 3",
+      "body": "nums[3]=5 >= x=3，右扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=2 · j=3 · l=0 · r=5",
+        "tokens": [
+          4,
+          6,
+          1,
+          5,
+          2,
+          3
+        ],
+        "active": [
+          3
+        ],
+        "compared": [
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 2,
+          "j": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 2",
+              "j = 3"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              6,
+              1,
+              5,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[3]=5 >= x=3，右扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          4,
+          6,
+          1,
+          5,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 2,
+          "j": 3
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            4,
+            6,
+            1,
+            5,
+            2,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-011",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "交换 nums[2] 与 nums[3]",
+      "body": "把较大的 5 放到左侧、较小的 1 放到右侧；当前数组为 [4, 6, 5, 1, 2, 3]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=2 · j=3 · l=0 · r=5",
+        "tokens": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2,
+          3
+        ],
+        "compared": [
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 2,
+          "j": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 2",
+              "j = 3"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把较大的 5 放到左侧、较小的 1 放到右侧；当前数组为 [4, 6, 5, 1, 2, 3]。"
+      },
+      "state": {
+        "values": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 2,
+          "j": 3
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            4,
+            6,
+            5,
+            1,
+            2,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-012",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "compare",
+      "title": "i 停在 3",
+      "body": "nums[3]=1 <= x=3，左扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=3 · j=3 · l=0 · r=5",
+        "tokens": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          3
+        ],
+        "compared": [
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 3,
+          "j": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 3",
+              "j = 3"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[3]=1 <= x=3，左扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 3,
+          "j": 3
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            4,
+            6,
+            5,
+            1,
+            2,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-013",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "j 停在 2",
+      "body": "nums[2]=5 >= x=3，右扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=3 · j=2 · l=0 · r=5",
+        "tokens": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [
+          2
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 3,
+          "j": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 5] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 3",
+              "j = 2"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              6,
+              5,
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[2]=5 >= x=3，右扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "k": 1,
+          "x": 3,
+          "i": 3,
+          "j": 2
+        },
+        "structure": {
+          "range": [
+            0,
+            5
+          ],
+          "partition": [
+            4,
+            6,
+            5,
+            1,
+            2,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-014",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "branch",
+      "title": "目标在左区间，递归到 [0, 2]",
+      "body": "k=1 <= j=2，保留左半区间；从 (0, 5) 缩小到 [0, 2]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · heap",
+        "badge": "i=3 · j=2 · l=0 · r=2",
+        "tokens": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 3,
+          "i": 3,
+          "j": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 2] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 3",
+              "i = 3",
+              "j = 2"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              6,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "k=1 <= j=2，保留左半区间；从 (0, 5) 缩小到 [0, 2]。"
+      },
+      "state": {
+        "values": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 3,
+          "i": 3,
+          "j": 2
+        },
+        "structure": {
+          "range": [
+            0,
+            2
+          ],
+          "partition": [
+            4,
+            6,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-015",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "setup",
+      "title": "选定分区基准 x = 4",
+      "body": "进入区间 [0, 2]，基准取 nums[l]=4；i 从左侧外部开始，j 从右侧外部开始。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · heap",
+        "badge": "i=-1 · j=3 · l=0 · r=2",
+        "tokens": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": -1,
+          "j": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 2] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 4",
+              "i = -1",
+              "j = 3"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              6,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "进入区间 [0, 2]，基准取 nums[l]=4；i 从左侧外部开始，j 从右侧外部开始。"
+      },
+      "state": {
+        "values": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": -1,
+          "j": 3
+        },
+        "structure": {
+          "range": [
+            0,
+            2
+          ],
+          "partition": [
+            4,
+            6,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-016",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "compare",
+      "title": "i 停在 0",
+      "body": "nums[0]=4 <= x=4，左扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=0 · j=3 · l=0 · r=2",
+        "tokens": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [
+          0
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 0,
+          "j": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 2] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 4",
+              "i = 0",
+              "j = 3"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              6,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[0]=4 <= x=4，左扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 0,
+          "j": 3
+        },
+        "structure": {
+          "range": [
+            0,
+            2
+          ],
+          "partition": [
+            4,
+            6,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-017",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "j 停在 2",
+      "body": "nums[2]=5 >= x=4，右扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=0 · j=2 · l=0 · r=2",
+        "tokens": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [
+          2
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 0,
+          "j": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 2] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 4",
+              "i = 0",
+              "j = 2"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              4,
+              6,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[2]=5 >= x=4，右扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          4,
+          6,
+          5,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 0,
+          "j": 2
+        },
+        "structure": {
+          "range": [
+            0,
+            2
+          ],
+          "partition": [
+            4,
+            6,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-018",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "交换 nums[0] 与 nums[2]",
+      "body": "把较大的 5 放到左侧、较小的 4 放到右侧；当前数组为 [5, 6, 4, 1, 2, 3]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=0 · j=2 · l=0 · r=2",
+        "tokens": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0,
+          2
+        ],
+        "compared": [
+          0,
+          2
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 0,
+          "j": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 2] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 4",
+              "i = 0",
+              "j = 2"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              5,
+              6,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把较大的 5 放到左侧、较小的 4 放到右侧；当前数组为 [5, 6, 4, 1, 2, 3]。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 0,
+          "j": 2
+        },
+        "structure": {
+          "range": [
+            0,
+            2
+          ],
+          "partition": [
+            5,
+            6,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-019",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "compare",
+      "title": "i 继续右移到 1",
+      "body": "nums[1]=6 > x=4，继续寻找应该放到右侧的元素。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=1 · j=2 · l=0 · r=2",
+        "tokens": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [
+          1
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 1,
+          "j": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 2] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 4",
+              "i = 1",
+              "j = 2"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              5,
+              6,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[1]=6 > x=4，继续寻找应该放到右侧的元素。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 1,
+          "j": 2
+        },
+        "structure": {
+          "range": [
+            0,
+            2
+          ],
+          "partition": [
+            5,
+            6,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-020",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "compare",
+      "title": "i 停在 2",
+      "body": "nums[2]=4 <= x=4，左扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=2 · j=2 · l=0 · r=2",
+        "tokens": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [
+          2
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 2,
+          "j": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 2] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 4",
+              "i = 2",
+              "j = 2"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              5,
+              6,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[2]=4 <= x=4，左扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 2,
+          "j": 2
+        },
+        "structure": {
+          "range": [
+            0,
+            2
+          ],
+          "partition": [
+            5,
+            6,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-021",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "j 停在 1",
+      "body": "nums[1]=6 >= x=4，右扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=2 · j=1 · l=0 · r=2",
+        "tokens": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [
+          1
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 2,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 2] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 4",
+              "i = 2",
+              "j = 1"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              5,
+              6,
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[1]=6 >= x=4，右扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "k": 1,
+          "x": 4,
+          "i": 2,
+          "j": 1
+        },
+        "structure": {
+          "range": [
+            0,
+            2
+          ],
+          "partition": [
+            5,
+            6,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-022",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "branch",
+      "title": "目标在左区间，递归到 [0, 1]",
+      "body": "k=1 <= j=1，保留左半区间；从 (0, 2) 缩小到 [0, 1]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · heap",
+        "badge": "i=2 · j=1 · l=0 · r=1",
+        "tokens": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0,
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 4,
+          "i": 2,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 1] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 4",
+              "i = 2",
+              "j = 1"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              5,
+              6
+            ]
+          }
+        ],
+        "result": [],
+        "note": "k=1 <= j=1，保留左半区间；从 (0, 2) 缩小到 [0, 1]。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 4,
+          "i": 2,
+          "j": 1
+        },
+        "structure": {
+          "range": [
+            0,
+            1
+          ],
+          "partition": [
+            5,
+            6
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-023",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "setup",
+      "title": "选定分区基准 x = 5",
+      "body": "进入区间 [0, 1]，基准取 nums[l]=5；i 从左侧外部开始，j 从右侧外部开始。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · heap",
+        "badge": "i=-1 · j=2 · l=0 · r=1",
+        "tokens": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": -1,
+          "j": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 1] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 5",
+              "i = -1",
+              "j = 2"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              5,
+              6
+            ]
+          }
+        ],
+        "result": [],
+        "note": "进入区间 [0, 1]，基准取 nums[l]=5；i 从左侧外部开始，j 从右侧外部开始。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": -1,
+          "j": 2
+        },
+        "structure": {
+          "range": [
+            0,
+            1
+          ],
+          "partition": [
+            5,
+            6
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-024",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "compare",
+      "title": "i 停在 0",
+      "body": "nums[0]=5 <= x=5，左扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=0 · j=2 · l=0 · r=1",
+        "tokens": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [
+          0
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 0,
+          "j": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 1] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 5",
+              "i = 0",
+              "j = 2"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              5,
+              6
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[0]=5 <= x=5，左扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 0,
+          "j": 2
+        },
+        "structure": {
+          "range": [
+            0,
+            1
+          ],
+          "partition": [
+            5,
+            6
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-025",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "j 停在 1",
+      "body": "nums[1]=6 >= x=5，右扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=0 · j=1 · l=0 · r=1",
+        "tokens": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [
+          1
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 0,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 1] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 5",
+              "i = 0",
+              "j = 1"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              5,
+              6
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[1]=6 >= x=5，右扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 0,
+          "j": 1
+        },
+        "structure": {
+          "range": [
+            0,
+            1
+          ],
+          "partition": [
+            5,
+            6
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-026",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "交换 nums[0] 与 nums[1]",
+      "body": "把较大的 6 放到左侧、较小的 5 放到右侧；当前数组为 [6, 5, 4, 1, 2, 3]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "i=0 · j=1 · l=0 · r=1",
+        "tokens": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0,
+          1
+        ],
+        "compared": [
+          0,
+          1
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 0,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 1] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 5",
+              "i = 0",
+              "j = 1"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              6,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把较大的 6 放到左侧、较小的 5 放到右侧；当前数组为 [6, 5, 4, 1, 2, 3]。"
+      },
+      "state": {
+        "values": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 0,
+          "j": 1
+        },
+        "structure": {
+          "range": [
+            0,
+            1
+          ],
+          "partition": [
+            6,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-027",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "compare",
+      "title": "i 停在 1",
+      "body": "nums[1]=5 <= x=5，左扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=1 · j=1 · l=0 · r=1",
+        "tokens": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [
+          1
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 1,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 1] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 5",
+              "i = 1",
+              "j = 1"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              6,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[1]=5 <= x=5，左扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 1,
+          "j": 1
+        },
+        "structure": {
+          "range": [
+            0,
+            1
+          ],
+          "partition": [
+            6,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-028",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "j 停在 0",
+      "body": "nums[0]=6 >= x=5，右扫描找到一个可以参与交换的位置。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "i=1 · j=0 · l=0 · r=1",
+        "tokens": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [
+          0
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0, 1] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 5",
+              "i = 1",
+              "j = 0"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              6,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[0]=6 >= x=5，右扫描找到一个可以参与交换的位置。"
+      },
+      "state": {
+        "values": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "range": [
+            0,
+            1
+          ],
+          "partition": [
+            6,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-029",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "branch",
+      "title": "目标在右区间，递归到 [1, 1]",
+      "body": "k=1 > j=0，排除左半区间；从 (0, 1) 缩小到 [1, 1]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · heap",
+        "badge": "i=1 · j=0 · l=1 · r=1",
+        "tokens": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1,
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[1, 1] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = 5",
+              "i = 1",
+              "j = 0"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "k=1 > j=0，排除左半区间；从 (0, 1) 缩小到 [1, 1]。"
+      },
+      "state": {
+        "values": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "k": 1,
+          "x": 5,
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "range": [
+            1,
+            1
+          ],
+          "partition": [
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "215-trace-030",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "resolve",
+      "title": "分区区间收缩到一个位置",
+      "body": "l=r=1，nums[k] = nums[1] = 5；quick_sort 在这里得到答案。 易错提醒：第 k 大 vs 第 k 小： 第 k 大是从大到小排序后的第 k 个。如果使用从小到大排序，要取 nums[n - k]。快速选择中如果 partition 按大于 pivot 的放左边，则 pos 表示从大到小的排名（0-index）。 k 转换为 0-index： 如果 partition 返回的是从大到小排序的 0-index 位…",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "resolve · heap",
+        "badge": "i=None · j=None · l=1 · r=1",
+        "tokens": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "k": 1,
+          "x": null,
+          "i": null,
+          "j": null
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[1, 1] · target index = 1"
+            ]
+          },
+          {
+            "label": "partition",
+            "values": [
+              "x = —",
+              "i = —",
+              "j = —"
+            ]
+          },
+          {
+            "label": "active range",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [
+          5
+        ],
+        "note": "l=r=1，nums[k] = nums[1] = 5；quick_sort 在这里得到答案。"
+      },
+      "state": {
+        "values": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "k": 1,
+          "x": null,
+          "i": null,
+          "j": null
+        },
+        "structure": {
+          "range": [
+            1,
+            1
+          ],
+          "partition": [
+            5
+          ]
+        },
+        "result": [
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "215-trace-031",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "公共接口返回 quick_sort 的结果 5。",
+      "kind": "heap",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · heap",
+        "badge": "i=None · j=None · l=1 · r=1",
+        "tokens": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "k": 1,
+          "x": null,
+          "i": null,
+          "j": null
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [
+          5
+        ],
+        "note": "公共接口返回 quick_sort 的结果 5。"
+      },
+      "state": {
+        "values": [
+          6,
+          5,
+          4,
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "k": 1,
+          "x": null,
+          "i": null,
+          "j": null
+        },
+        "structure": {
+          "range": [
+            1,
+            1
+          ],
+          "partition": [
+            5
+          ]
+        },
+        "result": [
+          5
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

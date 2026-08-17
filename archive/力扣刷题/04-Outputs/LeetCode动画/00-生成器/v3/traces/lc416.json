@@ -1,0 +1,1423 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "0/1 背包可达性",
+    "sceneKind": "dp-table",
+    "input": [
+      1,
+      5,
+      11,
+      5
+    ],
+    "expected": true,
+    "exampleText": "[1,5,11,5]",
+    "expectedText": "可以分成等和 → true",
+    "invariant": "处理前若干数字后，f[j] 表示容量 j 是否可达",
+    "aha": "等和分割等价于寻找总和一半的子集",
+    "time": "O(n·sum)",
+    "space": "O(sum)",
+    "problemId": 416,
+    "title": "分割等和子集",
+    "day": "Day 13：多维 DP",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "2717e027450d216cf11e3968edbadf580db449b60611ef993890ba50156952eb",
+    "semanticTokenHash": "444f52a1653fddc77cad92170c958b14dc246c19927a02ee15b59b6ac2e3191c",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[10]=0 → 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": null,
+              "j": 0,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[0]=1",
+            "action": "容量 0 可达",
+            "status": "running"
+          },
+          "caption": "目标是选出总和 11 的子集。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 11,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              11
+            ],
+            "compared": [
+              10
+            ],
+            "result": [],
+            "formula": "0 OR f[10]=0 → 0",
+            "action": "用数字 1 更新容量 11",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[8]=0 → 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 10,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              10
+            ],
+            "compared": [
+              9
+            ],
+            "result": [],
+            "formula": "0 OR f[9]=0 → 0",
+            "action": "用数字 1 更新容量 10",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 9,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              9
+            ],
+            "compared": [
+              8
+            ],
+            "result": [],
+            "formula": "0 OR f[8]=0 → 0",
+            "action": "用数字 1 更新容量 9",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[6]=0 → 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 8,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              8
+            ],
+            "compared": [
+              7
+            ],
+            "result": [],
+            "formula": "0 OR f[7]=0 → 0",
+            "action": "用数字 1 更新容量 8",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 7,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [
+              6
+            ],
+            "result": [],
+            "formula": "0 OR f[6]=0 → 0",
+            "action": "用数字 1 更新容量 7",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[4]=0 → 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 6,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [
+              5
+            ],
+            "result": [],
+            "formula": "0 OR f[5]=0 → 0",
+            "action": "用数字 1 更新容量 6",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 5,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [
+              4
+            ],
+            "result": [],
+            "formula": "0 OR f[4]=0 → 0",
+            "action": "用数字 1 更新容量 5",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[2]=0 → 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 4,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [
+              3
+            ],
+            "result": [],
+            "formula": "0 OR f[3]=0 → 0",
+            "action": "用数字 1 更新容量 4",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 3,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [
+              2
+            ],
+            "result": [],
+            "formula": "0 OR f[2]=0 → 0",
+            "action": "用数字 1 更新容量 3",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[0]=1 → 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 2,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "0 OR f[1]=0 → 0",
+            "action": "用数字 1 更新容量 2",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 1,
+              "j": 1,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "0 OR f[0]=1 → 1",
+            "action": "用数字 1 更新容量 1",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[5]=0 → 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 5,
+              "j": 11,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              11
+            ],
+            "compared": [
+              6
+            ],
+            "result": [],
+            "formula": "0 OR f[6]=0 → 0",
+            "action": "用数字 5 更新容量 11",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 5,
+              "j": 10,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              10
+            ],
+            "compared": [
+              5
+            ],
+            "result": [],
+            "formula": "0 OR f[5]=0 → 0",
+            "action": "用数字 5 更新容量 10",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[3]=0 → 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 5,
+              "j": 9,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              9
+            ],
+            "compared": [
+              4
+            ],
+            "result": [],
+            "formula": "0 OR f[4]=0 → 0",
+            "action": "用数字 5 更新容量 9",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 5,
+              "j": 8,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              8
+            ],
+            "compared": [
+              3
+            ],
+            "result": [],
+            "formula": "0 OR f[3]=0 → 0",
+            "action": "用数字 5 更新容量 8",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[1]=1 → 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 5,
+              "j": 7,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [
+              2
+            ],
+            "result": [],
+            "formula": "0 OR f[2]=0 → 0",
+            "action": "用数字 5 更新容量 7",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 5,
+              "j": 6,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "0 OR f[1]=1 → 1",
+            "action": "用数字 5 更新容量 6",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[0]=1 → 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "x": 5,
+              "j": 5,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "0 OR f[0]=1 → 1",
+            "action": "用数字 5 更新容量 5",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            "variables": {
+              "x": 11,
+              "j": 11,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              11
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "0 OR f[0]=1 → 1",
+            "action": "用数字 11 更新容量 11",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "1 OR f[6]=1 → 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            "variables": {
+              "x": 5,
+              "j": 11,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              11
+            ],
+            "compared": [
+              6
+            ],
+            "result": [],
+            "formula": "1 OR f[6]=1 → 1",
+            "action": "用数字 5 更新容量 11",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[5]=1 → 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            "variables": {
+              "x": 5,
+              "j": 10,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              10
+            ],
+            "compared": [
+              5
+            ],
+            "result": [],
+            "formula": "0 OR f[5]=1 → 1",
+            "action": "用数字 5 更新容量 10",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[4]=0 → 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            "variables": {
+              "x": 5,
+              "j": 9,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              9
+            ],
+            "compared": [
+              4
+            ],
+            "result": [],
+            "formula": "0 OR f[4]=0 → 0",
+            "action": "用数字 5 更新容量 9",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[3]=0 → 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            "variables": {
+              "x": 5,
+              "j": 8,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              8
+            ],
+            "compared": [
+              3
+            ],
+            "result": [],
+            "formula": "0 OR f[3]=0 → 0",
+            "action": "用数字 5 更新容量 8",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "0 OR f[2]=0 → 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            "variables": {
+              "x": 5,
+              "j": 7,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [
+              2
+            ],
+            "result": [],
+            "formula": "0 OR f[2]=0 → 0",
+            "action": "用数字 5 更新容量 7",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "1 OR f[1]=1 → 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            "variables": {
+              "x": 5,
+              "j": 6,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "1 OR f[1]=1 → 1",
+            "action": "用数字 5 更新容量 6",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "倒序保证每个数字最多使用一次。",
+        "review": "1 OR f[0]=1 → 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            "variables": {
+              "x": 5,
+              "j": 5,
+              "m": 11
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "1 OR f[0]=1 → 1",
+            "action": "用数字 5 更新容量 5",
+            "status": "running"
+          },
+          "caption": "倒序保证每个数字最多使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "总和的一半可达，因此剩余元素也恰好为另一半。",
+        "review": "subset [11] or [1,5,5]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            "variables": {
+              "m": 11
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              11
+            ],
+            "formula": "subset [11] or [1,5,5]",
+            "action": "容量 11 可达，返回 true",
+            "status": "return",
+            "output": true
+          },
+          "caption": "总和的一半可达，因此剩余元素也恰好为另一半。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    bool canPartition(vector<int>& nums) {\n        int n = nums.size(), m = 0;\n        for (auto x: nums) m += x;\n        if (m % 2) return false;\n        m /= 2;\n        vector<int> f(m + 1);\n        f[0] = 1;\n        for (auto x: nums)\n            for (int j = m; j >= x; j -- )\n                f[j] |= f[j - x];\n        return f[m];\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 5030,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 5031,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 5032,
+        "text": "    bool canPartition(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 5033,
+        "text": "        int n = nums.size(), m = 0;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 5034,
+        "text": "        for (auto x: nums) m += x;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 5035,
+        "text": "        if (m % 2) return false;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 5036,
+        "text": "        m /= 2;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 5037,
+        "text": "        vector<int> f(m + 1);"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 5038,
+        "text": "        f[0] = 1;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 5039,
+        "text": "        for (auto x: nums)"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 5040,
+        "text": "            for (int j = m; j >= x; j -- )"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 5041,
+        "text": "                f[j] |= f[j - x];"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 5042,
+        "text": "        return f[m];"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 5043,
+        "text": "    }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 5044,
+        "text": "};"
+      }
+    ]
+  }
+}

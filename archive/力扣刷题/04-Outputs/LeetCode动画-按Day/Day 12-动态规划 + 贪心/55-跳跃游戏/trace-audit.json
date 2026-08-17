@@ -1,0 +1,779 @@
+{
+  "problemId": 55,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 55,
+    "stepCount": 12,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "variables": {
+        "reach": 8
+      },
+      "structure": {},
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "c0247c76e8986c6a56b1900aecee4877388cb1165cba12a0299e0bf5b8c51540",
+    "sourceSemanticTokenHash": "cb7d85fc8bb709ab2b227d4d6e64cf0e845e45792edbb08981a15f7f86cfe562",
+    "sourceCodeLineCount": 10
+  },
+  "sourceCodeSha256": "c0247c76e8986c6a56b1900aecee4877388cb1165cba12a0299e0bf5b8c51540",
+  "sourceSemanticTokenHash": "cb7d85fc8bb709ab2b227d4d6e64cf0e845e45792edbb08981a15f7f86cfe562",
+  "steps": [
+    {
+      "id": "55-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "维护最远可达位置",
+      "body": "只要 reach >= i，当前位置就可被到达；再用 nums[i] 扩大 reach。 题解原意：思路讲解： 遍历数组的每个位置，用一个变量 max_reach 记录当前能到达的最远位置。对于每个位置 i： 1. 如果 i > max_reach，说明当前位置已经超出最远可达范围，返回 false 2. 否则，用 i + nums[i] 更新 max_reach（取较大值） 3. 如果 max_reach >= n-1，说明最远已覆盖终点，返回 true 为什么贪心是对的？因为如果能到位置 i，则 i 之前的所有…",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · greedy",
+        "badge": "",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "reach": 0
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "只要 reach >= i，当前位置就可被到达；再用 nums[i] 扩大 reach。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "reach": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-002",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "compare",
+      "title": "检查位置 0",
+      "body": "reach=0，当前位置可达=true。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · greedy",
+        "badge": "i=0",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "reach": 0,
+          "reachable": true
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "reachable",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "reach=0，当前位置可达=true。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 0,
+          "reach": 0,
+          "reachable": true
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-003",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "扩展 reach 到 2",
+      "body": "从 i=0 最远可跳到 2，全局 reach=2。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=0",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "jump": 2,
+          "reach": 2
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [],
+        "note": "从 i=0 最远可跳到 2，全局 reach=2。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 0,
+          "jump": 2,
+          "reach": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-004",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "compare",
+      "title": "检查位置 1",
+      "body": "reach=2，当前位置可达=true。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · greedy",
+        "badge": "i=1",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "reach": 2,
+          "reachable": true
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "reachable",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "reach=2，当前位置可达=true。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 1,
+          "reach": 2,
+          "reachable": true
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-005",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "扩展 reach 到 4",
+      "body": "从 i=1 最远可跳到 4，全局 reach=4。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=1",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "jump": 3,
+          "reach": 4
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "从 i=1 最远可跳到 4，全局 reach=4。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 1,
+          "jump": 3,
+          "reach": 4
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-006",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "compare",
+      "title": "检查位置 2",
+      "body": "reach=4，当前位置可达=true。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · greedy",
+        "badge": "i=2",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "reach": 4,
+          "reachable": true
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "reachable",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "reach=4，当前位置可达=true。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 2,
+          "reach": 4,
+          "reachable": true
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-007",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "扩展 reach 到 4",
+      "body": "从 i=2 最远可跳到 3，全局 reach=4。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=2",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "jump": 1,
+          "reach": 4
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "从 i=2 最远可跳到 3，全局 reach=4。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 2,
+          "jump": 1,
+          "reach": 4
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-008",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "compare",
+      "title": "检查位置 3",
+      "body": "reach=4，当前位置可达=true。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · greedy",
+        "badge": "i=3",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "reach": 4,
+          "reachable": true
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "reachable",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "reach=4，当前位置可达=true。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "reach": 4,
+          "reachable": true
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-009",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "扩展 reach 到 4",
+      "body": "从 i=3 最远可跳到 4，全局 reach=4。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=3",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "jump": 1,
+          "reach": 4
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "从 i=3 最远可跳到 4，全局 reach=4。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "jump": 1,
+          "reach": 4
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-010",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "compare",
+      "title": "检查位置 4",
+      "body": "reach=4，当前位置可达=true。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · greedy",
+        "badge": "i=4",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "reach": 4,
+          "reachable": true
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "reachable",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "reach=4，当前位置可达=true。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "reach": 4,
+          "reachable": true
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-011",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "扩展 reach 到 8",
+      "body": "从 i=4 最远可跳到 8，全局 reach=8。 易错提醒：数组长度为 1：起点就是终点，直接返回 true。贪心写法需要确保在 n=1 时不会在循环中提前返回 false nums[i] = 0 的陷阱：位置 i 能否被安全跳过取决于它是否在 max_reach 范围内。如果 0 出现在中间并且 max_reach 能覆盖，依然可以到达终点 更新 max_reach 的顺序：必须先检查 i >…",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=4",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "jump": 4,
+          "reach": 8
+        },
+        "rows": [
+          {
+            "label": "reach",
+            "values": [
+              8
+            ]
+          }
+        ],
+        "result": [],
+        "note": "从 i=4 最远可跳到 8，全局 reach=8。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "jump": 4,
+          "reach": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "55-trace-012",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "reach 覆盖末尾，返回 true。",
+      "kind": "greedy",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · greedy",
+        "badge": "结果 1 项",
+        "tokens": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "reach": 8
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "reach 覆盖末尾，返回 true。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ],
+        "variables": {
+          "reach": 8
+        },
+        "structure": {},
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

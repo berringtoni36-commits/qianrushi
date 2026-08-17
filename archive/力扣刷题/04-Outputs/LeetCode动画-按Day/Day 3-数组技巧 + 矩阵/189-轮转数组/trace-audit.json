@@ -1,0 +1,818 @@
+{
+  "problemId": 189,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 189,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": false,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4
+      ],
+      "variables": {
+        "n": 7,
+        "k": 3
+      },
+      "structure": {},
+      "result": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "a60fbb338411a77ac72cacabcbb4c1fc80051dd26ff04bf60363b480bba7d075",
+    "sourceSemanticTokenHash": "52cfd7dc45c09b1359f6b7fcd0d8c000589290ada7770971040604319d140b28",
+    "sourceCodeLineCount": 10
+  },
+  "sourceCodeSha256": "a60fbb338411a77ac72cacabcbb4c1fc80051dd26ff04bf60363b480bba7d075",
+  "sourceSemanticTokenHash": "52cfd7dc45c09b1359f6b7fcd0d8c000589290ada7770971040604319d140b28",
+  "steps": [
+    {
+      "id": "189-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "确定轮转步数",
+      "body": "k = 3，采用三次 reverse 原地完成右移。 题解原意：核心洞察： 向右轮转 k 位，相当于把数组后面的 k 个元素移到前面来。翻转操作可以帮助我们实现这个效果： 为什么这样可行？ 整体翻转让原数组的后 k 个元素到了前面（但顺序是反的），然后再对两部分分别翻转恢复顺序。 复杂度： O(n) 时间，O(1) 空间。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · array",
+        "badge": "",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "k = 3，采用三次 reverse 原地完成右移。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "189-trace-002",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "第一次反转整个数组",
+      "body": "整个数组反转为 [7, 6, 5, 4, 3, 2, 1]。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · array",
+        "badge": "",
+        "tokens": [
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "整个数组反转为 [7, 6, 5, 4, 3, 2, 1]。"
+      },
+      "state": {
+        "values": [
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "189-trace-003",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "反转前 k 个元素",
+      "body": "前 3 个元素恢复内部顺序：[5, 6, 7, 4, 3, 2, 1]。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · array",
+        "badge": "",
+        "tokens": [
+          5,
+          6,
+          7,
+          4,
+          3,
+          2,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              5,
+              6,
+              7,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "前 3 个元素恢复内部顺序：[5, 6, 7, 4, 3, 2, 1]。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          7,
+          4,
+          3,
+          2,
+          1
+        ],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "189-trace-004",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "反转剩余元素",
+      "body": "完成右移：[5, 6, 7, 1, 2, 3, 4]。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · array",
+        "badge": "结果 7 项",
+        "tokens": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              5,
+              6,
+              7,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "完成右移：[5, 6, 7, 1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "189-trace-check-006",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 7 项",
+        "tokens": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              5,
+              6,
+              7,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "189-trace-check-007",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 7 项",
+        "tokens": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              5,
+              6,
+              7,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "189-trace-check-008",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 7 项",
+        "tokens": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              5,
+              6,
+              7,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "189-trace-check-009",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 7 项",
+        "tokens": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              5,
+              6,
+              7,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "189-trace-check-010",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。 易错提醒：忘记取模：k %= n 是最常见的遗漏步骤。当 k > n 时，直接使用 k 会导致数组越界或错误的移动。 三次翻转的顺序：必须是「整体 → 前 k 个 → 后 n-k 个」这个顺序。反了或者顺序错了结果会不同。 k = 0 的情况：取模后 k=0，不需要任何操作，直接返回。 n = 1 的情况：无论 k 是多少，轮转后不变。 环状替换的…",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 7 项",
+        "tokens": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              5,
+              6,
+              7,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "189-trace-005",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。",
+      "kind": "array",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · array",
+        "badge": "结果 7 项",
+        "tokens": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              5,
+              6,
+              7,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "原地轮转结果为 [5, 6, 7, 1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "variables": {
+          "n": 7,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          5,
+          6,
+          7,
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

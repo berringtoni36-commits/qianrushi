@@ -1,0 +1,57 @@
+{
+  "name": "remotion-embedded-150",
+  "version": "1.0.0",
+  "description": "嵌入式高频150题 Remotion复习视频工程",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@remotion/cli": "4.0.512",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.512",
+    "@remotion/tailwind-v4": "4.0.512",
+    "tailwindcss": "4.0.0"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.512",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.19.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "upgrade": "remotion upgrade",
+    "lint": "eslint src && tsc",
+    "render:q001": "remotion render StaticQ1 out/Q001/Q001-static.mp4",
+    "still:q001": "remotion still StaticQ1 out/Q001/Q001-poster.png --frame=7560",
+    "render:q002": "remotion render ConstQ2 out/Q002/Q002-const.mp4",
+    "still:q002": "remotion still ConstQ2 out/Q002/Q002-poster.png --frame=5880",
+    "render:q003": "remotion render VolatileQ3 out/Q003/Q003-volatile.mp4",
+    "still:q003": "remotion still VolatileQ3 out/Q003/Q003-poster.png --frame=7380",
+    "render:q004": "remotion render ExternQ4 out/Q004/Q004-extern.mp4",
+    "still:q004": "remotion still ExternQ4 out/Q004/Q004-poster.png --frame=5760",
+    "render:q005": "remotion render ArrayPointerQ5 out/Q005/Q005-array-pointer.mp4",
+    "still:q005": "remotion still ArrayPointerQ5 out/Q005/Q005-poster.png --frame=7080",
+    "render:q006": "remotion render PointerReferenceQ6 out/Q006/Q006-pointer-reference.mp4",
+    "still:q006": "remotion still PointerReferenceQ6 out/Q006/Q006-poster.png --frame=6900",
+    "render:q007": "remotion render SizeofStrlenQ7 out/Q007/Q007-sizeof-strlen.mp4",
+    "still:q007": "remotion still SizeofStrlenQ7 out/Q007/Q007-poster.png --frame=6540",
+    "render:q008": "remotion render HeapStackQ8 out/Q008/Q008-heap-stack.mp4",
+    "still:q008": "remotion still HeapStackQ8 out/Q008/Q008-poster.png --frame=6780",
+    "render:q009": "remotion render GlobalLocalStaticQ9 out/Q009/Q009-global-local-static.mp4",
+    "still:q009": "remotion still GlobalLocalStaticQ9 out/Q009/Q009-poster.png --frame=6600",
+    "render:q010": "remotion render MallocNewQ10 out/Q010/Q010-malloc-new.mp4",
+    "still:q010": "remotion still MallocNewQ10 out/Q010/Q010-poster.png --frame=6900",
+    "render:q011": "remotion render DeleteArrayQ11 out/Q011/Q011-delete-array.mp4",
+    "still:q011": "remotion still DeleteArrayQ11 out/Q011/Q011-poster.png --frame=6480",
+    "render:q012": "remotion render MemoryLeakQ12 out/Q012/Q012-memory-leak.mp4",
+    "still:q012": "remotion still MemoryLeakQ12 out/Q012/Q012-poster.png --frame=6390"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

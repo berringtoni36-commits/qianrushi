@@ -1,0 +1,14 @@
+{
+  "skill": "embedded-cpp-resource-lifetime",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"嵌入式 C++ 里 unique_ptr、shared_ptr 和裸指针分别怎么表达所有权？需要考虑哪些实时和代码体积代价？","expected_behavior":"激活本 skill，按资源所有权、生命周期、引用计数和平台成本分析","notes":"RAII 与所有权"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"一个对象移动后还被 DMA 使用，析构时又 double free，怎么沿拷贝/移动/析构链审计？","expected_behavior":"激活本 skill，追踪句柄所有权、移动后状态、释放配对和 DMA 生命周期","notes":"移动与资源句柄"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"vector 扩容后保存的指针、引用和迭代器是否还有效？请给出检查和修复方法","expected_behavior":"激活本 skill，核对扩容/插入/删除失效规则、reserve 和接口稳定性","notes":"容器生命周期"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"嵌入式系统应该用静态内存、malloc 还是固定块内存池？","expected_behavior":"不优先激活本 skill，转 embedded-memory-lifetime-and-pool-design","notes":"C/RTOS 内存策略兄弟 Skill"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"STM32 的 MQ2 ADC 使用了什么采样时间，时钟和预热怎么核对？","expected_behavior":"不优先激活本 skill，转 stm32-clock-and-sampling-timing 或 rtos-sensor-acquisition-and-fusion","notes":"采样时序兄弟 Skill"},
+    {"id":"edge-01","type":"edge_case","prompt":"我只想查 new 和 malloc 的语言层级区别，不需要讨论我的代码或嵌入式约束","expected_behavior":"做简短概念解释，并说明 new/delete 与 malloc/free 配对，不展开完整审计流程","notes":"轻量八股边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

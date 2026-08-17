@@ -1,0 +1,52 @@
+{
+  "skill": "embedded-learning-state-and-active-recall",
+  "version": "0.1.0",
+  "source_book": "嵌入式 Obsidian 学习工作台",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "帮我审计嵌入式工作台：哪些内容是学过但待回看，哪些来源链接失效？不要修改原始记录。",
+      "expected_behavior": "激活本 Skill，检查状态字段和 source，输出可追溯的复习候选与异常，不写回工作台。",
+      "notes": "直接的工作台状态与来源审计。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我看过很多 FreeRTOS 资料但面试还是答不出来，按工作台状态带我做一次无提示回忆，卡住时只给最小提示。",
+      "expected_behavior": "激活本 Skill，先选择复习条目，再执行标题—口述—最小提示—迁移的闭环，不把看过当掌握。",
+      "notes": "学习状态与主动回忆的组合场景。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "掌握率是 0，这是不是说明我什么都没学？请解释 mastery、review_flag 和 last_studied 分别代表什么。",
+      "expected_behavior": "激活本 Skill，解释正交字段和证据边界，不能把掌握率直接等同于真实能力。",
+      "notes": "状态语义边界场景。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "FreeRTOS 任务偶尔卡死，DMA 中断已经触发但任务没有醒，按源码帮我排查。",
+      "expected_behavior": "不激活本 Skill 作为主 Skill，应优先使用 rtos-communication-debugging 或 rtos-runtime-fault-diagnosis；本 Skill 仅在需要安排复习时辅助。",
+      "notes": "跨 Skill 混淆：具体 RTOS 故障。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我这道二分题的区间和循环不变量不对，帮我构造反例并修正状态定义。",
+      "expected_behavior": "不激活本 Skill，应优先使用 algorithm-state-and-invariant-derivation。",
+      "notes": "跨域诱饵：算法推导而非嵌入式工作台管理。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我只想知道第 60 题 UART DMA 不定长接收的正确做法，不需要复习计划。",
+      "expected_behavior": "不以本 Skill 处理技术答案，应转嵌入式通信/RTOS 专项 Skill；若用户随后要求安排回忆，再使用本 Skill。",
+      "notes": "边界：技术问题带有工作台条目编号，但动作不是状态管理。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "静态预期 6/6；独立客户端盲测待补。诱饵容错为 0，且包含 RTOS 与算法兄弟 Skill 混淆场景。"
+}

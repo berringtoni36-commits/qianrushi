@@ -1,0 +1,911 @@
+{
+  "problemId": 21,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 21,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        2,
+        4
+      ],
+      "variables": {},
+      "structure": {
+        "merged": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          4
+        ]
+      },
+      "result": [
+        1,
+        1,
+        2,
+        3,
+        4,
+        4
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "4fb09fcec0a899fcc6933c0864e713f121381f7104a567c6f2a1c1dcfa291769",
+    "sourceSemanticTokenHash": "d11feada04e6e98f1b59cd41b3ea5b3968d533a6bbf5ec8dca9b59ff86a1dc59",
+    "sourceCodeLineCount": 29
+  },
+  "sourceCodeSha256": "4fb09fcec0a899fcc6933c0864e713f121381f7104a567c6f2a1c1dcfa291769",
+  "sourceSemanticTokenHash": "d11feada04e6e98f1b59cd41b3ea5b3968d533a6bbf5ec8dca9b59ff86a1dc59",
+  "steps": [
+    {
+      "id": "21-trace-001",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "setup",
+      "title": "建立 dummy 与 tail",
+      "body": "dummy 统一处理头节点，tail 始终指向结果链尾。 题解原意：为什么这样想： 需要不断从两个链表中选取较小节点接到结果链表的尾部。使用「虚拟头节点」可以统一处理空链表的情况，不需要单独处理结果链表的第一次插入。 关键洞察： 每次取较小节点接到 cur 后面后，对应链表的指针前移一位。当其中一个链表遍历完，直接将另一个链表剩余部分接到结果后面即可。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · linked",
+        "badge": "l1",
+        "tokens": [
+          "1",
+          "2",
+          "4",
+          "1",
+          "3",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l1": 0,
+          "l2": 0
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              1,
+              2,
+              4
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              1,
+              3,
+              4
+            ]
+          },
+          {
+            "label": "merged",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "dummy 统一处理头节点，tail 始终指向结果链尾。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "variables": {
+          "l1": 0,
+          "l2": 0
+        },
+        "structure": {
+          "l1": [
+            1,
+            2,
+            4
+          ],
+          "l2": [
+            1,
+            3,
+            4
+          ],
+          "merged": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "21-trace-002",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "mutate",
+      "title": "接入节点 1",
+      "body": "比较两个头部后取较小值 1，结果链变为 [1]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 1 项",
+        "tokens": [
+          "1",
+          "2",
+          "4",
+          "1",
+          "3",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l1": 0,
+          "l2": 1
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              1,
+              2,
+              4
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              3,
+              4
+            ]
+          },
+          {
+            "label": "merged",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "比较两个头部后取较小值 1，结果链变为 [1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "variables": {
+          "l1": 0,
+          "l2": 1
+        },
+        "structure": {
+          "l1": [
+            1,
+            2,
+            4
+          ],
+          "l2": [
+            3,
+            4
+          ],
+          "merged": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "21-trace-003",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "接入节点 1",
+      "body": "比较两个头部后取较小值 1，结果链变为 [1, 1]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 2 项",
+        "tokens": [
+          "1",
+          "2",
+          "4",
+          "1",
+          "3",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l1": 1,
+          "l2": 1
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              2,
+              4
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              3,
+              4
+            ]
+          },
+          {
+            "label": "merged",
+            "values": [
+              1,
+              1
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1
+        ],
+        "note": "比较两个头部后取较小值 1，结果链变为 [1, 1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "variables": {
+          "l1": 1,
+          "l2": 1
+        },
+        "structure": {
+          "l1": [
+            2,
+            4
+          ],
+          "l2": [
+            3,
+            4
+          ],
+          "merged": [
+            1,
+            1
+          ]
+        },
+        "result": [
+          1,
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "21-trace-004",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "接入节点 2",
+      "body": "比较两个头部后取较小值 2，结果链变为 [1, 1, 2]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 3 项",
+        "tokens": [
+          "1",
+          "2",
+          "4",
+          "1",
+          "3",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l1": 2,
+          "l2": 1
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              3,
+              4
+            ]
+          },
+          {
+            "label": "merged",
+            "values": [
+              1,
+              1,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          2
+        ],
+        "note": "比较两个头部后取较小值 2，结果链变为 [1, 1, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "variables": {
+          "l1": 2,
+          "l2": 1
+        },
+        "structure": {
+          "l1": [
+            4
+          ],
+          "l2": [
+            3,
+            4
+          ],
+          "merged": [
+            1,
+            1,
+            2
+          ]
+        },
+        "result": [
+          1,
+          1,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "21-trace-005",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "mutate",
+      "title": "接入节点 3",
+      "body": "比较两个头部后取较小值 3，结果链变为 [1, 1, 2, 3]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 4 项",
+        "tokens": [
+          "1",
+          "2",
+          "4",
+          "1",
+          "3",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l1": 2,
+          "l2": 2
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "merged",
+            "values": [
+              1,
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          2,
+          3
+        ],
+        "note": "比较两个头部后取较小值 3，结果链变为 [1, 1, 2, 3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "variables": {
+          "l1": 2,
+          "l2": 2
+        },
+        "structure": {
+          "l1": [
+            4
+          ],
+          "l2": [
+            4
+          ],
+          "merged": [
+            1,
+            1,
+            2,
+            3
+          ]
+        },
+        "result": [
+          1,
+          1,
+          2,
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "21-trace-006",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "mutate",
+      "title": "接入节点 4",
+      "body": "比较两个头部后取较小值 4，结果链变为 [1, 1, 2, 3, 4]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 5 项",
+        "tokens": [
+          "1",
+          "2",
+          "4",
+          "1",
+          "3",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l1": 2,
+          "l2": 3
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "merged",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          2,
+          3,
+          4
+        ],
+        "note": "比较两个头部后取较小值 4，结果链变为 [1, 1, 2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "variables": {
+          "l1": 2,
+          "l2": 3
+        },
+        "structure": {
+          "l1": [
+            4
+          ],
+          "l2": [],
+          "merged": [
+            1,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "result": [
+          1,
+          1,
+          2,
+          3,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "21-trace-007",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "整段接入剩余链表",
+      "body": "一条链为空，剩余节点已经有序，直接接到结果尾部：[1, 1, 2, 3, 4, 4]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 6 项",
+        "tokens": [
+          "1",
+          "2",
+          "4",
+          "1",
+          "3",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l1": 2,
+          "l2": 3
+        },
+        "rows": [
+          {
+            "label": "merged",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          4
+        ],
+        "note": "一条链为空，剩余节点已经有序，直接接到结果尾部：[1, 1, 2, 3, 4, 4]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "variables": {
+          "l1": 2,
+          "l2": 3
+        },
+        "structure": {
+          "merged": [
+            1,
+            1,
+            2,
+            3,
+            4,
+            4
+          ]
+        },
+        "result": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "21-trace-check-009",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 [1, 1, 2, 3, 4, 4]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 6 项",
+        "tokens": [
+          "1",
+          "2",
+          "4",
+          "1",
+          "3",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l1": 2,
+          "l2": 3
+        },
+        "rows": [
+          {
+            "label": "merged",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          4
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 [1, 1, 2, 3, 4, 4]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "variables": {
+          "l1": 2,
+          "l2": 3
+        },
+        "structure": {
+          "merged": [
+            1,
+            1,
+            2,
+            3,
+            4,
+            4
+          ]
+        },
+        "result": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "21-trace-check-010",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 [1, 1, 2, 3, 4, 4]。 易错提醒：虚拟头节点返回： 返回的是 dummy.next 而不是 dummy 或 cur cur 的移动： 每次拼接后要记得 cur = cur->next，否则结果链表只有一个节点 剩余节点拼接： 最后要用 cur->next = l1 ? l1 : l2，而不是用 while 循环一个个拼接 递归终止条件： 两个链表都可能为空，所以需要分别检…",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 6 项",
+        "tokens": [
+          "1",
+          "2",
+          "4",
+          "1",
+          "3",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l1": 2,
+          "l2": 3
+        },
+        "rows": [
+          {
+            "label": "merged",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          4
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 [1, 1, 2, 3, 4, 4]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "variables": {
+          "l1": 2,
+          "l2": 3
+        },
+        "structure": {
+          "merged": [
+            1,
+            1,
+            2,
+            3,
+            4,
+            4
+          ]
+        },
+        "result": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "21-trace-008",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 [1, 1, 2, 3, 4, 4]。",
+      "kind": "linked",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · linked",
+        "badge": "结果 6 项",
+        "tokens": [
+          "1",
+          "2",
+          "4",
+          "1",
+          "3",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          4
+        ],
+        "note": "返回 [1, 1, 2, 3, 4, 4]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "variables": {},
+        "structure": {
+          "merged": [
+            1,
+            1,
+            2,
+            3,
+            4,
+            4
+          ]
+        },
+        "result": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          4
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

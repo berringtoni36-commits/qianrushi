@@ -1,0 +1,3 @@
+interface:
+  display_name: "Stm32 Clock and Sampling Timing"
+  short_description: "Help with Stm32 Clock and Sampling Timing tasks"

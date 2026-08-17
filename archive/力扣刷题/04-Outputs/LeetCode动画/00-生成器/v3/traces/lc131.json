@@ -1,0 +1,1223 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "回文预处理 + 切分回溯",
+    "sceneKind": "backtracking",
+    "input": "aab",
+    "expected": [
+      [
+        "a",
+        "a",
+        "b"
+      ],
+      [
+        "aa",
+        "b"
+      ]
+    ],
+    "exampleText": "s = \"aab\"",
+    "expectedText": "[[a,a,b],[aa,b]]",
+    "invariant": "path 中每段均为回文且首尾连续覆盖 s 前缀",
+    "aha": "先用 DP 判回文，搜索时只走合法切片",
+    "time": "O(n²+answers)",
+    "space": "O(n²)",
+    "problemId": 131,
+    "title": "分割回文串",
+    "day": "Day 10：回溯",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "a02a1b28e018ae856d30dd25ce4eed9578f7a2e0e4b9040c244c76dcb849102f",
+    "semanticTokenHash": "d06c334775af07df122a65448304529bf3bb9525ea52724ee41053f3a72b6669",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "短区间优先计算保证内部状态已知。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "i": null,
+              "j": null
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "预处理回文区间",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                false,
+                false,
+                false
+              ],
+              [
+                false,
+                false,
+                false
+              ],
+              [
+                false,
+                false,
+                false
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "DFS 只枚举已经确认是回文的切片。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "区间 a 回文=True",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                true,
+                false,
+                false
+              ],
+              [
+                false,
+                false,
+                false
+              ],
+              [
+                false,
+                false,
+                false
+              ]
+            ],
+            "activeCells": [
+              "0,0"
+            ]
+          },
+          "caption": "短区间优先计算保证内部状态已知。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "短区间优先计算保证内部状态已知。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "区间 aa 回文=True",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                true,
+                true,
+                false
+              ],
+              [
+                false,
+                false,
+                false
+              ],
+              [
+                false,
+                false,
+                false
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ]
+          },
+          "caption": "短区间优先计算保证内部状态已知。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "i": 1,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "区间 a 回文=True",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                true,
+                true,
+                false
+              ],
+              [
+                false,
+                true,
+                false
+              ],
+              [
+                false,
+                false,
+                false
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ]
+          },
+          "caption": "短区间优先计算保证内部状态已知。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "短区间优先计算保证内部状态已知。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "区间 aab 回文=False",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                true,
+                true,
+                false
+              ],
+              [
+                false,
+                true,
+                false
+              ],
+              [
+                false,
+                false,
+                false
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ]
+          },
+          "caption": "短区间优先计算保证内部状态已知。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "短区间优先计算保证内部状态已知。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "i": 1,
+              "j": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "区间 ab 回文=False",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                true,
+                true,
+                false
+              ],
+              [
+                false,
+                true,
+                false
+              ],
+              [
+                false,
+                false,
+                false
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ]
+          },
+          "caption": "短区间优先计算保证内部状态已知。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "短区间优先计算保证内部状态已知。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "i": 2,
+              "j": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "区间 b 回文=True",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                true,
+                true,
+                false
+              ],
+              [
+                false,
+                true,
+                false
+              ],
+              [
+                false,
+                false,
+                true
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ]
+          },
+          "caption": "短区间优先计算保证内部状态已知。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "下一层从 i+1 继续切。",
+        "review": "a"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 0,
+              "i": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "a",
+            "action": "选择回文片段 a",
+            "status": "running",
+            "path": [
+              "a"
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "下一层从 i+1 继续切。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "下一层从 i+1 继续切。",
+        "review": "a"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 1,
+              "i": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "a",
+            "action": "选择回文片段 a",
+            "status": "running",
+            "path": [
+              "a",
+              "a"
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "下一层从 i+1 继续切。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "下一层从 i+1 继续切。",
+        "review": "b"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "b",
+            "action": "选择回文片段 b",
+            "status": "running",
+            "path": [
+              "a",
+              "a",
+              "b"
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "下一层从 i+1 继续切。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "字符串恰好切完时记录。",
+        "review": "['a', 'a', 'b']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "['a', 'a', 'b']",
+            "action": "记录分割 ['a', 'a', 'b']",
+            "status": "running",
+            "path": [
+              "a",
+              "a",
+              "b"
+            ],
+            "output": [
+              [
+                "a",
+                "a",
+                "b"
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "字符串恰好切完时记录。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "恢复切分点以尝试下一个回文片段。",
+        "review": "撤销片段 b"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销片段 b",
+            "status": "running",
+            "path": [
+              "a",
+              "a"
+            ],
+            "output": [
+              [
+                "a",
+                "a",
+                "b"
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "恢复切分点以尝试下一个回文片段。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "恢复切分点以尝试下一个回文片段。",
+        "review": "撤销片段 a"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 1,
+              "i": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销片段 a",
+            "status": "running",
+            "path": [
+              "a"
+            ],
+            "output": [
+              [
+                "a",
+                "a",
+                "b"
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "恢复切分点以尝试下一个回文片段。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "恢复切分点以尝试下一个回文片段。",
+        "review": "撤销片段 a"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 0,
+              "i": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销片段 a",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                "a",
+                "a",
+                "b"
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "恢复切分点以尝试下一个回文片段。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "下一层从 i+1 继续切。",
+        "review": "aa"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 0,
+              "i": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "aa",
+            "action": "选择回文片段 aa",
+            "status": "running",
+            "path": [
+              "aa"
+            ],
+            "output": [
+              [
+                "a",
+                "a",
+                "b"
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "下一层从 i+1 继续切。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "下一层从 i+1 继续切。",
+        "review": "b"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "b",
+            "action": "选择回文片段 b",
+            "status": "running",
+            "path": [
+              "aa",
+              "b"
+            ],
+            "output": [
+              [
+                "a",
+                "a",
+                "b"
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "下一层从 i+1 继续切。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "字符串恰好切完时记录。",
+        "review": "['aa', 'b']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "['aa', 'b']",
+            "action": "记录分割 ['aa', 'b']",
+            "status": "running",
+            "path": [
+              "aa",
+              "b"
+            ],
+            "output": [
+              [
+                "a",
+                "a",
+                "b"
+              ],
+              [
+                "aa",
+                "b"
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "字符串恰好切完时记录。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "恢复切分点以尝试下一个回文片段。",
+        "review": "撤销片段 b"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销片段 b",
+            "status": "running",
+            "path": [
+              "aa"
+            ],
+            "output": [
+              [
+                "a",
+                "a",
+                "b"
+              ],
+              [
+                "aa",
+                "b"
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "恢复切分点以尝试下一个回文片段。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "恢复切分点以尝试下一个回文片段。",
+        "review": "撤销片段 aa"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "u": 0,
+              "i": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销片段 aa",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                "a",
+                "a",
+                "b"
+              ],
+              [
+                "aa",
+                "b"
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "恢复切分点以尝试下一个回文片段。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "[a,a,b] 与 [aa,b] 覆盖全部合法切法。",
+        "review": "[['a', 'a', 'b'], ['aa', 'b']]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "a",
+              "a",
+              "b"
+            ],
+            "variables": {
+              "count": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[['a', 'a', 'b'], ['aa', 'b']]",
+            "action": "返回两种回文分割",
+            "status": "return",
+            "path": [],
+            "output": [
+              [
+                "a",
+                "a",
+                "b"
+              ],
+              [
+                "aa",
+                "b"
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "[a,a,b] 与 [aa,b] 覆盖全部合法切法。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<vector<bool>> f;\n    vector<vector<string>> ans;\n    vector<string> path;\n\n    vector<vector<string>> partition(string s) {\n        int n = s.size();\n        f = vector<vector<bool>>(n, vector<bool>(n));\n        for (int j = 0; j < n; j ++ )\n            for (int i = 0; i <= j; i ++ )\n                if (i == j) f[i][j] = true;  // 单个字符是回文\n                else if (s[i] == s[j]) {  // 首尾相等且内部也是回文\n                    if (i + 1 > j - 1 || f[i + 1][j - 1]) f[i][j] = true;  // 长度≤2或内部子串是回文\n                }\n\n        dfs(s, 0);\n        return ans;\n    }\n\n    void dfs(string& s, int u) {                                 // 深度优先搜索\n        if (u == s.size()) ans.push_back(path);                  // 记录结果\n        else {\n            for (int i = u; i < s.size(); i ++ )\n                if (f[u][i]) {\n                    path.push_back(s.substr(u, i - u + 1));\n                    dfs(s, i + 1);\n                    path.pop_back();                             // 回溯：撤销选择\n                }\n        }\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3951,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3952,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3953,
+        "text": "    vector<vector<bool>> f;"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3954,
+        "text": "    vector<vector<string>> ans;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3955,
+        "text": "    vector<string> path;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3956,
+        "text": ""
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3957,
+        "text": "    vector<vector<string>> partition(string s) {"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3958,
+        "text": "        int n = s.size();"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3959,
+        "text": "        f = vector<vector<bool>>(n, vector<bool>(n));"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3960,
+        "text": "        for (int j = 0; j < n; j ++ )"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3961,
+        "text": "            for (int i = 0; i <= j; i ++ )"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3962,
+        "text": "                if (i == j) f[i][j] = true;  // 单个字符是回文"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3963,
+        "text": "                else if (s[i] == s[j]) {  // 首尾相等且内部也是回文"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3964,
+        "text": "                    if (i + 1 > j - 1 || f[i + 1][j - 1]) f[i][j] = true;  // 长度≤2或内部子串是回文"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3965,
+        "text": "                }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3966,
+        "text": ""
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3967,
+        "text": "        dfs(s, 0);"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3968,
+        "text": "        return ans;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3969,
+        "text": "    }"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3970,
+        "text": ""
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3971,
+        "text": "    void dfs(string& s, int u) {                                 // 深度优先搜索"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3972,
+        "text": "        if (u == s.size()) ans.push_back(path);                  // 记录结果"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 3973,
+        "text": "        else {"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 3974,
+        "text": "            for (int i = u; i < s.size(); i ++ )"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 3975,
+        "text": "                if (f[u][i]) {"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 3976,
+        "text": "                    path.push_back(s.substr(u, i - u + 1));"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 3977,
+        "text": "                    dfs(s, i + 1);"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 3978,
+        "text": "                    path.pop_back();                             // 回溯：撤销选择"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 3979,
+        "text": "                }"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 3980,
+        "text": "        }"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 3981,
+        "text": "    }"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 3982,
+        "text": "};"
+      }
+    ]
+  }
+}

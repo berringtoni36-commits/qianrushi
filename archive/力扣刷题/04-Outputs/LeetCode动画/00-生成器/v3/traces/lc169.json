@@ -1,0 +1,638 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "Boyer-Moore 投票",
+    "sceneKind": "generic-array",
+    "input": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2
+    ],
+    "expected": 2,
+    "exampleText": "[2,2,1,1,1,2,2]",
+    "expectedText": "多数元素 = 2",
+    "invariant": "抵消任意不同元素后，多数元素身份不变",
+    "aha": "把候选与非候选成对删除",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 169,
+    "title": "多数元素",
+    "day": "Day 14：技巧专题",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "a3ca705b866b0479e61564a4322e10e991c253e05efd09a84f7be5a0f1908093",
+    "semanticTokenHash": "f67e5c8342df55cf3b29748ca0c676391e3de487cb4bd1f1b854717de73ea8e7",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "票数归零时下一元素可成为新候选。",
+        "review": "候选票数初始化为 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": null,
+              "r": null,
+              "c": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "候选票数初始化为 0",
+            "status": "running"
+          },
+          "caption": "票数归零时下一元素可成为新候选。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不同元素一一抵消不会消除真正多数元素。",
+        "review": "candidate=2, count=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 0,
+              "x": 2,
+              "r": 2,
+              "c": 1
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "candidate=2, count=1",
+            "action": "处理 2：候选 2，票数 1",
+            "status": "running"
+          },
+          "caption": "不同元素一一抵消不会消除真正多数元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不同元素一一抵消不会消除真正多数元素。",
+        "review": "candidate=2, count=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 1,
+              "x": 2,
+              "r": 2,
+              "c": 2
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "candidate=2, count=2",
+            "action": "处理 2：候选 2，票数 2",
+            "status": "running"
+          },
+          "caption": "不同元素一一抵消不会消除真正多数元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 1,
+              "x": 2,
+              "r": 2,
+              "c": 2
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "candidate=2, count=2",
+            "action": "不变量检查 3",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不同元素一一抵消不会消除真正多数元素。",
+        "review": "candidate=2, count=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 2,
+              "x": 1,
+              "r": 2,
+              "c": 1
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "candidate=2, count=1",
+            "action": "处理 1：候选 2，票数 1",
+            "status": "running"
+          },
+          "caption": "不同元素一一抵消不会消除真正多数元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不同元素一一抵消不会消除真正多数元素。",
+        "review": "candidate=2, count=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 3,
+              "x": 1,
+              "r": 2,
+              "c": 0
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "candidate=2, count=0",
+            "action": "处理 1：候选 2，票数 0",
+            "status": "running"
+          },
+          "caption": "不同元素一一抵消不会消除真正多数元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 3,
+              "x": 1,
+              "r": 2,
+              "c": 0
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "candidate=2, count=0",
+            "action": "不变量检查 2",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不同元素一一抵消不会消除真正多数元素。",
+        "review": "candidate=1, count=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 4,
+              "x": 1,
+              "r": 1,
+              "c": 1
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "candidate=1, count=1",
+            "action": "处理 1：候选 1，票数 1",
+            "status": "running"
+          },
+          "caption": "不同元素一一抵消不会消除真正多数元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不同元素一一抵消不会消除真正多数元素。",
+        "review": "candidate=1, count=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 5,
+              "x": 2,
+              "r": 1,
+              "c": 0
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "candidate=1, count=0",
+            "action": "处理 2：候选 1，票数 0",
+            "status": "running"
+          },
+          "caption": "不同元素一一抵消不会消除真正多数元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 5,
+              "x": 2,
+              "r": 1,
+              "c": 0
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "candidate=1, count=0",
+            "action": "不变量检查 1",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不同元素一一抵消不会消除真正多数元素。",
+        "review": "candidate=2, count=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 6,
+              "x": 2,
+              "r": 2,
+              "c": 1
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "candidate=2, count=1",
+            "action": "处理 2：候选 2，票数 1",
+            "status": "running"
+          },
+          "caption": "不同元素一一抵消不会消除真正多数元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "多数元素票数超过其余元素总和。",
+        "review": "return 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              2,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "r": 2,
+              "c": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              5,
+              6
+            ],
+            "formula": "return 2",
+            "action": "返回多数元素 2",
+            "status": "return",
+            "output": 2
+          },
+          "caption": "多数元素票数超过其余元素总和。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int majorityElement(vector<int>& nums) {\n        int r, c = 0;\n        for (auto x: nums)\n            if (!c) r = x, c = 1;\n            else if (r == x) c ++ ;\n            else c -- ;\n        return r;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 5452,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 5453,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 5454,
+        "text": "    int majorityElement(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 5455,
+        "text": "        int r, c = 0;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 5456,
+        "text": "        for (auto x: nums)"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 5457,
+        "text": "            if (!c) r = x, c = 1;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 5458,
+        "text": "            else if (r == x) c ++ ;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 5459,
+        "text": "            else c -- ;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 5460,
+        "text": "        return r;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 5461,
+        "text": "    }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 5462,
+        "text": "};"
+      }
+    ]
+  }
+}

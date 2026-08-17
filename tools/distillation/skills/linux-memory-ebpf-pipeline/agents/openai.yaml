@@ -1,0 +1,3 @@
+interface:
+  display_name: "Linux Memory Ebpf Pipeline"
+  short_description: "Help with Linux Memory Ebpf Pipeline tasks"

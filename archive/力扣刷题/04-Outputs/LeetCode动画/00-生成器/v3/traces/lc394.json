@@ -1,0 +1,795 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "递归下降解析嵌套编码",
+    "sceneKind": "backtracking",
+    "input": "3[a2[c]]",
+    "expected": "accaccacc",
+    "exampleText": "s = \"3[a2[c]]\"",
+    "expectedText": "解码 = \"accaccacc\"",
+    "invariant": "每层只消费到与其配对的右括号之前",
+    "aha": "括号内部先递归求值，再按前导数字重复",
+    "time": "O(output)",
+    "space": "O(depth)",
+    "problemId": 394,
+    "title": "字符串解码",
+    "day": "Day 8：图论 + 栈",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "7d26a5c39d6f2603f7eb75b2dd06a701e930d01c9bc47956acd4e773eafe91b3",
+    "semanticTokenHash": "86ca56a0d1ddea37b22ca811be99e2f277971fafdcb577ae8125f230aea95270",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每层只解码直到自己的右括号。",
+        "review": "进入递归层 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 0,
+              "depth": 0,
+              "res": ""
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "进入递归层 0",
+            "status": "running",
+            "stack": [
+              "depth 0"
+            ],
+            "path": []
+          },
+          "caption": "每层只解码直到自己的右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "跳过左括号后递归解码内部。",
+        "review": "x=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 2,
+              "depth": 0,
+              "x": 3,
+              "res": ""
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "x=3",
+            "action": "读取重复次数 3",
+            "status": "running",
+            "stack": [
+              "depth 0"
+            ],
+            "path": []
+          },
+          "caption": "跳过左括号后递归解码内部。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每层只解码直到自己的右括号。",
+        "review": "进入递归层 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 2,
+              "depth": 1,
+              "res": ""
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "进入递归层 1",
+            "status": "running",
+            "stack": [
+              "depth 0",
+              "depth 1"
+            ],
+            "path": []
+          },
+          "caption": "每层只解码直到自己的右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "普通字符直接加入当前层结果。",
+        "review": "a"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 3,
+              "depth": 1,
+              "res": "a"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "a",
+            "action": "追加字符 a",
+            "status": "running",
+            "stack": [
+              "depth 0",
+              "depth 1"
+            ],
+            "path": [
+              "a"
+            ]
+          },
+          "caption": "普通字符直接加入当前层结果。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "跳过左括号后递归解码内部。",
+        "review": "x=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 5,
+              "depth": 1,
+              "x": 2,
+              "res": "a"
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "x=2",
+            "action": "读取重复次数 2",
+            "status": "running",
+            "stack": [
+              "depth 0",
+              "depth 1"
+            ],
+            "path": [
+              "a"
+            ]
+          },
+          "caption": "跳过左括号后递归解码内部。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每层只解码直到自己的右括号。",
+        "review": "进入递归层 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 5,
+              "depth": 2,
+              "res": ""
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "进入递归层 2",
+            "status": "running",
+            "stack": [
+              "depth 0",
+              "depth 1",
+              "depth 2"
+            ],
+            "path": []
+          },
+          "caption": "每层只解码直到自己的右括号。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "普通字符直接加入当前层结果。",
+        "review": "c"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 6,
+              "depth": 2,
+              "res": "c"
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "c",
+            "action": "追加字符 c",
+            "status": "running",
+            "stack": [
+              "depth 0",
+              "depth 1",
+              "depth 2"
+            ],
+            "path": [
+              "c"
+            ]
+          },
+          "caption": "普通字符直接加入当前层结果。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 6,
+              "depth": 2,
+              "res": "c"
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "c",
+            "action": "不变量检查 2",
+            "status": "running",
+            "stack": [
+              "depth 0",
+              "depth 1",
+              "depth 2"
+            ],
+            "path": [
+              "c"
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "子串完全解码后再整体重复。",
+        "review": "c×2=cc"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 7,
+              "depth": 1,
+              "x": 2,
+              "y": "c",
+              "res": "acc"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "c×2=cc",
+            "action": "把 c 重复 2 次",
+            "status": "running",
+            "stack": [
+              "depth 0",
+              "depth 1"
+            ],
+            "path": [
+              "a",
+              "c",
+              "c"
+            ]
+          },
+          "caption": "子串完全解码后再整体重复。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "子串完全解码后再整体重复。",
+        "review": "acc×3=accaccacc"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 8,
+              "depth": 0,
+              "x": 3,
+              "y": "acc",
+              "res": "accaccacc"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "acc×3=accaccacc",
+            "action": "把 acc 重复 3 次",
+            "status": "running",
+            "stack": [
+              "depth 0"
+            ],
+            "path": [
+              "a",
+              "c",
+              "c",
+              "a",
+              "c",
+              "c",
+              "a",
+              "c",
+              "c"
+            ]
+          },
+          "caption": "子串完全解码后再整体重复。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 8,
+              "depth": 0,
+              "x": 3,
+              "y": "acc",
+              "res": "accaccacc"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "acc×3=accaccacc",
+            "action": "不变量检查 1",
+            "status": "running",
+            "stack": [
+              "depth 0"
+            ],
+            "path": [
+              "a",
+              "c",
+              "c",
+              "a",
+              "c",
+              "c",
+              "a",
+              "c",
+              "c"
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "嵌套 2[c] 先得到 cc，再由外层重复三次。",
+        "review": "accaccacc"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "3",
+              "[",
+              "a",
+              "2",
+              "[",
+              "c",
+              "]",
+              "]"
+            ],
+            "variables": {
+              "u": 8
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "accaccacc",
+            "action": "返回解码串 accaccacc",
+            "status": "return",
+            "stack": [],
+            "path": [
+              "a",
+              "c",
+              "c",
+              "a",
+              "c",
+              "c",
+              "a",
+              "c",
+              "c"
+            ],
+            "output": "accaccacc"
+          },
+          "caption": "嵌套 2[c] 先得到 cc，再由外层重复三次。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    string decodeString(string s) {\n        int u = 0;\n        return dfs(s, u);\n    }\n\n    string dfs(string& s, int& u) {\n        string res;\n        while (u < s.size() && s[u] != ']') {\n            if (s[u] >= 'a' && s[u] <= 'z' || s[u] >= 'A' && s[u] <= 'Z') res += s[u ++ ];\n            else if (s[u] >= '0' && s[u] <= '9') {\n                int k = u;\n                while (s[k] >= '0' && s[k] <= '9') k ++ ;\n                int x = stoi(s.substr(u, k - u));\n                u = k + 1;\n                string y = dfs(s, u);\n                u ++ ; // 过滤掉右括号\n                while (x -- ) res += y;\n            }\n        }\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3281,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3282,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3283,
+        "text": "    string decodeString(string s) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3284,
+        "text": "        int u = 0;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3285,
+        "text": "        return dfs(s, u);"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3286,
+        "text": "    }"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3287,
+        "text": ""
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3288,
+        "text": "    string dfs(string& s, int& u) {"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3289,
+        "text": "        string res;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3290,
+        "text": "        while (u < s.size() && s[u] != ']') {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3291,
+        "text": "            if (s[u] >= 'a' && s[u] <= 'z' || s[u] >= 'A' && s[u] <= 'Z') res += s[u ++ ];"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3292,
+        "text": "            else if (s[u] >= '0' && s[u] <= '9') {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3293,
+        "text": "                int k = u;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3294,
+        "text": "                while (s[k] >= '0' && s[k] <= '9') k ++ ;"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3295,
+        "text": "                int x = stoi(s.substr(u, k - u));"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3296,
+        "text": "                u = k + 1;"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3297,
+        "text": "                string y = dfs(s, u);"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3298,
+        "text": "                u ++ ; // 过滤掉右括号"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3299,
+        "text": "                while (x -- ) res += y;"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3300,
+        "text": "            }"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3301,
+        "text": "        }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3302,
+        "text": "        return res;"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 3303,
+        "text": "    }"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 3304,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "skill": "embedded-bus-selection",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"板内短距离高速传感器通信选 SPI 还是 I2C？","expected_behavior":"激活本 skill，按带宽、线数、节点和事务比较","notes":"选型"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"UART 能不能直接接 RS232？长距离现场总线怎么选？","expected_behavior":"激活本 skill，区分外设协议和电气层并给约束方案","notes":"电平与距离"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"RS485 总线偶发乱码，应该从哪些电气和协议条件排查？","expected_behavior":"激活本 skill，检查电平、终端、拓扑、帧和噪声","notes":"通信链路"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"UART 的起始位和停止位是什么？","expected_behavior":"不激活本 skill，做普通协议解释","notes":"无选型"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"FreeRTOS 的 DMA 中断触发了但任务没有醒，怎么排查？","expected_behavior":"不激活本 skill，优先激活 rtos-communication-debugging","notes":"跨 skill 混淆"},
+    {"id":"edge-01","type":"edge_case","prompt":"我要做一个设备内部的 UART 调试口，需要选什么？","expected_behavior":"可以简要选 UART，但先确认电平、线长和是否需要收发器","notes":"轻量选型"}
+  ],
+  "minimum_pass_rate": 0.8
+}

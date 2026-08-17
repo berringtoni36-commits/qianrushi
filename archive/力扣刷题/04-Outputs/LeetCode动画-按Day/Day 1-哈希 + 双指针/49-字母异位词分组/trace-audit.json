@@ -1,0 +1,1582 @@
+{
+  "problemId": 49,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 49,
+    "stepCount": 20,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "eat",
+        "tea",
+        "tan",
+        "ate",
+        "nat",
+        "bat"
+      ],
+      "variables": {
+        "groups": 3
+      },
+      "structure": {
+        "hash": {
+          "aet": [
+            "eat",
+            "tea",
+            "ate"
+          ],
+          "ant": [
+            "tan",
+            "nat"
+          ],
+          "abt": [
+            "bat"
+          ]
+        }
+      },
+      "result": [
+        [
+          "eat",
+          "tea",
+          "ate"
+        ],
+        [
+          "tan",
+          "nat"
+        ],
+        [
+          "bat"
+        ]
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "295413eb3c43658f64a5c0f0aa841c1aae5f93ab6d92cbe97c6ac53cea3bb5d0",
+    "sourceSemanticTokenHash": "c624b20c64e82a755972e75fa3c8f94307b1421ab9feb90bbfd191293071b0d3",
+    "sourceCodeLineCount": 16
+  },
+  "sourceCodeSha256": "295413eb3c43658f64a5c0f0aa841c1aae5f93ab6d92cbe97c6ac53cea3bb5d0",
+  "sourceSemanticTokenHash": "c624b20c64e82a755972e75fa3c8f94307b1421ab9feb90bbfd191293071b0d3",
+  "steps": [
+    {
+      "id": "49-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "inspect",
+      "title": "读取 str = eat",
+      "body": "只处理当前字符串，旧分组保持不变。 题解原意：核心想法： 互为字母异位词的两个字符串，排序后的结果完全相同。 为什么这样想： 字母异位词的本质是\"字符的多重集相同\"。排序后，多重集变成了确定的字符串，可以作为哈希表的 key。 遍历每个字符串，将其排序后的结果作为 key，原字符串追加到对应的列表中。 时间复杂度： O(n × k log k)，其中 n 是字符串数量，k 是字符串最大长度 空间复杂度： O(n × k)",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · hash-group",
+        "badge": "i=0",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "str": "eat"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "只处理当前字符串，旧分组保持不变。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 0,
+          "str": "eat"
+        },
+        "structure": {
+          "hash": {}
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-002",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "排序得到 key = aet",
+      "body": "把 eat 排序为 aet；异位词会得到同一个 key。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=0",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "str": "eat",
+          "key": "aet"
+        },
+        "rows": [
+          {
+            "label": "key",
+            "values": [
+              "aet"
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把 eat 排序为 aet；异位词会得到同一个 key。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 0,
+          "str": "eat",
+          "key": "aet"
+        },
+        "structure": {
+          "hash": {}
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "加入对应分组",
+      "body": "写入 hash[aet]，当前组为 ['eat']。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=0",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "str": "eat",
+          "key": "aet"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "写入 hash[aet]，当前组为 ['eat']。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 0,
+          "str": "eat",
+          "key": "aet"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-004",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "inspect",
+      "title": "读取 str = tea",
+      "body": "只处理当前字符串，旧分组保持不变。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · hash-group",
+        "badge": "i=1",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "str": "tea"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "只处理当前字符串，旧分组保持不变。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 1,
+          "str": "tea"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-005",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "排序得到 key = aet",
+      "body": "把 tea 排序为 aet；异位词会得到同一个 key。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=1",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "str": "tea",
+          "key": "aet"
+        },
+        "rows": [
+          {
+            "label": "key",
+            "values": [
+              "aet"
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把 tea 排序为 aet；异位词会得到同一个 key。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 1,
+          "str": "tea",
+          "key": "aet"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-006",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "加入对应分组",
+      "body": "写入 hash[aet]，当前组为 ['eat', 'tea']。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=1",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "str": "tea",
+          "key": "aet"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "写入 hash[aet]，当前组为 ['eat', 'tea']。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 1,
+          "str": "tea",
+          "key": "aet"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-007",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "inspect",
+      "title": "读取 str = tan",
+      "body": "只处理当前字符串，旧分组保持不变。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · hash-group",
+        "badge": "i=2",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "str": "tan"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "只处理当前字符串，旧分组保持不变。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 2,
+          "str": "tan"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-008",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "排序得到 key = ant",
+      "body": "把 tan 排序为 ant；异位词会得到同一个 key。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=2",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "str": "tan",
+          "key": "ant"
+        },
+        "rows": [
+          {
+            "label": "key",
+            "values": [
+              "ant"
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把 tan 排序为 ant；异位词会得到同一个 key。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 2,
+          "str": "tan",
+          "key": "ant"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-009",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "加入对应分组",
+      "body": "写入 hash[ant]，当前组为 ['tan']。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=2",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "str": "tan",
+          "key": "ant"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea']",
+              "ant: ['tan']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "写入 hash[ant]，当前组为 ['tan']。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 2,
+          "str": "tan",
+          "key": "ant"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea"
+            ],
+            "ant": [
+              "tan"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-010",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "inspect",
+      "title": "读取 str = ate",
+      "body": "只处理当前字符串，旧分组保持不变。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · hash-group",
+        "badge": "i=3",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "str": "ate"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea']",
+              "ant: ['tan']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "只处理当前字符串，旧分组保持不变。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 3,
+          "str": "ate"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea"
+            ],
+            "ant": [
+              "tan"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-011",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "排序得到 key = aet",
+      "body": "把 ate 排序为 aet；异位词会得到同一个 key。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=3",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "str": "ate",
+          "key": "aet"
+        },
+        "rows": [
+          {
+            "label": "key",
+            "values": [
+              "aet"
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea']",
+              "ant: ['tan']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把 ate 排序为 aet；异位词会得到同一个 key。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 3,
+          "str": "ate",
+          "key": "aet"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea"
+            ],
+            "ant": [
+              "tan"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-012",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "加入对应分组",
+      "body": "写入 hash[aet]，当前组为 ['eat', 'tea', 'ate']。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=3",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "str": "ate",
+          "key": "aet"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea', 'ate']",
+              "ant: ['tan']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "写入 hash[aet]，当前组为 ['eat', 'tea', 'ate']。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 3,
+          "str": "ate",
+          "key": "aet"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea",
+              "ate"
+            ],
+            "ant": [
+              "tan"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-013",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "inspect",
+      "title": "读取 str = nat",
+      "body": "只处理当前字符串，旧分组保持不变。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · hash-group",
+        "badge": "i=4",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "str": "nat"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea', 'ate']",
+              "ant: ['tan']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "只处理当前字符串，旧分组保持不变。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 4,
+          "str": "nat"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea",
+              "ate"
+            ],
+            "ant": [
+              "tan"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-014",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "排序得到 key = ant",
+      "body": "把 nat 排序为 ant；异位词会得到同一个 key。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=4",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "str": "nat",
+          "key": "ant"
+        },
+        "rows": [
+          {
+            "label": "key",
+            "values": [
+              "ant"
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea', 'ate']",
+              "ant: ['tan']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把 nat 排序为 ant；异位词会得到同一个 key。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 4,
+          "str": "nat",
+          "key": "ant"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea",
+              "ate"
+            ],
+            "ant": [
+              "tan"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-015",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "加入对应分组",
+      "body": "写入 hash[ant]，当前组为 ['tan', 'nat']。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=4",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "str": "nat",
+          "key": "ant"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea', 'ate']",
+              "ant: ['tan', 'nat']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "写入 hash[ant]，当前组为 ['tan', 'nat']。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 4,
+          "str": "nat",
+          "key": "ant"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea",
+              "ate"
+            ],
+            "ant": [
+              "tan",
+              "nat"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-016",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "inspect",
+      "title": "读取 str = bat",
+      "body": "只处理当前字符串，旧分组保持不变。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · hash-group",
+        "badge": "i=5",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "str": "bat"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea', 'ate']",
+              "ant: ['tan', 'nat']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "只处理当前字符串，旧分组保持不变。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 5,
+          "str": "bat"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea",
+              "ate"
+            ],
+            "ant": [
+              "tan",
+              "nat"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-017",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "排序得到 key = abt",
+      "body": "把 bat 排序为 abt；异位词会得到同一个 key。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=5",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "str": "bat",
+          "key": "abt"
+        },
+        "rows": [
+          {
+            "label": "key",
+            "values": [
+              "abt"
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea', 'ate']",
+              "ant: ['tan', 'nat']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把 bat 排序为 abt；异位词会得到同一个 key。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 5,
+          "str": "bat",
+          "key": "abt"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea",
+              "ate"
+            ],
+            "ant": [
+              "tan",
+              "nat"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-018",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "加入对应分组",
+      "body": "写入 hash[abt]，当前组为 ['bat']。",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "i=5",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "str": "bat",
+          "key": "abt"
+        },
+        "rows": [
+          {
+            "label": "hash",
+            "values": [
+              "aet: ['eat', 'tea', 'ate']",
+              "ant: ['tan', 'nat']",
+              "abt: ['bat']"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "写入 hash[abt]，当前组为 ['bat']。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "i": 5,
+          "str": "bat",
+          "key": "abt"
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea",
+              "ate"
+            ],
+            "ant": [
+              "tan",
+              "nat"
+            ],
+            "abt": [
+              "bat"
+            ]
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "49-trace-019",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "整理结果数组",
+      "body": "遍历 hash，把每个分组搬到结果中；此时分组已经全部建立。 易错提醒：哈希 key 必须可哈希： 排序后的 string 可直接作为 key；若用 array<int, 26> 计数，需要自定义哈希或编码成字符串。 计数数组维度： 题目限定小写字母，数组长度是 26。如果字符集扩展（如包含大写字母），数组长度需要调整。 空字符串处理： 空字符串 \"\" 排序后还是 \"\"，计数数组全为 0，这两种方法都能正确处…",
+      "kind": "hash-group",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash-group",
+        "badge": "结果 3 项",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "groups": 3
+        },
+        "rows": [
+          {
+            "label": "groups",
+            "values": [
+              "aet: ['eat', 'tea', 'ate']",
+              "ant: ['tan', 'nat']",
+              "abt: ['bat']"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[[eat, tea, ate], [tan, nat], [bat]]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "eat",
+            "tea",
+            "ate"
+          ],
+          [
+            "tan",
+            "nat"
+          ],
+          [
+            "bat"
+          ]
+        ],
+        "note": "遍历 hash，把每个分组搬到结果中；此时分组已经全部建立。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "groups": 3
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea",
+              "ate"
+            ],
+            "ant": [
+              "tan",
+              "nat"
+            ],
+            "abt": [
+              "bat"
+            ]
+          }
+        },
+        "result": [
+          [
+            "eat",
+            "tea",
+            "ate"
+          ],
+          [
+            "tan",
+            "nat"
+          ],
+          [
+            "bat"
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "49-trace-020",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 3 组异位词。",
+      "kind": "hash-group",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · hash-group",
+        "badge": "结果 3 项",
+        "tokens": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "groups": 3
+        },
+        "rows": [
+          {
+            "label": "groups",
+            "values": [
+              "aet: ['eat', 'tea', 'ate']",
+              "ant: ['tan', 'nat']",
+              "abt: ['bat']"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[[eat, tea, ate], [tan, nat], [bat]]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            "eat",
+            "tea",
+            "ate"
+          ],
+          [
+            "tan",
+            "nat"
+          ],
+          [
+            "bat"
+          ]
+        ],
+        "note": "返回 3 组异位词。"
+      },
+      "state": {
+        "values": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ],
+        "variables": {
+          "groups": 3
+        },
+        "structure": {
+          "hash": {
+            "aet": [
+              "eat",
+              "tea",
+              "ate"
+            ],
+            "ant": [
+              "tan",
+              "nat"
+            ],
+            "abt": [
+              "bat"
+            ]
+          }
+        },
+        "result": [
+          [
+            "eat",
+            "tea",
+            "ate"
+          ],
+          [
+            "tan",
+            "nat"
+          ],
+          [
+            "bat"
+          ]
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

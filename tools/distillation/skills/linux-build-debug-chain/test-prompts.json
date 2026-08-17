@@ -1,0 +1,16 @@
+{
+  "skill": "linux-build-debug-chain",
+  "version": "0.1.0",
+  "source_book": "大丙 Linux 教程（Subingwen 专栏）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"我的 Linux C++ 程序编译通过，但运行时报找不到 libcalc.so，怎么按证据排查？","expected_behavior":"应激活本 Skill，区分链接期与运行时加载期并给出最小检查链。","notes":"典型共享库加载问题。"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"Makefile 明明改了头文件却没有重新编译依赖它的目标，帮我定位构建图问题。","expected_behavior":"应激活本 Skill，检查目标—依赖—命令和增量/干净构建证据。","notes":"典型 Makefile 增量构建问题。"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"程序启动后 SIGSEGV，我想用 GDB 从回溯、局部变量和断点定位，不想先猜代码。","expected_behavior":"应激活本 Skill，先确认带调试信息的构建，再按运行期证据定位。","notes":"典型构建—调试链问题。"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"FreeRTOS 任务偶尔卡死，DMA 完成中断后任务没有醒，怎么排查？","expected_behavior":"不应激活本 Skill，应优先激活 rtos-communication-debugging。","notes":"跨域混淆诱饵：RTOS 通信排障。"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"U-Boot 能启动但 Linux 内核没有串口输出，应该从哪个启动阶段查？","expected_behavior":"不应激活本 Skill，应优先激活 embedded-arm-linux-boot-chain。","notes":"跨 Skill 混淆诱饵：ARM Linux 启动链。"},
+    {"id":"edge-01","type":"edge_case","prompt":"程序能编译和启动，但 epoll 服务器偶尔读到半包后解析失败，这是不是 GCC 的问题？","expected_behavior":"本 Skill只确认构建已通过后停止，转给 linux-socket-multiplexing-design 处理 framing/短读。","notes":"构建与运行时协议问题的边界。"}
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "静态预期：6/6；诱饵必须全部拒绝本 Skill。"
+}

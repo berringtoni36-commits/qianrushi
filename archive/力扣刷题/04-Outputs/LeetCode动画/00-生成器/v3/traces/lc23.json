@@ -1,0 +1,993 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "K 路归并小根堆",
+    "sceneKind": "heap",
+    "input": [
+      [
+        1,
+        4,
+        5
+      ],
+      [
+        1,
+        3,
+        4
+      ],
+      [
+        2,
+        6
+      ]
+    ],
+    "expected": [
+      1,
+      1,
+      2,
+      3,
+      4,
+      4,
+      5,
+      6
+    ],
+    "exampleText": "[[1,4,5],[1,3,4],[2,6]]",
+    "expectedText": "[1,1,2,3,4,4,5,6]",
+    "invariant": "堆中恰好保存每条未耗尽链的当前头",
+    "aha": "全局最小节点一定在各链头之中",
+    "time": "O(N log k)",
+    "space": "O(k)",
+    "problemId": 23,
+    "title": "合并 K 个升序链表",
+    "day": "Day 5：链表进阶",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "9b2bf624a9b3e91c5fc9ac7f9acca6f257ba0fe1add833919bc94c622d1b71e4",
+    "semanticTokenHash": "24215d11a9d5939ab78af3ab8424733a82bf2c33011cc1b9b8c6df3a567d1fdf",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "堆顶是所有未合并节点中的最小值。",
+        "review": "把三条链表头加入小根堆"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "k": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "把三条链表头加入小根堆",
+            "status": "running",
+            "heap": [
+              1,
+              1,
+              2
+            ],
+            "output": []
+          },
+          "caption": "堆顶是所有未合并节点中的最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "接入节点来自当前所有链头的最小值。",
+        "review": "[1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 0,
+              "value": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1]",
+            "action": "弹出并接入 1",
+            "status": "running",
+            "heap": [
+              1,
+              2
+            ],
+            "output": [
+              1
+            ]
+          },
+          "caption": "接入节点来自当前所有链头的最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每条链在堆中最多保留一个头节点。",
+        "review": "push 4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 0,
+              "next": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "push 4",
+            "action": "该链下一个值 4 入堆",
+            "status": "running",
+            "heap": [
+              1,
+              2,
+              4
+            ],
+            "output": [
+              1
+            ]
+          },
+          "caption": "每条链在堆中最多保留一个头节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "接入节点来自当前所有链头的最小值。",
+        "review": "[1, 1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 1,
+              "value": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1]",
+            "action": "弹出并接入 1",
+            "status": "running",
+            "heap": [
+              2,
+              4
+            ],
+            "output": [
+              1,
+              1
+            ]
+          },
+          "caption": "接入节点来自当前所有链头的最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每条链在堆中最多保留一个头节点。",
+        "review": "push 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 1,
+              "next": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "push 3",
+            "action": "该链下一个值 3 入堆",
+            "status": "running",
+            "heap": [
+              2,
+              3,
+              4
+            ],
+            "output": [
+              1,
+              1
+            ]
+          },
+          "caption": "每条链在堆中最多保留一个头节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "接入节点来自当前所有链头的最小值。",
+        "review": "[1, 1, 2]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 2,
+              "value": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1, 2]",
+            "action": "弹出并接入 2",
+            "status": "running",
+            "heap": [
+              3,
+              4
+            ],
+            "output": [
+              1,
+              1,
+              2
+            ]
+          },
+          "caption": "接入节点来自当前所有链头的最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每条链在堆中最多保留一个头节点。",
+        "review": "push 6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 2,
+              "next": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "push 6",
+            "action": "该链下一个值 6 入堆",
+            "status": "running",
+            "heap": [
+              3,
+              4,
+              6
+            ],
+            "output": [
+              1,
+              1,
+              2
+            ]
+          },
+          "caption": "每条链在堆中最多保留一个头节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "接入节点来自当前所有链头的最小值。",
+        "review": "[1, 1, 2, 3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 1,
+              "value": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1, 2, 3]",
+            "action": "弹出并接入 3",
+            "status": "running",
+            "heap": [
+              4,
+              6
+            ],
+            "output": [
+              1,
+              1,
+              2,
+              3
+            ]
+          },
+          "caption": "接入节点来自当前所有链头的最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每条链在堆中最多保留一个头节点。",
+        "review": "push 4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 1,
+              "next": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "push 4",
+            "action": "该链下一个值 4 入堆",
+            "status": "running",
+            "heap": [
+              4,
+              4,
+              6
+            ],
+            "output": [
+              1,
+              1,
+              2,
+              3
+            ]
+          },
+          "caption": "每条链在堆中最多保留一个头节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "接入节点来自当前所有链头的最小值。",
+        "review": "[1, 1, 2, 3, 4]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 0,
+              "value": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1, 2, 3, 4]",
+            "action": "弹出并接入 4",
+            "status": "running",
+            "heap": [
+              4,
+              6
+            ],
+            "output": [
+              1,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "caption": "接入节点来自当前所有链头的最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每条链在堆中最多保留一个头节点。",
+        "review": "push 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 0,
+              "next": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "push 5",
+            "action": "该链下一个值 5 入堆",
+            "status": "running",
+            "heap": [
+              4,
+              5,
+              6
+            ],
+            "output": [
+              1,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "caption": "每条链在堆中最多保留一个头节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "接入节点来自当前所有链头的最小值。",
+        "review": "[1, 1, 2, 3, 4, 4]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 1,
+              "value": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1, 2, 3, 4, 4]",
+            "action": "弹出并接入 4",
+            "status": "running",
+            "heap": [
+              5,
+              6
+            ],
+            "output": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4
+            ]
+          },
+          "caption": "接入节点来自当前所有链头的最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "接入节点来自当前所有链头的最小值。",
+        "review": "[1, 1, 2, 3, 4, 4, 5]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 0,
+              "value": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1, 2, 3, 4, 4, 5]",
+            "action": "弹出并接入 5",
+            "status": "running",
+            "heap": [
+              6
+            ],
+            "output": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4,
+              5
+            ]
+          },
+          "caption": "接入节点来自当前所有链头的最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 0,
+              "value": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1, 2, 3, 4, 4, 5]",
+            "action": "不变量检查 1",
+            "status": "running",
+            "heap": [
+              6
+            ],
+            "output": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4,
+              5
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "接入节点来自当前所有链头的最小值。",
+        "review": "[1, 1, 2, 3, 4, 4, 5, 6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              "[1, 4, 5]",
+              "[1, 3, 4]",
+              "[2, 6]"
+            ],
+            "variables": {
+              "list": 2,
+              "value": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 1, 2, 3, 4, 4, 5, 6]",
+            "action": "弹出并接入 6",
+            "status": "running",
+            "heap": [],
+            "output": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4,
+              5,
+              6
+            ]
+          },
+          "caption": "接入节点来自当前所有链头的最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "八个节点按升序全部接入。",
+        "review": "[1, 1, 2, 3, 4, 4, 5, 6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4,
+              5,
+              6
+            ],
+            "variables": {
+              "count": 8
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "formula": "[1, 1, 2, 3, 4, 4, 5, 6]",
+            "action": "返回合并序列",
+            "status": "return",
+            "heap": [],
+            "output": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4,
+              5,
+              6
+            ]
+          },
+          "caption": "八个节点按升序全部接入。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n\n    struct Cmp {  // 自定义比较器，小根堆\n        bool operator() (ListNode* a, ListNode* b) {\n            return a->val > b->val;  // 值越大优先级越低（小根堆）\n        }\n    };\n\n    ListNode* mergeKLists(vector<ListNode*>& lists) {\n        priority_queue<ListNode*, vector<ListNode*>, Cmp> heap;\n        auto dummy = new ListNode(-1), tail = dummy;\n        for (auto l : lists) if (l) heap.push(l);\n\n        while (heap.size()) {\n            auto t = heap.top();\n            heap.pop();\n\n            tail = tail->next = t;                               \n            if (t->next) heap.push(t->next);\n        }\n\n        return dummy->next;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1885,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1886,
+        "text": " * Definition for singly-linked list."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1887,
+        "text": " * struct ListNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1888,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1889,
+        "text": " *     ListNode *next;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1890,
+        "text": " *     ListNode(int x) : val(x), next(NULL) {}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1891,
+        "text": " * };"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1892,
+        "text": " */"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1893,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1894,
+        "text": "public:"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1895,
+        "text": ""
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1896,
+        "text": "    struct Cmp {  // 自定义比较器，小根堆"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1897,
+        "text": "        bool operator() (ListNode* a, ListNode* b) {"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1898,
+        "text": "            return a->val > b->val;  // 值越大优先级越低（小根堆）"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1899,
+        "text": "        }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1900,
+        "text": "    };"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1901,
+        "text": ""
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1902,
+        "text": "    ListNode* mergeKLists(vector<ListNode*>& lists) {"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1903,
+        "text": "        priority_queue<ListNode*, vector<ListNode*>, Cmp> heap;"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1904,
+        "text": "        auto dummy = new ListNode(-1), tail = dummy;"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1905,
+        "text": "        for (auto l : lists) if (l) heap.push(l);"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1906,
+        "text": ""
+      },
+      {
+        "id": "L23",
+        "sourceLine": 1907,
+        "text": "        while (heap.size()) {"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 1908,
+        "text": "            auto t = heap.top();"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 1909,
+        "text": "            heap.pop();"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 1910,
+        "text": ""
+      },
+      {
+        "id": "L27",
+        "sourceLine": 1911,
+        "text": "            tail = tail->next = t;                               "
+      },
+      {
+        "id": "L28",
+        "sourceLine": 1912,
+        "text": "            if (t->next) heap.push(t->next);"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 1913,
+        "text": "        }"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 1914,
+        "text": ""
+      },
+      {
+        "id": "L31",
+        "sourceLine": 1915,
+        "text": "        return dummy->next;"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 1916,
+        "text": "    }"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 1917,
+        "text": "};"
+      }
+    ]
+  }
+}

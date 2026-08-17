@@ -1,0 +1,11 @@
+# 人工来源边界覆盖规则；由 scripts/audit_vault.py 按精确匹配或最长前缀匹配应用。
+# disposition 不是知识真伪结论，而是该文件在蒸馏流水线中的身份/用途。
+pattern	match_type	disposition	confidence	reason
+小红书（RedNote）/。。。。。。。/媒体（Media）/	prefix	evidence-layer	high	第三方帖子图片/媒体；只作外部证据，不直接转成用户事实
+小红书（RedNote）/。。。。。。。/专辑（Albums）/	prefix	derived-index	high	RedNote 导出专辑索引；由收藏帖子派生，不重复计数
+小红书（RedNote）/。。。。。。。/收藏（Bookmarks）/	prefix	external-reference	medium	第三方外部参考；观点、经历、数字须标注作者并独立核验
+小红书（RedNote）/。。。。。。。/小红书内容总览.base	exact	derived-index	high	Obsidian Base 视图配置；不是知识正文
+resume-deepdive.skill	exact	external-archive	medium	根目录外部 Skill 压缩包；只审计成员哈希，未解包或安装
+zin3sgj2	exact	external-archive	medium	根目录外部 Skill 压缩包；与 resume-deepdive.skill 成员一致但未确认来源
+.DS_Store	exact	excluded-metadata	high	操作系统目录元数据；不属于学习资料
+测试.md	exact	needs-review	low	根目录临时笔记；未纳入知识域，等待用户确认是否保留

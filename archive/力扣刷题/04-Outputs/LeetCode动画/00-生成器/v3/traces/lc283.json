@@ -1,0 +1,648 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "读写指针稳定压缩",
+    "sceneKind": "array-pointers",
+    "input": [
+      0,
+      1,
+      0,
+      3,
+      12
+    ],
+    "expected": [
+      1,
+      3,
+      12,
+      0,
+      0
+    ],
+    "exampleText": "[0, 1, 0, 3, 12]",
+    "expectedText": "[1, 3, 12, 0, 0]",
+    "invariant": "nums[0:k) 始终是已扫描元素中的全部非零值",
+    "aha": "先覆盖写入非零前缀，再统一补零",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 283,
+    "title": "移动零",
+    "day": "Day 1：哈希 + 双指针",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "0ed84c94a24d5c016a1f11bf87fc064782b944bf33e19b0069063630ef7c0ea8",
+    "semanticTokenHash": "69653557d2415fb96c367c9cff371abf0aad0fae147262c40cd7c2c62f08f9f3",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "初始化写指针。",
+        "review": "k 指向下一个非零写入位置"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              0,
+              1,
+              0,
+              3,
+              12
+            ],
+            "variables": {
+              "scan": null,
+              "k": 0
+            },
+            "pointers": {
+              "k": 0
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k 指向下一个非零写入位置",
+            "status": "running"
+          },
+          "caption": "初始化写指针。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "扫描指针只决定当前值是否写入。",
+        "review": "0 != 0 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              0,
+              1,
+              0,
+              3,
+              12
+            ],
+            "variables": {
+              "scan": 0,
+              "k": 0,
+              "x": 0
+            },
+            "pointers": {
+              "scan": 0,
+              "k": 0
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "0 != 0 → False",
+            "action": "检查 nums[0]=0",
+            "status": "running"
+          },
+          "caption": "扫描指针只决定当前值是否写入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "扫描指针只决定当前值是否写入。",
+        "review": "1 != 0 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              0,
+              1,
+              0,
+              3,
+              12
+            ],
+            "variables": {
+              "scan": 1,
+              "k": 0,
+              "x": 1
+            },
+            "pointers": {
+              "scan": 1,
+              "k": 0
+            },
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1 != 0 → True",
+            "action": "检查 nums[1]=1",
+            "status": "running"
+          },
+          "caption": "扫描指针只决定当前值是否写入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "非零元素按原顺序写入前缀。",
+        "review": "nums[0]=1; k=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              1,
+              0,
+              3,
+              12
+            ],
+            "variables": {
+              "scan": 1,
+              "k": 1,
+              "x": 1
+            },
+            "pointers": {
+              "scan": 1,
+              "k": 1
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [
+              0
+            ],
+            "formula": "nums[0]=1; k=1",
+            "action": "把 1 写到位置 0",
+            "status": "running"
+          },
+          "caption": "非零元素按原顺序写入前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "扫描指针只决定当前值是否写入。",
+        "review": "0 != 0 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              1,
+              0,
+              3,
+              12
+            ],
+            "variables": {
+              "scan": 2,
+              "k": 1,
+              "x": 0
+            },
+            "pointers": {
+              "scan": 2,
+              "k": 1
+            },
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "0 != 0 → False",
+            "action": "检查 nums[2]=0",
+            "status": "running"
+          },
+          "caption": "扫描指针只决定当前值是否写入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "扫描指针只决定当前值是否写入。",
+        "review": "3 != 0 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              1,
+              0,
+              3,
+              12
+            ],
+            "variables": {
+              "scan": 3,
+              "k": 1,
+              "x": 3
+            },
+            "pointers": {
+              "scan": 3,
+              "k": 1
+            },
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "3 != 0 → True",
+            "action": "检查 nums[3]=3",
+            "status": "running"
+          },
+          "caption": "扫描指针只决定当前值是否写入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "非零元素按原顺序写入前缀。",
+        "review": "nums[1]=3; k=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              0,
+              3,
+              12
+            ],
+            "variables": {
+              "scan": 3,
+              "k": 2,
+              "x": 3
+            },
+            "pointers": {
+              "scan": 3,
+              "k": 2
+            },
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "nums[1]=3; k=2",
+            "action": "把 3 写到位置 1",
+            "status": "running"
+          },
+          "caption": "非零元素按原顺序写入前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "扫描指针只决定当前值是否写入。",
+        "review": "12 != 0 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              0,
+              3,
+              12
+            ],
+            "variables": {
+              "scan": 4,
+              "k": 2,
+              "x": 12
+            },
+            "pointers": {
+              "scan": 4,
+              "k": 2
+            },
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "12 != 0 → True",
+            "action": "检查 nums[4]=12",
+            "status": "running"
+          },
+          "caption": "扫描指针只决定当前值是否写入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "非零元素按原顺序写入前缀。",
+        "review": "nums[2]=12; k=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              12,
+              3,
+              12
+            ],
+            "variables": {
+              "scan": 4,
+              "k": 3,
+              "x": 12
+            },
+            "pointers": {
+              "scan": 4,
+              "k": 3
+            },
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "nums[2]=12; k=3",
+            "action": "把 12 写到位置 2",
+            "status": "running"
+          },
+          "caption": "非零元素按原顺序写入前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "非零前缀之后全部补零。",
+        "review": "nums[3]=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              12,
+              0,
+              12
+            ],
+            "variables": {
+              "k": 4
+            },
+            "pointers": {
+              "k": 3
+            },
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "formula": "nums[3]=0",
+            "action": "尾部位置 3 补 0",
+            "status": "running"
+          },
+          "caption": "非零前缀之后全部补零。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "非零前缀之后全部补零。",
+        "review": "nums[4]=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              12,
+              0,
+              0
+            ],
+            "variables": {
+              "k": 5
+            },
+            "pointers": {
+              "k": 4
+            },
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "formula": "nums[4]=0",
+            "action": "尾部位置 4 补 0",
+            "status": "running"
+          },
+          "caption": "非零前缀之后全部补零。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "非零相对顺序保持，零全部位于末尾。",
+        "review": "[1,3,12,0,0]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              12,
+              0,
+              0
+            ],
+            "variables": {
+              "k": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "formula": "[1,3,12,0,0]",
+            "action": "原地移动完成",
+            "status": "return",
+            "output": [
+              1,
+              3,
+              12,
+              0,
+              0
+            ]
+          },
+          "caption": "非零相对顺序保持，零全部位于末尾。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    void moveZeroes(vector<int>& nums) {\n        int k = 0;\n        for (auto x: nums)\n            if (x)\n                nums[k ++ ] = x;\n        while (k < nums.size()) nums[k ++ ] = 0;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 207,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 208,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 209,
+        "text": "    void moveZeroes(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 210,
+        "text": "        int k = 0;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 211,
+        "text": "        for (auto x: nums)"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 212,
+        "text": "            if (x)"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 213,
+        "text": "                nums[k ++ ] = x;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 214,
+        "text": "        while (k < nums.size()) nums[k ++ ] = 0;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 215,
+        "text": "    }"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 216,
+        "text": "};"
+      }
+    ]
+  }
+}

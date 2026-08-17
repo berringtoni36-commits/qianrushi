@@ -1,0 +1,51 @@
+{
+  "skill": "vision-model-tensor-contract-audit",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "请只基于 LSTR_ONNX/main.cpp 审计模型输入输出：Run 传了几个输入，input_shape_ 和 mask_shape_ 分别是什么，哪些 dtype/shape 仍需 ONNX 元数据确认？",
+      "expected_behavior": "激活本 Skill；逐条引用源码，区分两个 CreateTensor<float> 与 Run count=2、shape/rank 访问和未验证的 graph dtype/输入数量，不声称模型运行成功。",
+      "notes": "LSTR 双输入与证据等级"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "帮我核对 Unet_NCNN/src/unet.cpp 的 720x720 padding、归一化、HWC 到 CHW、in0/out0、argmax 和 result.jpg 输出契约。",
+      "expected_behavior": "激活本 Skill；按源码顺序给出输入布局/数值变换、NCNN blob 名称、输出 mask 的代码访问和后处理，同时标注模型真实 c/dtype 需要 .param 或运行时确认。",
+      "notes": "NCNN/Unet tensor contract"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "文档画了摄像头→LIME→Unet/LSTR→Qt。请审计给定源码后判断两条分支是否真的接入同一个主链，并列出 lstr_360x640.onnx、log_space.bin、图片和结果的相对路径。",
+      "expected_behavior": "激活本 Skill；分开独立 ONNX、集成 LSTR 和 Unet NCNN executable，建立有源码调用边与只有文档架构图的边，保守判定不能自动等同，并按当前源码报告路径。",
+      "notes": "主链真实性与路径边界"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "FT2000/4 没有 GPU，LIME 的 NEON、OpenMP、缓存局部性和模型量化怎样系统优化并用帧率证明收益？",
+      "expected_behavior": "不应优先激活本 Skill；应转 linux-vision-pipeline-and-optimization。若提到 tensor，只应作为性能链中的补充，不展开本 Skill 的 contract 审计。",
+      "notes": "诱饵：linux-vision-pipeline-and-optimization"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我准备这个 FT2000/4 Linux 视觉感知项目的一分钟面试介绍，重点讲 LIME、LSTR、Unet 和我的个人贡献。",
+      "expected_behavior": "不应优先激活本 Skill；应转 linux-vision-project-storytelling，输出面试叙事和贡献边界，而不是 tensor/path 审计表。",
+      "notes": "诱饵：linux-vision-project-storytelling"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我只有 4.1 和 4.3 两篇文档，没有源码、ONNX 文件、NCNN param/bin 或运行日志；能不能确认模型一定双输入、输出一定是 [N,2]/[N,8]，并且能正常加载？",
+      "expected_behavior": "可以解释文档声称的双输入与输出语义，但必须标为 D/待验证，不能确认实际 graph dtype、rank、文件存在或运行成功；应列出需要补充的源码、模型元数据、工作目录和日志。",
+      "notes": "证据不足边界"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3 条应触发、2 条跨 Skill 诱饵、1 条证据不足边界；本文件只定义测试，不声称完成真实客户端盲测。"
+}

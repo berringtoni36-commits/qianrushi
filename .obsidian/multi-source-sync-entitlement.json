@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "pluginId": "multi-source-sync",
+  "updatedAt": "2026-08-17T14:00:26.377Z",
+  "license": {
+    "authCode": "",
+    "status": "free",
+    "deviceId": "mss_3a2ee633a80046da67e435d314c63c5e",
+    "maxFreeItems": 100,
+    "syncedFreeCount": 100
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "skill": "embedded-c-struct-binary-contract-audit",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"这个 C struct 能不能直接映射 CAN 帧？sizeof、DLC、端序和 CRC 要怎么审计？","expected_behavior":"从外部帧字段表核对布局、长度、端序和校验，不直接相信内存映射","notes":"协议布局"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"用位域和 pragma pack 映射 STM32 寄存器是否安全？","expected_behavior":"检查 ABI 位序、字节对齐、访问宽度、volatile 和芯片手册偏移","notes":"寄存器映射"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"DMA 收到的 packed struct 偶发 HardFault，应该查哪些未对齐和所有权问题？","expected_behavior":"检查未对齐访问、sizeof/offsetof、DMA 缓存与显式解码","notes":"DMA 与布局"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"extern 后 multiple definition，Map 显示 RAM 超限，怎么查 .data/.bss？","expected_behavior":"优先使用 embedded-c-storage-linkage-audit","notes":"兄弟 Skill 混淆"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"长距离多节点通信该选 RS485、CAN 还是 SPI？","expected_behavior":"优先使用 embedded-bus-selection","notes":"总线选型"},
+    {"id":"edge-01","type":"edge_case","prompt":"只解释 sizeof 和 strlen 的区别，不涉及结构体二进制契约。","expected_behavior":"做普通 C 语言解释，不激活本 Skill","notes":"定义边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

@@ -1,5 +1,0 @@
-{"ts":1785807815109,"cat":"scan","lvl":"warn","msg":"stat returned null for \".obsidian/hotkeys.json\", skipping"}
-{"ts":1785807949981,"cat":"execute","lvl":"warn","msg":"download blocked — .obsidian/plugins/realclaudian/data.json local version no longer matches the scan expectation"}
-{"ts":1785808376538,"cat":"execute","lvl":"warn","msg":"reviewed action blocked — .obsidian/plugins/crisp-file-explorer-v0.2.21-letschips-share/data.json changed locally"}
-{"ts":1785808383212,"cat":"scan","lvl":"warn","msg":"stat returned null for \".obsidian/hotkeys.json\", skipping"}
-{"ts":1785808775013,"cat":"scan","lvl":"warn","msg":"stat returned null for \".obsidian/hotkeys.json\", skipping"}

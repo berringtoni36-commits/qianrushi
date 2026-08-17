@@ -1,0 +1,1690 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "后序状态位汇总",
+    "sceneKind": "tree-graph",
+    "input": "树根 3，p = 5，q = 1",
+    "expected": 3,
+    "exampleText": "树根 3，p = 5，q = 1",
+    "expectedText": "最近公共祖先 = 3",
+    "invariant": "dfs 返回当前子树是否包含 p/q 的两位掩码",
+    "aha": "首次汇总为 3 的节点就是最低公共祖先",
+    "time": "O(n)",
+    "space": "O(h)",
+    "problemId": 236,
+    "title": "二叉树的最近公共祖先",
+    "day": "Day 7：二叉树进阶",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "c0c50896fb758b32fb06c120bdf70ab0d2308dceb5a1a736ef0c4977cefccd89",
+    "semanticTokenHash": "49e1598f4803ced81ff0e85fe220f3e351ec9516523cabd37481b1463a1db80f",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "bit0 表示找到 p，bit1 表示找到 q。",
+        "review": "寻找 p=5 与 q=1 的状态位"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "n5",
+              "q": "n1",
+              "ans": null
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "寻找 p=5 与 q=1 的状态位",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "bit0 表示找到 p，bit1 表示找到 q。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "状态位由左右子树与当前节点按位或得到。",
+        "review": "state=00"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n6",
+              "state": 0,
+              "ans": null
+            },
+            "pointers": {},
+            "active": [
+              "n6"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "state=00",
+            "action": "节点 n6 汇总 state=0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "状态位由左右子树与当前节点按位或得到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "状态位由左右子树与当前节点按位或得到。",
+        "review": "state=00"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n7",
+              "state": 0,
+              "ans": null
+            },
+            "pointers": {},
+            "active": [
+              "n7"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "state=00",
+            "action": "节点 n7 汇总 state=0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "状态位由左右子树与当前节点按位或得到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "状态位由左右子树与当前节点按位或得到。",
+        "review": "state=00"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n4",
+              "state": 0,
+              "ans": null
+            },
+            "pointers": {},
+            "active": [
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "state=00",
+            "action": "节点 n4 汇总 state=0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "状态位由左右子树与当前节点按位或得到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "状态位由左右子树与当前节点按位或得到。",
+        "review": "state=00"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2",
+              "state": 0,
+              "ans": null
+            },
+            "pointers": {},
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "state=00",
+            "action": "节点 n2 汇总 state=0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "状态位由左右子树与当前节点按位或得到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "状态位由左右子树与当前节点按位或得到。",
+        "review": "state=01"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n5",
+              "state": 1,
+              "ans": null
+            },
+            "pointers": {},
+            "active": [
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "state=01",
+            "action": "节点 n5 汇总 state=1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "状态位由左右子树与当前节点按位或得到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "状态位由左右子树与当前节点按位或得到。",
+        "review": "state=00"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n0",
+              "state": 0,
+              "ans": null
+            },
+            "pointers": {},
+            "active": [
+              "n0"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "state=00",
+            "action": "节点 n0 汇总 state=0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "状态位由左右子树与当前节点按位或得到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "状态位由左右子树与当前节点按位或得到。",
+        "review": "state=00"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n8",
+              "state": 0,
+              "ans": null
+            },
+            "pointers": {},
+            "active": [
+              "n8"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "state=00",
+            "action": "节点 n8 汇总 state=0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "状态位由左右子树与当前节点按位或得到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "状态位由左右子树与当前节点按位或得到。",
+        "review": "state=10"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "state": 2,
+              "ans": null
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "state=10",
+            "action": "节点 n1 汇总 state=2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "状态位由左右子树与当前节点按位或得到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "状态位由左右子树与当前节点按位或得到。",
+        "review": "state=11"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3",
+              "state": 3,
+              "ans": null
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "state=11",
+            "action": "节点 n3 汇总 state=3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "状态位由左右子树与当前节点按位或得到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "后序首次同时包含 p、q 的节点最低。",
+        "review": "state=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3",
+              "state": 3,
+              "ans": "n3"
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n3"
+            ],
+            "formula": "state=3",
+            "action": "首次 state=3，LCA=n3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "后序首次同时包含 p、q 的节点最低。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "根 3 是首次同时覆盖两目标的节点。",
+        "review": "return 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "ans": "n3"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "n3"
+            ],
+            "formula": "return 3",
+            "action": "返回最近公共祖先 3",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n5",
+                "value": 5,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n0",
+                "value": 0,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n8",
+                "value": 8,
+                "level": 2,
+                "order": 3
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 3,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 3,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n5",
+                "to": "n6"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n1",
+                "to": "n8"
+              },
+              {
+                "from": "n2",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ],
+            "output": 3
+          },
+          "caption": "根 3 是首次同时覆盖两目标的节点。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    TreeNode* ans = NULL;\n\n    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {\n        dfs(root, p, q);\n        return ans;\n    }\n\n    int dfs(TreeNode* root, TreeNode* p, TreeNode* q) {          // 深度优先搜索\n        if (!root) return 0;\n        int state = dfs(root->left, p, q);  // 递归搜索左子树\n        if (root == p) state |= 1;  // 标记找到p(bit0)\n        else if (root == q) state |= 2;  // 标记找到q(bit1)\n        state |= dfs(root->right, p, q);\n        if (state == 3 && !ans) ans = root;  // state=3即p和q都找到，当前为LCA\n        return state;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2771,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2772,
+        "text": " * Definition for a binary tree node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2773,
+        "text": " * struct TreeNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2774,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2775,
+        "text": " *     TreeNode *left;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2776,
+        "text": " *     TreeNode *right;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2777,
+        "text": " *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2778,
+        "text": " * };"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2779,
+        "text": " */"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2780,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2781,
+        "text": "public:"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2782,
+        "text": "    TreeNode* ans = NULL;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2783,
+        "text": ""
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2784,
+        "text": "    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2785,
+        "text": "        dfs(root, p, q);"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2786,
+        "text": "        return ans;"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2787,
+        "text": "    }"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2788,
+        "text": ""
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2789,
+        "text": "    int dfs(TreeNode* root, TreeNode* p, TreeNode* q) {          // 深度优先搜索"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2790,
+        "text": "        if (!root) return 0;"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2791,
+        "text": "        int state = dfs(root->left, p, q);  // 递归搜索左子树"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2792,
+        "text": "        if (root == p) state |= 1;  // 标记找到p(bit0)"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 2793,
+        "text": "        else if (root == q) state |= 2;  // 标记找到q(bit1)"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 2794,
+        "text": "        state |= dfs(root->right, p, q);"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 2795,
+        "text": "        if (state == 3 && !ans) ans = root;  // state=3即p和q都找到，当前为LCA"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 2796,
+        "text": "        return state;"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 2797,
+        "text": "    }"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 2798,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "rednote-indexer",
+  "name": "RedNote Indexer",
+  "version": "0.2.0",
+  "minAppVersion": "1.5.0",
+  "description": "Formats RedNote source notes and refreshes the curated Xiaohongshu index after sync imports.",
+  "author": "Local",
+  "isDesktopOnly": true
+}

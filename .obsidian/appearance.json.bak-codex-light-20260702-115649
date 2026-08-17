@@ -1,9 +1,0 @@
-{
-  "theme": "moonstone",
-  "nativeMenus": false,
-  "baseFontSize": 16,
-  "cssTheme": "Typora-Vue",
-  "accentColor": "",
-  "baseFontSizeAction": true,
-  "enabledCssSnippets": []
-}

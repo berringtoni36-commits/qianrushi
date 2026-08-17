@@ -1,0 +1,2062 @@
+{
+  "problemId": 54,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 54,
+    "stepCount": 16,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "variables": {
+        "x": 2,
+        "y": 1,
+        "d": 1
+      },
+      "structure": {
+        "res": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4,
+          5
+        ],
+        "st": [
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ]
+        ]
+      },
+      "result": [
+        1,
+        2,
+        3,
+        6,
+        9,
+        8,
+        7,
+        4,
+        5
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "7c09bf93c9e4397b39aa7873c99220c1a6c024ca57381928ac2a6c82665784e3",
+    "sourceSemanticTokenHash": "ac6a10301e723c9196eb82babcc22e79bbc43f1bd60c6bd7a8829a93f5f108ca",
+    "sourceCodeLineCount": 27
+  },
+  "sourceCodeSha256": "7c09bf93c9e4397b39aa7873c99220c1a6c024ca57381928ac2a6c82665784e3",
+  "sourceSemanticTokenHash": "ac6a10301e723c9196eb82babcc22e79bbc43f1bd60c6bd7a8829a93f5f108ca",
+  "steps": [
+    {
+      "id": "54-trace-001",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "setup",
+      "title": "建立访问标记",
+      "body": "方向数组按右、下、左、上旋转；st 防止重复读取。 题解原意：核心洞察： 维护四个边界：top, bottom, left, right。按顺时针方向遍历四条边，每遍历一条边就将对应的边界收缩一格。 关键点在于：在遍历下边和左边之前，需要检查边界是否已经交叉，以防只剩一行或一列时重复遍历。 复杂度： O(m × n) 时间，O(1) 额外空间（输出数组不计）。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · grid",
+        "badge": "res",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "x": 0,
+          "y": 0,
+          "d": 0
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(0,0) →"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "方向数组按右、下、左、上旋转；st 防止重复读取。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "x": 0,
+          "y": 0,
+          "d": 0
+        },
+        "structure": {
+          "res": [],
+          "st": [
+            [
+              false,
+              false,
+              false
+            ],
+            [
+              false,
+              false,
+              false
+            ],
+            [
+              false,
+              false,
+              false
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "54-trace-002",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "读取 matrix[0][0] = 1",
+      "body": "按当前方向把元素加入结果，res 已有 1 个元素。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "结果 1 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "step": 0,
+          "x": 0,
+          "y": 0,
+          "d": 0
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(0,0)"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "按当前方向把元素加入结果，res 已有 1 个元素。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 0,
+          "x": 0,
+          "y": 0,
+          "d": 0
+        },
+        "structure": {
+          "res": [
+            1
+          ],
+          "st": [
+            [
+              true,
+              false,
+              false
+            ],
+            [
+              false,
+              false,
+              false
+            ],
+            [
+              false,
+              false,
+              false
+            ]
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "54-trace-003",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "读取 matrix[0][1] = 2",
+      "body": "按当前方向把元素加入结果，res 已有 2 个元素。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "结果 2 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "step": 1,
+          "x": 0,
+          "y": 1,
+          "d": 0
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(0,1)"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2
+        ],
+        "note": "按当前方向把元素加入结果，res 已有 2 个元素。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 1,
+          "x": 0,
+          "y": 1,
+          "d": 0
+        },
+        "structure": {
+          "res": [
+            1,
+            2
+          ],
+          "st": [
+            [
+              true,
+              true,
+              false
+            ],
+            [
+              false,
+              false,
+              false
+            ],
+            [
+              false,
+              false,
+              false
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "54-trace-004",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "读取 matrix[0][2] = 3",
+      "body": "按当前方向把元素加入结果，res 已有 3 个元素。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "结果 3 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "step": 2,
+          "x": 0,
+          "y": 2,
+          "d": 0
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(0,2)"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3
+        ],
+        "note": "按当前方向把元素加入结果，res 已有 3 个元素。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 2,
+          "x": 0,
+          "y": 2,
+          "d": 0
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              false,
+              false,
+              false
+            ],
+            [
+              false,
+              false,
+              false
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "54-trace-005",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "branch",
+      "title": "撞到边界，顺时针换向",
+      "body": "下一格越界或已访问，方向切到 d=1。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · grid",
+        "badge": "结果 3 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "step": 2,
+          "x": 0,
+          "y": 2,
+          "d": 1
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "direction",
+            "values": [
+              "d=1"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3
+        ],
+        "note": "下一格越界或已访问，方向切到 d=1。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 2,
+          "x": 0,
+          "y": 2,
+          "d": 1
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              false,
+              false,
+              false
+            ],
+            [
+              false,
+              false,
+              false
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "54-trace-006",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "读取 matrix[1][2] = 6",
+      "body": "按当前方向把元素加入结果，res 已有 4 个元素。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "结果 4 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "step": 3,
+          "x": 1,
+          "y": 2,
+          "d": 1
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3,
+              6
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(1,2)"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6
+        ],
+        "note": "按当前方向把元素加入结果，res 已有 4 个元素。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 3,
+          "x": 1,
+          "y": 2,
+          "d": 1
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              false,
+              false,
+              true
+            ],
+            [
+              false,
+              false,
+              false
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "54-trace-007",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "读取 matrix[2][2] = 9",
+      "body": "按当前方向把元素加入结果，res 已有 5 个元素。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "结果 5 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "step": 4,
+          "x": 2,
+          "y": 2,
+          "d": 1
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3,
+              6,
+              9
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(2,2)"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9
+        ],
+        "note": "按当前方向把元素加入结果，res 已有 5 个元素。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 4,
+          "x": 2,
+          "y": 2,
+          "d": 1
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6,
+            9
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              false,
+              false,
+              true
+            ],
+            [
+              false,
+              false,
+              true
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "54-trace-008",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "branch",
+      "title": "撞到边界，顺时针换向",
+      "body": "下一格越界或已访问，方向切到 d=2。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · grid",
+        "badge": "结果 5 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "step": 4,
+          "x": 2,
+          "y": 2,
+          "d": 2
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3,
+              6,
+              9
+            ]
+          },
+          {
+            "label": "direction",
+            "values": [
+              "d=2"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9
+        ],
+        "note": "下一格越界或已访问，方向切到 d=2。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 4,
+          "x": 2,
+          "y": 2,
+          "d": 2
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6,
+            9
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              false,
+              false,
+              true
+            ],
+            [
+              false,
+              false,
+              true
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "54-trace-009",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "读取 matrix[2][1] = 8",
+      "body": "按当前方向把元素加入结果，res 已有 6 个元素。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "结果 6 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "step": 5,
+          "x": 2,
+          "y": 1,
+          "d": 2
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(2,1)"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8
+        ],
+        "note": "按当前方向把元素加入结果，res 已有 6 个元素。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 5,
+          "x": 2,
+          "y": 1,
+          "d": 2
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6,
+            9,
+            8
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              false,
+              false,
+              true
+            ],
+            [
+              false,
+              true,
+              true
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "54-trace-010",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "读取 matrix[2][0] = 7",
+      "body": "按当前方向把元素加入结果，res 已有 7 个元素。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "结果 7 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "step": 6,
+          "x": 2,
+          "y": 0,
+          "d": 2
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(2,0)"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7
+        ],
+        "note": "按当前方向把元素加入结果，res 已有 7 个元素。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 6,
+          "x": 2,
+          "y": 0,
+          "d": 2
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6,
+            9,
+            8,
+            7
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              false,
+              false,
+              true
+            ],
+            [
+              true,
+              true,
+              true
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "54-trace-011",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "branch",
+      "title": "撞到边界，顺时针换向",
+      "body": "下一格越界或已访问，方向切到 d=3。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · grid",
+        "badge": "结果 7 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "step": 6,
+          "x": 2,
+          "y": 0,
+          "d": 3
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7
+            ]
+          },
+          {
+            "label": "direction",
+            "values": [
+              "d=3"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7
+        ],
+        "note": "下一格越界或已访问，方向切到 d=3。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 6,
+          "x": 2,
+          "y": 0,
+          "d": 3
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6,
+            9,
+            8,
+            7
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              false,
+              false,
+              true
+            ],
+            [
+              true,
+              true,
+              true
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "54-trace-012",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "读取 matrix[1][0] = 4",
+      "body": "按当前方向把元素加入结果，res 已有 8 个元素。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "结果 8 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "step": 7,
+          "x": 1,
+          "y": 0,
+          "d": 3
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7,
+              4
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(1,0)"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4
+        ],
+        "note": "按当前方向把元素加入结果，res 已有 8 个元素。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 7,
+          "x": 1,
+          "y": 0,
+          "d": 3
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6,
+            9,
+            8,
+            7,
+            4
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              true,
+              false,
+              true
+            ],
+            [
+              true,
+              true,
+              true
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "54-trace-013",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "branch",
+      "title": "撞到边界，顺时针换向",
+      "body": "下一格越界或已访问，方向切到 d=0。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · grid",
+        "badge": "结果 8 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "step": 7,
+          "x": 1,
+          "y": 0,
+          "d": 0
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7,
+              4
+            ]
+          },
+          {
+            "label": "direction",
+            "values": [
+              "d=0"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4
+        ],
+        "note": "下一格越界或已访问，方向切到 d=0。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 7,
+          "x": 1,
+          "y": 0,
+          "d": 0
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6,
+            9,
+            8,
+            7,
+            4
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              true,
+              false,
+              true
+            ],
+            [
+              true,
+              true,
+              true
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "54-trace-014",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "读取 matrix[1][1] = 5",
+      "body": "按当前方向把元素加入结果，res 已有 9 个元素。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "结果 9 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "step": 8,
+          "x": 1,
+          "y": 1,
+          "d": 0
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(1,1)"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4,
+          5
+        ],
+        "note": "按当前方向把元素加入结果，res 已有 9 个元素。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 8,
+          "x": 1,
+          "y": 1,
+          "d": 0
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6,
+            9,
+            8,
+            7,
+            4,
+            5
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              true,
+              true,
+              true
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "54-trace-015",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "branch",
+      "title": "撞到边界，顺时针换向",
+      "body": "下一格越界或已访问，方向切到 d=1。 易错提醒：下边和左边的边界检查：遍历完上边和右边后，top 和 right 已更新。在遍历下边前必须检查 top <= bottom（防止只剩一列时重复遍历），在遍历左边前必须检查 left <= right（防止只剩一行时重复遍历）。 range 的步长：从右到左遍历时 range(right, left-1, -1)，从下到上遍历时 range…",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · grid",
+        "badge": "结果 9 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "step": 8,
+          "x": 1,
+          "y": 1,
+          "d": 1
+        },
+        "rows": [
+          {
+            "label": "res",
+            "values": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "direction",
+            "values": [
+              "d=1"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4,
+          5
+        ],
+        "note": "下一格越界或已访问，方向切到 d=1。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "step": 8,
+          "x": 1,
+          "y": 1,
+          "d": 1
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6,
+            9,
+            8,
+            7,
+            4,
+            5
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              true,
+              true,
+              true
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4,
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "54-trace-016",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "螺旋读取完成：[1, 2, 3, 6, 9, 8, 7, 4, 5]。",
+      "kind": "grid",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · grid",
+        "badge": "结果 9 项",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "x": 2,
+          "y": 1,
+          "d": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7,
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4,
+          5
+        ],
+        "note": "螺旋读取完成：[1, 2, 3, 6, 9, 8, 7, 4, 5]。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "x": 2,
+          "y": 1,
+          "d": 1
+        },
+        "structure": {
+          "res": [
+            1,
+            2,
+            3,
+            6,
+            9,
+            8,
+            7,
+            4,
+            5
+          ],
+          "st": [
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              true,
+              true,
+              true
+            ],
+            [
+              true,
+              true,
+              true
+            ]
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4,
+          5
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

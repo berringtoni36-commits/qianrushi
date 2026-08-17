@@ -1,0 +1,947 @@
+{
+  "problemId": 124,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 124,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        -10,
+        9,
+        20,
+        null,
+        null,
+        15,
+        7
+      ],
+      "variables": {
+        "best": 42
+      },
+      "structure": {
+        "gain": {
+          "9": 9,
+          "15": 15,
+          "7": 7,
+          "20": 35,
+          "-10": 25
+        }
+      },
+      "result": [
+        42
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "faffeaf4c5fa54b8cb51c0c73cbda16be447d7c842846a21280491868e5a4f4e",
+    "sourceSemanticTokenHash": "fb5fee46b78134881d25548e51b3d58fd08fdbe38577a0837eebbace654fc47b",
+    "sourceCodeLineCount": 26
+  },
+  "sourceCodeSha256": "faffeaf4c5fa54b8cb51c0c73cbda16be447d7c842846a21280491868e5a4f4e",
+  "sourceSemanticTokenHash": "fb5fee46b78134881d25548e51b3d58fd08fdbe38577a0837eebbace654fc47b",
+  "steps": [
+    {
+      "id": "124-trace-001",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "setup",
+      "title": "后序计算最大路径和",
+      "body": "每个节点向上只保留一条最大贡献路径，但经过该节点的左右贡献可以同时计入全局答案。 题解原意：核心思想： 每个节点可以计算两个值： 1. 经过当前节点的最大路径和 = max(0, 左子树贡献) + node.val + max(0, 右子树贡献)。这是「拐弯」路径，用于更新全局最大值。 2. 当前节点的单边最大贡献 = node.val + max(max(0, 左子树贡献), max(0, 右子树贡献))。这是「不拐弯」的路径，向上返回给父节点使用。父节点只能选择一条子树路径来延伸。 为什么用后序？ 要计…",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "best=-1000000000",
+        "tokens": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "best": -1000000000
+        },
+        "rows": [
+          {
+            "label": "tree",
+            "values": [
+              -10,
+              9,
+              20,
+              null,
+              null,
+              15,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "每个节点向上只保留一条最大贡献路径，但经过该节点的左右贡献可以同时计入全局答案。"
+      },
+      "state": {
+        "values": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "best": -1000000000
+        },
+        "structure": {
+          "tree": [
+            -10,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "124-trace-002",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "update",
+      "title": "处理节点 9",
+      "body": "向上贡献 gain=9，穿过当前节点的路径和=9，best=9。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "left=0 · right=0 · best=9",
+        "tokens": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "node": 9,
+          "left": 0,
+          "right": 0,
+          "gain": 9,
+          "best": 9
+        },
+        "rows": [
+          {
+            "label": "gain",
+            "values": [
+              "9:9"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              9
+            ]
+          }
+        ],
+        "result": [],
+        "note": "向上贡献 gain=9，穿过当前节点的路径和=9，best=9。"
+      },
+      "state": {
+        "values": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 9,
+          "left": 0,
+          "right": 0,
+          "gain": 9,
+          "best": 9
+        },
+        "structure": {
+          "tree": [
+            -10,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "gain": {
+            "9": 9
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "124-trace-003",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "update",
+      "title": "处理节点 15",
+      "body": "向上贡献 gain=15，穿过当前节点的路径和=15，best=15。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "left=0 · right=0 · best=15",
+        "tokens": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "node": 15,
+          "left": 0,
+          "right": 0,
+          "gain": 15,
+          "best": 15
+        },
+        "rows": [
+          {
+            "label": "gain",
+            "values": [
+              "9:9",
+              "15:15"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              15
+            ]
+          }
+        ],
+        "result": [],
+        "note": "向上贡献 gain=15，穿过当前节点的路径和=15，best=15。"
+      },
+      "state": {
+        "values": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 15,
+          "left": 0,
+          "right": 0,
+          "gain": 15,
+          "best": 15
+        },
+        "structure": {
+          "tree": [
+            -10,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "gain": {
+            "9": 9,
+            "15": 15
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "124-trace-004",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "update",
+      "title": "处理节点 7",
+      "body": "向上贡献 gain=7，穿过当前节点的路径和=7，best=15。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "left=0 · right=0 · best=15",
+        "tokens": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "node": 7,
+          "left": 0,
+          "right": 0,
+          "gain": 7,
+          "best": 15
+        },
+        "rows": [
+          {
+            "label": "gain",
+            "values": [
+              "9:9",
+              "15:15",
+              "7:7"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              15
+            ]
+          }
+        ],
+        "result": [],
+        "note": "向上贡献 gain=7，穿过当前节点的路径和=7，best=15。"
+      },
+      "state": {
+        "values": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 7,
+          "left": 0,
+          "right": 0,
+          "gain": 7,
+          "best": 15
+        },
+        "structure": {
+          "tree": [
+            -10,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "gain": {
+            "9": 9,
+            "15": 15,
+            "7": 7
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "124-trace-005",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "update",
+      "title": "处理节点 20",
+      "body": "向上贡献 gain=35，穿过当前节点的路径和=42，best=42。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "left=15 · right=7 · best=42",
+        "tokens": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 20,
+          "left": 15,
+          "right": 7,
+          "gain": 35,
+          "best": 42
+        },
+        "rows": [
+          {
+            "label": "gain",
+            "values": [
+              "9:9",
+              "15:15",
+              "7:7",
+              "20:35"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              42
+            ]
+          }
+        ],
+        "result": [],
+        "note": "向上贡献 gain=35，穿过当前节点的路径和=42，best=42。"
+      },
+      "state": {
+        "values": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 20,
+          "left": 15,
+          "right": 7,
+          "gain": 35,
+          "best": 42
+        },
+        "structure": {
+          "tree": [
+            -10,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "gain": {
+            "9": 9,
+            "15": 15,
+            "7": 7,
+            "20": 35
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "124-trace-006",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "update",
+      "title": "处理节点 -10",
+      "body": "向上贡献 gain=25，穿过当前节点的路径和=34，best=42。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "left=9 · right=35 · best=42 · 结果 1 项",
+        "tokens": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": -10,
+          "left": 9,
+          "right": 35,
+          "gain": 25,
+          "best": 42
+        },
+        "rows": [
+          {
+            "label": "gain",
+            "values": [
+              "9:9",
+              "15:15",
+              "7:7",
+              "20:35",
+              "-10:25"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              42
+            ]
+          }
+        ],
+        "result": [
+          42
+        ],
+        "note": "向上贡献 gain=25，穿过当前节点的路径和=34，best=42。"
+      },
+      "state": {
+        "values": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": -10,
+          "left": 9,
+          "right": 35,
+          "gain": 25,
+          "best": 42
+        },
+        "structure": {
+          "tree": [
+            -10,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "gain": {
+            "9": 9,
+            "15": 15,
+            "7": 7,
+            "20": 35,
+            "-10": 25
+          }
+        },
+        "result": [
+          42
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "124-trace-check-008",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大路径和为 42。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "left=9 · right=35 · best=42 · 结果 1 项",
+        "tokens": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": -10,
+          "left": 9,
+          "right": 35,
+          "gain": 25,
+          "best": 42
+        },
+        "rows": [
+          {
+            "label": "gain",
+            "values": [
+              "9:9",
+              "15:15",
+              "7:7",
+              "20:35",
+              "-10:25"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              42
+            ]
+          }
+        ],
+        "result": [
+          42
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大路径和为 42。"
+      },
+      "state": {
+        "values": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": -10,
+          "left": 9,
+          "right": 35,
+          "gain": 25,
+          "best": 42
+        },
+        "structure": {
+          "tree": [
+            -10,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "gain": {
+            "9": 9,
+            "15": 15,
+            "7": 7,
+            "20": 35,
+            "-10": 25
+          }
+        },
+        "result": [
+          42
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "124-trace-check-009",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大路径和为 42。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "left=9 · right=35 · best=42 · 结果 1 项",
+        "tokens": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": -10,
+          "left": 9,
+          "right": 35,
+          "gain": 25,
+          "best": 42
+        },
+        "rows": [
+          {
+            "label": "gain",
+            "values": [
+              "9:9",
+              "15:15",
+              "7:7",
+              "20:35",
+              "-10:25"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              42
+            ]
+          }
+        ],
+        "result": [
+          42
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大路径和为 42。"
+      },
+      "state": {
+        "values": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": -10,
+          "left": 9,
+          "right": 35,
+          "gain": 25,
+          "best": 42
+        },
+        "structure": {
+          "tree": [
+            -10,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "gain": {
+            "9": 9,
+            "15": 15,
+            "7": 7,
+            "20": 35,
+            "-10": 25
+          }
+        },
+        "result": [
+          42
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "124-trace-check-010",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大路径和为 42。 易错提醒：max_sum 初始化为负无穷： 因为节点值可能全为负数，最大路径和可能是负数。如果初始化为 0，当所有路径和为负时会返回 0（错误）。必须用 LLONG_MIN。 舍弃负贡献： max(dfs(node.left), 0) 中的 max(..., 0) 是核心——如果子树的贡献是负数，就不走那一边。这是路径和问题与直径问题最大的区别（直…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "left=9 · right=35 · best=42 · 结果 1 项",
+        "tokens": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": -10,
+          "left": 9,
+          "right": 35,
+          "gain": 25,
+          "best": 42
+        },
+        "rows": [
+          {
+            "label": "gain",
+            "values": [
+              "9:9",
+              "15:15",
+              "7:7",
+              "20:35",
+              "-10:25"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              42
+            ]
+          }
+        ],
+        "result": [
+          42
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大路径和为 42。"
+      },
+      "state": {
+        "values": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": -10,
+          "left": 9,
+          "right": 35,
+          "gain": 25,
+          "best": 42
+        },
+        "structure": {
+          "tree": [
+            -10,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "gain": {
+            "9": 9,
+            "15": 15,
+            "7": 7,
+            "20": 35,
+            "-10": 25
+          }
+        },
+        "result": [
+          42
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "124-trace-007",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最大路径和为 42。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "best=42 · 结果 1 项",
+        "tokens": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "best": 42
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              42
+            ]
+          }
+        ],
+        "result": [
+          42
+        ],
+        "note": "最大路径和为 42。"
+      },
+      "state": {
+        "values": [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "best": 42
+        },
+        "structure": {
+          "gain": {
+            "9": 9,
+            "15": 15,
+            "7": 7,
+            "20": 35,
+            "-10": 25
+          }
+        },
+        "result": [
+          42
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

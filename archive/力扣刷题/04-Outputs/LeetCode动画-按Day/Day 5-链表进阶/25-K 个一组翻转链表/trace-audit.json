@@ -1,0 +1,859 @@
+{
+  "problemId": 25,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 25,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "variables": {
+        "k": 2
+      },
+      "structure": {
+        "list": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ]
+      },
+      "result": [
+        2,
+        1,
+        4,
+        3,
+        5
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "1a94a9c0d3c7ec0f28f7191cbb59641ca17034e38529f021c746dafbb574eed0",
+    "sourceSemanticTokenHash": "ece52aa174d93c638204f41870db5fb78efba23e30d87569953109f890e8bc8f",
+    "sourceCodeLineCount": 30
+  },
+  "sourceCodeSha256": "1a94a9c0d3c7ec0f28f7191cbb59641ca17034e38529f021c746dafbb574eed0",
+  "sourceSemanticTokenHash": "ece52aa174d93c638204f41870db5fb78efba23e30d87569953109f890e8bc8f",
+  "steps": [
+    {
+      "id": "25-trace-001",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "setup",
+      "title": "建立分组翻转框架",
+      "body": "先检查剩余节点是否足够 k 个，再只翻转完整分组。 题解原意：为什么这样想： 将问题拆分成三个子问题： 1. 检测当前是否还有 K 个节点（不够则直接返回） 2. 翻转一个长度为 K 的子链表（复用 206 题的反转逻辑） 3. 组间重连（将翻转后的组正确地接入主链） 关键洞察： 翻转 K 个节点前，需要记录四个关键位置：前驱节点 pre、当前组头节点 group_head、当前组尾节点（即原 group_head，翻转后变成尾）、下一组的头节点 next_group。翻转后…",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "group": 0
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "先检查剩余节点是否足够 k 个，再只翻转完整分组。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "group": 0
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "25-trace-002",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "inspect",
+      "title": "确认分组 [0,2)",
+      "body": "当前分组 [1, 2]，长度达到 k=2。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          0,
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "group": 0,
+          "end": 2
+        },
+        "rows": [
+          {
+            "label": "group",
+            "values": [
+              1,
+              2
+            ]
+          },
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前分组 [1, 2]，长度达到 k=2。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "group": 0,
+          "end": 2
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "25-trace-003",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "翻转分组 [2, 1]",
+      "body": "完整 k 组原地翻转，链表变为 [2, 1, 3, 4, 5]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 5 项",
+        "tokens": [
+          2,
+          1,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          0,
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "group": 0,
+          "end": 2
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              2,
+              1,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "group",
+            "values": [
+              2,
+              1
+            ]
+          }
+        ],
+        "result": [
+          2,
+          1,
+          3,
+          4,
+          5
+        ],
+        "note": "完整 k 组原地翻转，链表变为 [2, 1, 3, 4, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "group": 0,
+          "end": 2
+        },
+        "structure": {
+          "list": [
+            2,
+            1,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [
+          2,
+          1,
+          3,
+          4,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "25-trace-004",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "inspect",
+      "title": "确认分组 [2,4)",
+      "body": "当前分组 [3, 4]，长度达到 k=2。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · linked",
+        "badge": "list",
+        "tokens": [
+          2,
+          1,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "group": 2,
+          "end": 4
+        },
+        "rows": [
+          {
+            "label": "group",
+            "values": [
+              3,
+              4
+            ]
+          },
+          {
+            "label": "list",
+            "values": [
+              2,
+              1,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前分组 [3, 4]，长度达到 k=2。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "group": 2,
+          "end": 4
+        },
+        "structure": {
+          "list": [
+            2,
+            1,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "25-trace-005",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "翻转分组 [4, 3]",
+      "body": "完整 k 组原地翻转，链表变为 [2, 1, 4, 3, 5]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 5 项",
+        "tokens": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "active": [
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "group": 2,
+          "end": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              2,
+              1,
+              4,
+              3,
+              5
+            ]
+          },
+          {
+            "label": "group",
+            "values": [
+              4,
+              3
+            ]
+          }
+        ],
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "note": "完整 k 组原地翻转，链表变为 [2, 1, 4, 3, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "group": 2,
+          "end": 4
+        },
+        "structure": {
+          "list": [
+            2,
+            1,
+            4,
+            3,
+            5
+          ]
+        },
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "25-trace-006",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "boundary",
+      "title": "剩余节点不足一组",
+      "body": "剩余 [5] 不足 k 个，保持原顺序。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "boundary · linked",
+        "badge": "结果 5 项",
+        "tokens": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "group": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              2,
+              1,
+              4,
+              3,
+              5
+            ]
+          }
+        ],
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "note": "剩余 [5] 不足 k 个，保持原顺序。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "group": 4
+        },
+        "structure": {
+          "list": [
+            2,
+            1,
+            4,
+            3,
+            5
+          ]
+        },
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "25-trace-check-008",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 K 组翻转结果 [2, 1, 4, 3, 5]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 5 项",
+        "tokens": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "group": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              2,
+              1,
+              4,
+              3,
+              5
+            ]
+          }
+        ],
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 K 组翻转结果 [2, 1, 4, 3, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "group": 4
+        },
+        "structure": {
+          "list": [
+            2,
+            1,
+            4,
+            3,
+            5
+          ]
+        },
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "25-trace-check-009",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 K 组翻转结果 [2, 1, 4, 3, 5]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 5 项",
+        "tokens": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "group": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              2,
+              1,
+              4,
+              3,
+              5
+            ]
+          }
+        ],
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 K 组翻转结果 [2, 1, 4, 3, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "group": 4
+        },
+        "structure": {
+          "list": [
+            2,
+            1,
+            4,
+            3,
+            5
+          ]
+        },
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "25-trace-check-010",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 K 组翻转结果 [2, 1, 4, 3, 5]。 易错提醒：不足 K 个的处理： 剩余不足 K 个时保持原序，不能翻转。检查时机是翻转之前 组间连接： 翻转后 group_head->next 必须指向 next_group，否则链表会在组间断裂 pre 的更新： 每次处理完一组后，pre 要更新为 group_head（翻转后的组尾），它是下一组的前驱 dummy.next 的返回： 必须返回…",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 5 项",
+        "tokens": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "group": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              2,
+              1,
+              4,
+              3,
+              5
+            ]
+          }
+        ],
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 K 组翻转结果 [2, 1, 4, 3, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "group": 4
+        },
+        "structure": {
+          "list": [
+            2,
+            1,
+            4,
+            3,
+            5
+          ]
+        },
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "25-trace-007",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 K 组翻转结果 [2, 1, 4, 3, 5]。",
+      "kind": "linked",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · linked",
+        "badge": "结果 5 项",
+        "tokens": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2,
+              1,
+              4,
+              3,
+              5
+            ]
+          }
+        ],
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "note": "返回 K 组翻转结果 [2, 1, 4, 3, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2
+        },
+        "structure": {
+          "list": [
+            2,
+            1,
+            4,
+            3,
+            5
+          ]
+        },
+        "result": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

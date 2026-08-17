@@ -1,0 +1,22 @@
+{
+  "question": "Q001",
+  "topic": "static",
+  "local_static": [
+    {"phase": "recall", "cnt": null, "output": null},
+    {"phase": "declaration", "cnt": 0, "output": null},
+    {"phase": "first_call", "cnt": 1, "output": 1},
+    {"phase": "second_call", "cnt": 2, "output": 2},
+    {"phase": "third_call", "cnt": 3, "output": 3},
+    {"phase": "recap", "cnt": 3, "output": "1, 2, 3"}
+  ],
+  "class_static_member": [
+    {"phase": "recall", "object_count": 0, "shared_count": 0},
+    {"phase": "class_storage", "object_count": 0, "shared_count": 0},
+    {"phase": "object_a", "object_count": 1, "shared_count": 1},
+    {"phase": "object_b", "object_count": 2, "shared_count": 2}
+  ],
+  "memory_mapping": [
+    {"declaration": "static int x = 10;", "segment": ".data"},
+    {"declaration": "static int y;", "segment": ".bss"}
+  ]
+}

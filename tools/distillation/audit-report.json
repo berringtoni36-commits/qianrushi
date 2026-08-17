@@ -1,0 +1,2523 @@
+{
+  "vault": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi",
+  "generated_from": "current filesystem",
+  "skill_delivery_scope": "user/.zcode/skills (ZCode user scope only)",
+  "record_count": 7146,
+  "class_counts": {
+    "other-binary-or-config": 41,
+    "knowledge-document": 1193,
+    "attachment-evidence": 5042,
+    "code-or-config": 425,
+    "derived-backup": 6,
+    "build-artifact": 439
+  },
+  "domain_counts": {
+    "vault-root-or-unknown": 6,
+    "algorithm-pdf": 1,
+    "leetcode-algorithm-learning": 141,
+    "linux-systems-tutorial": 47,
+    "attachments-evidence": 3026,
+    "linux-memory-ebpf": 47,
+    "rtos-project": 460,
+    "linux-vision": 959,
+    "embedded-core": 132,
+    "vault-methodology-and-tools": 8,
+    "rednote-bookmarks": 1952,
+    "workbench-learning-state": 367
+  },
+  "skill_audit": {
+    "skill_count": 56,
+    "source_path_count": 434,
+    "unique_source_path_count": 265,
+    "errors": []
+  },
+  "pressure_matrix": {
+    "path": "distillation/skill-pressure-test-matrix.md",
+    "row_count": 56,
+    "duplicate_rows": [],
+    "missing_skills": [],
+    "extra_rows": [],
+    "errors": []
+  },
+  "skill_indexes": {
+    "indexes": {
+      "embedded-core": {
+        "expected": 14,
+        "linked": 17,
+        "duplicates": [],
+        "missing": [],
+        "extra": [
+          "linux-udp-broadcast-reachability-contract",
+          "linux-udp-datagram-endpoint-routing",
+          "linux-udp-multicast-interface-membership-contract"
+        ],
+        "unknown": []
+      },
+      "interactive-learning-labs": {
+        "expected": 1,
+        "linked": 1,
+        "duplicates": [],
+        "missing": [],
+        "extra": [],
+        "unknown": []
+      },
+      "leetcode-algorithm-learning": {
+        "expected": 3,
+        "linked": 3,
+        "duplicates": [],
+        "missing": [],
+        "extra": [],
+        "unknown": []
+      },
+      "linux-memory-ebpf": {
+        "expected": 5,
+        "linked": 5,
+        "duplicates": [],
+        "missing": [],
+        "extra": [],
+        "unknown": []
+      },
+      "linux-systems-tutorial": {
+        "expected": 9,
+        "linked": 9,
+        "duplicates": [],
+        "missing": [],
+        "extra": [],
+        "unknown": []
+      },
+      "linux-vision": {
+        "expected": 9,
+        "linked": 9,
+        "duplicates": [],
+        "missing": [],
+        "extra": [],
+        "unknown": []
+      },
+      "rtos-project": {
+        "expected": 13,
+        "linked": 13,
+        "duplicates": [],
+        "missing": [],
+        "extra": [],
+        "unknown": []
+      },
+      "vault-methodology-and-tools": {
+        "expected": 1,
+        "linked": 1,
+        "duplicates": [],
+        "missing": [],
+        "extra": [],
+        "unknown": []
+      },
+      "workbench-learning-state": {
+        "expected": 1,
+        "linked": 1,
+        "duplicates": [],
+        "missing": [],
+        "extra": [],
+        "unknown": []
+      }
+    },
+    "errors": []
+  },
+  "pipeline_state_counts": {
+    "baseline": 56,
+    "declared_baseline": 56,
+    "domains": {
+      "embedded-core": {
+        "expected": 14,
+        "declared": 14,
+        "path": "distillation/embedded-core/PIPELINE_STATE.md"
+      },
+      "interactive-learning-labs": {
+        "expected": 1,
+        "declared": 1,
+        "path": "distillation/interactive-learning-labs/PIPELINE_STATE.md"
+      },
+      "leetcode-algorithm-learning": {
+        "expected": 3,
+        "declared": 3,
+        "path": "distillation/leetcode-algorithm-learning/PIPELINE_STATE.md"
+      },
+      "linux-memory-ebpf": {
+        "expected": 5,
+        "declared": 5,
+        "path": "distillation/linux-memory-ebpf/PIPELINE_STATE.md"
+      },
+      "linux-systems-tutorial": {
+        "expected": 9,
+        "declared": 9,
+        "path": "distillation/linux-systems-tutorial/PIPELINE_STATE.md"
+      },
+      "linux-vision": {
+        "expected": 9,
+        "declared": 9,
+        "path": "distillation/linux-vision/PIPELINE_STATE.md"
+      },
+      "rtos-project": {
+        "expected": 13,
+        "declared": 13,
+        "path": "distillation/rtos-project/PIPELINE_STATE.md"
+      },
+      "vault-methodology-and-tools": {
+        "expected": 1,
+        "declared": 1,
+        "path": "distillation/vault-methodology-and-tools/PIPELINE_STATE.md"
+      },
+      "workbench-learning-state": {
+        "expected": 1,
+        "declared": 1,
+        "path": "distillation/workbench-learning-state/PIPELINE_STATE.md"
+      }
+    },
+    "errors": []
+  },
+  "source_symbols": {
+    "skill_count": 56,
+    "symbol_count": 765,
+    "exact": 705,
+    "qualified_leaf": 17,
+    "review_label": 43,
+    "path": "distillation/source-symbol-audit.tsv"
+  },
+  "coverage": {
+    "algorithm-pdf": {
+      "files": 1,
+      "knowledge_documents": 1,
+      "skill_evidence": 0,
+      "domain_referenced": 1,
+      "domain_scoped": 0,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 0
+    },
+    "attachments-evidence": {
+      "files": 3026,
+      "knowledge_documents": 0,
+      "skill_evidence": 0,
+      "domain_referenced": 0,
+      "domain_scoped": 0,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 3026
+    },
+    "embedded-core": {
+      "files": 132,
+      "knowledge_documents": 127,
+      "skill_evidence": 46,
+      "domain_referenced": 0,
+      "domain_scoped": 81,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 5
+    },
+    "leetcode-algorithm-learning": {
+      "files": 141,
+      "knowledge_documents": 140,
+      "skill_evidence": 17,
+      "domain_referenced": 7,
+      "domain_scoped": 117,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 0
+    },
+    "linux-memory-ebpf": {
+      "files": 47,
+      "knowledge_documents": 30,
+      "skill_evidence": 25,
+      "domain_referenced": 0,
+      "domain_scoped": 13,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 9
+    },
+    "linux-systems-tutorial": {
+      "files": 47,
+      "knowledge_documents": 47,
+      "skill_evidence": 25,
+      "domain_referenced": 1,
+      "domain_scoped": 21,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 0
+    },
+    "linux-vision": {
+      "files": 959,
+      "knowledge_documents": 49,
+      "skill_evidence": 57,
+      "domain_referenced": 11,
+      "domain_scoped": 292,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 599
+    },
+    "rednote-bookmarks": {
+      "files": 1952,
+      "knowledge_documents": 391,
+      "skill_evidence": 0,
+      "domain_referenced": 392,
+      "domain_scoped": 0,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 1560
+    },
+    "rtos-project": {
+      "files": 460,
+      "knowledge_documents": 35,
+      "skill_evidence": 78,
+      "domain_referenced": 1,
+      "domain_scoped": 115,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 266
+    },
+    "vault-methodology-and-tools": {
+      "files": 8,
+      "knowledge_documents": 5,
+      "skill_evidence": 7,
+      "domain_referenced": 1,
+      "domain_scoped": 0,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 0
+    },
+    "vault-root-or-unknown": {
+      "files": 6,
+      "knowledge_documents": 2,
+      "skill_evidence": 0,
+      "domain_referenced": 0,
+      "domain_scoped": 0,
+      "indexed_only": 0,
+      "needs_domain_review": 6,
+      "evidence_layer": 0
+    },
+    "workbench-learning-state": {
+      "files": 367,
+      "knowledge_documents": 366,
+      "skill_evidence": 8,
+      "domain_referenced": 359,
+      "domain_scoped": 0,
+      "indexed_only": 0,
+      "needs_domain_review": 0,
+      "evidence_layer": 0
+    }
+  },
+  "clients": {
+    "zcode": {
+      "same": 56,
+      "different": 0,
+      "missing": 0
+    }
+  },
+  "client_skill_audit": {
+    "path": "distillation/client-skill-audit.tsv",
+    "markdown_path": "distillation/client-skill-audit.md",
+    "active_clients": [
+      "zcode"
+    ],
+    "row_count": 56,
+    "difference_kinds": {
+      "zcode": {
+        "same": 56
+      }
+    }
+  },
+  "skill_trigger_index": {
+    "path": "distillation/skill-trigger-index.md",
+    "json_path": "distillation/skill-trigger-index.json",
+    "related_path": "distillation/skill-related-index.md",
+    "related_json_path": "distillation/skill-related-index.json",
+    "skill_count": 56,
+    "domain_count": 9,
+    "canonical_edge_count": 181,
+    "external_edge_count": 2,
+    "relation_errors": []
+  },
+  "mixed_intent_matrix": {
+    "path": "distillation/skill-mixed-intent-matrix.json",
+    "markdown_path": "distillation/skill-mixed-intent-matrix.md",
+    "case_count": 12,
+    "duplicate_ids": [],
+    "errors": [],
+    "live_hit_rate_measured": false
+  },
+  "provenance_audit": {
+    "reports": {
+      "rtos": {
+        "domain": "rtos-project",
+        "json_path": "distillation/rtos-project/artifact-provenance.json",
+        "markdown_path": "distillation/rtos-project/artifact-provenance.md",
+        "json_exists": true,
+        "markdown_exists": true,
+        "json_parseable": true,
+        "source_count": 8,
+        "source_missing": [],
+        "matrix_ids": [],
+        "status_counts": {
+          "pass": 1,
+          "static-compatible": 1,
+          "not-evidenced": 3
+        },
+        "errors": [],
+        "assessment_keys": [
+          "C0_target_contract",
+          "C1_historical_build_identity",
+          "C2_flash_program_verify",
+          "C3_reset_boot_observation",
+          "C4_serial_runtime_business"
+        ]
+      },
+      "linux_memory": {
+        "domain": "linux-memory-ebpf",
+        "json_path": "distillation/linux-memory-ebpf/runtime-validation-matrix.json",
+        "markdown_path": "distillation/linux-memory-ebpf/runtime-validation-matrix.md",
+        "json_exists": true,
+        "markdown_exists": true,
+        "json_parseable": true,
+        "source_count": 4,
+        "source_missing": [],
+        "matrix_ids": [
+          "M0",
+          "M1",
+          "M2",
+          "M3",
+          "M4",
+          "M5",
+          "M6",
+          "M7",
+          "M8"
+        ],
+        "status_counts": {
+          "pass": 1,
+          "blocked": 2,
+          "environment-dependent": 1,
+          "not-run": 4,
+          "static-risk": 1
+        },
+        "errors": []
+      },
+      "linux_vision": {
+        "domain": "linux-vision",
+        "json_path": "distillation/linux-vision/main-chain-verification-matrix.json",
+        "markdown_path": "distillation/linux-vision/main-chain-verification-matrix.md",
+        "json_exists": true,
+        "markdown_exists": true,
+        "json_parseable": true,
+        "source_count": 10,
+        "source_missing": [],
+        "matrix_ids": [
+          "V0",
+          "V1",
+          "V2",
+          "V3",
+          "V4",
+          "V5",
+          "V6",
+          "V7",
+          "V8"
+        ],
+        "status_counts": {
+          "static-pass": 1,
+          "static-blocked": 1,
+          "static-risk": 3,
+          "historical-only": 1,
+          "partial-static": 1,
+          "not-run": 2
+        },
+        "errors": []
+      }
+    },
+    "errors": [],
+    "summaries": {
+      "rtos": {
+        "C0_target_contract": "pass",
+        "C1_historical_build_identity": "static-compatible",
+        "C2_flash_program_verify": "not-evidenced",
+        "C3_reset_boot_observation": "not-evidenced",
+        "C4_serial_runtime_business": "not-evidenced"
+      },
+      "linux_memory": {
+        "M0": "pass",
+        "M1": "blocked",
+        "M2": "environment-dependent",
+        "M3": "blocked",
+        "M4": "not-run",
+        "M5": "not-run",
+        "M6": "not-run",
+        "M7": "static-risk",
+        "M8": "not-run"
+      },
+      "linux_vision": {
+        "V0": "static-pass",
+        "V1": "static-blocked",
+        "V2": "static-risk",
+        "V3": "static-risk",
+        "V4": "static-risk",
+        "V5": "historical-only",
+        "V6": "partial-static",
+        "V7": "not-run",
+        "V8": "not-run"
+      }
+    },
+    "report_count": 3,
+    "passed": true
+  },
+  "source_freshness": {
+    "path": "distillation/source-freshness-audit.md",
+    "changed_files": 6,
+    "changed_referenced_files": 2,
+    "added_referenced_files": 8,
+    "skill_reference_count": 3,
+    "review_file": "distillation/source-freshness-review.tsv",
+    "reviewed_count": 14,
+    "pending_count": 0,
+    "review_errors": [],
+    "rows": [
+      {
+        "path": "assets/style-context/obsidian-background-mountain.jpg",
+        "historical_sha256_16": "",
+        "current_sha256_16": "c591e2240c26df12",
+        "referenced_by_skills": [],
+        "skill_reference_count": 0,
+        "review_priority": "context-only",
+        "change_kind": "changed-after-baseline",
+        "review_status": "context-only",
+        "reviewed_at": "2026-08-14",
+        "decision": "不影响规范 Skill 的来源结论；保留为样式附件证据，不回炉",
+        "scope": "附件"
+      },
+      {
+        "path": "projects/嵌入式八股/FreeRTOS 源码解析.md",
+        "historical_sha256_16": "f39b3f7b0f3462f1",
+        "current_sha256_16": "72e6a0511e3d3610",
+        "referenced_by_skills": [
+          "linux-virtual-memory-reclaim-path"
+        ],
+        "skill_reference_count": 1,
+        "review_priority": "high",
+        "change_kind": "changed-after-baseline",
+        "review_status": "reviewed-static-boundary",
+        "reviewed_at": "2026-08-14",
+        "decision": "保留 linux-virtual-memory-reclaim-path 的引用；仅作为 FreeRTOS/ Linux 内存分配边界对照，不把它升级为 Linux 内核机制事实。若后续内存章节、版本警告或源码边界改变，再复核该 Skill 的 A1/B 与来源字段",
+        "scope": "linux-virtual-memory-reclaim-path"
+      },
+      {
+        "path": "projects/嵌入式八股/index.md",
+        "historical_sha256_16": "d3b294d3edbe588b",
+        "current_sha256_16": "88d4f7bf1c0c88e1",
+        "referenced_by_skills": [],
+        "skill_reference_count": 0,
+        "review_priority": "context-only",
+        "change_kind": "changed-after-baseline",
+        "review_status": "context-only",
+        "reviewed_at": "2026-08-14",
+        "decision": "仅为目录/索引上下文变化；不承载规范 Skill 的核心事实，不回炉",
+        "scope": "索引"
+      },
+      {
+        "path": "projects/嵌入式八股/图解系统-小林coding-v1.0.epub",
+        "historical_sha256_16": "",
+        "current_sha256_16": "63677357c59ded1f",
+        "referenced_by_skills": [],
+        "skill_reference_count": 0,
+        "review_priority": "context-only",
+        "change_kind": "changed-after-baseline",
+        "review_status": "context-only",
+        "reviewed_at": "2026-08-14",
+        "decision": "附件新增/变化只作为外部证据登记；当前规范 Skill 使用已抽取 Markdown，不自动替换来源链",
+        "scope": "附件"
+      },
+      {
+        "path": "projects/嵌入式八股/糯叽叽八股/08 通讯协议.md",
+        "historical_sha256_16": "dbf0b82126e4486f",
+        "current_sha256_16": "505ef6164e47c834",
+        "referenced_by_skills": [
+          "embedded-bus-selection",
+          "embedded-c-struct-binary-contract-audit"
+        ],
+        "skill_reference_count": 2,
+        "review_priority": "high",
+        "change_kind": "changed-after-baseline",
+        "review_status": "reviewed-static-boundary",
+        "reviewed_at": "2026-08-14",
+        "decision": "保留 embedded-bus-selection 与 embedded-c-struct-binary-contract-audit 的引用；当前可见 UART/SPI/CAN、CRC/DLC、结构体/位域内容仍支持既有边界。协议事实依电气层、ABI 和目标实现，暂不改写 Skill；若新增协议或字段合同，再回炉两者测试",
+        "scope": "embedded-bus-selection;embedded-c-struct-binary-contract-audit"
+      },
+      {
+        "path": "测试.md",
+        "historical_sha256_16": "ba1d04542aafac74",
+        "current_sha256_16": "2a09ae39bb704d2c",
+        "referenced_by_skills": [],
+        "skill_reference_count": 0,
+        "review_priority": "context-only",
+        "change_kind": "changed-after-baseline",
+        "review_status": "context-only",
+        "reviewed_at": "2026-08-14",
+        "decision": "独立测试/临时笔记变化不影响规范 Skill 来源；保留清单记录，不回炉",
+        "scope": "上下文"
+      }
+    ],
+    "added_rows": [
+      {
+        "path": "工作台/八股进度.base",
+        "historical_sha256_16": "",
+        "current_sha256_16": "c0f3b5c531dd3c3d",
+        "referenced_by_skills": [
+          "embedded-learning-state-and-active-recall"
+        ],
+        "skill_reference_count": 1,
+        "review_priority": "high",
+        "change_kind": "added-after-baseline",
+        "review_status": "reviewed-state-boundary",
+        "reviewed_at": "2026-08-14",
+        "decision": "只定义 Bases 的筛选、公式、分组和展示字段；不承载技术答案。它影响复习排序和统计呈现，不改变 embedded-learning-state-and-active-recall 的状态语义；保留为工作台配置证据",
+        "scope": "embedded-learning-state-and-active-recall"
+      },
+      {
+        "path": "工作台/学习总账.md",
+        "historical_sha256_16": "",
+        "current_sha256_16": "cc8cb80b99f17ba2",
+        "referenced_by_skills": [
+          "embedded-learning-state-and-active-recall"
+        ],
+        "skill_reference_count": 1,
+        "review_priority": "high",
+        "change_kind": "added-after-baseline",
+        "review_status": "reviewed-state-boundary",
+        "reviewed_at": "2026-08-14",
+        "decision": "明确未学/学过/掌握、待回看/已回看和 360 条统计口径；属于学习状态合同，不把状态推断成真实掌握。保留来源引用，暂不回炉",
+        "scope": "embedded-learning-state-and-active-recall"
+      },
+      {
+        "path": "工作台/学习日志.md",
+        "historical_sha256_16": "",
+        "current_sha256_16": "81741623896ae0be",
+        "referenced_by_skills": [
+          "embedded-learning-state-and-active-recall"
+        ],
+        "skill_reference_count": 1,
+        "review_priority": "high",
+        "change_kind": "added-after-baseline",
+        "review_status": "reviewed-state-boundary",
+        "reviewed_at": "2026-08-14",
+        "decision": "只允许追加真实发生的学习记录；当前模板没有新增技术事实。保留为日志边界证据，暂不回炉",
+        "scope": "embedded-learning-state-and-active-recall"
+      },
+      {
+        "path": "工作台/嵌入式学习工作台.md",
+        "historical_sha256_16": "",
+        "current_sha256_16": "918aa34bca04e010",
+        "referenced_by_skills": [
+          "embedded-learning-state-and-active-recall"
+        ],
+        "skill_reference_count": 1,
+        "review_priority": "high",
+        "change_kind": "added-after-baseline",
+        "review_status": "reviewed-state-boundary",
+        "reviewed_at": "2026-08-14",
+        "decision": "仅为 Obsidian dashboard 入口和链接展示；不承载答案、掌握事实或客户端 Skill 路由。保留为派生 UI 证据，暂不回炉",
+        "scope": "embedded-learning-state-and-active-recall"
+      },
+      {
+        "path": "工作台/条目记录/150题-001.md",
+        "historical_sha256_16": "",
+        "current_sha256_16": "4f6e4914154773d4",
+        "referenced_by_skills": [
+          "embedded-learning-state-and-active-recall"
+        ],
+        "skill_reference_count": 1,
+        "review_priority": "high",
+        "change_kind": "added-after-baseline",
+        "review_status": "reviewed-state-boundary",
+        "reviewed_at": "2026-08-14",
+        "decision": "单条记录只保存 static 题目的状态与原文链接；不能证明用户已掌握 static。保留为状态层样本，不升级为 C/C++ 技术事实",
+        "scope": "embedded-learning-state-and-active-recall"
+      },
+      {
+        "path": "工作台/条目记录/小林网络-001.md",
+        "historical_sha256_16": "",
+        "current_sha256_16": "4fde4f008bab3429",
+        "referenced_by_skills": [
+          "embedded-learning-state-and-active-recall"
+        ],
+        "skill_reference_count": 1,
+        "review_priority": "high",
+        "change_kind": "added-after-baseline",
+        "review_status": "reviewed-state-boundary",
+        "reviewed_at": "2026-08-14",
+        "decision": "单条记录只保存 TCP/IP 网络模型章节的状态与来源；mastery=未学不代表章节内容为空，也不改变网络 Skill 的技术边界",
+        "scope": "embedded-learning-state-and-active-recall"
+      },
+      {
+        "path": "工作台/条目记录/项目八股-RTOS-A0.md",
+        "historical_sha256_16": "",
+        "current_sha256_16": "45b9ec0a6817104c",
+        "referenced_by_skills": [
+          "embedded-learning-state-and-active-recall"
+        ],
+        "skill_reference_count": 1,
+        "review_priority": "high",
+        "change_kind": "added-after-baseline",
+        "review_status": "reviewed-state-boundary",
+        "reviewed_at": "2026-08-14",
+        "decision": "单条记录只保存 RTOS 项目开场题的状态与面试原文链接；mastery=学过不等于个人贡献或项目运行已验证",
+        "scope": "embedded-learning-state-and-active-recall"
+      },
+      {
+        "path": "工作台/资料地图.md",
+        "historical_sha256_16": "",
+        "current_sha256_16": "6418889ac7d85b38",
+        "referenced_by_skills": [
+          "embedded-learning-state-and-active-recall"
+        ],
+        "skill_reference_count": 1,
+        "review_priority": "high",
+        "change_kind": "added-after-baseline",
+        "review_status": "reviewed-state-boundary",
+        "reviewed_at": "2026-08-14",
+        "decision": "只记录主源、工作台统计方式、去重和排除边界；不新增技术结论。保留为 provenance 入口，暂不回炉",
+        "scope": "embedded-learning-state-and-active-recall"
+      }
+    ]
+  },
+  "json_artifact_audit": {
+    "file_count": 112,
+    "files": [
+      "distillation/audit-report.json",
+      "distillation/coverage-review.json",
+      "distillation/embedded-core/skills/embedded-arm-linux-boot-chain/test-prompts.json",
+      "distillation/embedded-core/skills/embedded-bus-selection/test-prompts.json",
+      "distillation/embedded-core/skills/embedded-interview-layered-answer/test-prompts.json",
+      "distillation/embedded-core/skills/linux-buddy-fragmentation-diagnosis/test-prompts.json",
+      "distillation/embedded-core/skills/linux-memory-ebpf-pipeline/test-prompts.json",
+      "distillation/embedded-core/skills/linux-memory-source-audit/test-prompts.json",
+      "distillation/embedded-core/skills/linux-vision-pipeline-and-optimization/test-prompts.json",
+      "distillation/embedded-core/skills/linux-vision-project-storytelling/test-prompts.json",
+      "distillation/embedded-core/skills/rtos-communication-debugging/test-prompts.json",
+      "distillation/embedded-core/skills/rtos-motor-pid-control/test-prompts.json",
+      "distillation/embedded-core/skills/rtos-project-storytelling/test-prompts.json",
+      "distillation/embedded-core/skills/rtos-task-and-isr-design/test-prompts.json",
+      "distillation/linux-memory-ebpf/runtime-validation-matrix.json",
+      "distillation/linux-memory-ebpf/skills/embedded-arm-linux-boot-chain/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/embedded-bus-selection/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/embedded-interview-layered-answer/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/linux-buddy-fragmentation-diagnosis/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/linux-memory-ebpf-pipeline/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/linux-memory-source-audit/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/linux-vision-pipeline-and-optimization/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/linux-vision-project-storytelling/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/rtos-communication-debugging/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/rtos-motor-pid-control/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/rtos-project-storytelling/test-prompts.json",
+      "distillation/linux-memory-ebpf/skills/rtos-task-and-isr-design/test-prompts.json",
+      "distillation/linux-vision/main-chain-verification-matrix.json",
+      "distillation/linux-vision/skills/embedded-arm-linux-boot-chain/test-prompts.json",
+      "distillation/linux-vision/skills/embedded-bus-selection/test-prompts.json",
+      "distillation/linux-vision/skills/embedded-interview-layered-answer/test-prompts.json",
+      "distillation/linux-vision/skills/linux-buddy-fragmentation-diagnosis/test-prompts.json",
+      "distillation/linux-vision/skills/linux-memory-ebpf-pipeline/test-prompts.json",
+      "distillation/linux-vision/skills/linux-memory-source-audit/test-prompts.json",
+      "distillation/linux-vision/skills/linux-vision-pipeline-and-optimization/test-prompts.json",
+      "distillation/linux-vision/skills/linux-vision-project-storytelling/test-prompts.json",
+      "distillation/linux-vision/skills/rtos-communication-debugging/test-prompts.json",
+      "distillation/linux-vision/skills/rtos-motor-pid-control/test-prompts.json",
+      "distillation/linux-vision/skills/rtos-project-storytelling/test-prompts.json",
+      "distillation/linux-vision/skills/rtos-task-and-isr-design/test-prompts.json",
+      "distillation/rtos-project/artifact-provenance.json",
+      "distillation/rtos-project/skills/embedded-arm-linux-boot-chain/test-prompts.json",
+      "distillation/rtos-project/skills/embedded-bus-selection/test-prompts.json",
+      "distillation/rtos-project/skills/embedded-interview-layered-answer/test-prompts.json",
+      "distillation/rtos-project/skills/linux-buddy-fragmentation-diagnosis/test-prompts.json",
+      "distillation/rtos-project/skills/linux-memory-ebpf-pipeline/test-prompts.json",
+      "distillation/rtos-project/skills/linux-memory-source-audit/test-prompts.json",
+      "distillation/rtos-project/skills/linux-vision-pipeline-and-optimization/test-prompts.json",
+      "distillation/rtos-project/skills/linux-vision-project-storytelling/test-prompts.json",
+      "distillation/rtos-project/skills/rtos-communication-debugging/test-prompts.json",
+      "distillation/rtos-project/skills/rtos-motor-pid-control/test-prompts.json",
+      "distillation/rtos-project/skills/rtos-project-storytelling/test-prompts.json",
+      "distillation/rtos-project/skills/rtos-task-and-isr-design/test-prompts.json",
+      "distillation/skill-mixed-intent-matrix.json",
+      "distillation/skill-related-index.json",
+      "distillation/skill-trigger-index.json",
+      "distillation/skills/algorithm-active-recall-loop/test-prompts.json",
+      "distillation/skills/algorithm-problem-framework-selection/test-prompts.json",
+      "distillation/skills/algorithm-state-and-invariant-derivation/test-prompts.json",
+      "distillation/skills/cmake-source-discovery-incremental-build-audit/test-prompts.json",
+      "distillation/skills/embedded-arm-linux-boot-chain/test-prompts.json",
+      "distillation/skills/embedded-bus-selection/test-prompts.json",
+      "distillation/skills/embedded-c-storage-linkage-audit/test-prompts.json",
+      "distillation/skills/embedded-c-struct-binary-contract-audit/test-prompts.json",
+      "distillation/skills/embedded-cpp-resource-lifetime/test-prompts.json",
+      "distillation/skills/embedded-interview-layered-answer/test-prompts.json",
+      "distillation/skills/embedded-learning-state-and-active-recall/test-prompts.json",
+      "distillation/skills/embedded-memory-lifetime-and-pool-design/test-prompts.json",
+      "distillation/skills/embedded-numeric-contract-audit/test-prompts.json",
+      "distillation/skills/interactive-lab-fact-boundary-audit/test-prompts.json",
+      "distillation/skills/linux-buddy-fragmentation-diagnosis/test-prompts.json",
+      "distillation/skills/linux-build-debug-chain/test-prompts.json",
+      "distillation/skills/linux-driver-device-tree-boundary/test-prompts.json",
+      "distillation/skills/linux-ebpf-map-counter-contract/test-prompts.json",
+      "distillation/skills/linux-fd-process-io-debugging/test-prompts.json",
+      "distillation/skills/linux-file-persistence-crash-consistency/test-prompts.json",
+      "distillation/skills/linux-memory-ebpf-pipeline/test-prompts.json",
+      "distillation/skills/linux-memory-fastpath-observation-contract/test-prompts.json",
+      "distillation/skills/linux-memory-source-audit/test-prompts.json",
+      "distillation/skills/linux-process-signal-daemon-lifecycle/test-prompts.json",
+      "distillation/skills/linux-rx-napi-path-diagnosis/test-prompts.json",
+      "distillation/skills/linux-socket-multiplexing-design/test-prompts.json",
+      "distillation/skills/linux-tcp-loss-path-diagnosis/test-prompts.json",
+      "distillation/skills/linux-thread-sync-deadlock-diagnosis/test-prompts.json",
+      "distillation/skills/linux-udp-broadcast-reachability-contract/test-prompts.json",
+      "distillation/skills/linux-udp-datagram-endpoint-routing/test-prompts.json",
+      "distillation/skills/linux-udp-multicast-interface-membership-contract/test-prompts.json",
+      "distillation/skills/linux-userspace-timer-drift-audit/test-prompts.json",
+      "distillation/skills/linux-virtual-memory-reclaim-path/test-prompts.json",
+      "distillation/skills/linux-vision-build-provenance-audit/test-prompts.json",
+      "distillation/skills/linux-vision-file-ipc-lifecycle-audit/test-prompts.json",
+      "distillation/skills/linux-vision-pipeline-and-optimization/test-prompts.json",
+      "distillation/skills/linux-vision-project-storytelling/test-prompts.json",
+      "distillation/skills/linux-vision-qt-image-buffer-adapter-audit/test-prompts.json",
+      "distillation/skills/linux-vision-resource-telemetry-contract-audit/test-prompts.json",
+      "distillation/skills/qt-event-loop-signal-slot-audit/test-prompts.json",
+      "distillation/skills/rtos-auto-mode-state-machine/test-prompts.json",
+      "distillation/skills/rtos-build-flash-runtime-provenance/test-prompts.json",
+      "distillation/skills/rtos-communication-debugging/test-prompts.json",
+      "distillation/skills/rtos-display-buzzer-feedback/test-prompts.json",
+      "distillation/skills/rtos-freertos-config-and-boot/test-prompts.json",
+      "distillation/skills/rtos-iap-firmware-upgrade/test-prompts.json",
+      "distillation/skills/rtos-key-event-state-machine/test-prompts.json",
+      "distillation/skills/rtos-motor-pid-control/test-prompts.json",
+      "distillation/skills/rtos-project-storytelling/test-prompts.json",
+      "distillation/skills/rtos-runtime-fault-diagnosis/test-prompts.json",
+      "distillation/skills/rtos-sensor-acquisition-and-fusion/test-prompts.json",
+      "distillation/skills/rtos-software-timer-periodic-design/test-prompts.json",
+      "distillation/skills/rtos-task-and-isr-design/test-prompts.json",
+      "distillation/skills/stm32-clock-and-sampling-timing/test-prompts.json",
+      "distillation/skills/vault-source-boundary-and-derived-artifact-audit/test-prompts.json",
+      "distillation/skills/vision-model-tensor-contract-audit/test-prompts.json"
+    ],
+    "duplicate_key_files": [],
+    "errors": []
+  },
+  "inventory_reports": {
+    "summary_path": "distillation/source-inventory-summary.md",
+    "artifact_path": "distillation/artifact-inventory.md",
+    "record_count": 7146,
+    "total_bytes": 2981072292,
+    "domain_count": 12,
+    "class_count": 6
+  },
+  "coverage_review": {
+    "generated_from": "source-inventory-current.tsv + source-disposition.tsv",
+    "inventory_count": 7146,
+    "inventory_unique_path_count": 7146,
+    "disposition_count": 7146,
+    "disposition_only_paths": [],
+    "inventory_only_paths": [],
+    "stale_derived_register_entries": [
+      {
+        "register": "canvas-mindmaps/source-register.md",
+        "domain": "canvas-mindmaps",
+        "line": "13",
+        "path": "archive/思维导图/Linux物理内存碎片检测-复习版.canvas"
+      },
+      {
+        "register": "canvas-mindmaps/source-register.md",
+        "domain": "canvas-mindmaps",
+        "line": "14",
+        "path": "archive/思维导图/Linux物理内存碎片检测-复习版.md"
+      },
+      {
+        "register": "canvas-mindmaps/source-register.md",
+        "domain": "canvas-mindmaps",
+        "line": "15",
+        "path": "archive/思维导图/Linux物理内存碎片检测-思维导图.canvas"
+      },
+      {
+        "register": "canvas-mindmaps/source-register.md",
+        "domain": "canvas-mindmaps",
+        "line": "16",
+        "path": "archive/思维导图/Linux视觉感知项目复习-思维导图.canvas"
+      },
+      {
+        "register": "canvas-mindmaps/source-register.md",
+        "domain": "canvas-mindmaps",
+        "line": "17",
+        "path": "archive/思维导图/RTOS项目复习-思维导图.canvas"
+      },
+      {
+        "register": "canvas-mindmaps/source-register.md",
+        "domain": "canvas-mindmaps",
+        "line": "18",
+        "path": "archive/思维导图/index.md"
+      },
+      {
+        "register": "embedded-core-derived/source-register.md",
+        "domain": "embedded-core-derived",
+        "line": "13",
+        "path": "archive/糯叽叽八股（完整版）.md"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "13",
+        "path": "archive/项目交互动画/Linux物理内存碎片检测交互学习实验室.md"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "14",
+        "path": "archive/项目交互动画/Linux物理内存碎片检测交互学习实验室/app-core.js"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "15",
+        "path": "archive/项目交互动画/Linux物理内存碎片检测交互学习实验室/app.js"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "16",
+        "path": "archive/项目交互动画/Linux物理内存碎片检测交互学习实验室/index.html"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "17",
+        "path": "archive/项目交互动画/Linux物理内存碎片检测交互学习实验室/project-data.js"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "18",
+        "path": "archive/项目交互动画/Linux物理内存碎片检测交互学习实验室/styles.css"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "19",
+        "path": "archive/项目交互动画/Linux物理内存碎片检测交互学习实验室/tests/app-core.test.cjs"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "20",
+        "path": "archive/项目交互动画/Linux物理内存碎片检测交互学习实验室/tests/project-data.test.cjs"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "21",
+        "path": "archive/项目交互动画/Linux物理内存碎片检测交互学习实验室/tests/static.test.cjs"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "22",
+        "path": "archive/项目交互动画/Linux视觉感知交互学习实验室.md"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "23",
+        "path": "archive/项目交互动画/Linux视觉感知性能证据页.html"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "24",
+        "path": "archive/项目交互动画/RTOS项目交互学习动画.html"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "25",
+        "path": "archive/项目交互动画/RTOS项目交互学习动画.md"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "26",
+        "path": "archive/项目交互动画/app-core.js"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "27",
+        "path": "archive/项目交互动画/app.js"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "28",
+        "path": "archive/项目交互动画/assets/lime/input.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "29",
+        "path": "archive/项目交互动画/assets/lime/output.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "30",
+        "path": "archive/项目交互动画/assets/lstr/input/001.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "31",
+        "path": "archive/项目交互动画/assets/lstr/input/002.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "32",
+        "path": "archive/项目交互动画/assets/lstr/input/003.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "33",
+        "path": "archive/项目交互动画/assets/lstr/input/004.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "34",
+        "path": "archive/项目交互动画/assets/lstr/input/005.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "35",
+        "path": "archive/项目交互动画/assets/lstr/input/006.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "36",
+        "path": "archive/项目交互动画/assets/lstr/input/007.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "37",
+        "path": "archive/项目交互动画/assets/lstr/input/008.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "38",
+        "path": "archive/项目交互动画/assets/lstr/input/009.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "39",
+        "path": "archive/项目交互动画/assets/lstr/input/010.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "40",
+        "path": "archive/项目交互动画/assets/lstr/input/011.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "41",
+        "path": "archive/项目交互动画/assets/lstr/input/012.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "42",
+        "path": "archive/项目交互动画/assets/lstr/input/013.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "43",
+        "path": "archive/项目交互动画/assets/lstr/input/014.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "44",
+        "path": "archive/项目交互动画/assets/lstr/input/015.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "45",
+        "path": "archive/项目交互动画/assets/lstr/input/016.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "46",
+        "path": "archive/项目交互动画/assets/lstr/input/017.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "47",
+        "path": "archive/项目交互动画/assets/lstr/input/018.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "48",
+        "path": "archive/项目交互动画/assets/lstr/input/019.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "49",
+        "path": "archive/项目交互动画/assets/lstr/input/020.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "50",
+        "path": "archive/项目交互动画/assets/lstr/input/021.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "51",
+        "path": "archive/项目交互动画/assets/lstr/input/022.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "52",
+        "path": "archive/项目交互动画/assets/lstr/input/023.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "53",
+        "path": "archive/项目交互动画/assets/lstr/input/024.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "54",
+        "path": "archive/项目交互动画/assets/lstr/input/025.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "55",
+        "path": "archive/项目交互动画/assets/lstr/input/026.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "56",
+        "path": "archive/项目交互动画/assets/lstr/input/027.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "57",
+        "path": "archive/项目交互动画/assets/lstr/input/028.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "58",
+        "path": "archive/项目交互动画/assets/lstr/input/029.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "59",
+        "path": "archive/项目交互动画/assets/lstr/input/030.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "60",
+        "path": "archive/项目交互动画/assets/lstr/input/031.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "61",
+        "path": "archive/项目交互动画/assets/lstr/input/032.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "62",
+        "path": "archive/项目交互动画/assets/lstr/input/033.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "63",
+        "path": "archive/项目交互动画/assets/lstr/input/034.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "64",
+        "path": "archive/项目交互动画/assets/lstr/input/035.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "65",
+        "path": "archive/项目交互动画/assets/lstr/input/036.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "66",
+        "path": "archive/项目交互动画/assets/lstr/input/037.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "67",
+        "path": "archive/项目交互动画/assets/lstr/input/038.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "68",
+        "path": "archive/项目交互动画/assets/lstr/input/039.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "69",
+        "path": "archive/项目交互动画/assets/lstr/input/040.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "70",
+        "path": "archive/项目交互动画/assets/lstr/input/041.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "71",
+        "path": "archive/项目交互动画/assets/lstr/input/042.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "72",
+        "path": "archive/项目交互动画/assets/lstr/input/043.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "73",
+        "path": "archive/项目交互动画/assets/lstr/input/044.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "74",
+        "path": "archive/项目交互动画/assets/lstr/input/045.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "75",
+        "path": "archive/项目交互动画/assets/lstr/input/046.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "76",
+        "path": "archive/项目交互动画/assets/lstr/input/047.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "77",
+        "path": "archive/项目交互动画/assets/lstr/input/048.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "78",
+        "path": "archive/项目交互动画/assets/lstr/input/049.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "79",
+        "path": "archive/项目交互动画/assets/lstr/input/050.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "80",
+        "path": "archive/项目交互动画/assets/lstr/input/051.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "81",
+        "path": "archive/项目交互动画/assets/lstr/input/052.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "82",
+        "path": "archive/项目交互动画/assets/lstr/input/053.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "83",
+        "path": "archive/项目交互动画/assets/lstr/input/054.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "84",
+        "path": "archive/项目交互动画/assets/lstr/input/055.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "85",
+        "path": "archive/项目交互动画/assets/lstr/input/056.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "86",
+        "path": "archive/项目交互动画/assets/lstr/input/057.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "87",
+        "path": "archive/项目交互动画/assets/lstr/input/058.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "88",
+        "path": "archive/项目交互动画/assets/lstr/input/059.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "89",
+        "path": "archive/项目交互动画/assets/lstr/input/060.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "90",
+        "path": "archive/项目交互动画/assets/lstr/input/061.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "91",
+        "path": "archive/项目交互动画/assets/lstr/input/062.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "92",
+        "path": "archive/项目交互动画/assets/lstr/input/063.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "93",
+        "path": "archive/项目交互动画/assets/lstr/input/064.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "94",
+        "path": "archive/项目交互动画/assets/lstr/input/065.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "95",
+        "path": "archive/项目交互动画/assets/lstr/input/066.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "96",
+        "path": "archive/项目交互动画/assets/lstr/input/067.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "97",
+        "path": "archive/项目交互动画/assets/lstr/input/068.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "98",
+        "path": "archive/项目交互动画/assets/lstr/input/069.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "99",
+        "path": "archive/项目交互动画/assets/lstr/input/070.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "100",
+        "path": "archive/项目交互动画/assets/lstr/input/071.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "101",
+        "path": "archive/项目交互动画/assets/lstr/input/072.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "102",
+        "path": "archive/项目交互动画/assets/lstr/input/073.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "103",
+        "path": "archive/项目交互动画/assets/lstr/input/074.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "104",
+        "path": "archive/项目交互动画/assets/lstr/input/075.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "105",
+        "path": "archive/项目交互动画/assets/lstr/input/076.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "106",
+        "path": "archive/项目交互动画/assets/lstr/input/077.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "107",
+        "path": "archive/项目交互动画/assets/lstr/input/078.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "108",
+        "path": "archive/项目交互动画/assets/lstr/input/079.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "109",
+        "path": "archive/项目交互动画/assets/lstr/input/080.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "110",
+        "path": "archive/项目交互动画/assets/lstr/input/081.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "111",
+        "path": "archive/项目交互动画/assets/lstr/input/082.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "112",
+        "path": "archive/项目交互动画/assets/lstr/input/083.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "113",
+        "path": "archive/项目交互动画/assets/lstr/input/084.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "114",
+        "path": "archive/项目交互动画/assets/lstr/input/085.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "115",
+        "path": "archive/项目交互动画/assets/lstr/input/086.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "116",
+        "path": "archive/项目交互动画/assets/lstr/input/087.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "117",
+        "path": "archive/项目交互动画/assets/lstr/input/088.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "118",
+        "path": "archive/项目交互动画/assets/lstr/input/089.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "119",
+        "path": "archive/项目交互动画/assets/lstr/input/090.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "120",
+        "path": "archive/项目交互动画/assets/lstr/input/091.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "121",
+        "path": "archive/项目交互动画/assets/lstr/input/092.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "122",
+        "path": "archive/项目交互动画/assets/lstr/input/093.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "123",
+        "path": "archive/项目交互动画/assets/lstr/input/094.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "124",
+        "path": "archive/项目交互动画/assets/lstr/input/095.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "125",
+        "path": "archive/项目交互动画/assets/lstr/input/096.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "126",
+        "path": "archive/项目交互动画/assets/lstr/input/097.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "127",
+        "path": "archive/项目交互动画/assets/lstr/input/098.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "128",
+        "path": "archive/项目交互动画/assets/lstr/input/099.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "129",
+        "path": "archive/项目交互动画/assets/lstr/input/100.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "130",
+        "path": "archive/项目交互动画/assets/lstr/result/001.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "131",
+        "path": "archive/项目交互动画/assets/lstr/result/002.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "132",
+        "path": "archive/项目交互动画/assets/lstr/result/003.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "133",
+        "path": "archive/项目交互动画/assets/lstr/result/004.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "134",
+        "path": "archive/项目交互动画/assets/lstr/result/005.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "135",
+        "path": "archive/项目交互动画/assets/lstr/result/006.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "136",
+        "path": "archive/项目交互动画/assets/lstr/result/007.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "137",
+        "path": "archive/项目交互动画/assets/lstr/result/008.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "138",
+        "path": "archive/项目交互动画/assets/lstr/result/009.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "139",
+        "path": "archive/项目交互动画/assets/lstr/result/010.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "140",
+        "path": "archive/项目交互动画/assets/lstr/result/011.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "141",
+        "path": "archive/项目交互动画/assets/lstr/result/012.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "142",
+        "path": "archive/项目交互动画/assets/lstr/result/013.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "143",
+        "path": "archive/项目交互动画/assets/lstr/result/014.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "144",
+        "path": "archive/项目交互动画/assets/lstr/result/015.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "145",
+        "path": "archive/项目交互动画/assets/lstr/result/016.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "146",
+        "path": "archive/项目交互动画/assets/lstr/result/017.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "147",
+        "path": "archive/项目交互动画/assets/lstr/result/018.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "148",
+        "path": "archive/项目交互动画/assets/lstr/result/019.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "149",
+        "path": "archive/项目交互动画/assets/lstr/result/020.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "150",
+        "path": "archive/项目交互动画/assets/lstr/result/021.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "151",
+        "path": "archive/项目交互动画/assets/lstr/result/022.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "152",
+        "path": "archive/项目交互动画/assets/lstr/result/023.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "153",
+        "path": "archive/项目交互动画/assets/lstr/result/024.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "154",
+        "path": "archive/项目交互动画/assets/lstr/result/025.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "155",
+        "path": "archive/项目交互动画/assets/lstr/result/026.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "156",
+        "path": "archive/项目交互动画/assets/lstr/result/027.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "157",
+        "path": "archive/项目交互动画/assets/lstr/result/028.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "158",
+        "path": "archive/项目交互动画/assets/lstr/result/029.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "159",
+        "path": "archive/项目交互动画/assets/lstr/result/030.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "160",
+        "path": "archive/项目交互动画/assets/lstr/result/031.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "161",
+        "path": "archive/项目交互动画/assets/lstr/result/032.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "162",
+        "path": "archive/项目交互动画/assets/lstr/result/033.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "163",
+        "path": "archive/项目交互动画/assets/lstr/result/034.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "164",
+        "path": "archive/项目交互动画/assets/lstr/result/035.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "165",
+        "path": "archive/项目交互动画/assets/lstr/result/036.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "166",
+        "path": "archive/项目交互动画/assets/lstr/result/037.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "167",
+        "path": "archive/项目交互动画/assets/lstr/result/038.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "168",
+        "path": "archive/项目交互动画/assets/lstr/result/039.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "169",
+        "path": "archive/项目交互动画/assets/lstr/result/040.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "170",
+        "path": "archive/项目交互动画/assets/lstr/result/041.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "171",
+        "path": "archive/项目交互动画/assets/lstr/result/042.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "172",
+        "path": "archive/项目交互动画/assets/lstr/result/043.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "173",
+        "path": "archive/项目交互动画/assets/lstr/result/044.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "174",
+        "path": "archive/项目交互动画/assets/lstr/result/045.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "175",
+        "path": "archive/项目交互动画/assets/lstr/result/046.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "176",
+        "path": "archive/项目交互动画/assets/lstr/result/047.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "177",
+        "path": "archive/项目交互动画/assets/lstr/result/048.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "178",
+        "path": "archive/项目交互动画/assets/lstr/result/049.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "179",
+        "path": "archive/项目交互动画/assets/lstr/result/050.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "180",
+        "path": "archive/项目交互动画/assets/lstr/result/051.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "181",
+        "path": "archive/项目交互动画/assets/lstr/result/052.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "182",
+        "path": "archive/项目交互动画/assets/lstr/result/053.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "183",
+        "path": "archive/项目交互动画/assets/lstr/result/054.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "184",
+        "path": "archive/项目交互动画/assets/lstr/result/055.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "185",
+        "path": "archive/项目交互动画/assets/lstr/result/056.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "186",
+        "path": "archive/项目交互动画/assets/lstr/result/057.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "187",
+        "path": "archive/项目交互动画/assets/lstr/result/058.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "188",
+        "path": "archive/项目交互动画/assets/lstr/result/059.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "189",
+        "path": "archive/项目交互动画/assets/lstr/result/060.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "190",
+        "path": "archive/项目交互动画/assets/lstr/result/061.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "191",
+        "path": "archive/项目交互动画/assets/lstr/result/062.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "192",
+        "path": "archive/项目交互动画/assets/lstr/result/063.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "193",
+        "path": "archive/项目交互动画/assets/lstr/result/064.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "194",
+        "path": "archive/项目交互动画/assets/lstr/result/065.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "195",
+        "path": "archive/项目交互动画/assets/lstr/result/066.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "196",
+        "path": "archive/项目交互动画/assets/lstr/result/067.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "197",
+        "path": "archive/项目交互动画/assets/lstr/result/068.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "198",
+        "path": "archive/项目交互动画/assets/lstr/result/069.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "199",
+        "path": "archive/项目交互动画/assets/lstr/result/070.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "200",
+        "path": "archive/项目交互动画/assets/lstr/result/071.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "201",
+        "path": "archive/项目交互动画/assets/lstr/result/072.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "202",
+        "path": "archive/项目交互动画/assets/lstr/result/073.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "203",
+        "path": "archive/项目交互动画/assets/lstr/result/074.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "204",
+        "path": "archive/项目交互动画/assets/lstr/result/075.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "205",
+        "path": "archive/项目交互动画/assets/lstr/result/076.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "206",
+        "path": "archive/项目交互动画/assets/lstr/result/077.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "207",
+        "path": "archive/项目交互动画/assets/lstr/result/078.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "208",
+        "path": "archive/项目交互动画/assets/lstr/result/079.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "209",
+        "path": "archive/项目交互动画/assets/lstr/result/080.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "210",
+        "path": "archive/项目交互动画/assets/lstr/result/081.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "211",
+        "path": "archive/项目交互动画/assets/lstr/result/082.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "212",
+        "path": "archive/项目交互动画/assets/lstr/result/083.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "213",
+        "path": "archive/项目交互动画/assets/lstr/result/084.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "214",
+        "path": "archive/项目交互动画/assets/lstr/result/085.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "215",
+        "path": "archive/项目交互动画/assets/lstr/result/086.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "216",
+        "path": "archive/项目交互动画/assets/lstr/result/087.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "217",
+        "path": "archive/项目交互动画/assets/lstr/result/088.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "218",
+        "path": "archive/项目交互动画/assets/lstr/result/089.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "219",
+        "path": "archive/项目交互动画/assets/lstr/result/090.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "220",
+        "path": "archive/项目交互动画/assets/lstr/result/091.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "221",
+        "path": "archive/项目交互动画/assets/lstr/result/092.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "222",
+        "path": "archive/项目交互动画/assets/lstr/result/093.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "223",
+        "path": "archive/项目交互动画/assets/lstr/result/094.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "224",
+        "path": "archive/项目交互动画/assets/lstr/result/095.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "225",
+        "path": "archive/项目交互动画/assets/lstr/result/096.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "226",
+        "path": "archive/项目交互动画/assets/lstr/result/097.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "227",
+        "path": "archive/项目交互动画/assets/lstr/result/098.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "228",
+        "path": "archive/项目交互动画/assets/lstr/result/099.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "229",
+        "path": "archive/项目交互动画/assets/lstr/result/100.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "230",
+        "path": "archive/项目交互动画/assets/unet/input.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "231",
+        "path": "archive/项目交互动画/assets/unet/output.jpg"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "232",
+        "path": "archive/项目交互动画/index.html"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "233",
+        "path": "archive/项目交互动画/project-data.js"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "234",
+        "path": "archive/项目交互动画/styles.css"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "235",
+        "path": "archive/项目交互动画/tests/app-core.test.cjs"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "236",
+        "path": "archive/项目交互动画/tests/assets.test.cjs"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "237",
+        "path": "archive/项目交互动画/tests/project-data.test.cjs"
+      },
+      {
+        "register": "interactive-learning-labs/source-register.md",
+        "domain": "interactive-learning-labs",
+        "line": "238",
+        "path": "archive/项目交互动画/碎片化指数交互动画.html"
+      }
+    ],
+    "review_name_contract": [
+      "FULL_COVERAGE_REVIEW.md",
+      "coverage-review.md",
+      "unlinked-review.tsv",
+      "coverage-supplement.md"
+    ],
+    "record_count": 7146,
+    "unique_path_count": 7146,
+    "duplicate_paths": [],
+    "missing_path_row_indexes": [],
+    "status_counts": {
+      "domain-referenced": 773,
+      "domain-scoped": 639,
+      "evidence-layer": 5465,
+      "needs-domain-review": 6,
+      "skill-evidence": 263
+    },
+    "domains": {
+      "algorithm-pdf": {
+        "files": 1,
+        "knowledge_documents": 1,
+        "knowledge_linked": 1,
+        "knowledge_scope_only": 0,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": 1.0,
+        "status_counts": {
+          "domain-referenced": 1
+        },
+        "evidence_layer": 0,
+        "review_files": [
+          "algorithm-pdf/FULL_COVERAGE_REVIEW.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      },
+      "attachments-evidence": {
+        "files": 3026,
+        "knowledge_documents": 0,
+        "knowledge_linked": 0,
+        "knowledge_scope_only": 0,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": null,
+        "status_counts": {
+          "evidence-layer": 3026
+        },
+        "evidence_layer": 3026,
+        "review_files": [
+          "attachments-evidence/FULL_COVERAGE_REVIEW.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      },
+      "embedded-core": {
+        "files": 132,
+        "knowledge_documents": 127,
+        "knowledge_linked": 46,
+        "knowledge_scope_only": 81,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": 0.3622,
+        "status_counts": {
+          "domain-scoped": 81,
+          "evidence-layer": 5,
+          "skill-evidence": 46
+        },
+        "evidence_layer": 5,
+        "review_files": [
+          "embedded-core/FULL_COVERAGE_REVIEW.md",
+          "embedded-core/unlinked-review.tsv",
+          "embedded-core/coverage-supplement.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      },
+      "leetcode-algorithm-learning": {
+        "files": 141,
+        "knowledge_documents": 140,
+        "knowledge_linked": 24,
+        "knowledge_scope_only": 116,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": 0.1714,
+        "status_counts": {
+          "domain-referenced": 7,
+          "domain-scoped": 117,
+          "skill-evidence": 17
+        },
+        "evidence_layer": 0,
+        "review_files": [
+          "leetcode-algorithm-learning/FULL_COVERAGE_REVIEW.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      },
+      "linux-memory-ebpf": {
+        "files": 47,
+        "knowledge_documents": 30,
+        "knowledge_linked": 21,
+        "knowledge_scope_only": 9,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": 0.7,
+        "status_counts": {
+          "domain-scoped": 13,
+          "evidence-layer": 9,
+          "skill-evidence": 25
+        },
+        "evidence_layer": 9,
+        "review_files": [
+          "linux-memory-ebpf/FULL_COVERAGE_REVIEW.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      },
+      "linux-systems-tutorial": {
+        "files": 47,
+        "knowledge_documents": 47,
+        "knowledge_linked": 26,
+        "knowledge_scope_only": 21,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": 0.5532,
+        "status_counts": {
+          "domain-referenced": 1,
+          "domain-scoped": 21,
+          "skill-evidence": 25
+        },
+        "evidence_layer": 0,
+        "review_files": [
+          "linux-systems-tutorial/FULL_COVERAGE_REVIEW.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      },
+      "linux-vision": {
+        "files": 959,
+        "knowledge_documents": 49,
+        "knowledge_linked": 34,
+        "knowledge_scope_only": 15,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": 0.6939,
+        "status_counts": {
+          "domain-referenced": 11,
+          "domain-scoped": 292,
+          "evidence-layer": 599,
+          "skill-evidence": 57
+        },
+        "evidence_layer": 599,
+        "review_files": [
+          "linux-vision/FULL_COVERAGE_REVIEW.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      },
+      "rednote-bookmarks": {
+        "files": 1952,
+        "knowledge_documents": 391,
+        "knowledge_linked": 391,
+        "knowledge_scope_only": 0,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": 1.0,
+        "status_counts": {
+          "domain-referenced": 392,
+          "evidence-layer": 1560
+        },
+        "evidence_layer": 1560,
+        "review_files": [
+          "rednote-bookmarks/FULL_COVERAGE_REVIEW.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      },
+      "rtos-project": {
+        "files": 460,
+        "knowledge_documents": 35,
+        "knowledge_linked": 27,
+        "knowledge_scope_only": 8,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": 0.7714,
+        "status_counts": {
+          "domain-referenced": 1,
+          "domain-scoped": 115,
+          "evidence-layer": 266,
+          "skill-evidence": 78
+        },
+        "evidence_layer": 266,
+        "review_files": [
+          "rtos-project/FULL_COVERAGE_REVIEW.md",
+          "rtos-project/unlinked-review.tsv",
+          "rtos-project/coverage-supplement.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      },
+      "vault-methodology-and-tools": {
+        "files": 8,
+        "knowledge_documents": 5,
+        "knowledge_linked": 5,
+        "knowledge_scope_only": 0,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": 1.0,
+        "status_counts": {
+          "domain-referenced": 1,
+          "skill-evidence": 7
+        },
+        "evidence_layer": 0,
+        "review_files": [
+          "vault-methodology-and-tools/FULL_COVERAGE_REVIEW.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      },
+      "vault-root-or-unknown": {
+        "files": 6,
+        "knowledge_documents": 2,
+        "knowledge_linked": 0,
+        "knowledge_scope_only": 0,
+        "knowledge_unlinked": 2,
+        "knowledge_coverage_ratio": 0.0,
+        "status_counts": {
+          "needs-domain-review": 6
+        },
+        "evidence_layer": 0,
+        "review_files": [
+          "vault-root-or-unknown/FULL_COVERAGE_REVIEW.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": [
+          "archive/dan_koe_如何在一天内修复你的人生_中文完整翻译.md",
+          "测试.md"
+        ]
+      },
+      "workbench-learning-state": {
+        "files": 367,
+        "knowledge_documents": 366,
+        "knowledge_linked": 366,
+        "knowledge_scope_only": 0,
+        "knowledge_unlinked": 0,
+        "knowledge_coverage_ratio": 1.0,
+        "status_counts": {
+          "domain-referenced": 359,
+          "skill-evidence": 8
+        },
+        "evidence_layer": 0,
+        "review_files": [
+          "workbench-learning-state/FULL_COVERAGE_REVIEW.md"
+        ],
+        "dedicated_review": true,
+        "unlinked_knowledge_paths": []
+      }
+    },
+    "contract": {
+      "one_row_per_source_path": true,
+      "evidence_is_not_knowledge": true,
+      "linked_statuses": [
+        "domain-referenced",
+        "skill-evidence"
+      ],
+      "scope_only_statuses": [
+        "domain-scoped"
+      ],
+      "unlinked_statuses": [
+        "indexed-only",
+        "needs-domain-review"
+      ]
+    },
+    "errors": []
+  },
+  "workbench": {
+    "records": 360,
+    "tracks": {
+      "150题": 150,
+      "大丙Linux": 41,
+      "小林系统": 35,
+      "小林网络": 39,
+      "杂七杂八": 14,
+      "项目八股": 81
+    },
+    "mastery": {
+      "学过": 307,
+      "未学": 53
+    },
+    "review": {
+      "待回看": 360
+    },
+    "invalid": 0,
+    "source_missing": 0,
+    "title_missing": 0,
+    "duplicate_record_ids": [],
+    "review_queue": 360,
+    "review_queue_path": "distillation/workbench-learning-state/REVIEW_QUEUE.md"
+  },
+  "disposition_counts": {
+    "excluded-metadata": 1,
+    "domain-reference": 381,
+    "needs-review": 182,
+    "domain-scope": 639,
+    "skill-evidence": 263,
+    "evidence-layer": 5040,
+    "derived": 6,
+    "build-evidence": 419,
+    "external-archive": 2,
+    "derived-index": 11,
+    "external-reference": 202
+  },
+  "link_audit": {
+    "checked": 386,
+    "broken": 0,
+    "items": []
+  }
+}

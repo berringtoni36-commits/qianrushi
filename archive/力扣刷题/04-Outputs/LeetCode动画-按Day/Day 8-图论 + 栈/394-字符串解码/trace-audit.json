@@ -1,0 +1,881 @@
+{
+  "problemId": 394,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 394,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "3",
+        "[",
+        "a",
+        "2",
+        "[",
+        "c",
+        "]",
+        "]"
+      ],
+      "variables": {},
+      "structure": {
+        "decoded": "accaccacc"
+      },
+      "result": [
+        "accaccacc"
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "7d26a5c39d6f2603f7eb75b2dd06a701e930d01c9bc47956acd4e773eafe91b3",
+    "sourceSemanticTokenHash": "f68db15a70df6f17f4cb3f2c8abdb5b0f3abce0ec9f9194ec5a45792ec4dc84f",
+    "sourceCodeLineCount": 24
+  },
+  "sourceCodeSha256": "7d26a5c39d6f2603f7eb75b2dd06a701e930d01c9bc47956acd4e773eafe91b3",
+  "sourceSemanticTokenHash": "f68db15a70df6f17f4cb3f2c8abdb5b0f3abce0ec9f9194ec5a45792ec4dc84f",
+  "steps": [
+    {
+      "id": "394-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立数字栈与字符串栈",
+      "body": "数字栈记录重复次数，字符串栈保存进入括号前的上下文。 题解原意：核心思想： 用两个变量 cur_str 和 cur_num 分别追踪当前正在构建的字符串和当前累积的数字。遇到 [ 时，将当前状态入栈并重置；遇到 ] 时，从栈中弹出状态并拼接结果。 复杂度： 时间 O(n)（n 为解码后字符串长度），空间 O(n)",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · stack",
+        "badge": "i=0",
+        "tokens": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 0
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "strings",
+            "values": [
+              "空字符串"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "数字栈记录重复次数，字符串栈保存进入括号前的上下文。"
+      },
+      "state": {
+        "values": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "variables": {
+          "i": 0
+        },
+        "structure": {
+          "nums": [],
+          "strings": [
+            ""
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "394-trace-002",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "处理 3",
+      "body": "累积重复次数 num=3。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=0",
+        "tokens": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "char": "3",
+          "current": ""
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "nums",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "strings",
+            "values": [
+              ""
+            ]
+          }
+        ],
+        "result": [],
+        "note": "累积重复次数 num=3。"
+      },
+      "state": {
+        "values": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "variables": {
+          "i": 0,
+          "char": "3",
+          "current": ""
+        },
+        "structure": {
+          "nums": [
+            3
+          ],
+          "strings": [
+            ""
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "394-trace-003",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "处理 [",
+      "body": "进入括号，保存前缀 。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=1",
+        "tokens": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "char": "[",
+          "current": ""
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "nums",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "strings",
+            "values": [
+              "",
+              ""
+            ]
+          }
+        ],
+        "result": [],
+        "note": "进入括号，保存前缀 。"
+      },
+      "state": {
+        "values": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "variables": {
+          "i": 1,
+          "char": "[",
+          "current": ""
+        },
+        "structure": {
+          "nums": [
+            3
+          ],
+          "strings": [
+            "",
+            ""
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "394-trace-004",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "处理 a",
+      "body": "追加字符 a，current=a。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=2",
+        "tokens": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "char": "a",
+          "current": "a"
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "a"
+            ]
+          },
+          {
+            "label": "nums",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "strings",
+            "values": [
+              "",
+              ""
+            ]
+          }
+        ],
+        "result": [],
+        "note": "追加字符 a，current=a。"
+      },
+      "state": {
+        "values": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "variables": {
+          "i": 2,
+          "char": "a",
+          "current": "a"
+        },
+        "structure": {
+          "nums": [
+            3
+          ],
+          "strings": [
+            "",
+            ""
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "394-trace-005",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "处理 2",
+      "body": "累积重复次数 num=2。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=3",
+        "tokens": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "char": "2",
+          "current": "a"
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "a"
+            ]
+          },
+          {
+            "label": "nums",
+            "values": [
+              3,
+              2
+            ]
+          },
+          {
+            "label": "strings",
+            "values": [
+              "",
+              ""
+            ]
+          }
+        ],
+        "result": [],
+        "note": "累积重复次数 num=2。"
+      },
+      "state": {
+        "values": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "variables": {
+          "i": 3,
+          "char": "2",
+          "current": "a"
+        },
+        "structure": {
+          "nums": [
+            3,
+            2
+          ],
+          "strings": [
+            "",
+            ""
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "394-trace-006",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "处理 [",
+      "body": "进入括号，保存前缀 a。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=4",
+        "tokens": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "char": "[",
+          "current": ""
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "nums",
+            "values": [
+              3,
+              2
+            ]
+          },
+          {
+            "label": "strings",
+            "values": [
+              "",
+              "",
+              "a"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "进入括号，保存前缀 a。"
+      },
+      "state": {
+        "values": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "variables": {
+          "i": 4,
+          "char": "[",
+          "current": ""
+        },
+        "structure": {
+          "nums": [
+            3,
+            2
+          ],
+          "strings": [
+            "",
+            "",
+            "a"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "394-trace-007",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "处理 c",
+      "body": "追加字符 c，current=c。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=5",
+        "tokens": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "char": "c",
+          "current": "c"
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "c"
+            ]
+          },
+          {
+            "label": "nums",
+            "values": [
+              3,
+              2
+            ]
+          },
+          {
+            "label": "strings",
+            "values": [
+              "",
+              "",
+              "a"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "追加字符 c，current=c。"
+      },
+      "state": {
+        "values": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "variables": {
+          "i": 5,
+          "char": "c",
+          "current": "c"
+        },
+        "structure": {
+          "nums": [
+            3,
+            2
+          ],
+          "strings": [
+            "",
+            "",
+            "a"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "394-trace-008",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "处理 ]",
+      "body": "闭合括号，恢复 a 并重复 2 次，current=acc。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=6 · 结果 1 项",
+        "tokens": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "char": "]",
+          "current": "acc"
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "acc"
+            ]
+          },
+          {
+            "label": "nums",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "strings",
+            "values": [
+              "",
+              ""
+            ]
+          }
+        ],
+        "result": [
+          "acc"
+        ],
+        "note": "闭合括号，恢复 a 并重复 2 次，current=acc。"
+      },
+      "state": {
+        "values": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "variables": {
+          "i": 6,
+          "char": "]",
+          "current": "acc"
+        },
+        "structure": {
+          "nums": [
+            3
+          ],
+          "strings": [
+            "",
+            ""
+          ]
+        },
+        "result": [
+          "acc"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "394-trace-009",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "处理 ]",
+      "body": "闭合括号，恢复  并重复 3 次，current=accaccacc。 易错提醒：多位数处理： 数字可能不止一位（如 12[a]），需要用 cur_num = cur_num * 10 + int(ch) 累积，而不是直接赋值。忘记处理多位数是最常见的 bug。 嵌套重置： 遇到 [ 时需要重置 cur_str 和 cur_num，否则内层会错误地继承外层的状态。 拼接顺序： prev_str + cur_str *…",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "i=7 · 结果 1 项",
+        "tokens": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "char": "]",
+          "current": "accaccacc"
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "accaccacc"
+            ]
+          },
+          {
+            "label": "nums",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "strings",
+            "values": [
+              ""
+            ]
+          }
+        ],
+        "result": [
+          "accaccacc"
+        ],
+        "note": "闭合括号，恢复  并重复 3 次，current=accaccacc。"
+      },
+      "state": {
+        "values": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "variables": {
+          "i": 7,
+          "char": "]",
+          "current": "accaccacc"
+        },
+        "structure": {
+          "nums": [],
+          "strings": [
+            ""
+          ]
+        },
+        "result": [
+          "accaccacc"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "394-trace-010",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "解码结果为 accaccacc。",
+      "kind": "stack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · stack",
+        "badge": "结果 1 项",
+        "tokens": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "accaccacc"
+            ]
+          }
+        ],
+        "result": [
+          "accaccacc"
+        ],
+        "note": "解码结果为 accaccacc。"
+      },
+      "state": {
+        "values": [
+          "3",
+          "[",
+          "a",
+          "2",
+          "[",
+          "c",
+          "]",
+          "]"
+        ],
+        "variables": {},
+        "structure": {
+          "decoded": "accaccacc"
+        },
+        "result": [
+          "accaccacc"
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

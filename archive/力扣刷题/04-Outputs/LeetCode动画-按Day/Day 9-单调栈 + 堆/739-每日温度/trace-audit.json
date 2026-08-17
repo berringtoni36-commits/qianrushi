@@ -1,0 +1,1787 @@
+{
+  "problemId": 739,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 739,
+    "stepCount": 16,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        73,
+        74,
+        75,
+        71,
+        69,
+        72,
+        76,
+        73
+      ],
+      "variables": {},
+      "structure": {
+        "stack": [
+          6,
+          7
+        ],
+        "answer": [
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "result": [
+        1,
+        1,
+        4,
+        2,
+        1,
+        1,
+        0,
+        0
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "43e3b8b6aefc130e29264387383fa3a0b32fd5be14287fe4a5630a8e36562eea",
+    "sourceSemanticTokenHash": "190f2a44cf6f3f67ef039e35eebefe1fc5c3c670dcaea7a1fe24d8d291c6e4ad",
+    "sourceCodeLineCount": 13
+  },
+  "sourceCodeSha256": "43e3b8b6aefc130e29264387383fa3a0b32fd5be14287fe4a5630a8e36562eea",
+  "sourceSemanticTokenHash": "190f2a44cf6f3f67ef039e35eebefe1fc5c3c670dcaea7a1fe24d8d291c6e4ad",
+  "steps": [
+    {
+      "id": "739-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立递减温度栈",
+      "body": "栈保存还没有找到更高温度的下标；新温度出现时从栈顶结算。 题解原意：核心思想： 维护一个单调递减栈（栈底 → 栈顶，温度越来越低）。遍历温度数组，当当前温度 > 栈顶温度时，说明栈顶温度遇到了右边第一个更高的温度，弹栈并计算结果。 为什么用栈？因为温度数组是按时间顺序的，后面的温度对前面的温度的影响是「后进先出」的——后面的低温先遇到后面的高温而解决，前面的低温要等更久。 复杂度： 时间 O(n)（每个元素最多入栈一次、出栈一次），空间 O(n)",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · mono-stack",
+        "badge": "stack",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "栈保存还没有找到更高温度的下标；新温度出现时从栈顶结算。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {},
+        "structure": {
+          "stack": [],
+          "answer": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "739-trace-002",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "下标 0 入栈",
+      "body": "当前温度 73 还没有遇到更高值，stack=[0]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=0 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "t": 73
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "note": "当前温度 73 还没有遇到更高值，stack=[0]。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 0,
+          "t": 73
+        },
+        "structure": {
+          "stack": [
+            0
+          ],
+          "answer": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-003",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "温度 74 结算下标 0",
+      "body": "74 比 temps[0]=73 高，等待天数为 1。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=1 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          0,
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "t": 74,
+          "resolved": 0
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "note": "74 比 temps[0]=73 高，等待天数为 1。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 1,
+          "t": 74,
+          "resolved": 0
+        },
+        "structure": {
+          "stack": [],
+          "answer": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-004",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "下标 1 入栈",
+      "body": "当前温度 74 还没有遇到更高值，stack=[1]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=1 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "t": 74
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "note": "当前温度 74 还没有遇到更高值，stack=[1]。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 1,
+          "t": 74
+        },
+        "structure": {
+          "stack": [
+            1
+          ],
+          "answer": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-005",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "温度 75 结算下标 1",
+      "body": "75 比 temps[1]=74 高，等待天数为 1。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=2 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          1,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "t": 75,
+          "resolved": 1
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "note": "75 比 temps[1]=74 高，等待天数为 1。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 2,
+          "t": 75,
+          "resolved": 1
+        },
+        "structure": {
+          "stack": [],
+          "answer": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-006",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "下标 2 入栈",
+      "body": "当前温度 75 还没有遇到更高值，stack=[2]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=2 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "t": 75
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "note": "当前温度 75 还没有遇到更高值，stack=[2]。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 2,
+          "t": 75
+        },
+        "structure": {
+          "stack": [
+            2
+          ],
+          "answer": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-007",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "下标 3 入栈",
+      "body": "当前温度 71 还没有遇到更高值，stack=[2, 3]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=3 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "t": 71
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              2,
+              3
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "note": "当前温度 71 还没有遇到更高值，stack=[2, 3]。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 3,
+          "t": 71
+        },
+        "structure": {
+          "stack": [
+            2,
+            3
+          ],
+          "answer": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-008",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "下标 4 入栈",
+      "body": "当前温度 69 还没有遇到更高值，stack=[2, 3, 4]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=4 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "t": 69
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "note": "当前温度 69 还没有遇到更高值，stack=[2, 3, 4]。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 4,
+          "t": 69
+        },
+        "structure": {
+          "stack": [
+            2,
+            3,
+            4
+          ],
+          "answer": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-009",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "温度 72 结算下标 4",
+      "body": "72 比 temps[4]=69 高，等待天数为 1。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=5 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          4,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "t": 72,
+          "resolved": 4
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              2,
+              3
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "note": "72 比 temps[4]=69 高，等待天数为 1。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 5,
+          "t": 72,
+          "resolved": 4
+        },
+        "structure": {
+          "stack": [
+            2,
+            3
+          ],
+          "answer": [
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-010",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "温度 72 结算下标 3",
+      "body": "72 比 temps[3]=71 高，等待天数为 2。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=5 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          3,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "t": 72,
+          "resolved": 3
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              0,
+              2,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        "note": "72 比 temps[3]=71 高，等待天数为 2。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 5,
+          "t": 72,
+          "resolved": 3
+        },
+        "structure": {
+          "stack": [
+            2
+          ],
+          "answer": [
+            1,
+            1,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-011",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "下标 5 入栈",
+      "body": "当前温度 72 还没有遇到更高值，stack=[2, 5]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=5 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "t": 72
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              2,
+              5
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              0,
+              2,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        "note": "当前温度 72 还没有遇到更高值，stack=[2, 5]。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 5,
+          "t": 72
+        },
+        "structure": {
+          "stack": [
+            2,
+            5
+          ],
+          "answer": [
+            1,
+            1,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-012",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "温度 76 结算下标 5",
+      "body": "76 比 temps[5]=72 高，等待天数为 1。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=6 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          5,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "t": 76,
+          "resolved": 5
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              0,
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          0,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "note": "76 比 temps[5]=72 高，等待天数为 1。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 6,
+          "t": 76,
+          "resolved": 5
+        },
+        "structure": {
+          "stack": [
+            2
+          ],
+          "answer": [
+            1,
+            1,
+            0,
+            2,
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          0,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-013",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "温度 76 结算下标 2",
+      "body": "76 比 temps[2]=75 高，等待天数为 4。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=6 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          2,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "t": 76,
+          "resolved": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              4,
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "note": "76 比 temps[2]=75 高，等待天数为 4。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 6,
+          "t": 76,
+          "resolved": 2
+        },
+        "structure": {
+          "stack": [],
+          "answer": [
+            1,
+            1,
+            4,
+            2,
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-014",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "下标 6 入栈",
+      "body": "当前温度 76 还没有遇到更高值，stack=[6]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=6 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "t": 76
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              6
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              4,
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "note": "当前温度 76 还没有遇到更高值，stack=[6]。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 6,
+          "t": 76
+        },
+        "structure": {
+          "stack": [
+            6
+          ],
+          "answer": [
+            1,
+            1,
+            4,
+            2,
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-015",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "下标 7 入栈",
+      "body": "当前温度 73 还没有遇到更高值，stack=[6, 7]。 易错提醒：栈中存索引不是值： 单调栈需要计算天数差（索引差值），所以栈中必须存索引。如果存温度值，就无法计算距离。 单调性方向： 本题找「下一个更高温度」，维护的是 单调递减栈（栈底到栈顶递减）。如果找「下一个更小元素」则维护单调递增栈。保持方向正确很重要。 while 条件： temperatures[stack[-1]] < temperatu…",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=7 · 结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "t": 73
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              6,
+              7
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              4,
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "note": "当前温度 73 还没有遇到更高值，stack=[6, 7]。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {
+          "i": 7,
+          "t": 73
+        },
+        "structure": {
+          "stack": [
+            6,
+            7
+          ],
+          "answer": [
+            1,
+            1,
+            4,
+            2,
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "739-trace-016",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "每日温度答案为 [1, 1, 4, 2, 1, 1, 0, 0]。",
+      "kind": "mono-stack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · mono-stack",
+        "badge": "结果 8 项",
+        "tokens": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1,
+              4,
+              2,
+              1,
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "note": "每日温度答案为 [1, 1, 4, 2, 1, 1, 0, 0]。"
+      },
+      "state": {
+        "values": [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ],
+        "variables": {},
+        "structure": {
+          "stack": [
+            6,
+            7
+          ],
+          "answer": [
+            1,
+            1,
+            4,
+            2,
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "result": [
+          1,
+          1,
+          4,
+          2,
+          1,
+          1,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

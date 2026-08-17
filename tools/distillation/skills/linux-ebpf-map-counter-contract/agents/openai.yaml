@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linux eBPF Map Counter Contract"
+  short_description: "Audit eBPF Map counter precision and event contracts"
+  default_prompt: "Use $linux-ebpf-map-counter-contract to audit a BCC Map key, update path, concurrency, and output contract."

@@ -1,0 +1,1990 @@
+{
+  "problemId": 438,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 438,
+    "stepCount": 21,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "c",
+        "b",
+        "a",
+        "e",
+        "b",
+        "a",
+        "b",
+        "a",
+        "c",
+        "d"
+      ],
+      "variables": {
+        "i": 10,
+        "j": 7,
+        "satisfy": 2
+      },
+      "structure": {
+        "cnt": {
+          "b": 1,
+          "c": 0,
+          "a": 0
+        }
+      },
+      "result": [
+        0,
+        6
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "12fd92d056ce908cbed9389da7392d681cb2be2fb28f3b469ff4d56f81bd085f",
+    "sourceSemanticTokenHash": "357055db3cd99ec236cbce9811a9ac49f7bd6d783c94c9f3bd2c94caa78396f8",
+    "sourceCodeLineCount": 18
+  },
+  "sourceCodeSha256": "12fd92d056ce908cbed9389da7392d681cb2be2fb28f3b469ff4d56f81bd085f",
+  "sourceSemanticTokenHash": "357055db3cd99ec236cbce9811a9ac49f7bd6d783c94c9f3bd2c94caa78396f8",
+  "steps": [
+    {
+      "id": "438-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "建立模式串频次",
+      "body": "目标 p = abc，每个窗口长度固定为 3。 题解原意：核心想法： 初始化 cnt_p 统计 p 中每个字母出现次数。用同样大小的 cnt_s 统计 s 中当前窗口内的字母，窗口长度固定为 len(p)。每次窗口整体右移一步，更新 cnt_s（新字符 +1，离开的字符 -1），然后比较两个数组是否相等。 关键洞察： 固定长度窗口的\"滑动\"意味着每次左指针和右指针各移动一次，窗口大小不变。这比不定长窗口简单——不需要 while 循环来调整大小。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · window",
+        "badge": "j=0",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "satisfy": 0
+        },
+        "rows": [
+          {
+            "label": "need",
+            "values": [
+              "b:1",
+              "c:1",
+              "a:1"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "目标 p = abc，每个窗口长度固定为 3。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "j": 0,
+          "satisfy": 0
+        },
+        "structure": {
+          "cnt": {
+            "b": 1,
+            "c": 1,
+            "a": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-002",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入 s[0] = c",
+      "body": "当前窗口先扩展到右端 i=0，满足字符种类数 satisfy=1。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=0 · j=0",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 0,
+          "satisfy": 1
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "c"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:1",
+              "c:0",
+              "a:1"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前窗口先扩展到右端 i=0，满足字符种类数 satisfy=1。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 0,
+          "j": 0,
+          "satisfy": 1
+        },
+        "structure": {
+          "cnt": {
+            "b": 1,
+            "c": 0,
+            "a": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-003",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入 s[1] = b",
+      "body": "当前窗口先扩展到右端 i=1，满足字符种类数 satisfy=2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=1 · j=0",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 0,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "cb"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:0",
+              "a:1"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前窗口先扩展到右端 i=1，满足字符种类数 satisfy=2。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 1,
+          "j": 0,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 0,
+            "a": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-004",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入 s[2] = a",
+      "body": "当前窗口先扩展到右端 i=2，满足字符种类数 satisfy=3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=2 · j=0",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 0,
+          "satisfy": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "cba"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:0",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前窗口先扩展到右端 i=2，满足字符种类数 satisfy=3。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 2,
+          "j": 0,
+          "satisfy": 3
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 0,
+            "a": 0
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-005",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "记录异位词起点 0",
+      "body": "当前固定窗口的频次与 p 一致，记录下标 0。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=2 · j=0 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          0,
+          1,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 0,
+          "satisfy": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "cba"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前固定窗口的频次与 p 一致，记录下标 0。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 2,
+          "j": 0,
+          "satisfy": 3
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 0,
+            "a": 0
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "438-trace-006",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入 s[3] = e",
+      "body": "当前窗口先扩展到右端 i=3，满足字符种类数 satisfy=3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=3 · j=0 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 0,
+          "satisfy": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "cbae"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:0",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前窗口先扩展到右端 i=3，满足字符种类数 satisfy=3。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 3,
+          "j": 0,
+          "satisfy": 3
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 0,
+            "a": 0
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-007",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "移出左端 c",
+      "body": "窗口超过 |p|，j 右移到 1，保持固定长度。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=3 · j=1 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          1,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 1,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "bae"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:1",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "窗口超过 |p|，j 右移到 1，保持固定长度。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 3,
+          "j": 1,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 1,
+            "a": 0
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-008",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入 s[4] = b",
+      "body": "当前窗口先扩展到右端 i=4，满足字符种类数 satisfy=2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=4 · j=1 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 1,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "baeb"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:-1",
+              "c:1",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前窗口先扩展到右端 i=4，满足字符种类数 satisfy=2。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 4,
+          "j": 1,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": -1,
+            "c": 1,
+            "a": 0
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-009",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "移出左端 b",
+      "body": "窗口超过 |p|，j 右移到 2，保持固定长度。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=4 · j=2 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          2,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "aeb"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:1",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "窗口超过 |p|，j 右移到 2，保持固定长度。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 1,
+            "a": 0
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-010",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入 s[5] = a",
+      "body": "当前窗口先扩展到右端 i=5，满足字符种类数 satisfy=2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=5 · j=2 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "j": 2,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "aeba"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:1",
+              "a:-1"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前窗口先扩展到右端 i=5，满足字符种类数 satisfy=2。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 5,
+          "j": 2,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 1,
+            "a": -1
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-011",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "移出左端 a",
+      "body": "窗口超过 |p|，j 右移到 3，保持固定长度。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=5 · j=3 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          3,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "j": 3,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "eba"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:1",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "窗口超过 |p|，j 右移到 3，保持固定长度。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 5,
+          "j": 3,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 1,
+            "a": 0
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-012",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入 s[6] = b",
+      "body": "当前窗口先扩展到右端 i=6，满足字符种类数 satisfy=2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=6 · j=3 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "j": 3,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ebab"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:-1",
+              "c:1",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前窗口先扩展到右端 i=6，满足字符种类数 satisfy=2。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 6,
+          "j": 3,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": -1,
+            "c": 1,
+            "a": 0
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-013",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "移出左端 e",
+      "body": "窗口超过 |p|，j 右移到 4，保持固定长度。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=6 · j=4 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          4,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "j": 4,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "bab"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:-1",
+              "c:1",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "窗口超过 |p|，j 右移到 4，保持固定长度。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 6,
+          "j": 4,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": -1,
+            "c": 1,
+            "a": 0
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-014",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入 s[7] = a",
+      "body": "当前窗口先扩展到右端 i=7，满足字符种类数 satisfy=2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=7 · j=4 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "j": 4,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "baba"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:-1",
+              "c:1",
+              "a:-1"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前窗口先扩展到右端 i=7，满足字符种类数 satisfy=2。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 7,
+          "j": 4,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": -1,
+            "c": 1,
+            "a": -1
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-015",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "移出左端 b",
+      "body": "窗口超过 |p|，j 右移到 5，保持固定长度。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=7 · j=5 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          5,
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "j": 5,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "aba"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:1",
+              "a:-1"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "窗口超过 |p|，j 右移到 5，保持固定长度。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 7,
+          "j": 5,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 1,
+            "a": -1
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-016",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入 s[8] = c",
+      "body": "当前窗口先扩展到右端 i=8，满足字符种类数 satisfy=3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=8 · j=5 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 5,
+          "satisfy": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "abac"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:0",
+              "a:-1"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前窗口先扩展到右端 i=8，满足字符种类数 satisfy=3。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 5,
+          "satisfy": 3
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 0,
+            "a": -1
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-017",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "移出左端 a",
+      "body": "窗口超过 |p|，j 右移到 6，保持固定长度。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=8 · j=6 · 结果 1 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          6,
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 6,
+          "satisfy": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "bac"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:0",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "窗口超过 |p|，j 右移到 6，保持固定长度。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 6,
+          "satisfy": 3
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 0,
+            "a": 0
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-018",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "记录异位词起点 6",
+      "body": "当前固定窗口的频次与 p 一致，记录下标 6。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=8 · j=6 · 结果 2 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          6,
+          7,
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 6,
+          "satisfy": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "bac"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0,
+              6
+            ]
+          }
+        ],
+        "result": [
+          0,
+          6
+        ],
+        "note": "当前固定窗口的频次与 p 一致，记录下标 6。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 6,
+          "satisfy": 3
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 0,
+            "a": 0
+          }
+        },
+        "result": [
+          0,
+          6
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "438-trace-019",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入 s[9] = d",
+      "body": "当前窗口先扩展到右端 i=9，满足字符种类数 satisfy=3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=9 · j=6 · 结果 2 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          9
+        ],
+        "compared": [],
+        "variables": {
+          "i": 9,
+          "j": 6,
+          "satisfy": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "bacd"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:0",
+              "c:0",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0,
+              6
+            ]
+          }
+        ],
+        "result": [
+          0,
+          6
+        ],
+        "note": "当前窗口先扩展到右端 i=9，满足字符种类数 satisfy=3。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 9,
+          "j": 6,
+          "satisfy": 3
+        },
+        "structure": {
+          "cnt": {
+            "b": 0,
+            "c": 0,
+            "a": 0
+          }
+        },
+        "result": [
+          0,
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-020",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "移出左端 b",
+      "body": "窗口超过 |p|，j 右移到 7，保持固定长度。 易错提醒：p 比 s 长： 直接返回空列表，否则后续的 s[i - len(p)] 会取到负索引（在 C++ 中会从末尾取，导致错误结果）。一定要先检查。 计数数组索引计算： ord(ch) - 97（或 ord(ch) - ord('a')），不是 ord(ch) 本身，也不是 ord(ch) - 96（'a' 的 ASCII 码是 97）。 窗…",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=9 · j=7 · 结果 2 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [
+          7,
+          9
+        ],
+        "compared": [],
+        "variables": {
+          "i": 9,
+          "j": 7,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "acd"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "b:1",
+              "c:0",
+              "a:0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              0,
+              6
+            ]
+          }
+        ],
+        "result": [
+          0,
+          6
+        ],
+        "note": "窗口超过 |p|，j 右移到 7，保持固定长度。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 9,
+          "j": 7,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": 1,
+            "c": 0,
+            "a": 0
+          }
+        },
+        "result": [
+          0,
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "438-trace-021",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "扫描结束，返回起点 [0, 6]。",
+      "kind": "window",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · window",
+        "badge": "i=10 · j=7 · 结果 2 项",
+        "tokens": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 10,
+          "j": 7,
+          "satisfy": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              0,
+              6
+            ]
+          }
+        ],
+        "result": [
+          0,
+          6
+        ],
+        "note": "扫描结束，返回起点 [0, 6]。"
+      },
+      "state": {
+        "values": [
+          "c",
+          "b",
+          "a",
+          "e",
+          "b",
+          "a",
+          "b",
+          "a",
+          "c",
+          "d"
+        ],
+        "variables": {
+          "i": 10,
+          "j": 7,
+          "satisfy": 2
+        },
+        "structure": {
+          "cnt": {
+            "b": 1,
+            "c": 0,
+            "a": 0
+          }
+        },
+        "result": [
+          0,
+          6
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,1520 @@
+{
+  "problemId": 160,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 160,
+    "stepCount": 15,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        4,
+        1,
+        8,
+        4,
+        5
+      ],
+      "variables": {
+        "p": "shared(8)",
+        "q": "shared(8)"
+      },
+      "structure": {
+        "A": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "B": [
+          5,
+          6,
+          1,
+          8,
+          4,
+          5
+        ]
+      },
+      "result": [
+        8
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "4b29df2b2e1fdd0898d9b473c794b3910a370f0003769b16fc89a773dfd30d3d",
+    "sourceSemanticTokenHash": "97dbd06d55088d21404dde9b4b9be9529bade82b397acd6c3516dfcf07d4b9ca",
+    "sourceCodeLineCount": 19
+  },
+  "sourceCodeSha256": "4b29df2b2e1fdd0898d9b473c794b3910a370f0003769b16fc89a773dfd30d3d",
+  "sourceSemanticTokenHash": "97dbd06d55088d21404dde9b4b9be9529bade82b397acd6c3516dfcf07d4b9ca",
+  "steps": [
+    {
+      "id": "160-trace-001",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "setup",
+      "title": "双指针从两个头开始",
+      "body": "p、q 分别扫描两条链；走到 null 后切换到另一条头，抵消长度差。 题解原意：为什么这样想： 设链表 A 的不相交部分长度为 a，链表 B 的不相交部分为 b，相交部分为 c。指针 pA 走完自己的路 a+c，再走 b 到相交点；指针 pB 走完自己的路 b+c，再走 a 到相交点。两者总路程都是 a+b+c，因此必然同时到达相交点。 关键洞察： 两个指针分别从不同起点出发，通过「交换赛道」消除长度差，最终在相交点相遇。如果没有相交点，则它们会同时到达 null。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[0]",
+          "q": "B[0]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "p、q 分别扫描两条链；走到 null 后切换到另一条头，抵消长度差。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[0]",
+          "q": "B[0]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-002",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=A[0], q=B[0]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[0]",
+          "q": "B[0]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "A[0]",
+              "B[0]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[0]",
+          "q": "B[0]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-003",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=A[1], q=B[1]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[1]",
+          "q": "B[1]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "A[1]",
+              "B[1]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[1]",
+          "q": "B[1]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-004",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=A[2], q=B[2]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[2]",
+          "q": "B[2]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "A[2]",
+              "B[2]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[2]",
+          "q": "B[2]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-005",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=A[3], q=B[3]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[3]",
+          "q": "B[3]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "A[3]",
+              "B[3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[3]",
+          "q": "B[3]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-006",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=A[4], q=B[4]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[4]",
+          "q": "B[4]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "A[4]",
+              "B[4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[4]",
+          "q": "B[4]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-007",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=null, q=B[5]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "null",
+          "q": "B[5]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "null",
+              "B[5]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "null",
+          "q": "B[5]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-008",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=A[0], q=null",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[0]",
+          "q": "null"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "A[0]",
+              "null"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[0]",
+          "q": "null"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-009",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=A[1], q=B[0]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[1]",
+          "q": "B[0]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "A[1]",
+              "B[0]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[1]",
+          "q": "B[0]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-010",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=A[2], q=B[1]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[2]",
+          "q": "B[1]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "A[2]",
+              "B[1]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[2]",
+          "q": "B[1]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-011",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=A[3], q=B[2]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[3]",
+          "q": "B[2]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "A[3]",
+              "B[2]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[3]",
+          "q": "B[2]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-012",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=A[4], q=B[3]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "A[4]",
+          "q": "B[3]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "A[4]",
+              "B[3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "A[4]",
+          "q": "B[3]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-013",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "compare",
+      "title": "比较 p=B[1], q=B[4]",
+      "body": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "A",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "B[1]",
+          "q": "B[4]"
+        },
+        "rows": [
+          {
+            "label": "A",
+            "values": [
+              4,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "B",
+            "values": [
+              5,
+              6,
+              1,
+              8,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              "B[1]",
+              "B[4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "两指针尚未相遇；分别向后走，走完自己的链后切换到另一条链。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "B[1]",
+          "q": "B[4]"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "160-trace-014",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "p、q 同时到达相交节点",
+      "body": "两条路径长度被补齐，p 与 q 都指向值 8 的共享节点。 易错提醒：值相等不等于节点相交： 相交判断的是节点引用（pA is pB），不是节点值相等（pA.val == pB.val）。两个不同节点可以有相同的值 空链表处理： 任一链表为空时直接返回 nullptr 无相交情况： 等路程法在无相交时会同时到达 nullptr，返回 nullptr，不需要特殊判断 死循环风险： 等路程法的 while 循环…",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 1 项",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [
+          2,
+          2
+        ],
+        "variables": {
+          "p": "shared(8)",
+          "q": "shared(8)"
+        },
+        "rows": [
+          {
+            "label": "p / q",
+            "values": [
+              "shared(8)"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              8
+            ]
+          }
+        ],
+        "result": [
+          8
+        ],
+        "note": "两条路径长度被补齐，p 与 q 都指向值 8 的共享节点。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "shared(8)",
+          "q": "shared(8)"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [
+          8
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "160-trace-015",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回相交节点 8。",
+      "kind": "linked",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · linked",
+        "badge": "结果 1 项",
+        "tokens": [
+          "A:4",
+          "A:1",
+          "A:8",
+          "A:4",
+          "A:5",
+          "B:5",
+          "B:6",
+          "B:1",
+          "B:8",
+          "B:4",
+          "B:5"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": "shared(8)",
+          "q": "shared(8)"
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              8
+            ]
+          }
+        ],
+        "result": [
+          8
+        ],
+        "note": "返回相交节点 8。"
+      },
+      "state": {
+        "values": [
+          4,
+          1,
+          8,
+          4,
+          5
+        ],
+        "variables": {
+          "p": "shared(8)",
+          "q": "shared(8)"
+        },
+        "structure": {
+          "A": [
+            4,
+            1,
+            8,
+            4,
+            5
+          ],
+          "B": [
+            5,
+            6,
+            1,
+            8,
+            4,
+            5
+          ]
+        },
+        "result": [
+          8
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

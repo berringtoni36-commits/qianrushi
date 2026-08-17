@@ -1,0 +1,3457 @@
+{
+  "problemId": 763,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 763,
+    "stepCount": 29,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "b",
+        "a",
+        "c",
+        "a",
+        "d",
+        "e",
+        "f",
+        "e",
+        "g",
+        "d",
+        "e",
+        "h",
+        "i",
+        "j",
+        "h",
+        "k",
+        "l",
+        "i",
+        "j"
+      ],
+      "variables": {
+        "start": 24,
+        "end": 24
+      },
+      "structure": {
+        "last": {
+          "a": 8,
+          "b": 5,
+          "c": 7,
+          "d": 14,
+          "e": 15,
+          "f": 11,
+          "g": 13,
+          "h": 19,
+          "i": 22,
+          "j": 23,
+          "k": 20,
+          "l": 21
+        }
+      },
+      "result": [
+        9,
+        7,
+        8
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "e41d7956e24910eca61ae23b57fd525efb2ccffe0858053358d12970bcf0ab80",
+    "sourceSemanticTokenHash": "3d119f8d693bb899dd07f4502d9b8a8282ca3ec0f1c378fcc518cc276d50c1b6",
+    "sourceCodeLineCount": 17
+  },
+  "sourceCodeSha256": "e41d7956e24910eca61ae23b57fd525efb2ccffe0858053358d12970bcf0ab80",
+  "sourceSemanticTokenHash": "3d119f8d693bb899dd07f4502d9b8a8282ca3ec0f1c378fcc518cc276d50c1b6",
+  "steps": [
+    {
+      "id": "763-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "记录每个字符最后出现位置",
+      "body": "区间只有在扫描到 end 且当前字符的最后位置不再向右时才能切开。 题解原意：思路讲解： 分两步走： 第一步（预处理）： 遍历一次字符串，用哈希表（或长度为 26 的数组）记录每个字符最后出现的下标。 第二步（贪心切割）： 再次遍历字符串，维护： start：当前片段的起始位置 end：当前片段的右边界（动态扩展） 每遇到一个字符 c，就将 end 更新为 max(end, last[c]) 当 i == end 时，说明当前片段结束，记录长度 end - start + 1，然后 start…",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · greedy",
+        "badge": "last",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "start": 0,
+          "end": 0
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              "a:8",
+              "b:5",
+              "c:7",
+              "d:14",
+              "e:15",
+              "f:11",
+              "g:13",
+              "h:19"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "区间只有在扫描到 end 且当前字符的最后位置不再向右时才能切开。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "start": 0,
+          "end": 0
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-002",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=8",
+      "body": "字符 a 的最后位置为 8，当前区间 [0,8]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=0",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "start": 0,
+          "end": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,8]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "字符 a 的最后位置为 8，当前区间 [0,8]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 0,
+          "start": 0,
+          "end": 8
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-003",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=8",
+      "body": "字符 b 的最后位置为 5，当前区间 [0,8]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=1",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "start": 0,
+          "end": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,8]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "字符 b 的最后位置为 5，当前区间 [0,8]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 1,
+          "start": 0,
+          "end": 8
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-004",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=8",
+      "body": "字符 a 的最后位置为 8，当前区间 [0,8]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=2",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "start": 0,
+          "end": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,8]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "字符 a 的最后位置为 8，当前区间 [0,8]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 2,
+          "start": 0,
+          "end": 8
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-005",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=8",
+      "body": "字符 b 的最后位置为 5，当前区间 [0,8]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=3",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "start": 0,
+          "end": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,8]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "字符 b 的最后位置为 5，当前区间 [0,8]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 3,
+          "start": 0,
+          "end": 8
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-006",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=8",
+      "body": "字符 c 的最后位置为 7，当前区间 [0,8]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=4",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "start": 0,
+          "end": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,8]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "字符 c 的最后位置为 7，当前区间 [0,8]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 4,
+          "start": 0,
+          "end": 8
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-007",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=8",
+      "body": "字符 b 的最后位置为 5，当前区间 [0,8]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=5",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "start": 0,
+          "end": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,8]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "字符 b 的最后位置为 5，当前区间 [0,8]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 5,
+          "start": 0,
+          "end": 8
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-008",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=8",
+      "body": "字符 a 的最后位置为 8，当前区间 [0,8]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=6",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "start": 0,
+          "end": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,8]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "字符 a 的最后位置为 8，当前区间 [0,8]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 6,
+          "start": 0,
+          "end": 8
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-009",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=8",
+      "body": "字符 c 的最后位置为 7，当前区间 [0,8]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=7",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "start": 0,
+          "end": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,8]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "字符 c 的最后位置为 7，当前区间 [0,8]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 7,
+          "start": 0,
+          "end": 8
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-010",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=8",
+      "body": "字符 a 的最后位置为 8，当前区间 [0,8]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=8",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "start": 0,
+          "end": 8
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,8]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "字符 a 的最后位置为 8，当前区间 [0,8]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 8,
+          "start": 0,
+          "end": 8
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-011",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "结算分段长度 9",
+      "body": "i=end=8，区间 [0,8] 内的字符不会再外溢。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · greedy",
+        "badge": "i=8 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "start": 0,
+          "end": 8
+        },
+        "rows": [
+          {
+            "label": "segments",
+            "values": [
+              9
+            ]
+          }
+        ],
+        "result": [
+          9
+        ],
+        "note": "i=end=8，区间 [0,8] 内的字符不会再外溢。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 8,
+          "start": 0,
+          "end": 8
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "763-trace-012",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=14",
+      "body": "字符 d 的最后位置为 14，当前区间 [9,14]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=9 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          9
+        ],
+        "compared": [],
+        "variables": {
+          "i": 9,
+          "start": 9,
+          "end": 14
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[9,14]"
+            ]
+          }
+        ],
+        "result": [
+          9
+        ],
+        "note": "字符 d 的最后位置为 14，当前区间 [9,14]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 9,
+          "start": 9,
+          "end": 14
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-013",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=15",
+      "body": "字符 e 的最后位置为 15，当前区间 [9,15]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=10 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          10
+        ],
+        "compared": [],
+        "variables": {
+          "i": 10,
+          "start": 9,
+          "end": 15
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[9,15]"
+            ]
+          }
+        ],
+        "result": [
+          9
+        ],
+        "note": "字符 e 的最后位置为 15，当前区间 [9,15]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 10,
+          "start": 9,
+          "end": 15
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-014",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=15",
+      "body": "字符 f 的最后位置为 11，当前区间 [9,15]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=11 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          11
+        ],
+        "compared": [],
+        "variables": {
+          "i": 11,
+          "start": 9,
+          "end": 15
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[9,15]"
+            ]
+          }
+        ],
+        "result": [
+          9
+        ],
+        "note": "字符 f 的最后位置为 11，当前区间 [9,15]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 11,
+          "start": 9,
+          "end": 15
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-015",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=15",
+      "body": "字符 e 的最后位置为 15，当前区间 [9,15]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=12 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          12
+        ],
+        "compared": [],
+        "variables": {
+          "i": 12,
+          "start": 9,
+          "end": 15
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[9,15]"
+            ]
+          }
+        ],
+        "result": [
+          9
+        ],
+        "note": "字符 e 的最后位置为 15，当前区间 [9,15]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 12,
+          "start": 9,
+          "end": 15
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-016",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=15",
+      "body": "字符 g 的最后位置为 13，当前区间 [9,15]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=13 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          13
+        ],
+        "compared": [],
+        "variables": {
+          "i": 13,
+          "start": 9,
+          "end": 15
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[9,15]"
+            ]
+          }
+        ],
+        "result": [
+          9
+        ],
+        "note": "字符 g 的最后位置为 13，当前区间 [9,15]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 13,
+          "start": 9,
+          "end": 15
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-017",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=15",
+      "body": "字符 d 的最后位置为 14，当前区间 [9,15]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=14 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          14
+        ],
+        "compared": [],
+        "variables": {
+          "i": 14,
+          "start": 9,
+          "end": 15
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[9,15]"
+            ]
+          }
+        ],
+        "result": [
+          9
+        ],
+        "note": "字符 d 的最后位置为 14，当前区间 [9,15]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 14,
+          "start": 9,
+          "end": 15
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-018",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=15",
+      "body": "字符 e 的最后位置为 15，当前区间 [9,15]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=15 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          15
+        ],
+        "compared": [],
+        "variables": {
+          "i": 15,
+          "start": 9,
+          "end": 15
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[9,15]"
+            ]
+          }
+        ],
+        "result": [
+          9
+        ],
+        "note": "字符 e 的最后位置为 15，当前区间 [9,15]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 15,
+          "start": 9,
+          "end": 15
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-019",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "结算分段长度 7",
+      "body": "i=end=15，区间 [9,15] 内的字符不会再外溢。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · greedy",
+        "badge": "i=15 · 结果 2 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          15
+        ],
+        "compared": [],
+        "variables": {
+          "i": 15,
+          "start": 9,
+          "end": 15
+        },
+        "rows": [
+          {
+            "label": "segments",
+            "values": [
+              9,
+              7
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7
+        ],
+        "note": "i=end=15，区间 [9,15] 内的字符不会再外溢。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 15,
+          "start": 9,
+          "end": 15
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "763-trace-020",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=19",
+      "body": "字符 h 的最后位置为 19，当前区间 [16,19]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=16 · 结果 2 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          16
+        ],
+        "compared": [],
+        "variables": {
+          "i": 16,
+          "start": 16,
+          "end": 19
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[16,19]"
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7
+        ],
+        "note": "字符 h 的最后位置为 19，当前区间 [16,19]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 16,
+          "start": 16,
+          "end": 19
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-021",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=22",
+      "body": "字符 i 的最后位置为 22，当前区间 [16,22]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=17 · 结果 2 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          17
+        ],
+        "compared": [],
+        "variables": {
+          "i": 17,
+          "start": 16,
+          "end": 22
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[16,22]"
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7
+        ],
+        "note": "字符 i 的最后位置为 22，当前区间 [16,22]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 17,
+          "start": 16,
+          "end": 22
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-022",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=23",
+      "body": "字符 j 的最后位置为 23，当前区间 [16,23]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=18 · 结果 2 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          18
+        ],
+        "compared": [],
+        "variables": {
+          "i": 18,
+          "start": 16,
+          "end": 23
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[16,23]"
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7
+        ],
+        "note": "字符 j 的最后位置为 23，当前区间 [16,23]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 18,
+          "start": 16,
+          "end": 23
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-023",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=23",
+      "body": "字符 h 的最后位置为 19，当前区间 [16,23]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=19 · 结果 2 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          19
+        ],
+        "compared": [],
+        "variables": {
+          "i": 19,
+          "start": 16,
+          "end": 23
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[16,23]"
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7
+        ],
+        "note": "字符 h 的最后位置为 19，当前区间 [16,23]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 19,
+          "start": 16,
+          "end": 23
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-024",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=23",
+      "body": "字符 k 的最后位置为 20，当前区间 [16,23]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=20 · 结果 2 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          20
+        ],
+        "compared": [],
+        "variables": {
+          "i": 20,
+          "start": 16,
+          "end": 23
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[16,23]"
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7
+        ],
+        "note": "字符 k 的最后位置为 20，当前区间 [16,23]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 20,
+          "start": 16,
+          "end": 23
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-025",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=23",
+      "body": "字符 l 的最后位置为 21，当前区间 [16,23]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=21 · 结果 2 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          21
+        ],
+        "compared": [],
+        "variables": {
+          "i": 21,
+          "start": 16,
+          "end": 23
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[16,23]"
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7
+        ],
+        "note": "字符 l 的最后位置为 21，当前区间 [16,23]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 21,
+          "start": 16,
+          "end": 23
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-026",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=23",
+      "body": "字符 i 的最后位置为 22，当前区间 [16,23]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=22 · 结果 2 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          22
+        ],
+        "compared": [],
+        "variables": {
+          "i": 22,
+          "start": 16,
+          "end": 23
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[16,23]"
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7
+        ],
+        "note": "字符 i 的最后位置为 22，当前区间 [16,23]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 22,
+          "start": 16,
+          "end": 23
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-027",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "扩展区间到 end=23",
+      "body": "字符 j 的最后位置为 23，当前区间 [16,23]。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=23 · 结果 2 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          23
+        ],
+        "compared": [],
+        "variables": {
+          "i": 23,
+          "start": 16,
+          "end": 23
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[16,23]"
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7
+        ],
+        "note": "字符 j 的最后位置为 23，当前区间 [16,23]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 23,
+          "start": 16,
+          "end": 23
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "763-trace-028",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "结算分段长度 8",
+      "body": "i=end=23，区间 [16,23] 内的字符不会再外溢。 易错提醒：更新 end 时用 last[c] 而非 i：last[c] 是字符 c 的最后出现位置，不能写成 end = max(end, i) 切分时机：必须在 i == end 时切分。如果提前切分，同一个字母可能出现在多个片段中；如果延后切分，片段数会减少 start 的更新：切分后 start = i + 1，注意不是 start = en…",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · greedy",
+        "badge": "i=23 · 结果 3 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [
+          23
+        ],
+        "compared": [],
+        "variables": {
+          "i": 23,
+          "start": 16,
+          "end": 23
+        },
+        "rows": [
+          {
+            "label": "segments",
+            "values": [
+              9,
+              7,
+              8
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7,
+          8
+        ],
+        "note": "i=end=23，区间 [16,23] 内的字符不会再外溢。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "i": 23,
+          "start": 16,
+          "end": 23
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7,
+          8
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "763-trace-029",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "分段长度为 [9, 7, 8]。",
+      "kind": "greedy",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · greedy",
+        "badge": "结果 3 项",
+        "tokens": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "start": 24,
+          "end": 24
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              9,
+              7,
+              8
+            ]
+          }
+        ],
+        "result": [
+          9,
+          7,
+          8
+        ],
+        "note": "分段长度为 [9, 7, 8]。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c",
+          "b",
+          "a",
+          "c",
+          "a",
+          "d",
+          "e",
+          "f",
+          "e",
+          "g",
+          "d",
+          "e",
+          "h",
+          "i",
+          "j",
+          "h",
+          "k",
+          "l",
+          "i",
+          "j"
+        ],
+        "variables": {
+          "start": 24,
+          "end": 24
+        },
+        "structure": {
+          "last": {
+            "a": 8,
+            "b": 5,
+            "c": 7,
+            "d": 14,
+            "e": 15,
+            "f": 11,
+            "g": 13,
+            "h": 19,
+            "i": 22,
+            "j": 23,
+            "k": 20,
+            "l": 21
+          }
+        },
+        "result": [
+          9,
+          7,
+          8
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

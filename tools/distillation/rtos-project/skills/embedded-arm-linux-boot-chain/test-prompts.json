@@ -1,0 +1,14 @@
+{
+  "skill": "embedded-arm-linux-boot-chain",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"U-Boot 能进入，但 Linux 内核没有任何串口输出，怎么定位？","expected_behavior":"激活本 skill，按启动阶段和最后证据排查","notes":"典型启动故障"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"帮我讲清 ARM Linux 从上电到 rootfs 和应用启动的完整链路","expected_behavior":"激活本 skill，输出 Boot ROM/SPL/U-Boot/内核/Rootfs 链路","notes":"知识与面试"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"内核起来了但提示无法挂载根文件系统，应该先看什么？","expected_behavior":"激活本 skill，围绕 root 参数、存储驱动和文件系统定位","notes":"阶段定位"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"STM32 HardFault 了怎么排查？","expected_behavior":"不激活本 skill，优先使用 RTOS/MCU 故障排查路径","notes":"平台边界"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"这个 eBPF 程序的 last_time_map key 是否真的能节流？","expected_behavior":"不激活本 skill，优先激活 linux-memory-source-audit","notes":"跨 skill 混淆"},
+    {"id":"edge-01","type":"edge_case","prompt":"ARM Linux 驱动加载失败，系统还能登录用户空间","expected_behavior":"不以启动链为主，应先定位驱动/设备树，但可说明其位于启动后阶段","notes":"边界阶段"}
+  ],
+  "minimum_pass_rate": 0.8
+}

@@ -1,0 +1,757 @@
+{
+  "problemId": 121,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 121,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        7,
+        1,
+        5,
+        3,
+        6,
+        4
+      ],
+      "variables": {
+        "minp": 1,
+        "res": 5
+      },
+      "structure": {},
+      "result": [
+        5
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "2cdfbc9f8f8da43e13584d1a505db43eb474177b7fd566171759ad3b9cedfe09",
+    "sourceSemanticTokenHash": "85e696ad27c2d362f5034599fdd26c435fb344d2697a65b1376410d861b8b99f",
+    "sourceCodeLineCount": 11
+  },
+  "sourceCodeSha256": "2cdfbc9f8f8da43e13584d1a505db43eb474177b7fd566171759ad3b9cedfe09",
+  "sourceSemanticTokenHash": "85e696ad27c2d362f5034599fdd26c435fb344d2697a65b1376410d861b8b99f",
+  "steps": [
+    {
+      "id": "121-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "初始化最低买入价",
+      "body": "minp 保存之前见过的最低价格，res 保存最大利润。 题解原意：思路讲解： 核心思想是在遍历过程中维护两个变量： min_price：遍历到当前位置时的最低价格（历史最低价） max_profit：到当前位置时能获得的最大利润 每遍历一天，先用当天价格更新 min_price（保证买入价最低），再计算\"如果今天卖出\"的利润 price - min_price，用它更新 max_profit。这就是贪心思想的体现——在每一天都做局部最优决策（找历史最低买入价），最终得到全局最优（最…",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · greedy",
+        "badge": "res=0",
+        "tokens": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "minp": 1000000000,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "minp",
+            "values": [
+              1000000000
+            ]
+          },
+          {
+            "label": "profit",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "minp 保存之前见过的最低价格，res 保存最大利润。"
+      },
+      "state": {
+        "values": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "variables": {
+          "minp": 1000000000,
+          "res": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "121-trace-002",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理价格 7",
+      "body": "先按旧 minp 计算利润，随后 minp=7，res=0。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=0 · res=0 · 结果 1 项",
+        "tokens": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "price": 7,
+          "minp": 7,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "minp",
+            "values": [
+              7
+            ]
+          },
+          {
+            "label": "profit",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "先按旧 minp 计算利润，随后 minp=7，res=0。"
+      },
+      "state": {
+        "values": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "variables": {
+          "i": 0,
+          "price": 7,
+          "minp": 7,
+          "res": 0
+        },
+        "structure": {},
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "121-trace-003",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理价格 1",
+      "body": "先按旧 minp 计算利润，随后 minp=1，res=0。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=1 · res=0 · 结果 1 项",
+        "tokens": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "price": 1,
+          "minp": 1,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "minp",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "profit",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "先按旧 minp 计算利润，随后 minp=1，res=0。"
+      },
+      "state": {
+        "values": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "variables": {
+          "i": 1,
+          "price": 1,
+          "minp": 1,
+          "res": 0
+        },
+        "structure": {},
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "121-trace-004",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理价格 5",
+      "body": "先按旧 minp 计算利润，随后 minp=1，res=4。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=2 · res=4 · 结果 1 项",
+        "tokens": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "price": 5,
+          "minp": 1,
+          "res": 4
+        },
+        "rows": [
+          {
+            "label": "minp",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "profit",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "先按旧 minp 计算利润，随后 minp=1，res=4。"
+      },
+      "state": {
+        "values": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "variables": {
+          "i": 2,
+          "price": 5,
+          "minp": 1,
+          "res": 4
+        },
+        "structure": {},
+        "result": [
+          4
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "121-trace-005",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理价格 3",
+      "body": "先按旧 minp 计算利润，随后 minp=1，res=4。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=3 · res=4 · 结果 1 项",
+        "tokens": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "price": 3,
+          "minp": 1,
+          "res": 4
+        },
+        "rows": [
+          {
+            "label": "minp",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "profit",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "先按旧 minp 计算利润，随后 minp=1，res=4。"
+      },
+      "state": {
+        "values": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "price": 3,
+          "minp": 1,
+          "res": 4
+        },
+        "structure": {},
+        "result": [
+          4
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "121-trace-006",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理价格 6",
+      "body": "先按旧 minp 计算利润，随后 minp=1，res=5。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=4 · res=5 · 结果 1 项",
+        "tokens": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "price": 6,
+          "minp": 1,
+          "res": 5
+        },
+        "rows": [
+          {
+            "label": "minp",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "profit",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [
+          5
+        ],
+        "note": "先按旧 minp 计算利润，随后 minp=1，res=5。"
+      },
+      "state": {
+        "values": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "price": 6,
+          "minp": 1,
+          "res": 5
+        },
+        "structure": {},
+        "result": [
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "121-trace-007",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理价格 4",
+      "body": "先按旧 minp 计算利润，随后 minp=1，res=5。",
+      "kind": "greedy",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · greedy",
+        "badge": "i=5 · res=5 · 结果 1 项",
+        "tokens": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "price": 4,
+          "minp": 1,
+          "res": 5
+        },
+        "rows": [
+          {
+            "label": "minp",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "profit",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [
+          5
+        ],
+        "note": "先按旧 minp 计算利润，随后 minp=1，res=5。"
+      },
+      "state": {
+        "values": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "variables": {
+          "i": 5,
+          "price": 4,
+          "minp": 1,
+          "res": 5
+        },
+        "structure": {},
+        "result": [
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "121-trace-check-009",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大利润为 5。",
+      "kind": "greedy",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · res=5 · 结果 1 项",
+        "tokens": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "price": 4,
+          "minp": 1,
+          "res": 5
+        },
+        "rows": [
+          {
+            "label": "minp",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "profit",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [
+          5
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大利润为 5。"
+      },
+      "state": {
+        "values": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "variables": {
+          "i": 5,
+          "price": 4,
+          "minp": 1,
+          "res": 5
+        },
+        "structure": {},
+        "result": [
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "121-trace-check-010",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大利润为 5。 易错提醒：数组长度为 1：只能买入无法卖出，利润为 0，代码应能正确处理 价格一直下跌：不交易利润为 0，不要返回负数 先买后卖顺序：不能先卖后买（不能做空），利润 = 后面价格 - 前面价格必须非负才能交易 初始值设置：min_price 初始化为 INT_MAX 而非 prices[0]，这样第一个元素就能正确更新 DP 写法中 dp1 的更新…",
+      "kind": "greedy",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · res=5 · 结果 1 项",
+        "tokens": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "price": 4,
+          "minp": 1,
+          "res": 5
+        },
+        "rows": [
+          {
+            "label": "minp",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "profit",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [
+          5
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大利润为 5。"
+      },
+      "state": {
+        "values": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "variables": {
+          "i": 5,
+          "price": 4,
+          "minp": 1,
+          "res": 5
+        },
+        "structure": {},
+        "result": [
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "121-trace-008",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最大利润为 5。",
+      "kind": "greedy",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · greedy",
+        "badge": "res=5 · 结果 1 项",
+        "tokens": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "minp": 1,
+          "res": 5
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [
+          5
+        ],
+        "note": "最大利润为 5。"
+      },
+      "state": {
+        "values": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "variables": {
+          "minp": 1,
+          "res": 5
+        },
+        "structure": {},
+        "result": [
+          5
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

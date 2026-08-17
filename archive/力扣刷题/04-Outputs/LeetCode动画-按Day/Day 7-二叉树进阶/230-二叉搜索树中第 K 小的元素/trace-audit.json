@@ -1,0 +1,798 @@
+{
+  "problemId": 230,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 230,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        3,
+        1,
+        4,
+        null,
+        2
+      ],
+      "variables": {
+        "k": 0
+      },
+      "structure": {
+        "seen": [
+          1
+        ]
+      },
+      "result": [
+        1
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "e086d3197d088e81e7136b5ebcb018a2837a1f53dc52b01ac776e6d04f45d0cd",
+    "sourceSemanticTokenHash": "1019f06da269dd75b01c9ca833328a787f4b0fda65291298d31bdb19b9476b42",
+    "sourceCodeLineCount": 31
+  },
+  "sourceCodeSha256": "e086d3197d088e81e7136b5ebcb018a2837a1f53dc52b01ac776e6d04f45d0cd",
+  "sourceSemanticTokenHash": "1019f06da269dd75b01c9ca833328a787f4b0fda65291298d31bdb19b9476b42",
+  "steps": [
+    {
+      "id": "230-trace-001",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "setup",
+      "title": "用中序顺序寻找第 k 小",
+      "body": "BST 中序遍历天然有序；每访问一个节点就把 k 减一。 题解原意：核心思想： BST 的中序遍历是递增序列，对 BST 做中序遍历，访问的第 k 个节点就是第 k 小的元素。 为什么用中序？ 因为 BST 最核心的性质就是中序遍历结果递增。这个性质直接决定了「中序遍历的第 k 个节点 = 第 k 小元素」。不需要比较大小，不需要额外排序。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "tree",
+        "tokens": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 1
+        },
+        "rows": [
+          {
+            "label": "seen",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "BST 中序遍历天然有序；每访问一个节点就把 k 减一。"
+      },
+      "state": {
+        "values": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "variables": {
+          "k": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            1,
+            4,
+            null,
+            2
+          ],
+          "seen": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "230-trace-002",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "访问节点 1",
+      "body": "中序第 1 个节点为 1，k 剩余 0。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "rows": [
+          {
+            "label": "inorder",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "k",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "中序第 1 个节点为 1，k 剩余 0。"
+      },
+      "state": {
+        "values": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            1,
+            4,
+            null,
+            2
+          ],
+          "seen": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "230-trace-check-004",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "rows": [
+          {
+            "label": "inorder",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "k",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            1,
+            4,
+            null,
+            2
+          ],
+          "seen": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "230-trace-check-005",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "rows": [
+          {
+            "label": "inorder",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "k",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            1,
+            4,
+            null,
+            2
+          ],
+          "seen": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "230-trace-check-006",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "rows": [
+          {
+            "label": "inorder",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "k",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            1,
+            4,
+            null,
+            2
+          ],
+          "seen": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "230-trace-check-007",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "rows": [
+          {
+            "label": "inorder",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "k",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            1,
+            4,
+            null,
+            2
+          ],
+          "seen": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "230-trace-check-008",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "rows": [
+          {
+            "label": "inorder",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "k",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            1,
+            4,
+            null,
+            2
+          ],
+          "seen": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "230-trace-check-009",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "rows": [
+          {
+            "label": "inorder",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "k",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            1,
+            4,
+            null,
+            2
+          ],
+          "seen": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "230-trace-check-010",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。 易错提醒：计数器 +1 的位置： 计数器必须在左子树遍历完之后、右子树遍历之前加 1。因为中序的顺序是左→根→右，当前节点是第几个访问的由左子树的节点数决定。 找到后不停止： 递归法在找到 result 后，递归调用仍在进行。最好在赋值后设置一个标志位（或像上面的代码在 count==k 时 return），避免不必要的继续遍历。 k 是从 1 开…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "rows": [
+          {
+            "label": "inorder",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "k",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。第 1 小节点值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "variables": {
+          "k": 0,
+          "current": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            1,
+            4,
+            null,
+            2
+          ],
+          "seen": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "230-trace-003",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "第 1 小节点值为 1。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "第 1 小节点值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        "variables": {
+          "k": 0
+        },
+        "structure": {
+          "seen": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

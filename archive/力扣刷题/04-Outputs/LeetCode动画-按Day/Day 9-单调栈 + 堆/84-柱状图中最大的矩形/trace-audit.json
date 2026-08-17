@@ -1,0 +1,1175 @@
+{
+  "problemId": 84,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 84,
+    "stepCount": 14,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        2,
+        1,
+        5,
+        6,
+        2,
+        3
+      ],
+      "variables": {
+        "best": 10
+      },
+      "structure": {
+        "stack": [
+          6
+        ]
+      },
+      "result": [
+        10
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "72a0acf6a0014903f2aa42d05907d8e3c48a4ce26e940a0213274f5b7fa8f635",
+    "sourceSemanticTokenHash": "70345da1e48fe93c9e606c1c88c0e66de5554106c8447f05364054715fdd1b26",
+    "sourceCodeLineCount": 30
+  },
+  "sourceCodeSha256": "72a0acf6a0014903f2aa42d05907d8e3c48a4ce26e940a0213274f5b7fa8f635",
+  "sourceSemanticTokenHash": "70345da1e48fe93c9e606c1c88c0e66de5554106c8447f05364054715fdd1b26",
+  "steps": [
+    {
+      "id": "84-trace-001",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "setup",
+      "title": "建立递增柱高栈",
+      "body": "栈内柱子高度递增；遇到更矮柱子时，栈顶柱子的最大矩形右边界被确定。 题解原意：核心思想： 维护一个单调递增栈（栈底到栈顶递增）。遍历高度数组，如果当前高度 < 栈顶高度，说明栈顶柱子找到了右边第一个更矮的柱子，可以弹栈计算面积了。 为什么用单调递增栈？因为我们要找的是「更矮」的柱子作为边界，而递增栈保证了栈中每个元素的下一个更矮元素就是当前要入栈的元素（如果它更矮的话）。 复杂度： 时间 O(n)，空间 O(n) 为什么加哨兵 0？ 左边加 0：保证栈不会为空（0 始终在栈底），避免计算宽度时…",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · mono-stack",
+        "badge": "best=0",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "best": 0
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "栈内柱子高度递增；遇到更矮柱子时，栈顶柱子的最大矩形右边界被确定。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "best": 0
+        },
+        "structure": {
+          "stack": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "84-trace-002",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "下标 0 入栈",
+      "body": "保持递增栈，stack=[0]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=0 · best=0 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "h": 2,
+          "best": 0
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "保持递增栈，stack=[0]。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 0,
+          "h": 2,
+          "best": 0
+        },
+        "structure": {
+          "stack": [
+            0
+          ]
+        },
+        "result": [
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-003",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "弹出高度 2",
+      "body": "左边界 -1，右边界 1，宽度 1，面积 2，best=2。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=1 · best=2 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [
+          -1,
+          1
+        ],
+        "variables": {
+          "i": 1,
+          "h": 1,
+          "top": 0,
+          "width": 1,
+          "area": 2,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "左边界 -1，右边界 1，宽度 1，面积 2，best=2。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 1,
+          "h": 1,
+          "top": 0,
+          "width": 1,
+          "area": 2,
+          "best": 2
+        },
+        "structure": {
+          "stack": []
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-004",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "下标 1 入栈",
+      "body": "保持递增栈，stack=[1]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=1 · best=2 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "h": 1,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "保持递增栈，stack=[1]。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 1,
+          "h": 1,
+          "best": 2
+        },
+        "structure": {
+          "stack": [
+            1
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-005",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "下标 2 入栈",
+      "body": "保持递增栈，stack=[1, 2]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=2 · best=2 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "h": 5,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              1,
+              2
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "保持递增栈，stack=[1, 2]。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 2,
+          "h": 5,
+          "best": 2
+        },
+        "structure": {
+          "stack": [
+            1,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-006",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "下标 3 入栈",
+      "body": "保持递增栈，stack=[1, 2, 3]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=3 · best=2 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "h": 6,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "保持递增栈，stack=[1, 2, 3]。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 3,
+          "h": 6,
+          "best": 2
+        },
+        "structure": {
+          "stack": [
+            1,
+            2,
+            3
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-007",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "弹出高度 6",
+      "body": "左边界 2，右边界 4，宽度 1，面积 6，best=6。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=4 · best=6 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          3
+        ],
+        "compared": [
+          2,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "h": 2,
+          "top": 3,
+          "width": 1,
+          "area": 6,
+          "best": 6
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              1,
+              2
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              6
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "左边界 2，右边界 4，宽度 1，面积 6，best=6。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 4,
+          "h": 2,
+          "top": 3,
+          "width": 1,
+          "area": 6,
+          "best": 6
+        },
+        "structure": {
+          "stack": [
+            1,
+            2
+          ]
+        },
+        "result": [
+          6
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-008",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "弹出高度 5",
+      "body": "左边界 1，右边界 4，宽度 2，面积 10，best=10。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=4 · best=10 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [
+          1,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "h": 2,
+          "top": 2,
+          "width": 2,
+          "area": 10,
+          "best": 10
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              10
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              10
+            ]
+          }
+        ],
+        "result": [
+          10
+        ],
+        "note": "左边界 1，右边界 4，宽度 2，面积 10，best=10。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 4,
+          "h": 2,
+          "top": 2,
+          "width": 2,
+          "area": 10,
+          "best": 10
+        },
+        "structure": {
+          "stack": [
+            1
+          ]
+        },
+        "result": [
+          10
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-009",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "下标 4 入栈",
+      "body": "保持递增栈，stack=[1, 4]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=4 · best=10 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "h": 2,
+          "best": 10
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              1,
+              4
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              10
+            ]
+          }
+        ],
+        "result": [
+          10
+        ],
+        "note": "保持递增栈，stack=[1, 4]。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 4,
+          "h": 2,
+          "best": 10
+        },
+        "structure": {
+          "stack": [
+            1,
+            4
+          ]
+        },
+        "result": [
+          10
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-010",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "下标 5 入栈",
+      "body": "保持递增栈，stack=[1, 4, 5]。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=5 · best=10 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "h": 3,
+          "best": 10
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              1,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              10
+            ]
+          }
+        ],
+        "result": [
+          10
+        ],
+        "note": "保持递增栈，stack=[1, 4, 5]。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 5,
+          "h": 3,
+          "best": 10
+        },
+        "structure": {
+          "stack": [
+            1,
+            4,
+            5
+          ]
+        },
+        "result": [
+          10
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-011",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "弹出高度 3",
+      "body": "左边界 4，右边界 6，宽度 1，面积 3，best=10。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=6 · best=10 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          5
+        ],
+        "compared": [
+          5
+        ],
+        "variables": {
+          "i": 6,
+          "h": 0,
+          "top": 5,
+          "width": 1,
+          "area": 3,
+          "best": 10
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              1,
+              4
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              10
+            ]
+          }
+        ],
+        "result": [
+          10
+        ],
+        "note": "左边界 4，右边界 6，宽度 1，面积 3，best=10。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 6,
+          "h": 0,
+          "top": 5,
+          "width": 1,
+          "area": 3,
+          "best": 10
+        },
+        "structure": {
+          "stack": [
+            1,
+            4
+          ]
+        },
+        "result": [
+          10
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-012",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "弹出高度 2",
+      "body": "左边界 1，右边界 6，宽度 4，面积 8，best=10。",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=6 · best=10 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          4
+        ],
+        "compared": [
+          4
+        ],
+        "variables": {
+          "i": 6,
+          "h": 0,
+          "top": 4,
+          "width": 4,
+          "area": 8,
+          "best": 10
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              8
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              10
+            ]
+          }
+        ],
+        "result": [
+          10
+        ],
+        "note": "左边界 1，右边界 6，宽度 4，面积 8，best=10。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 6,
+          "h": 0,
+          "top": 4,
+          "width": 4,
+          "area": 8,
+          "best": 10
+        },
+        "structure": {
+          "stack": [
+            1
+          ]
+        },
+        "result": [
+          10
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-013",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "弹出高度 1",
+      "body": "左边界 -1，右边界 6，宽度 6，面积 6，best=10。 易错提醒：哨兵 0 的作用： 不加哨兵时，需要在 while 循环中检查栈是否为空；计算宽度时 stack[-1] 可能不存在。左右哨兵 0 避免了这些特殊情况。 宽度计算公式： w = i - stack[-1] - 1。其中 stack[-1] 是弹出后新的栈顶（即左边第一个更矮柱子的索引），i 是右边第一个更矮柱子的索引。两者之间的柱子数（不…",
+      "kind": "mono-stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-stack",
+        "badge": "i=6 · best=10 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [
+          1
+        ],
+        "variables": {
+          "i": 6,
+          "h": 0,
+          "top": 1,
+          "width": 6,
+          "area": 6,
+          "best": 10
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              6
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              10
+            ]
+          }
+        ],
+        "result": [
+          10
+        ],
+        "note": "左边界 -1，右边界 6，宽度 6，面积 6，best=10。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 6,
+          "h": 0,
+          "top": 1,
+          "width": 6,
+          "area": 6,
+          "best": 10
+        },
+        "structure": {
+          "stack": []
+        },
+        "result": [
+          10
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "84-trace-014",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最大矩形面积为 10。",
+      "kind": "mono-stack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · mono-stack",
+        "badge": "best=10 · 结果 1 项",
+        "tokens": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "best": 10
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              10
+            ]
+          }
+        ],
+        "result": [
+          10
+        ],
+        "note": "最大矩形面积为 10。"
+      },
+      "state": {
+        "values": [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ],
+        "variables": {
+          "best": 10
+        },
+        "structure": {
+          "stack": [
+            6
+          ]
+        },
+        "result": [
+          10
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

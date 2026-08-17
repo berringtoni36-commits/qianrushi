@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linux Tcp Loss Path Diagnosis"
+  short_description: "沿 Linux TCP 链路定位丢包、断连和队列问题"
+  default_prompt: "沿应用、Socket、TCP 队列、qdisc、网卡和链路分层诊断这个 Linux TCP 丢包或断连问题。"

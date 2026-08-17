@@ -1,0 +1,695 @@
+{
+  "problemId": 33,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 33,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        4,
+        5,
+        6,
+        7,
+        0,
+        1,
+        2
+      ],
+      "variables": {
+        "l": 4,
+        "r": 4,
+        "target": 0
+      },
+      "structure": {},
+      "result": [
+        4
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "baedfebda9edc18ef0b6d474be6c2fafbeb93a18d91668929ae8ce3197081a72",
+    "sourceSemanticTokenHash": "2a11e725abcd19e8cb0015c3b107f8573caf9280f9e8f8737f9296e0777a2f18",
+    "sourceCodeLineCount": 24
+  },
+  "sourceCodeSha256": "baedfebda9edc18ef0b6d474be6c2fafbeb93a18d91668929ae8ce3197081a72",
+  "sourceSemanticTokenHash": "2a11e725abcd19e8cb0015c3b107f8573caf9280f9e8f8737f9296e0777a2f18",
+  "steps": [
+    {
+      "id": "33-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "先定位旋转点所在大段",
+      "body": "利用 nums[mid] 与 nums[0] 比较，找到左侧有序大段的末端。 题解原意：核心思想： 每次二分时，通过比较 nums[left] 和 nums[mid] 确定当前哪一段有序，然后判断 target 是否在有序段内。 算法流程： 1. 计算 mid。 2. 如果 nums[mid] == target，返回 mid。 3. 判断哪段有序：nums[left] <= nums[mid] 则左半有序，否则右半有序。 4. 判断 target 是否在有序段内： 左半有序且 nums[left] <…",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · binary",
+        "badge": "l=0 · r=6",
+        "tokens": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 6,
+          "target": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,6]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "利用 nums[mid] 与 nums[0] 比较，找到左侧有序大段的末端。"
+      },
+      "state": {
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 0,
+          "r": 6,
+          "target": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "33-trace-002",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "收缩旋转点区间",
+      "body": "mid=3，新的区间 [3,6]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=3 · r=6 · mid=3",
+        "tokens": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 6,
+          "mid": 3,
+          "target": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,6]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=3，新的区间 [3,6]。"
+      },
+      "state": {
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 6,
+          "mid": 3,
+          "target": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "33-trace-003",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "收缩旋转点区间",
+      "body": "mid=5，新的区间 [3,4]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=3 · r=4 · mid=5",
+        "tokens": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 4,
+          "mid": 5,
+          "target": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=5，新的区间 [3,4]。"
+      },
+      "state": {
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 4,
+          "mid": 5,
+          "target": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "33-trace-004",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "收缩旋转点区间",
+      "body": "mid=4，新的区间 [3,3]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=3 · r=3 · mid=4",
+        "tokens": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 4,
+          "target": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=4，新的区间 [3,3]。"
+      },
+      "state": {
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 4,
+          "target": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "33-trace-005",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "branch",
+      "title": "确定 target 所在有序区间",
+      "body": "target=0，进入下标 [4,6]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · binary",
+        "badge": "l=4 · r=6",
+        "tokens": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 4,
+          "r": 6,
+          "pivot": 3,
+          "target": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[4,6]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "target=0，进入下标 [4,6]。"
+      },
+      "state": {
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 4,
+          "r": 6,
+          "pivot": 3,
+          "target": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "33-trace-006",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "在有序段中二分",
+      "body": "mid=5，区间缩到 [4,5]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=4 · r=5 · mid=5",
+        "tokens": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "l": 4,
+          "r": 5,
+          "mid": 5,
+          "target": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[4,5]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=5，区间缩到 [4,5]。"
+      },
+      "state": {
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 4,
+          "r": 5,
+          "mid": 5,
+          "target": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "33-trace-007",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "在有序段中二分",
+      "body": "mid=4，区间缩到 [4,4]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=4 · r=4 · mid=4",
+        "tokens": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "l": 4,
+          "r": 4,
+          "mid": 4,
+          "target": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[4,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=4，区间缩到 [4,4]。"
+      },
+      "state": {
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 4,
+          "r": 4,
+          "mid": 4,
+          "target": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "33-trace-check-009",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。收敛到下标 4。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=4 · r=4 · mid=4",
+        "tokens": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "l": 4,
+          "r": 4,
+          "mid": 4,
+          "target": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[4,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。收敛到下标 4。"
+      },
+      "state": {
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 4,
+          "r": 4,
+          "mid": 4,
+          "target": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "33-trace-check-010",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。收敛到下标 4。 易错提醒：1. 判断有序段的条件：nums[left] <= nums[mid] 中的等号不能省略。当 left == mid 时（区间缩小到两个元素），等号保证正确判断。 2. target 在有序段内的判断：注意边界——如果 target 在左半有序段，条件是 nums[left] <= target < nums[mid]（右开，排除 mid…",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=4 · r=4 · mid=4",
+        "tokens": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "l": 4,
+          "r": 4,
+          "mid": 4,
+          "target": 0
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[4,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。收敛到下标 4。"
+      },
+      "state": {
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 4,
+          "r": 4,
+          "mid": 4,
+          "target": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "33-trace-008",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "收敛到下标 4。",
+      "kind": "binary",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · binary",
+        "badge": "l=4 · r=4 · 结果 1 项",
+        "tokens": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 4,
+          "r": 4,
+          "target": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "收敛到下标 4。"
+      },
+      "state": {
+        "values": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 4,
+          "r": 4,
+          "target": 0
+        },
+        "structure": {},
+        "result": [
+          4
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

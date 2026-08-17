@@ -1,0 +1,1454 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "固定长度计数窗口",
+    "sceneKind": "sliding-window",
+    "input": {
+      "s": "cbaebabacd",
+      "p": "abc"
+    },
+    "expected": [
+      0,
+      6
+    ],
+    "exampleText": "s = \"cbaebabacd\", p = \"abc\"",
+    "expectedText": "起点下标 [0, 6]",
+    "invariant": "窗口长度不超过 |p|，cnt 保存剩余需求",
+    "aha": "satisfy 等于需求种类数时窗口就是异位词",
+    "time": "O(n)",
+    "space": "O(|Σ|)",
+    "problemId": 438,
+    "title": "找到字符串中所有字母异位词",
+    "day": "Day 2：滑动窗口 + 子串",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "12fd92d056ce908cbed9389da7392d681cb2be2fb28f3b469ff4d56f81bd085f",
+    "semanticTokenHash": "eae4355d2d4493a664e3c7ecbd9e0f53c573d5600685486e5634978f31ac0216",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "减少剩余需求，恰好归零时新增一种满足字符。",
+        "review": "satisfy=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": null,
+              "j": 0,
+              "satisfy": 0,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "{'a': 1, 'b': 1, 'c': 1}",
+            "action": "统计 p 的需求",
+            "status": "running",
+            "window": {},
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [],
+            "bestRange": []
+          },
+          "caption": "每个字符的剩余需求从 p 的计数开始。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "satisfy": 1,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "satisfy=1",
+            "action": "加入 c，满足种类数 1",
+            "status": "running",
+            "window": {
+              "a": 0,
+              "b": 0,
+              "c": 1
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              0,
+              0
+            ],
+            "bestRange": []
+          },
+          "caption": "减少剩余需求，恰好归零时新增一种满足字符。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "减少剩余需求，恰好归零时新增一种满足字符。",
+        "review": "satisfy=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 1,
+              "j": 0,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "satisfy=2",
+            "action": "加入 b，满足种类数 2",
+            "status": "running",
+            "window": {
+              "a": 0,
+              "b": 1,
+              "c": 1
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              0,
+              1
+            ],
+            "bestRange": []
+          },
+          "caption": "减少剩余需求，恰好归零时新增一种满足字符。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 2,
+              "j": 0,
+              "satisfy": 3,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "satisfy=3",
+            "action": "加入 a，满足种类数 3",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              0,
+              2
+            ],
+            "bestRange": []
+          },
+          "caption": "减少剩余需求，恰好归零时新增一种满足字符。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "减少剩余需求，恰好归零时新增一种满足字符。",
+        "review": "satisfy=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 2,
+              "j": 0,
+              "satisfy": 3,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "satisfy==3",
+            "action": "记录异位词起点 0",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              0,
+              2
+            ],
+            "bestRange": [
+              0,
+              2
+            ],
+            "output": [
+              0
+            ]
+          },
+          "caption": "定长窗口满足全部字符计数，必为异位词。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 3,
+              "j": 0,
+              "satisfy": 3,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "satisfy=3",
+            "action": "加入 e，满足种类数 3",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              0,
+              3
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "减少剩余需求，恰好归零时新增一种满足字符。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "窗口长度始终不超过 p 的长度。",
+        "review": "window length=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 3,
+              "j": 1,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "window length=3",
+            "action": "固定长度窗口移出 c",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 1,
+              "c": 0
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              1,
+              3
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "窗口长度始终不超过 p 的长度。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "减少剩余需求，恰好归零时新增一种满足字符。",
+        "review": "satisfy=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 4,
+              "j": 1,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "satisfy=2",
+            "action": "加入 b，满足种类数 2",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 2,
+              "c": 0
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              1,
+              4
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "减少剩余需求，恰好归零时新增一种满足字符。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "窗口长度始终不超过 p 的长度。",
+        "review": "window length=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 4,
+              "j": 2,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "window length=3",
+            "action": "固定长度窗口移出 b",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 1,
+              "c": 0
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              2,
+              4
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "窗口长度始终不超过 p 的长度。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "减少剩余需求，恰好归零时新增一种满足字符。",
+        "review": "satisfy=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 5,
+              "j": 2,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "satisfy=2",
+            "action": "加入 a，满足种类数 2",
+            "status": "running",
+            "window": {
+              "a": 2,
+              "b": 1,
+              "c": 0
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              2,
+              5
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "减少剩余需求，恰好归零时新增一种满足字符。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "窗口长度始终不超过 p 的长度。",
+        "review": "window length=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 5,
+              "j": 3,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "window length=3",
+            "action": "固定长度窗口移出 a",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 1,
+              "c": 0
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              3,
+              5
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "窗口长度始终不超过 p 的长度。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "减少剩余需求，恰好归零时新增一种满足字符。",
+        "review": "satisfy=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 6,
+              "j": 3,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "satisfy=2",
+            "action": "加入 b，满足种类数 2",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 2,
+              "c": 0
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              3,
+              6
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "减少剩余需求，恰好归零时新增一种满足字符。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "窗口长度始终不超过 p 的长度。",
+        "review": "window length=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 6,
+              "j": 4,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "window length=3",
+            "action": "固定长度窗口移出 e",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 2,
+              "c": 0
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              4,
+              6
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "窗口长度始终不超过 p 的长度。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "减少剩余需求，恰好归零时新增一种满足字符。",
+        "review": "satisfy=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 7,
+              "j": 4,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "satisfy=2",
+            "action": "加入 a，满足种类数 2",
+            "status": "running",
+            "window": {
+              "a": 2,
+              "b": 2,
+              "c": 0
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              4,
+              7
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "减少剩余需求，恰好归零时新增一种满足字符。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "窗口长度始终不超过 p 的长度。",
+        "review": "window length=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 7,
+              "j": 5,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "window length=3",
+            "action": "固定长度窗口移出 b",
+            "status": "running",
+            "window": {
+              "a": 2,
+              "b": 1,
+              "c": 0
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              5,
+              7
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "窗口长度始终不超过 p 的长度。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "减少剩余需求，恰好归零时新增一种满足字符。",
+        "review": "satisfy=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 8,
+              "j": 5,
+              "satisfy": 3,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [
+              8
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "satisfy=3",
+            "action": "加入 c，满足种类数 3",
+            "status": "running",
+            "window": {
+              "a": 2,
+              "b": 1,
+              "c": 1
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              5,
+              8
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "减少剩余需求，恰好归零时新增一种满足字符。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "窗口长度始终不超过 p 的长度。",
+        "review": "window length=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 8,
+              "j": 6,
+              "satisfy": 3,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "window length=3",
+            "action": "固定长度窗口移出 a",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              6,
+              8
+            ],
+            "bestRange": [
+              0,
+              2
+            ]
+          },
+          "caption": "窗口长度始终不超过 p 的长度。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "定长窗口满足全部字符计数，必为异位词。",
+        "review": "satisfy==3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 8,
+              "j": 6,
+              "satisfy": 3,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              6,
+              7,
+              8
+            ],
+            "formula": "satisfy==3",
+            "action": "记录异位词起点 6",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              6,
+              8
+            ],
+            "bestRange": [
+              6,
+              8
+            ],
+            "output": [
+              0,
+              6
+            ]
+          },
+          "caption": "定长窗口满足全部字符计数，必为异位词。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "减少剩余需求，恰好归零时新增一种满足字符。",
+        "review": "satisfy=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 9,
+              "j": 6,
+              "satisfy": 3,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [
+              9
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "satisfy=3",
+            "action": "加入 d，满足种类数 3",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              6,
+              9
+            ],
+            "bestRange": [
+              6,
+              8
+            ]
+          },
+          "caption": "减少剩余需求，恰好归零时新增一种满足字符。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "窗口长度始终不超过 p 的长度。",
+        "review": "window length=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "i": 9,
+              "j": 7,
+              "satisfy": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "window length=3",
+            "action": "固定长度窗口移出 b",
+            "status": "running",
+            "window": {
+              "a": 1,
+              "b": 0,
+              "c": 1
+            },
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [
+              7,
+              9
+            ],
+            "bestRange": [
+              6,
+              8
+            ]
+          },
+          "caption": "窗口长度始终不超过 p 的长度。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "两个合法窗口分别是 cba 和 bac。",
+        "review": "return [0,6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "c",
+              "b",
+              "a",
+              "e",
+              "b",
+              "a",
+              "b",
+              "a",
+              "c",
+              "d"
+            ],
+            "variables": {
+              "satisfy": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              6,
+              7,
+              8
+            ],
+            "formula": "return [0,6]",
+            "action": "返回起点 [0,6]",
+            "status": "return",
+            "window": {},
+            "need": {
+              "a": 1,
+              "b": 1,
+              "c": 1
+            },
+            "range": [],
+            "bestRange": [
+              6,
+              8
+            ],
+            "output": [
+              0,
+              6
+            ]
+          },
+          "caption": "两个合法窗口分别是 cba 和 bac。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<int> findAnagrams(string s, string p) {\n        unordered_map<char, int> cnt;                            // 哈希表，O(1)查找\n        for (auto c: p) cnt[c] ++ ;\n        vector<int> res;\n        int tot = cnt.size();\n        for (int i = 0, j = 0, satisfy = 0; i < s.size(); i ++ ) {\n            if ( -- cnt[s[i]] == 0) satisfy ++ ;\n            while (i - j + 1 > p.size()) {\n                if (cnt[s[j]] == 0) satisfy -- ;\n                cnt[s[j ++ ]] ++ ;\n            }\n            if (satisfy == tot) res.push_back(j);                // 记录结果\n        }\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 462,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 463,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 464,
+        "text": "    vector<int> findAnagrams(string s, string p) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 465,
+        "text": "        unordered_map<char, int> cnt;                            // 哈希表，O(1)查找"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 466,
+        "text": "        for (auto c: p) cnt[c] ++ ;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 467,
+        "text": "        vector<int> res;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 468,
+        "text": "        int tot = cnt.size();"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 469,
+        "text": "        for (int i = 0, j = 0, satisfy = 0; i < s.size(); i ++ ) {"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 470,
+        "text": "            if ( -- cnt[s[i]] == 0) satisfy ++ ;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 471,
+        "text": "            while (i - j + 1 > p.size()) {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 472,
+        "text": "                if (cnt[s[j]] == 0) satisfy -- ;"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 473,
+        "text": "                cnt[s[j ++ ]] ++ ;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 474,
+        "text": "            }"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 475,
+        "text": "            if (satisfy == tot) res.push_back(j);                // 记录结果"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 476,
+        "text": "        }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 477,
+        "text": "        return res;"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 478,
+        "text": "    }"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 479,
+        "text": "};"
+      }
+    ]
+  }
+}

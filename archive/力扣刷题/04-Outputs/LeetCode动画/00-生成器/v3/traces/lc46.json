@@ -1,0 +1,3907 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "位置驱动的回溯",
+    "sceneKind": "backtracking",
+    "input": [
+      1,
+      2,
+      3
+    ],
+    "expected": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        1,
+        3,
+        2
+      ],
+      [
+        2,
+        1,
+        3
+      ],
+      [
+        2,
+        3,
+        1
+      ],
+      [
+        3,
+        1,
+        2
+      ],
+      [
+        3,
+        2,
+        1
+      ]
+    ],
+    "exampleText": "[1,2,3]",
+    "expectedText": "6 个排列",
+    "invariant": "path[0:u] 无重复且 used 与路径完全一致",
+    "aha": "选择后递归，返回时必须撤销 used",
+    "time": "O(n·n!)",
+    "space": "O(n)",
+    "problemId": 46,
+    "title": "全排列",
+    "day": "Day 10：回溯",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "7e97e95fb1d75bbcd28bad1fe55f2058f9f7e79260306c256dab3663c73ff3e4",
+    "semanticTokenHash": "130c9a84502230eeee2ab296b6b7fbcff76189f546450242da06981aced3f033",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "同一排列中每个下标只能使用一次。",
+        "review": "unused=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 0,
+              "used": "000"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "初始化路径和使用标记",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "第 u 层决定排列的第 u 个位置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 0,
+              "i": 0,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 0 检查数字 1",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 0,
+              "i": 0,
+              "used": "100"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 1 放入位置 0",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 0,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 1 检查数字 1",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "同一排列中每个下标只能使用一次。",
+        "review": "unused=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 1,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 1 检查数字 2",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 1,
+              "used": "110"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 2 放入位置 1",
+            "status": "running",
+            "path": [
+              1,
+              2
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 0,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 1",
+            "status": "running",
+            "path": [
+              1,
+              2
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 1,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 2",
+            "status": "running",
+            "path": [
+              1,
+              2
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "撤销恢复进入本分支前的状态。",
+        "review": "撤销数字 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 2 检查数字 3",
+            "status": "running",
+            "path": [
+              1,
+              2
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 3 放入位置 2",
+            "status": "running",
+            "path": [
+              1,
+              2,
+              3
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 3,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[1, 2, 3]",
+            "action": "记录排列 [1, 2, 3]",
+            "status": "running",
+            "path": [
+              1,
+              2,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "三个位置都填满时答案才出现。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2,
+              "used": "110"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 3",
+            "status": "running",
+            "path": [
+              1,
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "同一排列中每个下标只能使用一次。",
+        "review": "unused=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 1,
+              "used": "100"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 2",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 2,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 1 检查数字 3",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 2,
+              "used": "101"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 3 放入位置 1",
+            "status": "running",
+            "path": [
+              1,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 0,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 1",
+            "status": "running",
+            "path": [
+              1,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "撤销恢复进入本分支前的状态。",
+        "review": "撤销数字 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 1,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 2 检查数字 2",
+            "status": "running",
+            "path": [
+              1,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 1,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 2 放入位置 2",
+            "status": "running",
+            "path": [
+              1,
+              3,
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 3,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[1, 3, 2]",
+            "action": "记录排列 [1, 3, 2]",
+            "status": "running",
+            "path": [
+              1,
+              3,
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "三个位置都填满时答案才出现。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 1,
+              "used": "101"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 2",
+            "status": "running",
+            "path": [
+              1,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "同一排列中每个下标只能使用一次。",
+        "review": "unused=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 3",
+            "status": "running",
+            "path": [
+              1,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 2,
+              "used": "100"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 3",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 0,
+              "i": 0,
+              "used": "000"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 1",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 0,
+              "i": 1,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 0 检查数字 2",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "同一排列中每个下标只能使用一次。",
+        "review": "unused=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 0,
+              "i": 1,
+              "used": "010"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 2 放入位置 0",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 0,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 1 检查数字 1",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 0,
+              "used": "110"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 1 放入位置 1",
+            "status": "running",
+            "path": [
+              2,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 0,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 1",
+            "status": "running",
+            "path": [
+              2,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "accept",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "三个位置都填满时答案才出现。",
+        "review": "[2, 1, 3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 1,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 2",
+            "status": "running",
+            "path": [
+              2,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 2 检查数字 3",
+            "status": "running",
+            "path": [
+              2,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 3 放入位置 2",
+            "status": "running",
+            "path": [
+              2,
+              1,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 3,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[2, 1, 3]",
+            "action": "记录排列 [2, 1, 3]",
+            "status": "running",
+            "path": [
+              2,
+              1,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "三个位置都填满时答案才出现。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "同一排列中每个下标只能使用一次。",
+        "review": "unused=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2,
+              "used": "110"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 3",
+            "status": "running",
+            "path": [
+              2,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 0,
+              "used": "010"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 1",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 1,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 1 检查数字 2",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 2,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 1 检查数字 3",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "三个位置都填满时答案才出现。",
+        "review": "[2, 3, 1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 2,
+              "used": "011"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 3 放入位置 1",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 0,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 2 检查数字 1",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 0,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 1 放入位置 2",
+            "status": "running",
+            "path": [
+              2,
+              3,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 3,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[2, 3, 1]",
+            "action": "记录排列 [2, 3, 1]",
+            "status": "running",
+            "path": [
+              2,
+              3,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "三个位置都填满时答案才出现。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "撤销恢复进入本分支前的状态。",
+        "review": "撤销数字 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 0,
+              "used": "011"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 1",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 1,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 2",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 3",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 2,
+              "used": "010"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 3",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "同一排列中每个下标只能使用一次。",
+        "review": "unused=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 0,
+              "i": 1,
+              "used": "000"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 2",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 0,
+              "i": 2,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 0 检查数字 3",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 0,
+              "i": 2,
+              "used": "001"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 3 放入位置 0",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 0,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 1 检查数字 1",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "选择后进入下一层。",
+        "review": "选择 2 放入位置 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 0,
+              "used": "101"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 1 放入位置 1",
+            "status": "running",
+            "path": [
+              3,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 0,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 1",
+            "status": "running",
+            "path": [
+              3,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 1,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 2 检查数字 2",
+            "status": "running",
+            "path": [
+              3,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 1,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 2 放入位置 2",
+            "status": "running",
+            "path": [
+              3,
+              1,
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "撤销恢复进入本分支前的状态。",
+        "review": "撤销数字 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 3,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[3, 1, 2]",
+            "action": "记录排列 [3, 1, 2]",
+            "status": "running",
+            "path": [
+              3,
+              1,
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "三个位置都填满时答案才出现。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 1,
+              "used": "101"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 2",
+            "status": "running",
+            "path": [
+              3,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 3",
+            "status": "running",
+            "path": [
+              3,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 0,
+              "used": "001"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 1",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "选择后进入下一层。",
+        "review": "选择 1 放入位置 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 1,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 1 检查数字 2",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 1,
+              "used": "011"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 2 放入位置 1",
+            "status": "running",
+            "path": [
+              3,
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 0,
+              "used": false
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=True",
+            "action": "层 2 检查数字 1",
+            "status": "running",
+            "path": [
+              3,
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25",
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 0,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择 1 放入位置 2",
+            "status": "running",
+            "path": [
+              3,
+              2,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择后进入下一层。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "同一排列中每个下标只能使用一次。",
+        "review": "unused=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 3,
+              "used": "111"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[3, 2, 1]",
+            "action": "记录排列 [3, 2, 1]",
+            "status": "running",
+            "path": [
+              3,
+              2,
+              1
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "三个位置都填满时答案才出现。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 0,
+              "used": "011"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 1",
+            "status": "running",
+            "path": [
+              3,
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 1,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 2",
+            "status": "running",
+            "path": [
+              3,
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 2,
+              "i": 2,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 2 检查数字 3",
+            "status": "running",
+            "path": [
+              3,
+              2
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "mutate",
+      "durationMs": 1440,
+      "captions": {
+        "learning": "撤销恢复进入本分支前的状态。",
+        "review": "撤销数字 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 1,
+              "used": "001"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 2",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 1,
+              "i": 2,
+              "used": true
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "unused=False",
+            "action": "层 1 检查数字 3",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "同一排列中每个下标只能使用一次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "u": 0,
+              "i": 2,
+              "used": "000"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销数字 3",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "撤销恢复进入本分支前的状态。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "搜索树所有叶子恰好对应 3! 个排列。",
+        "review": "6 permutations"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "count": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "6 permutations",
+            "action": "返回 6 个全排列",
+            "status": "return",
+            "path": [],
+            "output": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                1,
+                3
+              ],
+              [
+                2,
+                3,
+                1
+              ],
+              [
+                3,
+                1,
+                2
+              ],
+              [
+                3,
+                2,
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "搜索树所有叶子恰好对应 3! 个排列。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n\n    vector<vector<int>> ans;\n    vector<int> path;\n    vector<bool> st;\n\n    vector<vector<int>> permute(vector<int>& nums) {\n        path = vector<int>(nums.size());\n        st = vector<bool>(nums.size());\n\n        dfs(nums, 0);\n\n        return ans;\n    }\n\n    void dfs(vector<int>& nums, int u) {                         // 深度优先搜索\n        if (u == nums.size()) {\n            ans.push_back(path);                                 // 记录结果\n            return;\n        }\n\n        for (int i = 0; i < nums.size(); i ++ ) {                // 遍历\n            if (st[i] == false) {\n                path[u] = nums[i];\n                st[i] = true;\n                dfs(nums, u + 1);\n                st[i] = false;\n            }\n        }\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3628,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3629,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3630,
+        "text": ""
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3631,
+        "text": "    vector<vector<int>> ans;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3632,
+        "text": "    vector<int> path;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3633,
+        "text": "    vector<bool> st;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3634,
+        "text": ""
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3635,
+        "text": "    vector<vector<int>> permute(vector<int>& nums) {"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3636,
+        "text": "        path = vector<int>(nums.size());"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3637,
+        "text": "        st = vector<bool>(nums.size());"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3638,
+        "text": ""
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3639,
+        "text": "        dfs(nums, 0);"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3640,
+        "text": ""
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3641,
+        "text": "        return ans;"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3642,
+        "text": "    }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3643,
+        "text": ""
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3644,
+        "text": "    void dfs(vector<int>& nums, int u) {                         // 深度优先搜索"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3645,
+        "text": "        if (u == nums.size()) {"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3646,
+        "text": "            ans.push_back(path);                                 // 记录结果"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3647,
+        "text": "            return;"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3648,
+        "text": "        }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3649,
+        "text": ""
+      },
+      {
+        "id": "L23",
+        "sourceLine": 3650,
+        "text": "        for (int i = 0; i < nums.size(); i ++ ) {                // 遍历"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 3651,
+        "text": "            if (st[i] == false) {"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 3652,
+        "text": "                path[u] = nums[i];"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 3653,
+        "text": "                st[i] = true;"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 3654,
+        "text": "                dfs(nums, u + 1);"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 3655,
+        "text": "                st[i] = false;"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 3656,
+        "text": "            }"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 3657,
+        "text": "        }"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 3658,
+        "text": "    }"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 3659,
+        "text": "};"
+      }
+    ]
+  }
+}

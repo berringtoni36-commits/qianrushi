@@ -1,0 +1,4 @@
+interface:
+  display_name: "RTOS Display Buzzer Feedback"
+  short_description: "Audit STM32 FreeRTOS LCD and buzzer feedback paths"
+  default_prompt: "Use $rtos-display-buzzer-feedback to trace this STM32 FreeRTOS LCD, SPI, buzzer, or interaction-feedback issue."

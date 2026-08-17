@@ -1,0 +1,2317 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "字符边前缀树",
+    "sceneKind": "trie",
+    "input": [
+      "insert apple",
+      "insert app",
+      "search app",
+      "startsWith ap"
+    ],
+    "expected": [
+      true,
+      true
+    ],
+    "exampleText": "insert apple, insert app, search app, startsWith ap",
+    "expectedText": "true, true",
+    "invariant": "根到当前节点的路径拼接等于已读前缀",
+    "aha": "共享前缀只存一次，is_end 区分单词与前缀",
+    "time": "O(total chars)",
+    "space": "O(total chars)",
+    "problemId": 208,
+    "title": "实现 Trie（前缀树）",
+    "day": "Day 8：图论 + 栈",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "f2d767c3bbaa3b9364e96c1528bc8e039a60c83bd5ddbfbfeb2744b7429ab8a6",
+    "semanticTokenHash": "85ca1cdfa2bec9a1ce3160ad6652f829c19f1644bdf5b1c7d79143c9fa799c18",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "缺失边才分配新节点。",
+        "review": "new node a"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "init"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "创建 Trie 根节点",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              }
+            ],
+            "edges": []
+          },
+          "caption": "根不代表字符，只提供所有单词入口。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple",
+              "char": "a",
+              "prefix": "a"
+            },
+            "pointers": {},
+            "active": [
+              "a"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "new node a",
+            "action": "创建字符节点 a",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              }
+            ]
+          },
+          "caption": "缺失边才分配新节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "缺失边才分配新节点。",
+        "review": "new node ap"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple",
+              "prefix": "a"
+            },
+            "pointers": {},
+            "active": [
+              "a"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "沿字符 a 走到前缀 a",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              }
+            ]
+          },
+          "caption": "指针始终对应已读前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple",
+              "char": "p",
+              "prefix": "ap"
+            },
+            "pointers": {},
+            "active": [
+              "ap"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "new node ap",
+            "action": "创建字符节点 p",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              }
+            ]
+          },
+          "caption": "缺失边才分配新节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "缺失边才分配新节点。",
+        "review": "new node app"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple",
+              "prefix": "ap"
+            },
+            "pointers": {},
+            "active": [
+              "ap"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "沿字符 p 走到前缀 ap",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              }
+            ]
+          },
+          "caption": "指针始终对应已读前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple",
+              "char": "p",
+              "prefix": "app"
+            },
+            "pointers": {},
+            "active": [
+              "app"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "new node app",
+            "action": "创建字符节点 p",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p",
+                "level": 3,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              }
+            ]
+          },
+          "caption": "缺失边才分配新节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "缺失边才分配新节点。",
+        "review": "new node appl"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple",
+              "prefix": "app"
+            },
+            "pointers": {},
+            "active": [
+              "app"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "沿字符 p 走到前缀 app",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p",
+                "level": 3,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              }
+            ]
+          },
+          "caption": "指针始终对应已读前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple",
+              "char": "l",
+              "prefix": "appl"
+            },
+            "pointers": {},
+            "active": [
+              "appl"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "new node appl",
+            "action": "创建字符节点 l",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              }
+            ]
+          },
+          "caption": "缺失边才分配新节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "缺失边才分配新节点。",
+        "review": "new node apple"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple",
+              "prefix": "appl"
+            },
+            "pointers": {},
+            "active": [
+              "appl"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "沿字符 l 走到前缀 appl",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              }
+            ]
+          },
+          "caption": "指针始终对应已读前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple",
+              "char": "e",
+              "prefix": "apple"
+            },
+            "pointers": {},
+            "active": [
+              "apple"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "new node apple",
+            "action": "创建字符节点 e",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "缺失边才分配新节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "accept",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "前缀节点只有结束标志为真才是完整单词。",
+        "review": "is_end=true"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple",
+              "prefix": "apple"
+            },
+            "pointers": {},
+            "active": [
+              "apple"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "沿字符 e 走到前缀 apple",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "指针始终对应已读前缀。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "apple"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "apple"
+            ],
+            "formula": "is_end=true",
+            "action": "标记单词 apple 结束",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "前缀节点只有结束标志为真才是完整单词。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "指针始终对应已读前缀。",
+        "review": "沿字符 a 走到前缀 a"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "app",
+              "prefix": "a"
+            },
+            "pointers": {},
+            "active": [
+              "a"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "沿字符 a 走到前缀 a",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "指针始终对应已读前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "指针始终对应已读前缀。",
+        "review": "沿字符 p 走到前缀 ap"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "app",
+              "prefix": "ap"
+            },
+            "pointers": {},
+            "active": [
+              "ap"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "沿字符 p 走到前缀 ap",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "指针始终对应已读前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "指针始终对应已读前缀。",
+        "review": "沿字符 p 走到前缀 app"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "app",
+              "prefix": "app"
+            },
+            "pointers": {},
+            "active": [
+              "app"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "沿字符 p 走到前缀 app",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "指针始终对应已读前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "前缀节点只有结束标志为真才是完整单词。",
+        "review": "is_end=true"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "insert",
+              "word": "app"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "app"
+            ],
+            "formula": "is_end=true",
+            "action": "标记单词 app 结束",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p ✓",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "前缀节点只有结束标志为真才是完整单词。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "逐字符沿唯一边前进。",
+        "review": "edge exists=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L35"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "search",
+              "word": "app",
+              "prefix": "a"
+            },
+            "pointers": {},
+            "active": [
+              "a"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "edge exists=True",
+            "action": "search 读取 a",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p ✓",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "逐字符沿唯一边前进。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "逐字符沿唯一边前进。",
+        "review": "edge exists=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L35"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "search",
+              "word": "app",
+              "prefix": "ap"
+            },
+            "pointers": {},
+            "active": [
+              "ap"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "edge exists=True",
+            "action": "search 读取 p",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p ✓",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "逐字符沿唯一边前进。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "逐字符沿唯一边前进。",
+        "review": "edge exists=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L35"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "search",
+              "word": "app",
+              "prefix": "app"
+            },
+            "pointers": {},
+            "active": [
+              "app"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "edge exists=True",
+            "action": "search 读取 p",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p ✓",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "逐字符沿唯一边前进。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "search 还检查结束标志，startsWith 只要求路径存在。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L37"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "search",
+              "word": "app"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "app"
+            ],
+            "formula": "True",
+            "action": "search(app) 返回 true",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p ✓",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ],
+            "output": null
+          },
+          "caption": "search 还检查结束标志，startsWith 只要求路径存在。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "逐字符沿唯一边前进。",
+        "review": "edge exists=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L46"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "startsWith",
+              "word": "ap",
+              "prefix": "a"
+            },
+            "pointers": {},
+            "active": [
+              "a"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "edge exists=True",
+            "action": "startsWith 读取 a",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p ✓",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "逐字符沿唯一边前进。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "逐字符沿唯一边前进。",
+        "review": "edge exists=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L46"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "startsWith",
+              "word": "ap",
+              "prefix": "ap"
+            },
+            "pointers": {},
+            "active": [
+              "ap"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "edge exists=True",
+            "action": "startsWith 读取 p",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p ✓",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ]
+          },
+          "caption": "逐字符沿唯一边前进。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "search 还检查结束标志，startsWith 只要求路径存在。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L48"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operation": "startsWith",
+              "word": "ap"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "ap"
+            ],
+            "formula": "True",
+            "action": "startsWith(ap) 返回 true",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p ✓",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ],
+            "output": null
+          },
+          "caption": "search 还检查结束标志，startsWith 只要求路径存在。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "插入与查询共享相同前缀路径。",
+        "review": "true, true"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L48"
+          ],
+          "state": {
+            "sceneKind": "trie",
+            "values": [],
+            "variables": {
+              "operations": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "app",
+              "ap"
+            ],
+            "formula": "true, true",
+            "action": "search(app) 与 startsWith(ap) 均为 true",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "root",
+                "value": "root",
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "a",
+                "value": "a",
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "ap",
+                "value": "p",
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "app",
+                "value": "p ✓",
+                "level": 3,
+                "order": 3
+              },
+              {
+                "id": "appl",
+                "value": "l",
+                "level": 4,
+                "order": 4
+              },
+              {
+                "id": "apple",
+                "value": "e ✓",
+                "level": 5,
+                "order": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "root",
+                "to": "a"
+              },
+              {
+                "from": "a",
+                "to": "ap"
+              },
+              {
+                "from": "ap",
+                "to": "app"
+              },
+              {
+                "from": "app",
+                "to": "appl"
+              },
+              {
+                "from": "appl",
+                "to": "apple"
+              }
+            ],
+            "output": [
+              true,
+              true
+            ]
+          },
+          "caption": "插入与查询共享相同前缀路径。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Trie {\npublic:\n    struct Node {\n        bool is_end;\n        Node *son[26];\n        Node() {\n            is_end = false;\n            for (int i = 0; i < 26; i ++ )\n                son[i] = NULL;\n        }\n    }*root;\n\n    /** Initialize your data structure here. */\n    Trie() {\n        root = new Node();\n    }\n\n    /** Inserts a word into the trie. */\n    void insert(string word) {\n        auto p = root;\n        for (auto c: word) {\n            int u = c - 'a';\n            if (!p->son[u]) p->son[u] = new Node();\n            p = p->son[u];\n        }\n        p->is_end = true;\n    }\n\n    /** Returns if the word is in the trie. */\n    bool search(string word) {\n        auto p = root;\n        for (auto c: word) {\n            int u = c - 'a';\n            if (!p->son[u]) return false;\n            p = p->son[u];\n        }\n        return p->is_end;\n    }\n\n    /** Returns if there is any word in the trie that starts with the given prefix. */\n    bool startsWith(string word) {\n        auto p = root;\n        for (auto c: word) {\n            int u = c - 'a';\n            if (!p->son[u]) return false;\n            p = p->son[u];\n        }\n        return true;\n    }\n};\n\n/**\n * Your Trie object will be instantiated and called as such:\n * Trie* obj = new Trie();\n * obj->insert(word);\n * bool param_2 = obj->search(word);\n * bool param_3 = obj->startsWith(prefix);\n */",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3077,
+        "text": "class Trie {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3078,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3079,
+        "text": "    struct Node {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3080,
+        "text": "        bool is_end;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3081,
+        "text": "        Node *son[26];"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3082,
+        "text": "        Node() {"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3083,
+        "text": "            is_end = false;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3084,
+        "text": "            for (int i = 0; i < 26; i ++ )"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3085,
+        "text": "                son[i] = NULL;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3086,
+        "text": "        }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3087,
+        "text": "    }*root;"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3088,
+        "text": ""
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3089,
+        "text": "    /** Initialize your data structure here. */"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3090,
+        "text": "    Trie() {"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3091,
+        "text": "        root = new Node();"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3092,
+        "text": "    }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3093,
+        "text": ""
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3094,
+        "text": "    /** Inserts a word into the trie. */"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3095,
+        "text": "    void insert(string word) {"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3096,
+        "text": "        auto p = root;"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3097,
+        "text": "        for (auto c: word) {"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3098,
+        "text": "            int u = c - 'a';"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 3099,
+        "text": "            if (!p->son[u]) p->son[u] = new Node();"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 3100,
+        "text": "            p = p->son[u];"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 3101,
+        "text": "        }"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 3102,
+        "text": "        p->is_end = true;"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 3103,
+        "text": "    }"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 3104,
+        "text": ""
+      },
+      {
+        "id": "L29",
+        "sourceLine": 3105,
+        "text": "    /** Returns if the word is in the trie. */"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 3106,
+        "text": "    bool search(string word) {"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 3107,
+        "text": "        auto p = root;"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 3108,
+        "text": "        for (auto c: word) {"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 3109,
+        "text": "            int u = c - 'a';"
+      },
+      {
+        "id": "L34",
+        "sourceLine": 3110,
+        "text": "            if (!p->son[u]) return false;"
+      },
+      {
+        "id": "L35",
+        "sourceLine": 3111,
+        "text": "            p = p->son[u];"
+      },
+      {
+        "id": "L36",
+        "sourceLine": 3112,
+        "text": "        }"
+      },
+      {
+        "id": "L37",
+        "sourceLine": 3113,
+        "text": "        return p->is_end;"
+      },
+      {
+        "id": "L38",
+        "sourceLine": 3114,
+        "text": "    }"
+      },
+      {
+        "id": "L39",
+        "sourceLine": 3115,
+        "text": ""
+      },
+      {
+        "id": "L40",
+        "sourceLine": 3116,
+        "text": "    /** Returns if there is any word in the trie that starts with the given prefix. */"
+      },
+      {
+        "id": "L41",
+        "sourceLine": 3117,
+        "text": "    bool startsWith(string word) {"
+      },
+      {
+        "id": "L42",
+        "sourceLine": 3118,
+        "text": "        auto p = root;"
+      },
+      {
+        "id": "L43",
+        "sourceLine": 3119,
+        "text": "        for (auto c: word) {"
+      },
+      {
+        "id": "L44",
+        "sourceLine": 3120,
+        "text": "            int u = c - 'a';"
+      },
+      {
+        "id": "L45",
+        "sourceLine": 3121,
+        "text": "            if (!p->son[u]) return false;"
+      },
+      {
+        "id": "L46",
+        "sourceLine": 3122,
+        "text": "            p = p->son[u];"
+      },
+      {
+        "id": "L47",
+        "sourceLine": 3123,
+        "text": "        }"
+      },
+      {
+        "id": "L48",
+        "sourceLine": 3124,
+        "text": "        return true;"
+      },
+      {
+        "id": "L49",
+        "sourceLine": 3125,
+        "text": "    }"
+      },
+      {
+        "id": "L50",
+        "sourceLine": 3126,
+        "text": "};"
+      },
+      {
+        "id": "L51",
+        "sourceLine": 3127,
+        "text": ""
+      },
+      {
+        "id": "L52",
+        "sourceLine": 3128,
+        "text": "/**"
+      },
+      {
+        "id": "L53",
+        "sourceLine": 3129,
+        "text": " * Your Trie object will be instantiated and called as such:"
+      },
+      {
+        "id": "L54",
+        "sourceLine": 3130,
+        "text": " * Trie* obj = new Trie();"
+      },
+      {
+        "id": "L55",
+        "sourceLine": 3131,
+        "text": " * obj->insert(word);"
+      },
+      {
+        "id": "L56",
+        "sourceLine": 3132,
+        "text": " * bool param_2 = obj->search(word);"
+      },
+      {
+        "id": "L57",
+        "sourceLine": 3133,
+        "text": " * bool param_3 = obj->startsWith(prefix);"
+      },
+      {
+        "id": "L58",
+        "sourceLine": 3134,
+        "text": " */"
+      }
+    ]
+  }
+}

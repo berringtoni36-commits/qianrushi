@@ -1,0 +1,4 @@
+interface:
+  display_name: "Qt Event Loop & Signal-Slot Audit"
+  short_description: "Audit Qt UI blocking and signal lifecycles"
+  default_prompt: "Use $qt-event-loop-signal-slot-audit to audit this Qt vision UI event loop, QProcess lifecycle, and signal-slot wiring."

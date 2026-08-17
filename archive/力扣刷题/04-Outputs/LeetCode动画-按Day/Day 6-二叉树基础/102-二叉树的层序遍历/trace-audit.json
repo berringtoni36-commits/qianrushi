@@ -1,0 +1,1025 @@
+{
+  "problemId": 102,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 102,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        3,
+        9,
+        20,
+        null,
+        null,
+        15,
+        7
+      ],
+      "variables": {},
+      "structure": {
+        "levels": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ]
+      },
+      "result": [
+        [
+          3
+        ],
+        [
+          9,
+          20
+        ],
+        [
+          15,
+          7
+        ]
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "c2a693a39758a3fe52e9939d89862b955fc7a2320974b83da7d993a0c3d9f644",
+    "sourceSemanticTokenHash": "62a4864aa6f487d3b5a88d88746efe18103ff5f50483799866140346f903e878",
+    "sourceCodeLineCount": 34
+  },
+  "sourceCodeSha256": "c2a693a39758a3fe52e9939d89862b955fc7a2320974b83da7d993a0c3d9f644",
+  "sourceSemanticTokenHash": "62a4864aa6f487d3b5a88d88746efe18103ff5f50483799866140346f903e878",
+  "steps": [
+    {
+      "id": "102-trace-001",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "setup",
+      "title": "根节点入队",
+      "body": "队列按层保存待处理节点；每次先固定当前层长度，再生成下一层。 题解原意：核心思想： 使用队列，每次处理一整层的节点。关键技巧是 for _ in range(q.size())：在处理每层开始时，队列中的节点数就是该层的节点数。通过这个长度控制循环次数，保证不会混到下一层。 为什么 BFS 适合层序？ BFS 天然是按「层」为单位推进的——先访问所有距离为 1 的节点，再访问所有距离为 2 的节点。队列 FIFO 的特性保证了先入队的上层节点先被处理。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "queue",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "level": 0
+        },
+        "rows": [
+          {
+            "label": "queue",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "levels",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "队列按层保存待处理节点；每次先固定当前层长度，再生成下一层。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "level": 0
+        },
+        "structure": {
+          "queue": [
+            0
+          ],
+          "levels": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "102-trace-002",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "完成第 1 层",
+      "body": "本层节点为 [3]，把它们的非空孩子加入下一轮队列。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "level": 0
+        },
+        "rows": [
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "levels",
+            "values": [
+              "[3]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            3
+          ]
+        ],
+        "note": "本层节点为 [3]，把它们的非空孩子加入下一轮队列。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "level": 0
+        },
+        "structure": {
+          "queue": [],
+          "levels": [
+            [
+              3
+            ]
+          ]
+        },
+        "result": [
+          [
+            3
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "102-trace-003",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "完成第 2 层",
+      "body": "本层节点为 [9, 20]，把它们的非空孩子加入下一轮队列。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 2 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "level": 1
+        },
+        "rows": [
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "levels",
+            "values": [
+              "[3]",
+              "[9, 20]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ]
+        ],
+        "note": "本层节点为 [9, 20]，把它们的非空孩子加入下一轮队列。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "level": 1
+        },
+        "structure": {
+          "queue": [],
+          "levels": [
+            [
+              3
+            ],
+            [
+              9,
+              20
+            ]
+          ]
+        },
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "102-trace-004",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "完成第 3 层",
+      "body": "本层节点为 [15, 7]，把它们的非空孩子加入下一轮队列。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 3 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "level": 2
+        },
+        "rows": [
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "levels",
+            "values": [
+              "[3]",
+              "[9, 20]",
+              "[15, 7]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "note": "本层节点为 [15, 7]，把它们的非空孩子加入下一轮队列。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "level": 2
+        },
+        "structure": {
+          "queue": [],
+          "levels": [
+            [
+              3
+            ],
+            [
+              9,
+              20
+            ],
+            [
+              15,
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "102-trace-check-006",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。层序遍历完成：[[3], [9, 20], [15, 7]]。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "level": 2
+        },
+        "rows": [
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "levels",
+            "values": [
+              "[3]",
+              "[9, 20]",
+              "[15, 7]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。层序遍历完成：[[3], [9, 20], [15, 7]]。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "level": 2
+        },
+        "structure": {
+          "queue": [],
+          "levels": [
+            [
+              3
+            ],
+            [
+              9,
+              20
+            ],
+            [
+              15,
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "102-trace-check-007",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。层序遍历完成：[[3], [9, 20], [15, 7]]。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "level": 2
+        },
+        "rows": [
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "levels",
+            "values": [
+              "[3]",
+              "[9, 20]",
+              "[15, 7]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。层序遍历完成：[[3], [9, 20], [15, 7]]。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "level": 2
+        },
+        "structure": {
+          "queue": [],
+          "levels": [
+            [
+              3
+            ],
+            [
+              9,
+              20
+            ],
+            [
+              15,
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "102-trace-check-008",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。层序遍历完成：[[3], [9, 20], [15, 7]]。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "level": 2
+        },
+        "rows": [
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "levels",
+            "values": [
+              "[3]",
+              "[9, 20]",
+              "[15, 7]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。层序遍历完成：[[3], [9, 20], [15, 7]]。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "level": 2
+        },
+        "structure": {
+          "queue": [],
+          "levels": [
+            [
+              3
+            ],
+            [
+              9,
+              20
+            ],
+            [
+              15,
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "102-trace-check-009",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。层序遍历完成：[[3], [9, 20], [15, 7]]。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "level": 2
+        },
+        "rows": [
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "levels",
+            "values": [
+              "[3]",
+              "[9, 20]",
+              "[15, 7]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。层序遍历完成：[[3], [9, 20], [15, 7]]。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "level": 2
+        },
+        "structure": {
+          "queue": [],
+          "levels": [
+            [
+              3
+            ],
+            [
+              9,
+              20
+            ],
+            [
+              15,
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "102-trace-check-010",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。层序遍历完成：[[3], [9, 20], [15, 7]]。 易错提醒：BFS 中 q.size() 必须在 for 循环前固定： 如果在循环中动态取队列长度，由于会 pop_front() 和 push_back()，长度会变化。每层开始时先保存当前层节点数。 DFS 中 res 的初始化顺序： 当第一次进入第 depth 层时，必须先 res.push_back([])，然后再赋值。如果 res 的长度…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "level": 2
+        },
+        "rows": [
+          {
+            "label": "queue",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "levels",
+            "values": [
+              "[3]",
+              "[9, 20]",
+              "[15, 7]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。层序遍历完成：[[3], [9, 20], [15, 7]]。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "level": 2
+        },
+        "structure": {
+          "queue": [],
+          "levels": [
+            [
+              3
+            ],
+            [
+              9,
+              20
+            ],
+            [
+              15,
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "102-trace-005",
+      "line": 32,
+      "lineIds": [
+        32
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "层序遍历完成：[[3], [9, 20], [15, 7]]。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "结果 3 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[3]",
+              "[9, 20]",
+              "[15, 7]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "note": "层序遍历完成：[[3], [9, 20], [15, 7]]。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {},
+        "structure": {
+          "levels": [
+            [
+              3
+            ],
+            [
+              9,
+              20
+            ],
+            [
+              15,
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            3
+          ],
+          [
+            9,
+            20
+          ],
+          [
+            15,
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

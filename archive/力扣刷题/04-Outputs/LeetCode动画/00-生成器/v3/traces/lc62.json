@@ -1,0 +1,1645 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "网格路径二维 DP",
+    "sceneKind": "dp-table",
+    "input": {
+      "m": 3,
+      "n": 7
+    },
+    "expected": 28,
+    "exampleText": "m=3, n=7",
+    "expectedText": "路径数 = 28",
+    "invariant": "按行扫描时上方和左方状态均已确定",
+    "aha": "最后一步只能从上或左进入",
+    "time": "O(mn)",
+    "space": "O(mn)",
+    "problemId": 62,
+    "title": "不同路径",
+    "day": "Day 13：多维 DP",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "724b0d2f972ce0def605d6900b65ea41596010b0d774f6971b0c43a21b559cfb",
+    "semanticTokenHash": "bb6dd66444bea73221636d144cbabc73ff58073e3fa7b538d00c59f9f8e96698",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": null,
+              "j": null
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "建立 3×7 路径表",
+            "status": "running",
+            "matrix": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "每格路径数来自上方与左方。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1",
+            "action": "写入 f[0][0]=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "0,0"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1",
+            "action": "写入 f[0][1]=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ],
+            "comparedCells": [
+              "0,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1",
+            "action": "写入 f[0][2]=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ],
+            "comparedCells": [
+              "0,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1",
+            "action": "写入 f[0][3]=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "0,3"
+            ],
+            "comparedCells": [
+              "0,2"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1",
+            "action": "写入 f[0][4]=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "0,4"
+            ],
+            "comparedCells": [
+              "0,3"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1",
+            "action": "写入 f[0][5]=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "0,5"
+            ],
+            "comparedCells": [
+              "0,4"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1",
+            "action": "写入 f[0][6]=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "0,6"
+            ],
+            "comparedCells": [
+              "0,5"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1 + 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1",
+            "action": "写入 f[1][0]=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ],
+            "comparedCells": [
+              "0,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1 + 1",
+            "action": "写入 f[1][1]=2",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [
+              "0,1",
+              "1,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1 + 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1 + 2",
+            "action": "写入 f[1][2]=3",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ],
+            "comparedCells": [
+              "0,2",
+              "1,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1 + 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1 + 3",
+            "action": "写入 f[1][3]=4",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "1,3"
+            ],
+            "comparedCells": [
+              "0,3",
+              "1,2"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1 + 4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1 + 4",
+            "action": "写入 f[1][4]=5",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "1,4"
+            ],
+            "comparedCells": [
+              "0,4",
+              "1,3"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1 + 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1 + 5",
+            "action": "写入 f[1][5]=6",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "1,5"
+            ],
+            "comparedCells": [
+              "0,5",
+              "1,4"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1 + 6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1 + 6",
+            "action": "写入 f[1][6]=7",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "1,6"
+            ],
+            "comparedCells": [
+              "0,6",
+              "1,5"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1",
+            "action": "写入 f[2][0]=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ],
+            "comparedCells": [
+              "1,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "2 + 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "2 + 1",
+            "action": "写入 f[2][1]=3",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                1,
+                3,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ],
+            "comparedCells": [
+              "1,1",
+              "2,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "3 + 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "3 + 3",
+            "action": "写入 f[2][2]=6",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                1,
+                3,
+                6,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ],
+            "comparedCells": [
+              "1,2",
+              "2,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "4 + 6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "4 + 6",
+            "action": "写入 f[2][3]=10",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                1,
+                3,
+                6,
+                10,
+                0,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ],
+            "comparedCells": [
+              "1,3",
+              "2,2"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "5 + 10"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "5 + 10",
+            "action": "写入 f[2][4]=15",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                1,
+                3,
+                6,
+                10,
+                15,
+                0,
+                0
+              ]
+            ],
+            "activeCells": [
+              "2,4"
+            ],
+            "comparedCells": [
+              "1,4",
+              "2,3"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "6 + 15"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "6 + 15",
+            "action": "写入 f[2][5]=21",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                1,
+                3,
+                6,
+                10,
+                15,
+                21,
+                0
+              ]
+            ],
+            "activeCells": [
+              "2,5"
+            ],
+            "comparedCells": [
+              "1,5",
+              "2,4"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置只依赖已经完成的上方与左方。",
+        "review": "7 + 21"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "7 + 21",
+            "action": "写入 f[2][6]=28",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                1,
+                3,
+                6,
+                10,
+                15,
+                21,
+                28
+              ]
+            ],
+            "activeCells": [
+              "2,6"
+            ],
+            "comparedCells": [
+              "1,6",
+              "2,5"
+            ],
+            "resultCells": []
+          },
+          "caption": "当前位置只依赖已经完成的上方与左方。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "右下角汇总全部路径。",
+        "review": "f[2][6]=28"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "f[2][6]=28",
+            "action": "返回不同路径数 28",
+            "status": "return",
+            "matrix": [
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                1,
+                3,
+                6,
+                10,
+                15,
+                21,
+                28
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "2,6"
+            ],
+            "output": 28
+          },
+          "caption": "右下角汇总全部路径。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int uniquePaths(int m, int n) {\n        vector<vector<int>> f(n, vector<int>(m));\n        for (int i = 0; i < n; i ++ )                            // 遍历\n            for (int j = 0; j < m; j ++ )\n                if (!i && !j) f[i][j] = 1;\n                else {\n                    if (i) f[i][j] += f[i - 1][j];\n                    if (j) f[i][j] += f[i][j - 1];\n                }\n\n        return f[n - 1][m - 1];\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 5142,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 5143,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 5144,
+        "text": "    int uniquePaths(int m, int n) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 5145,
+        "text": "        vector<vector<int>> f(n, vector<int>(m));"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 5146,
+        "text": "        for (int i = 0; i < n; i ++ )                            // 遍历"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 5147,
+        "text": "            for (int j = 0; j < m; j ++ )"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 5148,
+        "text": "                if (!i && !j) f[i][j] = 1;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 5149,
+        "text": "                else {"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 5150,
+        "text": "                    if (i) f[i][j] += f[i - 1][j];"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 5151,
+        "text": "                    if (j) f[i][j] += f[i][j - 1];"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 5152,
+        "text": "                }"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 5153,
+        "text": ""
+      },
+      {
+        "id": "L13",
+        "sourceLine": 5154,
+        "text": "        return f[n - 1][m - 1];"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 5155,
+        "text": "    }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 5156,
+        "text": "};"
+      }
+    ]
+  }
+}

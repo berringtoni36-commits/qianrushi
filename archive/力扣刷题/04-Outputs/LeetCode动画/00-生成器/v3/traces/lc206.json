@@ -1,0 +1,2054 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "迭代指针反转",
+    "sceneKind": "linked-list",
+    "input": {
+      "head": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "expected": [
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "exampleText": "head=[1,2,3,4,5]",
+    "expectedText": "5→4→3→2→1",
+    "invariant": "a 指向已反转部分的头，b 指向下一颗待处理节点",
+    "aha": "先用 c 保存后继，再改 b->next；最后单独断开原 head 的旧边",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 206,
+    "title": "反转链表",
+    "sourceHeading": "2. 反转链表（LeetCode 206 · Easy）",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "f1048157fdb9707aa72f2ac01720d13f8efa5cf5e6269f8fc2b5dbd1dae37162",
+    "semanticTokenHash": "d9640897be7b6379c42777e71b7ef22ebf920dabfecf5b17ac33ab0abd677f0d",
+    "day": "Day 4：链表基础",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "non-empty",
+      "phase": "inspect",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "示例链表非空，所以不会走 return NULL；原始 next 方向仍是 1→2→3→4→5。",
+        "review": "head != NULL"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n3",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n4",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": null,
+              "b": null,
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "检查 head：非空"
+          },
+          "caption": "确认进入迭代反转。",
+          "emphasis": [
+            "head"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "init-pointers",
+      "phase": "setup",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "a 指向已处理部分的头，b 指向下一颗待反转节点。",
+        "review": "a=1, b=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n3",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n4",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n1",
+              "b": "n2",
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n1",
+              "n2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "建立 a=1、b=2"
+          },
+          "caption": "初始化两个移动指针。",
+          "emphasis": [
+            "a",
+            "b"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "save-1",
+      "phase": "inspect",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "第 1 轮先让 c 保存 b 的原后继。改边之前先留住剩余链，节点才不会丢失。",
+        "review": "c = 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n3",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n4",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n1",
+              "b": "n2",
+              "c": "n3"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n1",
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "c 保存 3"
+          },
+          "caption": "先保存原来的 b->next。",
+          "emphasis": [
+            "c"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rewire-1",
+      "phase": "mutate",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "第 1 轮按固定顺序完成：反转 b 的边，再移动 a，最后移动 b。",
+        "review": "b->next=a; a=b; b=c"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "active"
+              },
+              {
+                "from": "n3",
+                "to": "n4",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n1",
+              "b": "n2",
+              "c": "n3"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n1",
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "把 2 的 next 改指向 1"
+          },
+          "caption": "执行 b->next=a，反转边 2→1。",
+          "emphasis": [
+            "edge"
+          ]
+        },
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n4",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n2",
+              "b": "n2",
+              "c": "n3"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n2",
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "a 移到 2"
+          },
+          "caption": "a 跟到新的已反转部分头节点。",
+          "emphasis": [
+            "a"
+          ]
+        },
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n4",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n2",
+              "b": "n3",
+              "c": "n3"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n2",
+              "n3",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "b 移到 3"
+          },
+          "caption": "b 接回刚才保存的剩余链。",
+          "emphasis": [
+            "b"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n4",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n2",
+              "b": "n3",
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "本轮结束，c 离开作用域"
+          },
+          "caption": "一轮结束；下一轮继续检查 b。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "save-2",
+      "phase": "inspect",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "第 2 轮先让 c 保存 b 的原后继。改边之前先留住剩余链，节点才不会丢失。",
+        "review": "c = 4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n4",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n2",
+              "b": "n3",
+              "c": "n4"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n2",
+              "n3",
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "c 保存 4"
+          },
+          "caption": "先保存原来的 b->next。",
+          "emphasis": [
+            "c"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rewire-2",
+      "phase": "mutate",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "第 2 轮按固定顺序完成：反转 b 的边，再移动 a，最后移动 b。",
+        "review": "b->next=a; a=b; b=c"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "active"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n2",
+              "b": "n3",
+              "c": "n4"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n2",
+              "n3",
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "把 3 的 next 改指向 2"
+          },
+          "caption": "执行 b->next=a，反转边 3→2。",
+          "emphasis": [
+            "edge"
+          ]
+        },
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n3",
+              "b": "n3",
+              "c": "n4"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n3",
+              "n3",
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "a 移到 3"
+          },
+          "caption": "a 跟到新的已反转部分头节点。",
+          "emphasis": [
+            "a"
+          ]
+        },
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n3",
+              "b": "n4",
+              "c": "n4"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n3",
+              "n4",
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "b 移到 4"
+          },
+          "caption": "b 接回刚才保存的剩余链。",
+          "emphasis": [
+            "b"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n3",
+              "b": "n4",
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n3",
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "本轮结束，c 离开作用域"
+          },
+          "caption": "一轮结束；下一轮继续检查 b。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "save-3",
+      "phase": "inspect",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "第 3 轮先让 c 保存 b 的原后继。改边之前先留住剩余链，节点才不会丢失。",
+        "review": "c = 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n5",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n3",
+              "b": "n4",
+              "c": "n5"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n3",
+              "n4",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "c 保存 5"
+          },
+          "caption": "先保存原来的 b->next。",
+          "emphasis": [
+            "c"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rewire-3",
+      "phase": "mutate",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "第 3 轮按固定顺序完成：反转 b 的边，再移动 a，最后移动 b。",
+        "review": "b->next=a; a=b; b=c"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "active"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n3",
+              "b": "n4",
+              "c": "n5"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n3",
+              "n4",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "把 4 的 next 改指向 3"
+          },
+          "caption": "执行 b->next=a，反转边 4→3。",
+          "emphasis": [
+            "edge"
+          ]
+        },
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n4",
+              "b": "n4",
+              "c": "n5"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n4",
+              "n4",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "a 移到 4"
+          },
+          "caption": "a 跟到新的已反转部分头节点。",
+          "emphasis": [
+            "a"
+          ]
+        },
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n4",
+              "b": "n5",
+              "c": "n5"
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n4",
+              "n5",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "b 移到 5"
+          },
+          "caption": "b 接回刚才保存的剩余链。",
+          "emphasis": [
+            "b"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n4",
+              "b": "n5",
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n4",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "本轮结束，c 离开作用域"
+          },
+          "caption": "一轮结束；下一轮继续检查 b。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "save-4",
+      "phase": "inspect",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "第 4 轮先让 c 保存 b 的原后继。改边之前先留住剩余链，节点才不会丢失。",
+        "review": "c = NULL"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n4",
+              "b": "n5",
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n4",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "c 保存 NULL"
+          },
+          "caption": "先保存原来的 b->next。",
+          "emphasis": [
+            "c"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rewire-4",
+      "phase": "mutate",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "第 4 轮按固定顺序完成：反转 b 的边，再移动 a，最后移动 b。",
+        "review": "b->next=a; a=b; b=c"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "normal"
+              },
+              {
+                "from": "n5",
+                "to": "n4",
+                "status": "active"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n4",
+              "b": "n5",
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n4",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "把 5 的 next 改指向 4"
+          },
+          "caption": "执行 b->next=a，反转边 5→4。",
+          "emphasis": [
+            "edge"
+          ]
+        },
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "normal"
+              },
+              {
+                "from": "n5",
+                "to": "n4",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n5",
+              "b": "n5",
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n5",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "a 移到 5"
+          },
+          "caption": "a 跟到新的已反转部分头节点。",
+          "emphasis": [
+            "a"
+          ]
+        },
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "normal"
+              },
+              {
+                "from": "n5",
+                "to": "n4",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n5",
+              "b": null,
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "b 移到 NULL"
+          },
+          "caption": "b 接回刚才保存的剩余链。",
+          "emphasis": [
+            "b"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "normal"
+              },
+              {
+                "from": "n5",
+                "to": "n4",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n5",
+              "b": null,
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "本轮结束，c 离开作用域"
+          },
+          "caption": "一轮结束；下一轮继续检查 b。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cut-old-head",
+      "phase": "aha",
+      "durationMs": 1600,
+      "captions": {
+        "learning": "循环中原头节点 1 的旧边一直保留，所以中途会出现局部回环；最后必须显式断开它。",
+        "review": "head->next = NULL"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "normal"
+              },
+              {
+                "from": "n5",
+                "to": "n4",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n5",
+              "b": null,
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "断开原头节点 1 的旧 next"
+          },
+          "caption": "把原头节点变成新尾节点。",
+          "emphasis": [
+            "edge",
+            "head"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1900,
+      "captions": {
+        "learning": "a 始终指向已反转部分的头；循环结束时它就是新链表头 5。",
+        "review": "return a = 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "nodes": [
+              {
+                "id": "n1",
+                "value": 1
+              },
+              {
+                "id": "n2",
+                "value": 2
+              },
+              {
+                "id": "n3",
+                "value": 3
+              },
+              {
+                "id": "n4",
+                "value": 4
+              },
+              {
+                "id": "n5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1",
+                "status": "normal"
+              },
+              {
+                "from": "n3",
+                "to": "n2",
+                "status": "normal"
+              },
+              {
+                "from": "n4",
+                "to": "n3",
+                "status": "normal"
+              },
+              {
+                "from": "n5",
+                "to": "n4",
+                "status": "normal"
+              }
+            ],
+            "pointers": {
+              "head": "n1",
+              "a": "n5",
+              "b": null,
+              "c": null
+            },
+            "variables": {},
+            "active": [
+              "n1",
+              "n5"
+            ],
+            "compared": [],
+            "result": [
+              "n5",
+              "n4",
+              "n3",
+              "n2",
+              "n1"
+            ],
+            "formula": "",
+            "action": "反转完成，a 指向新头 5"
+          },
+          "caption": "返回 5→4→3→2→1。",
+          "emphasis": [
+            "result"
+          ]
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* reverseList(ListNode* head) {\n        if (!head) return NULL;\n        auto a = head, b = a->next;                              \n        while (b) {\n            auto c = b->next;                                    \n            b->next = a;                                         \n            a = b;\n            b = c;\n        }\n        head->next = NULL;                                       \n        return a;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1225,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1226,
+        "text": " * Definition for singly-linked list."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1227,
+        "text": " * struct ListNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1228,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1229,
+        "text": " *     ListNode *next;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1230,
+        "text": " *     ListNode(int x) : val(x), next(NULL) {}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1231,
+        "text": " * };"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1232,
+        "text": " */"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1233,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1234,
+        "text": "public:"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1235,
+        "text": "    ListNode* reverseList(ListNode* head) {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1236,
+        "text": "        if (!head) return NULL;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1237,
+        "text": "        auto a = head, b = a->next;                              "
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1238,
+        "text": "        while (b) {"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1239,
+        "text": "            auto c = b->next;                                    "
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1240,
+        "text": "            b->next = a;                                         "
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1241,
+        "text": "            a = b;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1242,
+        "text": "            b = c;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1243,
+        "text": "        }"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1244,
+        "text": "        head->next = NULL;                                       "
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1245,
+        "text": "        return a;"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1246,
+        "text": "    }"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 1247,
+        "text": "};"
+      }
+    ]
+  }
+}

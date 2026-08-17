@@ -1,0 +1,631 @@
+{
+  "problemId": 153,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 153,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ],
+      "variables": {
+        "r": 3
+      },
+      "structure": {},
+      "result": [
+        1
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "a262e6ea534bff97ed909bd5dee34b7d9e086d0d96331e29a7094c9fac11b1e5",
+    "sourceSemanticTokenHash": "14125b5d796191ed0445b7ad6c8432ee539d40ee87ef360ffefe9f6e0b274d21",
+    "sourceCodeLineCount": 13
+  },
+  "sourceCodeSha256": "a262e6ea534bff97ed909bd5dee34b7d9e086d0d96331e29a7094c9fac11b1e5",
+  "sourceSemanticTokenHash": "14125b5d796191ed0445b7ad6c8432ee539d40ee87ef360ffefe9f6e0b274d21",
+  "steps": [
+    {
+      "id": "153-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "判断是否整体有序",
+      "body": "首尾 3,2 表明数组发生旋转，答案在旋转点右侧。 题解原意：核心思想： 维护搜索区间 [left, right) 左闭右开。比较 nums[mid] 和 nums[right]（不是 left！）决定搜索方向。 算法流程： 1. 初始化 left, right = 0, len(nums) - 1。 2. 当 left < right 时循环： mid = left + (right - left) // 2 如果 nums[mid] > nums[right]：最小值在右半…",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · binary",
+        "badge": "l=0 · r=4",
+        "tokens": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 4
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "首尾 3,2 表明数组发生旋转，答案在旋转点右侧。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 0,
+          "r": 4
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "153-trace-002",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "缩小最小值区间",
+      "body": "mid=2，新的候选区间 [3,4]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=3 · r=4 · mid=2",
+        "tokens": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 4,
+          "mid": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=2，新的候选区间 [3,4]。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 4,
+          "mid": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "153-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "缩小最小值区间",
+      "body": "mid=3，新的候选区间 [3,3]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=3 · r=3 · mid=3",
+        "tokens": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "mid=3，新的候选区间 [3,3]。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "153-trace-check-005",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=3 · r=3 · mid=3",
+        "tokens": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "153-trace-check-006",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=3 · r=3 · mid=3",
+        "tokens": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "153-trace-check-007",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=3 · r=3 · mid=3",
+        "tokens": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "153-trace-check-008",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=3 · r=3 · mid=3",
+        "tokens": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "153-trace-check-009",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=3 · r=3 · mid=3",
+        "tokens": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "153-trace-check-010",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。 易错提醒：1. 循环条件用 left < right 而不是 <=：因为当 left == right 时就找到了最小值，循环应该停止。如果用 <= 会陷入死循环。 2. nums[mid] > nums[right] 时 left = mid + 1：因为 mid 在大段，mid 本身不可能是最小值，可以跳过。 3. nums[mid] < nu…",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=3 · r=3 · mid=3",
+        "tokens": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[3,3]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转数组最小值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "variables": {
+          "l": 3,
+          "r": 3,
+          "mid": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "153-trace-004",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "旋转数组最小值为 1。",
+      "kind": "binary",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · binary",
+        "badge": "r=3 · 结果 1 项",
+        "tokens": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "r": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "旋转数组最小值为 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        "variables": {
+          "r": 3
+        },
+        "structure": {},
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

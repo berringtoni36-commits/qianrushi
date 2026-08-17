@@ -1,0 +1,963 @@
+{
+  "problemId": 236,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 236,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        3,
+        5,
+        1,
+        6,
+        2,
+        0,
+        8,
+        null,
+        null,
+        7,
+        4
+      ],
+      "variables": {
+        "root": 3
+      },
+      "structure": {
+        "tree": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ]
+      },
+      "result": [
+        3
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "c0c50896fb758b32fb06c120bdf70ab0d2308dceb5a1a736ef0c4977cefccd89",
+    "sourceSemanticTokenHash": "552f9fa4c3011e4fa396bd55a93c29c4a8d7f029202bac5a516c50b0dd2d4b38",
+    "sourceCodeLineCount": 28
+  },
+  "sourceCodeSha256": "c0c50896fb758b32fb06c120bdf70ab0d2308dceb5a1a736ef0c4977cefccd89",
+  "sourceSemanticTokenHash": "552f9fa4c3011e4fa396bd55a93c29c4a8d7f029202bac5a516c50b0dd2d4b38",
+  "steps": [
+    {
+      "id": "236-trace-001",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "setup",
+      "title": "从根开始寻找 p、q",
+      "body": "若 p、q 分居左右子树，当前 root 就是最近公共祖先；否则递归进入存在目标的一侧。 题解原意：核心思想： 用后序遍历从底向上搜索。对每个节点，递归地在左右子树中查找 p 和 q： 如果左右子树都找到了（p 和 q 分布在左右两侧），当前节点就是 LCA。 如果只在一边找到了，返回找到的那一边的结果。 如果都没找到，返回 nullptr。 为什么用后序？ 后序位置的特点是：在决定当前节点是不是 LCA 之前，已经知道了左右子树中是否包含了 p 和 q。这正是判断 LCA 所需要的——只有知道了左右子树的信息，才…",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "tree",
+        "tokens": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "rows": [
+          {
+            "label": "tree",
+            "values": [
+              3,
+              5,
+              1,
+              6,
+              2,
+              0,
+              8,
+              null,
+              null,
+              7,
+              4
+            ]
+          },
+          {
+            "label": "p / q",
+            "values": [
+              5,
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "若 p、q 分居左右子树，当前 root 就是最近公共祖先；否则递归进入存在目标的一侧。"
+      },
+      "state": {
+        "values": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            null,
+            null,
+            7,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "236-trace-002",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "compare",
+      "title": "检查 root=3",
+      "body": "root=3：左侧命中=true，右侧命中=true。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · tree",
+        "badge": "left=True · right=True",
+        "tokens": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1,
+          "left": true,
+          "right": true
+        },
+        "rows": [
+          {
+            "label": "branches",
+            "values": [
+              "left=True",
+              "right=True"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "root=3：左侧命中=true，右侧命中=true。"
+      },
+      "state": {
+        "values": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1,
+          "left": true,
+          "right": true
+        },
+        "structure": {
+          "tree": [
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            null,
+            null,
+            7,
+            4
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "236-trace-003",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "左右递归结果同时非空",
+      "body": "p、q 分别在 root 的两侧，root=3 被确认是最近公共祖先。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "p、q 分别在 root 的两侧，root=3 被确认是最近公共祖先。"
+      },
+      "state": {
+        "values": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            null,
+            null,
+            7,
+            4
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "236-trace-check-005",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            null,
+            null,
+            7,
+            4
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "236-trace-check-006",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            null,
+            null,
+            7,
+            4
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "236-trace-check-007",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            null,
+            null,
+            7,
+            4
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "236-trace-check-008",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            null,
+            null,
+            7,
+            4
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "236-trace-check-009",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            null,
+            null,
+            7,
+            4
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "236-trace-check-010",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。 易错提醒：p 或 q 本身就是 LCA 的情况： 递归法中，如果 root 是 p，直接返回 p。此时如果 q 在左子树或右子树中，返回的 p 就是正确的 LCA。不需要继续递归。 后序位置的判断逻辑： left and right 的意思是左右子树 都找到了非空结果。注意：这里的非空结果不一定是 p 或 q 本身，也可能是更低层找到的 LCA…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最近公共祖先 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "variables": {
+          "root": 3,
+          "p": 5,
+          "q": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            null,
+            null,
+            7,
+            4
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "236-trace-004",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回最近公共祖先 3。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "root": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "返回最近公共祖先 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          5,
+          1,
+          6,
+          2,
+          0,
+          8,
+          null,
+          null,
+          7,
+          4
+        ],
+        "variables": {
+          "root": 3
+        },
+        "structure": {
+          "tree": [
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            null,
+            null,
+            7,
+            4
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

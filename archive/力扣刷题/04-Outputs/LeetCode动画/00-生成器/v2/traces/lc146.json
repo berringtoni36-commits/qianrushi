@@ -1,0 +1,3523 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "哈希表 + 双向链表",
+    "sceneKind": "lru-cache",
+    "input": {
+      "capacity": 2,
+      "operations": [
+        "put(1,1)",
+        "put(2,2)",
+        "get(1)",
+        "put(3,3)",
+        "get(2)"
+      ]
+    },
+    "expected": [
+      1,
+      -1
+    ],
+    "exampleText": "capacity=2; put1, put2, get1, put3, get2",
+    "expectedText": "get 结果 [1,-1]",
+    "invariant": "hash 中的每个节点都恰好位于 L 与 R 之间；越靠近 L 越新，越靠近 R 越旧",
+    "aha": "访问节点时先 remove 再 insert，同一节点地址移动，hash 无需重建",
+    "time": "get/put 均摊 O(1)",
+    "space": "O(capacity)",
+    "problemId": 146,
+    "title": "LRU缓存",
+    "sourceHeading": "6. LRU 缓存（LeetCode 146 · Medium）",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "d8c0ead7e8d1d560c7a072c456d87578897cd2d5b9beb557e019bf10c75caf6b",
+    "semanticTokenHash": "c7d91ded92b26ec0593e35cc44077050f5b4cbbf7c10b1e8c6f46a56f751cb28"
+  },
+  "frames": [
+    {
+      "id": "capacity",
+      "phase": "setup",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "容量 n=2。哈希表负责定位节点，双向链表负责维护最近使用顺序。",
+        "review": "n = 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [],
+            "edges": [],
+            "order": [],
+            "hash": {},
+            "variables": {
+              "n": 2,
+              "operation": "构造",
+              "p": null,
+              "return": null
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录容量 2"
+          },
+          "caption": "保存容量上限。",
+          "emphasis": [
+            "n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sentinels",
+      "phase": "setup",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "L 和 R 是虚拟边界，不存真实缓存数据；它们让插入删除不需要判空。",
+        "review": "new L, new R"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": null
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": null
+              }
+            ],
+            "edges": [],
+            "order": [
+              "L"
+            ],
+            "hash": {},
+            "variables": {
+              "n": 2,
+              "operation": "构造",
+              "p": null,
+              "return": null
+            },
+            "active": [
+              "L",
+              "R"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "创建虚拟头 L 和虚拟尾 R"
+          },
+          "caption": "创建两个哨兵节点。",
+          "emphasis": [
+            "sentinel"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empty-list",
+      "phase": "setup",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "空缓存也保持 L⇄R 的完整双向关系。",
+        "review": "L ⇄ R"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "R"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": null
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "R"
+            ],
+            "hash": {},
+            "variables": {
+              "n": 2,
+              "operation": "构造",
+              "p": null,
+              "return": null
+            },
+            "active": [
+              "L"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "L.right = R"
+          },
+          "caption": "先从 L 指向 R。",
+          "emphasis": [
+            "right"
+          ]
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "R"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "L",
+                "right": null
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "L",
+                "kind": "left",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "R"
+            ],
+            "hash": {},
+            "variables": {
+              "n": 2,
+              "operation": "构造",
+              "p": null,
+              "return": null
+            },
+            "active": [
+              "R"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "R.left = L"
+          },
+          "caption": "再从 R 回指 L，空链建立完成。",
+          "emphasis": [
+            "left"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "put1-create",
+      "phase": "mutate",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "key 1 不存在，创建节点并先登记到 hash。此时节点还未接入主链。",
+        "review": "hash[1] = k1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L50",
+            "L51"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "R"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "L",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": null,
+                "right": null
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "R"
+            ],
+            "hash": {
+              "1": "k1"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(1,1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "k1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "创建 k1，并写入 hash"
+          },
+          "caption": "创建缓存节点 (1,1)。",
+          "emphasis": [
+            "hash",
+            "k1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "put1-insert",
+      "phase": "mutate",
+      "durationMs": 1900,
+      "captions": {
+        "learning": "insert 的四次指针赋值按固定顺序完成，k1 成为最近使用节点。",
+        "review": "L ⇄ k1 ⇄ R"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "R"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "L",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": null,
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "R"
+            ],
+            "hash": {
+              "1": "k1"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(1,1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "k1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k1.right = R"
+          },
+          "caption": "新节点先记住原来的首节点。",
+          "emphasis": [
+            "right"
+          ]
+        },
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "R"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "L",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "R"
+            ],
+            "hash": {
+              "1": "k1"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(1,1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "k1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k1.left = L"
+          },
+          "caption": "新节点左侧接到虚拟头 L。",
+          "emphasis": [
+            "left"
+          ]
+        },
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "R"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "R"
+            ],
+            "hash": {
+              "1": "k1"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(1,1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "R"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "R.left = k1"
+          },
+          "caption": "原首节点的 left 回指新节点。",
+          "emphasis": [
+            "left"
+          ]
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(1,1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "L"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "L.right = k1"
+          },
+          "caption": "最后让 L 指向新首节点，插入完成。",
+          "emphasis": [
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "put2-create",
+      "phase": "mutate",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "缓存尚未满，创建 k2 并登记哈希映射。",
+        "review": "hash[2] = k2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L50",
+            "L51"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": null,
+                "right": null
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(2,2)",
+              "p": "k2",
+              "return": null
+            },
+            "active": [
+              "k2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "创建 k2，并写入 hash"
+          },
+          "caption": "创建缓存节点 (2,2)。",
+          "emphasis": [
+            "hash",
+            "k2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "put2-insert",
+      "phase": "mutate",
+      "durationMs": 1900,
+      "captions": {
+        "learning": "新插入的 k2 放在 L 后面，因此顺序是最近 k2、其次 k1。",
+        "review": "L ⇄ k2 ⇄ k1 ⇄ R"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": null,
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "right",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(2,2)",
+              "p": "k2",
+              "return": null
+            },
+            "active": [
+              "k2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k2.right = k1"
+          },
+          "caption": "新节点先记住原来的首节点。",
+          "emphasis": [
+            "right"
+          ]
+        },
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "L",
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "L",
+                "kind": "left",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(2,2)",
+              "p": "k2",
+              "return": null
+            },
+            "active": [
+              "k2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k2.left = L"
+          },
+          "caption": "新节点左侧接到虚拟头 L。",
+          "emphasis": [
+            "left"
+          ]
+        },
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "k2",
+                "right": "R"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "L",
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(2,2)",
+              "p": "k2",
+              "return": null
+            },
+            "active": [
+              "k1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k1.left = k2"
+          },
+          "caption": "原首节点的 left 回指新节点。",
+          "emphasis": [
+            "left"
+          ]
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k2"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "k2",
+                "right": "R"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "L",
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k2",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k2",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(2,2)",
+              "p": "k2",
+              "return": null
+            },
+            "active": [
+              "L"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "L.right = k2"
+          },
+          "caption": "最后让 L 指向新首节点，插入完成。",
+          "emphasis": [
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "get1-hit",
+      "phase": "accept",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "hash 命中 key 1，O(1) 得到节点 k1；访问后必须把它移动到最前。",
+        "review": "p = hash[1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k2"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "k2",
+                "right": "R"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "L",
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k2",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k2",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "get(1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "k1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "get(1) 命中 k1"
+          },
+          "caption": "哈希表直接定位 k1。",
+          "emphasis": [
+            "hash",
+            "k1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "get1-remove",
+      "phase": "mutate",
+      "durationMs": 1700,
+      "captions": {
+        "learning": "移动节点不是复制：先从旧位置摘掉 k1，主链仍保持完整。",
+        "review": "remove(k1)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k2"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k2",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "k2",
+                "right": "R"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "L",
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k2",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k2",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k2",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "get(1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "R"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "R.left = k2"
+          },
+          "caption": "右邻居越过 p，先接向 p 的左邻居。",
+          "emphasis": [
+            "left"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k2"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k2",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "k2",
+                "right": "R"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "L",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k2",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k2",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "L",
+                "kind": "left",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "k2",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "get(1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "k2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k2.right = R"
+          },
+          "caption": "左邻居再越过 p，主链恢复连通。",
+          "emphasis": [
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "get1-insert",
+      "phase": "aha",
+      "durationMs": 2000,
+      "captions": {
+        "learning": "再把同一个 k1 插到 L 后面；哈希指针不需要修改，因为节点地址没有变。",
+        "review": "insert(k1)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k2"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k2",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "k2",
+                "right": "k2"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "L",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k2",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k2",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k2",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "get(1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "k1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k1.right = k2"
+          },
+          "caption": "新节点先记住原来的首节点。",
+          "emphasis": [
+            "right"
+          ]
+        },
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k2"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k2",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "k2"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "L",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k2",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k2",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k2",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "get(1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "k1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k1.left = L"
+          },
+          "caption": "新节点左侧接到虚拟头 L。",
+          "emphasis": [
+            "left"
+          ]
+        },
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k2"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k2",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "k2"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "k1",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k2",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k2",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "left",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "k2",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "get(1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "k2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k2.left = k1"
+          },
+          "caption": "原首节点的 left 回指新节点。",
+          "emphasis": [
+            "left"
+          ]
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k2",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "k2"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "k1",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "R",
+                "to": "k2",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "k2",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "get(1)",
+              "p": "k1",
+              "return": null
+            },
+            "active": [
+              "L"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "L.right = k1"
+          },
+          "caption": "最后让 L 指向新首节点，插入完成。",
+          "emphasis": [
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "get1-return",
+      "phase": "accept",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "k1 已经成为最近使用节点，get(1) 返回它的值 1。",
+        "review": "return 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L34"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k2",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "k2"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "k1",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k2",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "k2",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "get(1)",
+              "p": "k1",
+              "return": 1
+            },
+            "active": [
+              "k1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "get(1) 返回 1"
+          },
+          "caption": "返回命中值 1。",
+          "emphasis": [
+            "result"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "put3-full",
+      "phase": "compare",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "hash.size()==n，容量已满。R->left 指向当前最久未使用的 k2。",
+        "review": "p = R->left = k2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L44",
+            "L45"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k2",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "k2"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "k1",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k2",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "left",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "k2",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(3,3)",
+              "p": "k2",
+              "return": null
+            },
+            "active": [
+              "k2",
+              "R"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "选择尾部真实节点 k2 淘汰"
+          },
+          "caption": "容量满，锁定 LRU 节点 k2。",
+          "emphasis": [
+            "compare",
+            "k2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evict-remove",
+      "phase": "mutate",
+      "durationMs": 1700,
+      "captions": {
+        "learning": "先从双向链表摘掉 k2；这一步只改变链表，还没有删除哈希映射。",
+        "review": "remove(k2)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "k2"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "k1",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "k2",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "k2",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(3,3)",
+              "p": "k2",
+              "return": null
+            },
+            "active": [
+              "R"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "R.left = k1"
+          },
+          "caption": "右邻居越过 p，先接向 p 的左邻居。",
+          "emphasis": [
+            "left"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "k1",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "2": "k2"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(3,3)",
+              "p": "k2",
+              "return": null
+            },
+            "active": [
+              "k1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k1.right = R"
+          },
+          "caption": "左邻居再越过 p，主链恢复连通。",
+          "emphasis": [
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evict-delete",
+      "phase": "mutate",
+      "durationMs": 1700,
+      "captions": {
+        "learning": "淘汰必须同时处理 hash 和链表，最后释放节点；少一步都会留下错误状态。",
+        "review": "erase(2); delete k2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L47"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              },
+              {
+                "id": "k2",
+                "key": 2,
+                "value": 2,
+                "left": "k1",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k2",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k2",
+                "to": "k1",
+                "kind": "left",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(3,3)",
+              "p": "k2",
+              "return": null
+            },
+            "active": [
+              "k2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "从 hash 删除 key 2"
+          },
+          "caption": "同步删除哈希映射。",
+          "emphasis": [
+            "hash"
+          ]
+        },
+        {
+          "lineIds": [
+            "L48"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(3,3)",
+              "p": null,
+              "return": null
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "释放 k2 节点"
+          },
+          "caption": "释放被淘汰节点，两个结构重新一致。",
+          "emphasis": [
+            "delete"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "put3-create",
+      "phase": "mutate",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "腾出容量后创建 k3，并写入 hash[3]。",
+        "review": "hash[3] = k3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L50",
+            "L51"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              },
+              {
+                "id": "k3",
+                "key": 3,
+                "value": 3,
+                "left": null,
+                "right": null
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "3": "k3"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(3,3)",
+              "p": "k3",
+              "return": null
+            },
+            "active": [
+              "k3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "创建 k3，并写入 hash"
+          },
+          "caption": "创建缓存节点 (3,3)。",
+          "emphasis": [
+            "hash",
+            "k3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "put3-insert",
+      "phase": "mutate",
+      "durationMs": 1900,
+      "captions": {
+        "learning": "k3 插到 L 后面，最终最近使用顺序为 3、1。",
+        "review": "L ⇄ k3 ⇄ k1 ⇄ R"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              },
+              {
+                "id": "k3",
+                "key": 3,
+                "value": 3,
+                "left": null,
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k3",
+                "to": "k1",
+                "kind": "right",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "3": "k3"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(3,3)",
+              "p": "k3",
+              "return": null
+            },
+            "active": [
+              "k3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k3.right = k1"
+          },
+          "caption": "新节点先记住原来的首节点。",
+          "emphasis": [
+            "right"
+          ]
+        },
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "L",
+                "right": "R"
+              },
+              {
+                "id": "k3",
+                "key": 3,
+                "value": 3,
+                "left": "L",
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k3",
+                "to": "k1",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k3",
+                "to": "L",
+                "kind": "left",
+                "status": "active"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "3": "k3"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(3,3)",
+              "p": "k3",
+              "return": null
+            },
+            "active": [
+              "k3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k3.left = L"
+          },
+          "caption": "新节点左侧接到虚拟头 L。",
+          "emphasis": [
+            "left"
+          ]
+        },
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k1"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "k3",
+                "right": "R"
+              },
+              {
+                "id": "k3",
+                "key": 3,
+                "value": 3,
+                "left": "L",
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "k1",
+                "to": "k3",
+                "kind": "left",
+                "status": "active"
+              },
+              {
+                "from": "k3",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k3",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "3": "k3"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(3,3)",
+              "p": "k3",
+              "return": null
+            },
+            "active": [
+              "k1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k1.left = k3"
+          },
+          "caption": "原首节点的 left 回指新节点。",
+          "emphasis": [
+            "left"
+          ]
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k3"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "k3",
+                "right": "R"
+              },
+              {
+                "id": "k3",
+                "key": 3,
+                "value": 3,
+                "left": "L",
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k3",
+                "kind": "right",
+                "status": "active"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "k3",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k3",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k3",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k3",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "3": "k3"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "put(3,3)",
+              "p": "k3",
+              "return": null
+            },
+            "active": [
+              "L"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "L.right = k3"
+          },
+          "caption": "最后让 L 指向新首节点，插入完成。",
+          "emphasis": [
+            "right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1900,
+      "captions": {
+        "learning": "key 2 已在容量淘汰时从链表和 hash 同步删除，因此 get(2) 稳定返回 -1。",
+        "review": "return -1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L30"
+          ],
+          "state": {
+            "sceneKind": "lru-cache",
+            "nodes": [
+              {
+                "id": "L",
+                "key": -1,
+                "value": -1,
+                "left": null,
+                "right": "k3"
+              },
+              {
+                "id": "R",
+                "key": -1,
+                "value": -1,
+                "left": "k1",
+                "right": null
+              },
+              {
+                "id": "k1",
+                "key": 1,
+                "value": 1,
+                "left": "k3",
+                "right": "R"
+              },
+              {
+                "id": "k3",
+                "key": 3,
+                "value": 3,
+                "left": "L",
+                "right": "k1"
+              }
+            ],
+            "edges": [
+              {
+                "from": "L",
+                "to": "k3",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "R",
+                "to": "k1",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "R",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k1",
+                "to": "k3",
+                "kind": "left",
+                "status": "normal"
+              },
+              {
+                "from": "k3",
+                "to": "k1",
+                "kind": "right",
+                "status": "normal"
+              },
+              {
+                "from": "k3",
+                "to": "L",
+                "kind": "left",
+                "status": "normal"
+              }
+            ],
+            "order": [
+              "L",
+              "k3",
+              "k1",
+              "R"
+            ],
+            "hash": {
+              "1": "k1",
+              "3": "k3"
+            },
+            "variables": {
+              "n": 2,
+              "operation": "get(2)",
+              "p": null,
+              "return": -1
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "-1"
+            ],
+            "formula": "",
+            "action": "get(2) 未命中，返回 -1"
+          },
+          "caption": "哈希表中没有 key 2，返回 -1。",
+          "emphasis": [
+            "result"
+          ]
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class LRUCache {\npublic:\n    struct Node {\n        int key, val;\n        Node *left, *right;\n        Node(int _key, int _val): key(_key), val(_val), left(NULL), right(NULL) {}\n    }*L, *R;\n    unordered_map<int, Node*> hash;                              // 哈希表，O(1)查找\n    int n;\n\n    void remove(Node* p) {  // 从双向链表中删除节点\n        p->right->left = p->left;\n        p->left->right = p->right;\n    }\n\n    void insert(Node* p) {  // 将节点插入到链表头部（最近使用）\n        p->right = L->right;  // 插入头部：连接右邻居\n        p->left = L;\n        L->right->left = p;\n        L->right = p;  // 插入头部：虚拟头节点指向p\n    }\n\n    LRUCache(int capacity) {\n        n = capacity;\n        L = new Node(-1, -1), R = new Node(-1, -1);\n        L->right = R, R->left = L;\n    }\n\n    int get(int key) {\n        if (hash.count(key) == 0) return -1;                     // 查找是否在哈希表中\n        auto p = hash[key];\n        remove(p);\n        insert(p);\n        return p->val;\n    }\n\n    void put(int key, int value) {\n        if (hash.count(key)) {                                   // 查找是否在哈希表中\n            auto p = hash[key];\n            p->val = value;\n            remove(p);\n            insert(p);\n        } else {\n            if (hash.size() == n) {\n                auto p = R->left;  // 找到最久未使用的节点（尾节点）\n                remove(p);\n                hash.erase(p->key);\n                delete p;\n            }\n            auto p = new Node(key, value);\n            hash[key] = p;\n            insert(p);\n        }\n    }\n};\n\n/**\n * Your LRUCache object will be instantiated and called as such:\n * LRUCache* obj = new LRUCache(capacity);\n * int param_1 = obj->get(key);\n * obj->put(key,value);\n */",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1950,
+        "text": "class LRUCache {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1951,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1952,
+        "text": "    struct Node {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1953,
+        "text": "        int key, val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1954,
+        "text": "        Node *left, *right;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1955,
+        "text": "        Node(int _key, int _val): key(_key), val(_val), left(NULL), right(NULL) {}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1956,
+        "text": "    }*L, *R;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1957,
+        "text": "    unordered_map<int, Node*> hash;                              // 哈希表，O(1)查找"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1958,
+        "text": "    int n;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1959,
+        "text": ""
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1960,
+        "text": "    void remove(Node* p) {  // 从双向链表中删除节点"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1961,
+        "text": "        p->right->left = p->left;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1962,
+        "text": "        p->left->right = p->right;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1963,
+        "text": "    }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1964,
+        "text": ""
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1965,
+        "text": "    void insert(Node* p) {  // 将节点插入到链表头部（最近使用）"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1966,
+        "text": "        p->right = L->right;  // 插入头部：连接右邻居"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1967,
+        "text": "        p->left = L;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1968,
+        "text": "        L->right->left = p;"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1969,
+        "text": "        L->right = p;  // 插入头部：虚拟头节点指向p"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1970,
+        "text": "    }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1971,
+        "text": ""
+      },
+      {
+        "id": "L23",
+        "sourceLine": 1972,
+        "text": "    LRUCache(int capacity) {"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 1973,
+        "text": "        n = capacity;"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 1974,
+        "text": "        L = new Node(-1, -1), R = new Node(-1, -1);"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 1975,
+        "text": "        L->right = R, R->left = L;"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 1976,
+        "text": "    }"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 1977,
+        "text": ""
+      },
+      {
+        "id": "L29",
+        "sourceLine": 1978,
+        "text": "    int get(int key) {"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 1979,
+        "text": "        if (hash.count(key) == 0) return -1;                     // 查找是否在哈希表中"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 1980,
+        "text": "        auto p = hash[key];"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 1981,
+        "text": "        remove(p);"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 1982,
+        "text": "        insert(p);"
+      },
+      {
+        "id": "L34",
+        "sourceLine": 1983,
+        "text": "        return p->val;"
+      },
+      {
+        "id": "L35",
+        "sourceLine": 1984,
+        "text": "    }"
+      },
+      {
+        "id": "L36",
+        "sourceLine": 1985,
+        "text": ""
+      },
+      {
+        "id": "L37",
+        "sourceLine": 1986,
+        "text": "    void put(int key, int value) {"
+      },
+      {
+        "id": "L38",
+        "sourceLine": 1987,
+        "text": "        if (hash.count(key)) {                                   // 查找是否在哈希表中"
+      },
+      {
+        "id": "L39",
+        "sourceLine": 1988,
+        "text": "            auto p = hash[key];"
+      },
+      {
+        "id": "L40",
+        "sourceLine": 1989,
+        "text": "            p->val = value;"
+      },
+      {
+        "id": "L41",
+        "sourceLine": 1990,
+        "text": "            remove(p);"
+      },
+      {
+        "id": "L42",
+        "sourceLine": 1991,
+        "text": "            insert(p);"
+      },
+      {
+        "id": "L43",
+        "sourceLine": 1992,
+        "text": "        } else {"
+      },
+      {
+        "id": "L44",
+        "sourceLine": 1993,
+        "text": "            if (hash.size() == n) {"
+      },
+      {
+        "id": "L45",
+        "sourceLine": 1994,
+        "text": "                auto p = R->left;  // 找到最久未使用的节点（尾节点）"
+      },
+      {
+        "id": "L46",
+        "sourceLine": 1995,
+        "text": "                remove(p);"
+      },
+      {
+        "id": "L47",
+        "sourceLine": 1996,
+        "text": "                hash.erase(p->key);"
+      },
+      {
+        "id": "L48",
+        "sourceLine": 1997,
+        "text": "                delete p;"
+      },
+      {
+        "id": "L49",
+        "sourceLine": 1998,
+        "text": "            }"
+      },
+      {
+        "id": "L50",
+        "sourceLine": 1999,
+        "text": "            auto p = new Node(key, value);"
+      },
+      {
+        "id": "L51",
+        "sourceLine": 2000,
+        "text": "            hash[key] = p;"
+      },
+      {
+        "id": "L52",
+        "sourceLine": 2001,
+        "text": "            insert(p);"
+      },
+      {
+        "id": "L53",
+        "sourceLine": 2002,
+        "text": "        }"
+      },
+      {
+        "id": "L54",
+        "sourceLine": 2003,
+        "text": "    }"
+      },
+      {
+        "id": "L55",
+        "sourceLine": 2004,
+        "text": "};"
+      },
+      {
+        "id": "L56",
+        "sourceLine": 2005,
+        "text": ""
+      },
+      {
+        "id": "L57",
+        "sourceLine": 2006,
+        "text": "/**"
+      },
+      {
+        "id": "L58",
+        "sourceLine": 2007,
+        "text": " * Your LRUCache object will be instantiated and called as such:"
+      },
+      {
+        "id": "L59",
+        "sourceLine": 2008,
+        "text": " * LRUCache* obj = new LRUCache(capacity);"
+      },
+      {
+        "id": "L60",
+        "sourceLine": 2009,
+        "text": " * int param_1 = obj->get(key);"
+      },
+      {
+        "id": "L61",
+        "sourceLine": 2010,
+        "text": " * obj->put(key,value);"
+      },
+      {
+        "id": "L62",
+        "sourceLine": 2011,
+        "text": " */"
+      }
+    ]
+  }
+}

@@ -1,18 +1,16 @@
 {
   "cssTheme": "Baseline",
-  "interfaceFontFamily": "iA Writer Quattro S",
-  "textFontFamily": "iA Writer Quattro S,方正屏显雅宋简体",
+  "interfaceFontFamily": "iA Writer Quattro V",
+  "textFontFamily": "iA Writer Quattro V",
   "theme": "system",
-  "accentColor": "",
+  "accentColor": "#5f5cf5",
   "enabledCssSnippets": [
-    "baseline-optimized.minimal.active",
-    "baseline-translucent-window.active",
     "baseline-optimized.minimal.active_鍓湰",
     "baseline-translucent-window.active_鍓湰",
-    "border-polished.active"
+    "fira-code-codeblocks"
   ],
   "baseFontSize": 16,
-  "monospaceFontFamily": "iA Writer Quattro S",
+  "monospaceFontFamily": "iA Writer Mono V,Fira Code",
   "baseFontSizeAction": false,
   "nativeMenus": false,
   "translucency": true

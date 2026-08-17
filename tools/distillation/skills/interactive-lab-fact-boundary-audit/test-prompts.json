@@ -1,0 +1,16 @@
+{
+  "skill": "interactive-lab-fact-boundary-audit",
+  "version": "0.1.0",
+  "source_book": "Obsidian 交互学习实验与派生证据",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"这个物理内存碎片动画里的 extfrag 数字是 Linux 内核实测，还是教学模型？帮我审计来源和测试。","expected_behavior":"激活本 Skill，沿 source/code/boundary/test 标注证据类型。"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"视觉性能证据页写了几个耗时，我能不能直接换算成端到端 FPS 写进简历？","expected_behavior":"激活本 Skill，区分阶段耗时、派生值和端到端实测，指出页面边界。"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"Canvas 思维导图和 Markdown 重复统计了吗？请建立主源和派生证据映射。","expected_behavior":"激活本 Skill，去重 Canvas 节点并回溯其指向的正文/源码。"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"伙伴系统高阶分配失败但总内存很多，怎么解释 extfrag_index？","expected_behavior":"拒绝本 Skill，优先转给 linux-buddy-fragmentation-diagnosis。"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"请从 Python 启动到 BCC 加载、探针触发和 BPF Map 输出讲清楚项目链路。","expected_behavior":"拒绝本 Skill，优先转给 linux-memory-ebpf-pipeline。"},
+    {"id":"edge-01","type":"edge_case","prompt":"交互实验的 Node 测试全部通过，是否可以因此宣称真实硬件已经验证？","expected_behavior":"明确测试只覆盖模型/代码断言，不能推出硬件实测。"}
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "静态预期 6/6；实际客户端盲测待补。"
+}

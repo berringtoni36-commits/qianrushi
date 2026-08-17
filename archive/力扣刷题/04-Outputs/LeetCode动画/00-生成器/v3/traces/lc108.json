@@ -1,0 +1,973 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "有序区间中点递归",
+    "sceneKind": "tree-graph",
+    "input": [
+      -10,
+      -3,
+      0,
+      5,
+      9
+    ],
+    "expected": [
+      0,
+      -10,
+      5,
+      null,
+      -3,
+      null,
+      9
+    ],
+    "exampleText": "[-10,-3,0,5,9]",
+    "expectedText": "以 0 为根的平衡 BST",
+    "invariant": "每个节点左区间全小于根、右区间全大于根",
+    "aha": "中点同时保证 BST 顺序与高度平衡",
+    "time": "O(n)",
+    "space": "O(log n)",
+    "problemId": 108,
+    "title": "将有序数组转换为二叉搜索树",
+    "day": "Day 6：二叉树基础",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "8bc9e0af9486ddaae11e6909c7895881d444f1cc6412113788bf7dc0d4221853",
+    "semanticTokenHash": "0ffdcdaf8ec264be780fcff8d1349bfd5b547bf7642f7c544af7d129d9cf38c5",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个区间选择中点作为根。",
+        "review": "从完整有序区间构造"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 0,
+              "r": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "从完整有序区间构造",
+            "status": "running",
+            "nodes": [],
+            "edges": []
+          },
+          "caption": "每个区间选择中点作为根。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 0,
+              "r": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [],
+            "edges": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "中点左右元素数量最多相差一。",
+        "review": "mid=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 0,
+              "r": 4,
+              "mid": 2
+            },
+            "pointers": {},
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "mid=2",
+            "action": "区间 [0,4] 取中点 2，值 0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 0,
+                "level": 0,
+                "order": 2
+              }
+            ],
+            "edges": []
+          },
+          "caption": "中点左右元素数量最多相差一。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "中点左右元素数量最多相差一。",
+        "review": "mid=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 0,
+              "r": 1,
+              "mid": 0
+            },
+            "pointers": {},
+            "active": [
+              "n0"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "mid=0",
+            "action": "区间 [0,1] 取中点 0，值 -10",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 0,
+                "level": 0,
+                "order": 2
+              },
+              {
+                "id": "n0",
+                "value": -10,
+                "level": 1,
+                "order": 0
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n0"
+              }
+            ]
+          },
+          "caption": "中点左右元素数量最多相差一。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 0,
+              "r": 1,
+              "mid": 0
+            },
+            "pointers": {},
+            "active": [
+              "n0"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "mid=0",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 0,
+                "level": 0,
+                "order": 2
+              },
+              {
+                "id": "n0",
+                "value": -10,
+                "level": 1,
+                "order": 0
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n0"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "中点左右元素数量最多相差一。",
+        "review": "mid=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 1,
+              "r": 1,
+              "mid": 1
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "mid=1",
+            "action": "区间 [1,1] 取中点 1，值 -3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 0,
+                "level": 0,
+                "order": 2
+              },
+              {
+                "id": "n0",
+                "value": -10,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": -3,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              }
+            ]
+          },
+          "caption": "中点左右元素数量最多相差一。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "中点左右元素数量最多相差一。",
+        "review": "mid=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 3,
+              "r": 4,
+              "mid": 3
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "mid=3",
+            "action": "区间 [3,4] 取中点 3，值 5",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 0,
+                "level": 0,
+                "order": 2
+              },
+              {
+                "id": "n0",
+                "value": -10,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": -3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 5,
+                "level": 1,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "中点左右元素数量最多相差一。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 3,
+              "r": 4,
+              "mid": 3
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "mid=3",
+            "action": "不变量检查 5",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 0,
+                "level": 0,
+                "order": 2
+              },
+              {
+                "id": "n0",
+                "value": -10,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": -3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 5,
+                "level": 1,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 3,
+              "r": 4,
+              "mid": 3
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "mid=3",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 0,
+                "level": 0,
+                "order": 2
+              },
+              {
+                "id": "n0",
+                "value": -10,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": -3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 5,
+                "level": 1,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "中点左右元素数量最多相差一。",
+        "review": "mid=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 4,
+              "r": 4,
+              "mid": 4
+            },
+            "pointers": {},
+            "active": [
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "mid=4",
+            "action": "区间 [4,4] 取中点 4，值 9",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 0,
+                "level": 0,
+                "order": 2
+              },
+              {
+                "id": "n0",
+                "value": -10,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": -3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 5,
+                "level": 1,
+                "order": 3
+              },
+              {
+                "id": "n4",
+                "value": 9,
+                "level": 2,
+                "order": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "中点左右元素数量最多相差一。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "l": 4,
+              "r": 4,
+              "mid": 4
+            },
+            "pointers": {},
+            "active": [
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "mid=4",
+            "action": "不变量检查 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 0,
+                "level": 0,
+                "order": 2
+              },
+              {
+                "id": "n0",
+                "value": -10,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": -3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 5,
+                "level": 1,
+                "order": 3
+              },
+              {
+                "id": "n4",
+                "value": 9,
+                "level": 2,
+                "order": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "每个子区间同样按中点递归。",
+        "review": "balanced BST"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "n2",
+              "n0",
+              "n1",
+              "n3",
+              "n4"
+            ],
+            "formula": "balanced BST",
+            "action": "返回以 0 为根的平衡 BST",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "n2",
+                "value": 0,
+                "level": 0,
+                "order": 2
+              },
+              {
+                "id": "n0",
+                "value": -10,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": -3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n3",
+                "value": 5,
+                "level": 1,
+                "order": 3
+              },
+              {
+                "id": "n4",
+                "value": 9,
+                "level": 2,
+                "order": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ],
+            "output": [
+              0,
+              -10,
+              5,
+              null,
+              -3,
+              null,
+              9
+            ]
+          },
+          "caption": "每个子区间同样按中点递归。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    TreeNode* sortedArrayToBST(vector<int>& nums) {\n        return build(nums, 0, nums.size() - 1);\n    }\n\n    TreeNode* build(vector<int>& nums, int l, int r) {\n        if (l > r) return NULL;\n        int mid = l + r >> 1;\n        auto root = new TreeNode(nums[mid]);\n        root->left = build(nums, l, mid - 1);\n        root->right = build(nums, mid + 1, r);\n        return root;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2352,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2353,
+        "text": " * Definition for a binary tree node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2354,
+        "text": " * struct TreeNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2355,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2356,
+        "text": " *     TreeNode *left;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2357,
+        "text": " *     TreeNode *right;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2358,
+        "text": " *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2359,
+        "text": " * };"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2360,
+        "text": " */"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2361,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2362,
+        "text": "public:"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2363,
+        "text": "    TreeNode* sortedArrayToBST(vector<int>& nums) {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2364,
+        "text": "        return build(nums, 0, nums.size() - 1);"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2365,
+        "text": "    }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2366,
+        "text": ""
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2367,
+        "text": "    TreeNode* build(vector<int>& nums, int l, int r) {"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2368,
+        "text": "        if (l > r) return NULL;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2369,
+        "text": "        int mid = l + r >> 1;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2370,
+        "text": "        auto root = new TreeNode(nums[mid]);"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2371,
+        "text": "        root->left = build(nums, l, mid - 1);"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2372,
+        "text": "        root->right = build(nums, mid + 1, r);"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2373,
+        "text": "        return root;"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 2374,
+        "text": "    }"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 2375,
+        "text": "};"
+      }
+    ]
+  }
+}

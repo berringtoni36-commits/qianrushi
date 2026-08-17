@@ -1,0 +1,1027 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "前序定根 + 中序切分",
+    "sceneKind": "tree-graph",
+    "input": {
+      "pre": [
+        3,
+        9,
+        20,
+        15,
+        7
+      ],
+      "in": [
+        9,
+        3,
+        15,
+        20,
+        7
+      ]
+    },
+    "expected": [
+      3,
+      9,
+      20,
+      null,
+      null,
+      15,
+      7
+    ],
+    "exampleText": "pre=[3,9,20,15,7], in=[9,3,15,20,7]",
+    "expectedText": "根 3，递归切分左右子树",
+    "invariant": "递归参数描述同一子树在两种遍历中的对应区间",
+    "aha": "中序根位置给出左子树节点数",
+    "time": "O(n)",
+    "space": "O(n)",
+    "problemId": 105,
+    "title": "从前序与中序遍历序列构造二叉树",
+    "day": "Day 7：二叉树进阶",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "8f70ca29a4f3b54b319a072565460f51888a7b38a72a82f9fddb0efc75241424",
+    "semanticTokenHash": "2a012ac7fdcaf432e71a5b4ed9da51d65e887fc4a3fca1c0f1474619ec43db04",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "前序首元素定根，中序下标定左右规模。",
+        "review": "建立中序值到下标映射"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pos": "{9: 0, 3: 1, 15: 2, 20: 3, 7: 4}"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "建立中序值到下标映射",
+            "status": "running",
+            "nodes": [],
+            "edges": [],
+            "hash": {
+              "9": 0,
+              "3": 1,
+              "15": 2,
+              "20": 3,
+              "7": 4
+            }
+          },
+          "caption": "前序首元素定根，中序下标定左右规模。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pos": "{9: 0, 3: 1, 15: 2, 20: 3, 7: 4}"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [],
+            "edges": [],
+            "hash": {
+              "9": 0,
+              "3": 1,
+              "15": 2,
+              "20": 3,
+              "7": 4
+            }
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "中序根左边属于左子树，右边属于右子树。",
+        "review": "root=3, inorder index=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pl": 0,
+              "pr": 4,
+              "il": 0,
+              "ir": 4,
+              "k": 1
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "root=3, inorder index=1",
+            "action": "前序区间 [0,4] 取根 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 1
+              }
+            ],
+            "edges": []
+          },
+          "caption": "中序根左边属于左子树，右边属于右子树。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "中序根左边属于左子树，右边属于右子树。",
+        "review": "root=9, inorder index=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pl": 1,
+              "pr": 1,
+              "il": 0,
+              "ir": 0,
+              "k": 0
+            },
+            "pointers": {},
+            "active": [
+              "n9"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "root=9, inorder index=0",
+            "action": "前序区间 [1,1] 取根 9",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 1
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              }
+            ]
+          },
+          "caption": "中序根左边属于左子树，右边属于右子树。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pl": 1,
+              "pr": 1,
+              "il": 0,
+              "ir": 0,
+              "k": 0
+            },
+            "pointers": {},
+            "active": [
+              "n9"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "root=9, inorder index=0",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 1
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "中序根左边属于左子树，右边属于右子树。",
+        "review": "root=20, inorder index=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pl": 2,
+              "pr": 4,
+              "il": 2,
+              "ir": 4,
+              "k": 3
+            },
+            "pointers": {},
+            "active": [
+              "n20"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "root=20, inorder index=3",
+            "action": "前序区间 [2,4] 取根 20",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 1
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              }
+            ]
+          },
+          "caption": "中序根左边属于左子树，右边属于右子树。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "中序根左边属于左子树，右边属于右子树。",
+        "review": "root=15, inorder index=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pl": 3,
+              "pr": 3,
+              "il": 2,
+              "ir": 2,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [
+              "n15"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "root=15, inorder index=2",
+            "action": "前序区间 [3,3] 取根 15",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 1
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 3
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              }
+            ]
+          },
+          "caption": "中序根左边属于左子树，右边属于右子树。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pl": 3,
+              "pr": 3,
+              "il": 2,
+              "ir": 2,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [
+              "n15"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "root=15, inorder index=2",
+            "action": "不变量检查 5",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 1
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 3
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pl": 3,
+              "pr": 3,
+              "il": 2,
+              "ir": 2,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [
+              "n15"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "root=15, inorder index=2",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 1
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 3
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 2
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "中序根左边属于左子树，右边属于右子树。",
+        "review": "root=7, inorder index=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pl": 4,
+              "pr": 4,
+              "il": 4,
+              "ir": 4,
+              "k": 4
+            },
+            "pointers": {},
+            "active": [
+              "n7"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "root=7, inorder index=4",
+            "action": "前序区间 [4,4] 取根 7",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 1
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 3
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "中序根左边属于左子树，右边属于右子树。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "pl": 4,
+              "pr": 4,
+              "il": 4,
+              "ir": 4,
+              "k": 4
+            },
+            "pointers": {},
+            "active": [
+              "n7"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "root=7, inorder index=4",
+            "action": "不变量检查 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 1
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 3
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "前序与中序区间边界均已完整消费。",
+        "review": "[3, 9, 20, None, None, 15, 7]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "n3",
+              "n9",
+              "n20",
+              "n15",
+              "n7"
+            ],
+            "formula": "[3, 9, 20, None, None, 15, 7]",
+            "action": "返回重建二叉树",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 1
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 3
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "output": [
+              3,
+              9,
+              20,
+              null,
+              null,
+              15,
+              7
+            ]
+          },
+          "caption": "前序与中序区间边界均已完整消费。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    unordered_map<int, int> pos;                                 // 哈希表，O(1)查找\n\n    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {\n        for (int i = 0; i < inorder.size(); i ++ ) pos[inorder[i]] = i;\n        return build(preorder, inorder, 0, preorder.size() - 1, 0, inorder.size() - 1);\n    }\n\n    TreeNode* build(vector<int>& preorder, vector<int>& inorder, int pl, int pr, int il, int ir) {\n        if (pl > pr) return NULL;\n        auto root = new TreeNode(preorder[pl]);\n        int k = pos[root->val];\n        root->left = build(preorder, inorder, pl + 1, pl + 1 + k - 1 - il, il, k - 1);\n        root->right = build(preorder, inorder, pl + 1 + k - 1 - il + 1, pr, k + 1, ir);\n        return root;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2644,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2645,
+        "text": " * Definition for a binary tree node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2646,
+        "text": " * struct TreeNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2647,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2648,
+        "text": " *     TreeNode *left;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2649,
+        "text": " *     TreeNode *right;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2650,
+        "text": " *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2651,
+        "text": " * };"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2652,
+        "text": " */"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2653,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2654,
+        "text": "public:"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2655,
+        "text": "    unordered_map<int, int> pos;                                 // 哈希表，O(1)查找"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2656,
+        "text": ""
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2657,
+        "text": "    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2658,
+        "text": "        for (int i = 0; i < inorder.size(); i ++ ) pos[inorder[i]] = i;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2659,
+        "text": "        return build(preorder, inorder, 0, preorder.size() - 1, 0, inorder.size() - 1);"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2660,
+        "text": "    }"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2661,
+        "text": ""
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2662,
+        "text": "    TreeNode* build(vector<int>& preorder, vector<int>& inorder, int pl, int pr, int il, int ir) {"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2663,
+        "text": "        if (pl > pr) return NULL;"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2664,
+        "text": "        auto root = new TreeNode(preorder[pl]);"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2665,
+        "text": "        int k = pos[root->val];"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 2666,
+        "text": "        root->left = build(preorder, inorder, pl + 1, pl + 1 + k - 1 - il, il, k - 1);"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 2667,
+        "text": "        root->right = build(preorder, inorder, pl + 1 + k - 1 - il + 1, pr, k + 1, ir);"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 2668,
+        "text": "        return root;"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 2669,
+        "text": "    }"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 2670,
+        "text": "};"
+      }
+    ]
+  }
+}

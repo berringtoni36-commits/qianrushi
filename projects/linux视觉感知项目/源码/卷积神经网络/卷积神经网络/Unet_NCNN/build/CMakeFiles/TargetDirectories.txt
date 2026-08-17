@@ -1,3 +1,0 @@
-/media/kylin/11b9268b-64b0-4b3c-af7b-8229540612031/ncnn_unet/build/CMakeFiles/unet_ncnn.dir
-/media/kylin/11b9268b-64b0-4b3c-af7b-8229540612031/ncnn_unet/build/CMakeFiles/edit_cache.dir
-/media/kylin/11b9268b-64b0-4b3c-af7b-8229540612031/ncnn_unet/build/CMakeFiles/rebuild_cache.dir

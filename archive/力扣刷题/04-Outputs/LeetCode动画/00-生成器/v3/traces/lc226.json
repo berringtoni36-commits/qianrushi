@@ -1,0 +1,1400 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "逐节点交换左右子树",
+    "sceneKind": "tree-graph",
+    "input": "[4,2,7,1,3,6,9]",
+    "expected": [
+      4,
+      7,
+      2,
+      9,
+      6,
+      3,
+      1
+    ],
+    "exampleText": "[4,2,7,1,3,6,9]",
+    "expectedText": "翻转后层序 [4,7,2,9,6,3,1]",
+    "invariant": "已访问节点左右孩子均已交换",
+    "aha": "整棵树镜像等价于每个节点独立交换左右孩子",
+    "time": "O(n)",
+    "space": "O(h)",
+    "problemId": 226,
+    "title": "翻转二叉树",
+    "day": "Day 6：二叉树基础",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "d67a8e49bdbd7ace767ca4eaa36959a00a86d5088f77ca0dfeffd7f78ad19175",
+    "semanticTokenHash": "48de35379c948eb8697e94469c1e09e1d9f4601e558d63cc70ce7973763cd125",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "交换当前节点后再递归新的左右子树。",
+        "review": "递归前先交换每个节点左右孩子"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n4"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "递归前先交换每个节点左右孩子",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              }
+            ]
+          },
+          "caption": "交换当前节点后再递归新的左右子树。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个节点局部交换一次。",
+        "review": "left ⇄ right"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n4"
+            },
+            "pointers": {},
+            "active": [
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "left ⇄ right",
+            "action": "交换节点 4 的左右孩子",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "每个节点局部交换一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个节点局部交换一次。",
+        "review": "left ⇄ right"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n7"
+            },
+            "pointers": {},
+            "active": [
+              "n7"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "left ⇄ right",
+            "action": "交换节点 7 的左右孩子",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              }
+            ]
+          },
+          "caption": "每个节点局部交换一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n7"
+            },
+            "pointers": {},
+            "active": [
+              "n7"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "left ⇄ right",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个节点局部交换一次。",
+        "review": "left ⇄ right"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n9"
+            },
+            "pointers": {},
+            "active": [
+              "n9"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "left ⇄ right",
+            "action": "交换节点 9 的左右孩子",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              }
+            ]
+          },
+          "caption": "每个节点局部交换一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个节点局部交换一次。",
+        "review": "left ⇄ right"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n6"
+            },
+            "pointers": {},
+            "active": [
+              "n6"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "left ⇄ right",
+            "action": "交换节点 6 的左右孩子",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              }
+            ]
+          },
+          "caption": "每个节点局部交换一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n6"
+            },
+            "pointers": {},
+            "active": [
+              "n6"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "left ⇄ right",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个节点局部交换一次。",
+        "review": "left ⇄ right"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n2"
+            },
+            "pointers": {},
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "left ⇄ right",
+            "action": "交换节点 2 的左右孩子",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ]
+          },
+          "caption": "每个节点局部交换一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个节点局部交换一次。",
+        "review": "left ⇄ right"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3"
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "left ⇄ right",
+            "action": "交换节点 3 的左右孩子",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ]
+          },
+          "caption": "每个节点局部交换一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n3"
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "left ⇄ right",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个节点局部交换一次。",
+        "review": "left ⇄ right"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1"
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "left ⇄ right",
+            "action": "交换节点 1 的左右孩子",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ]
+          },
+          "caption": "每个节点局部交换一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "所有父节点的左右边都已镜像。",
+        "review": "[4, 7, 2, 9, 6, 3, 1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n4"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "n4",
+              "n2",
+              "n7",
+              "n1",
+              "n3",
+              "n6",
+              "n9"
+            ],
+            "formula": "[4, 7, 2, 9, 6, 3, 1]",
+            "action": "返回完全翻转的二叉树",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "n6",
+                "value": 6,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n4",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n2"
+              },
+              {
+                "from": "n7",
+                "to": "n9"
+              },
+              {
+                "from": "n7",
+                "to": "n6"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ],
+            "output": [
+              4,
+              7,
+              2,
+              9,
+              6,
+              3,
+              1
+            ]
+          },
+          "caption": "所有父节点的左右边都已镜像。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    TreeNode* invertTree(TreeNode* root) {\n        if (!root) return NULL;\n        swap(root->left, root->right);                           // 交换\n        invertTree(root->left);\n        invertTree(root->right);\n        return root;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2140,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2141,
+        "text": " * Definition for a binary tree node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2142,
+        "text": " * struct TreeNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2143,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2144,
+        "text": " *     TreeNode *left;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2145,
+        "text": " *     TreeNode *right;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2146,
+        "text": " *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2147,
+        "text": " * };"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2148,
+        "text": " */"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2149,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2150,
+        "text": "public:"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2151,
+        "text": "    TreeNode* invertTree(TreeNode* root) {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2152,
+        "text": "        if (!root) return NULL;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2153,
+        "text": "        swap(root->left, root->right);                           // 交换"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2154,
+        "text": "        invertTree(root->left);"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2155,
+        "text": "        invertTree(root->right);"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2156,
+        "text": "        return root;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2157,
+        "text": "    }"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2158,
+        "text": "};"
+      }
+    ]
+  }
+}

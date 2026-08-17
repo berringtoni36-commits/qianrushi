@@ -1,0 +1,1154 @@
+{
+  "problemId": 17,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 17,
+    "stepCount": 14,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "2",
+        "3"
+      ],
+      "variables": {},
+      "structure": {
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd",
+          "ce",
+          "cf"
+        ]
+      },
+      "result": [
+        "ad",
+        "ae",
+        "af",
+        "bd",
+        "be",
+        "bf",
+        "cd",
+        "ce",
+        "cf"
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "5309761e49f2299bf3137cc142ecd2c97bbbaff65217db93d3903deee7e8732e",
+    "sourceSemanticTokenHash": "0c5b07a54c9b696f7e8962cccad0db1efc5649ae356627f4212a93baaff38cef",
+    "sourceCodeLineCount": 23
+  },
+  "sourceCodeSha256": "5309761e49f2299bf3137cc142ecd2c97bbbaff65217db93d3903deee7e8732e",
+  "sourceSemanticTokenHash": "0c5b07a54c9b696f7e8962cccad0db1efc5649ae356627f4212a93baaff38cef",
+  "steps": [
+    {
+      "id": "17-trace-001",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "setup",
+      "title": "建立数字到字母映射",
+      "body": "递归深度对应 digit 下标，路径长度达到 digits.size() 时记录结果。 题解原意：核心思想： 逐位处理每个数字，当前数字对应的每个字母都是一个分支。这是一个多叉树的遍历问题——每层的分支数取决于当前数字对应几个字母。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · backtrack",
+        "badge": "path",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 0
+        },
+        "rows": [
+          {
+            "label": "mapping",
+            "values": [
+              "2→abc",
+              "3→def"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "递归深度对应 digit 下标，路径长度达到 digits.size() 时记录结果。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 0
+        },
+        "structure": {
+          "path": "",
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "17-trace-002",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "记录组合 ad",
+      "body": "路径 ad 覆盖两个数字，加入答案。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "path": "ad"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "ad"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "ad"
+            ]
+          }
+        ],
+        "result": [
+          "ad"
+        ],
+        "note": "路径 ad 覆盖两个数字，加入答案。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 2,
+          "path": "ad"
+        },
+        "structure": {
+          "result": [
+            "ad"
+          ]
+        },
+        "result": [
+          "ad"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-003",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "记录组合 ae",
+      "body": "路径 ae 覆盖两个数字，加入答案。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "path": "ae"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "ae"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae"
+        ],
+        "note": "路径 ae 覆盖两个数字，加入答案。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 2,
+          "path": "ae"
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-004",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "记录组合 af",
+      "body": "路径 af 覆盖两个数字，加入答案。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 3 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "path": "af"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "af"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae",
+              "af"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af"
+        ],
+        "note": "路径 af 覆盖两个数字，加入答案。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 2,
+          "path": "af"
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-005",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "回退数字 2 的选择 a",
+      "body": "穷举 3 对应的全部字母后，回到上一层换下一个字母。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 3 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 1
+        },
+        "rows": [
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae",
+              "af"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af"
+        ],
+        "note": "穷举 3 对应的全部字母后，回到上一层换下一个字母。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 1
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-006",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "记录组合 bd",
+      "body": "路径 bd 覆盖两个数字，加入答案。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 4 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "path": "bd"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "bd"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae",
+              "af",
+              "bd"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd"
+        ],
+        "note": "路径 bd 覆盖两个数字，加入答案。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 2,
+          "path": "bd"
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af",
+            "bd"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-007",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "记录组合 be",
+      "body": "路径 be 覆盖两个数字，加入答案。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 5 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "path": "be"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "be"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be"
+        ],
+        "note": "路径 be 覆盖两个数字，加入答案。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 2,
+          "path": "be"
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af",
+            "bd",
+            "be"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-008",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "记录组合 bf",
+      "body": "路径 bf 覆盖两个数字，加入答案。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 6 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "path": "bf"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "bf"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf"
+        ],
+        "note": "路径 bf 覆盖两个数字，加入答案。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 2,
+          "path": "bf"
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af",
+            "bd",
+            "be",
+            "bf"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-009",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "回退数字 2 的选择 b",
+      "body": "穷举 3 对应的全部字母后，回到上一层换下一个字母。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 6 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 1
+        },
+        "rows": [
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf"
+        ],
+        "note": "穷举 3 对应的全部字母后，回到上一层换下一个字母。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 1
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af",
+            "bd",
+            "be",
+            "bf"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-010",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "记录组合 cd",
+      "body": "路径 cd 覆盖两个数字，加入答案。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 7 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "path": "cd"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "cd"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd"
+        ],
+        "note": "路径 cd 覆盖两个数字，加入答案。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 2,
+          "path": "cd"
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af",
+            "bd",
+            "be",
+            "bf",
+            "cd"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-011",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "记录组合 ce",
+      "body": "路径 ce 覆盖两个数字，加入答案。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 8 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "path": "ce"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "ce"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd",
+              "ce"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd",
+          "ce"
+        ],
+        "note": "路径 ce 覆盖两个数字，加入答案。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 2,
+          "path": "ce"
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af",
+            "bd",
+            "be",
+            "bf",
+            "cd",
+            "ce"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd",
+          "ce"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-012",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "记录组合 cf",
+      "body": "路径 cf 覆盖两个数字，加入答案。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 9 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "depth": 2,
+          "path": "cf"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "cf"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd",
+              "ce",
+              "cf"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd",
+          "ce",
+          "cf"
+        ],
+        "note": "路径 cf 覆盖两个数字，加入答案。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 2,
+          "path": "cf"
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af",
+            "bd",
+            "be",
+            "bf",
+            "cd",
+            "ce",
+            "cf"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd",
+          "ce",
+          "cf"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-013",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "回退数字 2 的选择 c",
+      "body": "穷举 3 对应的全部字母后，回到上一层换下一个字母。 易错提醒：1. 空输入处理：digits = \"\" 应该返回 [] 而不是 [\"\"]。需在开头做特判。 2. 数字与字符串混淆：映射表的 key 是字符串 '2' 而不是整数 2，用 digits[idx] 获取的也是字符。 3. 回溯终止条件：idx == len(digits) 时记录结果，此时 path 的长度也等于 len(digits)…",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 9 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "depth": 1
+        },
+        "rows": [
+          {
+            "label": "result",
+            "values": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd",
+              "ce",
+              "cf"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd",
+          "ce",
+          "cf"
+        ],
+        "note": "穷举 3 对应的全部字母后，回到上一层换下一个字母。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {
+          "depth": 1
+        },
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af",
+            "bd",
+            "be",
+            "bf",
+            "cd",
+            "ce",
+            "cf"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd",
+          "ce",
+          "cf"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "17-trace-014",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "共生成 9 个字母组合。",
+      "kind": "backtrack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · backtrack",
+        "badge": "结果 9 项",
+        "tokens": [
+          "2",
+          "3"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd",
+              "ce",
+              "cf"
+            ]
+          }
+        ],
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd",
+          "ce",
+          "cf"
+        ],
+        "note": "共生成 9 个字母组合。"
+      },
+      "state": {
+        "values": [
+          "2",
+          "3"
+        ],
+        "variables": {},
+        "structure": {
+          "result": [
+            "ad",
+            "ae",
+            "af",
+            "bd",
+            "be",
+            "bf",
+            "cd",
+            "ce",
+            "cf"
+          ]
+        },
+        "result": [
+          "ad",
+          "ae",
+          "af",
+          "bd",
+          "be",
+          "bf",
+          "cd",
+          "ce",
+          "cf"
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

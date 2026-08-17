@@ -1,0 +1,1066 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "右上角阶梯搜索",
+    "sceneKind": "matrix-grid",
+    "input": {
+      "matrix": [
+        [
+          1,
+          4,
+          7,
+          11,
+          15
+        ],
+        [
+          2,
+          5,
+          8,
+          12,
+          19
+        ],
+        [
+          3,
+          6,
+          9,
+          16,
+          22
+        ],
+        [
+          10,
+          13,
+          14,
+          17,
+          24
+        ],
+        [
+          18,
+          21,
+          23,
+          26,
+          30
+        ]
+      ],
+      "target": 5
+    },
+    "expected": true,
+    "exampleText": "矩阵 + target = 5",
+    "expectedText": "找到 5 → true",
+    "invariant": "每步排除一整行或一整列且不丢失目标",
+    "aha": "右上角同时具有横向变小、纵向变大的单调性",
+    "time": "O(m+n)",
+    "space": "O(1)",
+    "problemId": 240,
+    "title": "搜索二维矩阵 II",
+    "day": "Day 3：数组技巧 + 矩阵",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "c14633c0226920c4da240a992cff8e4c4b1796c15c09db9790a00f33f32e6a89",
+    "semanticTokenHash": "21e203e6e0b66c90321b8b600e73b687c7bec024cd5700c2ee2238441f6bb409",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置左边更小、下边更大，可一次排除整行或整列。",
+        "review": "从右上角 15 开始"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 4,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "从右上角 15 开始",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "0,4"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "当前位置左边更小、下边更大，可一次排除整行或整列。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "矩阵行列都有序。",
+        "review": "15 vs 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 4,
+              "t": 15,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "15 vs 5",
+            "action": "比较 (0,4)=15 与 5",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "0,4"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "矩阵行列都有序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "被排除区域不可能含 target。",
+        "review": "next=(0,3)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 3,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "next=(0,3)",
+            "action": "值偏大，排除当前列",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "0,3"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "被排除区域不可能含 target。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "矩阵行列都有序。",
+        "review": "11 vs 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 3,
+              "t": 11,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "11 vs 5",
+            "action": "比较 (0,3)=11 与 5",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "0,3"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "矩阵行列都有序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "被排除区域不可能含 target。",
+        "review": "next=(0,2)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 2,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "next=(0,2)",
+            "action": "值偏大，排除当前列",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "被排除区域不可能含 target。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "矩阵行列都有序。",
+        "review": "7 vs 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 2,
+              "t": 7,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "7 vs 5",
+            "action": "比较 (0,2)=7 与 5",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "矩阵行列都有序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "被排除区域不可能含 target。",
+        "review": "next=(0,1)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 1,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "next=(0,1)",
+            "action": "值偏大，排除当前列",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "被排除区域不可能含 target。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "矩阵行列都有序。",
+        "review": "4 vs 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 1,
+              "t": 4,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "4 vs 5",
+            "action": "比较 (0,1)=4 与 5",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "矩阵行列都有序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "被排除区域不可能含 target。",
+        "review": "next=(1,1)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 1,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "next=(1,1)",
+            "action": "值偏小，排除当前行",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "被排除区域不可能含 target。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 1,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "next=(1,1)",
+            "action": "不变量检查 1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "矩阵行列都有序。",
+        "review": "5 vs 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 1,
+              "t": 5,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "5 vs 5",
+            "action": "比较 (1,1)=5 与 5",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "矩阵行列都有序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "命中后立即返回 true。",
+        "review": "5==target"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 1,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "5==target",
+            "action": "在 (1,1) 找到 5",
+            "status": "return",
+            "matrix": [
+              [
+                1,
+                4,
+                7,
+                11,
+                15
+              ],
+              [
+                2,
+                5,
+                8,
+                12,
+                19
+              ],
+              [
+                3,
+                6,
+                9,
+                16,
+                22
+              ],
+              [
+                10,
+                13,
+                14,
+                17,
+                24
+              ],
+              [
+                18,
+                21,
+                23,
+                26,
+                30
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [],
+            "resultCells": [
+              "1,1"
+            ],
+            "output": true
+          },
+          "caption": "命中后立即返回 true。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    bool searchMatrix(vector<vector<int>>& matrix, int target) {\n        if (matrix.empty() || matrix[0].empty()) return false;\n        int n = matrix.size(), m = matrix[0].size();\n        int i = 0, j = m - 1;  // 从右上角出发\n        while (i < n && j >= 0) {\n            int t = matrix[i][j];\n            if (t == target) return true;\n            else if (t > target) j -- ;  // 当前值太大，排除当前列\n            else i ++ ;  // 当前值太小，排除当前行\n        }\n        return false;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1129,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1130,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1131,
+        "text": "    bool searchMatrix(vector<vector<int>>& matrix, int target) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1132,
+        "text": "        if (matrix.empty() || matrix[0].empty()) return false;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1133,
+        "text": "        int n = matrix.size(), m = matrix[0].size();"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1134,
+        "text": "        int i = 0, j = m - 1;  // 从右上角出发"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1135,
+        "text": "        while (i < n && j >= 0) {"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1136,
+        "text": "            int t = matrix[i][j];"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1137,
+        "text": "            if (t == target) return true;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1138,
+        "text": "            else if (t > target) j -- ;  // 当前值太大，排除当前列"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1139,
+        "text": "            else i ++ ;  // 当前值太小，排除当前行"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1140,
+        "text": "        }"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1141,
+        "text": "        return false;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1142,
+        "text": "    }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1143,
+        "text": "};"
+      }
+    ]
+  }
+}

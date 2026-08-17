@@ -1,0 +1,1028 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "Kadane 一维动态规划",
+    "sceneKind": "dp-table",
+    "input": [
+      -2,
+      1,
+      -3,
+      4,
+      -1,
+      2,
+      1,
+      -5,
+      4
+    ],
+    "expected": 6,
+    "exampleText": "[-2,1,-3,4,-1,2,1,-5,4]",
+    "expectedText": "最大和 = 6",
+    "invariant": "last 是必须以 i 结尾的最大和",
+    "aha": "负的历史贡献应当直接丢弃",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 53,
+    "title": "最大子数组和",
+    "day": "Day 2：滑动窗口 + 子串",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "1767a6b9731c2ca9cade6037918aa1c1857594884d8050d6e1ae0fd217307320",
+    "semanticTokenHash": "bb4ba9a1a0b9c1f102908ca1671e478f5dbf3148435b4ee397985817345b11e7",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+        "review": "f[0]=-2+max(0,0)=-2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": null,
+              "last": 0,
+              "res": "-∞"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "初始化全局答案为负无穷",
+            "status": "running"
+          },
+          "caption": "全负数组也必须保留最大单个元素。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 0,
+              "x": -2,
+              "last": -2,
+              "res": "-∞"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[0]=-2+max(0,0)=-2",
+            "action": "以 -2 结尾的最大和为 -2",
+            "status": "running"
+          },
+          "caption": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+        "review": "f[1]=1+max(-2,0)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 0,
+              "last": -2,
+              "res": -2
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [
+              0
+            ],
+            "formula": "res=max(res,-2)=-2",
+            "action": "全局最大和更新/保持为 -2",
+            "status": "running"
+          },
+          "caption": "局部最优与全局最优在不同变量中维护。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 1,
+              "x": 1,
+              "last": 1,
+              "res": -2
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "f[1]=1+max(-2,0)=1",
+            "action": "以 1 结尾的最大和为 1",
+            "status": "running"
+          },
+          "caption": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "局部最优与全局最优在不同变量中维护。",
+        "review": "res=max(res,1)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 1,
+              "last": 1,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "res=max(res,1)=1",
+            "action": "全局最大和更新/保持为 1",
+            "status": "running"
+          },
+          "caption": "局部最优与全局最优在不同变量中维护。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+        "review": "f[2]=-3+max(1,0)=-2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 2,
+              "x": -3,
+              "last": -2,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "f[2]=-3+max(1,0)=-2",
+            "action": "以 -3 结尾的最大和为 -2",
+            "status": "running"
+          },
+          "caption": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "局部最优与全局最优在不同变量中维护。",
+        "review": "res=max(res,-2)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 2,
+              "last": -2,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "res=max(res,-2)=1",
+            "action": "全局最大和更新/保持为 1",
+            "status": "running"
+          },
+          "caption": "局部最优与全局最优在不同变量中维护。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+        "review": "f[3]=4+max(-2,0)=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 3,
+              "x": 4,
+              "last": 4,
+              "res": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [
+              2
+            ],
+            "result": [],
+            "formula": "f[3]=4+max(-2,0)=4",
+            "action": "以 4 结尾的最大和为 4",
+            "status": "running"
+          },
+          "caption": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "局部最优与全局最优在不同变量中维护。",
+        "review": "res=max(res,4)=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 3,
+              "last": 4,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [
+              3
+            ],
+            "formula": "res=max(res,4)=4",
+            "action": "全局最大和更新/保持为 4",
+            "status": "running"
+          },
+          "caption": "局部最优与全局最优在不同变量中维护。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+        "review": "f[4]=-1+max(4,0)=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 4,
+              "x": -1,
+              "last": 3,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [
+              3
+            ],
+            "result": [],
+            "formula": "f[4]=-1+max(4,0)=3",
+            "action": "以 -1 结尾的最大和为 3",
+            "status": "running"
+          },
+          "caption": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "局部最优与全局最优在不同变量中维护。",
+        "review": "res=max(res,3)=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 4,
+              "last": 3,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "res=max(res,3)=4",
+            "action": "全局最大和更新/保持为 4",
+            "status": "running"
+          },
+          "caption": "局部最优与全局最优在不同变量中维护。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+        "review": "f[5]=2+max(3,0)=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              5,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 5,
+              "x": 2,
+              "last": 5,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [
+              4
+            ],
+            "result": [],
+            "formula": "f[5]=2+max(3,0)=5",
+            "action": "以 2 结尾的最大和为 5",
+            "status": "running"
+          },
+          "caption": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "局部最优与全局最优在不同变量中维护。",
+        "review": "res=max(res,5)=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              5,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 5,
+              "last": 5,
+              "res": 5
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [
+              5
+            ],
+            "formula": "res=max(res,5)=5",
+            "action": "全局最大和更新/保持为 5",
+            "status": "running"
+          },
+          "caption": "局部最优与全局最优在不同变量中维护。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+        "review": "f[6]=1+max(5,0)=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              5,
+              6,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 6,
+              "x": 1,
+              "last": 6,
+              "res": 5
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [
+              5
+            ],
+            "result": [],
+            "formula": "f[6]=1+max(5,0)=6",
+            "action": "以 1 结尾的最大和为 6",
+            "status": "running"
+          },
+          "caption": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "局部最优与全局最优在不同变量中维护。",
+        "review": "res=max(res,6)=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              5,
+              6,
+              null,
+              null
+            ],
+            "variables": {
+              "i": 6,
+              "last": 6,
+              "res": 6
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [
+              6
+            ],
+            "formula": "res=max(res,6)=6",
+            "action": "全局最大和更新/保持为 6",
+            "status": "running"
+          },
+          "caption": "局部最优与全局最优在不同变量中维护。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+        "review": "f[7]=-5+max(6,0)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              5,
+              6,
+              1,
+              null
+            ],
+            "variables": {
+              "i": 7,
+              "x": -5,
+              "last": 1,
+              "res": 6
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [
+              6
+            ],
+            "result": [],
+            "formula": "f[7]=-5+max(6,0)=1",
+            "action": "以 -5 结尾的最大和为 1",
+            "status": "running"
+          },
+          "caption": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "局部最优与全局最优在不同变量中维护。",
+        "review": "res=max(res,1)=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              5,
+              6,
+              1,
+              null
+            ],
+            "variables": {
+              "i": 7,
+              "last": 1,
+              "res": 6
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "res=max(res,1)=6",
+            "action": "全局最大和更新/保持为 6",
+            "status": "running"
+          },
+          "caption": "局部最优与全局最优在不同变量中维护。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+        "review": "f[8]=4+max(1,0)=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              5,
+              6,
+              1,
+              5
+            ],
+            "variables": {
+              "i": 8,
+              "x": 4,
+              "last": 5,
+              "res": 6
+            },
+            "pointers": {},
+            "active": [
+              8
+            ],
+            "compared": [
+              7
+            ],
+            "result": [],
+            "formula": "f[8]=4+max(1,0)=5",
+            "action": "以 4 结尾的最大和为 5",
+            "status": "running"
+          },
+          "caption": "负前缀只会拖累当前子数组，因此可以从当前元素重启。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "局部最优与全局最优在不同变量中维护。",
+        "review": "res=max(res,5)=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              5,
+              6,
+              1,
+              5
+            ],
+            "variables": {
+              "i": 8,
+              "last": 5,
+              "res": 6
+            },
+            "pointers": {},
+            "active": [
+              8
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "res=max(res,5)=6",
+            "action": "全局最大和更新/保持为 6",
+            "status": "running"
+          },
+          "caption": "局部最优与全局最优在不同变量中维护。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "最优区间是 [4,-1,2,1]。",
+        "review": "4-1+2+1=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              -2,
+              1,
+              -2,
+              4,
+              3,
+              5,
+              6,
+              1,
+              5
+            ],
+            "variables": {
+              "res": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "formula": "4-1+2+1=6",
+            "action": "返回最大子数组和 6",
+            "status": "return",
+            "output": 6
+          },
+          "caption": "最优区间是 [4,-1,2,1]。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int maxSubArray(vector<int>& nums) {\n        int res = INT_MIN;                                       // 初始化为最小可能值\n        for (int i = 0, last = 0; i < nums.size(); i ++ ) {\n            last = nums[i] + max(last, 0);\n            res = max(res, last);\n        }\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 681,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 682,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 683,
+        "text": "    int maxSubArray(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 684,
+        "text": "        int res = INT_MIN;                                       // 初始化为最小可能值"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 685,
+        "text": "        for (int i = 0, last = 0; i < nums.size(); i ++ ) {"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 686,
+        "text": "            last = nums[i] + max(last, 0);"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 687,
+        "text": "            res = max(res, last);"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 688,
+        "text": "        }"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 689,
+        "text": "        return res;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 690,
+        "text": "    }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 691,
+        "text": "};"
+      }
+    ]
+  }
+}

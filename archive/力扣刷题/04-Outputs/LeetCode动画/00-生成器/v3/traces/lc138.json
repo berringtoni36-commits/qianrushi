@@ -1,0 +1,1533 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "原地交错复制",
+    "sceneKind": "linked-list",
+    "input": "7→null, 13→7, 11→1, 10→11, 1→7",
+    "expected": [
+      null,
+      0,
+      4,
+      2,
+      0
+    ],
+    "exampleText": "7→null, 13→7, 11→1, 10→11, 1→7",
+    "expectedText": "复制后 random 关系保持",
+    "invariant": "交错阶段每个原节点 next 恰好是自己的克隆",
+    "aha": "借助相邻克隆把 random 映射从哈希降为 O(1)",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 138,
+    "title": "随机链表的复制",
+    "day": "Day 5：链表进阶",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "379fb840905248929501e2051c2ce8f2d25eaac20e8dc6bbc3e9ab2094cab431",
+    "semanticTokenHash": "cf7d7b7b0f9e61c4ca0f6954f7d680d6900f98e01f0cad89623c2fef09a764cc",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "复制节点先交错插入原节点之后。",
+        "review": "原链包含 5 个带 random 的节点"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "o0"
+            },
+            "pointers": {
+              "p": "o0"
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "原链包含 5 个带 random 的节点",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "o0",
+                "to": "o1"
+              },
+              {
+                "from": "o1",
+                "to": "o2"
+              },
+              {
+                "from": "o2",
+                "to": "o3"
+              },
+              {
+                "from": "o3",
+                "to": "o4"
+              }
+            ]
+          },
+          "caption": "复制节点先交错插入原节点之后。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "克隆节点紧邻原节点，使 random 复制可 O(1) 找到。",
+        "review": "clone 7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "o0",
+              "q": "c0"
+            },
+            "pointers": {
+              "p": "o0",
+              "q": "c0"
+            },
+            "active": [
+              "o0",
+              "c0"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "clone 7",
+            "action": "在 o0 后插入克隆 c0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              }
+            ],
+            "edges": [
+              {
+                "from": "o0",
+                "to": "c0"
+              },
+              {
+                "from": "c0",
+                "to": "o1"
+              },
+              {
+                "from": "o1",
+                "to": "o2"
+              },
+              {
+                "from": "o2",
+                "to": "o3"
+              },
+              {
+                "from": "o3",
+                "to": "o4"
+              }
+            ]
+          },
+          "caption": "克隆节点紧邻原节点，使 random 复制可 O(1) 找到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "克隆节点紧邻原节点，使 random 复制可 O(1) 找到。",
+        "review": "clone 13"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "o1",
+              "q": "c1"
+            },
+            "pointers": {
+              "p": "o1",
+              "q": "c1"
+            },
+            "active": [
+              "o1",
+              "c1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "clone 13",
+            "action": "在 o1 后插入克隆 c1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              },
+              {
+                "id": "c1",
+                "value": 13
+              }
+            ],
+            "edges": [
+              {
+                "from": "o0",
+                "to": "c0"
+              },
+              {
+                "from": "c0",
+                "to": "o1"
+              },
+              {
+                "from": "o1",
+                "to": "c1"
+              },
+              {
+                "from": "c1",
+                "to": "o2"
+              },
+              {
+                "from": "o2",
+                "to": "o3"
+              },
+              {
+                "from": "o3",
+                "to": "o4"
+              }
+            ]
+          },
+          "caption": "克隆节点紧邻原节点，使 random 复制可 O(1) 找到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "克隆节点紧邻原节点，使 random 复制可 O(1) 找到。",
+        "review": "clone 11"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "o2",
+              "q": "c2"
+            },
+            "pointers": {
+              "p": "o2",
+              "q": "c2"
+            },
+            "active": [
+              "o2",
+              "c2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "clone 11",
+            "action": "在 o2 后插入克隆 c2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              },
+              {
+                "id": "c1",
+                "value": 13
+              },
+              {
+                "id": "c2",
+                "value": 11
+              }
+            ],
+            "edges": [
+              {
+                "from": "o0",
+                "to": "c0"
+              },
+              {
+                "from": "c0",
+                "to": "o1"
+              },
+              {
+                "from": "o1",
+                "to": "c1"
+              },
+              {
+                "from": "c1",
+                "to": "o2"
+              },
+              {
+                "from": "o2",
+                "to": "c2"
+              },
+              {
+                "from": "c2",
+                "to": "o3"
+              },
+              {
+                "from": "o3",
+                "to": "o4"
+              }
+            ]
+          },
+          "caption": "克隆节点紧邻原节点，使 random 复制可 O(1) 找到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "克隆节点紧邻原节点，使 random 复制可 O(1) 找到。",
+        "review": "clone 10"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "o3",
+              "q": "c3"
+            },
+            "pointers": {
+              "p": "o3",
+              "q": "c3"
+            },
+            "active": [
+              "o3",
+              "c3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "clone 10",
+            "action": "在 o3 后插入克隆 c3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              },
+              {
+                "id": "c1",
+                "value": 13
+              },
+              {
+                "id": "c2",
+                "value": 11
+              },
+              {
+                "id": "c3",
+                "value": 10
+              }
+            ],
+            "edges": [
+              {
+                "from": "o0",
+                "to": "c0"
+              },
+              {
+                "from": "c0",
+                "to": "o1"
+              },
+              {
+                "from": "o1",
+                "to": "c1"
+              },
+              {
+                "from": "c1",
+                "to": "o2"
+              },
+              {
+                "from": "o2",
+                "to": "c2"
+              },
+              {
+                "from": "c2",
+                "to": "o3"
+              },
+              {
+                "from": "o3",
+                "to": "c3"
+              },
+              {
+                "from": "c3",
+                "to": "o4"
+              }
+            ]
+          },
+          "caption": "克隆节点紧邻原节点，使 random 复制可 O(1) 找到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "克隆节点紧邻原节点，使 random 复制可 O(1) 找到。",
+        "review": "clone 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "o4",
+              "q": "c4"
+            },
+            "pointers": {
+              "p": "o4",
+              "q": "c4"
+            },
+            "active": [
+              "o4",
+              "c4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "clone 1",
+            "action": "在 o4 后插入克隆 c4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              },
+              {
+                "id": "c1",
+                "value": 13
+              },
+              {
+                "id": "c2",
+                "value": 11
+              },
+              {
+                "id": "c3",
+                "value": 10
+              },
+              {
+                "id": "c4",
+                "value": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "o0",
+                "to": "c0"
+              },
+              {
+                "from": "c0",
+                "to": "o1"
+              },
+              {
+                "from": "o1",
+                "to": "c1"
+              },
+              {
+                "from": "c1",
+                "to": "o2"
+              },
+              {
+                "from": "o2",
+                "to": "c2"
+              },
+              {
+                "from": "c2",
+                "to": "o3"
+              },
+              {
+                "from": "o3",
+                "to": "c3"
+              },
+              {
+                "from": "c3",
+                "to": "o4"
+              },
+              {
+                "from": "o4",
+                "to": "c4"
+              }
+            ]
+          },
+          "caption": "克隆节点紧邻原节点，使 random 复制可 O(1) 找到。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "原 random 目标的 next 就是对应克隆。",
+        "review": "c1.random=c0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "o1",
+              "clone": "c1"
+            },
+            "pointers": {
+              "p": "o1",
+              "clone": "c1"
+            },
+            "active": [
+              "c1",
+              "c0"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "c1.random=c0",
+            "action": "c1.random 指向 c0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              },
+              {
+                "id": "c1",
+                "value": 13
+              },
+              {
+                "id": "c2",
+                "value": 11
+              },
+              {
+                "id": "c3",
+                "value": 10
+              },
+              {
+                "id": "c4",
+                "value": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "o0",
+                "to": "c0"
+              },
+              {
+                "from": "c0",
+                "to": "o1"
+              },
+              {
+                "from": "o1",
+                "to": "c1"
+              },
+              {
+                "from": "c1",
+                "to": "o2"
+              },
+              {
+                "from": "o2",
+                "to": "c2"
+              },
+              {
+                "from": "c2",
+                "to": "o3"
+              },
+              {
+                "from": "o3",
+                "to": "c3"
+              },
+              {
+                "from": "c3",
+                "to": "o4"
+              },
+              {
+                "from": "o4",
+                "to": "c4"
+              },
+              {
+                "from": "c1",
+                "to": "c0",
+                "status": "active"
+              }
+            ]
+          },
+          "caption": "原 random 目标的 next 就是对应克隆。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "原 random 目标的 next 就是对应克隆。",
+        "review": "c2.random=c4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "o2",
+              "clone": "c2"
+            },
+            "pointers": {
+              "p": "o2",
+              "clone": "c2"
+            },
+            "active": [
+              "c2",
+              "c4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "c2.random=c4",
+            "action": "c2.random 指向 c4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              },
+              {
+                "id": "c1",
+                "value": 13
+              },
+              {
+                "id": "c2",
+                "value": 11
+              },
+              {
+                "id": "c3",
+                "value": 10
+              },
+              {
+                "id": "c4",
+                "value": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "o0",
+                "to": "c0"
+              },
+              {
+                "from": "c0",
+                "to": "o1"
+              },
+              {
+                "from": "o1",
+                "to": "c1"
+              },
+              {
+                "from": "c1",
+                "to": "o2"
+              },
+              {
+                "from": "o2",
+                "to": "c2"
+              },
+              {
+                "from": "c2",
+                "to": "o3"
+              },
+              {
+                "from": "o3",
+                "to": "c3"
+              },
+              {
+                "from": "c3",
+                "to": "o4"
+              },
+              {
+                "from": "o4",
+                "to": "c4"
+              },
+              {
+                "from": "c2",
+                "to": "c4",
+                "status": "active"
+              }
+            ]
+          },
+          "caption": "原 random 目标的 next 就是对应克隆。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "原 random 目标的 next 就是对应克隆。",
+        "review": "c3.random=c2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "o3",
+              "clone": "c3"
+            },
+            "pointers": {
+              "p": "o3",
+              "clone": "c3"
+            },
+            "active": [
+              "c3",
+              "c2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "c3.random=c2",
+            "action": "c3.random 指向 c2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              },
+              {
+                "id": "c1",
+                "value": 13
+              },
+              {
+                "id": "c2",
+                "value": 11
+              },
+              {
+                "id": "c3",
+                "value": 10
+              },
+              {
+                "id": "c4",
+                "value": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "o0",
+                "to": "c0"
+              },
+              {
+                "from": "c0",
+                "to": "o1"
+              },
+              {
+                "from": "o1",
+                "to": "c1"
+              },
+              {
+                "from": "c1",
+                "to": "o2"
+              },
+              {
+                "from": "o2",
+                "to": "c2"
+              },
+              {
+                "from": "c2",
+                "to": "o3"
+              },
+              {
+                "from": "o3",
+                "to": "c3"
+              },
+              {
+                "from": "c3",
+                "to": "o4"
+              },
+              {
+                "from": "o4",
+                "to": "c4"
+              },
+              {
+                "from": "c3",
+                "to": "c2",
+                "status": "active"
+              }
+            ]
+          },
+          "caption": "原 random 目标的 next 就是对应克隆。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "原 random 目标的 next 就是对应克隆。",
+        "review": "c4.random=c0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "o4",
+              "clone": "c4"
+            },
+            "pointers": {
+              "p": "o4",
+              "clone": "c4"
+            },
+            "active": [
+              "c4",
+              "c0"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "c4.random=c0",
+            "action": "c4.random 指向 c0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              },
+              {
+                "id": "c1",
+                "value": 13
+              },
+              {
+                "id": "c2",
+                "value": 11
+              },
+              {
+                "id": "c3",
+                "value": 10
+              },
+              {
+                "id": "c4",
+                "value": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "o0",
+                "to": "c0"
+              },
+              {
+                "from": "c0",
+                "to": "o1"
+              },
+              {
+                "from": "o1",
+                "to": "c1"
+              },
+              {
+                "from": "c1",
+                "to": "o2"
+              },
+              {
+                "from": "o2",
+                "to": "c2"
+              },
+              {
+                "from": "c2",
+                "to": "o3"
+              },
+              {
+                "from": "o3",
+                "to": "c3"
+              },
+              {
+                "from": "c3",
+                "to": "o4"
+              },
+              {
+                "from": "o4",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c0",
+                "status": "active"
+              }
+            ]
+          },
+          "caption": "原 random 目标的 next 就是对应克隆。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "逐个恢复原 next，并把克隆接入新链。",
+        "review": "unweave"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L36"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "head": "c0"
+            },
+            "pointers": {
+              "head": "c0"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "formula": "unweave",
+            "action": "拆开原链与克隆链",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              },
+              {
+                "id": "c1",
+                "value": 13
+              },
+              {
+                "id": "c2",
+                "value": 11
+              },
+              {
+                "id": "c3",
+                "value": 10
+              },
+              {
+                "id": "c4",
+                "value": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "c0",
+                "to": "c1"
+              },
+              {
+                "from": "c1",
+                "to": "c2"
+              },
+              {
+                "from": "c2",
+                "to": "c3"
+              },
+              {
+                "from": "c3",
+                "to": "c4"
+              }
+            ]
+          },
+          "caption": "逐个恢复原 next，并把克隆接入新链。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "克隆链 next 与 random 均不引用原节点。",
+        "review": "[None, 0, 4, 2, 0]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L38"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "head": "c0"
+            },
+            "pointers": {
+              "head": "c0"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4"
+            ],
+            "formula": "[None, 0, 4, 2, 0]",
+            "action": "返回 random 关系完全一致的克隆链",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "o0",
+                "value": 7
+              },
+              {
+                "id": "o1",
+                "value": 13
+              },
+              {
+                "id": "o2",
+                "value": 11
+              },
+              {
+                "id": "o3",
+                "value": 10
+              },
+              {
+                "id": "o4",
+                "value": 1
+              },
+              {
+                "id": "c0",
+                "value": 7
+              },
+              {
+                "id": "c1",
+                "value": 13
+              },
+              {
+                "id": "c2",
+                "value": 11
+              },
+              {
+                "id": "c3",
+                "value": 10
+              },
+              {
+                "id": "c4",
+                "value": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "c0",
+                "to": "c1"
+              },
+              {
+                "from": "c1",
+                "to": "c2"
+              },
+              {
+                "from": "c2",
+                "to": "c3"
+              },
+              {
+                "from": "c3",
+                "to": "c4"
+              }
+            ],
+            "output": [
+              null,
+              0,
+              4,
+              2,
+              0
+            ]
+          },
+          "caption": "克隆链 next 与 random 均不引用原节点。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/*\n// Definition for a Node.\nclass Node {\npublic:\n    int val;\n    Node* next;\n    Node* random;\n\n    Node(int _val) {\n        val = _val;\n        next = NULL; \n        random = NULL;\n    }\n};\n*/\n\nclass Solution {\npublic:\n    Node* copyRandomList(Node* head) {\n        for (auto p = head; p; p = p->next->next) {  // 第一步：在每个原节点后插入克隆节点\n            auto q = new Node(p->val);\n            q->next = p->next;                                   \n            p->next = q;                                         \n        }\n\n        // 复制random指针\n        for (auto p = head; p; p = p->next->next)                \n            if (p->random)\n                p->next->random = p->random->next;               \n\n        // 第三步：拆分两个链表（交错拆分）\n        auto dummy = new Node(-1), cur = dummy;\n        for (auto p = head; p; p = p->next) {                    \n            auto q = p->next;                                    \n            cur = cur->next = q;                                 \n            p->next = q->next;                                   \n        }\n        return dummy->next;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1750,
+        "text": "/*"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1751,
+        "text": "// Definition for a Node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1752,
+        "text": "class Node {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1753,
+        "text": "public:"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1754,
+        "text": "    int val;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1755,
+        "text": "    Node* next;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1756,
+        "text": "    Node* random;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1757,
+        "text": ""
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1758,
+        "text": "    Node(int _val) {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1759,
+        "text": "        val = _val;"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1760,
+        "text": "        next = NULL; "
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1761,
+        "text": "        random = NULL;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1762,
+        "text": "    }"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1763,
+        "text": "};"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1764,
+        "text": "*/"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1765,
+        "text": ""
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1766,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1767,
+        "text": "public:"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1768,
+        "text": "    Node* copyRandomList(Node* head) {"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1769,
+        "text": "        for (auto p = head; p; p = p->next->next) {  // 第一步：在每个原节点后插入克隆节点"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1770,
+        "text": "            auto q = new Node(p->val);"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1771,
+        "text": "            q->next = p->next;                                   "
+      },
+      {
+        "id": "L23",
+        "sourceLine": 1772,
+        "text": "            p->next = q;                                         "
+      },
+      {
+        "id": "L24",
+        "sourceLine": 1773,
+        "text": "        }"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 1774,
+        "text": ""
+      },
+      {
+        "id": "L26",
+        "sourceLine": 1775,
+        "text": "        // 复制random指针"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 1776,
+        "text": "        for (auto p = head; p; p = p->next->next)                "
+      },
+      {
+        "id": "L28",
+        "sourceLine": 1777,
+        "text": "            if (p->random)"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 1778,
+        "text": "                p->next->random = p->random->next;               "
+      },
+      {
+        "id": "L30",
+        "sourceLine": 1779,
+        "text": ""
+      },
+      {
+        "id": "L31",
+        "sourceLine": 1780,
+        "text": "        // 第三步：拆分两个链表（交错拆分）"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 1781,
+        "text": "        auto dummy = new Node(-1), cur = dummy;"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 1782,
+        "text": "        for (auto p = head; p; p = p->next) {                    "
+      },
+      {
+        "id": "L34",
+        "sourceLine": 1783,
+        "text": "            auto q = p->next;                                    "
+      },
+      {
+        "id": "L35",
+        "sourceLine": 1784,
+        "text": "            cur = cur->next = q;                                 "
+      },
+      {
+        "id": "L36",
+        "sourceLine": 1785,
+        "text": "            p->next = q->next;                                   "
+      },
+      {
+        "id": "L37",
+        "sourceLine": 1786,
+        "text": "        }"
+      },
+      {
+        "id": "L38",
+        "sourceLine": 1787,
+        "text": "        return dummy->next;"
+      },
+      {
+        "id": "L39",
+        "sourceLine": 1788,
+        "text": "    }"
+      },
+      {
+        "id": "L40",
+        "sourceLine": 1789,
+        "text": "};"
+      }
+    ]
+  }
+}

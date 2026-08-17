@@ -1,0 +1,2467 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "最后位置驱动的贪心分段",
+    "sceneKind": "hash-array",
+    "input": "ababcbacadefegdehijhklij",
+    "expected": [
+      9,
+      7,
+      8
+    ],
+    "exampleText": "\"ababcbacadefegdehijhklij\"",
+    "expectedText": "分段长度 [9,7,8]",
+    "invariant": "end 是当前段内字符最后位置的最大值",
+    "aha": "扫描到 end 时当前段才能安全闭合",
+    "time": "O(n)",
+    "space": "O(|Σ|)",
+    "problemId": 763,
+    "title": "划分字母区间",
+    "day": "Day 12：动态规划 + 贪心",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "e41d7956e24910eca61ae23b57fd525efb2ccffe0858053358d12970bcf0ab80",
+    "semanticTokenHash": "a7b1f4a23e4498c2a61aaff176172d2176c91cc73de8eb96bf782639014962ba",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(0,last[a]=8)=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": null,
+              "start": 0,
+              "end": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "记录每个字符最后出现位置",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            },
+            "output": []
+          },
+          "caption": "分段必须覆盖段内所有字符的最后出现位置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 0,
+              "start": 0,
+              "end": 8,
+              "char": "a"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "end=max(0,last[a]=8)=8",
+            "action": "字符 a 把段尾从 0 扩到 8",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(8,last[a]=8)=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 1,
+              "start": 0,
+              "end": 8,
+              "char": "b"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "end=max(8,last[b]=5)=8",
+            "action": "字符 b 把段尾从 8 扩到 8",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 2,
+              "start": 0,
+              "end": 8,
+              "char": "a"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "end=max(8,last[a]=8)=8",
+            "action": "字符 a 把段尾从 8 扩到 8",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(8,last[c]=7)=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 3,
+              "start": 0,
+              "end": 8,
+              "char": "b"
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "end=max(8,last[b]=5)=8",
+            "action": "字符 b 把段尾从 8 扩到 8",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 4,
+              "start": 0,
+              "end": 8,
+              "char": "c"
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "end=max(8,last[c]=7)=8",
+            "action": "字符 c 把段尾从 8 扩到 8",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(8,last[a]=8)=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 5,
+              "start": 0,
+              "end": 8,
+              "char": "b"
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "end=max(8,last[b]=5)=8",
+            "action": "字符 b 把段尾从 8 扩到 8",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 6,
+              "start": 0,
+              "end": 8,
+              "char": "a"
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "end=max(8,last[a]=8)=8",
+            "action": "字符 a 把段尾从 8 扩到 8",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(8,last[a]=8)=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 7,
+              "start": 0,
+              "end": 8,
+              "char": "c"
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "end=max(8,last[c]=7)=8",
+            "action": "字符 c 把段尾从 8 扩到 8",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 8,
+              "start": 0,
+              "end": 8,
+              "char": "a"
+            },
+            "pointers": {},
+            "active": [
+              8
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "end=max(8,last[a]=8)=8",
+            "action": "字符 a 把段尾从 8 扩到 8",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(9,last[d]=14)=14"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 8,
+              "start": 0,
+              "end": 8
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "formula": "8-0+1=9",
+            "action": "在 8 封闭一段，长度 9",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            },
+            "output": [
+              9
+            ]
+          },
+          "caption": "到达 end 时，段内字符不会出现在后面。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 9,
+              "start": 9,
+              "end": 14,
+              "char": "d"
+            },
+            "pointers": {},
+            "active": [
+              9
+            ],
+            "compared": [],
+            "result": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "formula": "end=max(9,last[d]=14)=14",
+            "action": "字符 d 把段尾从 9 扩到 14",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(15,last[f]=11)=15"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 10,
+              "start": 9,
+              "end": 15,
+              "char": "e"
+            },
+            "pointers": {},
+            "active": [
+              10
+            ],
+            "compared": [],
+            "result": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "formula": "end=max(14,last[e]=15)=15",
+            "action": "字符 e 把段尾从 14 扩到 15",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 11,
+              "start": 9,
+              "end": 15,
+              "char": "f"
+            },
+            "pointers": {},
+            "active": [
+              11
+            ],
+            "compared": [],
+            "result": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "formula": "end=max(15,last[f]=11)=15",
+            "action": "字符 f 把段尾从 15 扩到 15",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(15,last[g]=13)=15"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 12,
+              "start": 9,
+              "end": 15,
+              "char": "e"
+            },
+            "pointers": {},
+            "active": [
+              12
+            ],
+            "compared": [],
+            "result": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "formula": "end=max(15,last[e]=15)=15",
+            "action": "字符 e 把段尾从 15 扩到 15",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 13,
+              "start": 9,
+              "end": 15,
+              "char": "g"
+            },
+            "pointers": {},
+            "active": [
+              13
+            ],
+            "compared": [],
+            "result": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "formula": "end=max(15,last[g]=13)=15",
+            "action": "字符 g 把段尾从 15 扩到 15",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(15,last[e]=15)=15"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 14,
+              "start": 9,
+              "end": 15,
+              "char": "d"
+            },
+            "pointers": {},
+            "active": [
+              14
+            ],
+            "compared": [],
+            "result": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "formula": "end=max(15,last[d]=14)=15",
+            "action": "字符 d 把段尾从 15 扩到 15",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 15,
+              "start": 9,
+              "end": 15,
+              "char": "e"
+            },
+            "pointers": {},
+            "active": [
+              15
+            ],
+            "compared": [],
+            "result": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "formula": "end=max(15,last[e]=15)=15",
+            "action": "字符 e 把段尾从 15 扩到 15",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(16,last[h]=19)=19"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 15,
+              "start": 9,
+              "end": 15
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "formula": "15-9+1=7",
+            "action": "在 15 封闭一段，长度 7",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            },
+            "output": [
+              9,
+              7
+            ]
+          },
+          "caption": "到达 end 时，段内字符不会出现在后面。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 16,
+              "start": 16,
+              "end": 19,
+              "char": "h"
+            },
+            "pointers": {},
+            "active": [
+              16
+            ],
+            "compared": [],
+            "result": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "formula": "end=max(16,last[h]=19)=19",
+            "action": "字符 h 把段尾从 16 扩到 19",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(22,last[j]=23)=23"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 17,
+              "start": 16,
+              "end": 22,
+              "char": "i"
+            },
+            "pointers": {},
+            "active": [
+              17
+            ],
+            "compared": [],
+            "result": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "formula": "end=max(19,last[i]=22)=22",
+            "action": "字符 i 把段尾从 19 扩到 22",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 18,
+              "start": 16,
+              "end": 23,
+              "char": "j"
+            },
+            "pointers": {},
+            "active": [
+              18
+            ],
+            "compared": [],
+            "result": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23
+            ],
+            "formula": "end=max(22,last[j]=23)=23",
+            "action": "字符 j 把段尾从 22 扩到 23",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(23,last[h]=19)=23"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 19,
+              "start": 16,
+              "end": 23,
+              "char": "h"
+            },
+            "pointers": {},
+            "active": [
+              19
+            ],
+            "compared": [],
+            "result": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23
+            ],
+            "formula": "end=max(23,last[h]=19)=23",
+            "action": "字符 h 把段尾从 23 扩到 23",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(23,last[k]=20)=23"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 20,
+              "start": 16,
+              "end": 23,
+              "char": "k"
+            },
+            "pointers": {},
+            "active": [
+              20
+            ],
+            "compared": [],
+            "result": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23
+            ],
+            "formula": "end=max(23,last[k]=20)=23",
+            "action": "字符 k 把段尾从 23 扩到 23",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(23,last[l]=21)=23"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 21,
+              "start": 16,
+              "end": 23,
+              "char": "l"
+            },
+            "pointers": {},
+            "active": [
+              21
+            ],
+            "compared": [],
+            "result": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23
+            ],
+            "formula": "end=max(23,last[l]=21)=23",
+            "action": "字符 l 把段尾从 23 扩到 23",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(23,last[i]=22)=23"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 22,
+              "start": 16,
+              "end": 23,
+              "char": "i"
+            },
+            "pointers": {},
+            "active": [
+              22
+            ],
+            "compared": [],
+            "result": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23
+            ],
+            "formula": "end=max(23,last[i]=22)=23",
+            "action": "字符 i 把段尾从 23 扩到 23",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前段尾是段内已见字符最后位置的最大值。",
+        "review": "end=max(23,last[j]=23)=23"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 23,
+              "start": 16,
+              "end": 23,
+              "char": "j"
+            },
+            "pointers": {},
+            "active": [
+              23
+            ],
+            "compared": [],
+            "result": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23
+            ],
+            "formula": "end=max(23,last[j]=23)=23",
+            "action": "字符 j 把段尾从 23 扩到 23",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            }
+          },
+          "caption": "当前段尾是段内已见字符最后位置的最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "到达 end 时，段内字符不会出现在后面。",
+        "review": "23-16+1=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "i": 23,
+              "start": 16,
+              "end": 23
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23
+            ],
+            "formula": "23-16+1=8",
+            "action": "在 23 封闭一段，长度 8",
+            "status": "running",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            },
+            "output": [
+              9,
+              7,
+              8
+            ]
+          },
+          "caption": "到达 end 时，段内字符不会出现在后面。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "每个字母恰好属于一个分段。",
+        "review": "[9, 7, 8]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "a",
+              "b",
+              "a",
+              "b",
+              "c",
+              "b",
+              "a",
+              "c",
+              "a",
+              "d",
+              "e",
+              "f",
+              "e",
+              "g",
+              "d",
+              "e",
+              "h",
+              "i",
+              "j",
+              "h",
+              "k",
+              "l",
+              "i",
+              "j"
+            ],
+            "variables": {
+              "count": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23
+            ],
+            "formula": "[9, 7, 8]",
+            "action": "返回分段长度 [9,7,8]",
+            "status": "return",
+            "hash": {
+              "a": 8,
+              "b": 5,
+              "c": 7,
+              "d": 14,
+              "e": 15,
+              "f": 11,
+              "g": 13,
+              "h": 19,
+              "i": 22,
+              "j": 23,
+              "k": 20,
+              "l": 21
+            },
+            "output": [
+              9,
+              7,
+              8
+            ]
+          },
+          "caption": "每个字母恰好属于一个分段。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<int> partitionLabels(string S) {\n        unordered_map<int, int> last;                            // 哈希表，O(1)查找\n        for (int i = 0; i < S.size(); i ++ ) last[S[i]] = i;\n        vector<int> res;\n        int start = 0, end = 0;\n        for (int i = 0; i < S.size(); i ++ ) {\n            end = max(end, last[S[i]]);\n            if (i == end) {\n                res.push_back(end - start + 1);                  // 记录结果\n                start = end = i + 1;\n            }\n        }\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4573,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4574,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4575,
+        "text": "    vector<int> partitionLabels(string S) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4576,
+        "text": "        unordered_map<int, int> last;                            // 哈希表，O(1)查找"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4577,
+        "text": "        for (int i = 0; i < S.size(); i ++ ) last[S[i]] = i;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4578,
+        "text": "        vector<int> res;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4579,
+        "text": "        int start = 0, end = 0;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4580,
+        "text": "        for (int i = 0; i < S.size(); i ++ ) {"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4581,
+        "text": "            end = max(end, last[S[i]]);"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4582,
+        "text": "            if (i == end) {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 4583,
+        "text": "                res.push_back(end - start + 1);                  // 记录结果"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 4584,
+        "text": "                start = end = i + 1;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 4585,
+        "text": "            }"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 4586,
+        "text": "        }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 4587,
+        "text": "        return res;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 4588,
+        "text": "    }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 4589,
+        "text": "};"
+      }
+    ]
+  }
+}

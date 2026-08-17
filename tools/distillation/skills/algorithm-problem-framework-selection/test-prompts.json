@@ -1,0 +1,16 @@
+{
+  "skill": "algorithm-problem-framework-selection",
+  "version": "0.1.0",
+  "source_book": "LeetCode Hot 100 学习体系",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"给你一个未排序数组和很大的 n，怎么从约束判断应该用哈希、排序还是双指针？","expected_behavior":"激活本 Skill，先抽取约束/结构/操作并给候选框架。"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"一道新题要求最少步数到达目标，我不知道该考虑 BFS、DP 还是贪心，帮我归类。","expected_behavior":"激活本 Skill，比较状态图、子问题和贪心安全性信号。"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"题目数据范围是 1e5，数组有序但要求找满足条件的最小值，应该怎样识别二分答案？","expected_behavior":"激活本 Skill，检查可行性判定的单调性并列出二分候选。"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"我已经确定用 DP 了，但状态定义和初始化总是错，请帮我用反例检查。","expected_behavior":"拒绝本 Skill，优先转给 algorithm-state-and-invariant-derivation。"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"我刷完 Day 10，想根据看过题解、提示后 AC 和独立 AC 安排下次复习。","expected_behavior":"拒绝本 Skill，优先转给 algorithm-active-recall-loop。"},
+    {"id":"edge-01","type":"edge_case","prompt":"我只给你题目名称‘最小覆盖子串’，不提供约束和具体问法，你能直接决定模板吗？","expected_behavior":"说明信息不足，只能提出滑窗候选，不能假装完成题型判定。"}
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "静态预期 6/6；需用真实会话继续校准。"
+}

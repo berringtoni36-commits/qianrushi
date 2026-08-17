@@ -1,0 +1,642 @@
+{
+  "problemId": 35,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 35,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        3,
+        5,
+        6
+      ],
+      "variables": {
+        "l": 1,
+        "r": 1,
+        "target": 2
+      },
+      "structure": {},
+      "result": [
+        1
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "c58422f9cfef1fc6bbcc5f9c99dde0baa561aa265905e24b69abc52c0da5d7ad",
+    "sourceSemanticTokenHash": "1c29d7fec9a84e5e572d42d33ce168505f285efddb6d477540a9c2140c8dca67",
+    "sourceCodeLineCount": 14
+  },
+  "sourceCodeSha256": "c58422f9cfef1fc6bbcc5f9c99dde0baa561aa265905e24b69abc52c0da5d7ad",
+  "sourceSemanticTokenHash": "1c29d7fec9a84e5e572d42d33ce168505f285efddb6d477540a9c2140c8dca67",
+  "steps": [
+    {
+      "id": "35-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立左闭右开答案区间",
+      "body": "target=2，插入位置一定在 [l,r)=[0,4) 内。 题解原意：核心思想： 维护 [left, right] 闭区间，每次排除一半不可能的区域。循环结束时，left 就是第一个 >= target 的位置。 关键洞察： 当 nums[mid] < target 时，mid 及左侧都 < target，一定能被排除，所以 left = mid + 1；否则（nums[mid] >= target），mid 可能是答案，所以 right = mid - 1，但 left 不会越过这个…",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · binary",
+        "badge": "l=0 · r=4",
+        "tokens": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 4,
+          "target": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,4)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "target=2，插入位置一定在 [l,r)=[0,4) 内。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "variables": {
+          "l": 0,
+          "r": 4,
+          "target": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "35-trace-002",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "compare",
+      "title": "取 mid=2",
+      "body": "nums[2]=5 与 target=2 比较。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · binary",
+        "badge": "l=0 · r=4 · mid=2",
+        "tokens": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 4,
+          "mid": 2,
+          "target": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,4)"
+            ]
+          },
+          {
+            "label": "mid",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[2]=5 与 target=2 比较。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "variables": {
+          "l": 0,
+          "r": 4,
+          "mid": 2,
+          "target": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "35-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "排除一半区间",
+      "body": "更新后 [l,r)=[0,2)，答案仍在区间内。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=0 · r=2",
+        "tokens": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "target": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,2)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新后 [l,r)=[0,2)，答案仍在区间内。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "target": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "35-trace-004",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "compare",
+      "title": "取 mid=1",
+      "body": "nums[1]=3 与 target=2 比较。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · binary",
+        "badge": "l=0 · r=2 · mid=1",
+        "tokens": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "mid": 1,
+          "target": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,2)"
+            ]
+          },
+          {
+            "label": "mid",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[1]=3 与 target=2 比较。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "mid": 1,
+          "target": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "35-trace-005",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "排除一半区间",
+      "body": "更新后 [l,r)=[0,1)，答案仍在区间内。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=0 · r=1",
+        "tokens": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "target": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,1)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新后 [l,r)=[0,1)，答案仍在区间内。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "target": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "35-trace-006",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "compare",
+      "title": "取 mid=0",
+      "body": "nums[0]=1 与 target=2 比较。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · binary",
+        "badge": "l=0 · r=1 · mid=0",
+        "tokens": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "mid": 0,
+          "target": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,1)"
+            ]
+          },
+          {
+            "label": "mid",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[0]=1 与 target=2 比较。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "mid": 0,
+          "target": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "35-trace-007",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "排除一半区间",
+      "body": "更新后 [l,r)=[1,1)，答案仍在区间内。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=1 · r=1",
+        "tokens": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "target": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[1,1)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新后 [l,r)=[1,1)，答案仍在区间内。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "target": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "35-trace-check-009",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回插入下标 1。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=1 · r=1",
+        "tokens": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "target": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[1,1)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回插入下标 1。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "target": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "35-trace-check-010",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回插入下标 1。 易错提醒：1. 区间不变量搞混：使用 left <= right（闭区间）时，更新为 mid + 1 / mid - 1；使用 left < right（开区间）时，更新方式不同。统一使用一种风格避免混淆。 2. 返回 left 还是 right：循环结束时，left 是第一个 >= target 的位置；right 是 left - 1。要注意返…",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=1 · r=1",
+        "tokens": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "target": 2
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[1,1)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回插入下标 1。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "target": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "35-trace-008",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回插入下标 1。",
+      "kind": "binary",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · binary",
+        "badge": "l=1 · r=1 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "target": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "返回插入下标 1。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "target": 2
+        },
+        "structure": {},
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,5888 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "滑动窗口 + 双哈希表",
+    "sceneKind": "sliding-window",
+    "input": {
+      "s": "ADOBECODEBANC",
+      "t": "ABC"
+    },
+    "expected": "BANC",
+    "exampleText": "s=\"ADOBECODEBANC\", t=\"ABC\"",
+    "expectedText": "最小覆盖串 \"BANC\"",
+    "invariant": "收缩只删除 hs[x] > ht[x] 的多余字符，所以 cnt 永远代表仍被窗口满足的需求总数",
+    "aha": "cnt 不按字符种类计数，也不在收缩时减少，因为需要字符从未被删除",
+    "time": "O(n)",
+    "space": "O(|Σ|)",
+    "problemId": 76,
+    "title": "最小覆盖子串",
+    "sourceHeading": "5. 最小覆盖子串（LeetCode 76 · Hard）",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "ef98bbd9d886121e69b6ddfaf71a11363e108a6c794921c53e6d5ab8879def62",
+    "semanticTokenHash": "860d9c115cf20ef1bf5c10658fcdd187b5ceb48a384a984ceb4fb8d745cd4f29"
+  },
+  "frames": [
+    {
+      "id": "need-table",
+      "phase": "setup",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "先统计 t 的需求。YXC 的 cnt 记录已经满足的字符总数，因此目标值是 t.size()=3。",
+        "review": "ht={A:1,B:1,C:1}, cnt=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1
+            },
+            "window": {},
+            "variables": {
+              "i": null,
+              "j": 0,
+              "cnt": 0,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [],
+            "bestRange": [],
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "ht['A'] = 1",
+            "action": "记录需求 A:1"
+          },
+          "caption": "把字符 A 的需求数写入 ht。",
+          "emphasis": [
+            "need"
+          ]
+        },
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1
+            },
+            "window": {},
+            "variables": {
+              "i": null,
+              "j": 0,
+              "cnt": 0,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [],
+            "bestRange": [],
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "ht['B'] = 1",
+            "action": "记录需求 B:1"
+          },
+          "caption": "把字符 B 的需求数写入 ht。",
+          "emphasis": [
+            "need"
+          ]
+        },
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "window": {},
+            "variables": {
+              "i": null,
+              "j": 0,
+              "cnt": 0,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [],
+            "bestRange": [],
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "ht['C'] = 1",
+            "action": "记录需求 C:1"
+          },
+          "caption": "把字符 C 的需求数写入 ht。",
+          "emphasis": [
+            "need"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-0",
+      "phase": "inspect",
+      "durationMs": 1610,
+      "captions": {
+        "learning": "i=0 纳入 A。窗口左端最终停在 j=0，cnt=1，当前最优为 空。",
+        "review": "i=0, j=0, cnt=1, res=∅"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "window": {
+              "A": 1
+            },
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "cnt": 0,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              0
+            ],
+            "bestRange": [],
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hs['A'] = 1",
+            "action": "右端纳入 A"
+          },
+          "caption": "窗口右端 i=0 纳入字符 A。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "window": {
+              "A": 1
+            },
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              0
+            ],
+            "bestRange": [],
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1 ≤ 1 → true",
+            "action": "有效字符，cnt+1"
+          },
+          "caption": "A 补上了一份真实需求，cnt=1。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "window": {
+              "A": 1
+            },
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              0
+            ],
+            "bestRange": [],
+            "active": [
+              0
+            ],
+            "compared": [
+              0,
+              0
+            ],
+            "result": [],
+            "formula": "hs['A']=1, ht['A']=1",
+            "action": "检查左端 A：不能删除"
+          },
+          "caption": "左端字符 A 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "window": {
+              "A": 1
+            },
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              0
+            ],
+            "bestRange": [],
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=1, t.size()=3",
+            "action": "窗口尚未覆盖 t"
+          },
+          "caption": "cnt=1，窗口尚未覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-1",
+      "phase": "inspect",
+      "durationMs": 1610,
+      "captions": {
+        "learning": "i=1 纳入 D。窗口左端最终停在 j=0，cnt=1，当前最优为 空。",
+        "review": "i=1, j=0, cnt=1, res=∅"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1
+            },
+            "window": {
+              "A": 1,
+              "D": 1
+            },
+            "variables": {
+              "i": 1,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              1
+            ],
+            "bestRange": [],
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hs['D'] = 1",
+            "action": "右端纳入 D"
+          },
+          "caption": "窗口右端 i=1 纳入字符 D。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0
+            },
+            "window": {
+              "A": 1,
+              "D": 1
+            },
+            "variables": {
+              "i": 1,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              1
+            ],
+            "bestRange": [],
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1 ≤ 0 → false",
+            "action": "多余字符，cnt 不变"
+          },
+          "caption": "D 超过需求或不在 t 中，cnt=1。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0
+            },
+            "window": {
+              "A": 1,
+              "D": 1
+            },
+            "variables": {
+              "i": 1,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              1
+            ],
+            "bestRange": [],
+            "active": [
+              1
+            ],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "hs['A']=1, ht['A']=1",
+            "action": "检查左端 A：不能删除"
+          },
+          "caption": "左端字符 A 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0
+            },
+            "window": {
+              "A": 1,
+              "D": 1
+            },
+            "variables": {
+              "i": 1,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              1
+            ],
+            "bestRange": [],
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=1, t.size()=3",
+            "action": "窗口尚未覆盖 t"
+          },
+          "caption": "cnt=1，窗口尚未覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-2",
+      "phase": "inspect",
+      "durationMs": 1610,
+      "captions": {
+        "learning": "i=2 纳入 O。窗口左端最终停在 j=0，cnt=1，当前最优为 空。",
+        "review": "i=2, j=0, cnt=1, res=∅"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0
+            },
+            "window": {
+              "A": 1,
+              "D": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 2,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              2
+            ],
+            "bestRange": [],
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hs['O'] = 1",
+            "action": "右端纳入 O"
+          },
+          "caption": "窗口右端 i=2 纳入字符 O。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "D": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 2,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              2
+            ],
+            "bestRange": [],
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1 ≤ 0 → false",
+            "action": "多余字符，cnt 不变"
+          },
+          "caption": "O 超过需求或不在 t 中，cnt=1。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "D": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 2,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              2
+            ],
+            "bestRange": [],
+            "active": [
+              2
+            ],
+            "compared": [
+              0,
+              2
+            ],
+            "result": [],
+            "formula": "hs['A']=1, ht['A']=1",
+            "action": "检查左端 A：不能删除"
+          },
+          "caption": "左端字符 A 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "D": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 2,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              2
+            ],
+            "bestRange": [],
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=1, t.size()=3",
+            "action": "窗口尚未覆盖 t"
+          },
+          "caption": "cnt=1，窗口尚未覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-3",
+      "phase": "inspect",
+      "durationMs": 1610,
+      "captions": {
+        "learning": "i=3 纳入 B。窗口左端最终停在 j=0，cnt=2，当前最优为 空。",
+        "review": "i=3, j=0, cnt=2, res=∅"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "D": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 3,
+              "j": 0,
+              "cnt": 1,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              3
+            ],
+            "bestRange": [],
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hs['B'] = 1",
+            "action": "右端纳入 B"
+          },
+          "caption": "窗口右端 i=3 纳入字符 B。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "D": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 3,
+              "j": 0,
+              "cnt": 2,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              3
+            ],
+            "bestRange": [],
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1 ≤ 1 → true",
+            "action": "有效字符，cnt+1"
+          },
+          "caption": "B 补上了一份真实需求，cnt=2。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "D": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 3,
+              "j": 0,
+              "cnt": 2,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              3
+            ],
+            "bestRange": [],
+            "active": [
+              3
+            ],
+            "compared": [
+              0,
+              3
+            ],
+            "result": [],
+            "formula": "hs['A']=1, ht['A']=1",
+            "action": "检查左端 A：不能删除"
+          },
+          "caption": "左端字符 A 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "D": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 3,
+              "j": 0,
+              "cnt": 2,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              3
+            ],
+            "bestRange": [],
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=2, t.size()=3",
+            "action": "窗口尚未覆盖 t"
+          },
+          "caption": "cnt=2，窗口尚未覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-4",
+      "phase": "inspect",
+      "durationMs": 1610,
+      "captions": {
+        "learning": "i=4 纳入 E。窗口左端最终停在 j=0，cnt=2，当前最优为 空。",
+        "review": "i=4, j=0, cnt=2, res=∅"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 4,
+              "j": 0,
+              "cnt": 2,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              4
+            ],
+            "bestRange": [],
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hs['E'] = 1",
+            "action": "右端纳入 E"
+          },
+          "caption": "窗口右端 i=4 纳入字符 E。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 4,
+              "j": 0,
+              "cnt": 2,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              4
+            ],
+            "bestRange": [],
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1 ≤ 0 → false",
+            "action": "多余字符，cnt 不变"
+          },
+          "caption": "E 超过需求或不在 t 中，cnt=2。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 4,
+              "j": 0,
+              "cnt": 2,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              4
+            ],
+            "bestRange": [],
+            "active": [
+              4
+            ],
+            "compared": [
+              0,
+              4
+            ],
+            "result": [],
+            "formula": "hs['A']=1, ht['A']=1",
+            "action": "检查左端 A：不能删除"
+          },
+          "caption": "左端字符 A 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 4,
+              "j": 0,
+              "cnt": 2,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              4
+            ],
+            "bestRange": [],
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=2, t.size()=3",
+            "action": "窗口尚未覆盖 t"
+          },
+          "caption": "cnt=2，窗口尚未覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-5",
+      "phase": "accept",
+      "durationMs": 1890,
+      "captions": {
+        "learning": "i=5 纳入 C。窗口左端最终停在 j=0，cnt=3，当前最优为 ADOBEC。",
+        "review": "i=5, j=0, cnt=3, res=ADOBEC"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 5,
+              "j": 0,
+              "cnt": 2,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              5
+            ],
+            "bestRange": [],
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hs['C'] = 1",
+            "action": "右端纳入 C"
+          },
+          "caption": "窗口右端 i=5 纳入字符 C。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 5,
+              "j": 0,
+              "cnt": 3,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              5
+            ],
+            "bestRange": [],
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1 ≤ 1 → true",
+            "action": "有效字符，cnt+1"
+          },
+          "caption": "C 补上了一份真实需求，cnt=3。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 5,
+              "j": 0,
+              "cnt": 3,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              5
+            ],
+            "bestRange": [],
+            "active": [
+              5
+            ],
+            "compared": [
+              0,
+              5
+            ],
+            "result": [],
+            "formula": "hs['A']=1, ht['A']=1",
+            "action": "检查左端 A：不能删除"
+          },
+          "caption": "左端字符 A 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 5,
+              "j": 0,
+              "cnt": 3,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              5
+            ],
+            "bestRange": [],
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=3, t.size()=3",
+            "action": "窗口已覆盖 t"
+          },
+          "caption": "cnt=3，窗口已经覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 5,
+              "j": 0,
+              "cnt": 3,
+              "res": "∅",
+              "required": 3
+            },
+            "range": [
+              0,
+              5
+            ],
+            "bestRange": [],
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "len('ADOBEC')=6 < len(res)",
+            "action": "比较当前窗口与最优答案"
+          },
+          "caption": "候选窗口 ADOBEC 更短。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 5,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              5
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "res = s.substr(0, 6)",
+            "action": "更新 res = ADOBEC"
+          },
+          "caption": "记录新的最短覆盖串 ADOBEC。",
+          "emphasis": [
+            "result"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-6",
+      "phase": "accept",
+      "durationMs": 1750,
+      "captions": {
+        "learning": "i=6 纳入 O。窗口左端最终停在 j=0，cnt=3，当前最优为 ADOBEC。",
+        "review": "i=6, j=0, cnt=3, res=ADOBEC"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 2
+            },
+            "variables": {
+              "i": 6,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              6
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['O'] = 2",
+            "action": "右端纳入 O"
+          },
+          "caption": "窗口右端 i=6 纳入字符 O。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 2
+            },
+            "variables": {
+              "i": 6,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              6
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "2 ≤ 0 → false",
+            "action": "多余字符，cnt 不变"
+          },
+          "caption": "O 超过需求或不在 t 中，cnt=3。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 2
+            },
+            "variables": {
+              "i": 6,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              6
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              6
+            ],
+            "compared": [
+              0,
+              6
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['A']=1, ht['A']=1",
+            "action": "检查左端 A：不能删除"
+          },
+          "caption": "左端字符 A 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 2
+            },
+            "variables": {
+              "i": 6,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              6
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "cnt=3, t.size()=3",
+            "action": "窗口已覆盖 t"
+          },
+          "caption": "cnt=3，窗口已经覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 2
+            },
+            "variables": {
+              "i": 6,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              6
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "len('ADOBECO')=7 ≥ len(res)",
+            "action": "比较当前窗口与最优答案"
+          },
+          "caption": "候选窗口 ADOBECO 不比当前答案更短。",
+          "emphasis": [
+            "compare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-7",
+      "phase": "accept",
+      "durationMs": 1750,
+      "captions": {
+        "learning": "i=7 纳入 D。窗口左端最终停在 j=0，cnt=3，当前最优为 ADOBEC。",
+        "review": "i=7, j=0, cnt=3, res=ADOBEC"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 2,
+              "E": 1,
+              "O": 2
+            },
+            "variables": {
+              "i": 7,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              7
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['D'] = 2",
+            "action": "右端纳入 D"
+          },
+          "caption": "窗口右端 i=7 纳入字符 D。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 2,
+              "E": 1,
+              "O": 2
+            },
+            "variables": {
+              "i": 7,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              7
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "2 ≤ 0 → false",
+            "action": "多余字符，cnt 不变"
+          },
+          "caption": "D 超过需求或不在 t 中，cnt=3。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 2,
+              "E": 1,
+              "O": 2
+            },
+            "variables": {
+              "i": 7,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              7
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              7
+            ],
+            "compared": [
+              0,
+              7
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['A']=1, ht['A']=1",
+            "action": "检查左端 A：不能删除"
+          },
+          "caption": "左端字符 A 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 2,
+              "E": 1,
+              "O": 2
+            },
+            "variables": {
+              "i": 7,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              7
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "cnt=3, t.size()=3",
+            "action": "窗口已覆盖 t"
+          },
+          "caption": "cnt=3，窗口已经覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 2,
+              "E": 1,
+              "O": 2
+            },
+            "variables": {
+              "i": 7,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              7
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "len('ADOBECOD')=8 ≥ len(res)",
+            "action": "比较当前窗口与最优答案"
+          },
+          "caption": "候选窗口 ADOBECOD 不比当前答案更短。",
+          "emphasis": [
+            "compare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-8",
+      "phase": "accept",
+      "durationMs": 1750,
+      "captions": {
+        "learning": "i=8 纳入 E。窗口左端最终停在 j=0，cnt=3，当前最优为 ADOBEC。",
+        "review": "i=8, j=0, cnt=3, res=ADOBEC"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 8,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              8
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              8
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['E'] = 2",
+            "action": "右端纳入 E"
+          },
+          "caption": "窗口右端 i=8 纳入字符 E。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 8,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              8
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              8
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "2 ≤ 0 → false",
+            "action": "多余字符，cnt 不变"
+          },
+          "caption": "E 超过需求或不在 t 中，cnt=3。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 8,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              8
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              8
+            ],
+            "compared": [
+              0,
+              8
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['A']=1, ht['A']=1",
+            "action": "检查左端 A：不能删除"
+          },
+          "caption": "左端字符 A 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 8,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              8
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              8
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "cnt=3, t.size()=3",
+            "action": "窗口已覆盖 t"
+          },
+          "caption": "cnt=3，窗口已经覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 8,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              8
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              8
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "len('ADOBECODE')=9 ≥ len(res)",
+            "action": "比较当前窗口与最优答案"
+          },
+          "caption": "候选窗口 ADOBECODE 不比当前答案更短。",
+          "emphasis": [
+            "compare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-9",
+      "phase": "accept",
+      "durationMs": 1750,
+      "captions": {
+        "learning": "i=9 纳入 B。窗口左端最终停在 j=0，cnt=3，当前最优为 ADOBEC。",
+        "review": "i=9, j=0, cnt=3, res=ADOBEC"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 9,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              9
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              9
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['B'] = 2",
+            "action": "右端纳入 B"
+          },
+          "caption": "窗口右端 i=9 纳入字符 B。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 9,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              9
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              9
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "2 ≤ 1 → false",
+            "action": "多余字符，cnt 不变"
+          },
+          "caption": "B 超过需求或不在 t 中，cnt=3。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 9,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              9
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              9
+            ],
+            "compared": [
+              0,
+              9
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['A']=1, ht['A']=1",
+            "action": "检查左端 A：不能删除"
+          },
+          "caption": "左端字符 A 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 9,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              9
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              9
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "cnt=3, t.size()=3",
+            "action": "窗口已覆盖 t"
+          },
+          "caption": "cnt=3，窗口已经覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 9,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              9
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              9
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "len('ADOBECODEB')=10 ≥ len(res)",
+            "action": "比较当前窗口与最优答案"
+          },
+          "caption": "候选窗口 ADOBECODEB 不比当前答案更短。",
+          "emphasis": [
+            "compare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-10",
+      "phase": "accept",
+      "durationMs": 2170,
+      "captions": {
+        "learning": "i=10 纳入 A。窗口左端最终停在 j=5，cnt=3，当前最优为 ADOBEC。",
+        "review": "i=10, j=5, cnt=3, res=ADOBEC"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 2,
+              "B": 2,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 10,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['A'] = 2",
+            "action": "右端纳入 A"
+          },
+          "caption": "窗口右端 i=10 纳入字符 A。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 2,
+              "B": 2,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 10,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "2 ≤ 1 → false",
+            "action": "多余字符，cnt 不变"
+          },
+          "caption": "A 超过需求或不在 t 中，cnt=3。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 2,
+              "B": 2,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 10,
+              "j": 0,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              0,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              0,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['A']=2, ht['A']=1",
+            "action": "检查左端 A：多余"
+          },
+          "caption": "左端字符 A 是多余副本，可以收缩。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 10,
+              "j": 1,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              1,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              0,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['A']--, j=1",
+            "action": "删除多余的 A，j→1"
+          },
+          "caption": "只删除多余字符，所以 cnt 无需减少。",
+          "emphasis": [
+            "window",
+            "j"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 2,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 10,
+              "j": 1,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              1,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              1,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['D']=2, ht['D']=0",
+            "action": "检查左端 D：多余"
+          },
+          "caption": "左端字符 D 是多余副本，可以收缩。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 1,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 10,
+              "j": 2,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              2,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              1,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['D']--, j=2",
+            "action": "删除多余的 D，j→2"
+          },
+          "caption": "只删除多余字符，所以 cnt 无需减少。",
+          "emphasis": [
+            "window",
+            "j"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 1,
+              "E": 2,
+              "O": 2
+            },
+            "variables": {
+              "i": 10,
+              "j": 2,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              2,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              2,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['O']=2, ht['O']=0",
+            "action": "检查左端 O：多余"
+          },
+          "caption": "左端字符 O 是多余副本，可以收缩。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 1,
+              "E": 2,
+              "O": 1
+            },
+            "variables": {
+              "i": 10,
+              "j": 3,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              3,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              2,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['O']--, j=3",
+            "action": "删除多余的 O，j→3"
+          },
+          "caption": "只删除多余字符，所以 cnt 无需减少。",
+          "emphasis": [
+            "window",
+            "j"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 2,
+              "C": 1,
+              "D": 1,
+              "E": 2,
+              "O": 1
+            },
+            "variables": {
+              "i": 10,
+              "j": 3,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              3,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              3,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['B']=2, ht['B']=1",
+            "action": "检查左端 B：多余"
+          },
+          "caption": "左端字符 B 是多余副本，可以收缩。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 2,
+              "O": 1
+            },
+            "variables": {
+              "i": 10,
+              "j": 4,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              4,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              3,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['B']--, j=4",
+            "action": "删除多余的 B，j→4"
+          },
+          "caption": "只删除多余字符，所以 cnt 无需减少。",
+          "emphasis": [
+            "window",
+            "j"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 2,
+              "O": 1
+            },
+            "variables": {
+              "i": 10,
+              "j": 4,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              4,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              4,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['E']=2, ht['E']=0",
+            "action": "检查左端 E：多余"
+          },
+          "caption": "左端字符 E 是多余副本，可以收缩。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 10,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              4,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['E']--, j=5",
+            "action": "删除多余的 E，j→5"
+          },
+          "caption": "只删除多余字符，所以 cnt 无需减少。",
+          "emphasis": [
+            "window",
+            "j"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 10,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [
+              5,
+              10
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['C']=1, ht['C']=1",
+            "action": "检查左端 C：不能删除"
+          },
+          "caption": "左端字符 C 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 10,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "cnt=3, t.size()=3",
+            "action": "窗口已覆盖 t"
+          },
+          "caption": "cnt=3，窗口已经覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 10,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              10
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              10
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "len('CODEBA')=6 ≥ len(res)",
+            "action": "比较当前窗口与最优答案"
+          },
+          "caption": "候选窗口 CODEBA 不比当前答案更短。",
+          "emphasis": [
+            "compare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-11",
+      "phase": "accept",
+      "durationMs": 1750,
+      "captions": {
+        "learning": "i=11 纳入 N。窗口左端最终停在 j=5，cnt=3，当前最优为 ADOBEC。",
+        "review": "i=11, j=5, cnt=3, res=ADOBEC"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 11,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              11
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              11
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['N'] = 1",
+            "action": "右端纳入 N"
+          },
+          "caption": "窗口右端 i=11 纳入字符 N。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 11,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              11
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              11
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "1 ≤ 0 → false",
+            "action": "多余字符，cnt 不变"
+          },
+          "caption": "N 超过需求或不在 t 中，cnt=3。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 11,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              11
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              11
+            ],
+            "compared": [
+              5,
+              11
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['C']=1, ht['C']=1",
+            "action": "检查左端 C：不能删除"
+          },
+          "caption": "左端字符 C 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 11,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              11
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              11
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "cnt=3, t.size()=3",
+            "action": "窗口已覆盖 t"
+          },
+          "caption": "cnt=3，窗口已经覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 11,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              11
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              11
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "len('CODEBAN')=7 ≥ len(res)",
+            "action": "比较当前窗口与最优答案"
+          },
+          "caption": "候选窗口 CODEBAN 不比当前答案更短。",
+          "emphasis": [
+            "compare"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-12",
+      "phase": "accept",
+      "durationMs": 2170,
+      "captions": {
+        "learning": "i=12 纳入 C。窗口左端最终停在 j=9，cnt=3，当前最优为 BANC。",
+        "review": "i=12, j=9, cnt=3, res=BANC"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 2,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 12,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['C'] = 2",
+            "action": "右端纳入 C"
+          },
+          "caption": "窗口右端 i=12 纳入字符 C。",
+          "emphasis": [
+            "window",
+            "i"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 2,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 12,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "2 ≤ 1 → false",
+            "action": "多余字符，cnt 不变"
+          },
+          "caption": "C 超过需求或不在 t 中，cnt=3。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 2,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 12,
+              "j": 5,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              5,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [
+              5,
+              12
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['C']=2, ht['C']=1",
+            "action": "检查左端 C：多余"
+          },
+          "caption": "左端字符 C 是多余副本，可以收缩。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 12,
+              "j": 6,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              6,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [
+              5,
+              12
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['C']--, j=6",
+            "action": "删除多余的 C，j→6"
+          },
+          "caption": "只删除多余字符，所以 cnt 无需减少。",
+          "emphasis": [
+            "window",
+            "j"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 1
+            },
+            "variables": {
+              "i": 12,
+              "j": 6,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              6,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [
+              6,
+              12
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['O']=1, ht['O']=0",
+            "action": "检查左端 O：多余"
+          },
+          "caption": "左端字符 O 是多余副本，可以收缩。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 0
+            },
+            "variables": {
+              "i": 12,
+              "j": 7,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              7,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [
+              6,
+              12
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['O']--, j=7",
+            "action": "删除多余的 O，j→7"
+          },
+          "caption": "只删除多余字符，所以 cnt 无需减少。",
+          "emphasis": [
+            "window",
+            "j"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 1,
+              "E": 1,
+              "N": 1,
+              "O": 0
+            },
+            "variables": {
+              "i": 12,
+              "j": 7,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              7,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [
+              7,
+              12
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['D']=1, ht['D']=0",
+            "action": "检查左端 D：多余"
+          },
+          "caption": "左端字符 D 是多余副本，可以收缩。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 1,
+              "N": 1,
+              "O": 0
+            },
+            "variables": {
+              "i": 12,
+              "j": 8,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              8,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [
+              7,
+              12
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['D']--, j=8",
+            "action": "删除多余的 D，j→8"
+          },
+          "caption": "只删除多余字符，所以 cnt 无需减少。",
+          "emphasis": [
+            "window",
+            "j"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 1,
+              "N": 1,
+              "O": 0
+            },
+            "variables": {
+              "i": 12,
+              "j": 8,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              8,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [
+              8,
+              12
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['E']=1, ht['E']=0",
+            "action": "检查左端 E：多余"
+          },
+          "caption": "左端字符 E 是多余副本，可以收缩。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 1,
+              "O": 0
+            },
+            "variables": {
+              "i": 12,
+              "j": 9,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              9,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [
+              8,
+              12
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['E']--, j=9",
+            "action": "删除多余的 E，j→9"
+          },
+          "caption": "只删除多余字符，所以 cnt 无需减少。",
+          "emphasis": [
+            "window",
+            "j"
+          ]
+        },
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 1,
+              "O": 0
+            },
+            "variables": {
+              "i": 12,
+              "j": 9,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              9,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [
+              9,
+              12
+            ],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "hs['B']=1, ht['B']=1",
+            "action": "检查左端 B：不能删除"
+          },
+          "caption": "左端字符 B 不是多余副本，收缩停止。",
+          "emphasis": [
+            "j",
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 1,
+              "O": 0
+            },
+            "variables": {
+              "i": 12,
+              "j": 9,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              9,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "cnt=3, t.size()=3",
+            "action": "窗口已覆盖 t"
+          },
+          "caption": "cnt=3，窗口已经覆盖 ABC。",
+          "emphasis": [
+            "cnt"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 1,
+              "O": 0
+            },
+            "variables": {
+              "i": 12,
+              "j": 9,
+              "cnt": 3,
+              "res": "ADOBEC",
+              "required": 3
+            },
+            "range": [
+              9,
+              12
+            ],
+            "bestRange": [
+              0,
+              5
+            ],
+            "active": [
+              12
+            ],
+            "compared": [],
+            "result": [
+              0,
+              5
+            ],
+            "formula": "len('BANC')=4 < len(res)",
+            "action": "比较当前窗口与最优答案"
+          },
+          "caption": "候选窗口 BANC 更短。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 1,
+              "O": 0
+            },
+            "variables": {
+              "i": 12,
+              "j": 9,
+              "cnt": 3,
+              "res": "BANC",
+              "required": 3
+            },
+            "range": [
+              9,
+              12
+            ],
+            "bestRange": [
+              9,
+              12
+            ],
+            "active": [
+              12
+            ],
+            "compared": [],
+            "result": [
+              9,
+              12
+            ],
+            "formula": "res = s.substr(9, 4)",
+            "action": "更新 res = BANC"
+          },
+          "caption": "记录新的最短覆盖串 BANC。",
+          "emphasis": [
+            "result"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1900,
+      "captions": {
+        "learning": "最终窗口 [9,12] 对应 BANC；它覆盖 A、B、C，且比此前的 ADOBEC 更短。",
+        "review": "return \"BANC\""
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "sliding-window",
+            "values": [
+              "A",
+              "D",
+              "O",
+              "B",
+              "E",
+              "C",
+              "O",
+              "D",
+              "E",
+              "B",
+              "A",
+              "N",
+              "C"
+            ],
+            "need": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 0,
+              "O": 0
+            },
+            "window": {
+              "A": 1,
+              "B": 1,
+              "C": 1,
+              "D": 0,
+              "E": 0,
+              "N": 1,
+              "O": 0
+            },
+            "variables": {
+              "i": 12,
+              "j": 9,
+              "cnt": 3,
+              "res": "BANC",
+              "required": 3
+            },
+            "range": [
+              9,
+              12
+            ],
+            "bestRange": [
+              9,
+              12
+            ],
+            "active": [
+              12
+            ],
+            "compared": [],
+            "result": [
+              9,
+              12
+            ],
+            "formula": "return res = \"BANC\"",
+            "action": "扫描完成，返回 BANC"
+          },
+          "caption": "返回最小覆盖子串 BANC。",
+          "emphasis": [
+            "result"
+          ]
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    string minWindow(string s, string t) {\n        unordered_map<char, int> hs, ht;                         // 哈希表，O(1)查找\n        for (auto c: t) ht[c] ++ ;\n\n        string res;\n        int cnt = 0;\n        for (int i = 0, j = 0; i < s.size(); i ++ ) {\n            hs[s[i]] ++ ;\n            if (hs[s[i]] <= ht[s[i]]) cnt ++ ;  // 当前字符满足需求时，有效计数+1\n\n            while (hs[s[j]] > ht[s[j]]) hs[s[j ++ ]] -- ;  // 收缩左边界，移除多余字符\n            if (cnt == t.size()) {  // 窗口已覆盖t，更新答案\n                if (res.empty() || i - j + 1 < res.size())\n                    res = s.substr(j, i - j + 1);\n            }\n        }\n\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 620,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 621,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 622,
+        "text": "    string minWindow(string s, string t) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 623,
+        "text": "        unordered_map<char, int> hs, ht;                         // 哈希表，O(1)查找"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 624,
+        "text": "        for (auto c: t) ht[c] ++ ;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 625,
+        "text": ""
+      },
+      {
+        "id": "L7",
+        "sourceLine": 626,
+        "text": "        string res;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 627,
+        "text": "        int cnt = 0;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 628,
+        "text": "        for (int i = 0, j = 0; i < s.size(); i ++ ) {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 629,
+        "text": "            hs[s[i]] ++ ;"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 630,
+        "text": "            if (hs[s[i]] <= ht[s[i]]) cnt ++ ;  // 当前字符满足需求时，有效计数+1"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 631,
+        "text": ""
+      },
+      {
+        "id": "L13",
+        "sourceLine": 632,
+        "text": "            while (hs[s[j]] > ht[s[j]]) hs[s[j ++ ]] -- ;  // 收缩左边界，移除多余字符"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 633,
+        "text": "            if (cnt == t.size()) {  // 窗口已覆盖t，更新答案"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 634,
+        "text": "                if (res.empty() || i - j + 1 < res.size())"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 635,
+        "text": "                    res = s.substr(j, i - j + 1);"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 636,
+        "text": "            }"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 637,
+        "text": "        }"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 638,
+        "text": ""
+      },
+      {
+        "id": "L20",
+        "sourceLine": 639,
+        "text": "        return res;"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 640,
+        "text": "    }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 641,
+        "text": "};"
+      }
+    ]
+  }
+}

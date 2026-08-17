@@ -1,0 +1,1170 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "哨兵 + 三边重连",
+    "sceneKind": "linked-list",
+    "input": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "expected": [
+      2,
+      1,
+      4,
+      3
+    ],
+    "exampleText": "[1,2,3,4]",
+    "expectedText": "[2,1,4,3]",
+    "invariant": "p 之前链表已完成两两交换",
+    "aha": "每组交换需要按 p→b、a→next、b→a 重连",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 24,
+    "title": "两两交换链表中的节点",
+    "day": "Day 5：链表进阶",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "5bcc7a9f3f85067fc728cd08a2b6a218a53dd9b1d297451c39d7f026dc62d91b",
+    "semanticTokenHash": "b7ae6b7eb5a2033b0715bd9da00eb2d56b2eae764c4a173d868483b9a46f5cb0",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每轮交换 p 后面的两个节点。",
+        "review": "p 从 dummy 开始"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "d"
+            },
+            "pointers": {
+              "p": "d"
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "p 从 dummy 开始",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "每轮交换 p 后面的两个节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "d"
+            },
+            "pointers": {
+              "p": "d"
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "先保存三个指针再改边。",
+        "review": "锁定一对 1,2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "d",
+              "a": "n0",
+              "b": "n1"
+            },
+            "pointers": {
+              "p": "d",
+              "a": "n0",
+              "b": "n1"
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "锁定一对 1,2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "先保存三个指针再改边。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "d",
+              "a": "n0",
+              "b": "n1"
+            },
+            "pointers": {
+              "p": "d",
+              "a": "n0",
+              "b": "n1"
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 6",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "交换后 a 成为下一轮前驱。",
+        "review": "2→1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16",
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "a": "n0",
+              "b": "n1"
+            },
+            "pointers": {
+              "p": "n0",
+              "a": "n0",
+              "b": "n1"
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0"
+            ],
+            "formula": "2→1",
+            "action": "三次改边完成本对交换",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "交换后 a 成为下一轮前驱。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16",
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "a": "n0",
+              "b": "n1"
+            },
+            "pointers": {
+              "p": "n0",
+              "a": "n0",
+              "b": "n1"
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0"
+            ],
+            "formula": "2→1",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16",
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "a": "n0",
+              "b": "n1"
+            },
+            "pointers": {
+              "p": "n0",
+              "a": "n0",
+              "b": "n1"
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0"
+            ],
+            "formula": "2→1",
+            "action": "不变量检查 5",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "先保存三个指针再改边。",
+        "review": "锁定一对 3,4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "a": "n2",
+              "b": "n3"
+            },
+            "pointers": {
+              "p": "n0",
+              "a": "n2",
+              "b": "n3"
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "锁定一对 3,4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "先保存三个指针再改边。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "交换后 a 成为下一轮前驱。",
+        "review": "4→3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16",
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "a": "n2",
+              "b": "n3"
+            },
+            "pointers": {
+              "p": "n2",
+              "a": "n2",
+              "b": "n3"
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n3",
+              "n2"
+            ],
+            "formula": "4→3",
+            "action": "三次改边完成本对交换",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "交换后 a 成为下一轮前驱。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16",
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "a": "n2",
+              "b": "n3"
+            },
+            "pointers": {
+              "p": "n2",
+              "a": "n2",
+              "b": "n3"
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n3",
+              "n2"
+            ],
+            "formula": "4→3",
+            "action": "不变量检查 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16",
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "a": "n2",
+              "b": "n3"
+            },
+            "pointers": {
+              "p": "n2",
+              "a": "n2",
+              "b": "n3"
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n3",
+              "n2"
+            ],
+            "formula": "4→3",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "每对节点内部次序翻转，组间次序不变。",
+        "review": "[2, 1, 4, 3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "head": "n1"
+            },
+            "pointers": {
+              "head": "n1"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n3",
+              "n2"
+            ],
+            "formula": "[2, 1, 4, 3]",
+            "action": "返回 [2,1,4,3]",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n2"
+              }
+            ],
+            "output": [
+              2,
+              1,
+              4,
+              3
+            ]
+          },
+          "caption": "每对节点内部次序翻转，组间次序不变。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* swapPairs(ListNode* head) {\n        auto dummy = new ListNode(-1);\n        dummy->next = head;                                      \n        for (auto p = dummy; p->next && p->next->next;) {        \n            auto a = p->next, b = a->next;                       \n            p->next = b;                                         \n            a->next = b->next;                                   \n            b->next = a;                                         \n            p = a;\n        }\n\n        return dummy->next;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1634,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1635,
+        "text": " * Definition for singly-linked list."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1636,
+        "text": " * struct ListNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1637,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1638,
+        "text": " *     ListNode *next;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1639,
+        "text": " *     ListNode(int x) : val(x), next(NULL) {}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1640,
+        "text": " * };"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1641,
+        "text": " */"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1642,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1643,
+        "text": "public:"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1644,
+        "text": "    ListNode* swapPairs(ListNode* head) {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1645,
+        "text": "        auto dummy = new ListNode(-1);"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1646,
+        "text": "        dummy->next = head;                                      "
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1647,
+        "text": "        for (auto p = dummy; p->next && p->next->next;) {        "
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1648,
+        "text": "            auto a = p->next, b = a->next;                       "
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1649,
+        "text": "            p->next = b;                                         "
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1650,
+        "text": "            a->next = b->next;                                   "
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1651,
+        "text": "            b->next = a;                                         "
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1652,
+        "text": "            p = a;"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1653,
+        "text": "        }"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1654,
+        "text": ""
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1655,
+        "text": "        return dummy->next;"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 1656,
+        "text": "    }"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 1657,
+        "text": "};"
+      }
+    ]
+  }
+}

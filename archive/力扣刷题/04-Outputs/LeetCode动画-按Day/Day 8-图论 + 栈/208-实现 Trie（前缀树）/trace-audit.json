@@ -1,0 +1,914 @@
+{
+  "problemId": 208,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 208,
+    "stepCount": 14,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [],
+      "variables": {},
+      "structure": {
+        "words": [
+          "apple",
+          "app"
+        ],
+        "end": [
+          "apple",
+          "app"
+        ]
+      },
+      "result": [
+        true,
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "f2d767c3bbaa3b9364e96c1528bc8e039a60c83bd5ddbfbfeb2744b7429ab8a6",
+    "sourceSemanticTokenHash": "e26382b316cb7615af28b9ff5e32080c6672daca517e0078247ea67c7ebd93b8",
+    "sourceCodeLineCount": 58
+  },
+  "sourceCodeSha256": "f2d767c3bbaa3b9364e96c1528bc8e039a60c83bd5ddbfbfeb2744b7429ab8a6",
+  "sourceSemanticTokenHash": "e26382b316cb7615af28b9ff5e32080c6672daca517e0078247ea67c7ebd93b8",
+  "steps": [
+    {
+      "id": "208-trace-001",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "setup",
+      "title": "初始化 Trie 根节点",
+      "body": "每条边代表一个字符，end 标记只在完整单词处为 true。 题解原意：核心思想： 每个 Trie 节点包含一个字典 children 和一个布尔标志 is_end。children 的键是字符，值是下一个 Trie 节点。插入和查找都从根节点出发，沿着字符路径走。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p",
+          "l",
+          "e"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "path": ""
+        },
+        "rows": [
+          {
+            "label": "trie",
+            "values": [
+              "root"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "每条边代表一个字符，end 标记只在完整单词处为 true。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "path": ""
+        },
+        "structure": {
+          "words": [],
+          "end": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-002",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "插入字符 a",
+      "body": "沿前缀 a 建立或复用节点。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p",
+          "l",
+          "e"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "op": "insert",
+          "path": "a"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "a"
+            ]
+          },
+          {
+            "label": "end",
+            "values": [
+              "未标记"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "沿前缀 a 建立或复用节点。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "insert",
+          "path": "a"
+        },
+        "structure": {
+          "words": [],
+          "end": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-003",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "插入字符 p",
+      "body": "沿前缀 ap 建立或复用节点。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p",
+          "l",
+          "e"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "op": "insert",
+          "path": "ap"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "ap"
+            ]
+          },
+          {
+            "label": "end",
+            "values": [
+              "未标记"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "沿前缀 ap 建立或复用节点。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "insert",
+          "path": "ap"
+        },
+        "structure": {
+          "words": [],
+          "end": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-004",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "插入字符 p",
+      "body": "沿前缀 app 建立或复用节点。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p",
+          "l",
+          "e"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "op": "insert",
+          "path": "app"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "app"
+            ]
+          },
+          {
+            "label": "end",
+            "values": [
+              "未标记"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "沿前缀 app 建立或复用节点。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "insert",
+          "path": "app"
+        },
+        "structure": {
+          "words": [],
+          "end": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-005",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "插入字符 l",
+      "body": "沿前缀 appl 建立或复用节点。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p",
+          "l",
+          "e"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "op": "insert",
+          "path": "appl"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "appl"
+            ]
+          },
+          {
+            "label": "end",
+            "values": [
+              "未标记"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "沿前缀 appl 建立或复用节点。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "insert",
+          "path": "appl"
+        },
+        "structure": {
+          "words": [],
+          "end": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-006",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "插入字符 e",
+      "body": "沿前缀 apple 建立或复用节点。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p",
+          "l",
+          "e"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "op": "insert",
+          "path": "apple"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "apple"
+            ]
+          },
+          {
+            "label": "end",
+            "values": [
+              "未标记"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "沿前缀 apple 建立或复用节点。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "insert",
+          "path": "apple"
+        },
+        "structure": {
+          "words": [],
+          "end": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-007",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "mutate",
+      "title": "标记完整单词 apple",
+      "body": "只有走完整个单词后才设置 end，前缀本身不等于完整单词。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p",
+          "l",
+          "e"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "op": "insert",
+          "path": "apple"
+        },
+        "rows": [
+          {
+            "label": "words",
+            "values": [
+              "apple"
+            ]
+          },
+          {
+            "label": "end",
+            "values": [
+              "apple"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "只有走完整个单词后才设置 end，前缀本身不等于完整单词。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "insert",
+          "path": "apple"
+        },
+        "structure": {
+          "words": [
+            "apple"
+          ],
+          "end": [
+            "apple"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-008",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "插入字符 a",
+      "body": "沿前缀 a 建立或复用节点。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "op": "insert",
+          "path": "a"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "a"
+            ]
+          },
+          {
+            "label": "end",
+            "values": [
+              "未标记"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "沿前缀 a 建立或复用节点。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "insert",
+          "path": "a"
+        },
+        "structure": {
+          "words": [
+            "apple"
+          ],
+          "end": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-009",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "插入字符 p",
+      "body": "沿前缀 ap 建立或复用节点。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "op": "insert",
+          "path": "ap"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "ap"
+            ]
+          },
+          {
+            "label": "end",
+            "values": [
+              "未标记"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "沿前缀 ap 建立或复用节点。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "insert",
+          "path": "ap"
+        },
+        "structure": {
+          "words": [
+            "apple"
+          ],
+          "end": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-010",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "插入字符 p",
+      "body": "沿前缀 app 建立或复用节点。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "op": "insert",
+          "path": "app"
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "app"
+            ]
+          },
+          {
+            "label": "end",
+            "values": [
+              "未标记"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "沿前缀 app 建立或复用节点。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "insert",
+          "path": "app"
+        },
+        "structure": {
+          "words": [
+            "apple"
+          ],
+          "end": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-011",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "mutate",
+      "title": "标记完整单词 app",
+      "body": "只有走完整个单词后才设置 end，前缀本身不等于完整单词。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · trie",
+        "badge": "words",
+        "tokens": [
+          "a",
+          "p",
+          "p"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "op": "insert",
+          "path": "app"
+        },
+        "rows": [
+          {
+            "label": "words",
+            "values": [
+              "apple",
+              "app"
+            ]
+          },
+          {
+            "label": "end",
+            "values": [
+              "apple",
+              "app"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "只有走完整个单词后才设置 end，前缀本身不等于完整单词。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "insert",
+          "path": "app"
+        },
+        "structure": {
+          "words": [
+            "apple",
+            "app"
+          ],
+          "end": [
+            "apple",
+            "app"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "208-trace-012",
+      "line": 30,
+      "lineIds": [
+        30
+      ],
+      "phase": "lookup",
+      "title": "search(app) → true",
+      "body": "沿路径 app 查询，找到对应节点/前缀。",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "lookup · trie",
+        "badge": "结果 1 项",
+        "tokens": [
+          "a",
+          "p",
+          "p"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "op": "search",
+          "path": "app",
+          "found": true
+        },
+        "rows": [
+          {
+            "label": "query",
+            "values": [
+              "app"
+            ]
+          },
+          {
+            "label": "results",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "沿路径 app 查询，找到对应节点/前缀。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "search",
+          "path": "app",
+          "found": true
+        },
+        "structure": {
+          "words": [
+            "apple",
+            "app"
+          ],
+          "end": [
+            "apple",
+            "app"
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "208-trace-013",
+      "line": 41,
+      "lineIds": [
+        41
+      ],
+      "phase": "lookup",
+      "title": "startsWith(ap) → true",
+      "body": "沿路径 ap 查询，找到对应节点/前缀。 易错提醒：search vs startsWith 的区别： search 要求精确匹配且 is_end = true；startsWith 只需要路径存在，不需要 is_end。这是最常见的 bug。 插入重复单词： 重复插入同一单词时，第二次 insert 不会改变任何结构（路径已存在），但注意 is_end 已经为 true，无需再设。 空字…",
+      "kind": "trie",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "lookup · trie",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "p"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "op": "startsWith",
+          "path": "ap",
+          "found": true
+        },
+        "rows": [
+          {
+            "label": "query",
+            "values": [
+              "ap"
+            ]
+          },
+          {
+            "label": "results",
+            "values": [
+              true,
+              true
+            ]
+          }
+        ],
+        "result": [
+          true,
+          true
+        ],
+        "note": "沿路径 ap 查询，找到对应节点/前缀。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "startsWith",
+          "path": "ap",
+          "found": true
+        },
+        "structure": {
+          "words": [
+            "apple",
+            "app"
+          ],
+          "end": [
+            "apple",
+            "app"
+          ]
+        },
+        "result": [
+          true,
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "208-trace-014",
+      "line": 37,
+      "lineIds": [
+        37
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "查询结果为 [True, True]。",
+      "kind": "trie",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · trie",
+        "badge": "结果 2 项",
+        "tokens": [
+          "a",
+          "p",
+          "p",
+          "l",
+          "e"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              true,
+              true
+            ]
+          }
+        ],
+        "result": [
+          true,
+          true
+        ],
+        "note": "查询结果为 [True, True]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {},
+        "structure": {
+          "words": [
+            "apple",
+            "app"
+          ],
+          "end": [
+            "apple",
+            "app"
+          ]
+        },
+        "result": [
+          true,
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

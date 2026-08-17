@@ -1,0 +1,825 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "递归淘汰第 k 小元素",
+    "sceneKind": "binary-search",
+    "input": {
+      "nums1": [
+        1,
+        3
+      ],
+      "nums2": [
+        2
+      ]
+    },
+    "expected": 2.0,
+    "exampleText": "[1,3] + [2]",
+    "expectedText": "中位数 = 2",
+    "invariant": "每次递归保留原问题中尚未排除的第 k 小",
+    "aha": "比较两个 k/2 分割点即可排除一整段",
+    "time": "O(log(m+n))",
+    "space": "O(log(m+n))",
+    "problemId": 4,
+    "title": "寻找两个正序数组的中位数",
+    "day": "Day 11：二分查找",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "9a2cf086f7b6285725a7a9dc28f4753fcb2b86c8688cc6d8efcad1414e75267c",
+    "semanticTokenHash": "a017e9a4a6b2c75ad24c655e00d63f08aeddad1b2d9ec21a97db8f747e0d25b3",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "奇数长度中位数就是第 (tot/2+1) 小。",
+        "review": "总长度 3，需要第 2 小元素"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:1",
+              "A:3",
+              "B:2"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "总长度 3，需要第 2 小元素",
+            "status": "running"
+          },
+          "caption": "奇数长度中位数就是第 (tot/2+1) 小。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:1",
+              "A:3",
+              "B:2"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 10",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:1",
+              "A:3",
+              "B:2"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 5",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:1",
+              "A:3",
+              "B:2"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 2",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:1",
+              "A:3",
+              "B:2"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2,
+              "tot": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 9",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "让 si 不会越过较短数组。",
+        "review": "remaining A <= remaining B"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:2",
+              "B:1",
+              "B:3"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "remaining A <= remaining B",
+            "action": "交换参数，保证第一数组剩余更短",
+            "status": "running"
+          },
+          "caption": "让 si 不会越过较短数组。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:2",
+              "B:1",
+              "B:3"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "remaining A <= remaining B",
+            "action": "不变量检查 4",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:2",
+              "B:1",
+              "B:3"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "remaining A <= remaining B",
+            "action": "不变量检查 8",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "较小的分割前缀不可能包含第 k 小元素。",
+        "review": "2 > 1 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:2",
+              "B:1",
+              "B:3"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2,
+              "si": 1,
+              "sj": 1
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "2 > 1 → True",
+            "action": "比较 A[0]=2 与 B[0]=1",
+            "status": "running"
+          },
+          "caption": "较小的分割前缀不可能包含第 k 小元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:2",
+              "B:1",
+              "B:3"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2,
+              "si": 1,
+              "sj": 1
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "2 > 1 → True",
+            "action": "不变量检查 1",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:2",
+              "B:1",
+              "B:3"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2,
+              "si": 1,
+              "sj": 1
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "2 > 1 → True",
+            "action": "不变量检查 7",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:2",
+              "B:1",
+              "B:3"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2,
+              "si": 1,
+              "sj": 1
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "2 > 1 → True",
+            "action": "不变量检查 3",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每次至少排除 k/2 个不可能答案。",
+        "review": "k -= 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:2",
+              "B:1",
+              "B:3"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 1,
+              "k": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "k -= 1",
+            "action": "排除 1 个较小元素，k=1",
+            "status": "running"
+          },
+          "caption": "每次至少排除 k/2 个不可能答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:2",
+              "B:1",
+              "B:3"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 1,
+              "k": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "k -= 1",
+            "action": "不变量检查 11",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:2",
+              "B:1",
+              "B:3"
+            ],
+            "variables": {
+              "i": 0,
+              "j": 1,
+              "k": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "k -= 1",
+            "action": "不变量检查 6",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "合并有序序列 [1,2,3] 的中点是 2。",
+        "review": "median=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              "A:1",
+              "A:3",
+              "B:2"
+            ],
+            "variables": {
+              "k": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              2
+            ],
+            "formula": "median=2",
+            "action": "第 2 小元素为 2，即中位数",
+            "status": "return",
+            "output": 2.0
+          },
+          "caption": "合并有序序列 [1,2,3] 的中点是 2。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {\n        int tot = nums1.size() + nums2.size();\n        if (tot % 2 == 0) {\n            int left = find(nums1, 0, nums2, 0, tot / 2);\n            int right = find(nums1, 0, nums2, 0, tot / 2 + 1);\n            return (left + right) / 2.0;\n        } else {\n            return find(nums1, 0, nums2, 0, tot / 2 + 1);\n        }\n    }\n\n    int find(vector<int>& nums1, int i, vector<int>& nums2, int j, int k) {\n        if (nums1.size() - i > nums2.size() - j) return find(nums2, j, nums1, i, k);\n        if (k == 1) {\n            if (nums1.size() == i) return nums2[j];\n            else return min(nums1[i], nums2[j]);\n        }\n        if (nums1.size() == i) return nums2[j + k - 1];\n        int si = min((int)nums1.size(), i + k / 2), sj = j + k - k / 2;\n        if (nums1[si - 1] > nums2[sj - 1])\n            return find(nums1, i, nums2, sj, k - (sj - j));\n        else\n            return find(nums1, si, nums2, j, k - (si - i));\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4365,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4366,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4367,
+        "text": "    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4368,
+        "text": "        int tot = nums1.size() + nums2.size();"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4369,
+        "text": "        if (tot % 2 == 0) {"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4370,
+        "text": "            int left = find(nums1, 0, nums2, 0, tot / 2);"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4371,
+        "text": "            int right = find(nums1, 0, nums2, 0, tot / 2 + 1);"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4372,
+        "text": "            return (left + right) / 2.0;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4373,
+        "text": "        } else {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4374,
+        "text": "            return find(nums1, 0, nums2, 0, tot / 2 + 1);"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 4375,
+        "text": "        }"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 4376,
+        "text": "    }"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 4377,
+        "text": ""
+      },
+      {
+        "id": "L14",
+        "sourceLine": 4378,
+        "text": "    int find(vector<int>& nums1, int i, vector<int>& nums2, int j, int k) {"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 4379,
+        "text": "        if (nums1.size() - i > nums2.size() - j) return find(nums2, j, nums1, i, k);"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 4380,
+        "text": "        if (k == 1) {"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 4381,
+        "text": "            if (nums1.size() == i) return nums2[j];"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 4382,
+        "text": "            else return min(nums1[i], nums2[j]);"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 4383,
+        "text": "        }"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 4384,
+        "text": "        if (nums1.size() == i) return nums2[j + k - 1];"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 4385,
+        "text": "        int si = min((int)nums1.size(), i + k / 2), sj = j + k - k / 2;"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 4386,
+        "text": "        if (nums1[si - 1] > nums2[sj - 1])"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 4387,
+        "text": "            return find(nums1, i, nums2, sj, k - (sj - j));"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 4388,
+        "text": "        else"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 4389,
+        "text": "            return find(nums1, si, nums2, j, k - (si - i));"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 4390,
+        "text": "    }"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 4391,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1247 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "双链表归并",
+    "sceneKind": "linked-list",
+    "input": [
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        1,
+        3,
+        4
+      ]
+    ],
+    "expected": [
+      1,
+      1,
+      2,
+      3,
+      4,
+      4
+    ],
+    "exampleText": "[1,2,4] + [1,3,4]",
+    "expectedText": "[1,1,2,3,4,4]",
+    "invariant": "dummy.next..tail 是两输入已消费部分的有序合并",
+    "aha": "比较两个头节点即可确定全局下一个最小值",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 21,
+    "title": "合并两个有序链表",
+    "day": "Day 4：链表基础",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "4fb09fcec0a899fcc6933c0864e713f121381f7104a567c6f2a1c1dcfa291769",
+    "semanticTokenHash": "05602d2cfd7ca899cb07902de7199e2f684357db15eb72fc177184e436c41d47",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "tail 始终指向已合并链尾。",
+        "review": "dummy 与 tail 指向哨兵"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "tail": "d",
+              "l1": "a0",
+              "l2": "b0"
+            },
+            "pointers": {
+              "tail": "d",
+              "l1": "a0",
+              "l2": "b0"
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "dummy 与 tail 指向哨兵",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "a0",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "a2"
+              },
+              {
+                "from": "b0",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "b2"
+              }
+            ]
+          },
+          "caption": "tail 始终指向已合并链尾。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "tail": "d",
+              "l1": "a0",
+              "l2": "b0"
+            },
+            "pointers": {
+              "tail": "d",
+              "l1": "a0",
+              "l2": "b0"
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "a0",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "a2"
+              },
+              {
+                "from": "b0",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "b2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每次接入两个当前头中的较小者。",
+        "review": "choose l2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "tail": "b0",
+              "l1": "a0",
+              "l2": "b1"
+            },
+            "pointers": {
+              "tail": "b0",
+              "l1": "a0",
+              "l2": "b1"
+            },
+            "active": [
+              "b0"
+            ],
+            "compared": [],
+            "result": [
+              "b0"
+            ],
+            "formula": "choose l2",
+            "action": "接入值 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": []
+          },
+          "caption": "每次接入两个当前头中的较小者。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每次接入两个当前头中的较小者。",
+        "review": "choose l1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "tail": "a0",
+              "l1": "a1",
+              "l2": "b1"
+            },
+            "pointers": {
+              "tail": "a0",
+              "l1": "a1",
+              "l2": "b1"
+            },
+            "active": [
+              "a0"
+            ],
+            "compared": [],
+            "result": [
+              "b0",
+              "a0"
+            ],
+            "formula": "choose l1",
+            "action": "接入值 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "b0",
+                "to": "a0"
+              }
+            ]
+          },
+          "caption": "每次接入两个当前头中的较小者。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "tail": "a0",
+              "l1": "a1",
+              "l2": "b1"
+            },
+            "pointers": {
+              "tail": "a0",
+              "l1": "a1",
+              "l2": "b1"
+            },
+            "active": [
+              "a0"
+            ],
+            "compared": [],
+            "result": [
+              "b0",
+              "a0"
+            ],
+            "formula": "choose l1",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "b0",
+                "to": "a0"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每次接入两个当前头中的较小者。",
+        "review": "choose l1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "tail": "a1",
+              "l1": "a2",
+              "l2": "b1"
+            },
+            "pointers": {
+              "tail": "a1",
+              "l1": "a2",
+              "l2": "b1"
+            },
+            "active": [
+              "a1"
+            ],
+            "compared": [],
+            "result": [
+              "b0",
+              "a0",
+              "a1"
+            ],
+            "formula": "choose l1",
+            "action": "接入值 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "b0",
+                "to": "a0"
+              },
+              {
+                "from": "a0",
+                "to": "a1"
+              }
+            ]
+          },
+          "caption": "每次接入两个当前头中的较小者。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每次接入两个当前头中的较小者。",
+        "review": "choose l2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "tail": "b1",
+              "l1": "a2",
+              "l2": "b2"
+            },
+            "pointers": {
+              "tail": "b1",
+              "l1": "a2",
+              "l2": "b2"
+            },
+            "active": [
+              "b1"
+            ],
+            "compared": [],
+            "result": [
+              "b0",
+              "a0",
+              "a1",
+              "b1"
+            ],
+            "formula": "choose l2",
+            "action": "接入值 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "b0",
+                "to": "a0"
+              },
+              {
+                "from": "a0",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "b1"
+              }
+            ]
+          },
+          "caption": "每次接入两个当前头中的较小者。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "tail": "b1",
+              "l1": "a2",
+              "l2": "b2"
+            },
+            "pointers": {
+              "tail": "b1",
+              "l1": "a2",
+              "l2": "b2"
+            },
+            "active": [
+              "b1"
+            ],
+            "compared": [],
+            "result": [
+              "b0",
+              "a0",
+              "a1",
+              "b1"
+            ],
+            "formula": "choose l2",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "b0",
+                "to": "a0"
+              },
+              {
+                "from": "a0",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "b1"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每次接入两个当前头中的较小者。",
+        "review": "choose l2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "tail": "b2",
+              "l1": "a2",
+              "l2": null
+            },
+            "pointers": {
+              "tail": "b2",
+              "l1": "a2",
+              "l2": null
+            },
+            "active": [
+              "b2"
+            ],
+            "compared": [],
+            "result": [
+              "b0",
+              "a0",
+              "a1",
+              "b1",
+              "b2"
+            ],
+            "formula": "choose l2",
+            "action": "接入值 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "b0",
+                "to": "a0"
+              },
+              {
+                "from": "a0",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "b2"
+              }
+            ]
+          },
+          "caption": "每次接入两个当前头中的较小者。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "一条链耗尽后另一条可整体接入。",
+        "review": "append remainder"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "head": "b0"
+            },
+            "pointers": {
+              "head": "b0"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "b0",
+              "a0",
+              "a1",
+              "b1",
+              "b2",
+              "a2"
+            ],
+            "formula": "append remainder",
+            "action": "接上剩余有序后缀",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "b0",
+                "to": "a0"
+              },
+              {
+                "from": "a0",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "b2"
+              },
+              {
+                "from": "b2",
+                "to": "a2"
+              }
+            ]
+          },
+          "caption": "一条链耗尽后另一条可整体接入。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "head": "b0"
+            },
+            "pointers": {
+              "head": "b0"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "b0",
+              "a0",
+              "a1",
+              "b1",
+              "b2",
+              "a2"
+            ],
+            "formula": "append remainder",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "b0",
+                "to": "a0"
+              },
+              {
+                "from": "a0",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "b2"
+              },
+              {
+                "from": "b2",
+                "to": "a2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "输出链保持非递减。",
+        "review": "[1, 1, 2, 3, 4, 4]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "head": "b0"
+            },
+            "pointers": {
+              "head": "b0"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "b0",
+              "a0",
+              "a1",
+              "b1",
+              "b2",
+              "a2"
+            ],
+            "formula": "[1, 1, 2, 3, 4, 4]",
+            "action": "返回合并链 [1,1,2,3,4,4]",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "a0",
+                "value": 1
+              },
+              {
+                "id": "a1",
+                "value": 2
+              },
+              {
+                "id": "a2",
+                "value": 4
+              },
+              {
+                "id": "b0",
+                "value": 1
+              },
+              {
+                "id": "b1",
+                "value": 3
+              },
+              {
+                "id": "b2",
+                "value": 4
+              },
+              {
+                "id": "d",
+                "value": -1
+              }
+            ],
+            "edges": [
+              {
+                "from": "b0",
+                "to": "a0"
+              },
+              {
+                "from": "a0",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "b2"
+              },
+              {
+                "from": "b2",
+                "to": "a2"
+              }
+            ],
+            "output": [
+              1,
+              1,
+              2,
+              3,
+              4,
+              4
+            ]
+          },
+          "caption": "输出链保持非递减。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {\n        auto dummy = new ListNode(-1), tail = dummy;\n        while (l1 && l2) {\n            if (l1->val < l2->val) {\n                tail = tail->next = l1;                          \n                l1 = l1->next;                                   \n            } else {\n                tail = tail->next = l2;                          \n                l2 = l2->next;                                   \n            }\n        }\n\n        if (l1) tail->next = l1;                                 \n        if (l2) tail->next = l2;                                 \n        return dummy->next;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1465,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1466,
+        "text": " * Definition for singly-linked list."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1467,
+        "text": " * struct ListNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1468,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1469,
+        "text": " *     ListNode *next;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1470,
+        "text": " *     ListNode() : val(0), next(nullptr) {}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1471,
+        "text": " *     ListNode(int x) : val(x), next(nullptr) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1472,
+        "text": " *     ListNode(int x, ListNode *next) : val(x), next(next) {}"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1473,
+        "text": " * };"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1474,
+        "text": " */"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1475,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1476,
+        "text": "public:"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1477,
+        "text": "    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1478,
+        "text": "        auto dummy = new ListNode(-1), tail = dummy;"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1479,
+        "text": "        while (l1 && l2) {"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1480,
+        "text": "            if (l1->val < l2->val) {"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1481,
+        "text": "                tail = tail->next = l1;                          "
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1482,
+        "text": "                l1 = l1->next;                                   "
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1483,
+        "text": "            } else {"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1484,
+        "text": "                tail = tail->next = l2;                          "
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1485,
+        "text": "                l2 = l2->next;                                   "
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1486,
+        "text": "            }"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 1487,
+        "text": "        }"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 1488,
+        "text": ""
+      },
+      {
+        "id": "L25",
+        "sourceLine": 1489,
+        "text": "        if (l1) tail->next = l1;                                 "
+      },
+      {
+        "id": "L26",
+        "sourceLine": 1490,
+        "text": "        if (l2) tail->next = l2;                                 "
+      },
+      {
+        "id": "L27",
+        "sourceLine": 1491,
+        "text": "        return dummy->next;"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 1492,
+        "text": "    }"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 1493,
+        "text": "};"
+      }
+    ]
+  }
+}

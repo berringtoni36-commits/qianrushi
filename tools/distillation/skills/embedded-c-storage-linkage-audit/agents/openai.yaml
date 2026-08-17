@@ -1,0 +1,4 @@
+interface:
+  display_name: "C Storage & Linkage Audit"
+  short_description: "审计 C 存储期、链接属性、启动与 Map 内存布局"
+  default_prompt: "审计这个 C/裸机工程的存储期、链接属性、启动初始化和 Map 文件，给出可验证的事实链。"

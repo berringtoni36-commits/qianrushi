@@ -1,0 +1,902 @@
+{
+  "problemId": 39,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 39,
+    "stepCount": 11,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        2,
+        3,
+        6,
+        7
+      ],
+      "variables": {},
+      "structure": {
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ]
+      },
+      "result": [
+        [
+          2,
+          2,
+          3
+        ],
+        [
+          7
+        ]
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "ae969b75ddfca3a17a79aa8164a534665e7117769ac087fc0da51cc3f762d5a0",
+    "sourceSemanticTokenHash": "af916cc5d3371c5dbaa7f58a970f81f1e77b695f2cddc11a6c97aae9ea9ccb63",
+    "sourceCodeLineCount": 28
+  },
+  "sourceCodeSha256": "ae969b75ddfca3a17a79aa8164a534665e7117769ac087fc0da51cc3f762d5a0",
+  "sourceSemanticTokenHash": "af916cc5d3371c5dbaa7f58a970f81f1e77b695f2cddc11a6c97aae9ea9ccb63",
+  "steps": [
+    {
+      "id": "39-trace-001",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "setup",
+      "title": "从 target=7 开始搜索",
+      "body": "每次只能选择不小于上次选择的候选，保证组合不重复。 题解原意：核心思想： 先排序，然后用回溯法逐个选取元素。每次可以从当前及之后的元素中选择（可重复选当前），当累计和超过 target 时剪枝。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · backtrack",
+        "badge": "path",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "remain": 7
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "remain",
+            "values": [
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "每次只能选择不小于上次选择的候选，保证组合不重复。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "remain": 7
+        },
+        "structure": {
+          "path": [],
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "39-trace-002",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "选择 2",
+      "body": "当前 path=[2]，剩余 target=5。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "remain": 5,
+          "choice": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "remain",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前 path=[2]，剩余 target=5。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "remain": 5,
+          "choice": 2
+        },
+        "structure": {
+          "path": [
+            2
+          ],
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "39-trace-003",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "撤销 2",
+      "body": "回到上层，恢复 remain=7。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "remain": 7
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "remain",
+            "values": [
+              7
+            ]
+          }
+        ],
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "note": "回到上层，恢复 remain=7。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "remain": 7
+        },
+        "structure": {
+          "path": [],
+          "result": [
+            [
+              2,
+              2,
+              3
+            ],
+            [
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "39-trace-004",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "选择 2",
+      "body": "当前 path=[2]，剩余 target=5。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "remain": 5,
+          "choice": 2
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "remain",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前 path=[2]，剩余 target=5。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "remain": 5,
+          "choice": 2
+        },
+        "structure": {
+          "path": [
+            2
+          ],
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "39-trace-005",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "撤销 2",
+      "body": "回到上层，恢复 remain=7。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "remain": 7
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "remain",
+            "values": [
+              7
+            ]
+          }
+        ],
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "note": "回到上层，恢复 remain=7。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "remain": 7
+        },
+        "structure": {
+          "path": [],
+          "result": [
+            [
+              2,
+              2,
+              3
+            ],
+            [
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "39-trace-006",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "选择 3",
+      "body": "当前 path=[3]，剩余 target=4。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "remain": 4,
+          "choice": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "remain",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前 path=[3]，剩余 target=4。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "remain": 4,
+          "choice": 3
+        },
+        "structure": {
+          "path": [
+            3
+          ],
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "39-trace-007",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "撤销 3",
+      "body": "回到上层，恢复 remain=7。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "remain": 7
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "remain",
+            "values": [
+              7
+            ]
+          }
+        ],
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "note": "回到上层，恢复 remain=7。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "remain": 7
+        },
+        "structure": {
+          "path": [],
+          "result": [
+            [
+              2,
+              2,
+              3
+            ],
+            [
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "39-trace-008",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "选择 7",
+      "body": "当前 path=[7]，剩余 target=0。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "path",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "remain": 0,
+          "choice": 7
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              7
+            ]
+          },
+          {
+            "label": "remain",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前 path=[7]，剩余 target=0。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "remain": 0,
+          "choice": 7
+        },
+        "structure": {
+          "path": [
+            7
+          ],
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "39-trace-009",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "记录组合 [7]",
+      "body": "剩余值为 0，当前路径满足 target。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "remain": 0
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              7
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "[2, 2, 3]",
+              "[7]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "note": "剩余值为 0，当前路径满足 target。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "remain": 0
+        },
+        "structure": {
+          "path": [
+            7
+          ],
+          "result": [
+            [
+              2,
+              2,
+              3
+            ],
+            [
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "39-trace-010",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "撤销 7",
+      "body": "回到上层，恢复 remain=7。 易错提醒：1. start 参数传 i 还是 i+1：本题允许重复选取同一元素，所以递归传 i（还能选自己）；如果不允许重复则传 i+1（如 40-组合总和 II）。 2. 剪枝条件用 break 还是 continue：排序后用 break，因为后面的元素更大，一定都会超；不排序则只能用 continue。 3. remaining 的计算：re…",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "remain": 7
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "remain",
+            "values": [
+              7
+            ]
+          }
+        ],
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "note": "回到上层，恢复 remain=7。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "remain": 7
+        },
+        "structure": {
+          "path": [],
+          "result": [
+            [
+              2,
+              2,
+              3
+            ],
+            [
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "39-trace-011",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回组合 [[2, 2, 3], [7]]。",
+      "kind": "backtrack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[2, 2, 3]",
+              "[7]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "note": "返回组合 [[2, 2, 3], [7]]。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "variables": {},
+        "structure": {
+          "result": [
+            [
+              2,
+              2,
+              3
+            ],
+            [
+              7
+            ]
+          ]
+        },
+        "result": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            7
+          ]
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

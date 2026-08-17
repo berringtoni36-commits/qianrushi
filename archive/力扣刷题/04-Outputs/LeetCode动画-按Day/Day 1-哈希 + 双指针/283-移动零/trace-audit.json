@@ -1,0 +1,699 @@
+{
+  "problemId": 283,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 283,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": false,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        3,
+        12,
+        0,
+        0
+      ],
+      "variables": {
+        "k": 5
+      },
+      "structure": {},
+      "result": [
+        1,
+        3,
+        12,
+        0,
+        0
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "0ed84c94a24d5c016a1f11bf87fc064782b944bf33e19b0069063630ef7c0ea8",
+    "sourceSemanticTokenHash": "62ce4952361f79e4b09e1a2c6d83358714cf5020e6ef05f3c9aca04c33a88fb5",
+    "sourceCodeLineCount": 10
+  },
+  "sourceCodeSha256": "0ed84c94a24d5c016a1f11bf87fc064782b944bf33e19b0069063630ef7c0ea8",
+  "sourceSemanticTokenHash": "62ce4952361f79e4b09e1a2c6d83358714cf5020e6ef05f3c9aca04c33a88fb5",
+  "steps": [
+    {
+      "id": "283-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立非零写入位置",
+      "body": "k 指向下一个应该放非零元素的位置。 题解原意：核心想法： 用两个指针（slow 和 fast）协同完成一次遍历中的\"筛选+重排\"。 关键洞察： slow 指针指向\"下一个非零元素应该被放置的位置\"。 fast 指针在前面探路，寻找非零元素。 当 fast 找到非零元素时，将其与 slow 位置的元素交换，然后 slow++。 这样就等价于：非零元素被\"交换\"到前面，零被\"交换\"到后面。且因为 slow 始终指向第一个可能为 0 的位置，所有非零元素的相对顺序保持…",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · two-ptr",
+        "badge": "",
+        "tokens": [
+          0,
+          1,
+          0,
+          3,
+          12
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 0
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              1,
+              0,
+              3,
+              12
+            ]
+          }
+        ],
+        "result": [],
+        "note": "k 指向下一个应该放非零元素的位置。"
+      },
+      "state": {
+        "values": [
+          0,
+          1,
+          0,
+          3,
+          12
+        ],
+        "variables": {
+          "k": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "283-trace-002",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "inspect",
+      "title": "跳过零 nums[0]",
+      "body": "当前值为 0，不移动 k；零会在第二轮统一补到末尾。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · two-ptr",
+        "badge": "i=0",
+        "tokens": [
+          0,
+          1,
+          0,
+          3,
+          12
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "x": 0,
+          "k": 0
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              1,
+              0,
+              3,
+              12
+            ]
+          },
+          {
+            "label": "write",
+            "values": [
+              "k = 0"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前值为 0，不移动 k；零会在第二轮统一补到末尾。"
+      },
+      "state": {
+        "values": [
+          0,
+          1,
+          0,
+          3,
+          12
+        ],
+        "variables": {
+          "i": 0,
+          "x": 0,
+          "k": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "283-trace-003",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "写入非零值 1",
+      "body": "扫描到 nums[1] = 1，写到 nums[0]，k 前进。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=1",
+        "tokens": [
+          1,
+          1,
+          0,
+          3,
+          12
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "x": 1,
+          "k": 1
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              1,
+              0,
+              3,
+              12
+            ]
+          },
+          {
+            "label": "write",
+            "values": [
+              "k = 1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "扫描到 nums[1] = 1，写到 nums[0]，k 前进。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          0,
+          3,
+          12
+        ],
+        "variables": {
+          "i": 1,
+          "x": 1,
+          "k": 1
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "283-trace-004",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "inspect",
+      "title": "跳过零 nums[2]",
+      "body": "当前值为 0，不移动 k；零会在第二轮统一补到末尾。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · two-ptr",
+        "badge": "i=2",
+        "tokens": [
+          1,
+          1,
+          0,
+          3,
+          12
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "x": 0,
+          "k": 1
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              1,
+              0,
+              3,
+              12
+            ]
+          },
+          {
+            "label": "write",
+            "values": [
+              "k = 1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前值为 0，不移动 k；零会在第二轮统一补到末尾。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          0,
+          3,
+          12
+        ],
+        "variables": {
+          "i": 2,
+          "x": 0,
+          "k": 1
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "283-trace-005",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "写入非零值 3",
+      "body": "扫描到 nums[3] = 3，写到 nums[1]，k 前进。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=3",
+        "tokens": [
+          1,
+          3,
+          0,
+          3,
+          12
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "x": 3,
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              0,
+              3,
+              12
+            ]
+          },
+          {
+            "label": "write",
+            "values": [
+              "k = 2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "扫描到 nums[3] = 3，写到 nums[1]，k 前进。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          0,
+          3,
+          12
+        ],
+        "variables": {
+          "i": 3,
+          "x": 3,
+          "k": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "283-trace-006",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "写入非零值 12",
+      "body": "扫描到 nums[4] = 12，写到 nums[2]，k 前进。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=4",
+        "tokens": [
+          1,
+          3,
+          12,
+          3,
+          12
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "x": 12,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              12,
+              3,
+              12
+            ]
+          },
+          {
+            "label": "write",
+            "values": [
+              "k = 3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "扫描到 nums[4] = 12，写到 nums[2]，k 前进。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          12,
+          3,
+          12
+        ],
+        "variables": {
+          "i": 4,
+          "x": 12,
+          "k": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "283-trace-007",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "补零到位置 3",
+      "body": "非零元素已经稳定，剩余位置全部写入 0。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "",
+        "tokens": [
+          1,
+          3,
+          12,
+          0,
+          12
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              12,
+              0,
+              12
+            ]
+          }
+        ],
+        "result": [],
+        "note": "非零元素已经稳定，剩余位置全部写入 0。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          12,
+          0,
+          12
+        ],
+        "variables": {
+          "k": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "283-trace-008",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "补零到位置 4",
+      "body": "非零元素已经稳定，剩余位置全部写入 0。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "",
+        "tokens": [
+          1,
+          3,
+          12,
+          0,
+          0
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "k": 4
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              12,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "非零元素已经稳定，剩余位置全部写入 0。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          12,
+          0,
+          0
+        ],
+        "variables": {
+          "k": 4
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "283-trace-check-010",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地移动完成：[1, 3, 12, 0, 0]。 易错提醒：交换 vs 赋值： 快慢指针交换法中，nums[slow] 和 nums[fast] 交换，不要写成赋值。如果直接赋值不交换，会导致非零元素被覆盖丢失。 slow 没有重置： slow 从 0 开始，只增不减。不要在循环内重置。 全非零数组的优化： 如果数组没有 0，方法一的每次 swap 是自身交换（浪费性能但结果正确），方法三通过 i…",
+      "kind": "two-ptr",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "",
+        "tokens": [
+          1,
+          3,
+          12,
+          0,
+          0
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "k": 4
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              12,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。原地移动完成：[1, 3, 12, 0, 0]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          12,
+          0,
+          0
+        ],
+        "variables": {
+          "k": 4
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "283-trace-009",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "原地移动完成：[1, 3, 12, 0, 0]。",
+      "kind": "two-ptr",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · two-ptr",
+        "badge": "结果 5 项",
+        "tokens": [
+          1,
+          3,
+          12,
+          0,
+          0
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 5
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              12,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          12,
+          0,
+          0
+        ],
+        "note": "原地移动完成：[1, 3, 12, 0, 0]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          12,
+          0,
+          0
+        ],
+        "variables": {
+          "k": 5
+        },
+        "structure": {},
+        "result": [
+          1,
+          3,
+          12,
+          0,
+          0
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

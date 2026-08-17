@@ -1,0 +1,733 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "排序后扫描合并",
+    "sceneKind": "interval",
+    "input": [
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        15,
+        18
+      ]
+    ],
+    "expected": [
+      [
+        1,
+        6
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        15,
+        18
+      ]
+    ],
+    "exampleText": "[[1,3],[2,6],[8,10],[15,18]]",
+    "expectedText": "[[1,6],[8,10],[15,18]]",
+    "invariant": "[l,r] 是尚未输出的合并区间",
+    "aha": "出现下一个左端点大于 r 时才能安全输出",
+    "time": "O(n log n)",
+    "space": "O(log n)",
+    "problemId": 56,
+    "title": "合并区间",
+    "day": "Day 2：滑动窗口 + 子串",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "e127a017e39dceed8babdd10afc0d3d97749ed50ce678357ec05a0819e8e2bb1",
+    "semanticTokenHash": "13d9a847eb947da6dd74872944833d693cebaf2d332ced41017861fca17d8e0a",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序后只需比较下一个左端点与当前右端点。",
+        "review": "按左端点排序区间"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "i": 0,
+              "l": 1,
+              "r": 3
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "按左端点排序区间",
+            "status": "running",
+            "output": []
+          },
+          "caption": "排序后只需比较下一个左端点与当前右端点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左端点超过 r 才表示出现断点。",
+        "review": "2 > 3 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "i": 1,
+              "l": 1,
+              "r": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "2 > 3 → False",
+            "action": "比较区间 [2,6] 与当前 [1,3]",
+            "status": "running",
+            "output": []
+          },
+          "caption": "左端点超过 r 才表示出现断点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "重叠区间只需扩展右边界。",
+        "review": "r=max(3,6)=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "i": 1,
+              "l": 1,
+              "r": 6
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "r=max(3,6)=6",
+            "action": "合并后右端点扩为 6",
+            "status": "running",
+            "output": []
+          },
+          "caption": "重叠区间只需扩展右边界。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左端点超过 r 才表示出现断点。",
+        "review": "8 > 6 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "i": 2,
+              "l": 1,
+              "r": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              2
+            ],
+            "result": [],
+            "formula": "8 > 6 → True",
+            "action": "比较区间 [8,10] 与当前 [1,6]",
+            "status": "running",
+            "output": []
+          },
+          "caption": "左端点超过 r 才表示出现断点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "已经不可能再有后续区间与它重叠。",
+        "review": "emit [1,6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "i": 2,
+              "l": 1,
+              "r": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "emit [1,6]",
+            "action": "确认区间 [1,6]",
+            "status": "running",
+            "output": [
+              [
+                1,
+                6
+              ]
+            ]
+          },
+          "caption": "已经不可能再有后续区间与它重叠。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前区间重新从断点开始。",
+        "review": "开启新区间 [8,10]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "i": 2,
+              "l": 8,
+              "r": 10
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "开启新区间 [8,10]",
+            "status": "running",
+            "output": [
+              [
+                1,
+                6
+              ]
+            ]
+          },
+          "caption": "当前区间重新从断点开始。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左端点超过 r 才表示出现断点。",
+        "review": "15 > 10 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "i": 3,
+              "l": 8,
+              "r": 10
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              3
+            ],
+            "result": [],
+            "formula": "15 > 10 → True",
+            "action": "比较区间 [15,18] 与当前 [8,10]",
+            "status": "running",
+            "output": [
+              [
+                1,
+                6
+              ]
+            ]
+          },
+          "caption": "左端点超过 r 才表示出现断点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "已经不可能再有后续区间与它重叠。",
+        "review": "emit [8,10]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "i": 3,
+              "l": 8,
+              "r": 10
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "emit [8,10]",
+            "action": "确认区间 [8,10]",
+            "status": "running",
+            "output": [
+              [
+                1,
+                6
+              ],
+              [
+                8,
+                10
+              ]
+            ]
+          },
+          "caption": "已经不可能再有后续区间与它重叠。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前区间重新从断点开始。",
+        "review": "开启新区间 [15,18]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "i": 3,
+              "l": 15,
+              "r": 18
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "开启新区间 [15,18]",
+            "status": "running",
+            "output": [
+              [
+                1,
+                6
+              ],
+              [
+                8,
+                10
+              ]
+            ]
+          },
+          "caption": "当前区间重新从断点开始。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "i": 3,
+              "l": 15,
+              "r": 18
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 1",
+            "status": "running",
+            "output": [
+              [
+                1,
+                6
+              ],
+              [
+                8,
+                10
+              ]
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最后一个活动区间在循环外补入答案。",
+        "review": "emit [15,18]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,3]",
+              "[2,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "l": 15,
+              "r": 18
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "formula": "emit [15,18]",
+            "action": "循环结束，确认 [15,18]",
+            "status": "running",
+            "output": [
+              [
+                1,
+                6
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                15,
+                18
+              ]
+            ]
+          },
+          "caption": "最后一个活动区间在循环外补入答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "结果按左端点有序且两两不重叠。",
+        "review": "[[1, 6], [8, 10], [15, 18]]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "interval",
+            "values": [
+              "[1,6]",
+              "[8,10]",
+              "[15,18]"
+            ],
+            "variables": {
+              "count": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[[1, 6], [8, 10], [15, 18]]",
+            "action": "返回三个不重叠区间",
+            "status": "return",
+            "output": [
+              [
+                1,
+                6
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                15,
+                18
+              ]
+            ]
+          },
+          "caption": "结果按左端点有序且两两不重叠。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<vector<int>> merge(vector<vector<int>>& a) {\n        vector<vector<int>> res;\n        if (a.empty()) return res;\n\n        sort(a.begin(), a.end());                                // 排序\n        int l = a[0][0], r = a[0][1];\n        for (int i = 1; i < a.size(); i ++ ) {\n            if (a[i][0] > r) {\n                res.push_back({l, r});                           // 记录结果\n                l = a[i][0], r = a[i][1];\n            } else r = max(r, a[i][1]);\n        }\n\n        res.push_back({l, r});                                   // 记录结果\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 728,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 729,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 730,
+        "text": "    vector<vector<int>> merge(vector<vector<int>>& a) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 731,
+        "text": "        vector<vector<int>> res;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 732,
+        "text": "        if (a.empty()) return res;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 733,
+        "text": ""
+      },
+      {
+        "id": "L7",
+        "sourceLine": 734,
+        "text": "        sort(a.begin(), a.end());                                // 排序"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 735,
+        "text": "        int l = a[0][0], r = a[0][1];"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 736,
+        "text": "        for (int i = 1; i < a.size(); i ++ ) {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 737,
+        "text": "            if (a[i][0] > r) {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 738,
+        "text": "                res.push_back({l, r});                           // 记录结果"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 739,
+        "text": "                l = a[i][0], r = a[i][1];"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 740,
+        "text": "            } else r = max(r, a[i][1]);"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 741,
+        "text": "        }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 742,
+        "text": ""
+      },
+      {
+        "id": "L16",
+        "sourceLine": 743,
+        "text": "        res.push_back({l, r});                                   // 记录结果"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 744,
+        "text": "        return res;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 745,
+        "text": "    }"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 746,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,708 @@
+{
+  "problemId": 155,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 155,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [],
+      "variables": {},
+      "structure": {
+        "stack": [
+          -2,
+          0
+        ],
+        "mins": [
+          -2,
+          -2
+        ]
+      },
+      "result": [
+        -3
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "697af8be738c2b1493c544b565170901e62ef3af21cb429161c92279454f51e1",
+    "sourceSemanticTokenHash": "623938b557323a530f5a6c8ced6f4660f15f53c51f7a1cdde391ba25d00a25ba",
+    "sourceCodeLineCount": 35
+  },
+  "sourceCodeSha256": "697af8be738c2b1493c544b565170901e62ef3af21cb429161c92279454f51e1",
+  "sourceSemanticTokenHash": "623938b557323a530f5a6c8ced6f4660f15f53c51f7a1cdde391ba25d00a25ba",
+  "steps": [
+    {
+      "id": "155-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "初始化双栈",
+      "body": "一个栈保存值，另一个栈同步保存到当前为止的最小值。 题解原意：核心思想： 使用两个栈：数据栈正常存储所有元素，辅助栈同步存储当前栈中的最小值。每次 push 时，辅助栈 push min(val, 辅助栈栈顶)；每次 pop 时两个栈同时 pop。 为什么辅助栈能记录最小值？因为栈是 LIFO 结构，辅助栈与数据栈同步操作，辅助栈的第 i 个元素就对应数据栈前 i 个元素中的最小值。 复杂度： 所有操作 O(1)，空间 O(n)",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · stack",
+        "badge": "stack",
+        "tokens": [],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "min",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "一个栈保存值，另一个栈同步保存到当前为止的最小值。"
+      },
+      "state": {
+        "values": [],
+        "variables": {},
+        "structure": {
+          "stack": [],
+          "mins": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "155-trace-002",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "执行 push",
+      "body": "push(-2) 后 stack=[-2]，当前最小值 -2。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "stack",
+        "tokens": [
+          -2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "push",
+          "min": -2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              -2
+            ]
+          },
+          {
+            "label": "min",
+            "values": [
+              -2
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "push(-2) 后 stack=[-2]，当前最小值 -2。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "push",
+          "min": -2
+        },
+        "structure": {
+          "stack": [
+            -2
+          ],
+          "mins": [
+            -2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "155-trace-003",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "执行 push",
+      "body": "push(0) 后 stack=[-2, 0]，当前最小值 -2。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "stack",
+        "tokens": [
+          -2,
+          0
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "push",
+          "min": -2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              -2,
+              0
+            ]
+          },
+          {
+            "label": "min",
+            "values": [
+              -2,
+              -2
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "push(0) 后 stack=[-2, 0]，当前最小值 -2。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "push",
+          "min": -2
+        },
+        "structure": {
+          "stack": [
+            -2,
+            0
+          ],
+          "mins": [
+            -2,
+            -2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "155-trace-004",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "执行 push",
+      "body": "push(-3) 后 stack=[-2, 0, -3]，当前最小值 -3。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "stack",
+        "tokens": [
+          -2,
+          0,
+          -3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "push",
+          "min": -3
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              -2,
+              0,
+              -3
+            ]
+          },
+          {
+            "label": "min",
+            "values": [
+              -2,
+              -2,
+              -3
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "push(-3) 后 stack=[-2, 0, -3]，当前最小值 -3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "push",
+          "min": -3
+        },
+        "structure": {
+          "stack": [
+            -2,
+            0,
+            -3
+          ],
+          "mins": [
+            -2,
+            -2,
+            -3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "155-trace-005",
+      "line": 23,
+      "lineIds": [
+        23
+      ],
+      "phase": "mutate",
+      "title": "执行 getMin",
+      "body": "getMin() 直接读取 min 栈顶 -3。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "结果 1 项",
+        "tokens": [
+          -2,
+          0,
+          -3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "getMin",
+          "min": -3
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              -2,
+              0,
+              -3
+            ]
+          },
+          {
+            "label": "min",
+            "values": [
+              -2,
+              -2,
+              -3
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              -3
+            ]
+          }
+        ],
+        "result": [
+          -3
+        ],
+        "note": "getMin() 直接读取 min 栈顶 -3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "getMin",
+          "min": -3
+        },
+        "structure": {
+          "stack": [
+            -2,
+            0,
+            -3
+          ],
+          "mins": [
+            -2,
+            -2,
+            -3
+          ]
+        },
+        "result": [
+          -3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "155-trace-006",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "执行 pop",
+      "body": "pop 后 stack=[-2, 0]，最小值栈同步回退。",
+      "kind": "stack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · stack",
+        "badge": "stack",
+        "tokens": [
+          -2,
+          0
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "pop",
+          "min": -2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              -2,
+              0
+            ]
+          },
+          {
+            "label": "min",
+            "values": [
+              -2,
+              -2
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              -3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "pop 后 stack=[-2, 0]，最小值栈同步回退。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "pop",
+          "min": -2
+        },
+        "structure": {
+          "stack": [
+            -2,
+            0
+          ],
+          "mins": [
+            -2,
+            -2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "155-trace-check-008",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作完成，getMin 结果记录为 [-3]。",
+      "kind": "stack",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "stack",
+        "tokens": [
+          -2,
+          0
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "pop",
+          "min": -2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              -2,
+              0
+            ]
+          },
+          {
+            "label": "min",
+            "values": [
+              -2,
+              -2
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              -3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作完成，getMin 结果记录为 [-3]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "pop",
+          "min": -2
+        },
+        "structure": {
+          "stack": [
+            -2,
+            0
+          ],
+          "mins": [
+            -2,
+            -2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "155-trace-check-009",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作完成，getMin 结果记录为 [-3]。",
+      "kind": "stack",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "stack",
+        "tokens": [
+          -2,
+          0
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "pop",
+          "min": -2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              -2,
+              0
+            ]
+          },
+          {
+            "label": "min",
+            "values": [
+              -2,
+              -2
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              -3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作完成，getMin 结果记录为 [-3]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "pop",
+          "min": -2
+        },
+        "structure": {
+          "stack": [
+            -2,
+            0
+          ],
+          "mins": [
+            -2,
+            -2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "155-trace-check-010",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作完成，getMin 结果记录为 [-3]。 易错提醒：辅助栈的初始值： 辅助栈的第一个元素（对应数据栈为空时）应该设为 inf 或极大值，使得第一次 push 时 min(val, inf) 结果为 val。如果初始化为 0，当 val > 0 时最小值会错误地变成 0。 辅助栈同步操作： pop 时必须两个栈同时 pop，否则辅助栈栈顶不再对应当前数据栈的最小值。常见的 bug 是数据栈…",
+      "kind": "stack",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "stack",
+        "tokens": [
+          -2,
+          0
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "op": "pop",
+          "min": -2
+        },
+        "rows": [
+          {
+            "label": "stack",
+            "values": [
+              -2,
+              0
+            ]
+          },
+          {
+            "label": "min",
+            "values": [
+              -2,
+              -2
+            ]
+          },
+          {
+            "label": "get results",
+            "values": [
+              -3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。操作完成，getMin 结果记录为 [-3]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "op": "pop",
+          "min": -2
+        },
+        "structure": {
+          "stack": [
+            -2,
+            0
+          ],
+          "mins": [
+            -2,
+            -2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "155-trace-007",
+      "line": 24,
+      "lineIds": [
+        24
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "操作完成，getMin 结果记录为 [-3]。",
+      "kind": "stack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · stack",
+        "badge": "结果 1 项",
+        "tokens": [
+          -2,
+          0
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              -3
+            ]
+          }
+        ],
+        "result": [
+          -3
+        ],
+        "note": "操作完成，getMin 结果记录为 [-3]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {},
+        "structure": {
+          "stack": [
+            -2,
+            0
+          ],
+          "mins": [
+            -2,
+            -2
+          ]
+        },
+        "result": [
+          -3
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

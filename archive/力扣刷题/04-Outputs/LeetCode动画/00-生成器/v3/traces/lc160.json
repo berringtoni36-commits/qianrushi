@@ -1,0 +1,1379 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "双指针交换链表头",
+    "sceneKind": "linked-list",
+    "input": "A=[4,1,8,4,5], B=[5,6,1]",
+    "expected": 8,
+    "exampleText": "A=[4,1,8,4,5], B=[5,6,1]",
+    "expectedText": "相交节点值 = 8",
+    "invariant": "p 与 q 已走总路程差始终抵消两前缀长度差",
+    "aha": "各走 A+B 与 B+A 后会同时到交点",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 160,
+    "title": "相交链表",
+    "day": "Day 4：链表基础",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "4b29df2b2e1fdd0898d9b473c794b3910a370f0003769b16fc89a773dfd30d3d",
+    "semanticTokenHash": "4b0bdd2bcec7123f3b05ef2def36e8c6d5c307f058561109f994b168816b3d73",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "切换头节点会补齐两条前缀长度差。",
+        "review": "p、q 分别从两条链表起点出发"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "a4",
+              "q": "b5"
+            },
+            "pointers": {
+              "p": "a4",
+              "q": "b5"
+            },
+            "active": [
+              "a4",
+              "b5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "p、q 分别从两条链表起点出发",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "切换头节点会补齐两条前缀长度差。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个指针都将走完 A 前缀+B 前缀。",
+        "review": "a4→a1; b5→b6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "a1",
+              "q": "b6"
+            },
+            "pointers": {
+              "p": "a1",
+              "q": "b6"
+            },
+            "active": [
+              "a1",
+              "b6"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "a4→a1; b5→b6",
+            "action": "双指针同步走第 1 步",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "每个指针都将走完 A 前缀+B 前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个指针都将走完 A 前缀+B 前缀。",
+        "review": "a1→c8; b6→b1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "c8",
+              "q": "b1"
+            },
+            "pointers": {
+              "p": "c8",
+              "q": "b1"
+            },
+            "active": [
+              "c8",
+              "b1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "a1→c8; b6→b1",
+            "action": "双指针同步走第 2 步",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "每个指针都将走完 A 前缀+B 前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个指针都将走完 A 前缀+B 前缀。",
+        "review": "c8→c4; b1→c8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "c4",
+              "q": "c8"
+            },
+            "pointers": {
+              "p": "c4",
+              "q": "c8"
+            },
+            "active": [
+              "c4",
+              "c8"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "c8→c4; b1→c8",
+            "action": "双指针同步走第 3 步",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "每个指针都将走完 A 前缀+B 前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个指针都将走完 A 前缀+B 前缀。",
+        "review": "c4→c5; c8→c4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "c5",
+              "q": "c4"
+            },
+            "pointers": {
+              "p": "c5",
+              "q": "c4"
+            },
+            "active": [
+              "c5",
+              "c4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "c4→c5; c8→c4",
+            "action": "双指针同步走第 4 步",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "每个指针都将走完 A 前缀+B 前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个指针都将走完 A 前缀+B 前缀。",
+        "review": "c5→b5; c4→c5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "b5",
+              "q": "c5"
+            },
+            "pointers": {
+              "p": "b5",
+              "q": "c5"
+            },
+            "active": [
+              "b5",
+              "c5"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "c5→b5; c4→c5",
+            "action": "双指针同步走第 5 步",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "每个指针都将走完 A 前缀+B 前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个指针都将走完 A 前缀+B 前缀。",
+        "review": "b5→b6; c5→a4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "b6",
+              "q": "a4"
+            },
+            "pointers": {
+              "p": "b6",
+              "q": "a4"
+            },
+            "active": [
+              "b6",
+              "a4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "b5→b6; c5→a4",
+            "action": "双指针同步走第 6 步",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "每个指针都将走完 A 前缀+B 前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "b6",
+              "q": "a4"
+            },
+            "pointers": {
+              "p": "b6",
+              "q": "a4"
+            },
+            "active": [
+              "b6",
+              "a4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "b5→b6; c5→a4",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个指针都将走完 A 前缀+B 前缀。",
+        "review": "b6→b1; a4→a1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "b1",
+              "q": "a1"
+            },
+            "pointers": {
+              "p": "b1",
+              "q": "a1"
+            },
+            "active": [
+              "b1",
+              "a1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "b6→b1; a4→a1",
+            "action": "双指针同步走第 7 步",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "每个指针都将走完 A 前缀+B 前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个指针都将走完 A 前缀+B 前缀。",
+        "review": "b1→c8; a1→c8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "c8",
+              "q": "c8"
+            },
+            "pointers": {
+              "p": "c8",
+              "q": "c8"
+            },
+            "active": [
+              "c8",
+              "c8"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "b1→c8; a1→c8",
+            "action": "双指针同步走第 8 步",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "每个指针都将走完 A 前缀+B 前缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "c8",
+              "q": "c8"
+            },
+            "pointers": {
+              "p": "c8",
+              "q": "c8"
+            },
+            "active": [
+              "c8",
+              "c8"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "b1→c8; a1→c8",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "第一次相同节点就是交点。",
+        "review": "p==q==c8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "c8",
+              "q": "c8"
+            },
+            "pointers": {
+              "p": "c8",
+              "q": "c8"
+            },
+            "active": [
+              "c8"
+            ],
+            "compared": [],
+            "result": [
+              "c8",
+              "c4",
+              "c5"
+            ],
+            "formula": "p==q==c8",
+            "action": "p 与 q 在值 8 的节点相遇",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "a4",
+                "value": 4
+              },
+              {
+                "id": "a1",
+                "value": 1
+              },
+              {
+                "id": "b5",
+                "value": 5
+              },
+              {
+                "id": "b6",
+                "value": 6
+              },
+              {
+                "id": "b1",
+                "value": 1
+              },
+              {
+                "id": "c8",
+                "value": 8
+              },
+              {
+                "id": "c4",
+                "value": 4
+              },
+              {
+                "id": "c5",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "a4",
+                "to": "a1"
+              },
+              {
+                "from": "a1",
+                "to": "c8"
+              },
+              {
+                "from": "b5",
+                "to": "b6"
+              },
+              {
+                "from": "b6",
+                "to": "b1"
+              },
+              {
+                "from": "b1",
+                "to": "c8"
+              },
+              {
+                "from": "c8",
+                "to": "c4"
+              },
+              {
+                "from": "c4",
+                "to": "c5"
+              }
+            ],
+            "output": 8
+          },
+          "caption": "第一次相同节点就是交点。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {\n        auto p = headA, q = headB;\n        while (p != q) {\n            p = p ? p->next : headB;                             \n            q = q ? q->next : headA;                             \n        }\n        return p;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1177,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1178,
+        "text": " * Definition for singly-linked list."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1179,
+        "text": " * struct ListNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1180,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1181,
+        "text": " *     ListNode *next;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1182,
+        "text": " *     ListNode(int x) : val(x), next(NULL) {}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1183,
+        "text": " * };"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1184,
+        "text": " */"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1185,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1186,
+        "text": "public:"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1187,
+        "text": "    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1188,
+        "text": "        auto p = headA, q = headB;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1189,
+        "text": "        while (p != q) {"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1190,
+        "text": "            p = p ? p->next : headB;                             "
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1191,
+        "text": "            q = q ? q->next : headA;                             "
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1192,
+        "text": "        }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1193,
+        "text": "        return p;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1194,
+        "text": "    }"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1195,
+        "text": "};"
+      }
+    ]
+  }
+}

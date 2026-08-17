@@ -1,0 +1,14 @@
+{
+  "skill": "linux-vision-pipeline-and-optimization",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"摄像头采集、LIME、LSTR、Qt 展示的完整数据流怎么查？","expected_behavior":"激活本 skill，画出输入、格式、推理和输出链","notes":"端到端链路"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"NEON 和 OpenMP 优化后变快了，但怎样证明结果仍然正确？","expected_behavior":"激活本 skill，检查尾部、归约、误差和基线","notes":"优化验证"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"ARM 平台没有 GPU，LIME 应该怎么做性能优化？","expected_behavior":"激活本 skill，按测量→热点→局部优化→回归执行","notes":"嵌入式性能"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"视觉项目的源码和文档是否一致？","expected_behavior":"不激活本 skill，优先激活 linux-memory-source-audit","notes":"跨 skill 混淆"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"帮我准备这个视觉项目的一分钟面试介绍","expected_behavior":"不激活本 skill，优先激活 linux-vision-project-storytelling","notes":"跨 skill 混淆"},
+    {"id":"edge-01","type":"edge_case","prompt":"只解释 Retinex 理论，不做项目优化","expected_behavior":"做普通算法解释，不激活项目优化 Skill","notes":"理论边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

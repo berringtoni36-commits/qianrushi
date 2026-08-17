@@ -1,0 +1,14 @@
+{
+  "skill": "linux-buddy-fragmentation-diagnosis",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"总空闲内存很多但高阶连续页申请失败，怎么解释？","expected_behavior":"激活本 skill，按 node/zone/order 分析连续性","notes":"典型碎片"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"order、zone、node 和 suitable blocks 在这个项目里如何对应？","expected_behavior":"激活本 skill，结合伙伴系统和项目字段解释","notes":"项目知识"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"extfrag_index 和 unusable_free_index 很高能直接说明根因吗？","expected_behavior":"激活本 skill，说明联合指标和边界","notes":"指标解释"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"eBPF 从 Python 到内核 Map 的运行链是什么？","expected_behavior":"不激活本 skill，优先激活 linux-memory-ebpf-pipeline","notes":"跨 skill 混淆"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"源码里的 last_time_map 节流是否正确？","expected_behavior":"不激活本 skill，优先激活 linux-memory-source-audit","notes":"跨 skill 混淆"},
+    {"id":"edge-01","type":"edge_case","prompt":"SLUB 小对象碎片怎么分析？","expected_behavior":"说明本 Skill 主要针对伙伴系统页级外部碎片，转向 SLUB 专题","notes":"层级边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

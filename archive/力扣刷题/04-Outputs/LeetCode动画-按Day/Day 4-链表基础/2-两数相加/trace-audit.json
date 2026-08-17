@@ -1,0 +1,937 @@
+{
+  "problemId": 2,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 2,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        2,
+        4,
+        3
+      ],
+      "variables": {
+        "carry": 0
+      },
+      "structure": {
+        "result": [
+          7,
+          0,
+          8
+        ]
+      },
+      "result": [
+        7,
+        0,
+        8
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "85777970bd5d8ddb85da8d25ccf498c4f1b69c2238ac2d3ff892f909d2112379",
+    "sourceSemanticTokenHash": "975d1007aa27ac8acbe632e1830d92d475eb096eb15d4acda95a26d2f2bb505b",
+    "sourceCodeLineCount": 22
+  },
+  "sourceCodeSha256": "85777970bd5d8ddb85da8d25ccf498c4f1b69c2238ac2d3ff892f909d2112379",
+  "sourceSemanticTokenHash": "975d1007aa27ac8acbe632e1830d92d475eb096eb15d4acda95a26d2f2bb505b",
+  "steps": [
+    {
+      "id": "2-trace-001",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "setup",
+      "title": "初始化进位",
+      "body": "从最低位开始逐位相加，t 同时承载当前和与下一位进位。 题解原意：为什么这样想： 逆序存储意味着我们可以直接同步遍历两个链表，模拟竖式加法的逐位相加过程。关键是用一个变量 carry 记录进位。 关键洞察： 循环条件用 while l1 or l2 or carry 可以统一处理三个情况：链表还有节点、链表遍历完了但还有进位。当某个链表遍历完时，对应的 val 视为 0。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · linked",
+        "badge": "l1",
+        "tokens": [
+          "2",
+          "4",
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "carry": 0
+        },
+        "rows": [
+          {
+            "label": "result",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "从最低位开始逐位相加，t 同时承载当前和与下一位进位。"
+      },
+      "state": {
+        "values": [
+          2,
+          4,
+          3
+        ],
+        "variables": {
+          "carry": 0
+        },
+        "structure": {
+          "l1": [
+            2,
+            4,
+            3
+          ],
+          "l2": [
+            5,
+            6,
+            4
+          ],
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "2-trace-002",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "写入当前位 7",
+      "body": "本位和 t=7，写入 7，下一轮进位 carry=0。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "i=1 · j=1 · 结果 1 项",
+        "tokens": [
+          "2",
+          "4",
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "t": 7,
+          "carry": 0
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              4,
+              3
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              6,
+              4
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              7
+            ]
+          },
+          {
+            "label": "carry",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          7
+        ],
+        "note": "本位和 t=7，写入 7，下一轮进位 carry=0。"
+      },
+      "state": {
+        "values": [
+          2,
+          4,
+          3
+        ],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "t": 7,
+          "carry": 0
+        },
+        "structure": {
+          "l1": [
+            4,
+            3
+          ],
+          "l2": [
+            6,
+            4
+          ],
+          "result": [
+            7
+          ]
+        },
+        "result": [
+          7
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "2-trace-003",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "写入当前位 0",
+      "body": "本位和 t=10，写入 0，下一轮进位 carry=1。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "i=2 · j=2 · 结果 2 项",
+        "tokens": [
+          "2",
+          "4",
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 2,
+          "t": 10,
+          "carry": 1
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              7,
+              0
+            ]
+          },
+          {
+            "label": "carry",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          7,
+          0
+        ],
+        "note": "本位和 t=10，写入 0，下一轮进位 carry=1。"
+      },
+      "state": {
+        "values": [
+          2,
+          4,
+          3
+        ],
+        "variables": {
+          "i": 2,
+          "j": 2,
+          "t": 10,
+          "carry": 1
+        },
+        "structure": {
+          "l1": [
+            3
+          ],
+          "l2": [
+            4
+          ],
+          "result": [
+            7,
+            0
+          ]
+        },
+        "result": [
+          7,
+          0
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "2-trace-004",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "mutate",
+      "title": "写入当前位 8",
+      "body": "本位和 t=8，写入 8，下一轮进位 carry=0。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "i=3 · j=3 · 结果 3 项",
+        "tokens": [
+          "2",
+          "4",
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              7,
+              0,
+              8
+            ]
+          },
+          {
+            "label": "carry",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "note": "本位和 t=8，写入 8，下一轮进位 carry=0。"
+      },
+      "state": {
+        "values": [
+          2,
+          4,
+          3
+        ],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "structure": {
+          "l1": [],
+          "l2": [],
+          "result": [
+            7,
+            0,
+            8
+          ]
+        },
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "2-trace-check-006",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回相加结果 [7, 0, 8]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · j=3 · 结果 3 项",
+        "tokens": [
+          "2",
+          "4",
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              7,
+              0,
+              8
+            ]
+          },
+          {
+            "label": "carry",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回相加结果 [7, 0, 8]。"
+      },
+      "state": {
+        "values": [
+          2,
+          4,
+          3
+        ],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "structure": {
+          "l1": [],
+          "l2": [],
+          "result": [
+            7,
+            0,
+            8
+          ]
+        },
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "2-trace-check-007",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回相加结果 [7, 0, 8]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · j=3 · 结果 3 项",
+        "tokens": [
+          "2",
+          "4",
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              7,
+              0,
+              8
+            ]
+          },
+          {
+            "label": "carry",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回相加结果 [7, 0, 8]。"
+      },
+      "state": {
+        "values": [
+          2,
+          4,
+          3
+        ],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "structure": {
+          "l1": [],
+          "l2": [],
+          "result": [
+            7,
+            0,
+            8
+          ]
+        },
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "2-trace-check-008",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回相加结果 [7, 0, 8]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · j=3 · 结果 3 项",
+        "tokens": [
+          "2",
+          "4",
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              7,
+              0,
+              8
+            ]
+          },
+          {
+            "label": "carry",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回相加结果 [7, 0, 8]。"
+      },
+      "state": {
+        "values": [
+          2,
+          4,
+          3
+        ],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "structure": {
+          "l1": [],
+          "l2": [],
+          "result": [
+            7,
+            0,
+            8
+          ]
+        },
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "2-trace-check-009",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回相加结果 [7, 0, 8]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · j=3 · 结果 3 项",
+        "tokens": [
+          "2",
+          "4",
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              7,
+              0,
+              8
+            ]
+          },
+          {
+            "label": "carry",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回相加结果 [7, 0, 8]。"
+      },
+      "state": {
+        "values": [
+          2,
+          4,
+          3
+        ],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "structure": {
+          "l1": [],
+          "l2": [],
+          "result": [
+            7,
+            0,
+            8
+          ]
+        },
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "2-trace-check-010",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回相加结果 [7, 0, 8]。 易错提醒：最后一位进位： 当两个链表都遍历完后，如果 carry 仍为 1，需要额外创建一个值为 1 的节点 循环条件： 用 while l1 or l2 or carry 而不是 while l1 and l2，前者能处理长度不等的进位情况 取 val 时判空： l1.val if l1 else 0 而不是直接 l1.val，因为 l1 可能已…",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · j=3 · 结果 3 项",
+        "tokens": [
+          "2",
+          "4",
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "rows": [
+          {
+            "label": "l1",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "l2",
+            "values": [
+              "null"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              7,
+              0,
+              8
+            ]
+          },
+          {
+            "label": "carry",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回相加结果 [7, 0, 8]。"
+      },
+      "state": {
+        "values": [
+          2,
+          4,
+          3
+        ],
+        "variables": {
+          "i": 3,
+          "j": 3,
+          "t": 8,
+          "carry": 0
+        },
+        "structure": {
+          "l1": [],
+          "l2": [],
+          "result": [
+            7,
+            0,
+            8
+          ]
+        },
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "2-trace-005",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回相加结果 [7, 0, 8]。",
+      "kind": "linked",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · linked",
+        "badge": "结果 3 项",
+        "tokens": [
+          "2",
+          "4",
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "carry": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              7,
+              0,
+              8
+            ]
+          }
+        ],
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "note": "返回相加结果 [7, 0, 8]。"
+      },
+      "state": {
+        "values": [
+          2,
+          4,
+          3
+        ],
+        "variables": {
+          "carry": 0
+        },
+        "structure": {
+          "result": [
+            7,
+            0,
+            8
+          ]
+        },
+        "result": [
+          7,
+          0,
+          8
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

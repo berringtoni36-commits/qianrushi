@@ -8,7 +8,7 @@
         "*": "deny",
         "external_directory": "deny"
       },
-      "prompt": "{file:C:\\Users\\11624\\Desktop\\my-vault\\.claudian\\opencode\\metadata\\system.md}"
+      "prompt": "{file:/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/.claudian/opencode/metadata/system.md}"
     }
   },
   "default_agent": "claudian-execution-passive"

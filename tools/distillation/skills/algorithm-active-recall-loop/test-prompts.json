@@ -1,0 +1,16 @@
+{
+  "skill": "algorithm-active-recall-loop",
+  "version": "0.1.0",
+  "source_book": "LeetCode Hot 100 学习体系",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"我看过滑动窗口题解，但今天完全写不出来，帮我按最小提示和无提示重写安排复习。","expected_behavior":"激活本 Skill，标记真实掌握状态并设计最小提示/间隔重写。"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"我有一周刷题记录，帮我找出反复提示后 AC 的薄弱模板，安排下一轮主动回忆。","expected_behavior":"激活本 Skill，按行为证据而非题数排序复习。"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"提示后 AC 能不能算掌握？请给我一个不改原日志的复习闭环。","expected_behavior":"激活本 Skill，解释五级状态并给出不修改原文件的方案。"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"这道新题到底用二分还是 DP？请从约束帮我选模板。","expected_behavior":"拒绝本 Skill，优先转给 algorithm-problem-framework-selection。"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"我的 DP 状态定义不完整，帮我构造反例并检查转移。","expected_behavior":"拒绝本 Skill，优先转给 algorithm-state-and-invariant-derivation。"},
+    {"id":"edge-01","type":"edge_case","prompt":"进度看板还是全是空白模板，能不能告诉我已经掌握了哪些算法？","expected_behavior":"说明没有可推断的完成证据，不得把空模板当成学习事实。"}
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "静态预期 6/6；实际客户端盲测待补。"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linux Userspace Timer Drift Audit"
+  short_description: "Choose Linux timers and audit drift"
+  default_prompt: "Use $linux-userspace-timer-drift-audit to audit this Linux userspace periodic timer for drift, overruns, and blocking."

@@ -1,0 +1,636 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "前缀积 × 后缀积",
+    "sceneKind": "generic-array",
+    "input": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "expected": [
+      24,
+      12,
+      8,
+      6
+    ],
+    "exampleText": "[1,2,3,4]",
+    "expectedText": "[24,12,8,6]",
+    "invariant": "写 p[i] 时左右累积都不包含 nums[i]",
+    "aha": "用一个答案数组复用左积，再用标量滚动右积",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 238,
+    "title": "除自身以外数组的乘积",
+    "day": "Day 3：数组技巧 + 矩阵",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "b4726a4c5112f2c0c156c5010048312a8db60e013e287a9d6eecc6badbb3976d",
+    "semanticTokenHash": "023095db9d2452be094302961b10dfba260c37ab79367efeedb8515358b441b2",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "p[i] 先承载左侧乘积。",
+        "review": "答案数组先全部置 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L3"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "variables": {
+              "i": null,
+              "s": null
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "答案数组先全部置 1",
+            "status": "running",
+            "output": []
+          },
+          "caption": "p[i] 先承载左侧乘积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置不包含 nums[i]。",
+        "review": "p[1]=1×1=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "variables": {
+              "i": 1,
+              "s": null
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "p[1]=1×1=1",
+            "action": "计算 p[1] 的左乘积 1",
+            "status": "running"
+          },
+          "caption": "当前位置不包含 nums[i]。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置不包含 nums[i]。",
+        "review": "p[2]=1×2=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              1,
+              2,
+              1
+            ],
+            "variables": {
+              "i": 2,
+              "s": null
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "p[2]=1×2=2",
+            "action": "计算 p[2] 的左乘积 2",
+            "status": "running"
+          },
+          "caption": "当前位置不包含 nums[i]。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置不包含 nums[i]。",
+        "review": "p[3]=2×3=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              1,
+              2,
+              6
+            ],
+            "variables": {
+              "i": 3,
+              "s": null
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [
+              2
+            ],
+            "result": [],
+            "formula": "p[3]=2×3=6",
+            "action": "计算 p[3] 的左乘积 6",
+            "status": "running"
+          },
+          "caption": "当前位置不包含 nums[i]。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左积与右积相乘得到除自身外乘积。",
+        "review": "6×1=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              1,
+              2,
+              6
+            ],
+            "variables": {
+              "i": 3,
+              "s": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "6×1=6",
+            "action": "乘上右侧乘积，p[3]=6",
+            "status": "running"
+          },
+          "caption": "左积与右积相乘得到除自身外乘积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "suffix 只包含 i 右边的元素。",
+        "review": "s×=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              1,
+              2,
+              6
+            ],
+            "variables": {
+              "i": 3,
+              "s": 4
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "s×=4",
+            "action": "右侧累积更新为 4",
+            "status": "running"
+          },
+          "caption": "suffix 只包含 i 右边的元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左积与右积相乘得到除自身外乘积。",
+        "review": "2×4=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              1,
+              8,
+              6
+            ],
+            "variables": {
+              "i": 2,
+              "s": 4
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "2×4=8",
+            "action": "乘上右侧乘积，p[2]=8",
+            "status": "running"
+          },
+          "caption": "左积与右积相乘得到除自身外乘积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "suffix 只包含 i 右边的元素。",
+        "review": "s×=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              1,
+              8,
+              6
+            ],
+            "variables": {
+              "i": 2,
+              "s": 12
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "s×=3",
+            "action": "右侧累积更新为 12",
+            "status": "running"
+          },
+          "caption": "suffix 只包含 i 右边的元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左积与右积相乘得到除自身外乘积。",
+        "review": "1×12=12"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              12,
+              8,
+              6
+            ],
+            "variables": {
+              "i": 1,
+              "s": 12
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1×12=12",
+            "action": "乘上右侧乘积，p[1]=12",
+            "status": "running"
+          },
+          "caption": "左积与右积相乘得到除自身外乘积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "suffix 只包含 i 右边的元素。",
+        "review": "s×=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              12,
+              8,
+              6
+            ],
+            "variables": {
+              "i": 1,
+              "s": 24
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "s×=2",
+            "action": "右侧累积更新为 24",
+            "status": "running"
+          },
+          "caption": "suffix 只包含 i 右边的元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左积与右积相乘得到除自身外乘积。",
+        "review": "1×24=24"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              24,
+              12,
+              8,
+              6
+            ],
+            "variables": {
+              "i": 0,
+              "s": 24
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1×24=24",
+            "action": "乘上右侧乘积，p[0]=24",
+            "status": "running"
+          },
+          "caption": "左积与右积相乘得到除自身外乘积。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "suffix 只包含 i 右边的元素。",
+        "review": "s×=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              24,
+              12,
+              8,
+              6
+            ],
+            "variables": {
+              "i": 0,
+              "s": 24
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "s×=1",
+            "action": "右侧累积更新为 24",
+            "status": "running"
+          },
+          "caption": "suffix 只包含 i 右边的元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "每个位置都恰好缺少自己的因子。",
+        "review": "[24, 12, 8, 6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              24,
+              12,
+              8,
+              6
+            ],
+            "variables": {},
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "formula": "[24, 12, 8, 6]",
+            "action": "返回 [24,12,8,6]",
+            "status": "return",
+            "output": [
+              24,
+              12,
+              8,
+              6
+            ]
+          },
+          "caption": "每个位置都恰好缺少自己的因子。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<int> productExceptSelf(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> p(n, 1);\n        for (int i = 1; i < n; i ++ ) p[i] = p[i - 1] * nums[i - 1];\n        for (int i = n - 1, s = 1; i >= 0; i -- ) {\n            p[i] *= s;\n            s *= nums[i];\n        }\n        return p;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 833,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 834,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 835,
+        "text": "    vector<int> productExceptSelf(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 836,
+        "text": "        int n = nums.size();"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 837,
+        "text": "        vector<int> p(n, 1);"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 838,
+        "text": "        for (int i = 1; i < n; i ++ ) p[i] = p[i - 1] * nums[i - 1];"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 839,
+        "text": "        for (int i = n - 1, s = 1; i >= 0; i -- ) {"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 840,
+        "text": "            p[i] *= s;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 841,
+        "text": "            s *= nums[i];"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 842,
+        "text": "        }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 843,
+        "text": "        return p;"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 844,
+        "text": "    }"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 845,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1603 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "后序单边贡献 + 全局拐点答案",
+    "sceneKind": "tree-graph",
+    "input": "树 [-10,9,20,null,null,15,7]",
+    "expected": 42,
+    "exampleText": "树 [-10,9,20,null,null,15,7]",
+    "expectedText": "最大路径和 = 42",
+    "invariant": "dfs 返回从当前节点向下的最大单边路径和",
+    "aha": "全局路径可取左右两边，向上返回时不能分叉",
+    "time": "O(n)",
+    "space": "O(h)",
+    "problemId": 124,
+    "title": "二叉树中的最大路径和",
+    "day": "Day 7：二叉树进阶",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "faffeaf4c5fa54b8cb51c0c73cbda16be447d7c842846a21280491868e5a4f4e",
+    "semanticTokenHash": "4ced0b25b1aa92e8227210084fc649b73bc28e788ba9f8b47001dfc29aa3603f",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "全负树也必须选择至少一个节点。",
+        "review": "全局最大路径和初始化为负无穷"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "ans": "-∞"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "全局最大路径和初始化为负无穷",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "全负树也必须选择至少一个节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "ans": "-∞"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 8",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "ans": "-∞"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "答案可在当前节点拐弯，向父节点只能返回单边。",
+        "review": "ans=max(9); up=9"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n9",
+              "left": 0,
+              "right": 0,
+              "through": 9,
+              "ans": 9,
+              "up": 9
+            },
+            "pointers": {},
+            "active": [
+              "n9"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(9); up=9",
+            "action": "节点 9: 左贡献 0、右贡献 0、经过和 9",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "答案可在当前节点拐弯，向父节点只能返回单边。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n9",
+              "left": 0,
+              "right": 0,
+              "through": 9,
+              "ans": 9,
+              "up": 9
+            },
+            "pointers": {},
+            "active": [
+              "n9"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(9); up=9",
+            "action": "不变量检查 7",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "答案可在当前节点拐弯，向父节点只能返回单边。",
+        "review": "ans=max(15); up=15"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n15",
+              "left": 0,
+              "right": 0,
+              "through": 15,
+              "ans": 15,
+              "up": 15
+            },
+            "pointers": {},
+            "active": [
+              "n15"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(15); up=15",
+            "action": "节点 15: 左贡献 0、右贡献 0、经过和 15",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "答案可在当前节点拐弯，向父节点只能返回单边。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n15",
+              "left": 0,
+              "right": 0,
+              "through": 15,
+              "ans": 15,
+              "up": 15
+            },
+            "pointers": {},
+            "active": [
+              "n15"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(15); up=15",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n15",
+              "left": 0,
+              "right": 0,
+              "through": 15,
+              "ans": 15,
+              "up": 15
+            },
+            "pointers": {},
+            "active": [
+              "n15"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(15); up=15",
+            "action": "不变量检查 6",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "答案可在当前节点拐弯，向父节点只能返回单边。",
+        "review": "ans=max(7); up=7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n7",
+              "left": 0,
+              "right": 0,
+              "through": 7,
+              "ans": 15,
+              "up": 7
+            },
+            "pointers": {},
+            "active": [
+              "n7"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(7); up=7",
+            "action": "节点 7: 左贡献 0、右贡献 0、经过和 7",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "答案可在当前节点拐弯，向父节点只能返回单边。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "答案可在当前节点拐弯，向父节点只能返回单边。",
+        "review": "ans=max(42); up=35"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n20",
+              "left": 15,
+              "right": 7,
+              "through": 42,
+              "ans": 42,
+              "up": 35
+            },
+            "pointers": {},
+            "active": [
+              "n20"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(42); up=35",
+            "action": "节点 20: 左贡献 15、右贡献 7、经过和 42",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "答案可在当前节点拐弯，向父节点只能返回单边。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n20",
+              "left": 15,
+              "right": 7,
+              "through": 42,
+              "ans": 42,
+              "up": 35
+            },
+            "pointers": {},
+            "active": [
+              "n20"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(42); up=35",
+            "action": "不变量检查 5",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n20",
+              "left": 15,
+              "right": 7,
+              "through": 42,
+              "ans": 42,
+              "up": 35
+            },
+            "pointers": {},
+            "active": [
+              "n20"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(42); up=35",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "答案可在当前节点拐弯，向父节点只能返回单边。",
+        "review": "ans=max(34); up=25"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "nm10",
+              "left": 9,
+              "right": 35,
+              "through": 34,
+              "ans": 42,
+              "up": 25
+            },
+            "pointers": {},
+            "active": [
+              "nm10"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(34); up=25",
+            "action": "节点 -10: 左贡献 9、右贡献 35、经过和 34",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "答案可在当前节点拐弯，向父节点只能返回单边。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "nm10",
+              "left": 9,
+              "right": 35,
+              "through": 34,
+              "ans": 42,
+              "up": 25
+            },
+            "pointers": {},
+            "active": [
+              "nm10"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(34); up=25",
+            "action": "不变量检查 9",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22",
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "nm10",
+              "left": 9,
+              "right": 35,
+              "through": 34,
+              "ans": 42,
+              "up": 25
+            },
+            "pointers": {},
+            "active": [
+              "nm10"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "ans=max(34); up=25",
+            "action": "不变量检查 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "负贡献被截为 0，最优路径经过节点 20。",
+        "review": "15+20+7=42"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "ans": 42
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "n15",
+              "n20",
+              "n7"
+            ],
+            "formula": "15+20+7=42",
+            "action": "返回最大路径和 42",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "nm10",
+                "value": -10,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "nm10",
+                "to": "n9"
+              },
+              {
+                "from": "nm10",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "output": 42
+          },
+          "caption": "负贡献被截为 0，最优路径经过节点 20。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    int ans;\n\n    int maxPathSum(TreeNode* root) {\n        ans = INT_MIN;                                           // 初始化为最小可能值\n        dfs(root);\n        return ans;\n    }\n\n    int dfs(TreeNode* u) {                                       // 深度优先搜索\n        if (!u) return 0;\n        int left = max(0, dfs(u->left)), right = max(0, dfs(u->right));  // 子树贡献为负则舍弃(取0)\n        ans = max(ans, u->val + left + right);  // 经过当前节点的最大路径和（拐弯）\n        return u->val + max(left, right);  // 向上返回单边最大贡献（不拐弯）\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2830,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2831,
+        "text": " * Definition for a binary tree node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2832,
+        "text": " * struct TreeNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2833,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2834,
+        "text": " *     TreeNode *left;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2835,
+        "text": " *     TreeNode *right;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2836,
+        "text": " *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2837,
+        "text": " * };"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2838,
+        "text": " */"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2839,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2840,
+        "text": "public:"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2841,
+        "text": "    int ans;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2842,
+        "text": ""
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2843,
+        "text": "    int maxPathSum(TreeNode* root) {"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2844,
+        "text": "        ans = INT_MIN;                                           // 初始化为最小可能值"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2845,
+        "text": "        dfs(root);"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2846,
+        "text": "        return ans;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2847,
+        "text": "    }"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2848,
+        "text": ""
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2849,
+        "text": "    int dfs(TreeNode* u) {                                       // 深度优先搜索"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2850,
+        "text": "        if (!u) return 0;"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2851,
+        "text": "        int left = max(0, dfs(u->left)), right = max(0, dfs(u->right));  // 子树贡献为负则舍弃(取0)"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 2852,
+        "text": "        ans = max(ans, u->val + left + right);  // 经过当前节点的最大路径和（拐弯）"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 2853,
+        "text": "        return u->val + max(left, right);  // 向上返回单边最大贡献（不拐弯）"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 2854,
+        "text": "    }"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 2855,
+        "text": "};"
+      }
+    ]
+  }
+}

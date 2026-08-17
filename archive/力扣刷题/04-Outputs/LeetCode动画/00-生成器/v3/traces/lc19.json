@@ -1,0 +1,1220 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "计数后定位删除前驱",
+    "sceneKind": "linked-list",
+    "input": {
+      "list": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "n": 2
+    },
+    "expected": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "exampleText": "[1,2,3,4,5], n = 2",
+    "expectedText": "[1,2,3,5]",
+    "invariant": "p 最终停在待删除节点的直接前驱",
+    "aha": "引入 dummy 后删除任何位置都归结为改前驱 next",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 19,
+    "title": "删除链表的倒数第 N 个节点",
+    "day": "Day 4：链表基础",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "43d40dbf8f7bb945af6cb4ddfcdaa88b80db86fa2b9455620e65044cb64211ea",
+    "semanticTokenHash": "59268999a62c56d5e60323d13dfd68260dec935734676e4e3a30e3dd56f250a2",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "哨兵让删除头节点也使用统一前驱逻辑。",
+        "review": "哨兵接到原头节点"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "dummy": "d",
+              "head": "n0",
+              "k": 2
+            },
+            "pointers": {
+              "dummy": "d",
+              "head": "n0",
+              "k": 2
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "哨兵接到原头节点",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "哨兵让删除头节点也使用统一前驱逻辑。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "代码统计包含 dummy 的节点数。",
+        "review": "n=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "d",
+              "n": 1,
+              "k": 2
+            },
+            "pointers": {
+              "p": "d",
+              "n": 1,
+              "k": 2
+            },
+            "active": [
+              "d"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "n=1",
+            "action": "计数访问 d",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "代码统计包含 dummy 的节点数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "代码统计包含 dummy 的节点数。",
+        "review": "n=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "n": 2,
+              "k": 2
+            },
+            "pointers": {
+              "p": "n0",
+              "n": 2,
+              "k": 2
+            },
+            "active": [
+              "n0"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "n=2",
+            "action": "计数访问 n0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "代码统计包含 dummy 的节点数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "代码统计包含 dummy 的节点数。",
+        "review": "n=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n1",
+              "n": 3,
+              "k": 2
+            },
+            "pointers": {
+              "p": "n1",
+              "n": 3,
+              "k": 2
+            },
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "n=3",
+            "action": "计数访问 n1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "代码统计包含 dummy 的节点数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "代码统计包含 dummy 的节点数。",
+        "review": "n=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "n": 4,
+              "k": 2
+            },
+            "pointers": {
+              "p": "n2",
+              "n": 4,
+              "k": 2
+            },
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "n=4",
+            "action": "计数访问 n2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "代码统计包含 dummy 的节点数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "代码统计包含 dummy 的节点数。",
+        "review": "n=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n3",
+              "n": 5,
+              "k": 2
+            },
+            "pointers": {
+              "p": "n3",
+              "n": 5,
+              "k": 2
+            },
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "n=5",
+            "action": "计数访问 n3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "代码统计包含 dummy 的节点数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "代码统计包含 dummy 的节点数。",
+        "review": "n=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n4",
+              "n": 6,
+              "k": 2
+            },
+            "pointers": {
+              "p": "n4",
+              "n": 6,
+              "k": 2
+            },
+            "active": [
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "n=6",
+            "action": "计数访问 n4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "代码统计包含 dummy 的节点数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n4",
+              "n": 6,
+              "k": 2
+            },
+            "pointers": {
+              "p": "n4",
+              "n": 6,
+              "k": 2
+            },
+            "active": [
+              "n4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "n=6",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "前驱位置由包含 dummy 的总长度计算。",
+        "review": "p 移到待删节点前驱 n2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "k": 2
+            },
+            "pointers": {
+              "p": "n2",
+              "k": 2
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "p 移到待删节点前驱 n2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "前驱位置由包含 dummy 的总长度计算。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只改一条 next 边完成删除。",
+        "review": "n2.next bypass n3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "removed": "n3"
+            },
+            "pointers": {
+              "p": "n2",
+              "removed": "n3"
+            },
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [
+              "n0",
+              "n1",
+              "n2",
+              "n4"
+            ],
+            "formula": "n2.next bypass n3",
+            "action": "跳过节点 n3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "只改一条 next 边完成删除。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "removed": "n3"
+            },
+            "pointers": {
+              "p": "n2",
+              "removed": "n3"
+            },
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [
+              "n0",
+              "n1",
+              "n2",
+              "n4"
+            ],
+            "formula": "n2.next bypass n3",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "倒数第 2 个值 4 已移除。",
+        "review": "[1, 2, 3, 5]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L22"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "head": "n0"
+            },
+            "pointers": {
+              "head": "n0"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "n0",
+              "n1",
+              "n2",
+              "n4"
+            ],
+            "formula": "[1, 2, 3, 5]",
+            "action": "返回 [1,2,3,5]",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ],
+            "output": [
+              1,
+              2,
+              3,
+              5
+            ]
+          },
+          "caption": "倒数第 2 个值 4 已移除。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* removeNthFromEnd(ListNode* head, int k) {\n        auto dummy = new ListNode(-1);\n        dummy->next = head;                                      \n\n        int n = 0;\n        for (auto p = dummy; p; p = p->next) n ++ ;              \n\n        auto p = dummy;\n        for (int i = 0; i < n - k - 1; i ++ ) p = p->next;       // 遍历\n        p->next = p->next->next;                                 \n\n        return dummy->next;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1574,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1575,
+        "text": " * Definition for singly-linked list."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1576,
+        "text": " * struct ListNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1577,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1578,
+        "text": " *     ListNode *next;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1579,
+        "text": " *     ListNode(int x) : val(x), next(NULL) {}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1580,
+        "text": " * };"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1581,
+        "text": " */"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1582,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1583,
+        "text": "public:"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1584,
+        "text": "    ListNode* removeNthFromEnd(ListNode* head, int k) {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1585,
+        "text": "        auto dummy = new ListNode(-1);"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1586,
+        "text": "        dummy->next = head;                                      "
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1587,
+        "text": ""
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1588,
+        "text": "        int n = 0;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1589,
+        "text": "        for (auto p = dummy; p; p = p->next) n ++ ;              "
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1590,
+        "text": ""
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1591,
+        "text": "        auto p = dummy;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1592,
+        "text": "        for (int i = 0; i < n - k - 1; i ++ ) p = p->next;       // 遍历"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1593,
+        "text": "        p->next = p->next->next;                                 "
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1594,
+        "text": ""
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1595,
+        "text": "        return dummy->next;"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 1596,
+        "text": "    }"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 1597,
+        "text": "};"
+      }
+    ]
+  }
+}

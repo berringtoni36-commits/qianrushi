@@ -1,0 +1,622 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "斐波那契滚动递推",
+    "sceneKind": "dp-table",
+    "input": 5,
+    "expected": 8,
+    "exampleText": "n = 5",
+    "expectedText": "方法数 = 8",
+    "invariant": "a,b 始终是相邻两阶的方法数",
+    "aha": "最后一步来自 1 阶或 2 阶",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 70,
+    "title": "爬楼梯",
+    "day": "Day 12：动态规划 + 贪心",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "a028463c8c56544a00bbeb94d930450f94bea8005b36bd38b8aacadce5f4f4cb",
+    "semanticTokenHash": "49a662dac6af1cca9443f46d607b5bf5da0e21f80706b16596998ea34bb50326",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "0 阶与 1 阶各有一种走法。",
+        "review": "f[0]=f[1]=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              null,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "n": 5,
+              "a": 1,
+              "b": 1
+            },
+            "pointers": {},
+            "active": [
+              0,
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "f[0]=f[1]=1",
+            "action": "初始化 f[0]=f[1]=1",
+            "status": "running"
+          },
+          "caption": "0 阶与 1 阶各有一种走法。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最后一步只能来自前一阶或前两阶。",
+        "review": "1+1=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "n": 4,
+              "a": 1,
+              "b": 1,
+              "c": 2
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [
+              1,
+              0
+            ],
+            "result": [],
+            "formula": "1+1=2",
+            "action": "计算 f[2]=2",
+            "status": "running"
+          },
+          "caption": "最后一步只能来自前一阶或前两阶。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早状态不再参与后续递推。",
+        "review": "a=1, b=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              null,
+              null,
+              null
+            ],
+            "variables": {
+              "n": 4,
+              "a": 1,
+              "b": 2
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "a=1, b=2",
+            "action": "滚动保存最近两个状态",
+            "status": "running"
+          },
+          "caption": "更早状态不再参与后续递推。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最后一步只能来自前一阶或前两阶。",
+        "review": "1+2=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              null,
+              null
+            ],
+            "variables": {
+              "n": 3,
+              "a": 1,
+              "b": 2,
+              "c": 3
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [
+              2,
+              1
+            ],
+            "result": [],
+            "formula": "1+2=3",
+            "action": "计算 f[3]=3",
+            "status": "running"
+          },
+          "caption": "最后一步只能来自前一阶或前两阶。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早状态不再参与后续递推。",
+        "review": "a=2, b=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              null,
+              null
+            ],
+            "variables": {
+              "n": 3,
+              "a": 2,
+              "b": 3
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "a=2, b=3",
+            "action": "滚动保存最近两个状态",
+            "status": "running"
+          },
+          "caption": "更早状态不再参与后续递推。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最后一步只能来自前一阶或前两阶。",
+        "review": "2+3=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              5,
+              null
+            ],
+            "variables": {
+              "n": 2,
+              "a": 2,
+              "b": 3,
+              "c": 5
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [
+              3,
+              2
+            ],
+            "result": [],
+            "formula": "2+3=5",
+            "action": "计算 f[4]=5",
+            "status": "running"
+          },
+          "caption": "最后一步只能来自前一阶或前两阶。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早状态不再参与后续递推。",
+        "review": "a=3, b=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              5,
+              null
+            ],
+            "variables": {
+              "n": 2,
+              "a": 3,
+              "b": 5
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "a=3, b=5",
+            "action": "滚动保存最近两个状态",
+            "status": "running"
+          },
+          "caption": "更早状态不再参与后续递推。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              5,
+              null
+            ],
+            "variables": {
+              "n": 2,
+              "a": 3,
+              "b": 5
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "a=3, b=5",
+            "action": "不变量检查 2",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最后一步只能来自前一阶或前两阶。",
+        "review": "3+5=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              5,
+              8
+            ],
+            "variables": {
+              "n": 1,
+              "a": 3,
+              "b": 5,
+              "c": 8
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [
+              4,
+              3
+            ],
+            "result": [],
+            "formula": "3+5=8",
+            "action": "计算 f[5]=8",
+            "status": "running"
+          },
+          "caption": "最后一步只能来自前一阶或前两阶。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早状态不再参与后续递推。",
+        "review": "a=5, b=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              5,
+              8
+            ],
+            "variables": {
+              "n": 1,
+              "a": 5,
+              "b": 8
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "a=5, b=8",
+            "action": "滚动保存最近两个状态",
+            "status": "running"
+          },
+          "caption": "更早状态不再参与后续递推。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              5,
+              8
+            ],
+            "variables": {
+              "n": 1,
+              "a": 5,
+              "b": 8
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "a=5, b=8",
+            "action": "不变量检查 1",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "f[5]=8。",
+        "review": "return 8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              1,
+              1,
+              2,
+              3,
+              5,
+              8
+            ],
+            "variables": {
+              "a": 5,
+              "b": 8
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              5
+            ],
+            "formula": "return 8",
+            "action": "返回 5 阶楼梯方法数 8",
+            "status": "return",
+            "output": 8
+          },
+          "caption": "f[5]=8。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int climbStairs(int n) {\n        int a = 1, b = 1;\n        while ( -- n) {\n            int c = a + b;\n            a = b, b = c;\n        }\n        return b;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4622,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4623,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4624,
+        "text": "    int climbStairs(int n) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4625,
+        "text": "        int a = 1, b = 1;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4626,
+        "text": "        while ( -- n) {"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4627,
+        "text": "            int c = a + b;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4628,
+        "text": "            a = b, b = c;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4629,
+        "text": "        }"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4630,
+        "text": "        return b;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4631,
+        "text": "    }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 4632,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -14,6 +14,10 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+*.bak-*
+*.backup-*
+.backup-*/
+.aiw-backups/
 
 # Claude / OpenCode session & execution data
 .claudian/sessions/
@@ -37,3 +41,8 @@ __pycache__/
 # IDE / project files
 **/*.user
 **/*.pro.user*
+
+# Local JavaScript/Remotion dependencies and generated output
+**/node_modules/
+**/.remotion/
+projects/嵌入式八股/remotion-static-q1-demo/out/

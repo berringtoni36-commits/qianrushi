@@ -1,0 +1,14 @@
+{
+  "skill": "linux-file-persistence-crash-consistency",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"write 返回成功后进程被 kill -9，数据一定已经落盘了吗？","expected_behavior":"区分用户缓冲、Page Cache、回写和进程崩溃故障模型","notes":"进程崩溃"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"配置文件更新怎样用临时文件、fsync、rename 和版本校验避免掉电后半文件？","expected_behavior":"设计数据/元数据顺序、原子替换和恢复合同","notes":"崩溃一致性"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"fflush、fsync、fdatasync 和 sync 的承诺分别是什么？","expected_behavior":"分层解释库缓冲、文件脏数据/元数据和系统范围回写","notes":"持久化 API"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"malloc 首次触摸缺页后 kswapd/direct reclaim 为什么抖动？","expected_behavior":"优先使用 linux-virtual-memory-reclaim-path","notes":"兄弟 Skill 混淆"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"STM32 IAP 写 Flash 后 CRC 通过但 APP 不启动，怎么查？","expected_behavior":"优先使用 rtos-iap-firmware-upgrade","notes":"RTOS Flash 边界"},
+    {"id":"edge-01","type":"edge_case","prompt":"只问 close 是否释放文件描述符，不涉及数据持久化。","expected_behavior":"做普通 fd 生命周期解释，不激活本 Skill","notes":"fd 边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

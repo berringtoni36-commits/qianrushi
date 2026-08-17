@@ -1,0 +1,666 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "二分查找 lower_bound",
+    "sceneKind": "binary-search",
+    "input": {
+      "nums": [
+        1,
+        3,
+        5,
+        6
+      ],
+      "target": 2
+    },
+    "expected": 1,
+    "exampleText": "[1,3,5,6], target=2",
+    "expectedText": "插入下标 = 1",
+    "invariant": "[0,l) 全小于 target，答案不在 [r,n) 左侧",
+    "aha": "寻找第一个 >= target 的位置",
+    "time": "O(log n)",
+    "space": "O(1)",
+    "problemId": 35,
+    "title": "搜索插入位置",
+    "day": "Day 11：二分查找",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "c58422f9cfef1fc6bbcc5f9c99dde0baa561aa265905e24b69abc52c0da5d7ad",
+    "semanticTokenHash": "5021211baa3232393681c3aa32a4e6ab1920ea5643dad718545f3834036d8b7f",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "答案始终位于 [l,r] 的边界候选中。",
+        "review": "搜索左闭右开区间 [0,4)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 0,
+              "r": 4,
+              "target": 2
+            },
+            "pointers": {
+              "l": 0,
+              "r": 4
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "搜索左闭右开区间 [0,4)",
+            "status": "running"
+          },
+          "caption": "答案始终位于 [l,r] 的边界候选中。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 0,
+              "r": 4,
+              "target": 2
+            },
+            "pointers": {
+              "l": 0,
+              "r": 4
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 4",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "比较 nums[2]=5 与 2",
+        "review": "5 >= 2 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 0,
+              "r": 4,
+              "mid": 2,
+              "target": 2
+            },
+            "pointers": {
+              "l": 0,
+              "r": 4,
+              "mid": 2
+            },
+            "active": [
+              2
+            ],
+            "compared": [
+              0,
+              4
+            ],
+            "result": [],
+            "formula": "5 >= 2 → True",
+            "action": "比较 nums[2]=5 与 2",
+            "status": "running"
+          },
+          "caption": "比较 nums[2]=5 与 2",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "收缩为 [0,2)",
+        "review": "next=[0,2)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 0,
+              "r": 2,
+              "mid": null,
+              "target": 2
+            },
+            "pointers": {
+              "l": 0,
+              "r": 2
+            },
+            "active": [],
+            "compared": [
+              0,
+              2
+            ],
+            "result": [],
+            "formula": "next=[0,2)",
+            "action": "收缩为 [0,2)",
+            "status": "running"
+          },
+          "caption": "收缩为 [0,2)",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 0,
+              "r": 2,
+              "mid": null,
+              "target": 2
+            },
+            "pointers": {
+              "l": 0,
+              "r": 2
+            },
+            "active": [],
+            "compared": [
+              0,
+              2
+            ],
+            "result": [],
+            "formula": "next=[0,2)",
+            "action": "不变量检查 3",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "比较 nums[1]=3 与 2",
+        "review": "3 >= 2 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 0,
+              "r": 2,
+              "mid": 1,
+              "target": 2
+            },
+            "pointers": {
+              "l": 0,
+              "r": 2,
+              "mid": 1
+            },
+            "active": [
+              1
+            ],
+            "compared": [
+              0,
+              2
+            ],
+            "result": [],
+            "formula": "3 >= 2 → True",
+            "action": "比较 nums[1]=3 与 2",
+            "status": "running"
+          },
+          "caption": "比较 nums[1]=3 与 2",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "收缩为 [0,1)",
+        "review": "next=[0,1)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 0,
+              "r": 1,
+              "mid": null,
+              "target": 2
+            },
+            "pointers": {
+              "l": 0,
+              "r": 1
+            },
+            "active": [],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "next=[0,1)",
+            "action": "收缩为 [0,1)",
+            "status": "running"
+          },
+          "caption": "收缩为 [0,1)",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 0,
+              "r": 1,
+              "mid": null,
+              "target": 2
+            },
+            "pointers": {
+              "l": 0,
+              "r": 1
+            },
+            "active": [],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "next=[0,1)",
+            "action": "不变量检查 2",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "比较 nums[0]=1 与 2",
+        "review": "1 >= 2 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 0,
+              "r": 1,
+              "mid": 0,
+              "target": 2
+            },
+            "pointers": {
+              "l": 0,
+              "r": 1,
+              "mid": 0
+            },
+            "active": [
+              0
+            ],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "1 >= 2 → False",
+            "action": "比较 nums[0]=1 与 2",
+            "status": "running"
+          },
+          "caption": "比较 nums[0]=1 与 2",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "收缩为 [1,1)",
+        "review": "next=[1,1)"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 1,
+              "r": 1,
+              "mid": null,
+              "target": 2
+            },
+            "pointers": {
+              "l": 1,
+              "r": 1
+            },
+            "active": [],
+            "compared": [
+              1,
+              1
+            ],
+            "result": [],
+            "formula": "next=[1,1)",
+            "action": "收缩为 [1,1)",
+            "status": "running"
+          },
+          "caption": "收缩为 [1,1)",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 1,
+              "r": 1,
+              "mid": null,
+              "target": 2
+            },
+            "pointers": {
+              "l": 1,
+              "r": 1
+            },
+            "active": [],
+            "compared": [
+              1,
+              1
+            ],
+            "result": [],
+            "formula": "next=[1,1)",
+            "action": "不变量检查 1",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "下标 1 是第一个不小于 2 的位置。",
+        "review": "return 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "variables": {
+              "l": 1,
+              "r": 1
+            },
+            "pointers": {
+              "l": 1
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "return 1",
+            "action": "返回插入下标 1",
+            "status": "return",
+            "output": 1
+          },
+          "caption": "下标 1 是第一个不小于 2 的位置。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int searchInsert(vector<int>& nums, int target) {\n        int l = 0, r = nums.size();\n\n        while (l < r) {\n            int mid = l + r >> 1;\n            if (nums[mid] >= target) r = mid;\n            else l = mid + 1;\n        }\n\n        return l;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4086,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4087,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4088,
+        "text": "    int searchInsert(vector<int>& nums, int target) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4089,
+        "text": "        int l = 0, r = nums.size();"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4090,
+        "text": ""
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4091,
+        "text": "        while (l < r) {"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4092,
+        "text": "            int mid = l + r >> 1;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4093,
+        "text": "            if (nums[mid] >= target) r = mid;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4094,
+        "text": "            else l = mid + 1;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4095,
+        "text": "        }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 4096,
+        "text": ""
+      },
+      {
+        "id": "L12",
+        "sourceLine": 4097,
+        "text": "        return l;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 4098,
+        "text": "    }"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 4099,
+        "text": "};"
+      }
+    ]
+  }
+}

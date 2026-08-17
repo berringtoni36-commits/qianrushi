@@ -1,0 +1,136 @@
+filters:
+  and:
+    - file.ext == "md"
+    - file.inFolder("小红书（RedNote）/。。。。。。。")
+    - sourcePlugin == "multi-source-sync"
+    - accountId == "5bf3e0d514325800019f2ad7"
+    - (type == "收藏" || type == "bookmark" || type == "点赞" || type == "like" || type == "我的发布" || type == "post")
+formulas:
+  cover: file.embeds[0]
+properties:
+  file.name:
+    displayName: 名称
+  tags:
+    displayName: 标签
+  author:
+    displayName: 作者
+  url:
+    displayName: 原文链接
+  type:
+    displayName: 类型
+  postCreatedAt:
+    displayName: 发布时间
+  syncedAt:
+    displayName: 同步时间
+  albums:
+    displayName: 所属专辑
+  albumIds:
+    displayName: 专辑 ID
+  accountName:
+    displayName: 账号
+  accountId:
+    displayName: 账号 ID
+  file.path:
+    displayName: 本地路径
+  formula.cover:
+    displayName: 封面
+views:
+  - type: table
+    name: 全部内容
+    groupBy:
+      property: file.folder
+      direction: ASC
+    order:
+      - file.name
+      - tags
+      - author
+      - url
+      - type
+      - postCreatedAt
+      - syncedAt
+      - albums
+      - accountName
+      - file.ctime
+    sort:
+      - property: file.ctime
+        direction: ASC
+  - type: table
+    name: 收藏
+    filters:
+      and:
+        - (type == "收藏" || type == "bookmark")
+    order:
+      - file.name
+      - tags
+      - author
+      - url
+      - type
+      - postCreatedAt
+      - syncedAt
+      - albums
+      - accountName
+  - type: table
+    name: 点赞
+    filters:
+      and:
+        - (type == "点赞" || type == "like")
+    order:
+      - file.name
+      - tags
+      - author
+      - url
+      - type
+      - postCreatedAt
+      - syncedAt
+      - albums
+      - accountName
+  - type: table
+    name: 我的发布
+    filters:
+      and:
+        - (type == "我的发布" || type == "post")
+    order:
+      - file.name
+      - tags
+      - author
+      - url
+      - type
+      - postCreatedAt
+      - syncedAt
+      - albums
+      - accountName
+  - type: table
+    name: 按专辑查看
+    groupBy:
+      property: albums
+      direction: ASC
+    order:
+      - file.name
+      - albums
+      - tags
+      - author
+      - url
+      - type
+      - postCreatedAt
+      - syncedAt
+  - type: table
+    name: 最近同步
+    order:
+      - file.name
+      - syncedAt
+      - type
+      - tags
+      - author
+      - url
+    limit: 100
+  - type: cards
+    name: 全部卡片
+    order:
+      - file.name
+      - author
+      - type
+      - category
+    cardSize: 220
+    image: formula.cover
+    imageFit: contain
+    imageAspectRatio: 0.75

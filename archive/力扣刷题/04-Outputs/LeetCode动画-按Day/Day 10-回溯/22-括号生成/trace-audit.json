@@ -1,0 +1,815 @@
+{
+  "problemId": 22,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 22,
+    "stepCount": 12,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [],
+      "variables": {},
+      "structure": {
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())",
+          "()()()"
+        ]
+      },
+      "result": [
+        "((()))",
+        "(()())",
+        "(())()",
+        "()(())",
+        "()()()"
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "39af27ac0c08cfe0944fdc1d47622d41e6d21b39a7dc2a8b432264631430c5e0",
+    "sourceSemanticTokenHash": "8878371c758f1bf75d3bee88dba629ea80eaec788e0276ba48b7ada55ac51da1",
+    "sourceCodeLineCount": 18
+  },
+  "sourceCodeSha256": "39af27ac0c08cfe0944fdc1d47622d41e6d21b39a7dc2a8b432264631430c5e0",
+  "sourceSemanticTokenHash": "8878371c758f1bf75d3bee88dba629ea80eaec788e0276ba48b7ada55ac51da1",
+  "steps": [
+    {
+      "id": "22-trace-001",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "setup",
+      "title": "从空字符串开始生成括号",
+      "body": "open、close 计数保证任意前缀中左括号不少于右括号。 题解原意：核心思想： 维护已使用的左括号数 left 和右括号数 right。每一步有两种选择——放左括号或放右括号，但受以下约束： 只有在 left < n 时才能放左括号。 只有在 right < left 时才能放右括号（右括号不能多于左括号）。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · backtrack",
+        "badge": "path",
+        "tokens": [],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "open、close 计数保证任意前缀中左括号不少于右括号。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "structure": {
+          "path": "",
+          "result": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "22-trace-002",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "记录 ((()))",
+      "body": "open=close=n，当前路径是一个完整合法括号串。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 1 项",
+        "tokens": [
+          "(",
+          "(",
+          "(",
+          ")",
+          ")",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 3,
+          "close": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "((()))"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "((()))"
+            ]
+          }
+        ],
+        "result": [
+          "((()))"
+        ],
+        "note": "open=close=n，当前路径是一个完整合法括号串。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 3,
+          "close": 3
+        },
+        "structure": {
+          "path": "((()))",
+          "result": [
+            "((()))"
+          ]
+        },
+        "result": [
+          "((()))"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "22-trace-003",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "回溯到上一个括号前缀",
+      "body": "撤销最后一步，继续尝试另一种合法分支。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 1 项",
+        "tokens": [],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "rows": [
+          {
+            "label": "result count",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          "((()))"
+        ],
+        "note": "撤销最后一步，继续尝试另一种合法分支。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "structure": {
+          "path": "",
+          "result": [
+            "((()))"
+          ]
+        },
+        "result": [
+          "((()))"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "22-trace-004",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "记录 (()())",
+      "body": "open=close=n，当前路径是一个完整合法括号串。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [
+          "(",
+          "(",
+          ")",
+          "(",
+          ")",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 3,
+          "close": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "(()())"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "((()))",
+              "(()())"
+            ]
+          }
+        ],
+        "result": [
+          "((()))",
+          "(()())"
+        ],
+        "note": "open=close=n，当前路径是一个完整合法括号串。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 3,
+          "close": 3
+        },
+        "structure": {
+          "path": "(()())",
+          "result": [
+            "((()))",
+            "(()())"
+          ]
+        },
+        "result": [
+          "((()))",
+          "(()())"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "22-trace-005",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "回溯到上一个括号前缀",
+      "body": "撤销最后一步，继续尝试另一种合法分支。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 2 项",
+        "tokens": [],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "rows": [
+          {
+            "label": "result count",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          "((()))",
+          "(()())"
+        ],
+        "note": "撤销最后一步，继续尝试另一种合法分支。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "structure": {
+          "path": "",
+          "result": [
+            "((()))",
+            "(()())"
+          ]
+        },
+        "result": [
+          "((()))",
+          "(()())"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "22-trace-006",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "记录 (())()",
+      "body": "open=close=n，当前路径是一个完整合法括号串。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 3 项",
+        "tokens": [
+          "(",
+          "(",
+          ")",
+          ")",
+          "(",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 3,
+          "close": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "(())()"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "((()))",
+              "(()())",
+              "(())()"
+            ]
+          }
+        ],
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()"
+        ],
+        "note": "open=close=n，当前路径是一个完整合法括号串。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 3,
+          "close": 3
+        },
+        "structure": {
+          "path": "(())()",
+          "result": [
+            "((()))",
+            "(()())",
+            "(())()"
+          ]
+        },
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "22-trace-007",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "回溯到上一个括号前缀",
+      "body": "撤销最后一步，继续尝试另一种合法分支。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 3 项",
+        "tokens": [],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "rows": [
+          {
+            "label": "result count",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()"
+        ],
+        "note": "撤销最后一步，继续尝试另一种合法分支。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "structure": {
+          "path": "",
+          "result": [
+            "((()))",
+            "(()())",
+            "(())()"
+          ]
+        },
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "22-trace-008",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "记录 ()(())",
+      "body": "open=close=n，当前路径是一个完整合法括号串。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 4 项",
+        "tokens": [
+          "(",
+          ")",
+          "(",
+          "(",
+          ")",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 3,
+          "close": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "()(())"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "((()))",
+              "(()())",
+              "(())()",
+              "()(())"
+            ]
+          }
+        ],
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())"
+        ],
+        "note": "open=close=n，当前路径是一个完整合法括号串。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 3,
+          "close": 3
+        },
+        "structure": {
+          "path": "()(())",
+          "result": [
+            "((()))",
+            "(()())",
+            "(())()",
+            "()(())"
+          ]
+        },
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "22-trace-009",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "回溯到上一个括号前缀",
+      "body": "撤销最后一步，继续尝试另一种合法分支。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 4 项",
+        "tokens": [],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "rows": [
+          {
+            "label": "result count",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())"
+        ],
+        "note": "撤销最后一步，继续尝试另一种合法分支。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "structure": {
+          "path": "",
+          "result": [
+            "((()))",
+            "(()())",
+            "(())()",
+            "()(())"
+          ]
+        },
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "22-trace-010",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "记录 ()()()",
+      "body": "open=close=n，当前路径是一个完整合法括号串。",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 5 项",
+        "tokens": [
+          "(",
+          ")",
+          "(",
+          ")",
+          "(",
+          ")"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 3,
+          "close": 3
+        },
+        "rows": [
+          {
+            "label": "path",
+            "values": [
+              "()()()"
+            ]
+          },
+          {
+            "label": "result",
+            "values": [
+              "((()))",
+              "(()())",
+              "(())()",
+              "()(())",
+              "()()()"
+            ]
+          }
+        ],
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())",
+          "()()()"
+        ],
+        "note": "open=close=n，当前路径是一个完整合法括号串。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 3,
+          "close": 3
+        },
+        "structure": {
+          "path": "()()()",
+          "result": [
+            "((()))",
+            "(()())",
+            "(())()",
+            "()(())",
+            "()()()"
+          ]
+        },
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())",
+          "()()()"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "22-trace-011",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "回溯到上一个括号前缀",
+      "body": "撤销最后一步，继续尝试另一种合法分支。 易错提醒：1. 右括号的约束条件写错：right < left（已使用角度）或 right_rem > left_rem（剩余角度）。如果写成 right <= left，就会在 right == left 时允许放右括号，产生无效的 ()) 序列。 2. 忘记字符串的不可变性：C++ 中字符串是不可变的，path + '(' 产生新字符串，无需显…",
+      "kind": "backtrack",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · backtrack",
+        "badge": "结果 5 项",
+        "tokens": [],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "rows": [
+          {
+            "label": "result count",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())",
+          "()()()"
+        ],
+        "note": "撤销最后一步，继续尝试另一种合法分支。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "open": 0,
+          "close": 0
+        },
+        "structure": {
+          "path": "",
+          "result": [
+            "((()))",
+            "(()())",
+            "(())()",
+            "()(())",
+            "()()()"
+          ]
+        },
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())",
+          "()()()"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "22-trace-012",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "生成 5 个合法括号串。",
+      "kind": "backtrack",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · backtrack",
+        "badge": "结果 5 项",
+        "tokens": [],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "((()))",
+              "(()())",
+              "(())()",
+              "()(())",
+              "()()()"
+            ]
+          }
+        ],
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())",
+          "()()()"
+        ],
+        "note": "生成 5 个合法括号串。"
+      },
+      "state": {
+        "values": [],
+        "variables": {},
+        "structure": {
+          "result": [
+            "((()))",
+            "(()())",
+            "(())()",
+            "()(())",
+            "()()()"
+          ]
+        },
+        "result": [
+          "((()))",
+          "(()())",
+          "(())()",
+          "()(())",
+          "()()()"
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

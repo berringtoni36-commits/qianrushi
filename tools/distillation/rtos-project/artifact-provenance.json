@@ -1,0 +1,451 @@
+{
+  "generated_at": "2026-08-14T12:19:14",
+  "config": {
+    "target_name": "project",
+    "device": "STM32F103C8",
+    "pack_id": "Keil.STM32F1xx_DFP.1.0.5",
+    "toolchain": "ARM-ADS",
+    "compiler": "5060061::V5.06 update 1 (build 61)::ARMCC",
+    "cpu": "IRAM(0x20000000,0x5000) IROM(0x08000000,0x10000) CPUTYPE(\"Cortex-M3\") CLOCK(12000000) ELITTLE",
+    "flash_driver": "UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_128 -FS08000000 -FL020000 -FP0($$Device:STM32F103C8$Flash\\STM32F10x_128.FLM))",
+    "output_directory": "..\\OBJ\\",
+    "output_name": "PWM",
+    "create_executable": "1",
+    "create_hex": "1",
+    "debug_information": "1",
+    "defines": "STM32F10X_MD,USE_STDPERIPH_DRIVER",
+    "include_path": "..\\SYSTEM\\delay;..\\SYSTEM\\sys;..\\SYSTEM\\usart;..\\USER;..\\CORE;..\\STM32F10x_FWLib\\inc;..\\FreeRTOS\\include;..\\FreeRTOS\\portable\\RVDS\\ARM_CM3;..\\BSP\\BEEP;..\\BSP\\DHT11;..\\BSP\\DMA;..\\BSP\\EXTI;..\\BSP\\IAP;..\\BSP\\KEY;..\\BSP\\LCD;..\\BSP\\SPI;..\\BSP\\STMFLASH;..\\BSP\\MOTOR;..\\BSP\\GPIO;..\\BSP\\PID;..\\BSP\\MQ2;..\\BSP\\WIND;..\\APP_TASK;..\\BSP\\KEY;..\\BSP\\CRC32",
+    "invalid_flash_flag": "1",
+    "target_dll": "SARMCM3.DLL",
+    "target_dialog_dll": "TARMSTM.DLL"
+  },
+  "target_files": [
+    {
+      "declared": ".\\main.c",
+      "path": "projects/RTOS项目/源码/USER/main.c",
+      "basename": "main.c",
+      "exists": true
+    },
+    {
+      "declared": ".\\stm32f10x_it.c",
+      "path": "projects/RTOS项目/源码/USER/stm32f10x_it.c",
+      "basename": "stm32f10x_it.c",
+      "exists": true
+    },
+    {
+      "declared": ".\\system_stm32f10x.c",
+      "path": "projects/RTOS项目/源码/USER/system_stm32f10x.c",
+      "basename": "system_stm32f10x.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\DHT11\\dht11.c",
+      "path": "projects/RTOS项目/源码/BSP/DHT11/dht11.c",
+      "basename": "dht11.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\BEEP\\beep.c",
+      "path": "projects/RTOS项目/源码/BSP/BEEP/beep.c",
+      "basename": "beep.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\DMA\\dma.c",
+      "path": "projects/RTOS项目/源码/BSP/DMA/dma.c",
+      "basename": "dma.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\IAP\\iap.c",
+      "path": "projects/RTOS项目/源码/BSP/IAP/iap.c",
+      "basename": "iap.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\LCD\\GUI.c",
+      "path": "projects/RTOS项目/源码/BSP/LCD/GUI.c",
+      "basename": "GUI.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\LCD\\lcd.c",
+      "path": "projects/RTOS项目/源码/BSP/LCD/lcd.c",
+      "basename": "lcd.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\SPI\\SPI.c",
+      "path": "projects/RTOS项目/源码/BSP/SPI/SPI.c",
+      "basename": "SPI.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\STMFLASH\\stmflash.c",
+      "path": "projects/RTOS项目/源码/BSP/STMFLASH/stmflash.c",
+      "basename": "stmflash.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\MOTOR\\motor.c",
+      "path": "projects/RTOS项目/源码/BSP/MOTOR/motor.c",
+      "basename": "motor.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\GPIO\\gpiox.c",
+      "path": "projects/RTOS项目/源码/BSP/GPIO/gpiox.c",
+      "basename": "gpiox.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\PID\\pid.c",
+      "path": "projects/RTOS项目/源码/BSP/PID/pid.c",
+      "basename": "pid.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\MQ2\\mq2.c",
+      "path": "projects/RTOS项目/源码/BSP/MQ2/mq2.c",
+      "basename": "mq2.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\WIND\\wind_speed.c",
+      "path": "projects/RTOS项目/源码/BSP/WIND/wind_speed.c",
+      "basename": "wind_speed.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\KEY\\key.c",
+      "path": "projects/RTOS项目/源码/BSP/KEY/key.c",
+      "basename": "key.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\BSP\\CRC32\\crc32.c",
+      "path": "projects/RTOS项目/源码/BSP/CRC32/crc32.c",
+      "basename": "crc32.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\SYSTEM\\sys\\sys.c",
+      "path": "projects/RTOS项目/源码/SYSTEM/sys/sys.c",
+      "basename": "sys.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\SYSTEM\\usart\\usart.c",
+      "path": "projects/RTOS项目/源码/SYSTEM/usart/usart.c",
+      "basename": "usart.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\SYSTEM\\delay\\delay.c",
+      "path": "projects/RTOS项目/源码/SYSTEM/delay/delay.c",
+      "basename": "delay.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\CORE\\core_cm3.c",
+      "path": "projects/RTOS项目/源码/CORE/core_cm3.c",
+      "basename": "core_cm3.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\CORE\\startup_stm32f10x_md.s",
+      "path": "projects/RTOS项目/源码/CORE/startup_stm32f10x_md.s",
+      "basename": "startup_stm32f10x_md.s",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\misc.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/misc.c",
+      "basename": "misc.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\stm32f10x_dma.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/stm32f10x_dma.c",
+      "basename": "stm32f10x_dma.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\stm32f10x_exti.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/stm32f10x_exti.c",
+      "basename": "stm32f10x_exti.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\stm32f10x_flash.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/stm32f10x_flash.c",
+      "basename": "stm32f10x_flash.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\stm32f10x_gpio.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/stm32f10x_gpio.c",
+      "basename": "stm32f10x_gpio.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\stm32f10x_rcc.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/stm32f10x_rcc.c",
+      "basename": "stm32f10x_rcc.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\stm32f10x_rtc.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/stm32f10x_rtc.c",
+      "basename": "stm32f10x_rtc.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\stm32f10x_spi.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/stm32f10x_spi.c",
+      "basename": "stm32f10x_spi.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\stm32f10x_tim.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/stm32f10x_tim.c",
+      "basename": "stm32f10x_tim.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\stm32f10x_usart.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/stm32f10x_usart.c",
+      "basename": "stm32f10x_usart.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\STM32F10x_FWLib\\src\\stm32f10x_adc.c",
+      "path": "projects/RTOS项目/源码/STM32F10x_FWLib/src/stm32f10x_adc.c",
+      "basename": "stm32f10x_adc.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\FreeRTOS\\croutine.c",
+      "path": "projects/RTOS项目/源码/FreeRTOS/croutine.c",
+      "basename": "croutine.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\FreeRTOS\\event_groups.c",
+      "path": "projects/RTOS项目/源码/FreeRTOS/event_groups.c",
+      "basename": "event_groups.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\FreeRTOS\\list.c",
+      "path": "projects/RTOS项目/源码/FreeRTOS/list.c",
+      "basename": "list.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\FreeRTOS\\queue.c",
+      "path": "projects/RTOS项目/源码/FreeRTOS/queue.c",
+      "basename": "queue.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\FreeRTOS\\tasks.c",
+      "path": "projects/RTOS项目/源码/FreeRTOS/tasks.c",
+      "basename": "tasks.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\FreeRTOS\\timers.c",
+      "path": "projects/RTOS项目/源码/FreeRTOS/timers.c",
+      "basename": "timers.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\FreeRTOS\\portable\\MemMang\\heap_4.c",
+      "path": "projects/RTOS项目/源码/FreeRTOS/portable/MemMang/heap_4.c",
+      "basename": "heap_4.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\FreeRTOS\\portable\\RVDS\\ARM_CM3\\port.c",
+      "path": "projects/RTOS项目/源码/FreeRTOS/portable/RVDS/ARM_CM3/port.c",
+      "basename": "port.c",
+      "exists": true
+    },
+    {
+      "declared": "..\\APP_TASK\\app_tasks.c",
+      "path": "projects/RTOS项目/源码/APP_TASK/app_tasks.c",
+      "basename": "app_tasks.c",
+      "exists": true
+    }
+  ],
+  "target_file_count": 43,
+  "build_log_units": [
+    "stm32f10x_it.c",
+    "stmflash.c",
+    "SPI.c",
+    "dht11.c",
+    "iap.c",
+    "beep.c",
+    "system_stm32f10x.c",
+    "lcd.c",
+    "GUI.c",
+    "dma.c",
+    "main.c",
+    "motor.c",
+    "core_cm3.c",
+    "gpiox.c",
+    "pid.c",
+    "crc32.c",
+    "mq2.c",
+    "startup_stm32f10x_md.s",
+    "wind_speed.c",
+    "usart.c",
+    "delay.c",
+    "sys.c",
+    "key.c",
+    "misc.c",
+    "stm32f10x_dma.c",
+    "stm32f10x_exti.c",
+    "stm32f10x_rtc.c",
+    "stm32f10x_flash.c",
+    "stm32f10x_gpio.c",
+    "stm32f10x_rcc.c",
+    "stm32f10x_spi.c",
+    "stm32f10x_usart.c",
+    "stm32f10x_adc.c",
+    "stm32f10x_tim.c",
+    "croutine.c",
+    "event_groups.c",
+    "list.c",
+    "heap_4.c",
+    "timers.c",
+    "queue.c",
+    "tasks.c",
+    "app_tasks.c",
+    "port.c"
+  ],
+  "build_log_unit_count": 43,
+  "target_vs_build_log": {
+    "same_basename_set": true,
+    "missing_from_build_log": [],
+    "extra_in_build_log": []
+  },
+  "build_log": {
+    "reported_project": "D:\\CommercialProject\\range_hood_project_SDK\\range_hood_project\\USER\\project.uvprojx",
+    "toolchain_path": "D:\\keil5\\ARM\\ARMCC\\Bin",
+    "package": "http://www.keil.com/pack/Keil.STM32F1xx_DFP.1.0.5.pack",
+    "program_size": "Code=35318 RO-data=6478 RW-data=312 ZI-data=13112",
+    "errors": 0,
+    "warnings": 0,
+    "contains_old_absolute_path": true
+  },
+  "artifacts": {
+    "project": {
+      "path": "projects/RTOS项目/源码/USER/project.uvprojx",
+      "exists": true,
+      "size_bytes": 22866,
+      "sha256": "7e5210050758e8a2b947566e367da31e60c1c24a2dfa5fc830961abc1eb385f4",
+      "mtime": "2026-08-01T21:52:49"
+    },
+    "build_log": {
+      "path": "projects/RTOS项目/源码/OBJ/PWM.build_log.htm",
+      "exists": true,
+      "size_bytes": 2821,
+      "sha256": "c7dcfbda5a44b6cbbbd1383b5b5fa97ac4ec1518e1c63635fe3a5e77bb3b238b",
+      "mtime": "2026-08-01T21:47:14"
+    },
+    "axf": {
+      "path": "projects/RTOS项目/源码/OBJ/PWM.axf",
+      "exists": true,
+      "size_bytes": 595188,
+      "sha256": "3b5feb966c0b9f6447595009a64b31bf9a0d174b07c1ee72a6933d49174d3fc3",
+      "mtime": "2026-08-01T21:47:10"
+    },
+    "bin": {
+      "path": "projects/RTOS项目/源码/OBJ/PWM.bin",
+      "exists": true,
+      "size_bytes": 61148,
+      "sha256": "7079da38c7515c49101666172de452d955ef88d70d2d478f1e44c8d8d7e72e08",
+      "mtime": "2026-08-01T21:47:12"
+    },
+    "hex": {
+      "path": "projects/RTOS项目/源码/OBJ/PWM.hex",
+      "exists": true,
+      "size_bytes": 117792,
+      "sha256": "bd62b844db39ea61ff4e75956e2e7534c1451bca6791f4ff7ff4cc69c8a4faa2",
+      "mtime": "2026-08-01T21:47:18"
+    },
+    "scatter": {
+      "path": "projects/RTOS项目/源码/OBJ/PWM.sct",
+      "exists": true,
+      "size_bytes": 479,
+      "sha256": "a18239d2ef21b2772b33ab01d9a312bb3513b88fd18792ce64fadd6729d1818a",
+      "mtime": "2026-08-01T21:47:27"
+    },
+    "map": {
+      "path": "projects/RTOS项目/源码/USER/PWM.map",
+      "exists": true,
+      "size_bytes": 361782,
+      "sha256": "ab1dc1e7370c3e29cc4437738c1acb1558d8b459774a09ed1327dae25d17f0d4",
+      "mtime": "2026-08-01T21:52:52"
+    },
+    "jlink_settings": {
+      "path": "projects/RTOS项目/源码/USER/JLinkSettings.ini",
+      "exists": true,
+      "size_bytes": 671,
+      "sha256": "d68cd13771e36de4cb212379eba751a2d582814548bfa3ce495237970275ce5a",
+      "mtime": "2026-08-01T21:52:29"
+    }
+  },
+  "map_facts": {
+    "entry_point": 134217965,
+    "vectors": 134217728,
+    "vectors_end": 134217964,
+    "reset_handler": 134218373,
+    "main": 134236449,
+    "rom_size": 41860,
+    "ram_size": 13424,
+    "load_region": "Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000a47c, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x0000a384])",
+    "execution_region_rom": "Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000a344, Max: 0x00010000, ABSOLUTE)",
+    "execution_region_ram": "Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800a344, Size: 0x00003470, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x00000040])"
+  },
+  "hex_facts": {
+    "valid": true,
+    "records": 2617,
+    "data_bytes": 41860,
+    "min_address": 134217728,
+    "max_exclusive_address": 134259588,
+    "errors": []
+  },
+  "jlink_settings": {
+    "VerifyDownload": "1",
+    "SkipProgOnCRCMatch": "1",
+    "EnableFlashDL": "2",
+    "Device": "UNSPECIFIED"
+  },
+  "static_assessment": {
+    "C0_target_contract": "pass",
+    "C1_historical_build_identity": "static-compatible",
+    "C2_flash_program_verify": "not-evidenced",
+    "C3_reset_boot_observation": "not-evidenced",
+    "C4_serial_runtime_business": "not-evidenced"
+  },
+  "facts": {
+    "map_hex_base_aligned": true,
+    "old_build_path_is_not_current_vault_path": true,
+    "invalid_flash_flag_is_set": true,
+    "jlink_device_unspecified": true,
+    "project_target_dll_is_stlink": false
+  },
+  "source_files": [
+    "projects/RTOS项目/源码/USER/project.uvprojx",
+    "projects/RTOS项目/源码/OBJ/PWM.build_log.htm",
+    "projects/RTOS项目/源码/USER/PWM.map",
+    "projects/RTOS项目/源码/OBJ/PWM.hex",
+    "projects/RTOS项目/源码/OBJ/PWM.axf",
+    "projects/RTOS项目/源码/OBJ/PWM.bin",
+    "projects/RTOS项目/源码/OBJ/PWM.sct",
+    "projects/RTOS项目/源码/USER/JLinkSettings.ini"
+  ]
+}

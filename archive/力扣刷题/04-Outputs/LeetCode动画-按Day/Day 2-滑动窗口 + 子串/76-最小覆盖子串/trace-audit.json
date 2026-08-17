@@ -1,0 +1,3440 @@
+{
+  "problemId": 76,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 76,
+    "stepCount": 32,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "A",
+        "D",
+        "O",
+        "B",
+        "E",
+        "C",
+        "O",
+        "D",
+        "E",
+        "B",
+        "A",
+        "N",
+        "C"
+      ],
+      "variables": {
+        "j": 9,
+        "i": 13,
+        "cnt": 3
+      },
+      "structure": {
+        "need": {
+          "A": 1,
+          "C": 1,
+          "B": 1
+        },
+        "have": {
+          "A": 1,
+          "D": 0,
+          "O": 0,
+          "B": 1,
+          "E": 0,
+          "C": 1,
+          "N": 1
+        }
+      },
+      "result": [
+        "BANC"
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "ef98bbd9d886121e69b6ddfaf71a11363e108a6c794921c53e6d5ab8879def62",
+    "sourceSemanticTokenHash": "674e3d1bc7ae5f3b5f5312e28474d2fef7d35792a6ac399bc505b221cdb00164",
+    "sourceCodeLineCount": 22
+  },
+  "sourceCodeSha256": "ef98bbd9d886121e69b6ddfaf71a11363e108a6c794921c53e6d5ab8879def62",
+  "sourceSemanticTokenHash": "674e3d1bc7ae5f3b5f5312e28474d2fef7d35792a6ac399bc505b221cdb00164",
+  "steps": [
+    {
+      "id": "76-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立覆盖需求",
+      "body": "t = ABC，窗口必须包含 A、B、C 各至少一次。 题解原意：核心想法： 本题是滑动窗口的集大成者，需要处理\"不定长\"、\"多条件计数\"、\"最优解搜索\"三个难点。 关键数据结构： need：字典，记录 t 中每个字符的需求数量。 window：字典，记录窗口内每个字符的出现数量。 valid：整数，记录\"已满足需求的字符种类数\"。当 valid == len(need) 时，说明窗口已覆盖 t。 三问法分析： 1. 什么时候扩大窗口？ 还没覆盖 → 右移 right，扩大窗口…",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · window",
+        "badge": "i=None · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": null,
+          "cnt": 0
+        },
+        "rows": [
+          {
+            "label": "need",
+            "values": [
+              "A:1",
+              "C:1",
+              "B:1"
+            ]
+          },
+          {
+            "label": "window",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "t = ABC，窗口必须包含 A、B、C 各至少一次。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": null,
+          "cnt": 0
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {}
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-002",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 A",
+      "body": "i=0，窗口新增 A，满足需求计数 cnt=1/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=0 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 0,
+          "cnt": 1
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "A"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "1/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=0，窗口新增 A，满足需求计数 cnt=1/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 0,
+          "cnt": 1
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-003",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 D",
+      "body": "i=1，窗口新增 D，满足需求计数 cnt=1/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=1 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 1,
+          "cnt": 1
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "AD"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "1/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=1，窗口新增 D，满足需求计数 cnt=1/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 1,
+          "cnt": 1
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-004",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 O",
+      "body": "i=2，窗口新增 O，满足需求计数 cnt=1/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=2 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 2,
+          "cnt": 1
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADO"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "1/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=2，窗口新增 O，满足需求计数 cnt=1/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 2,
+          "cnt": 1
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-005",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 B",
+      "body": "i=3，窗口新增 B，满足需求计数 cnt=2/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=3 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 3,
+          "cnt": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOB"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:1",
+              "B:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "2/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=3，窗口新增 B，满足需求计数 cnt=2/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 3,
+          "cnt": 2
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-006",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 E",
+      "body": "i=4，窗口新增 E，满足需求计数 cnt=2/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=4 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 4,
+          "cnt": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBE"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:1",
+              "B:1",
+              "E:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "2/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=4，窗口新增 E，满足需求计数 cnt=2/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 4,
+          "cnt": 2
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1,
+            "E": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-007",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 C",
+      "body": "i=5，窗口新增 C，满足需求计数 cnt=3/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=5 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 5,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBEC"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:1",
+              "B:1",
+              "E:1",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=5，窗口新增 C，满足需求计数 cnt=3/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 5,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1,
+            "E": 1,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-008",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "update",
+      "title": "覆盖完成，当前最短候选 ADOBEC",
+      "body": "窗口 ADOBEC 覆盖 t；比较后保留 best = ADOBEC。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=5 · j=0 · 结果 1 项",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 5,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBEC"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              "ADOBEC"
+            ]
+          }
+        ],
+        "result": [
+          "ADOBEC"
+        ],
+        "note": "窗口 ADOBEC 覆盖 t；比较后保留 best = ADOBEC。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 5,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1,
+            "E": 1,
+            "C": 1
+          }
+        },
+        "result": [
+          "ADOBEC"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "76-trace-009",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 O",
+      "body": "i=6，窗口新增 O，满足需求计数 cnt=3/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=6 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 6,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBECO"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:2",
+              "B:1",
+              "E:1",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=6，窗口新增 O，满足需求计数 cnt=3/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 6,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 2,
+            "B": 1,
+            "E": 1,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-010",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "update",
+      "title": "覆盖完成，当前最短候选 ADOBEC",
+      "body": "窗口 ADOBECO 覆盖 t；比较后保留 best = ADOBEC。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=6 · j=0 · 结果 1 项",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 6,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBECO"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              "ADOBEC"
+            ]
+          }
+        ],
+        "result": [
+          "ADOBEC"
+        ],
+        "note": "窗口 ADOBECO 覆盖 t；比较后保留 best = ADOBEC。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 6,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 2,
+            "B": 1,
+            "E": 1,
+            "C": 1
+          }
+        },
+        "result": [
+          "ADOBEC"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "76-trace-011",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 D",
+      "body": "i=7，窗口新增 D，满足需求计数 cnt=3/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=7 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 7,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBECOD"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:2",
+              "O:2",
+              "B:1",
+              "E:1",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=7，窗口新增 D，满足需求计数 cnt=3/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 7,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 2,
+            "O": 2,
+            "B": 1,
+            "E": 1,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-012",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "update",
+      "title": "覆盖完成，当前最短候选 ADOBEC",
+      "body": "窗口 ADOBECOD 覆盖 t；比较后保留 best = ADOBEC。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=7 · j=0 · 结果 1 项",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 7,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBECOD"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              "ADOBEC"
+            ]
+          }
+        ],
+        "result": [
+          "ADOBEC"
+        ],
+        "note": "窗口 ADOBECOD 覆盖 t；比较后保留 best = ADOBEC。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 7,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 2,
+            "O": 2,
+            "B": 1,
+            "E": 1,
+            "C": 1
+          }
+        },
+        "result": [
+          "ADOBEC"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "76-trace-013",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 E",
+      "body": "i=8，窗口新增 E，满足需求计数 cnt=3/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=8 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 8,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBECODE"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:2",
+              "O:2",
+              "B:1",
+              "E:2",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=8，窗口新增 E，满足需求计数 cnt=3/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 8,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 2,
+            "O": 2,
+            "B": 1,
+            "E": 2,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-014",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "update",
+      "title": "覆盖完成，当前最短候选 ADOBEC",
+      "body": "窗口 ADOBECODE 覆盖 t；比较后保留 best = ADOBEC。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=8 · j=0 · 结果 1 项",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 8,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBECODE"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              "ADOBEC"
+            ]
+          }
+        ],
+        "result": [
+          "ADOBEC"
+        ],
+        "note": "窗口 ADOBECODE 覆盖 t；比较后保留 best = ADOBEC。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 8,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 2,
+            "O": 2,
+            "B": 1,
+            "E": 2,
+            "C": 1
+          }
+        },
+        "result": [
+          "ADOBEC"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "76-trace-015",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 B",
+      "body": "i=9，窗口新增 B，满足需求计数 cnt=3/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=9 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          9
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 9,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBECODEB"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:2",
+              "O:2",
+              "B:2",
+              "E:2",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=9，窗口新增 B，满足需求计数 cnt=3/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 9,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 2,
+            "O": 2,
+            "B": 2,
+            "E": 2,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-016",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "update",
+      "title": "覆盖完成，当前最短候选 ADOBEC",
+      "body": "窗口 ADOBECODEB 覆盖 t；比较后保留 best = ADOBEC。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=9 · j=0 · 结果 1 项",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 9,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBECODEB"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              "ADOBEC"
+            ]
+          }
+        ],
+        "result": [
+          "ADOBEC"
+        ],
+        "note": "窗口 ADOBECODEB 覆盖 t；比较后保留 best = ADOBEC。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 9,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 2,
+            "O": 2,
+            "B": 2,
+            "E": 2,
+            "C": 1
+          }
+        },
+        "result": [
+          "ADOBEC"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "76-trace-017",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 A",
+      "body": "i=10，窗口新增 A，满足需求计数 cnt=3/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=10 · j=0",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          10
+        ],
+        "compared": [],
+        "variables": {
+          "j": 0,
+          "i": 10,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ADOBECODEBA"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:2",
+              "D:2",
+              "O:2",
+              "B:2",
+              "E:2",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=10，窗口新增 A，满足需求计数 cnt=3/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 0,
+          "i": 10,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 2,
+            "D": 2,
+            "O": 2,
+            "B": 2,
+            "E": 2,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-018",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=1",
+      "body": "左端字符是多余的，移出它不会破坏覆盖条件。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=10 · j=1",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          1,
+          10
+        ],
+        "compared": [],
+        "variables": {
+          "j": 1,
+          "i": 10,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "DOBECODEBA"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:2",
+              "O:2",
+              "B:2",
+              "E:2",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左端字符是多余的，移出它不会破坏覆盖条件。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 1,
+          "i": 10,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 2,
+            "O": 2,
+            "B": 2,
+            "E": 2,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-019",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=2",
+      "body": "左端字符是多余的，移出它不会破坏覆盖条件。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=10 · j=2",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          2,
+          10
+        ],
+        "compared": [],
+        "variables": {
+          "j": 2,
+          "i": 10,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "OBECODEBA"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:2",
+              "B:2",
+              "E:2",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左端字符是多余的，移出它不会破坏覆盖条件。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 2,
+          "i": 10,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 2,
+            "B": 2,
+            "E": 2,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-020",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=3",
+      "body": "左端字符是多余的，移出它不会破坏覆盖条件。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=10 · j=3",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          3,
+          10
+        ],
+        "compared": [],
+        "variables": {
+          "j": 3,
+          "i": 10,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "BECODEBA"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:1",
+              "B:2",
+              "E:2",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左端字符是多余的，移出它不会破坏覆盖条件。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 3,
+          "i": 10,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 2,
+            "E": 2,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-021",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=4",
+      "body": "左端字符是多余的，移出它不会破坏覆盖条件。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=10 · j=4",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          4,
+          10
+        ],
+        "compared": [],
+        "variables": {
+          "j": 4,
+          "i": 10,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ECODEBA"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:1",
+              "B:1",
+              "E:2",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左端字符是多余的，移出它不会破坏覆盖条件。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 4,
+          "i": 10,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1,
+            "E": 2,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-022",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=5",
+      "body": "左端字符是多余的，移出它不会破坏覆盖条件。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=10 · j=5",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          5,
+          10
+        ],
+        "compared": [],
+        "variables": {
+          "j": 5,
+          "i": 10,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "CODEBA"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:1",
+              "B:1",
+              "E:1",
+              "C:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左端字符是多余的，移出它不会破坏覆盖条件。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 5,
+          "i": 10,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1,
+            "E": 1,
+            "C": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-023",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "update",
+      "title": "覆盖完成，当前最短候选 ADOBEC",
+      "body": "窗口 CODEBA 覆盖 t；比较后保留 best = ADOBEC。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=10 · j=5 · 结果 1 项",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "compared": [],
+        "variables": {
+          "j": 5,
+          "i": 10,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "CODEBA"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              "ADOBEC"
+            ]
+          }
+        ],
+        "result": [
+          "ADOBEC"
+        ],
+        "note": "窗口 CODEBA 覆盖 t；比较后保留 best = ADOBEC。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 5,
+          "i": 10,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1,
+            "E": 1,
+            "C": 1
+          }
+        },
+        "result": [
+          "ADOBEC"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "76-trace-024",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 N",
+      "body": "i=11，窗口新增 N，满足需求计数 cnt=3/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=11 · j=5",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          11
+        ],
+        "compared": [],
+        "variables": {
+          "j": 5,
+          "i": 11,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "CODEBAN"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:1",
+              "B:1",
+              "E:1",
+              "C:1",
+              "N:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=11，窗口新增 N，满足需求计数 cnt=3/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 5,
+          "i": 11,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1,
+            "E": 1,
+            "C": 1,
+            "N": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-025",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "update",
+      "title": "覆盖完成，当前最短候选 ADOBEC",
+      "body": "窗口 CODEBAN 覆盖 t；比较后保留 best = ADOBEC。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=11 · j=5 · 结果 1 项",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "compared": [],
+        "variables": {
+          "j": 5,
+          "i": 11,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "CODEBAN"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              "ADOBEC"
+            ]
+          }
+        ],
+        "result": [
+          "ADOBEC"
+        ],
+        "note": "窗口 CODEBAN 覆盖 t；比较后保留 best = ADOBEC。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 5,
+          "i": 11,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1,
+            "E": 1,
+            "C": 1,
+            "N": 1
+          }
+        },
+        "result": [
+          "ADOBEC"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "76-trace-026",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "右端加入 C",
+      "body": "i=12，窗口新增 C，满足需求计数 cnt=3/3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=12 · j=5",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          12
+        ],
+        "compared": [],
+        "variables": {
+          "j": 5,
+          "i": 12,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "CODEBANC"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:1",
+              "B:1",
+              "E:1",
+              "C:2",
+              "N:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=12，窗口新增 C，满足需求计数 cnt=3/3。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 5,
+          "i": 12,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1,
+            "E": 1,
+            "C": 2,
+            "N": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-027",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=6",
+      "body": "左端字符是多余的，移出它不会破坏覆盖条件。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=12 · j=6",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          6,
+          12
+        ],
+        "compared": [],
+        "variables": {
+          "j": 6,
+          "i": 12,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "ODEBANC"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:1",
+              "B:1",
+              "E:1",
+              "C:1",
+              "N:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左端字符是多余的，移出它不会破坏覆盖条件。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 6,
+          "i": 12,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 1,
+            "B": 1,
+            "E": 1,
+            "C": 1,
+            "N": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-028",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=7",
+      "body": "左端字符是多余的，移出它不会破坏覆盖条件。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=12 · j=7",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          7,
+          12
+        ],
+        "compared": [],
+        "variables": {
+          "j": 7,
+          "i": 12,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "DEBANC"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:1",
+              "O:0",
+              "B:1",
+              "E:1",
+              "C:1",
+              "N:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左端字符是多余的，移出它不会破坏覆盖条件。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 7,
+          "i": 12,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 1,
+            "O": 0,
+            "B": 1,
+            "E": 1,
+            "C": 1,
+            "N": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-029",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=8",
+      "body": "左端字符是多余的，移出它不会破坏覆盖条件。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=12 · j=8",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          8,
+          12
+        ],
+        "compared": [],
+        "variables": {
+          "j": 8,
+          "i": 12,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "EBANC"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:0",
+              "O:0",
+              "B:1",
+              "E:1",
+              "C:1",
+              "N:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左端字符是多余的，移出它不会破坏覆盖条件。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 8,
+          "i": 12,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 0,
+            "O": 0,
+            "B": 1,
+            "E": 1,
+            "C": 1,
+            "N": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-030",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=9",
+      "body": "左端字符是多余的，移出它不会破坏覆盖条件。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=12 · j=9",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          9,
+          12
+        ],
+        "compared": [],
+        "variables": {
+          "j": 9,
+          "i": 12,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "BANC"
+            ]
+          },
+          {
+            "label": "have",
+            "values": [
+              "A:1",
+              "D:0",
+              "O:0",
+              "B:1",
+              "E:0",
+              "C:1",
+              "N:1"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "3/3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左端字符是多余的，移出它不会破坏覆盖条件。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 9,
+          "i": 12,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 0,
+            "O": 0,
+            "B": 1,
+            "E": 0,
+            "C": 1,
+            "N": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "76-trace-031",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "update",
+      "title": "覆盖完成，当前最短候选 BANC",
+      "body": "窗口 BANC 覆盖 t；比较后保留 best = BANC。 易错提醒：valid 变量的含义： valid 表示的是\"已满足需求的字符种类数\"，不是\"窗口中字符总数\"，也不是\"已满足的字符个数\"。当 window[ch] == need[ch] 时 valid 才加一，当 window[ch] < need[ch] 时才减一。 valid 加减的对称性： 扩大窗口时，window[ch] 从 need[ch…",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=12 · j=9 · 结果 1 项",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "compared": [],
+        "variables": {
+          "j": 9,
+          "i": 12,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "BANC"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              "BANC"
+            ]
+          }
+        ],
+        "result": [
+          "BANC"
+        ],
+        "note": "窗口 BANC 覆盖 t；比较后保留 best = BANC。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 9,
+          "i": 12,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 0,
+            "O": 0,
+            "B": 1,
+            "E": 0,
+            "C": 1,
+            "N": 1
+          }
+        },
+        "result": [
+          "BANC"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "76-trace-032",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "扫描完成，最小覆盖子串为 BANC。",
+      "kind": "window",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · window",
+        "badge": "i=13 · j=9 · 结果 1 项",
+        "tokens": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "j": 9,
+          "i": 13,
+          "cnt": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "BANC"
+            ]
+          }
+        ],
+        "result": [
+          "BANC"
+        ],
+        "note": "扫描完成，最小覆盖子串为 BANC。"
+      },
+      "state": {
+        "values": [
+          "A",
+          "D",
+          "O",
+          "B",
+          "E",
+          "C",
+          "O",
+          "D",
+          "E",
+          "B",
+          "A",
+          "N",
+          "C"
+        ],
+        "variables": {
+          "j": 9,
+          "i": 13,
+          "cnt": 3
+        },
+        "structure": {
+          "need": {
+            "A": 1,
+            "C": 1,
+            "B": 1
+          },
+          "have": {
+            "A": 1,
+            "D": 0,
+            "O": 0,
+            "B": 1,
+            "E": 0,
+            "C": 1,
+            "N": 1
+          }
+        },
+        "result": [
+          "BANC"
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

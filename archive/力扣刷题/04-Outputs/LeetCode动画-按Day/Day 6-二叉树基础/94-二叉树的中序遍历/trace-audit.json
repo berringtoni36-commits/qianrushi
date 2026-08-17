@@ -1,0 +1,801 @@
+{
+  "problemId": 94,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 94,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        null,
+        2,
+        3
+      ],
+      "variables": {},
+      "structure": {
+        "tree": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "ans": [
+          1,
+          3,
+          2
+        ]
+      },
+      "result": [
+        1,
+        3,
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "45bf060f5fde60c46786840b947fc803dbb95dad748e54ce9481614a5f6c5945",
+    "sourceSemanticTokenHash": "705149200b1347aea97d10a7aaeb83798d1130a8065fbd42ec3e0771ce964c00",
+    "sourceCodeLineCount": 24
+  },
+  "sourceCodeSha256": "45bf060f5fde60c46786840b947fc803dbb95dad748e54ce9481614a5f6c5945",
+  "sourceSemanticTokenHash": "705149200b1347aea97d10a7aaeb83798d1130a8065fbd42ec3e0771ce964c00",
+  "steps": [
+    {
+      "id": "94-trace-001",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "setup",
+      "title": "进入中序遍历",
+      "body": "中序顺序是左子树 → 当前节点 → 右子树；ans 只在访问节点时追加。 题解原意：中序遍历的递归写法是最直观的。利用函数调用栈天然地实现「先深入左子树 → 回到根 → 再深入右子树」的过程。 为什么选这个遍历顺序？ 中序就是「左→根→右」，递归的天然结构完美匹配这个顺序：先递归左子树，再访问当前节点，最后递归右子树。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "tree",
+        "tokens": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "node": 1
+        },
+        "rows": [
+          {
+            "label": "tree",
+            "values": [
+              1,
+              null,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "ans",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "中序顺序是左子树 → 当前节点 → 右子树；ans 只在访问节点时追加。"
+      },
+      "state": {
+        "values": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "variables": {
+          "node": 1
+        },
+        "structure": {
+          "tree": [
+            1,
+            null,
+            2,
+            3
+          ],
+          "ans": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "94-trace-002",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "inspect",
+      "title": "左子树为空，回到节点 1",
+      "body": "当前节点 1，ans = []。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "tree",
+        "tokens": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1
+        },
+        "rows": [
+          {
+            "label": "ans",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "call",
+            "values": [
+              "左子树为空，回到节点 1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前节点 1，ans = []。"
+      },
+      "state": {
+        "values": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "variables": {
+          "node": 1
+        },
+        "structure": {
+          "tree": [
+            1,
+            null,
+            2,
+            3
+          ],
+          "ans": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "94-trace-003",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "访问节点 1",
+      "body": "当前节点 1，ans = [1]。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1
+        },
+        "rows": [
+          {
+            "label": "ans",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "call",
+            "values": [
+              "访问节点 1"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "当前节点 1，ans = [1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "variables": {
+          "node": 1
+        },
+        "structure": {
+          "tree": [
+            1,
+            null,
+            2,
+            3
+          ],
+          "ans": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "94-trace-004",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "inspect",
+      "title": "进入右子树节点 2",
+      "body": "当前节点 2，ans = [1]。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2
+        },
+        "rows": [
+          {
+            "label": "ans",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "call",
+            "values": [
+              "进入右子树节点 2"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "当前节点 2，ans = [1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "variables": {
+          "node": 2
+        },
+        "structure": {
+          "tree": [
+            1,
+            null,
+            2,
+            3
+          ],
+          "ans": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "94-trace-005",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "inspect",
+      "title": "进入节点 2 的左子树节点 3",
+      "body": "当前节点 3，ans = [1]。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3
+        },
+        "rows": [
+          {
+            "label": "ans",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "call",
+            "values": [
+              "进入节点 2 的左子树节点 3"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "当前节点 3，ans = [1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "variables": {
+          "node": 3
+        },
+        "structure": {
+          "tree": [
+            1,
+            null,
+            2,
+            3
+          ],
+          "ans": [
+            1
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "94-trace-006",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "访问节点 3",
+      "body": "当前节点 3，ans = [1, 3]。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 2 项",
+        "tokens": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3
+        },
+        "rows": [
+          {
+            "label": "ans",
+            "values": [
+              1,
+              3
+            ]
+          },
+          {
+            "label": "call",
+            "values": [
+              "访问节点 3"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3
+        ],
+        "note": "当前节点 3，ans = [1, 3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "variables": {
+          "node": 3
+        },
+        "structure": {
+          "tree": [
+            1,
+            null,
+            2,
+            3
+          ],
+          "ans": [
+            1,
+            3
+          ]
+        },
+        "result": [
+          1,
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "94-trace-007",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "访问节点 2",
+      "body": "当前节点 2，ans = [1, 3, 2]。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2
+        },
+        "rows": [
+          {
+            "label": "ans",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "label": "call",
+            "values": [
+              "访问节点 2"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "当前节点 2，ans = [1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "variables": {
+          "node": 2
+        },
+        "structure": {
+          "tree": [
+            1,
+            null,
+            2,
+            3
+          ],
+          "ans": [
+            1,
+            3,
+            2
+          ]
+        },
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "94-trace-check-009",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中序遍历完成：[1, 3, 2]。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2
+        },
+        "rows": [
+          {
+            "label": "ans",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "label": "call",
+            "values": [
+              "访问节点 2"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中序遍历完成：[1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "variables": {
+          "node": 2
+        },
+        "structure": {
+          "tree": [
+            1,
+            null,
+            2,
+            3
+          ],
+          "ans": [
+            1,
+            3,
+            2
+          ]
+        },
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "94-trace-check-010",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中序遍历完成：[1, 3, 2]。 易错提醒：忘记 base case： 递归函数中必须先处理 if (!node) return;，否则会访问空指针。 迭代法忘记转向右子树： 弹出访问完节点后，必须将 cur 指向 cur.right，否则会死循环。 Morris 遍历修改了树： 虽然最后会恢复，但如果在遍历过程中读取树结构会有问题（多线程环境不安全）。 将结果放入的位置搞错： 中…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2
+        },
+        "rows": [
+          {
+            "label": "ans",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "label": "call",
+            "values": [
+              "访问节点 2"
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中序遍历完成：[1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "variables": {
+          "node": 2
+        },
+        "structure": {
+          "tree": [
+            1,
+            null,
+            2,
+            3
+          ],
+          "ans": [
+            1,
+            3,
+            2
+          ]
+        },
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "94-trace-008",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "中序遍历完成：[1, 3, 2]。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "中序遍历完成：[1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "variables": {},
+        "structure": {
+          "tree": [
+            1,
+            null,
+            2,
+            3
+          ],
+          "ans": [
+            1,
+            3,
+            2
+          ]
+        },
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

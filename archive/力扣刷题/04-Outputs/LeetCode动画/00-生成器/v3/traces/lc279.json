@@ -1,0 +1,601 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "平方判定 + 四平方定理",
+    "sceneKind": "generic-array",
+    "input": 12,
+    "expected": 3,
+    "exampleText": "n = 12",
+    "expectedText": "最少平方数 = 3",
+    "invariant": "每个分支按 1、2、3、4 的可能性依次排除",
+    "aha": "排除一平方和两平方后，用 n=4^a(8b+7) 判定是否必须四个",
+    "time": "O(√n)",
+    "space": "O(1)",
+    "problemId": 279,
+    "title": "完全平方数",
+    "day": "Day 12：动态规划 + 贪心",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "5d2be6ac29e968776aac2f67b719e011321079dd99c8ca27eb55eac0c01efd6a",
+    "semanticTokenHash": "c140290360d2be7729119bd4732ec116637b44b747affddf107aced5ecea47fd",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "若本身为平方数答案直接是 1。",
+        "review": "3² != 12"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              4,
+              9
+            ],
+            "variables": {
+              "n": 12,
+              "r": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "3² != 12",
+            "action": "先判断 12 是否为完全平方数",
+            "status": "running"
+          },
+          "caption": "若本身为平方数答案直接是 1。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              4,
+              9
+            ],
+            "variables": {
+              "n": 12,
+              "r": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "3² != 12",
+            "action": "不变量检查 3",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "若剩余也是平方数，答案为 2。",
+        "review": "sqrt(11) integer → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              11
+            ],
+            "variables": {
+              "n": 12,
+              "a": 1,
+              "rest": 11
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "sqrt(11) integer → False",
+            "action": "尝试 1²，剩余 11",
+            "status": "running"
+          },
+          "caption": "若剩余也是平方数，答案为 2。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              1,
+              11
+            ],
+            "variables": {
+              "n": 12,
+              "a": 1,
+              "rest": 11
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "sqrt(11) integer → False",
+            "action": "不变量检查 6",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "若剩余也是平方数，答案为 2。",
+        "review": "sqrt(8) integer → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              8
+            ],
+            "variables": {
+              "n": 12,
+              "a": 2,
+              "rest": 8
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "sqrt(8) integer → False",
+            "action": "尝试 2²，剩余 8",
+            "status": "running"
+          },
+          "caption": "若剩余也是平方数，答案为 2。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              8
+            ],
+            "variables": {
+              "n": 12,
+              "a": 2,
+              "rest": 8
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "sqrt(8) integer → False",
+            "action": "不变量检查 2",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              8
+            ],
+            "variables": {
+              "n": 12,
+              "a": 2,
+              "rest": 8
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "sqrt(8) integer → False",
+            "action": "不变量检查 5",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "若剩余也是平方数，答案为 2。",
+        "review": "sqrt(3) integer → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              9,
+              3
+            ],
+            "variables": {
+              "n": 12,
+              "a": 3,
+              "rest": 3
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "sqrt(3) integer → False",
+            "action": "尝试 3²，剩余 3",
+            "status": "running"
+          },
+          "caption": "若剩余也是平方数，答案为 2。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "乘 4 不改变所需平方数个数的判别。",
+        "review": "12/4=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              3
+            ],
+            "variables": {
+              "n": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "12/4=3",
+            "action": "按四平方定理约去因子 4：12→3",
+            "status": "running"
+          },
+          "caption": "乘 4 不改变所需平方数个数的判别。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              3
+            ],
+            "variables": {
+              "n": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "12/4=3",
+            "action": "不变量检查 4",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              3
+            ],
+            "variables": {
+              "n": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "12/4=3",
+            "action": "不变量检查 1",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "勒让德三平方定理排除 4，且前面已排除 1 和 2。",
+        "review": "12=4+4+4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              4,
+              4
+            ],
+            "variables": {
+              "n": 3,
+              "n%8": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "12=4+4+4",
+            "action": "3 mod 8 != 7，答案为 3",
+            "status": "return",
+            "output": 3
+          },
+          "caption": "勒让德三平方定理排除 4，且前面已排除 1 和 2。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    bool check(int x) {\n        int r = sqrt(x);\n        return r * r == x;\n    }\n\n    int numSquares(int n) {\n        if (check(n)) return 1;\n\n        for (int a = 1; a <= n / a; a ++ )\n            if (check(n - a * a))\n                return 2;\n\n        while (n % 4 == 0) n /= 4;\n        if (n % 8 != 7) return 3;\n        return 4;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4762,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4763,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4764,
+        "text": "    bool check(int x) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4765,
+        "text": "        int r = sqrt(x);"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4766,
+        "text": "        return r * r == x;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4767,
+        "text": "    }"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4768,
+        "text": ""
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4769,
+        "text": "    int numSquares(int n) {"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4770,
+        "text": "        if (check(n)) return 1;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4771,
+        "text": ""
+      },
+      {
+        "id": "L11",
+        "sourceLine": 4772,
+        "text": "        for (int a = 1; a <= n / a; a ++ )"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 4773,
+        "text": "            if (check(n - a * a))"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 4774,
+        "text": "                return 2;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 4775,
+        "text": ""
+      },
+      {
+        "id": "L15",
+        "sourceLine": 4776,
+        "text": "        while (n % 4 == 0) n /= 4;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 4777,
+        "text": "        if (n % 8 != 7) return 3;"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 4778,
+        "text": "        return 4;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 4779,
+        "text": "    }"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 4780,
+        "text": "};"
+      }
+    ]
+  }
+}

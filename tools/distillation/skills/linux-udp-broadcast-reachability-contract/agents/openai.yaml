@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linux UDP Broadcast Reachability"
+  short_description: "Audit UDP broadcast permissions and scope"
+  default_prompt: "Use $linux-udp-broadcast-reachability-contract to diagnose why this UDP broadcast is not reaching the intended network."

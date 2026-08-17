@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linux Vision File IPC Lifecycle Audit"
+  short_description: "Audit Qt QProcess and file-based IPC"
+  default_prompt: "Use $linux-vision-file-ipc-lifecycle-audit to audit this Qt QProcess file-exchange pipeline."

@@ -1,0 +1,50 @@
+{
+  "skill": "rtos-build-flash-runtime-provenance",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "请审计这个 STM32 工程的 build→flash→serial/runtime 可复现链：project.uvprojx、PWM.axf、PWM.hex 和 PWM.map 是否属于同一个 target？",
+      "expected_behavior": "激活本 skill；锁定 Keil target/宏/IncludePath/startup/port/IROM/IRAM，比较 AXF/HEX/MAP 身份和 MAP 地址，并明确没有重新 Build 或硬件回读时不能宣称可复现。",
+      "notes": "完整产物来源审计"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "Keil 显示编译成功，J-Link 也下载了，但 Reset and Run 后没有可靠运行证据；请按向量表、地址、Flash algorithm、verify、PC/MSP/VTOR 和串口分层排查。",
+      "expected_behavior": "激活本 skill；分开 C0-C4，核对 STM32F103C8/IROM/IRAM、STM32F10x_128.FLM、起始两个 words、Reset_Handler/main、VTOR 和 DEBUG/115200-8-N-1，不把串口沉默直接判成 HardFault。",
+      "notes": "烧录后不运行的证据分层"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这个项目文档说 APP 在 0x0800F000，但 MAP 和 project.uvprojx 都从 0x08000000 开始；我能否说已经验证了独立 APP 烧录和串口运行？",
+      "expected_behavior": "激活本 skill；指出 0x0800F000 是 IAP 规划/宏值，当前主工程仍是 0x08000000，缺少独立 APP 链接工程、回读和运行测量时只能标为未验证，并路由 IAP 边界。",
+      "notes": "地址规划与已验证事实边界"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "FreeRTOS 启动后 SysTick、PendSV、SVC 如何协作？任务栈大小是 words 还是 bytes，调度器为什么不接管？",
+      "expected_behavior": "不优先激活本 skill；转 rtos-freertos-config-and-boot，解释启动机制和配置语义；本 skill 只在需要核对 target 是否包含正确 port 时辅助。",
+      "notes": "启动机制兄弟 Skill 诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "DMA 完成中断已经进了，但 IAP 任务没有醒；请定位 ISR、二值信号量、缓冲区和 CRC 协议问题。",
+      "expected_behavior": "不优先激活本 skill；转 rtos-communication-debugging/rtos-iap-firmware-upgrade，审计事件链和 IAP 协议，而不是泛化为构建产物 provenance。",
+      "notes": "通信/IAP 兄弟 Skill 诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我只想知道 Intel HEX 和 AXF 的通用格式差异，不需要检查这个 STM32 项目或实际烧录。",
+      "expected_behavior": "只做必要的通用格式说明；不强行套用本项目的 target、MAP 或硬件验证结论，除非用户要求工程 provenance 审计。",
+      "notes": "通用格式与工程审计边界"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

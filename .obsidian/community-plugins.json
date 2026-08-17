@@ -1,15 +1,5 @@
 [
   "obsidian-style-settings",
-  "custom-sort",
-  "better-export-pdf",
-  "better-mermaid",
-  "vscode-editor",
-  "docxer",
-  "obsidian-git",
-  "realclaudian",
-  "easy-sync",
-  "crisp-file-explorer",
-  "obsidian42-brat",
-  "crisp-annotations",
-  "crisp-asr"
+  "crisp-dsh",
+  "obsidian-git"
 ]

@@ -1,0 +1,1439 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "成对镜像 DFS",
+    "sceneKind": "tree-graph",
+    "input": "[1,2,2,3,4,4,3]",
+    "expected": true,
+    "exampleText": "[1,2,2,3,4,4,3]",
+    "expectedText": "对称 → true",
+    "invariant": "递归参数 p,q 始终位于互为镜像的位置",
+    "aha": "比较 p.left↔q.right 与 p.right↔q.left",
+    "time": "O(n)",
+    "space": "O(h)",
+    "problemId": 101,
+    "title": "对称二叉树",
+    "day": "Day 6：二叉树基础",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "5aac9701f0bfc4f4874b2c712095e451945358d38d43fbbff607f8b0c55286f2",
+    "semanticTokenHash": "4dc9107cc6425ba5a43bc37068937f4078a635321e7dfbd848ace456042bd190",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "镜像节点值相等且外侧、内侧递归配对。",
+        "review": "从根的左右子树开始镜像比较"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l2",
+              "q": "r2"
+            },
+            "pointers": {},
+            "active": [
+              "l2",
+              "r2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "从根的左右子树开始镜像比较",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "镜像节点值相等且外侧、内侧递归配对。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l2",
+              "q": "r2"
+            },
+            "pointers": {},
+            "active": [
+              "l2",
+              "r2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 5",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l2",
+              "q": "r2"
+            },
+            "pointers": {},
+            "active": [
+              "l2",
+              "r2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "任一不等即可判非对称。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l2",
+              "q": "r2",
+              "equal": true
+            },
+            "pointers": {},
+            "active": [
+              "l2",
+              "r2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "比较镜像节点 l2 与 r2: 相等",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "任一不等即可判非对称。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l2",
+              "q": "r2",
+              "equal": true
+            },
+            "pointers": {},
+            "active": [
+              "l2",
+              "r2"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "不变量检查 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "任一不等即可判非对称。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l3",
+              "q": "r3",
+              "equal": true
+            },
+            "pointers": {},
+            "active": [
+              "l3",
+              "r3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "比较镜像节点 l3 与 r3: 相等",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "任一不等即可判非对称。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l3",
+              "q": "r3",
+              "equal": true
+            },
+            "pointers": {},
+            "active": [
+              "l3",
+              "r3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l3",
+              "q": "r3",
+              "equal": true
+            },
+            "pointers": {},
+            "active": [
+              "l3",
+              "r3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "不变量检查 7",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l3",
+              "q": "r3",
+              "equal": true
+            },
+            "pointers": {},
+            "active": [
+              "l3",
+              "r3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "任一不等即可判非对称。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l4",
+              "q": "r4",
+              "equal": true
+            },
+            "pointers": {},
+            "active": [
+              "l4",
+              "r4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "比较镜像节点 l4 与 r4: 相等",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "任一不等即可判非对称。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "p": "l4",
+              "q": "r4",
+              "equal": true
+            },
+            "pointers": {},
+            "active": [
+              "l4",
+              "r4"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "不变量检查 6",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "所有镜像位置匹配，返回 true。",
+        "review": "true && true"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "symmetric": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "r",
+              "l2",
+              "r2",
+              "l3",
+              "l4",
+              "r4",
+              "r3"
+            ],
+            "formula": "true && true",
+            "action": "外侧与内侧递归都成立",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "r",
+                "value": 1,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "l2",
+                "value": 2,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "r2",
+                "value": 2,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "l3",
+                "value": 3,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "l4",
+                "value": 4,
+                "level": 2,
+                "order": 1
+              },
+              {
+                "id": "r4",
+                "value": 4,
+                "level": 2,
+                "order": 2
+              },
+              {
+                "id": "r3",
+                "value": 3,
+                "level": 2,
+                "order": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "r",
+                "to": "l2"
+              },
+              {
+                "from": "r",
+                "to": "r2"
+              },
+              {
+                "from": "l2",
+                "to": "l3"
+              },
+              {
+                "from": "l2",
+                "to": "l4"
+              },
+              {
+                "from": "r2",
+                "to": "r4"
+              },
+              {
+                "from": "r2",
+                "to": "r3"
+              }
+            ],
+            "output": true
+          },
+          "caption": "所有镜像位置匹配，返回 true。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    bool isSymmetric(TreeNode* root) {\n        if (!root) return true;\n        return dfs(root->left, root->right);\n    }\n\n    bool dfs(TreeNode* p, TreeNode* q) {                         // 深度优先搜索\n        if (!p && !q) return true;\n        if (!p || !q || p->val != q->val) return false;\n        return dfs(p->left, q->right) && dfs(p->right, q->left);\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2187,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2188,
+        "text": " * Definition for a binary tree node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2189,
+        "text": " * struct TreeNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2190,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2191,
+        "text": " *     TreeNode *left;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2192,
+        "text": " *     TreeNode *right;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2193,
+        "text": " *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2194,
+        "text": " * };"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2195,
+        "text": " */"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2196,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2197,
+        "text": "public:"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2198,
+        "text": "    bool isSymmetric(TreeNode* root) {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2199,
+        "text": "        if (!root) return true;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2200,
+        "text": "        return dfs(root->left, root->right);"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2201,
+        "text": "    }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2202,
+        "text": ""
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2203,
+        "text": "    bool dfs(TreeNode* p, TreeNode* q) {                         // 深度优先搜索"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2204,
+        "text": "        if (!p && !q) return true;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2205,
+        "text": "        if (!p || !q || p->val != q->val) return false;"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2206,
+        "text": "        return dfs(p->left, q->right) && dfs(p->right, q->left);"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2207,
+        "text": "    }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2208,
+        "text": "};"
+      }
+    ]
+  }
+}

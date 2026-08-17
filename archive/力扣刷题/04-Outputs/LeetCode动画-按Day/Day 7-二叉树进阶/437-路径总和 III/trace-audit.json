@@ -1,0 +1,4508 @@
+{
+  "problemId": 437,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 437,
+    "stepCount": 47,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        10,
+        5,
+        -3,
+        3,
+        2,
+        null,
+        11,
+        3,
+        -2,
+        null,
+        1
+      ],
+      "variables": {
+        "sum": 8,
+        "cur": 0,
+        "res": 3
+      },
+      "structure": {
+        "cnt": {
+          "0": 1,
+          "10": 0,
+          "15": 0,
+          "18": 0,
+          "21": 0,
+          "16": 0,
+          "17": 0,
+          "7": 0
+        }
+      },
+      "result": [
+        3
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "e99422f7a9483e11696b6aadcb0a99bd2033cdb39b5167723e094378786002f0",
+    "sourceSemanticTokenHash": "4ad04f072a5ed2bc788066aba8f05630e9f54234d0f5c0681ad2b7c74f355e0b",
+    "sourceCodeLineCount": 31
+  },
+  "sourceCodeSha256": "e99422f7a9483e11696b6aadcb0a99bd2033cdb39b5167723e094378786002f0",
+  "sourceSemanticTokenHash": "4ad04f072a5ed2bc788066aba8f05630e9f54234d0f5c0681ad2b7c74f355e0b",
+  "steps": [
+    {
+      "id": "437-trace-001",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "setup",
+      "title": "记录空路径前缀",
+      "body": "pathSum 先执行 cnt[0]++；空前缀让从根开始的路径也能被计数。 题解原意：核心思想： 在 DFS 遍历的过程中，维护从根节点到当前节点的路径和（前缀和 cur_sum）。用哈希表记录「前缀和 → 出现次数」。对于当前节点，cur_sum - targetSum 在前缀和中的出现次数，就是以当前节点结尾的满足条件的路径数。 为什么能这样做？ 想象从根到当前节点的路径和为 S，如果存在一个祖先节点，从根到该祖先的路径和为 S - targetSum，那么从该祖先的下一个节点到当前节点的路径和就…",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "res=0",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "sum": 8,
+          "cur": 0,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "pathSum 先执行 cnt[0]++；空前缀让从根开始的路径也能被计数。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "sum": 8,
+          "cur": 0,
+          "res": 0
+        },
+        "structure": {
+          "cnt": {
+            "0": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-002",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "访问节点 10：更新 cur",
+      "body": "根节点，执行 cur += root->val，当前 cur=10。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=0",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 10,
+          "sum": 8,
+          "cur": 10,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1"
+            ]
+          },
+          {
+            "label": "cur / res",
+            "values": [
+              "cur=10",
+              "res=0"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "根节点，执行 cur += root->val，当前 cur=10。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 10,
+          "sum": 8,
+          "cur": 10,
+          "res": 0
+        },
+        "structure": {
+          "cnt": {
+            "0": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-003",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "update",
+      "title": "用历史前缀更新 res",
+      "body": "查 cnt[cur - sum] = cnt[2]，命中 0 次；res 更新为 0。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "res=0",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 10,
+          "sum": 8,
+          "cur": 10,
+          "found": 0,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "lookup",
+            "values": [
+              "cnt[2] = 0"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "查 cnt[cur - sum] = cnt[2]，命中 0 次；res 更新为 0。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 10,
+          "sum": 8,
+          "cur": 10,
+          "found": 0,
+          "res": 0
+        },
+        "structure": {
+          "cnt": {
+            "0": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-004",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 cur=10",
+      "body": "执行 cnt[cur]++，当前 cnt[10]=1；这个前缀可供后代路径查询。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=0",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 10,
+          "sum": 8,
+          "cur": 10,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 cnt[cur]++，当前 cnt[10]=1；这个前缀可供后代路径查询。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 10,
+          "sum": 8,
+          "cur": 10,
+          "res": 0
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-005",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "inspect",
+      "title": "递归处理左右子树",
+      "body": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "res=0",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 10,
+          "sum": 8,
+          "cur": 10,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "call",
+            "values": [
+              "left → right"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 10,
+          "sum": 8,
+          "cur": 10,
+          "res": 0
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-006",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "访问节点 5：更新 cur",
+      "body": "10 的左子树，执行 cur += root->val，当前 cur=15。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=0",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "node": 5,
+          "sum": 8,
+          "cur": 15,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1"
+            ]
+          },
+          {
+            "label": "cur / res",
+            "values": [
+              "cur=15",
+              "res=0"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "10 的左子树，执行 cur += root->val，当前 cur=15。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 5,
+          "sum": 8,
+          "cur": 15,
+          "res": 0
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-007",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "update",
+      "title": "用历史前缀更新 res",
+      "body": "查 cnt[cur - sum] = cnt[7]，命中 0 次；res 更新为 0。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "res=0",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "node": 5,
+          "sum": 8,
+          "cur": 15,
+          "found": 0,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "lookup",
+            "values": [
+              "cnt[7] = 0"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "查 cnt[cur - sum] = cnt[7]，命中 0 次；res 更新为 0。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 5,
+          "sum": 8,
+          "cur": 15,
+          "found": 0,
+          "res": 0
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-008",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 cur=15",
+      "body": "执行 cnt[cur]++，当前 cnt[15]=1；这个前缀可供后代路径查询。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=0",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "node": 5,
+          "sum": 8,
+          "cur": 15,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "执行 cnt[cur]++，当前 cnt[15]=1；这个前缀可供后代路径查询。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 5,
+          "sum": 8,
+          "cur": 15,
+          "res": 0
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-009",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "inspect",
+      "title": "递归处理左右子树",
+      "body": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "res=0",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "node": 5,
+          "sum": 8,
+          "cur": 15,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "call",
+            "values": [
+              "left → right"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 5,
+          "sum": 8,
+          "cur": 15,
+          "res": 0
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-010",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "访问节点 3：更新 cur",
+      "body": "5 的左子树，执行 cur += root->val，当前 cur=18。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=0",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 18,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1"
+            ]
+          },
+          {
+            "label": "cur / res",
+            "values": [
+              "cur=18",
+              "res=0"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "5 的左子树，执行 cur += root->val，当前 cur=18。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 18,
+          "res": 0
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-011",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "update",
+      "title": "用历史前缀更新 res",
+      "body": "查 cnt[cur - sum] = cnt[10]，命中 1 次；res 更新为 1。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 18,
+          "found": 1,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "lookup",
+            "values": [
+              "cnt[10] = 1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "查 cnt[cur - sum] = cnt[10]，命中 1 次；res 更新为 1。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 18,
+          "found": 1,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-012",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 cur=18",
+      "body": "执行 cnt[cur]++，当前 cnt[18]=1；这个前缀可供后代路径查询。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 18,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "执行 cnt[cur]++，当前 cnt[18]=1；这个前缀可供后代路径查询。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 18,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-013",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "inspect",
+      "title": "递归处理左右子树",
+      "body": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 18,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "call",
+            "values": [
+              "left → right"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 18,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-014",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "访问节点 3：更新 cur",
+      "body": "3 的左子树，执行 cur += root->val，当前 cur=21。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 21,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1"
+            ]
+          },
+          {
+            "label": "cur / res",
+            "values": [
+              "cur=21",
+              "res=1"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "3 的左子树，执行 cur += root->val，当前 cur=21。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 21,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-015",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "update",
+      "title": "用历史前缀更新 res",
+      "body": "查 cnt[cur - sum] = cnt[13]，命中 0 次；res 更新为 1。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 21,
+          "found": 0,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "lookup",
+            "values": [
+              "cnt[13] = 0"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "查 cnt[cur - sum] = cnt[13]，命中 0 次；res 更新为 1。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 21,
+          "found": 0,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-016",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 cur=21",
+      "body": "执行 cnt[cur]++，当前 cnt[21]=1；这个前缀可供后代路径查询。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 21,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1",
+              "21:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "执行 cnt[cur]++，当前 cnt[21]=1；这个前缀可供后代路径查询。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 21,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1,
+            "21": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-017",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "inspect",
+      "title": "递归处理左右子树",
+      "body": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 21,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "call",
+            "values": [
+              "left → right"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1",
+              "21:1"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 21,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1,
+            "21": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-018",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "离开节点 3：撤销前缀",
+      "body": "子树处理完成，执行 cnt[cur]--；cnt[21] 回到 0，避免把不同分支混在一起。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 21,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "子树处理完成，执行 cnt[cur]--；cnt[21] 回到 0，避免把不同分支混在一起。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 21,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1,
+            "21": 0
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-019",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "访问节点 -2：更新 cur",
+      "body": "3 的右子树，执行 cur += root->val，当前 cur=16。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "node": -2,
+          "sum": 8,
+          "cur": 16,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1",
+              "21:0"
+            ]
+          },
+          {
+            "label": "cur / res",
+            "values": [
+              "cur=16",
+              "res=1"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "3 的右子树，执行 cur += root->val，当前 cur=16。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": -2,
+          "sum": 8,
+          "cur": 16,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1,
+            "21": 0
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-020",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "update",
+      "title": "用历史前缀更新 res",
+      "body": "查 cnt[cur - sum] = cnt[8]，命中 0 次；res 更新为 1。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "node": -2,
+          "sum": 8,
+          "cur": 16,
+          "found": 0,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "lookup",
+            "values": [
+              "cnt[8] = 0"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "查 cnt[cur - sum] = cnt[8]，命中 0 次；res 更新为 1。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": -2,
+          "sum": 8,
+          "cur": 16,
+          "found": 0,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1,
+            "21": 0
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-021",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 cur=16",
+      "body": "执行 cnt[cur]++，当前 cnt[16]=1；这个前缀可供后代路径查询。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "node": -2,
+          "sum": 8,
+          "cur": 16,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1",
+              "21:0",
+              "16:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "执行 cnt[cur]++，当前 cnt[16]=1；这个前缀可供后代路径查询。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": -2,
+          "sum": 8,
+          "cur": 16,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1,
+            "21": 0,
+            "16": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-022",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "inspect",
+      "title": "递归处理左右子树",
+      "body": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "node": -2,
+          "sum": 8,
+          "cur": 16,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "call",
+            "values": [
+              "left → right"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1",
+              "21:0",
+              "16:1"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": -2,
+          "sum": 8,
+          "cur": 16,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1,
+            "21": 0,
+            "16": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-023",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "离开节点 -2：撤销前缀",
+      "body": "子树处理完成，执行 cnt[cur]--；cnt[16] 回到 0，避免把不同分支混在一起。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "node": -2,
+          "sum": 8,
+          "cur": 16,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "子树处理完成，执行 cnt[cur]--；cnt[16] 回到 0，避免把不同分支混在一起。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": -2,
+          "sum": 8,
+          "cur": 16,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1,
+            "21": 0,
+            "16": 0
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-024",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "离开节点 3：撤销前缀",
+      "body": "子树处理完成，执行 cnt[cur]--；cnt[18] 回到 0，避免把不同分支混在一起。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 18,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "子树处理完成，执行 cnt[cur]--；cnt[18] 回到 0，避免把不同分支混在一起。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 3,
+          "sum": 8,
+          "cur": 18,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 0,
+            "21": 0,
+            "16": 0
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-025",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "访问节点 2：更新 cur",
+      "body": "5 的右子树，执行 cur += root->val，当前 cur=17。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2,
+          "sum": 8,
+          "cur": 17,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:0",
+              "21:0",
+              "16:0"
+            ]
+          },
+          {
+            "label": "cur / res",
+            "values": [
+              "cur=17",
+              "res=1"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "5 的右子树，执行 cur += root->val，当前 cur=17。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 2,
+          "sum": 8,
+          "cur": 17,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 0,
+            "21": 0,
+            "16": 0
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-026",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "update",
+      "title": "用历史前缀更新 res",
+      "body": "查 cnt[cur - sum] = cnt[9]，命中 0 次；res 更新为 1。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2,
+          "sum": 8,
+          "cur": 17,
+          "found": 0,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "lookup",
+            "values": [
+              "cnt[9] = 0"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "查 cnt[cur - sum] = cnt[9]，命中 0 次；res 更新为 1。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 2,
+          "sum": 8,
+          "cur": 17,
+          "found": 0,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 0,
+            "21": 0,
+            "16": 0
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-027",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 cur=17",
+      "body": "执行 cnt[cur]++，当前 cnt[17]=1；这个前缀可供后代路径查询。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2,
+          "sum": 8,
+          "cur": 17,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:0",
+              "21:0",
+              "16:0",
+              "17:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "执行 cnt[cur]++，当前 cnt[17]=1；这个前缀可供后代路径查询。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 2,
+          "sum": 8,
+          "cur": 17,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-028",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "inspect",
+      "title": "递归处理左右子树",
+      "body": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2,
+          "sum": 8,
+          "cur": 17,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "call",
+            "values": [
+              "left → right"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:0",
+              "21:0",
+              "16:0",
+              "17:1"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 2,
+          "sum": 8,
+          "cur": 17,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-029",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "访问节点 1：更新 cur",
+      "body": "2 的右子树，执行 cur += root->val，当前 cur=18。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=1 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1,
+          "sum": 8,
+          "cur": 18,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:0",
+              "21:0",
+              "16:0",
+              "17:1"
+            ]
+          },
+          {
+            "label": "cur / res",
+            "values": [
+              "cur=18",
+              "res=1"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "2 的右子树，执行 cur += root->val，当前 cur=18。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 1,
+          "sum": 8,
+          "cur": 18,
+          "res": 1
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-030",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "update",
+      "title": "用历史前缀更新 res",
+      "body": "查 cnt[cur - sum] = cnt[10]，命中 1 次；res 更新为 2。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1,
+          "sum": 8,
+          "cur": 18,
+          "found": 1,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "lookup",
+            "values": [
+              "cnt[10] = 1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "查 cnt[cur - sum] = cnt[10]，命中 1 次；res 更新为 2。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 1,
+          "sum": 8,
+          "cur": 18,
+          "found": 1,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-031",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 cur=18",
+      "body": "执行 cnt[cur]++，当前 cnt[18]=1；这个前缀可供后代路径查询。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1,
+          "sum": 8,
+          "cur": 18,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1",
+              "21:0",
+              "16:0",
+              "17:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "执行 cnt[cur]++，当前 cnt[18]=1；这个前缀可供后代路径查询。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 1,
+          "sum": 8,
+          "cur": 18,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1,
+            "21": 0,
+            "16": 0,
+            "17": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-032",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "inspect",
+      "title": "递归处理左右子树",
+      "body": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1,
+          "sum": 8,
+          "cur": 18,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "call",
+            "values": [
+              "left → right"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "18:1",
+              "21:0",
+              "16:0",
+              "17:1"
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 1,
+          "sum": 8,
+          "cur": 18,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 1,
+            "21": 0,
+            "16": 0,
+            "17": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-033",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "离开节点 1：撤销前缀",
+      "body": "子树处理完成，执行 cnt[cur]--；cnt[18] 回到 0，避免把不同分支混在一起。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1,
+          "sum": 8,
+          "cur": 18,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1",
+              "17:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "子树处理完成，执行 cnt[cur]--；cnt[18] 回到 0，避免把不同分支混在一起。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 1,
+          "sum": 8,
+          "cur": 18,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-034",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "离开节点 2：撤销前缀",
+      "body": "子树处理完成，执行 cnt[cur]--；cnt[17] 回到 0，避免把不同分支混在一起。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2,
+          "sum": 8,
+          "cur": 17,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "子树处理完成，执行 cnt[cur]--；cnt[17] 回到 0，避免把不同分支混在一起。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 2,
+          "sum": 8,
+          "cur": 17,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 1,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-035",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "离开节点 5：撤销前缀",
+      "body": "子树处理完成，执行 cnt[cur]--；cnt[15] 回到 0，避免把不同分支混在一起。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "node": 5,
+          "sum": 8,
+          "cur": 15,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "子树处理完成，执行 cnt[cur]--；cnt[15] 回到 0，避免把不同分支混在一起。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 5,
+          "sum": 8,
+          "cur": 15,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-036",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "访问节点 -3：更新 cur",
+      "body": "10 的右子树，执行 cur += root->val，当前 cur=7。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "node": -3,
+          "sum": 8,
+          "cur": 7,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:0",
+              "18:0",
+              "21:0",
+              "16:0",
+              "17:0"
+            ]
+          },
+          {
+            "label": "cur / res",
+            "values": [
+              "cur=7",
+              "res=2"
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "10 的右子树，执行 cur += root->val，当前 cur=7。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": -3,
+          "sum": 8,
+          "cur": 7,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-037",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "update",
+      "title": "用历史前缀更新 res",
+      "body": "查 cnt[cur - sum] = cnt[-1]，命中 0 次；res 更新为 2。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "node": -3,
+          "sum": 8,
+          "cur": 7,
+          "found": 0,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "lookup",
+            "values": [
+              "cnt[-1] = 0"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "查 cnt[cur - sum] = cnt[-1]，命中 0 次；res 更新为 2。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": -3,
+          "sum": 8,
+          "cur": 7,
+          "found": 0,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-038",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 cur=7",
+      "body": "执行 cnt[cur]++，当前 cnt[7]=1；这个前缀可供后代路径查询。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "node": -3,
+          "sum": 8,
+          "cur": 7,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:0",
+              "18:0",
+              "21:0",
+              "16:0",
+              "17:0",
+              "7:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "执行 cnt[cur]++，当前 cnt[7]=1；这个前缀可供后代路径查询。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": -3,
+          "sum": 8,
+          "cur": 7,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0,
+            "7": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-039",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "inspect",
+      "title": "递归处理左右子树",
+      "body": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "node": -3,
+          "sum": 8,
+          "cur": 7,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "call",
+            "values": [
+              "left → right"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:0",
+              "18:0",
+              "21:0",
+              "16:0",
+              "17:0",
+              "7:1"
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": -3,
+          "sum": 8,
+          "cur": 7,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0,
+            "7": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-040",
+      "line": 25,
+      "lineIds": [
+        25
+      ],
+      "phase": "mutate",
+      "title": "访问节点 11：更新 cur",
+      "body": "-3 的右子树，执行 cur += root->val，当前 cur=18。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "node": 11,
+          "sum": 8,
+          "cur": 18,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:0",
+              "18:0",
+              "21:0",
+              "16:0",
+              "17:0",
+              "7:1"
+            ]
+          },
+          {
+            "label": "cur / res",
+            "values": [
+              "cur=18",
+              "res=2"
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "-3 的右子树，执行 cur += root->val，当前 cur=18。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 11,
+          "sum": 8,
+          "cur": 18,
+          "res": 2
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0,
+            "7": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-041",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "update",
+      "title": "用历史前缀更新 res",
+      "body": "查 cnt[cur - sum] = cnt[10]，命中 1 次；res 更新为 3。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "res=3 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "node": 11,
+          "sum": 8,
+          "cur": 18,
+          "found": 1,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "lookup",
+            "values": [
+              "cnt[10] = 1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "查 cnt[cur - sum] = cnt[10]，命中 1 次；res 更新为 3。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 11,
+          "sum": 8,
+          "cur": 18,
+          "found": 1,
+          "res": 3
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0,
+            "7": 1
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-042",
+      "line": 27,
+      "lineIds": [
+        27
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 cur=18",
+      "body": "执行 cnt[cur]++，当前 cnt[18]=1；这个前缀可供后代路径查询。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=3 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "node": 11,
+          "sum": 8,
+          "cur": 18,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:0",
+              "18:1",
+              "21:0",
+              "16:0",
+              "17:0",
+              "7:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "执行 cnt[cur]++，当前 cnt[18]=1；这个前缀可供后代路径查询。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 11,
+          "sum": 8,
+          "cur": 18,
+          "res": 3
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 1,
+            "21": 0,
+            "16": 0,
+            "17": 0,
+            "7": 1
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-043",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "inspect",
+      "title": "递归处理左右子树",
+      "body": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · tree",
+        "badge": "res=3 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "node": 11,
+          "sum": 8,
+          "cur": 18,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "call",
+            "values": [
+              "left → right"
+            ]
+          },
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "15:0",
+              "18:1",
+              "21:0",
+              "16:0",
+              "17:0",
+              "7:1"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "当前节点的前缀已经登记，沿 dfs(root->left) 和 dfs(root->right) 继续；返回后必须撤销 cur。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 11,
+          "sum": 8,
+          "cur": 18,
+          "res": 3
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 1,
+            "21": 0,
+            "16": 0,
+            "17": 0,
+            "7": 1
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-044",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "离开节点 11：撤销前缀",
+      "body": "子树处理完成，执行 cnt[cur]--；cnt[18] 回到 0，避免把不同分支混在一起。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=3 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "node": 11,
+          "sum": 8,
+          "cur": 18,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1",
+              "7:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "子树处理完成，执行 cnt[cur]--；cnt[18] 回到 0，避免把不同分支混在一起。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 11,
+          "sum": 8,
+          "cur": 18,
+          "res": 3
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0,
+            "7": 1
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-045",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "离开节点 -3：撤销前缀",
+      "body": "子树处理完成，执行 cnt[cur]--；cnt[7] 回到 0，避免把不同分支混在一起。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=3 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "node": -3,
+          "sum": 8,
+          "cur": 7,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1",
+              "10:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "子树处理完成，执行 cnt[cur]--；cnt[7] 回到 0，避免把不同分支混在一起。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": -3,
+          "sum": 8,
+          "cur": 7,
+          "res": 3
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 1,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0,
+            "7": 0
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-046",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "离开节点 10：撤销前缀",
+      "body": "子树处理完成，执行 cnt[cur]--；cnt[10] 回到 0，避免把不同分支混在一起。 易错提醒：prefix[0] = 1 的含义： 表示「空路径的前缀和为 0 出现过一次」。这样当 cur_sum == targetSum 时，prefix[cur_sum - targetSum] = prefix[0] = 1，正确计数了从根节点到当前节点的路径。 回溯时必须 prefix[cur_sum] -= 1： 如果忘记回溯，其他分支会…",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "res=3 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 10,
+          "sum": 8,
+          "cur": 10,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "cnt",
+            "values": [
+              "0:1"
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "子树处理完成，执行 cnt[cur]--；cnt[10] 回到 0，避免把不同分支混在一起。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "node": 10,
+          "sum": 8,
+          "cur": 10,
+          "res": 3
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 0,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0,
+            "7": 0
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "437-trace-047",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "所有 DFS 分支完成，return res = 3。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "res=3 · 结果 1 项",
+        "tokens": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "sum": 8,
+          "cur": 0,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "所有 DFS 分支完成，return res = 3。"
+      },
+      "state": {
+        "values": [
+          10,
+          5,
+          -3,
+          3,
+          2,
+          null,
+          11,
+          3,
+          -2,
+          null,
+          1
+        ],
+        "variables": {
+          "sum": 8,
+          "cur": 0,
+          "res": 3
+        },
+        "structure": {
+          "cnt": {
+            "0": 1,
+            "10": 0,
+            "15": 0,
+            "18": 0,
+            "21": 0,
+            "16": 0,
+            "17": 0,
+            "7": 0
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

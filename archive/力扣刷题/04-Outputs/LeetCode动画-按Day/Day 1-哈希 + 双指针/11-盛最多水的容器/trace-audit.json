@@ -1,0 +1,1510 @@
+{
+  "problemId": 11,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 11,
+    "stepCount": 18,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        8,
+        6,
+        2,
+        5,
+        4,
+        8,
+        3,
+        7
+      ],
+      "variables": {
+        "i": 6,
+        "j": 6,
+        "res": 49
+      },
+      "structure": {},
+      "result": [
+        49
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "f7a06f247f23868d99f198def6eb0dc65bac87cad9725e974b4396059dd96f5c",
+    "sourceSemanticTokenHash": "901785807a68a41725b0f9264aa12a40f6c673f49c4ac048ff79bd36a252df6b",
+    "sourceCodeLineCount": 12
+  },
+  "sourceCodeSha256": "f7a06f247f23868d99f198def6eb0dc65bac87cad9725e974b4396059dd96f5c",
+  "sourceSemanticTokenHash": "901785807a68a41725b0f9264aa12a40f6c673f49c4ac048ff79bd36a252df6b",
+  "steps": [
+    {
+      "id": "11-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "放置左右边界",
+      "body": "面积由较矮边决定；只有移动较矮的一侧才可能找到更高容器。 题解原意：关键洞察： 面积取决于两个因素：宽度和较矮柱子的高度。当两个指针从两端向中间移动时，宽度在持续减小。想要面积变大，唯一的可能是高度增加。 核心推理： 假设 height[left] < height[right]（左边较矮）。 如果移动 right（较高的），新面积 = (right - left - 1) × min(height[left], height[right-1])。 宽度减小了 1。 由于 heigh…",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · two-ptr",
+        "badge": "i=0 · j=8 · res=0",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          0,
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 8,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "面积由较矮边决定；只有移动较矮的一侧才可能找到更高容器。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 0,
+          "j": 8,
+          "res": 0
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-002",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "compare",
+      "title": "计算 (0,8) 的面积",
+      "body": "min(1, 7) × (8 - 0) = 8，res = 8。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=0 · j=8 · res=8",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          0,
+          8
+        ],
+        "compared": [
+          0,
+          8
+        ],
+        "variables": {
+          "i": 0,
+          "j": 8,
+          "area": 8,
+          "res": 8
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              "8"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "min(1, 7) × (8 - 0) = 8，res = 8。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 0,
+          "j": 8,
+          "area": 8,
+          "res": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "移动较矮边",
+      "body": "较矮边不可能形成更大面积，移动后 i=1, j=8。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=1 · j=8 · res=8",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          1,
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 8,
+          "res": 8
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "较矮边不可能形成更大面积，移动后 i=1, j=8。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 1,
+          "j": 8,
+          "res": 8
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-004",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "compare",
+      "title": "计算 (1,8) 的面积",
+      "body": "min(8, 7) × (8 - 1) = 49，res = 49。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=1 · j=8 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          1,
+          8
+        ],
+        "compared": [
+          1,
+          8
+        ],
+        "variables": {
+          "i": 1,
+          "j": 8,
+          "area": 49,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              "49"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "min(8, 7) × (8 - 1) = 49，res = 49。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 1,
+          "j": 8,
+          "area": 49,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-005",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "移动较矮边",
+      "body": "较矮边不可能形成更大面积，移动后 i=1, j=7。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=1 · j=7 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          1,
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 7,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "较矮边不可能形成更大面积，移动后 i=1, j=7。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 1,
+          "j": 7,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-006",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "compare",
+      "title": "计算 (1,7) 的面积",
+      "body": "min(8, 3) × (7 - 1) = 18，res = 49。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=1 · j=7 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          1,
+          7
+        ],
+        "compared": [
+          1,
+          7
+        ],
+        "variables": {
+          "i": 1,
+          "j": 7,
+          "area": 18,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              "18"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "min(8, 3) × (7 - 1) = 18，res = 49。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 1,
+          "j": 7,
+          "area": 18,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-007",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "移动较矮边",
+      "body": "较矮边不可能形成更大面积，移动后 i=1, j=6。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=1 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          1,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 6,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "较矮边不可能形成更大面积，移动后 i=1, j=6。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 1,
+          "j": 6,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-008",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "compare",
+      "title": "计算 (1,6) 的面积",
+      "body": "min(8, 8) × (6 - 1) = 40，res = 49。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=1 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          1,
+          6
+        ],
+        "compared": [
+          1,
+          6
+        ],
+        "variables": {
+          "i": 1,
+          "j": 6,
+          "area": 40,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              "40"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "min(8, 8) × (6 - 1) = 40，res = 49。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 1,
+          "j": 6,
+          "area": 40,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-009",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "移动较矮边",
+      "body": "较矮边不可能形成更大面积，移动后 i=2, j=6。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=2 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          2,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 6,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "较矮边不可能形成更大面积，移动后 i=2, j=6。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 2,
+          "j": 6,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-010",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "compare",
+      "title": "计算 (2,6) 的面积",
+      "body": "min(6, 8) × (6 - 2) = 24，res = 49。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=2 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          2,
+          6
+        ],
+        "compared": [
+          2,
+          6
+        ],
+        "variables": {
+          "i": 2,
+          "j": 6,
+          "area": 24,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              "24"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "min(6, 8) × (6 - 2) = 24，res = 49。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 2,
+          "j": 6,
+          "area": 24,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-011",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "移动较矮边",
+      "body": "较矮边不可能形成更大面积，移动后 i=3, j=6。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=3 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          3,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 6,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "较矮边不可能形成更大面积，移动后 i=3, j=6。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 3,
+          "j": 6,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-012",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "compare",
+      "title": "计算 (3,6) 的面积",
+      "body": "min(2, 8) × (6 - 3) = 6，res = 49。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=3 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          3,
+          6
+        ],
+        "compared": [
+          3,
+          6
+        ],
+        "variables": {
+          "i": 3,
+          "j": 6,
+          "area": 6,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              "6"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "min(2, 8) × (6 - 3) = 6，res = 49。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 3,
+          "j": 6,
+          "area": 6,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-013",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "移动较矮边",
+      "body": "较矮边不可能形成更大面积，移动后 i=4, j=6。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=4 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          4,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 6,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "较矮边不可能形成更大面积，移动后 i=4, j=6。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 4,
+          "j": 6,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-014",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "compare",
+      "title": "计算 (4,6) 的面积",
+      "body": "min(5, 8) × (6 - 4) = 10，res = 49。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=4 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          4,
+          6
+        ],
+        "compared": [
+          4,
+          6
+        ],
+        "variables": {
+          "i": 4,
+          "j": 6,
+          "area": 10,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              "10"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "min(5, 8) × (6 - 4) = 10，res = 49。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 4,
+          "j": 6,
+          "area": 10,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-015",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "移动较矮边",
+      "body": "较矮边不可能形成更大面积，移动后 i=5, j=6。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=5 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          5,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "j": 6,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "较矮边不可能形成更大面积，移动后 i=5, j=6。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 5,
+          "j": 6,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-016",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "compare",
+      "title": "计算 (5,6) 的面积",
+      "body": "min(4, 8) × (6 - 5) = 4，res = 49。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · two-ptr",
+        "badge": "i=5 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          5,
+          6
+        ],
+        "compared": [
+          5,
+          6
+        ],
+        "variables": {
+          "i": 5,
+          "j": 6,
+          "area": 4,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          },
+          {
+            "label": "area",
+            "values": [
+              "4"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "min(4, 8) × (6 - 5) = 4，res = 49。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 5,
+          "j": 6,
+          "area": 4,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-017",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "移动较矮边",
+      "body": "较矮边不可能形成更大面积，移动后 i=6, j=6。 易错提醒：移动策略搞反： 最容易犯的错误是\"移动较高的指针\"，这会导致错过最优解。关键推理：移动较高的指针面积不可能变大，所以永远只移动较矮的。 高度相等时： height[left] == height[right] 时，移动任意一边都可以。因为两边一样高，无论移动哪边，高度都不可能超过当前值（因为 min 值已经是当前高度了）。习惯上移动 le…",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=6 · j=6 · res=49",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [
+          6,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "j": 6,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "height",
+            "values": [
+              1,
+              8,
+              6,
+              2,
+              5,
+              4,
+              8,
+              3,
+              7
+            ]
+          }
+        ],
+        "result": [],
+        "note": "较矮边不可能形成更大面积，移动后 i=6, j=6。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 6,
+          "j": 6,
+          "res": 49
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "11-trace-018",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "边界相遇，最大面积为 49。",
+      "kind": "two-ptr",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · two-ptr",
+        "badge": "i=6 · j=6 · res=49 · 结果 1 项",
+        "tokens": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "j": 6,
+          "res": 49
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              49
+            ]
+          }
+        ],
+        "result": [
+          49
+        ],
+        "note": "边界相遇，最大面积为 49。"
+      },
+      "state": {
+        "values": [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ],
+        "variables": {
+          "i": 6,
+          "j": 6,
+          "res": 49
+        },
+        "structure": {},
+        "result": [
+          49
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

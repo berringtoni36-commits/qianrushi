@@ -1,0 +1,14 @@
+{
+  "skill": "rtos-task-and-isr-design",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"FreeRTOS 任务应该怎么按周期和实时性划分？","expected_behavior":"激活本 skill，建立周期任务/事件任务/ISR 责任表","notes":"任务设计"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"中断里能不能直接计算速度？FromISR API 有什么约束？","expected_behavior":"激活本 skill，说明 ISR 最小化和优先级边界","notes":"ISR 设计"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"多个任务共享全局状态，互斥量和二值信号量分别怎么用？","expected_behavior":"激活本 skill，区分数据保护与事件通知","notes":"同步"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"PID 的 Kp、Ki、Kd 应该怎么调？","expected_behavior":"不激活本 skill，优先激活 rtos-motor-pid-control","notes":"跨 skill 混淆"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"Linux 进程调度和线程调度有什么区别？","expected_behavior":"不激活本 skill，做 Linux 操作系统解释","notes":"平台边界"},
+    {"id":"edge-01","type":"edge_case","prompt":"一个很短的 GPIO 中断处理函数是否需要单独建任务？","expected_behavior":"先判断是否有阻塞、复杂计算或跨上下文通信需求，再决定","notes":"设计边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

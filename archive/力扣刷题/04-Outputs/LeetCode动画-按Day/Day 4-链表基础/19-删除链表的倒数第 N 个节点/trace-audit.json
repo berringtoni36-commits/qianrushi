@@ -1,0 +1,825 @@
+{
+  "problemId": 19,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 19,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "variables": {
+        "p": 3,
+        "removed": 4
+      },
+      "structure": {
+        "list": [
+          1,
+          2,
+          3,
+          5
+        ]
+      },
+      "result": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "43d40dbf8f7bb945af6cb4ddfcdaa88b80db86fa2b9455620e65044cb64211ea",
+    "sourceSemanticTokenHash": "9a39b3cc5a603943ec190ee0029db5de128916ecffccab6bd9ed426fd42a173c",
+    "sourceCodeLineCount": 24
+  },
+  "sourceCodeSha256": "43d40dbf8f7bb945af6cb4ddfcdaa88b80db86fa2b9455620e65044cb64211ea",
+  "sourceSemanticTokenHash": "9a39b3cc5a603943ec190ee0029db5de128916ecffccab6bd9ed426fd42a173c",
+  "steps": [
+    {
+      "id": "19-trace-001",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "setup",
+      "title": "加入 dummy 节点",
+      "body": "dummy 让删除头节点和删除中间节点使用同一套 p->next 操作。 题解原意：为什么这样想： 要找到倒数第 n 个节点，本质是找到距离末尾 n 步的节点。但单链表不知道末尾在哪里。让快指针先走 n+1 步（指向倒数第 n 个节点的前一个），然后两个指针同步走直到快指针到末尾，此时慢指针就停在待删节点的前一个位置。 关键洞察： 快指针先走 n+1 步而不是 n 步，是为了让慢指针指向待删节点的前驱，这样才能执行删除操作。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 0
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "dummy 让删除头节点和删除中间节点使用同一套 p->next 操作。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 0
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "19-trace-002",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "inspect",
+      "title": "统计长度 n=6",
+      "body": "从 dummy 开始计数，得到要走到待删除节点前一个位置。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "n": 6
+        },
+        "rows": [
+          {
+            "label": "length",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [],
+        "note": "从 dummy 开始计数，得到要走到待删除节点前一个位置。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "n": 6
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "19-trace-003",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "p 前进到下标 1",
+      "body": "p 保持在待删除节点的前一个节点。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 1
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "p 保持在待删除节点的前一个节点。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 1
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "19-trace-004",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "p 前进到下标 2",
+      "body": "p 保持在待删除节点的前一个节点。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 2
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [],
+        "note": "p 保持在待删除节点的前一个节点。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 2
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "19-trace-005",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "p 前进到下标 3",
+      "body": "p 保持在待删除节点的前一个节点。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 3
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "label": "p",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "p 保持在待删除节点的前一个节点。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 3
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "19-trace-006",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "mutate",
+      "title": "删除节点 4",
+      "body": "跳过 p 后面的节点，链表变为 [1, 2, 3, 5]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 3,
+          "removed": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              5
+            ]
+          },
+          {
+            "label": "removed",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "note": "跳过 p 后面的节点，链表变为 [1, 2, 3, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 3,
+          "removed": 4
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            5
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "19-trace-check-008",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 [1, 2, 3, 5]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 3,
+          "removed": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              5
+            ]
+          },
+          {
+            "label": "removed",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 [1, 2, 3, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 3,
+          "removed": 4
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            5
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "19-trace-check-009",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 [1, 2, 3, 5]。",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 3,
+          "removed": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              5
+            ]
+          },
+          {
+            "label": "removed",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 [1, 2, 3, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 3,
+          "removed": 4
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            5
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "19-trace-check-010",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 [1, 2, 3, 5]。 易错提醒：快指针先走 n+1 步： 如果走了 n 步，慢指针就指向待删节点本身而不是前驱，无法执行删除 虚拟头节点： 删除头节点时，如果没有 dummy，head = head->next 可以，但代码需要分支处理。用 dummy 可以统一逻辑 n 的合法性： 题目保证 n 有效，但通用代码应考虑 n 是否超过链表长度 dummy 初始连接： du…",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 3,
+          "removed": 4
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              3,
+              5
+            ]
+          },
+          {
+            "label": "removed",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 [1, 2, 3, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "variables": {
+          "k": 2,
+          "n": 6,
+          "p": 3,
+          "removed": 4
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            5
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "19-trace-007",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 [1, 2, 3, 5]。",
+      "kind": "linked",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · linked",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": 3,
+          "removed": 4
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              2,
+              3,
+              5
+            ]
+          }
+        ],
+        "result": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "note": "返回 [1, 2, 3, 5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "variables": {
+          "p": 3,
+          "removed": 4
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            3,
+            5
+          ]
+        },
+        "result": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,837 @@
+{
+  "problemId": 75,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 75,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": false,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "variables": {
+        "i": 4,
+        "j": 2,
+        "k": 3
+      },
+      "structure": {},
+      "result": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "c4508fe0407be4ffde762e9161ef46f5b7797397820461813f35e63ee22a2790",
+    "sourceSemanticTokenHash": "ce80dda869a02a18370f4b436dd7ce85caada52eb0387a362d12a1f2a6a7984a",
+    "sourceCodeLineCount": 10
+  },
+  "sourceCodeSha256": "c4508fe0407be4ffde762e9161ef46f5b7797397820461813f35e63ee22a2790",
+  "sourceSemanticTokenHash": "ce80dda869a02a18370f4b436dd7ce85caada52eb0387a362d12a1f2a6a7984a",
+  "steps": [
+    {
+      "id": "75-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立三段区域",
+      "body": "[0,j) 全是 0，[j,i) 全是 1，[k+1,n) 全是 2。 题解原意：思路讲解： 设置三个指针： zero：指向 0 区域的右边界（初始为 0） two：指向 2 区域的左边界（初始为 n-1） i：当前遍历指针 遍历规则： nums[i] == 0：与 nums[zero] 交换，zero++，i++（因为换回来的一定是 1，可以前进） nums[i] == 2：与 nums[two] 交换，two--（i 不动，因为换回来的可能是 0 或 1，需要重新检查） nums[i] ==…",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · two-ptr",
+        "badge": "i=0 · j=0",
+        "tokens": [
+          2,
+          0,
+          2,
+          1,
+          1,
+          0
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 0,
+          "k": 5
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              2,
+              0,
+              2,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "label": "regions",
+            "values": [
+              "0 | 1 | unknown | 2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "[0,j) 全是 0，[j,i) 全是 1，[k+1,n) 全是 2。"
+      },
+      "state": {
+        "values": [
+          2,
+          0,
+          2,
+          1,
+          1,
+          0
+        ],
+        "variables": {
+          "i": 0,
+          "j": 0,
+          "k": 5
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "75-trace-002",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "把 2 放到右段",
+      "body": "更新指针 i=0, j=0, k=4，数组为 [0, 0, 2, 1, 1, 2]。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=0 · j=0",
+        "tokens": [
+          0,
+          0,
+          2,
+          1,
+          1,
+          2
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 0,
+          "k": 4
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              0,
+              2,
+              1,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "regions",
+            "values": [
+              "j=0",
+              "i=0",
+              "k=4"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新指针 i=0, j=0, k=4，数组为 [0, 0, 2, 1, 1, 2]。"
+      },
+      "state": {
+        "values": [
+          0,
+          0,
+          2,
+          1,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 0,
+          "j": 0,
+          "k": 4
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "75-trace-003",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "mutate",
+      "title": "把 0 放到左段",
+      "body": "更新指针 i=1, j=1, k=4，数组为 [0, 0, 2, 1, 1, 2]。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=1 · j=1",
+        "tokens": [
+          0,
+          0,
+          2,
+          1,
+          1,
+          2
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "k": 4
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              0,
+              2,
+              1,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "regions",
+            "values": [
+              "j=1",
+              "i=1",
+              "k=4"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新指针 i=1, j=1, k=4，数组为 [0, 0, 2, 1, 1, 2]。"
+      },
+      "state": {
+        "values": [
+          0,
+          0,
+          2,
+          1,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "k": 4
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "75-trace-004",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "mutate",
+      "title": "把 0 放到左段",
+      "body": "更新指针 i=2, j=2, k=4，数组为 [0, 0, 2, 1, 1, 2]。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=2 · j=2",
+        "tokens": [
+          0,
+          0,
+          2,
+          1,
+          1,
+          2
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 2,
+          "k": 4
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              0,
+              2,
+              1,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "regions",
+            "values": [
+              "j=2",
+              "i=2",
+              "k=4"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新指针 i=2, j=2, k=4，数组为 [0, 0, 2, 1, 1, 2]。"
+      },
+      "state": {
+        "values": [
+          0,
+          0,
+          2,
+          1,
+          1,
+          2
+        ],
+        "variables": {
+          "i": 2,
+          "j": 2,
+          "k": 4
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "75-trace-005",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "把 2 放到右段",
+      "body": "更新指针 i=2, j=2, k=3，数组为 [0, 0, 1, 1, 2, 2]。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=2 · j=2",
+        "tokens": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 2,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          },
+          {
+            "label": "regions",
+            "values": [
+              "j=2",
+              "i=2",
+              "k=3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新指针 i=2, j=2, k=3，数组为 [0, 0, 1, 1, 2, 2]。"
+      },
+      "state": {
+        "values": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 2,
+          "j": 2,
+          "k": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "75-trace-006",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "1 留在中段",
+      "body": "更新指针 i=3, j=2, k=3，数组为 [0, 0, 1, 1, 2, 2]。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=3 · j=2",
+        "tokens": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 2,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          },
+          {
+            "label": "regions",
+            "values": [
+              "j=2",
+              "i=3",
+              "k=3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新指针 i=3, j=2, k=3，数组为 [0, 0, 1, 1, 2, 2]。"
+      },
+      "state": {
+        "values": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 3,
+          "j": 2,
+          "k": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "75-trace-007",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "1 留在中段",
+      "body": "更新指针 i=4, j=2, k=3，数组为 [0, 0, 1, 1, 2, 2]。",
+      "kind": "two-ptr",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · two-ptr",
+        "badge": "i=4 · j=2 · 结果 6 项",
+        "tokens": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          },
+          {
+            "label": "regions",
+            "values": [
+              "j=2",
+              "i=4",
+              "k=3"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "note": "更新指针 i=4, j=2, k=3，数组为 [0, 0, 1, 1, 2, 2]。"
+      },
+      "state": {
+        "values": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "75-trace-check-009",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。三向分区完成：[0, 0, 1, 1, 2, 2]。",
+      "kind": "two-ptr",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=4 · j=2 · 结果 6 项",
+        "tokens": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          },
+          {
+            "label": "regions",
+            "values": [
+              "j=2",
+              "i=4",
+              "k=3"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。三向分区完成：[0, 0, 1, 1, 2, 2]。"
+      },
+      "state": {
+        "values": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "75-trace-check-010",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。三向分区完成：[0, 0, 1, 1, 2, 2]。 易错提醒：交换 2 时 i 不能前进：这是最常见的 bug。当 nums[i] == 2 并与 nums[two] 交换后，从右边换回来的元素可能是 0 也可能是 1，必须重新判断，所以 i 不能自增 交换 0 时 i 可以前进：因为 nums[zero] 是 0 区域的右边界，nums[zero] 的位置一定是 0 或 1（不会是 2，因为 2…",
+      "kind": "two-ptr",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=4 · j=2 · 结果 6 项",
+        "tokens": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          },
+          {
+            "label": "regions",
+            "values": [
+              "j=2",
+              "i=4",
+              "k=3"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。三向分区完成：[0, 0, 1, 1, 2, 2]。"
+      },
+      "state": {
+        "values": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "75-trace-008",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "三向分区完成：[0, 0, 1, 1, 2, 2]。",
+      "kind": "two-ptr",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · two-ptr",
+        "badge": "i=4 · j=2 · 结果 6 项",
+        "tokens": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              0,
+              0,
+              1,
+              1,
+              2,
+              2
+            ]
+          }
+        ],
+        "result": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "note": "三向分区完成：[0, 0, 1, 1, 2, 2]。"
+      },
+      "state": {
+        "values": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "k": 3
+        },
+        "structure": {},
+        "result": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,1310 @@
+{
+  "problemId": 295,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 295,
+    "stepCount": 16,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        2,
+        3
+      ],
+      "variables": {
+        "num": null,
+        "down_size": 2,
+        "up_size": 1,
+        "median": 2
+      },
+      "structure": {
+        "down": [
+          2,
+          1
+        ],
+        "up": [
+          3
+        ]
+      },
+      "result": [
+        1,
+        1.5,
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "3b97e1aed1324e56a2489d8d1acc9b9c9d3309ccbb346f1d06aab892b404a6d8",
+    "sourceSemanticTokenHash": "0313af4cf5422238eeff80dd93163a18f05eac98beb72fb482df891198e38e6a",
+    "sourceCodeLineCount": 38
+  },
+  "sourceCodeSha256": "3b97e1aed1324e56a2489d8d1acc9b9c9d3309ccbb346f1d06aab892b404a6d8",
+  "sourceSemanticTokenHash": "0313af4cf5422238eeff80dd93163a18f05eac98beb72fb482df891198e38e6a",
+  "steps": [
+    {
+      "id": "295-trace-001",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "setup",
+      "title": "初始化 up / down 双堆",
+      "body": "up 是较大一半的小根堆，down 是较小一半的大根堆；两者都为空。 题解原意：核心思想： 用两个堆： 大根堆 small（存负值模拟）： 存储较小的一半元素，堆顶是这一半的最大值。 小根堆 large： 存储较大的一半元素，堆顶是这一半的最小值。 维护两个堆的大小平衡（small 至少和 large 一样多），且 small 中所有元素 ≤ large 所有元素。 复杂度： addNum O(log n)，findMedian O(1)，空间 O(n)",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · heap",
+        "badge": "down",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "num": null,
+          "down_size": 0,
+          "up_size": 0
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "up 是较大一半的小根堆，down 是较小一半的大根堆；两者都为空。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": null,
+          "down_size": 0,
+          "up_size": 0
+        },
+        "structure": {
+          "down": [],
+          "up": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-002",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "compare",
+      "title": "决定 1 进入哪一半",
+      "body": "down 为空或 1 <= down.top=—，条件为 true。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "down",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "num": 1,
+          "down_size": 0,
+          "up_size": 0
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "down 为空或 1 <= down.top=—，条件为 true。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 1,
+          "down_size": 0,
+          "up_size": 0
+        },
+        "structure": {
+          "down": [],
+          "up": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-003",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "把 1 放入 down",
+      "body": "down.push(1) 后，down=[1]；down 保存较小的一半。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "down",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "num": 1,
+          "down_size": 1,
+          "up_size": 0
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "down.push(1) 后，down=[1]；down 保存较小的一半。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 1,
+          "down_size": 1,
+          "up_size": 0
+        },
+        "structure": {
+          "down": [
+            1
+          ],
+          "up": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-004",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "branch",
+      "title": "检查 down 是否多出两个元素",
+      "body": "down.size=1，up.size=0，条件为 false。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · heap",
+        "badge": "down",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "num": 1,
+          "down_size": 1,
+          "up_size": 0
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "down.size=1，up.size=0，条件为 false。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 1,
+          "down_size": 1,
+          "up_size": 0
+        },
+        "structure": {
+          "down": [
+            1
+          ],
+          "up": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-005",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "query",
+      "title": "查询 1 个元素的中位数",
+      "body": "总数为奇数，执行 return down.top()，得到 1。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "query · heap",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "num": 1,
+          "down_size": 1,
+          "up_size": 0,
+          "median": 1
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "总数为奇数，执行 return down.top()，得到 1。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 1,
+          "down_size": 1,
+          "up_size": 0,
+          "median": 1
+        },
+        "structure": {
+          "down": [
+            1
+          ],
+          "up": []
+        },
+        "result": [
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "295-trace-006",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "compare",
+      "title": "决定 2 进入哪一半",
+      "body": "down 为空或 2 <= down.top=1，条件为 false。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "num": 2,
+          "down_size": 1,
+          "up_size": 0
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              "空"
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "down 为空或 2 <= down.top=1，条件为 false。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 2,
+          "down_size": 1,
+          "up_size": 0
+        },
+        "structure": {
+          "down": [
+            1
+          ],
+          "up": []
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-007",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "把 2 放入 up",
+      "body": "up.push(2) 后，up=[2]；较大的一半暂时多一个元素。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "num": 2,
+          "down_size": 1,
+          "up_size": 1
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "up.push(2) 后，up=[2]；较大的一半暂时多一个元素。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 2,
+          "down_size": 1,
+          "up_size": 1
+        },
+        "structure": {
+          "down": [
+            1
+          ],
+          "up": [
+            2
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-008",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "branch",
+      "title": "检查 up 是否超过 down",
+      "body": "up.size=1，down.size=1，条件为 false。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · heap",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "num": 2,
+          "down_size": 1,
+          "up_size": 1
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "up.size=1，down.size=1，条件为 false。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 2,
+          "down_size": 1,
+          "up_size": 1
+        },
+        "structure": {
+          "down": [
+            1
+          ],
+          "up": [
+            2
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-009",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "query",
+      "title": "查询 2 个元素的中位数",
+      "body": "总数为偶数，执行 (down.top + up.top) / 2.0 = 1.5。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "query · heap",
+        "badge": "结果 2 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "num": 2,
+          "down_size": 1,
+          "up_size": 1,
+          "median": 1.5
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1.5
+        ],
+        "note": "总数为偶数，执行 (down.top + up.top) / 2.0 = 1.5。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 2,
+          "down_size": 1,
+          "up_size": 1,
+          "median": 1.5
+        },
+        "structure": {
+          "down": [
+            1
+          ],
+          "up": [
+            2
+          ]
+        },
+        "result": [
+          1,
+          1.5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "295-trace-010",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "compare",
+      "title": "决定 3 进入哪一半",
+      "body": "down 为空或 3 <= down.top=1，条件为 false。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · heap",
+        "badge": "结果 2 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "num": 3,
+          "down_size": 1,
+          "up_size": 1
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              1,
+              1.5
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1.5
+        ],
+        "note": "down 为空或 3 <= down.top=1，条件为 false。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 3,
+          "down_size": 1,
+          "up_size": 1
+        },
+        "structure": {
+          "down": [
+            1
+          ],
+          "up": [
+            2
+          ]
+        },
+        "result": [
+          1,
+          1.5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-011",
+      "line": 19,
+      "lineIds": [
+        19
+      ],
+      "phase": "mutate",
+      "title": "把 3 放入 up",
+      "body": "up.push(3) 后，up=[2, 3]；较大的一半暂时多一个元素。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "结果 2 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "num": 3,
+          "down_size": 1,
+          "up_size": 2
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              2,
+              3
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              1,
+              1.5
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1.5
+        ],
+        "note": "up.push(3) 后，up=[2, 3]；较大的一半暂时多一个元素。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 3,
+          "down_size": 1,
+          "up_size": 2
+        },
+        "structure": {
+          "down": [
+            1
+          ],
+          "up": [
+            2,
+            3
+          ]
+        },
+        "result": [
+          1,
+          1.5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-012",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "branch",
+      "title": "检查 up 是否超过 down",
+      "body": "up.size=2，down.size=1，条件为 true。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · heap",
+        "badge": "结果 2 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "num": 3,
+          "down_size": 1,
+          "up_size": 2
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              2,
+              3
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              1,
+              1.5
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1.5
+        ],
+        "note": "up.size=2，down.size=1，条件为 true。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 3,
+          "down_size": 1,
+          "up_size": 2
+        },
+        "structure": {
+          "down": [
+            1
+          ],
+          "up": [
+            2,
+            3
+          ]
+        },
+        "result": [
+          1,
+          1.5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-013",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "移动 up.top = 2 到 down",
+      "body": "把 up 的最小值交给 down，down=[2, 1]。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "结果 2 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "num": 3,
+          "down_size": 2,
+          "up_size": 2
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              2,
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              2,
+              3
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              1,
+              1.5
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1.5
+        ],
+        "note": "把 up 的最小值交给 down，down=[2, 1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 3,
+          "down_size": 2,
+          "up_size": 2
+        },
+        "structure": {
+          "down": [
+            2,
+            1
+          ],
+          "up": [
+            2,
+            3
+          ]
+        },
+        "result": [
+          1,
+          1.5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-014",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "mutate",
+      "title": "弹出 up.top",
+      "body": "完成平衡后，down 至少和 up 一样多。",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · heap",
+        "badge": "结果 2 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "num": 3,
+          "down_size": 2,
+          "up_size": 1
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              2,
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              1,
+              1.5
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1.5
+        ],
+        "note": "完成平衡后，down 至少和 up 一样多。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 3,
+          "down_size": 2,
+          "up_size": 1
+        },
+        "structure": {
+          "down": [
+            2,
+            1
+          ],
+          "up": [
+            3
+          ]
+        },
+        "result": [
+          1,
+          1.5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "295-trace-015",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "query",
+      "title": "查询 3 个元素的中位数",
+      "body": "总数为奇数，执行 return down.top()，得到 2。 易错提醒：大根堆的模拟： C++ 的 priority_queue 只提供小根堆，大根堆需要存负值来模拟。注意在使用 small[0] 时，取出的值需要取负才是真正的最大值。 堆的平衡条件： 必须保证 len(small) >= len(large) 且 len(small) - len(large) <= 1。如果平衡条件不同，中位数的计算方式也…",
+      "kind": "heap",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "query · heap",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "num": 3,
+          "down_size": 2,
+          "up_size": 1,
+          "median": 2
+        },
+        "rows": [
+          {
+            "label": "down · max-heap",
+            "values": [
+              2,
+              1
+            ]
+          },
+          {
+            "label": "up · min-heap",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "median",
+            "values": [
+              1,
+              1.5
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1.5,
+          2
+        ],
+        "note": "总数为奇数，执行 return down.top()，得到 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": 3,
+          "down_size": 2,
+          "up_size": 1,
+          "median": 2
+        },
+        "structure": {
+          "down": [
+            2,
+            1
+          ],
+          "up": [
+            3
+          ]
+        },
+        "result": [
+          1,
+          1.5,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "295-trace-016",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最后一次 findMedian 返回 2；中位数序列为 [1, 1.5, 2]。",
+      "kind": "heap",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · heap",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "num": null,
+          "down_size": 2,
+          "up_size": 1,
+          "median": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              1.5,
+              2
+            ]
+          },
+          {
+            "label": "down",
+            "values": [
+              2,
+              1
+            ]
+          },
+          {
+            "label": "up",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          1,
+          1.5,
+          2
+        ],
+        "note": "最后一次 findMedian 返回 2；中位数序列为 [1, 1.5, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "num": null,
+          "down_size": 2,
+          "up_size": 1,
+          "median": 2
+        },
+        "structure": {
+          "down": [
+            2,
+            1
+          ],
+          "up": [
+            3
+          ]
+        },
+        "result": [
+          1,
+          1.5,
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

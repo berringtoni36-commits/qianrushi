@@ -1,0 +1,4 @@
+interface:
+  display_name: "Embedded Numeric Contract Audit"
+  short_description: "Audit embedded numeric representation contracts"
+  default_prompt: "Use $embedded-numeric-contract-audit to audit a numeric fault from raw bits through scaling, filtering, error budget, and threshold behavior."

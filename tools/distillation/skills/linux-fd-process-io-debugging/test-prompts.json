@@ -1,0 +1,16 @@
+{
+  "skill": "linux-fd-process-io-debugging",
+  "version": "0.1.0",
+  "source_book": "大丙 Linux 教程（Subingwen 专栏）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"父进程 fork 子进程后一直等不到管道 EOF，怎么检查哪些 fd 没有关闭？","expected_behavior":"激活本 Skill，画出父子进程读写端继承关系并检查关闭时机。"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"两个线程偶尔读到共享内存里的半更新结构，如何定位同步和生命周期问题？","expected_behavior":"激活本 Skill，区分共享数据与同步原语并建立生产者消费者协议。"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"dup2 重定向 stdout 后 exec 的命令输出丢失，帮我按 fd 表和 open file description 排查。","expected_behavior":"激活本 Skill，检查 dup2、继承、CLOEXEC、关闭顺序和 exec 后标准流。"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"epoll 收到可读事件但 TCP 消息经常半包，应该怎样设计长度前缀协议？","expected_behavior":"拒绝本 Skill，优先转给 linux-socket-multiplexing-design。"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"undefined reference 导致 Linux 程序链接失败，怎么检查库顺序？","expected_behavior":"拒绝本 Skill，优先转给 linux-build-debug-chain。"},
+    {"id":"edge-01","type":"edge_case","prompt":"mmap 读写看起来没有阻塞，但进程偶尔在访问映射区时卡顿，这还算文件描述符问题吗？","expected_behavior":"只在资源映射生命周期和缺页/回写证据相关时部分触发，并明确不能把 mmap 绝对化为非阻塞。"}
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "静态路由预期 6/6；实际客户端盲测仍需在新会话中完成。"
+}

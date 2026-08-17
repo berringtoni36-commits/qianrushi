@@ -1,0 +1,941 @@
+{
+  "problemId": 56,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 56,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "variables": {
+        "l": 15,
+        "r": 18
+      },
+      "structure": {},
+      "result": [
+        [
+          1,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "e127a017e39dceed8babdd10afc0d3d97749ed50ce678357ec05a0819e8e2bb1",
+    "sourceSemanticTokenHash": "990000093c8dac253b432d05db693da353f77b47b05cbb1eebd02a162a2e4948",
+    "sourceCodeLineCount": 19
+  },
+  "sourceCodeSha256": "e127a017e39dceed8babdd10afc0d3d97749ed50ce678357ec05a0819e8e2bb1",
+  "sourceSemanticTokenHash": "990000093c8dac253b432d05db693da353f77b47b05cbb1eebd02a162a2e4948",
+  "steps": [
+    {
+      "id": "56-trace-001",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "setup",
+      "title": "按左端点排序",
+      "body": "排序后，只需要维护当前待合并区间 [l,r]。 题解原意：核心洞察： 按起点排序后，重叠的区间必然在排序后相邻。这样只需要一次遍历，在遍历过程中维护一个\"当前合并区间\"： 如果新区间的起点 <= 当前合并区间的终点 → 重叠，合并（更新终点为两者终点的较大值） 否则 → 不重叠，将当前合并区间加入结果，开始新的合并区间 代码实现技巧： 利用 merged[-1] 表示结果数组中最后一个（即当前正在合并的）区间，可以让代码非常简洁。 复杂度： O(n log n) 时间（排序…",
+      "kind": "interval",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · interval",
+        "badge": "l=1 · r=3",
+        "tokens": [
+          "[1, 3]",
+          "[2, 6]",
+          "[8, 10]",
+          "[15, 18]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 3
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "[1,3]"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "排序后，只需要维护当前待合并区间 [l,r]。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "variables": {
+          "l": 1,
+          "r": 3
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "56-trace-002",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "合并 [2, 6]",
+      "body": "[2, 6] 与当前段重叠，右端从 3 扩张到 6。",
+      "kind": "interval",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · interval",
+        "badge": "l=1 · r=6",
+        "tokens": [
+          "[1, 3]",
+          "[2, 6]",
+          "[8, 10]",
+          "[15, 18]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 6
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "[1,6]"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "[2, 6] 与当前段重叠，右端从 3 扩张到 6。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "variables": {
+          "l": 1,
+          "r": 6
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "56-trace-003",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "结算区间 [1,6]",
+      "body": "下一个区间 [8, 10] 与当前段不重叠，先把当前段写入结果。",
+      "kind": "interval",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · interval",
+        "badge": "l=1 · r=6 · 结果 1 项",
+        "tokens": [
+          "[1, 3]",
+          "[2, 6]",
+          "[8, 10]",
+          "[15, 18]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 6
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "[1,6]"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[1, 6]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            6
+          ]
+        ],
+        "note": "下一个区间 [8, 10] 与当前段不重叠，先把当前段写入结果。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "variables": {
+          "l": 1,
+          "r": 6
+        },
+        "structure": {},
+        "result": [
+          [
+            1,
+            6
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "56-trace-004",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "结算区间 [8,10]",
+      "body": "下一个区间 [15, 18] 与当前段不重叠，先把当前段写入结果。",
+      "kind": "interval",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · interval",
+        "badge": "l=8 · r=10 · 结果 2 项",
+        "tokens": [
+          "[1, 3]",
+          "[2, 6]",
+          "[8, 10]",
+          "[15, 18]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 8,
+          "r": 10
+        },
+        "rows": [
+          {
+            "label": "current",
+            "values": [
+              "[8,10]"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[1, 6]",
+              "[8, 10]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ]
+        ],
+        "note": "下一个区间 [15, 18] 与当前段不重叠，先把当前段写入结果。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "variables": {
+          "l": 8,
+          "r": 10
+        },
+        "structure": {},
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "56-trace-005",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "结算最后区间 [15,18]",
+      "body": "扫描结束，把尚未写入结果的当前段补入。",
+      "kind": "interval",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · interval",
+        "badge": "l=15 · r=18 · 结果 3 项",
+        "tokens": [
+          "[1, 3]",
+          "[2, 6]",
+          "[8, 10]",
+          "[15, 18]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[1, 6]",
+              "[8, 10]",
+              "[15, 18]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "note": "扫描结束，把尚未写入结果的当前段补入。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "structure": {},
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "56-trace-check-007",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回合并后的区间 [[1, 6], [8, 10], [15, 18]]。",
+      "kind": "interval",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=15 · r=18 · 结果 3 项",
+        "tokens": [
+          "[1, 3]",
+          "[2, 6]",
+          "[8, 10]",
+          "[15, 18]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[1, 6]",
+              "[8, 10]",
+              "[15, 18]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回合并后的区间 [[1, 6], [8, 10], [15, 18]]。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "structure": {},
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "56-trace-check-008",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回合并后的区间 [[1, 6], [8, 10], [15, 18]]。",
+      "kind": "interval",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=15 · r=18 · 结果 3 项",
+        "tokens": [
+          "[1, 3]",
+          "[2, 6]",
+          "[8, 10]",
+          "[15, 18]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[1, 6]",
+              "[8, 10]",
+              "[15, 18]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回合并后的区间 [[1, 6], [8, 10], [15, 18]]。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "structure": {},
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "56-trace-check-009",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回合并后的区间 [[1, 6], [8, 10], [15, 18]]。",
+      "kind": "interval",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=15 · r=18 · 结果 3 项",
+        "tokens": [
+          "[1, 3]",
+          "[2, 6]",
+          "[8, 10]",
+          "[15, 18]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[1, 6]",
+              "[8, 10]",
+              "[15, 18]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回合并后的区间 [[1, 6], [8, 10], [15, 18]]。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "structure": {},
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "56-trace-check-010",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回合并后的区间 [[1, 6], [8, 10], [15, 18]]。 易错提醒：忘记排序：未排序直接扫描会导致合并错误，因为重叠的区间可能没有相邻。 等于号处理：interval[0] <= end 包含等于情况，因为 [1,4] 和 [4,5] 端点相接也算重叠。 更新终点：合并时要取 max(end, interval[1]) 而不是直接用 interval[1]——因为新区间可能完全包含在当前合并区间内。 最后…",
+      "kind": "interval",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=15 · r=18 · 结果 3 项",
+        "tokens": [
+          "[1, 3]",
+          "[2, 6]",
+          "[8, 10]",
+          "[15, 18]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[1, 6]",
+              "[8, 10]",
+              "[15, 18]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回合并后的区间 [[1, 6], [8, 10], [15, 18]]。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "structure": {},
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "56-trace-006",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回合并后的区间 [[1, 6], [8, 10], [15, 18]]。",
+      "kind": "interval",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · interval",
+        "badge": "l=15 · r=18 · 结果 3 项",
+        "tokens": [
+          "[1, 3]",
+          "[2, 6]",
+          "[8, 10]",
+          "[15, 18]"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[1, 6]",
+              "[8, 10]",
+              "[15, 18]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "note": "返回合并后的区间 [[1, 6], [8, 10], [15, 18]]。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "variables": {
+          "l": 15,
+          "r": 18
+        },
+        "structure": {},
+        "result": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

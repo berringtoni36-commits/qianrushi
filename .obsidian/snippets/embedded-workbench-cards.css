@@ -1,0 +1,517 @@
+/*
+ * 嵌入式学习工作台
+ *
+ * 视觉取向参考：Obsidian Dashboard Gallery 的 Atlas / Zen 分区卡片，
+ * 信息组织参考：Obsidian Knowledge Workbench 的状态元数据。
+ * 只作用于 cssclasses: workbench-dashboard；不依赖 Dataview、Homepage 或 API。
+ */
+
+.markdown-preview-view.workbench-dashboard,
+.markdown-source-view.mod-cm6.workbench-dashboard {
+  --workbench-accent: var(--interactive-accent);
+  --workbench-accent-soft: color-mix(in srgb, var(--interactive-accent) 12%, transparent);
+  --workbench-card: var(--background-secondary);
+  --workbench-card-alt: var(--background-secondary-alt, var(--background-secondary));
+  --workbench-surface: var(--background-primary);
+  --workbench-border: var(--background-modifier-border);
+  --workbench-border-hover: var(--background-modifier-border-hover, var(--interactive-accent));
+  --workbench-muted: var(--text-muted);
+  --workbench-radius: var(--radius-m, 10px);
+  --workbench-radius-small: var(--radius-s, 7px);
+  --workbench-content-width: 1120px;
+  --workbench-shadow: var(--shadow-s, 0 2px 10px rgba(0, 0, 0, 0.06));
+  --workbench-shadow-hover: var(--shadow-m, 0 7px 20px rgba(0, 0, 0, 0.1));
+  --workbench-motion: var(--anim-motion-baseline, cubic-bezier(0.25, 1, 0.5, 1));
+  --workbench-duration-fast: var(--anim-duration-fast, 150ms);
+  --workbench-duration-moderate: var(--anim-duration-moderate, 260ms);
+}
+
+.workbench-dashboard .markdown-preview-section,
+.workbench-dashboard .cm-content {
+  max-width: var(--workbench-content-width);
+}
+
+.workbench-dashboard .markdown-preview-section {
+  overflow-wrap: anywhere;
+}
+
+.workbench-dashboard a:focus-visible {
+  outline: 2px solid var(--workbench-accent);
+  outline-offset: 3px;
+  border-radius: var(--workbench-radius-small);
+}
+
+/* Hero: one restrained accent, no gradient or external image. */
+.workbench-dashboard .workbench-hero {
+  position: relative;
+  margin: 0 0 1.15rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid var(--workbench-border);
+  border-inline-start: 3px solid var(--workbench-accent);
+  border-radius: var(--workbench-radius);
+  background: var(--workbench-card);
+  box-shadow: var(--workbench-shadow);
+}
+
+.workbench-dashboard .workbench-hero-kicker,
+.workbench-dashboard .workbench-entry-index,
+.workbench-dashboard .workbench-panel-label,
+.workbench-dashboard .workbench-bottom-label {
+  color: var(--workbench-accent);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.workbench-dashboard .workbench-hero-title {
+  margin-top: 0.42rem;
+  color: var(--text-normal);
+  font-size: clamp(1.55rem, 4vw, 2.45rem);
+  font-weight: 760;
+  letter-spacing: -0.025em;
+  line-height: 1.16;
+}
+
+.workbench-dashboard .workbench-hero-subtitle {
+  max-width: 48rem;
+  margin-top: 0.6rem;
+  color: var(--workbench-muted);
+  line-height: 1.6;
+}
+
+.workbench-dashboard .workbench-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.workbench-dashboard .workbench-hero-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.32rem 0.72rem;
+  border: 1px solid var(--workbench-accent);
+  border-radius: 999px;
+  color: var(--workbench-accent);
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: background-color var(--workbench-duration-fast) var(--workbench-motion),
+    color var(--workbench-duration-fast) var(--workbench-motion),
+    border-color var(--workbench-duration-fast) var(--workbench-motion);
+}
+
+.workbench-dashboard .workbench-hero-link:hover {
+  background: var(--workbench-accent);
+  color: var(--text-on-accent);
+}
+
+.workbench-dashboard .workbench-hero-link-muted {
+  border-color: var(--workbench-border);
+  color: var(--workbench-muted);
+}
+
+.workbench-dashboard .workbench-hero-link-muted:hover {
+  border-color: var(--workbench-border-hover);
+  background: var(--workbench-card-alt);
+  color: var(--text-normal);
+}
+
+/* KPI strip: static labels, while Bases remains the single source of truth. */
+.workbench-dashboard .workbench-kpi-grid,
+.workbench-dashboard .workbench-entry-grid,
+.workbench-dashboard .workbench-section-grid,
+.workbench-dashboard .workbench-mini-grid,
+.workbench-dashboard .workbench-bottom-grid {
+  display: grid;
+  gap: 0.72rem;
+}
+
+.workbench-dashboard .workbench-kpi-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 1rem;
+}
+
+.workbench-dashboard .workbench-kpi {
+  min-width: 0;
+  padding: 0.9rem 0.95rem;
+  border: 1px solid var(--workbench-border);
+  border-radius: var(--workbench-radius-small);
+  background: var(--workbench-card-alt);
+}
+
+.workbench-dashboard .workbench-kpi-accent {
+  border-color: var(--workbench-accent);
+  background: var(--workbench-accent-soft);
+}
+
+.workbench-dashboard .workbench-kpi-label,
+.workbench-dashboard .workbench-mini-card small,
+.workbench-dashboard .workbench-kpi-meta {
+  color: var(--workbench-muted);
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+.workbench-dashboard .workbench-kpi-value {
+  margin: 0.25rem 0 0.12rem;
+  color: var(--text-normal);
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-weight: 760;
+  letter-spacing: 0.025em;
+}
+
+/* Entry cards: Atlas-like cards, deliberately without noisy iconography. */
+.workbench-dashboard .workbench-entry-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 1.35rem;
+}
+
+.workbench-dashboard .workbench-entry-card,
+.workbench-dashboard .workbench-panel,
+.workbench-dashboard .workbench-mini-card,
+.workbench-dashboard .workbench-bottom-card {
+  border: 1px solid var(--workbench-border);
+  background: var(--workbench-card);
+  box-shadow: var(--workbench-shadow);
+}
+
+.workbench-dashboard .workbench-entry-card {
+  display: flex;
+  min-height: 10.5rem;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: var(--workbench-radius);
+  transition: border-color var(--workbench-duration-fast) var(--workbench-motion),
+    box-shadow var(--workbench-duration-fast) var(--workbench-motion),
+    transform var(--workbench-duration-fast) var(--workbench-motion),
+    background-color var(--workbench-duration-fast) var(--workbench-motion);
+}
+
+.workbench-dashboard .workbench-entry-card:hover,
+.workbench-dashboard .workbench-panel:hover,
+.workbench-dashboard .workbench-mini-card:hover,
+.workbench-dashboard .workbench-bottom-card:hover {
+  border-color: var(--workbench-border-hover);
+  background: var(--workbench-card-alt);
+  box-shadow: var(--workbench-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.workbench-dashboard .workbench-entry-primary {
+  border-color: var(--workbench-accent);
+}
+
+.workbench-dashboard .workbench-entry-title {
+  margin-top: 0.55rem;
+  color: var(--text-normal);
+  font-size: 1rem;
+  font-weight: 720;
+  line-height: 1.38;
+}
+
+.workbench-dashboard .workbench-card-link {
+  color: var(--link-color);
+  text-decoration: none;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+}
+
+.workbench-dashboard .workbench-card-link:hover {
+  text-decoration: underline;
+}
+
+.workbench-dashboard .workbench-entry-copy,
+.workbench-dashboard .workbench-panel-copy,
+.workbench-dashboard .workbench-bottom-copy {
+  margin-top: 0.42rem;
+  color: var(--workbench-muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.workbench-dashboard .workbench-entry-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.8rem;
+  color: var(--workbench-muted);
+  font-size: 0.72rem;
+}
+
+.workbench-dashboard .workbench-entry-foot span:last-child {
+  color: var(--workbench-accent);
+  font-size: 1rem;
+  transition: transform var(--workbench-duration-fast) var(--workbench-motion);
+}
+
+.workbench-dashboard .workbench-entry-card:hover .workbench-entry-foot span:last-child {
+  transform: translateX(3px);
+}
+
+/* Section panels and status mini-cards. */
+.workbench-dashboard .workbench-section-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 0 1rem;
+}
+
+.workbench-dashboard .workbench-panel {
+  padding: 1rem;
+  border-radius: var(--workbench-radius);
+  transition: border-color var(--workbench-duration-fast) var(--workbench-motion),
+    box-shadow var(--workbench-duration-fast) var(--workbench-motion),
+    transform var(--workbench-duration-fast) var(--workbench-motion),
+    background-color var(--workbench-duration-fast) var(--workbench-motion);
+}
+
+.workbench-dashboard .workbench-panel-title {
+  margin-top: 0.42rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.workbench-dashboard .workbench-panel-links {
+  margin-top: 0.8rem;
+  color: var(--link-color);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.workbench-dashboard .workbench-mini-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 1rem;
+}
+
+.workbench-dashboard .workbench-mini-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 0.45rem;
+  padding: 0.72rem 0.8rem;
+  border-radius: var(--workbench-radius-small);
+  transition: border-color var(--workbench-duration-fast) var(--workbench-motion),
+    box-shadow var(--workbench-duration-fast) var(--workbench-motion),
+    transform var(--workbench-duration-fast) var(--workbench-motion),
+    background-color var(--workbench-duration-fast) var(--workbench-motion);
+}
+
+.workbench-dashboard .workbench-mini-card small {
+  grid-column: 2;
+}
+
+.workbench-dashboard .workbench-mini-card a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.workbench-dashboard .workbench-mini-card a:hover {
+  text-decoration: underline;
+}
+
+.workbench-dashboard .workbench-mini-dot {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: var(--workbench-muted);
+}
+
+.workbench-dashboard .workbench-dot-ready {
+  background: var(--color-green);
+}
+
+.workbench-dashboard .workbench-dot-next {
+  background: var(--color-orange);
+}
+
+.workbench-dashboard .workbench-bottom-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 1rem;
+}
+
+.workbench-dashboard .workbench-bottom-card {
+  padding: 0.9rem 1rem;
+  border-radius: var(--workbench-radius-small);
+  transition: border-color var(--workbench-duration-fast) var(--workbench-motion),
+    box-shadow var(--workbench-duration-fast) var(--workbench-motion),
+    transform var(--workbench-duration-fast) var(--workbench-motion),
+    background-color var(--workbench-duration-fast) var(--workbench-motion);
+}
+
+.workbench-dashboard .workbench-bottom-links {
+  margin-top: 0.42rem;
+  font-size: 0.85rem;
+}
+
+/* Native callouts and Bases are still the dynamic layer. */
+.workbench-dashboard .callout {
+  margin: 0.85rem 0;
+  border: 1px solid var(--workbench-border);
+  border-radius: var(--workbench-radius);
+  background: var(--workbench-card);
+  box-shadow: var(--workbench-shadow);
+}
+
+.workbench-dashboard .callout-title {
+  letter-spacing: -0.008em;
+}
+
+.workbench-dashboard .callout[data-callout="abstract"],
+.workbench-dashboard .callout[data-callout="note"] {
+  background: var(--workbench-card-alt);
+}
+
+.workbench-dashboard .callout[data-callout="abstract"] {
+  border-inline-start-color: var(--workbench-accent);
+}
+
+.workbench-dashboard .callout[data-callout="warning"] {
+  border-inline-start-color: var(--color-orange);
+}
+
+.workbench-dashboard .callout[data-callout="success"] {
+  border-inline-start-color: var(--color-green);
+}
+
+.workbench-dashboard .bases-embed {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  border: 1px solid var(--workbench-border);
+  border-radius: var(--workbench-radius-small);
+  background: var(--workbench-surface);
+  -webkit-overflow-scrolling: touch;
+}
+
+.workbench-dashboard .bases-embed .bases-view {
+  background: transparent;
+}
+
+.workbench-dashboard .bases-embed table {
+  min-width: 32rem;
+  font-size: 0.84em;
+}
+
+.workbench-dashboard .bases-embed th {
+  color: var(--workbench-muted);
+  font-size: 0.92em;
+  font-weight: 650;
+}
+
+.workbench-dashboard .bases-embed tr {
+  transition: background-color var(--workbench-duration-fast) ease;
+}
+
+.workbench-dashboard .bases-embed tr:hover {
+  background: var(--background-modifier-hover);
+}
+
+.workbench-dashboard .markdown-preview-section > h2 {
+  margin-top: 1.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--workbench-border);
+  line-height: 1.3;
+}
+
+.workbench-dashboard .markdown-preview-section > h2::after {
+  display: block;
+  width: 2.2rem;
+  height: 2px;
+  margin-top: 0.4rem;
+  background: var(--workbench-accent);
+  content: "";
+  opacity: 0.72;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .workbench-dashboard .workbench-hero {
+    animation: workbench-fade-in 260ms var(--workbench-motion) both;
+  }
+}
+
+@keyframes workbench-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .workbench-dashboard .workbench-entry-grid,
+  .workbench-dashboard .workbench-mini-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .workbench-dashboard .workbench-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .workbench-dashboard .workbench-hero {
+    margin-bottom: 0.95rem;
+    padding: 1rem;
+  }
+
+  .workbench-dashboard .workbench-entry-grid,
+  .workbench-dashboard .workbench-section-grid,
+  .workbench-dashboard .workbench-mini-grid,
+  .workbench-dashboard .workbench-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .workbench-dashboard .workbench-entry-card {
+    min-height: 8.5rem;
+  }
+
+  .workbench-dashboard .bases-embed table {
+    min-width: 28rem;
+  }
+
+  .workbench-dashboard .markdown-preview-section > h2 {
+    margin-top: 1.45rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .workbench-dashboard .workbench-kpi-grid {
+    gap: 0.5rem;
+  }
+
+  .workbench-dashboard .workbench-kpi {
+    padding: 0.72rem;
+  }
+
+  .workbench-dashboard .workbench-kpi-value {
+    font-size: 0.92rem;
+  }
+
+  .workbench-dashboard .workbench-hero-title {
+    font-size: 1.42rem;
+  }
+
+  .workbench-dashboard .workbench-hero-kicker {
+    font-size: 0.65rem;
+    letter-spacing: 0.075em;
+  }
+
+  .workbench-dashboard .bases-embed table {
+    min-width: 24rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workbench-dashboard .workbench-hero,
+  .workbench-dashboard .workbench-entry-card,
+  .workbench-dashboard .workbench-panel,
+  .workbench-dashboard .workbench-mini-card,
+  .workbench-dashboard .workbench-bottom-card,
+  .workbench-dashboard .workbench-hero-link,
+  .workbench-dashboard .workbench-entry-foot span:last-child,
+  .workbench-dashboard .bases-embed tr {
+    animation: none;
+    transition: none;
+  }
+}

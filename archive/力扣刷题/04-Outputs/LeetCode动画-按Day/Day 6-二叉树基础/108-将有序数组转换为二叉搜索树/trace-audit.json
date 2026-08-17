@@ -1,0 +1,879 @@
+{
+  "problemId": 108,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 108,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        -10,
+        -3,
+        0,
+        5,
+        9
+      ],
+      "variables": {
+        "root": 0
+      },
+      "structure": {
+        "roots": [
+          0,
+          -10,
+          -10,
+          5,
+          0
+        ]
+      },
+      "result": [
+        0,
+        -10,
+        -10,
+        5,
+        0
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "8bc9e0af9486ddaae11e6909c7895881d444f1cc6412113788bf7dc0d4221853",
+    "sourceSemanticTokenHash": "1c9a3e5ac2b2762d393112b5d212aa2679f948c1c807e076ece80a79f5d744a0",
+    "sourceCodeLineCount": 24
+  },
+  "sourceCodeSha256": "8bc9e0af9486ddaae11e6909c7895881d444f1cc6412113788bf7dc0d4221853",
+  "sourceSemanticTokenHash": "1c9a3e5ac2b2762d393112b5d212aa2679f948c1c807e076ece80a79f5d744a0",
+  "steps": [
+    {
+      "id": "108-trace-001",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "setup",
+      "title": "用区间中点建立平衡树",
+      "body": "每次取 [l,r] 中点作为根，递归构造左右子树。 题解原意：核心思想： 每次取数组的中间元素作为当前子树的根，左半部分递归构建左子树，右半部分递归构建右子树。由于每次都取中点，左右子树的元素数量最多相差 1，树的高度自然平衡。 为什么这样就能保证平衡？ 因为每层递归都将数组对半分割，左右子树的节点数最多差 1，递归深度为 O(log n)。每个节点的左右子树大小基本相等，自然平衡。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "l=0 · r=4",
+        "tokens": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 4
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,4]"
+            ]
+          },
+          {
+            "label": "tree",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "每次取 [l,r] 中点作为根，递归构造左右子树。"
+      },
+      "state": {
+        "values": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "variables": {
+          "l": 0,
+          "r": 4
+        },
+        "structure": {
+          "nums": [
+            -10,
+            -3,
+            0,
+            5,
+            9
+          ],
+          "ranges": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "108-trace-002",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "选择 nums[2] = 0",
+      "body": "区间 [0,4] 的中点作为当前根，保持左右高度尽量接近。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "l=0 · r=4 · mid=2",
+        "tokens": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 4,
+          "mid": 2
+        },
+        "rows": [
+          {
+            "label": "roots",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "pending",
+            "values": [
+              "[0,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "区间 [0,4] 的中点作为当前根，保持左右高度尽量接近。"
+      },
+      "state": {
+        "values": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "variables": {
+          "l": 0,
+          "r": 4,
+          "mid": 2
+        },
+        "structure": {
+          "nums": [
+            -10,
+            -3,
+            0,
+            5,
+            9
+          ],
+          "roots": [
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "108-trace-003",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "选择 nums[0] = -10",
+      "body": "区间 [0,1] 的中点作为当前根，保持左右高度尽量接近。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "l=0 · r=1 · mid=0",
+        "tokens": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "mid": 0
+        },
+        "rows": [
+          {
+            "label": "roots",
+            "values": [
+              0,
+              -10
+            ]
+          },
+          {
+            "label": "pending",
+            "values": [
+              "[0,1]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "区间 [0,1] 的中点作为当前根，保持左右高度尽量接近。"
+      },
+      "state": {
+        "values": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "mid": 0
+        },
+        "structure": {
+          "nums": [
+            -10,
+            -3,
+            0,
+            5,
+            9
+          ],
+          "roots": [
+            0,
+            -10
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "108-trace-004",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "选择 nums[0] = -10",
+      "body": "区间 [0,0] 的中点作为当前根，保持左右高度尽量接近。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "l=0 · r=0 · mid=0",
+        "tokens": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 0,
+          "mid": 0
+        },
+        "rows": [
+          {
+            "label": "roots",
+            "values": [
+              0,
+              -10,
+              -10
+            ]
+          },
+          {
+            "label": "pending",
+            "values": [
+              "[0,0]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "区间 [0,0] 的中点作为当前根，保持左右高度尽量接近。"
+      },
+      "state": {
+        "values": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "variables": {
+          "l": 0,
+          "r": 0,
+          "mid": 0
+        },
+        "structure": {
+          "nums": [
+            -10,
+            -3,
+            0,
+            5,
+            9
+          ],
+          "roots": [
+            0,
+            -10,
+            -10
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "108-trace-005",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "选择 nums[3] = 5",
+      "body": "区间 [2,4] 的中点作为当前根，保持左右高度尽量接近。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "l=2 · r=4 · mid=3",
+        "tokens": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "l": 2,
+          "r": 4,
+          "mid": 3
+        },
+        "rows": [
+          {
+            "label": "roots",
+            "values": [
+              0,
+              -10,
+              -10,
+              5
+            ]
+          },
+          {
+            "label": "pending",
+            "values": [
+              "[2,4]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "区间 [2,4] 的中点作为当前根，保持左右高度尽量接近。"
+      },
+      "state": {
+        "values": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "variables": {
+          "l": 2,
+          "r": 4,
+          "mid": 3
+        },
+        "structure": {
+          "nums": [
+            -10,
+            -3,
+            0,
+            5,
+            9
+          ],
+          "roots": [
+            0,
+            -10,
+            -10,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "108-trace-006",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "mutate",
+      "title": "选择 nums[2] = 0",
+      "body": "区间 [2,2] 的中点作为当前根，保持左右高度尽量接近。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "l=2 · r=2 · mid=2",
+        "tokens": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "l": 2,
+          "r": 2,
+          "mid": 2
+        },
+        "rows": [
+          {
+            "label": "roots",
+            "values": [
+              0,
+              -10,
+              -10,
+              5,
+              0
+            ]
+          },
+          {
+            "label": "pending",
+            "values": [
+              "[2,2]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "区间 [2,2] 的中点作为当前根，保持左右高度尽量接近。"
+      },
+      "state": {
+        "values": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "variables": {
+          "l": 2,
+          "r": 2,
+          "mid": 2
+        },
+        "structure": {
+          "nums": [
+            -10,
+            -3,
+            0,
+            5,
+            9
+          ],
+          "roots": [
+            0,
+            -10,
+            -10,
+            5,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "108-trace-check-008",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。构造完成，根节点为 0，根序列 [0, -10, -10, 5, 0]。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=2 · r=2 · mid=2",
+        "tokens": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "l": 2,
+          "r": 2,
+          "mid": 2
+        },
+        "rows": [
+          {
+            "label": "roots",
+            "values": [
+              0,
+              -10,
+              -10,
+              5,
+              0
+            ]
+          },
+          {
+            "label": "pending",
+            "values": [
+              "[2,2]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。构造完成，根节点为 0，根序列 [0, -10, -10, 5, 0]。"
+      },
+      "state": {
+        "values": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "variables": {
+          "l": 2,
+          "r": 2,
+          "mid": 2
+        },
+        "structure": {
+          "nums": [
+            -10,
+            -3,
+            0,
+            5,
+            9
+          ],
+          "roots": [
+            0,
+            -10,
+            -10,
+            5,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "108-trace-check-009",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。构造完成，根节点为 0，根序列 [0, -10, -10, 5, 0]。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=2 · r=2 · mid=2",
+        "tokens": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "l": 2,
+          "r": 2,
+          "mid": 2
+        },
+        "rows": [
+          {
+            "label": "roots",
+            "values": [
+              0,
+              -10,
+              -10,
+              5,
+              0
+            ]
+          },
+          {
+            "label": "pending",
+            "values": [
+              "[2,2]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。构造完成，根节点为 0，根序列 [0, -10, -10, 5, 0]。"
+      },
+      "state": {
+        "values": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "variables": {
+          "l": 2,
+          "r": 2,
+          "mid": 2
+        },
+        "structure": {
+          "nums": [
+            -10,
+            -3,
+            0,
+            5,
+            9
+          ],
+          "roots": [
+            0,
+            -10,
+            -10,
+            5,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "108-trace-check-010",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。构造完成，根节点为 0，根序列 [0, -10, -10, 5, 0]。 易错提醒：终止条件是 left > right 而不是 left >= right： 当 left == right 时，还有一个元素需要构建节点。> 才是区间为空。 中点计算溢出问题： 在 Java/C++ 中 (left + right) // 2 可能溢出，更安全的写法是 left + (right - left) // 2。C++ 中无此问…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "l=2 · r=2 · mid=2",
+        "tokens": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "l": 2,
+          "r": 2,
+          "mid": 2
+        },
+        "rows": [
+          {
+            "label": "roots",
+            "values": [
+              0,
+              -10,
+              -10,
+              5,
+              0
+            ]
+          },
+          {
+            "label": "pending",
+            "values": [
+              "[2,2]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。构造完成，根节点为 0，根序列 [0, -10, -10, 5, 0]。"
+      },
+      "state": {
+        "values": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "variables": {
+          "l": 2,
+          "r": 2,
+          "mid": 2
+        },
+        "structure": {
+          "nums": [
+            -10,
+            -3,
+            0,
+            5,
+            9
+          ],
+          "roots": [
+            0,
+            -10,
+            -10,
+            5,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "108-trace-007",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "构造完成，根节点为 0，根序列 [0, -10, -10, 5, 0]。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "结果 5 项",
+        "tokens": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "root": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              0,
+              -10,
+              -10,
+              5,
+              0
+            ]
+          }
+        ],
+        "result": [
+          0,
+          -10,
+          -10,
+          5,
+          0
+        ],
+        "note": "构造完成，根节点为 0，根序列 [0, -10, -10, 5, 0]。"
+      },
+      "state": {
+        "values": [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ],
+        "variables": {
+          "root": 0
+        },
+        "structure": {
+          "roots": [
+            0,
+            -10,
+            -10,
+            5,
+            0
+          ]
+        },
+        "result": [
+          0,
+          -10,
+          -10,
+          5,
+          0
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

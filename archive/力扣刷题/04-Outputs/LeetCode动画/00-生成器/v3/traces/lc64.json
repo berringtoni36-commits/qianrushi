@@ -1,0 +1,840 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "网格最短路径 DP",
+    "sceneKind": "dp-table",
+    "input": [
+      [
+        1,
+        3,
+        1
+      ],
+      [
+        1,
+        5,
+        1
+      ],
+      [
+        4,
+        2,
+        1
+      ]
+    ],
+    "expected": 7,
+    "exampleText": "[[1,3,1],[1,5,1],[4,2,1]]",
+    "expectedText": "最小路径和 = 7",
+    "invariant": "f[i][j] 是到当前格的最小累计代价",
+    "aha": "每格只需比较两个已确定前驱",
+    "time": "O(mn)",
+    "space": "O(mn)",
+    "problemId": 64,
+    "title": "最小路径和",
+    "day": "Day 13：多维 DP",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "c88be2d262219ee401e28c3a1435fd0865e485afd6587f9b8b32f526e76e7bc3",
+    "semanticTokenHash": "af57d2d76ee5346a803d956a5902e567266e6210843ae2bd10e8a344617b50de",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "尚未可达的位置不能参与最小值。",
+        "review": "DP 表初始化为无穷"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": null,
+              "j": null
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "DP 表初始化为无穷",
+            "status": "running",
+            "matrix": [
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "尚未可达的位置不能参与最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只选择上方和左方中代价较小的路径。",
+        "review": "min(parent)+1=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "cost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(parent)+1=1",
+            "action": "写入最小路径和 f[0][0]=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1000000000,
+                1000000000
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ]
+            ],
+            "activeCells": [
+              "0,0"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "只选择上方和左方中代价较小的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只选择上方和左方中代价较小的路径。",
+        "review": "min(parent)+3=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 1,
+              "cost": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(parent)+3=4",
+            "action": "写入最小路径和 f[0][1]=4",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                1000000000
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ],
+            "comparedCells": [
+              "0,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "只选择上方和左方中代价较小的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只选择上方和左方中代价较小的路径。",
+        "review": "min(parent)+1=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 2,
+              "cost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(parent)+1=5",
+            "action": "写入最小路径和 f[0][2]=5",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                5
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ],
+            "comparedCells": [
+              "0,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "只选择上方和左方中代价较小的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只选择上方和左方中代价较小的路径。",
+        "review": "min(parent)+1=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 0,
+              "cost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(parent)+1=2",
+            "action": "写入最小路径和 f[1][0]=2",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                5
+              ],
+              [
+                2,
+                1000000000,
+                1000000000
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ],
+            "comparedCells": [
+              "0,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "只选择上方和左方中代价较小的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只选择上方和左方中代价较小的路径。",
+        "review": "min(parent)+5=7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 1,
+              "cost": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(parent)+5=7",
+            "action": "写入最小路径和 f[1][1]=7",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                5
+              ],
+              [
+                2,
+                7,
+                1000000000
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [
+              "0,1",
+              "1,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "只选择上方和左方中代价较小的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只选择上方和左方中代价较小的路径。",
+        "review": "min(parent)+1=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 2,
+              "cost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(parent)+1=6",
+            "action": "写入最小路径和 f[1][2]=6",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                5
+              ],
+              [
+                2,
+                7,
+                6
+              ],
+              [
+                1000000000,
+                1000000000,
+                1000000000
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ],
+            "comparedCells": [
+              "0,2",
+              "1,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "只选择上方和左方中代价较小的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只选择上方和左方中代价较小的路径。",
+        "review": "min(parent)+4=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 0,
+              "cost": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(parent)+4=6",
+            "action": "写入最小路径和 f[2][0]=6",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                5
+              ],
+              [
+                2,
+                7,
+                6
+              ],
+              [
+                6,
+                1000000000,
+                1000000000
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ],
+            "comparedCells": [
+              "1,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "只选择上方和左方中代价较小的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只选择上方和左方中代价较小的路径。",
+        "review": "min(parent)+2=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 1,
+              "cost": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(parent)+2=8",
+            "action": "写入最小路径和 f[2][1]=8",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                5
+              ],
+              [
+                2,
+                7,
+                6
+              ],
+              [
+                6,
+                8,
+                1000000000
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ],
+            "comparedCells": [
+              "1,1",
+              "2,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "只选择上方和左方中代价较小的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 1,
+              "cost": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(parent)+2=8",
+            "action": "不变量检查 1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                5
+              ],
+              [
+                2,
+                7,
+                6
+              ],
+              [
+                6,
+                8,
+                1000000000
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ],
+            "comparedCells": [
+              "1,1",
+              "2,0"
+            ],
+            "resultCells": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只选择上方和左方中代价较小的路径。",
+        "review": "min(parent)+1=7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 2,
+              "cost": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min(parent)+1=7",
+            "action": "写入最小路径和 f[2][2]=7",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                5
+              ],
+              [
+                2,
+                7,
+                6
+              ],
+              [
+                6,
+                8,
+                7
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ],
+            "comparedCells": [
+              "1,2",
+              "2,1"
+            ],
+            "resultCells": []
+          },
+          "caption": "只选择上方和左方中代价较小的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "右下角状态为全局答案。",
+        "review": "1+3+1+1+1=7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "1+3+1+1+1=7",
+            "action": "返回最小路径和 7",
+            "status": "return",
+            "matrix": [
+              [
+                1,
+                4,
+                5
+              ],
+              [
+                2,
+                7,
+                6
+              ],
+              [
+                6,
+                8,
+                7
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "2,2"
+            ],
+            "output": 7
+          },
+          "caption": "右下角状态为全局答案。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int minPathSum(vector<vector<int>>& grid) {\n        int n = grid.size();\n        if (!n) return 0;\n        int m = grid[0].size();\n\n        vector<vector<int>> f(n, vector<int>(m, INT_MAX));       // 初始化为最大可能值\n        for (int i = 0; i < n; i ++ )                            // 遍历\n            for (int j = 0; j < m; j ++ ) {\n                if (!i && !j) f[i][j] = grid[i][j];\n                else {\n                    if (i) f[i][j] = min(f[i][j], f[i - 1][j] + grid[i][j]);\n                    if (j) f[i][j] = min(f[i][j], f[i][j - 1] + grid[i][j]);\n                }\n            }\n\n        return f[n - 1][m - 1];\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 5190,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 5191,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 5192,
+        "text": "    int minPathSum(vector<vector<int>>& grid) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 5193,
+        "text": "        int n = grid.size();"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 5194,
+        "text": "        if (!n) return 0;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 5195,
+        "text": "        int m = grid[0].size();"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 5196,
+        "text": ""
+      },
+      {
+        "id": "L8",
+        "sourceLine": 5197,
+        "text": "        vector<vector<int>> f(n, vector<int>(m, INT_MAX));       // 初始化为最大可能值"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 5198,
+        "text": "        for (int i = 0; i < n; i ++ )                            // 遍历"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 5199,
+        "text": "            for (int j = 0; j < m; j ++ ) {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 5200,
+        "text": "                if (!i && !j) f[i][j] = grid[i][j];"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 5201,
+        "text": "                else {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 5202,
+        "text": "                    if (i) f[i][j] = min(f[i][j], f[i - 1][j] + grid[i][j]);"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 5203,
+        "text": "                    if (j) f[i][j] = min(f[i][j], f[i][j - 1] + grid[i][j]);"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 5204,
+        "text": "                }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 5205,
+        "text": "            }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 5206,
+        "text": ""
+      },
+      {
+        "id": "L18",
+        "sourceLine": 5207,
+        "text": "        return f[n - 1][m - 1];"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 5208,
+        "text": "    }"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 5209,
+        "text": "};"
+      }
+    ]
+  }
+}

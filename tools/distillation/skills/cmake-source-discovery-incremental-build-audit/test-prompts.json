@@ -1,0 +1,51 @@
+{
+  "skill": "cmake-source-discovery-incremental-build-audit",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "Lime_NEON+OpenMP 目录里有 lime_opt.cpp 和 xinlime.cpp，但 build 里到底编了哪个？请从 CMakeLists、DependInfo、build.make 和对象文件判断。",
+      "expected_behavior": "激活本 Skill，区分目录存在、显式 CMake source、历史构建树和 target 对象；结论应指出当前 target 选择 lime_opt.cpp，不能把 xinlime.cpp 视为已编译。",
+      "notes": "显式 source 与未纳入源文件的典型案例。"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "两个独立工程都生成名为 lime 的可执行文件，CMakeCache 和 link.txt 又指向旧的 /media/kylin 路径。如何判断哪个二进制来自当前源码，以及增量构建是否过时？",
+      "expected_behavior": "激活本 Skill，使用 source dir + build dir + target + output 身份，核对 CMAKE_HOME_DIRECTORY、DependInfo、link.txt、时间/哈希，并把旧树标为历史快照或路径失配。",
+      "notes": "同名 target、旧 build 和增量新鲜度。"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "LSTR 链接时使用了项目里的 libonnxruntime.so，运行时却可能加载另一份库；请分开审计 link.txt、RPATH/RUNPATH、DT_NEEDED 和目标板 loader。",
+      "expected_behavior": "激活本 Skill，明确区分链接期库搜索与运行时动态加载，并要求目标架构 readelf/ldd/LD_DEBUG 证据；不把 link_directories 或链接成功当作运行时证明。",
+      "notes": "构建树与运行树的边界。"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我的 Linux C++ 程序报 undefined reference，怎样判断库顺序和符号解析？没有 source 归属、旧 build 或增量构建问题。",
+      "expected_behavior": "不应优先激活本 Skill，应转给 linux-build-debug-chain 处理通用编译/链接故障。",
+      "notes": "兄弟 Skill：通用链接诊断。"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "请判断 LIME 加速 5 倍、LSTR/Unet 性能数字能否由模型、输入集、转换脚本和 benchmark 日志完整复现。",
+      "expected_behavior": "不应优先激活本 Skill，应转给 linux-vision-build-provenance-audit；本 Skill 只提供底层 source-to-target/build/runtime 证据。",
+      "notes": "兄弟 Skill：视觉项目整体 provenance/性能复现。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "只问 add_executable 和 target_link_libraries 的 CMake 语法，不涉及具体源码是否进入 target、构建树归属、增量新鲜度或运行时加载。",
+      "expected_behavior": "本 Skill 不应触发；回答普通 CMake 语法问题即可。",
+      "notes": "API 解释与构建证据审计的边界。"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "静态预期：6/6；3 个正例、2 个兄弟 Skill 诱饵、1 个普通 CMake 边界。"
+}

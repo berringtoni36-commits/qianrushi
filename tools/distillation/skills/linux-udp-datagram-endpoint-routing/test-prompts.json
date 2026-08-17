@@ -1,0 +1,14 @@
+{
+  "skill": "linux-udp-datagram-endpoint-routing",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"UDP 服务能收到请求，但回包总是发不到客户端，怎么核对 bind、recvfrom 和 sendto？","expected_behavior":"按源IP/源端口和本地绑定建立数据报端点合同","notes":"回包路由"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"UDP 客户端没有 bind，系统分配的临时端口怎么让服务器正确回复？","expected_behavior":"解释临时端口并要求使用 recvfrom 返回的来源地址","notes":"临时端口"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"多客户端 UDP 请求偶发串包，如何从四元组和共享 cliaddr 排查？","expected_behavior":"核对每个数据报的源/目的地址、状态隔离和抓包","notes":"多客户端"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"UDP 广播需要设置 SO_BROADCAST 但跨网段收不到，怎么查？","expected_behavior":"优先使用 linux-udp-broadcast-reachability-contract","notes":"兄弟 Skill 混淆"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"epoll 可读但 TCP 收到半包，怎么设计 framing？","expected_behavior":"优先使用 linux-socket-multiplexing-design","notes":"TCP framing"},
+    {"id":"edge-01","type":"edge_case","prompt":"只问 socket 函数原型，不涉及端点、路由或故障。","expected_behavior":"做普通 API 解释，不激活本 Skill","notes":"API 边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

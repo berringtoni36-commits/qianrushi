@@ -1,0 +1,705 @@
+{
+  "problemId": 1,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 1,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "variables": {
+        "target": 9,
+        "i": 1,
+        "r": 2
+      },
+      "structure": {
+        "heap": {
+          "2": 0
+        }
+      },
+      "result": [
+        0,
+        1
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "26538ee58bfecd4a1c5a947fcd4219ac5a81d54207e97408c2034002c2bc7e2a",
+    "sourceSemanticTokenHash": "3a0b6e070e9fcc36bbb6027326e107dfc430d114f963bd7f892e89d204fac62b",
+    "sourceCodeLineCount": 13
+  },
+  "sourceCodeSha256": "26538ee58bfecd4a1c5a947fcd4219ac5a81d54207e97408c2034002c2bc7e2a",
+  "sourceSemanticTokenHash": "3a0b6e070e9fcc36bbb6027326e107dfc430d114f963bd7f892e89d204fac62b",
+  "steps": [
+    {
+      "id": "1-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立历史哈希表",
+      "body": "map 为空；它只保存已经扫描过的值和下标。 题解原意：核心洞察：不需要把所有元素先存进去再查，可以边遍历边查找。 遍历到元素 num 时，检查 complement = target - num 是否已经出现在哈希表中： 如果出现过，说明之前遍历过的某个元素和当前元素正好凑成 target，直接返回。 如果没出现过，把当前元素存入哈希表，供后面的元素查。 这样做的好处是：一次遍历完成，且天然不会出现同一元素用两次的情况（因为当前元素还没存进哈希表）。",
+      "kind": "hash",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · hash",
+        "badge": "i=None · r=None",
+        "tokens": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "target": 9,
+          "i": null,
+          "r": null
+        },
+        "rows": [
+          {
+            "label": "heap",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "map 为空；它只保存已经扫描过的值和下标。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "variables": {
+          "target": 9,
+          "i": null,
+          "r": null
+        },
+        "structure": {
+          "heap": {}
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1-trace-002",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "inspect",
+      "title": "扫描 nums[0] = 2",
+      "body": "进入第 0 轮，当前值为 2，还没有修改 map。",
+      "kind": "hash",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · hash",
+        "badge": "i=0 · r=None",
+        "tokens": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "target": 9,
+          "i": 0,
+          "x": 2,
+          "r": null
+        },
+        "rows": [
+          {
+            "label": "heap",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "进入第 0 轮，当前值为 2，还没有修改 map。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "variables": {
+          "target": 9,
+          "i": 0,
+          "x": 2,
+          "r": null
+        },
+        "structure": {
+          "heap": {}
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1-trace-003",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "compare",
+      "title": "计算 complement = 7",
+      "body": "r = target - nums[0] = 9 - 2 = 7。",
+      "kind": "hash",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · hash",
+        "badge": "i=0 · r=7",
+        "tokens": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "target": 9,
+          "i": 0,
+          "x": 2,
+          "r": 7
+        },
+        "rows": [
+          {
+            "label": "heap",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "r = target - nums[0] = 9 - 2 = 7。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "variables": {
+          "target": 9,
+          "i": 0,
+          "x": 2,
+          "r": 7
+        },
+        "structure": {
+          "heap": {}
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1-trace-004",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "lookup",
+      "title": "检查 complement 是否已出现",
+      "body": "查询 7：未命中。查询发生在写入之前。",
+      "kind": "hash",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "lookup · hash",
+        "badge": "i=0 · r=7",
+        "tokens": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "active": [
+          0
+        ],
+        "compared": [
+          0
+        ],
+        "variables": {
+          "target": 9,
+          "i": 0,
+          "x": 2,
+          "r": 7,
+          "hit": false
+        },
+        "rows": [
+          {
+            "label": "heap",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "查询 7：未命中。查询发生在写入之前。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "variables": {
+          "target": 9,
+          "i": 0,
+          "x": 2,
+          "r": 7,
+          "hit": false
+        },
+        "structure": {
+          "heap": {}
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1-trace-005",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "写入 2 → 0",
+      "body": "未命中，所以把当前值 2 写入 map，供后面的元素查询。",
+      "kind": "hash",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash",
+        "badge": "i=0 · r=7",
+        "tokens": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "target": 9,
+          "i": 0,
+          "x": 2,
+          "r": 7
+        },
+        "rows": [
+          {
+            "label": "heap",
+            "values": [
+              "2→0"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "未命中，所以把当前值 2 写入 map，供后面的元素查询。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "variables": {
+          "target": 9,
+          "i": 0,
+          "x": 2,
+          "r": 7
+        },
+        "structure": {
+          "heap": {
+            "2": 0
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1-trace-006",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "inspect",
+      "title": "扫描 nums[1] = 7",
+      "body": "进入第 1 轮，当前值为 7，还没有修改 map。",
+      "kind": "hash",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · hash",
+        "badge": "i=1 · r=None",
+        "tokens": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "target": 9,
+          "i": 1,
+          "x": 7,
+          "r": null
+        },
+        "rows": [
+          {
+            "label": "heap",
+            "values": [
+              "2→0"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "进入第 1 轮，当前值为 7，还没有修改 map。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "variables": {
+          "target": 9,
+          "i": 1,
+          "x": 7,
+          "r": null
+        },
+        "structure": {
+          "heap": {
+            "2": 0
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1-trace-007",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "compare",
+      "title": "计算 complement = 2",
+      "body": "r = target - nums[1] = 9 - 7 = 2。",
+      "kind": "hash",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · hash",
+        "badge": "i=1 · r=2",
+        "tokens": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "target": 9,
+          "i": 1,
+          "x": 7,
+          "r": 2
+        },
+        "rows": [
+          {
+            "label": "heap",
+            "values": [
+              "2→0"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "r = target - nums[1] = 9 - 7 = 2。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "variables": {
+          "target": 9,
+          "i": 1,
+          "x": 7,
+          "r": 2
+        },
+        "structure": {
+          "heap": {
+            "2": 0
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1-trace-008",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "lookup",
+      "title": "检查 complement 是否已出现",
+      "body": "查询 2：命中。查询发生在写入之前。",
+      "kind": "hash",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "lookup · hash",
+        "badge": "i=1 · r=2",
+        "tokens": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "active": [
+          1
+        ],
+        "compared": [
+          0,
+          1
+        ],
+        "variables": {
+          "target": 9,
+          "i": 1,
+          "x": 7,
+          "r": 2,
+          "hit": true
+        },
+        "rows": [
+          {
+            "label": "heap",
+            "values": [
+              "2→0"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "查询 2：命中。查询发生在写入之前。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "variables": {
+          "target": 9,
+          "i": 1,
+          "x": 7,
+          "r": 2,
+          "hit": true
+        },
+        "structure": {
+          "heap": {
+            "2": 0
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "1-trace-009",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "命中并返回",
+      "body": "map 中已有 2 → 0，与当前 7 组成 target = 9。 易错提醒：重复元素混淆： nums = [3, 3], target = 6 这类输入，两遍哈希需要额外检查 mapping[complement] != i 排除自身；一遍哈希查询时当前元素尚未入表，天然不会把同一元素用两次。 负数处理： target 可能是负数，complement = target - num 可能大于 num，不要假设 c…",
+      "kind": "hash",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · hash",
+        "badge": "i=1 · r=2 · 结果 2 项",
+        "tokens": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "active": [
+          1
+        ],
+        "compared": [
+          0,
+          1
+        ],
+        "variables": {
+          "target": 9,
+          "i": 1,
+          "x": 7,
+          "r": 2,
+          "hit": true
+        },
+        "rows": [
+          {
+            "label": "heap",
+            "values": [
+              "2→0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[0, 1]"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          1
+        ],
+        "note": "map 中已有 2 → 0，与当前 7 组成 target = 9。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "variables": {
+          "target": 9,
+          "i": 1,
+          "x": 7,
+          "r": 2,
+          "hit": true
+        },
+        "structure": {
+          "heap": {
+            "2": 0
+          }
+        },
+        "result": [
+          0,
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "1-trace-010",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回下标 [0, 1]。",
+      "kind": "hash",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · hash",
+        "badge": "i=1 · r=2 · 结果 2 项",
+        "tokens": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "target": 9,
+          "i": 1,
+          "r": 2
+        },
+        "rows": [
+          {
+            "label": "heap",
+            "values": [
+              "2→0"
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              "[0, 1]"
+            ]
+          }
+        ],
+        "result": [
+          0,
+          1
+        ],
+        "note": "返回下标 [0, 1]。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          11,
+          15
+        ],
+        "variables": {
+          "target": 9,
+          "i": 1,
+          "r": 2
+        },
+        "structure": {
+          "heap": {
+            "2": 0
+          }
+        },
+        "result": [
+          0,
+          1
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

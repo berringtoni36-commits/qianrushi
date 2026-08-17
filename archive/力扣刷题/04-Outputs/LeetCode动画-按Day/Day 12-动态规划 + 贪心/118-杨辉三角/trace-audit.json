@@ -1,0 +1,1013 @@
+{
+  "problemId": 118,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 118,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [],
+      "variables": {
+        "n": 5
+      },
+      "structure": {
+        "rows": [
+          [
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            1,
+            3,
+            3,
+            1
+          ],
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ]
+      },
+      "result": [
+        [
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          3,
+          1
+        ],
+        [
+          1,
+          4,
+          6,
+          4,
+          1
+        ]
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "6f66d5dd289d87a133caf92bbea2432daade213e31167bc3eac8b13bf28ca7c5",
+    "sourceSemanticTokenHash": "af171f476390f14422dd562e9269ad6f5b76496601776cf3d6f421fd5be38a0e",
+    "sourceCodeLineCount": 14
+  },
+  "sourceCodeSha256": "6f66d5dd289d87a133caf92bbea2432daade213e31167bc3eac8b13bf28ca7c5",
+  "sourceSemanticTokenHash": "af171f476390f14422dd562e9269ad6f5b76496601776cf3d6f421fd5be38a0e",
+  "steps": [
+    {
+      "id": "118-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "从杨辉三角第一行开始",
+      "body": "每一行首尾固定为 1，中间值由上一行左右相加得到。 题解原意：核心洞察：每行第一个和最后一个为 1，中间元素 row[j] = prev_row[j-1] + prev_row[j]。利用上一行的结果构建当前行，天然满足 DP 的状态依赖关系。 DP 五步法： 1. dp 定义：无显式 dp 表，每行的 list 即为当前状态 2. 初始化：每行为 [1] * (i+1) 3. 递推：row[j] = res[i-1][j-1] + res[i-1][j]（j 从 1 到 i-…",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp2d",
+        "badge": "rows",
+        "tokens": [],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 5
+        },
+        "rows": [
+          {
+            "label": "rows",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "每一行首尾固定为 1，中间值由上一行左右相加得到。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 5
+        },
+        "structure": {
+          "rows": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "118-trace-002",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "生成第 1 行",
+      "body": "首尾为 1，中间项按上一行计算：[1]。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp2d",
+        "badge": "i=0 · 结果 1 项",
+        "tokens": [
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0
+        },
+        "rows": [
+          {
+            "label": "rows",
+            "values": [
+              "[1]"
+            ]
+          },
+          {
+            "label": "current",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          [
+            1
+          ]
+        ],
+        "note": "首尾为 1，中间项按上一行计算：[1]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 0
+        },
+        "structure": {
+          "rows": [
+            [
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "118-trace-003",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "生成第 2 行",
+      "body": "首尾为 1，中间项按上一行计算：[1, 1]。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp2d",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          1,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1
+        },
+        "rows": [
+          {
+            "label": "rows",
+            "values": [
+              "[1]",
+              "[1, 1]"
+            ]
+          },
+          {
+            "label": "current",
+            "values": [
+              1,
+              1
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            1
+          ]
+        ],
+        "note": "首尾为 1，中间项按上一行计算：[1, 1]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 1
+        },
+        "structure": {
+          "rows": [
+            [
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "118-trace-004",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "生成第 3 行",
+      "body": "首尾为 1，中间项按上一行计算：[1, 2, 1]。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp2d",
+        "badge": "i=2 · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2
+        },
+        "rows": [
+          {
+            "label": "rows",
+            "values": [
+              "[1]",
+              "[1, 1]",
+              "[1, 2, 1]"
+            ]
+          },
+          {
+            "label": "current",
+            "values": [
+              1,
+              2,
+              1
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            2,
+            1
+          ]
+        ],
+        "note": "首尾为 1，中间项按上一行计算：[1, 2, 1]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 2
+        },
+        "structure": {
+          "rows": [
+            [
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            2,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "118-trace-005",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "生成第 4 行",
+      "body": "首尾为 1，中间项按上一行计算：[1, 3, 3, 1]。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp2d",
+        "badge": "i=3 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          3,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3
+        },
+        "rows": [
+          {
+            "label": "rows",
+            "values": [
+              "[1]",
+              "[1, 1]",
+              "[1, 2, 1]",
+              "[1, 3, 3, 1]"
+            ]
+          },
+          {
+            "label": "current",
+            "values": [
+              1,
+              3,
+              3,
+              1
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            3,
+            3,
+            1
+          ]
+        ],
+        "note": "首尾为 1，中间项按上一行计算：[1, 3, 3, 1]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 3
+        },
+        "structure": {
+          "rows": [
+            [
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              1,
+              3,
+              3,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            3,
+            3,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "118-trace-006",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "生成第 5 行",
+      "body": "首尾为 1，中间项按上一行计算：[1, 4, 6, 4, 1]。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp2d",
+        "badge": "i=4 · 结果 1 项",
+        "tokens": [
+          1,
+          4,
+          6,
+          4,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4
+        },
+        "rows": [
+          {
+            "label": "rows",
+            "values": [
+              "[1]",
+              "[1, 1]",
+              "[1, 2, 1]",
+              "[1, 3, 3, 1]",
+              "[1, 4, 6, 4, 1]"
+            ]
+          },
+          {
+            "label": "current",
+            "values": [
+              1,
+              4,
+              6,
+              4,
+              1
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ],
+        "note": "首尾为 1，中间项按上一行计算：[1, 4, 6, 4, 1]。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 4
+        },
+        "structure": {
+          "rows": [
+            [
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              1,
+              3,
+              3,
+              1
+            ],
+            [
+              1,
+              4,
+              6,
+              4,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "118-trace-check-008",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回前 5 行杨辉三角。",
+      "kind": "dp2d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=4 · 结果 1 项",
+        "tokens": [
+          1,
+          4,
+          6,
+          4,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4
+        },
+        "rows": [
+          {
+            "label": "rows",
+            "values": [
+              "[1]",
+              "[1, 1]",
+              "[1, 2, 1]",
+              "[1, 3, 3, 1]",
+              "[1, 4, 6, 4, 1]"
+            ]
+          },
+          {
+            "label": "current",
+            "values": [
+              1,
+              4,
+              6,
+              4,
+              1
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回前 5 行杨辉三角。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 4
+        },
+        "structure": {
+          "rows": [
+            [
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              1,
+              3,
+              3,
+              1
+            ],
+            [
+              1,
+              4,
+              6,
+              4,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "118-trace-check-009",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回前 5 行杨辉三角。",
+      "kind": "dp2d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=4 · 结果 1 项",
+        "tokens": [
+          1,
+          4,
+          6,
+          4,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4
+        },
+        "rows": [
+          {
+            "label": "rows",
+            "values": [
+              "[1]",
+              "[1, 1]",
+              "[1, 2, 1]",
+              "[1, 3, 3, 1]",
+              "[1, 4, 6, 4, 1]"
+            ]
+          },
+          {
+            "label": "current",
+            "values": [
+              1,
+              4,
+              6,
+              4,
+              1
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回前 5 行杨辉三角。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 4
+        },
+        "structure": {
+          "rows": [
+            [
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              1,
+              3,
+              3,
+              1
+            ],
+            [
+              1,
+              4,
+              6,
+              4,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "118-trace-check-010",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回前 5 行杨辉三角。 易错提醒：行索引偏移：第 i 行有 i+1 个元素（i 从 0 开始），循环时要小心 range 的范围。 边界处理：range(1, i) 在 i=0 或 i=1 时自动为空，不会进入内部循环。 中间元素计算：依赖 res[i-1] 必须在之前已构建好，顺序不可颠倒。",
+      "kind": "dp2d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=4 · 结果 1 项",
+        "tokens": [
+          1,
+          4,
+          6,
+          4,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4
+        },
+        "rows": [
+          {
+            "label": "rows",
+            "values": [
+              "[1]",
+              "[1, 1]",
+              "[1, 2, 1]",
+              "[1, 3, 3, 1]",
+              "[1, 4, 6, 4, 1]"
+            ]
+          },
+          {
+            "label": "current",
+            "values": [
+              1,
+              4,
+              6,
+              4,
+              1
+            ]
+          }
+        ],
+        "result": [
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回前 5 行杨辉三角。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 4
+        },
+        "structure": {
+          "rows": [
+            [
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              1,
+              3,
+              3,
+              1
+            ],
+            [
+              1,
+              4,
+              6,
+              4,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "118-trace-007",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回前 5 行杨辉三角。",
+      "kind": "dp2d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp2d",
+        "badge": "结果 5 项",
+        "tokens": [
+          1,
+          4,
+          6,
+          4,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 5
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[1]",
+              "[1, 1]",
+              "[1, 2, 1]",
+              "[1, 3, 3, 1]",
+              "[1, 4, 6, 4, 1]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            1,
+            3,
+            3,
+            1
+          ],
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ],
+        "note": "返回前 5 行杨辉三角。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "n": 5
+        },
+        "structure": {
+          "rows": [
+            [
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              1,
+              3,
+              3,
+              1
+            ],
+            [
+              1,
+              4,
+              6,
+              4,
+              1
+            ]
+          ]
+        },
+        "result": [
+          [
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            1,
+            3,
+            3,
+            1
+          ],
+          [
+            1,
+            4,
+            6,
+            4,
+            1
+          ]
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

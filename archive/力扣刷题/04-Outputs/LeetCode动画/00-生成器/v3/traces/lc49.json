@@ -1,0 +1,782 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "排序键 + 哈希分组",
+    "sceneKind": "hash-array",
+    "input": [
+      "eat",
+      "tea",
+      "tan",
+      "ate",
+      "nat",
+      "bat"
+    ],
+    "expected": [
+      [
+        "eat",
+        "tea",
+        "ate"
+      ],
+      [
+        "tan",
+        "nat"
+      ],
+      [
+        "bat"
+      ]
+    ],
+    "exampleText": "[eat, tea, tan, ate, nat, bat]",
+    "expectedText": "3 组：{eat, tea, ate} / {tan, nat} / {bat}",
+    "invariant": "相同排序键中的单词字符多重集完全相同",
+    "aha": "把异位关系变成可哈希的规范字符串",
+    "time": "O(nk log k)",
+    "space": "O(nk)",
+    "problemId": 49,
+    "title": "字母异位词分组",
+    "day": "Day 1：哈希 + 双指针",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "295413eb3c43658f64a5c0f0aa841c1aae5f93ab6d92cbe97c6ac53cea3bb5d0",
+    "semanticTokenHash": "d0bef6975584018523c589b7ab6ef1c594e9a5dbdd0a330a1b94afb5f436375a",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "哈希表为空，尚未处理单词。",
+        "review": "建立分组哈希表"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": null,
+              "key": null
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "建立分组哈希表",
+            "status": "running",
+            "hash": {}
+          },
+          "caption": "哈希表为空，尚未处理单词。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序后的字符串唯一代表字符多重集。",
+        "review": "sort(eat) = aet"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 0,
+              "key": "aet"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "sort(eat) = aet",
+            "action": "排序 eat 得到键 aet",
+            "status": "running",
+            "hash": {}
+          },
+          "caption": "排序后的字符串唯一代表字符多重集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只更新当前键对应的分组，其他组保持不变。",
+        "review": "hash[aet] += eat"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 0,
+              "key": "aet"
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hash[aet] += eat",
+            "action": "把 eat 放入 aet 组",
+            "status": "running",
+            "hash": {
+              "aet": "eat"
+            }
+          },
+          "caption": "只更新当前键对应的分组，其他组保持不变。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序后的字符串唯一代表字符多重集。",
+        "review": "sort(tea) = aet"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 1,
+              "key": "aet"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "sort(tea) = aet",
+            "action": "排序 tea 得到键 aet",
+            "status": "running",
+            "hash": {
+              "aet": "eat"
+            }
+          },
+          "caption": "排序后的字符串唯一代表字符多重集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只更新当前键对应的分组，其他组保持不变。",
+        "review": "hash[aet] += tea"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 1,
+              "key": "aet"
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hash[aet] += tea",
+            "action": "把 tea 放入 aet 组",
+            "status": "running",
+            "hash": {
+              "aet": "eat, tea"
+            }
+          },
+          "caption": "只更新当前键对应的分组，其他组保持不变。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序后的字符串唯一代表字符多重集。",
+        "review": "sort(tan) = ant"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 2,
+              "key": "ant"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "sort(tan) = ant",
+            "action": "排序 tan 得到键 ant",
+            "status": "running",
+            "hash": {
+              "aet": "eat, tea"
+            }
+          },
+          "caption": "排序后的字符串唯一代表字符多重集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只更新当前键对应的分组，其他组保持不变。",
+        "review": "hash[ant] += tan"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 2,
+              "key": "ant"
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hash[ant] += tan",
+            "action": "把 tan 放入 ant 组",
+            "status": "running",
+            "hash": {
+              "aet": "eat, tea",
+              "ant": "tan"
+            }
+          },
+          "caption": "只更新当前键对应的分组，其他组保持不变。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序后的字符串唯一代表字符多重集。",
+        "review": "sort(ate) = aet"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 3,
+              "key": "aet"
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "sort(ate) = aet",
+            "action": "排序 ate 得到键 aet",
+            "status": "running",
+            "hash": {
+              "aet": "eat, tea",
+              "ant": "tan"
+            }
+          },
+          "caption": "排序后的字符串唯一代表字符多重集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只更新当前键对应的分组，其他组保持不变。",
+        "review": "hash[aet] += ate"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 3,
+              "key": "aet"
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hash[aet] += ate",
+            "action": "把 ate 放入 aet 组",
+            "status": "running",
+            "hash": {
+              "aet": "eat, tea, ate",
+              "ant": "tan"
+            }
+          },
+          "caption": "只更新当前键对应的分组，其他组保持不变。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序后的字符串唯一代表字符多重集。",
+        "review": "sort(nat) = ant"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 4,
+              "key": "ant"
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "sort(nat) = ant",
+            "action": "排序 nat 得到键 ant",
+            "status": "running",
+            "hash": {
+              "aet": "eat, tea, ate",
+              "ant": "tan"
+            }
+          },
+          "caption": "排序后的字符串唯一代表字符多重集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只更新当前键对应的分组，其他组保持不变。",
+        "review": "hash[ant] += nat"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 4,
+              "key": "ant"
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hash[ant] += nat",
+            "action": "把 nat 放入 ant 组",
+            "status": "running",
+            "hash": {
+              "aet": "eat, tea, ate",
+              "ant": "tan, nat"
+            }
+          },
+          "caption": "只更新当前键对应的分组，其他组保持不变。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序后的字符串唯一代表字符多重集。",
+        "review": "sort(bat) = abt"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 5,
+              "key": "abt"
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "sort(bat) = abt",
+            "action": "排序 bat 得到键 abt",
+            "status": "running",
+            "hash": {
+              "aet": "eat, tea, ate",
+              "ant": "tan, nat"
+            }
+          },
+          "caption": "排序后的字符串唯一代表字符多重集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只更新当前键对应的分组，其他组保持不变。",
+        "review": "hash[abt] += bat"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "i": 5,
+              "key": "abt"
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "hash[abt] += bat",
+            "action": "把 bat 放入 abt 组",
+            "status": "running",
+            "hash": {
+              "aet": "eat, tea, ate",
+              "ant": "tan, nat",
+              "abt": "bat"
+            }
+          },
+          "caption": "只更新当前键对应的分组，其他组保持不变。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "所有单词恰好进入一个规范键分组。",
+        "review": "return 3 groups"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat",
+              "bat"
+            ],
+            "variables": {
+              "groups": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "formula": "return 3 groups",
+            "action": "返回 3 组字母异位词",
+            "status": "return",
+            "hash": {
+              "aet": "eat, tea, ate",
+              "ant": "tan, nat",
+              "abt": "bat"
+            },
+            "output": [
+              [
+                "eat",
+                "tea",
+                "ate"
+              ],
+              [
+                "tan",
+                "nat"
+              ],
+              [
+                "bat"
+              ]
+            ]
+          },
+          "caption": "所有单词恰好进入一个规范键分组。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<vector<string>> groupAnagrams(vector<string>& strs) {\n        unordered_map<string, vector<string>> hash;              // 哈希表，O(1)查找\n        for (auto& str: strs) {\n            string nstr = str;\n            sort(nstr.begin(), nstr.end());                      // 排序\n            hash[nstr].push_back(str);\n        }\n\n        vector<vector<string>> res;\n        for (auto& item : hash) res.push_back(item.second);      // 记录结果\n\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 104,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 105,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 106,
+        "text": "    vector<vector<string>> groupAnagrams(vector<string>& strs) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 107,
+        "text": "        unordered_map<string, vector<string>> hash;              // 哈希表，O(1)查找"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 108,
+        "text": "        for (auto& str: strs) {"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 109,
+        "text": "            string nstr = str;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 110,
+        "text": "            sort(nstr.begin(), nstr.end());                      // 排序"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 111,
+        "text": "            hash[nstr].push_back(str);"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 112,
+        "text": "        }"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 113,
+        "text": ""
+      },
+      {
+        "id": "L11",
+        "sourceLine": 114,
+        "text": "        vector<vector<string>> res;"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 115,
+        "text": "        for (auto& item : hash) res.push_back(item.second);      // 记录结果"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 116,
+        "text": ""
+      },
+      {
+        "id": "L14",
+        "sourceLine": 117,
+        "text": "        return res;"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 118,
+        "text": "    }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 119,
+        "text": "};"
+      }
+    ]
+  }
+}

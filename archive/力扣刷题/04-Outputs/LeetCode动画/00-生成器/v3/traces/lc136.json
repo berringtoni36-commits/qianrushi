@@ -1,0 +1,583 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "全数组异或",
+    "sceneKind": "generic-array",
+    "input": [
+      4,
+      1,
+      2,
+      1,
+      2
+    ],
+    "expected": 4,
+    "exampleText": "[4,1,2,1,2]",
+    "expectedText": "只出现一次 = 4",
+    "invariant": "res 等于已扫描元素中奇数次出现值的异或",
+    "aha": "x xor x=0，0 xor x=x",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 136,
+    "title": "只出现一次的数字",
+    "day": "Day 14：技巧专题",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "dd5c14fecc1ee8fc2bf2b6225800fc719b821244d351dd556f26ef7b5c1c0ef2",
+    "semanticTokenHash": "407a22c7b753fdefc161e85e4d07f00e51ad8f806499a9b28578df11acd17535",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "0 是异或单位元。",
+        "review": "异或累积从 0 开始"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": null,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "异或累积从 0 开始",
+            "status": "running"
+          },
+          "caption": "0 是异或单位元。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": null,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 3",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "成对元素最终互相抵消。",
+        "review": "0 xor 4 = 4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 0,
+              "x": 4,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "0 xor 4 = 4",
+            "action": "异或 nums[0]=4，res=4",
+            "status": "running"
+          },
+          "caption": "成对元素最终互相抵消。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "成对元素最终互相抵消。",
+        "review": "4 xor 1 = 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 1,
+              "x": 1,
+              "res": 5
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "4 xor 1 = 5",
+            "action": "异或 nums[1]=1，res=5",
+            "status": "running"
+          },
+          "caption": "成对元素最终互相抵消。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 1,
+              "x": 1,
+              "res": 5
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "4 xor 1 = 5",
+            "action": "不变量检查 2",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "成对元素最终互相抵消。",
+        "review": "5 xor 2 = 7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 2,
+              "x": 2,
+              "res": 7
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "5 xor 2 = 7",
+            "action": "异或 nums[2]=2，res=7",
+            "status": "running"
+          },
+          "caption": "成对元素最终互相抵消。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "成对元素最终互相抵消。",
+        "review": "7 xor 1 = 6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 3,
+              "x": 1,
+              "res": 6
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "7 xor 1 = 6",
+            "action": "异或 nums[3]=1，res=6",
+            "status": "running"
+          },
+          "caption": "成对元素最终互相抵消。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 3,
+              "x": 1,
+              "res": 6
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "7 xor 1 = 6",
+            "action": "不变量检查 5",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 3,
+              "x": 1,
+              "res": 6
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "7 xor 1 = 6",
+            "action": "不变量检查 1",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "成对元素最终互相抵消。",
+        "review": "6 xor 2 = 4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 4,
+              "x": 2,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "6 xor 2 = 4",
+            "action": "异或 nums[4]=2，res=4",
+            "status": "running"
+          },
+          "caption": "成对元素最终互相抵消。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 4,
+              "x": 2,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "6 xor 2 = 4",
+            "action": "不变量检查 4",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "交换律让相同数字无论位置都能配对抵消。",
+        "review": "4 xor 1 xor 2 xor 1 xor 2 = 4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              4,
+              1,
+              2,
+              1,
+              2
+            ],
+            "variables": {
+              "res": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0
+            ],
+            "formula": "4 xor 1 xor 2 xor 1 xor 2 = 4",
+            "action": "返回只出现一次的数字 4",
+            "status": "return",
+            "output": 4
+          },
+          "caption": "交换律让相同数字无论位置都能配对抵消。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int singleNumber(vector<int>& nums) {\n        int res = 0;\n        for (auto x: nums) res ^= x;\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 5406,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 5407,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 5408,
+        "text": "    int singleNumber(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 5409,
+        "text": "        int res = 0;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 5410,
+        "text": "        for (auto x: nums) res ^= x;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 5411,
+        "text": "        return res;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 5412,
+        "text": "    }"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 5413,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,888 @@
+{
+  "problemId": 416,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 416,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        5,
+        11,
+        5
+      ],
+      "variables": {
+        "target": 11
+      },
+      "structure": {
+        "f": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "2717e027450d216cf11e3968edbadf580db449b60611ef993890ba50156952eb",
+    "sourceSemanticTokenHash": "79bbbdbc76ea162778c582bcc4cdc620c3302628074b570aac73eb6f057884f7",
+    "sourceCodeLineCount": 15
+  },
+  "sourceCodeSha256": "2717e027450d216cf11e3968edbadf580db449b60611ef993890ba50156952eb",
+  "sourceSemanticTokenHash": "79bbbdbc76ea162778c582bcc4cdc620c3302628074b570aac73eb6f057884f7",
+  "steps": [
+    {
+      "id": "416-trace-001",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "setup",
+      "title": "先检查总和并设置目标容量",
+      "body": "总和 22，目标子集和 m=11；f[j] 表示是否可以凑出 j。 题解原意：核心洞察：这是一个经典的 0-1 背包问题——从数组中选若干个数，每个数选或不选，使其和等于 target（总和的一半）。dp[j] 表示是否存在和为 j 的子集。 DP 五步法： 1. dp 定义：dp[j] 表示是否存在和为 j 的子集（布尔值） 2. 递推公式：dp[j] = dp[j] or dp[j - num]（当前元素选或不选） 3. 初始化：dp[0] = true（空集和为 0） 4. 遍历顺序：先…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp1d",
+        "badge": "f",
+        "tokens": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "target": 11
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "总和 22，目标子集和 m=11；f[j] 表示是否可以凑出 j。"
+      },
+      "state": {
+        "values": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "variables": {
+          "target": 11
+        },
+        "structure": {
+          "f": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "416-trace-002",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "update",
+      "title": "加入数字 1",
+      "body": "倒序更新避免本轮重复使用 x，f=[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "x": 1,
+          "target": 11
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          false
+        ],
+        "note": "倒序更新避免本轮重复使用 x，f=[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]。"
+      },
+      "state": {
+        "values": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "variables": {
+          "x": 1,
+          "target": 11
+        },
+        "structure": {
+          "f": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          false
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "416-trace-003",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "update",
+      "title": "加入数字 5",
+      "body": "倒序更新避免本轮重复使用 x，f=[1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          false
+        ],
+        "note": "倒序更新避免本轮重复使用 x，f=[1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]。"
+      },
+      "state": {
+        "values": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "structure": {
+          "f": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          false
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "416-trace-004",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "update",
+      "title": "加入数字 11",
+      "body": "倒序更新避免本轮重复使用 x，f=[1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1]。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "x": 11,
+          "target": 11
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "倒序更新避免本轮重复使用 x，f=[1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "variables": {
+          "x": 11,
+          "target": 11
+        },
+        "structure": {
+          "f": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "416-trace-005",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "update",
+      "title": "加入数字 5",
+      "body": "倒序更新避免本轮重复使用 x，f=[1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1]。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "倒序更新避免本轮重复使用 x，f=[1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "structure": {
+          "f": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "416-trace-check-007",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。可以分成两个和为 11 的子集：true。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。可以分成两个和为 11 的子集：true。"
+      },
+      "state": {
+        "values": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "structure": {
+          "f": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "416-trace-check-008",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。可以分成两个和为 11 的子集：true。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。可以分成两个和为 11 的子集：true。"
+      },
+      "state": {
+        "values": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "structure": {
+          "f": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "416-trace-check-009",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。可以分成两个和为 11 的子集：true。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。可以分成两个和为 11 的子集：true。"
+      },
+      "state": {
+        "values": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "structure": {
+          "f": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "416-trace-check-010",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。可以分成两个和为 11 的子集：true。 易错提醒：总和奇偶判断：必须先用 sum % 2 判断，奇数和无法平分。 0-1 背包倒序遍历：这是最关键的区别！正序遍历会错误地变成\"完全背包\"（同一元素多次使用）。 target 可能比最大元素小：如果最大元素 > target，可以直接返回 false。 dp[0] = true：空子集的和总是 0，这是递推的基础。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。可以分成两个和为 11 的子集：true。"
+      },
+      "state": {
+        "values": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "variables": {
+          "x": 5,
+          "target": 11
+        },
+        "structure": {
+          "f": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "416-trace-006",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "可以分成两个和为 11 的子集：true。",
+      "kind": "dp1d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "target": 11
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "可以分成两个和为 11 的子集：true。"
+      },
+      "state": {
+        "values": [
+          1,
+          5,
+          11,
+          5
+        ],
+        "variables": {
+          "target": 11
+        },
+        "structure": {
+          "f": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

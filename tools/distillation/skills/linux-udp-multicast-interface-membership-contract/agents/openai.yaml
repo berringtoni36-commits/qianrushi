@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linux UDP Multicast Membership"
+  short_description: "Audit UDP multicast interface and membership"
+  default_prompt: "Use $linux-udp-multicast-interface-membership-contract to diagnose this UDP multicast interface and membership setup."

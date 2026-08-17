@@ -1,0 +1,894 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "大小堆维护两半数据",
+    "sceneKind": "heap",
+    "input": [
+      1,
+      2,
+      3
+    ],
+    "expected": [
+      1.0,
+      1.5,
+      2.0
+    ],
+    "exampleText": "依次加入 1, 2, 3",
+    "expectedText": "中位数依次 1, 1.5, 2",
+    "invariant": "down 所有值不大于 up，且 down 大小等于 up 或多一",
+    "aha": "中位数只依赖两个堆顶",
+    "time": "O(log n) add / O(1) query",
+    "space": "O(n)",
+    "problemId": 295,
+    "title": "数据流的中位数",
+    "day": "Day 9：单调栈 + 堆",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "3b97e1aed1324e56a2489d8d1acc9b9c9d3309ccbb346f1d06aab892b404a6d8",
+    "semanticTokenHash": "fc01a248fbba7e958fae1ddbe24f0e458bd819d55bd844e8f42c8882093e4adc",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "down 保存较小一半的大根堆，up 保存较大一半的小根堆。",
+        "review": "两个堆均为空"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "operation": "init"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "两个堆均为空",
+            "status": "running",
+            "heap": [],
+            "queue": []
+          },
+          "caption": "down 保存较小一半的大根堆，up 保存较大一半的小根堆。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "operation": "init"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 5",
+            "status": "running",
+            "heap": [],
+            "queue": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "先按数值归入对应半区。",
+        "review": "sizes=1/0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "num": 1,
+              "downTop": 1,
+              "upTop": null
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "sizes=1/0",
+            "action": "插入 1",
+            "status": "running",
+            "heap": [
+              1
+            ],
+            "queue": [],
+            "activeHeap": [
+              1
+            ]
+          },
+          "caption": "先按数值归入对应半区。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "down 只能与 up 等大或多一个。",
+        "review": "balanced"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "num": 1,
+              "downSize": 1,
+              "upSize": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "balanced",
+            "action": "平衡堆：balanced",
+            "status": "running",
+            "heap": [
+              1
+            ],
+            "queue": []
+          },
+          "caption": "down 只能与 up 等大或多一个。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "num": 1,
+              "downSize": 1,
+              "upSize": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "balanced",
+            "action": "不变量检查 4",
+            "status": "running",
+            "heap": [
+              1
+            ],
+            "queue": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "堆顶直接给出中间一个或两个数。",
+        "review": "median=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "median": 1.0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0
+            ],
+            "formula": "median=1",
+            "action": "当前中位数 1",
+            "status": "running",
+            "heap": [
+              1
+            ],
+            "queue": [],
+            "output": [
+              1.0
+            ]
+          },
+          "caption": "堆顶直接给出中间一个或两个数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "先按数值归入对应半区。",
+        "review": "sizes=1/1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "num": 2,
+              "downTop": 1,
+              "upTop": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "sizes=1/1",
+            "action": "插入 2",
+            "status": "running",
+            "heap": [
+              1
+            ],
+            "queue": [
+              2
+            ],
+            "activeHeap": [
+              2
+            ]
+          },
+          "caption": "先按数值归入对应半区。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "num": 2,
+              "downTop": 1,
+              "upTop": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "sizes=1/1",
+            "action": "不变量检查 3",
+            "status": "running",
+            "heap": [
+              1
+            ],
+            "queue": [
+              2
+            ],
+            "activeHeap": [
+              2
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "down 只能与 up 等大或多一个。",
+        "review": "balanced"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "num": 2,
+              "downSize": 1,
+              "upSize": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "balanced",
+            "action": "平衡堆：balanced",
+            "status": "running",
+            "heap": [
+              1
+            ],
+            "queue": [
+              2
+            ]
+          },
+          "caption": "down 只能与 up 等大或多一个。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "堆顶直接给出中间一个或两个数。",
+        "review": "median=1.5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "median": 1.5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0
+            ],
+            "formula": "median=1.5",
+            "action": "当前中位数 1.5",
+            "status": "running",
+            "heap": [
+              1
+            ],
+            "queue": [
+              2
+            ],
+            "output": [
+              1.0,
+              1.5
+            ]
+          },
+          "caption": "堆顶直接给出中间一个或两个数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "median": 1.5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0
+            ],
+            "formula": "median=1.5",
+            "action": "不变量检查 2",
+            "status": "running",
+            "heap": [
+              1
+            ],
+            "queue": [
+              2
+            ],
+            "output": [
+              1.0,
+              1.5
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "先按数值归入对应半区。",
+        "review": "sizes=1/2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "num": 3,
+              "downTop": 1,
+              "upTop": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "sizes=1/2",
+            "action": "插入 3",
+            "status": "running",
+            "heap": [
+              1
+            ],
+            "queue": [
+              2,
+              3
+            ],
+            "activeHeap": [
+              3
+            ]
+          },
+          "caption": "先按数值归入对应半区。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "down 只能与 up 等大或多一个。",
+        "review": "up→down"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "num": 3,
+              "downSize": 2,
+              "upSize": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "up→down",
+            "action": "平衡堆：up→down",
+            "status": "running",
+            "heap": [
+              2,
+              1
+            ],
+            "queue": [
+              3
+            ]
+          },
+          "caption": "down 只能与 up 等大或多一个。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "num": 3,
+              "downSize": 2,
+              "upSize": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "up→down",
+            "action": "不变量检查 1",
+            "status": "running",
+            "heap": [
+              2,
+              1
+            ],
+            "queue": [
+              3
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "堆顶直接给出中间一个或两个数。",
+        "review": "median=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "median": 2.0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0
+            ],
+            "formula": "median=2",
+            "action": "当前中位数 2",
+            "status": "running",
+            "heap": [
+              2,
+              1
+            ],
+            "queue": [
+              3
+            ],
+            "output": [
+              1.0,
+              1.5,
+              2.0
+            ]
+          },
+          "caption": "堆顶直接给出中间一个或两个数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "每次插入后两堆仍满足顺序与大小不变量。",
+        "review": "[1.0, 1.5, 2.0]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "heap",
+            "values": [],
+            "variables": {
+              "count": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1.0, 1.5, 2.0]",
+            "action": "中位数序列 [1,1.5,2]",
+            "status": "return",
+            "heap": [
+              2,
+              1
+            ],
+            "queue": [
+              3
+            ],
+            "output": [
+              1.0,
+              1.5,
+              2.0
+            ]
+          },
+          "caption": "每次插入后两堆仍满足顺序与大小不变量。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class MedianFinder {\npublic:\n    priority_queue<int, vector<int>, greater<int>> up;\n    priority_queue<int> down;\n\n    /** initialize your data structure here. */\n    MedianFinder() {\n\n    }\n\n    void addNum(int num) {\n        if (down.empty() || num <= down.top()) {  // 插入大根堆（较小的一半）\n            down.push(num);\n            if (down.size() > up.size() + 1) {  // 平衡：大根堆最多比小根堆多1个\n                up.push(down.top());\n                down.pop();\n            }\n        } else {\n            up.push(num);\n            if (up.size() > down.size()) {  // 平衡：小根堆不能比大根堆多\n                down.push(up.top());\n                up.pop();\n            }\n        }\n    }\n\n    double findMedian() {\n        if ((down.size() + up.size()) % 2) return down.top();\n        return (down.top() + up.top()) / 2.0;\n    }\n};\n\n/**\n * Your MedianFinder object will be instantiated and called as such:\n * MedianFinder* obj = new MedianFinder();\n * obj->addNum(num);\n * double param_2 = obj->findMedian();\n */",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3549,
+        "text": "class MedianFinder {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3550,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3551,
+        "text": "    priority_queue<int, vector<int>, greater<int>> up;"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3552,
+        "text": "    priority_queue<int> down;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3553,
+        "text": ""
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3554,
+        "text": "    /** initialize your data structure here. */"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3555,
+        "text": "    MedianFinder() {"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3556,
+        "text": ""
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3557,
+        "text": "    }"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3558,
+        "text": ""
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3559,
+        "text": "    void addNum(int num) {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3560,
+        "text": "        if (down.empty() || num <= down.top()) {  // 插入大根堆（较小的一半）"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3561,
+        "text": "            down.push(num);"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3562,
+        "text": "            if (down.size() > up.size() + 1) {  // 平衡：大根堆最多比小根堆多1个"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3563,
+        "text": "                up.push(down.top());"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3564,
+        "text": "                down.pop();"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3565,
+        "text": "            }"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3566,
+        "text": "        } else {"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3567,
+        "text": "            up.push(num);"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3568,
+        "text": "            if (up.size() > down.size()) {  // 平衡：小根堆不能比大根堆多"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3569,
+        "text": "                down.push(up.top());"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3570,
+        "text": "                up.pop();"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 3571,
+        "text": "            }"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 3572,
+        "text": "        }"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 3573,
+        "text": "    }"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 3574,
+        "text": ""
+      },
+      {
+        "id": "L27",
+        "sourceLine": 3575,
+        "text": "    double findMedian() {"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 3576,
+        "text": "        if ((down.size() + up.size()) % 2) return down.top();"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 3577,
+        "text": "        return (down.top() + up.top()) / 2.0;"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 3578,
+        "text": "    }"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 3579,
+        "text": "};"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 3580,
+        "text": ""
+      },
+      {
+        "id": "L33",
+        "sourceLine": 3581,
+        "text": "/**"
+      },
+      {
+        "id": "L34",
+        "sourceLine": 3582,
+        "text": " * Your MedianFinder object will be instantiated and called as such:"
+      },
+      {
+        "id": "L35",
+        "sourceLine": 3583,
+        "text": " * MedianFinder* obj = new MedianFinder();"
+      },
+      {
+        "id": "L36",
+        "sourceLine": 3584,
+        "text": " * obj->addNum(num);"
+      },
+      {
+        "id": "L37",
+        "sourceLine": 3585,
+        "text": " * double param_2 = obj->findMedian();"
+      },
+      {
+        "id": "L38",
+        "sourceLine": 3586,
+        "text": " */"
+      }
+    ]
+  }
+}

@@ -1,0 +1,966 @@
+{
+  "problemId": 198,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 198,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ],
+      "variables": {},
+      "structure": {
+        "f": [
+          0,
+          2,
+          7,
+          11,
+          10,
+          12
+        ],
+        "g": [
+          0,
+          0,
+          2,
+          7,
+          11,
+          11
+        ]
+      },
+      "result": [
+        12
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "788c7bd88ca49720872e2cd8ccb516ecb4bbea215a37e92febdd2f01f812ddd2",
+    "sourceSemanticTokenHash": "c34cd1e95d2f840ef883920c43f0d3690577fa97c19e7bddfd44affd533f8d84",
+    "sourceCodeLineCount": 12
+  },
+  "sourceCodeSha256": "788c7bd88ca49720872e2cd8ccb516ecb4bbea215a37e92febdd2f01f812ddd2",
+  "sourceSemanticTokenHash": "c34cd1e95d2f840ef883920c43f0d3690577fa97c19e7bddfd44affd533f8d84",
+  "steps": [
+    {
+      "id": "198-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "区分偷与不偷",
+      "body": "f[i] 是偷第 i 间的最大金额，g[i] 是不偷第 i 间的最大金额。 题解原意：核心洞察：对于第 i 间房，如果偷，则 i-1 不能偷，总金额 = dp[i-2] + nums[i-1]；如果不偷，总金额 = dp[i-1]。两者取大。 DP 五步法： 1. dp 定义：dp[i] 表示前 i 间房屋（即 nums[0..i-1]）能偷到的最高金额 2. 递推公式：dp[i] = max(dp[i-1], dp[i-2] + nums[i-1]) 3. 初始化：dp[0] = 0（没有房子），d…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp1d",
+        "badge": "f",
+        "tokens": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "label": "g",
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "f[i] 是偷第 i 间的最大金额，g[i] 是不偷第 i 间的最大金额。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "variables": {},
+        "structure": {
+          "f": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "g": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "198-trace-002",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "update",
+      "title": "处理第 1 间房",
+      "body": "偷=2，不偷=0；相邻房屋不能同时偷。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "house": 2
+        },
+        "rows": [
+          {
+            "label": "f (偷)",
+            "values": [
+              0,
+              2,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "label": "g (不偷)",
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "偷=2，不偷=0；相邻房屋不能同时偷。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "variables": {
+          "i": 1,
+          "house": 2
+        },
+        "structure": {
+          "f": [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          "g": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "198-trace-003",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "update",
+      "title": "处理第 2 间房",
+      "body": "偷=7，不偷=2；相邻房屋不能同时偷。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=2 · 结果 1 项",
+        "tokens": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "house": 7
+        },
+        "rows": [
+          {
+            "label": "f (偷)",
+            "values": [
+              0,
+              2,
+              7,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "label": "g (不偷)",
+            "values": [
+              0,
+              0,
+              2,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          7
+        ],
+        "note": "偷=7，不偷=2；相邻房屋不能同时偷。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "variables": {
+          "i": 2,
+          "house": 7
+        },
+        "structure": {
+          "f": [
+            0,
+            2,
+            7,
+            0,
+            0,
+            0
+          ],
+          "g": [
+            0,
+            0,
+            2,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": [
+          7
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "198-trace-004",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "update",
+      "title": "处理第 3 间房",
+      "body": "偷=11，不偷=7；相邻房屋不能同时偷。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=3 · 结果 1 项",
+        "tokens": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "house": 9
+        },
+        "rows": [
+          {
+            "label": "f (偷)",
+            "values": [
+              0,
+              2,
+              7,
+              11,
+              0,
+              0
+            ]
+          },
+          {
+            "label": "g (不偷)",
+            "values": [
+              0,
+              0,
+              2,
+              7,
+              0,
+              0
+            ]
+          }
+        ],
+        "result": [
+          11
+        ],
+        "note": "偷=11，不偷=7；相邻房屋不能同时偷。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "variables": {
+          "i": 3,
+          "house": 9
+        },
+        "structure": {
+          "f": [
+            0,
+            2,
+            7,
+            11,
+            0,
+            0
+          ],
+          "g": [
+            0,
+            0,
+            2,
+            7,
+            0,
+            0
+          ]
+        },
+        "result": [
+          11
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "198-trace-005",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "update",
+      "title": "处理第 4 间房",
+      "body": "偷=10，不偷=11；相邻房屋不能同时偷。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=4 · 结果 1 项",
+        "tokens": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "house": 3
+        },
+        "rows": [
+          {
+            "label": "f (偷)",
+            "values": [
+              0,
+              2,
+              7,
+              11,
+              10,
+              0
+            ]
+          },
+          {
+            "label": "g (不偷)",
+            "values": [
+              0,
+              0,
+              2,
+              7,
+              11,
+              0
+            ]
+          }
+        ],
+        "result": [
+          11
+        ],
+        "note": "偷=10，不偷=11；相邻房屋不能同时偷。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "variables": {
+          "i": 4,
+          "house": 3
+        },
+        "structure": {
+          "f": [
+            0,
+            2,
+            7,
+            11,
+            10,
+            0
+          ],
+          "g": [
+            0,
+            0,
+            2,
+            7,
+            11,
+            0
+          ]
+        },
+        "result": [
+          11
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "198-trace-006",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "update",
+      "title": "处理第 5 间房",
+      "body": "偷=12，不偷=11；相邻房屋不能同时偷。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "house": 1
+        },
+        "rows": [
+          {
+            "label": "f (偷)",
+            "values": [
+              0,
+              2,
+              7,
+              11,
+              10,
+              12
+            ]
+          },
+          {
+            "label": "g (不偷)",
+            "values": [
+              0,
+              0,
+              2,
+              7,
+              11,
+              11
+            ]
+          }
+        ],
+        "result": [
+          12
+        ],
+        "note": "偷=12，不偷=11；相邻房屋不能同时偷。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "variables": {
+          "i": 5,
+          "house": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            2,
+            7,
+            11,
+            10,
+            12
+          ],
+          "g": [
+            0,
+            0,
+            2,
+            7,
+            11,
+            11
+          ]
+        },
+        "result": [
+          12
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "198-trace-check-008",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大金额为 12。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "house": 1
+        },
+        "rows": [
+          {
+            "label": "f (偷)",
+            "values": [
+              0,
+              2,
+              7,
+              11,
+              10,
+              12
+            ]
+          },
+          {
+            "label": "g (不偷)",
+            "values": [
+              0,
+              0,
+              2,
+              7,
+              11,
+              11
+            ]
+          }
+        ],
+        "result": [
+          12
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大金额为 12。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "variables": {
+          "i": 5,
+          "house": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            2,
+            7,
+            11,
+            10,
+            12
+          ],
+          "g": [
+            0,
+            0,
+            2,
+            7,
+            11,
+            11
+          ]
+        },
+        "result": [
+          12
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "198-trace-check-009",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大金额为 12。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "house": 1
+        },
+        "rows": [
+          {
+            "label": "f (偷)",
+            "values": [
+              0,
+              2,
+              7,
+              11,
+              10,
+              12
+            ]
+          },
+          {
+            "label": "g (不偷)",
+            "values": [
+              0,
+              0,
+              2,
+              7,
+              11,
+              11
+            ]
+          }
+        ],
+        "result": [
+          12
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大金额为 12。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "variables": {
+          "i": 5,
+          "house": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            2,
+            7,
+            11,
+            10,
+            12
+          ],
+          "g": [
+            0,
+            0,
+            2,
+            7,
+            11,
+            11
+          ]
+        },
+        "result": [
+          12
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "198-trace-check-010",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大金额为 12。 易错提醒：空数组处理：题目提示长度 >= 1，但防御性编程应处理空数组。 初始化值：dp[0] 是 0（没有房子），dp[1] 是 nums[0]，不是 0。 仅有一间房：直接返回 nums[0]，不能走递推（dp[2] 越界）。 递推公式混淆：不要写成 dp[i] = max(dp[i-1], dp[i-2] + nums[i])，注意 nums…",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "house": 1
+        },
+        "rows": [
+          {
+            "label": "f (偷)",
+            "values": [
+              0,
+              2,
+              7,
+              11,
+              10,
+              12
+            ]
+          },
+          {
+            "label": "g (不偷)",
+            "values": [
+              0,
+              0,
+              2,
+              7,
+              11,
+              11
+            ]
+          }
+        ],
+        "result": [
+          12
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大金额为 12。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "variables": {
+          "i": 5,
+          "house": 1
+        },
+        "structure": {
+          "f": [
+            0,
+            2,
+            7,
+            11,
+            10,
+            12
+          ],
+          "g": [
+            0,
+            0,
+            2,
+            7,
+            11,
+            11
+          ]
+        },
+        "result": [
+          12
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "198-trace-007",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最大金额为 12。",
+      "kind": "dp1d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              12
+            ]
+          }
+        ],
+        "result": [
+          12
+        ],
+        "note": "最大金额为 12。"
+      },
+      "state": {
+        "values": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ],
+        "variables": {},
+        "structure": {
+          "f": [
+            0,
+            2,
+            7,
+            11,
+            10,
+            12
+          ],
+          "g": [
+            0,
+            0,
+            2,
+            7,
+            11,
+            11
+          ]
+        },
+        "result": [
+          12
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

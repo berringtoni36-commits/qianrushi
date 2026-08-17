@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "problems": {
+    "1": {
+      "title": "两数之和",
+      "passed": true,
+      "errors": [],
+      "frameCount": 12,
+      "beatCount": 12,
+      "cppStdout": "0,1"
+    },
+    "42": {
+      "title": "接雨水",
+      "passed": true,
+      "errors": [],
+      "frameCount": 14,
+      "beatCount": 82,
+      "cppStdout": "6"
+    },
+    "76": {
+      "title": "最小覆盖子串",
+      "passed": true,
+      "errors": [],
+      "frameCount": 15,
+      "beatCount": 84,
+      "cppStdout": "BANC"
+    },
+    "206": {
+      "title": "反转链表",
+      "passed": true,
+      "errors": [],
+      "frameCount": 12,
+      "beatCount": 24,
+      "cppStdout": "5,4,3,2,1"
+    },
+    "146": {
+      "title": "LRU缓存",
+      "passed": true,
+      "errors": [],
+      "frameCount": 17,
+      "beatCount": 33,
+      "cppStdout": "1,-1"
+    },
+    "322": {
+      "title": "零钱兑换",
+      "passed": true,
+      "errors": [],
+      "frameCount": 12,
+      "beatCount": 32,
+      "cppStdout": "3"
+    }
+  }
+}

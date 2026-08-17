@@ -1,0 +1,840 @@
+{
+  "problemId": 138,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 138,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        7,
+        13,
+        11,
+        10,
+        1
+      ],
+      "variables": {
+        "phase": 3
+      },
+      "structure": {
+        "copy": [
+          "7'",
+          "13'",
+          "11'",
+          "10'",
+          "1'"
+        ],
+        "random": [
+          "7'→null",
+          "13'→7'",
+          "11'→13'",
+          "10'→11'",
+          "1'→7'"
+        ]
+      },
+      "result": [
+        "7'",
+        "13'",
+        "11'",
+        "10'",
+        "1'"
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "379fb840905248929501e2051c2ce8f2d25eaac20e8dc6bbc3e9ab2094cab431",
+    "sourceSemanticTokenHash": "9b1bb795db5a812d29f82f8f9051c7f8a904b4a83b569d3d640e6f86596af104",
+    "sourceCodeLineCount": 40
+  },
+  "sourceCodeSha256": "379fb840905248929501e2051c2ce8f2d25eaac20e8dc6bbc3e9ab2094cab431",
+  "sourceSemanticTokenHash": "9b1bb795db5a812d29f82f8f9051c7f8a904b4a83b569d3d640e6f86596af104",
+  "steps": [
+    {
+      "id": "138-trace-001",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "setup",
+      "title": "在原节点后插入克隆",
+      "body": "每个克隆紧跟原节点，借此不用额外哈希表就能定位 random 目标的克隆。 题解原意：为什么这样想： 不用哈希表，而是利用原链表的 next 指针来建立映射关系。在每一个原节点后面插入其克隆节点，这样原节点到克隆节点的映射关系天然地通过 next 指针建立起来：原节点.next = 克隆节点。那么原节点->random->next 就是克隆节点的 random 指向。 关键洞察： 克隆节点->random = 原节点->random->next。因为原节点->random 指向原链表的某个节点，该节点…",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · linked",
+        "badge": "original",
+        "tokens": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "phase": 1
+        },
+        "rows": [
+          {
+            "label": "original",
+            "values": [
+              7,
+              13,
+              11,
+              10,
+              1
+            ]
+          },
+          {
+            "label": "clone",
+            "values": [
+              "尚未插入"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "每个克隆紧跟原节点，借此不用额外哈希表就能定位 random 目标的克隆。"
+      },
+      "state": {
+        "values": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "variables": {
+          "phase": 1
+        },
+        "structure": {
+          "original": [
+            7,
+            13,
+            11,
+            10,
+            1
+          ],
+          "clones": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "138-trace-002",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "克隆节点 7",
+      "body": "创建 7' 并插到原节点 7 后面。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "interleaved",
+        "tokens": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "phase": 1,
+          "value": 7
+        },
+        "rows": [
+          {
+            "label": "interleaved",
+            "values": [
+              7,
+              "7'"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "创建 7' 并插到原节点 7 后面。"
+      },
+      "state": {
+        "values": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "variables": {
+          "phase": 1,
+          "value": 7
+        },
+        "structure": {
+          "interleaved": [
+            7,
+            "7'"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "138-trace-003",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "克隆节点 13",
+      "body": "创建 13' 并插到原节点 13 后面。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "interleaved",
+        "tokens": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "phase": 1,
+          "value": 13
+        },
+        "rows": [
+          {
+            "label": "interleaved",
+            "values": [
+              7,
+              "7'",
+              13,
+              "13'"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "创建 13' 并插到原节点 13 后面。"
+      },
+      "state": {
+        "values": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "variables": {
+          "phase": 1,
+          "value": 13
+        },
+        "structure": {
+          "interleaved": [
+            7,
+            "7'",
+            13,
+            "13'"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "138-trace-004",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "克隆节点 11",
+      "body": "创建 11' 并插到原节点 11 后面。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "interleaved",
+        "tokens": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "phase": 1,
+          "value": 11
+        },
+        "rows": [
+          {
+            "label": "interleaved",
+            "values": [
+              7,
+              "7'",
+              13,
+              "13'",
+              11,
+              "11'"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "创建 11' 并插到原节点 11 后面。"
+      },
+      "state": {
+        "values": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "variables": {
+          "phase": 1,
+          "value": 11
+        },
+        "structure": {
+          "interleaved": [
+            7,
+            "7'",
+            13,
+            "13'",
+            11,
+            "11'"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "138-trace-005",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "克隆节点 10",
+      "body": "创建 10' 并插到原节点 10 后面。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "interleaved",
+        "tokens": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "phase": 1,
+          "value": 10
+        },
+        "rows": [
+          {
+            "label": "interleaved",
+            "values": [
+              7,
+              "7'",
+              13,
+              "13'",
+              11,
+              "11'",
+              10,
+              "10'"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "创建 10' 并插到原节点 10 后面。"
+      },
+      "state": {
+        "values": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "variables": {
+          "phase": 1,
+          "value": 10
+        },
+        "structure": {
+          "interleaved": [
+            7,
+            "7'",
+            13,
+            "13'",
+            11,
+            "11'",
+            10,
+            "10'"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "138-trace-006",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "克隆节点 1",
+      "body": "创建 1' 并插到原节点 1 后面。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "interleaved",
+        "tokens": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "phase": 1,
+          "value": 1
+        },
+        "rows": [
+          {
+            "label": "interleaved",
+            "values": [
+              7,
+              "7'",
+              13,
+              "13'",
+              11,
+              "11'",
+              10,
+              "10'",
+              1,
+              "1'"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "创建 1' 并插到原节点 1 后面。"
+      },
+      "state": {
+        "values": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "variables": {
+          "phase": 1,
+          "value": 1
+        },
+        "structure": {
+          "interleaved": [
+            7,
+            "7'",
+            13,
+            "13'",
+            11,
+            "11'",
+            10,
+            "10'",
+            1,
+            "1'"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "138-trace-007",
+      "line": 29,
+      "lineIds": [
+        29
+      ],
+      "phase": "mutate",
+      "title": "复制 random 指针",
+      "body": "原节点的 random 若存在，就通过 p->random->next 找到对应克隆。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "random",
+        "tokens": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "phase": 2
+        },
+        "rows": [
+          {
+            "label": "random",
+            "values": [
+              "7'→null",
+              "13'→7'",
+              "11'→13'",
+              "10'→11'",
+              "1'→7'"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "原节点的 random 若存在，就通过 p->random->next 找到对应克隆。"
+      },
+      "state": {
+        "values": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "variables": {
+          "phase": 2
+        },
+        "structure": {
+          "random": [
+            "7'→null",
+            "13'→7'",
+            "11'→13'",
+            "10'→11'",
+            "1'→7'"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "138-trace-008",
+      "line": 35,
+      "lineIds": [
+        35
+      ],
+      "phase": "mutate",
+      "title": "拆分交错链表",
+      "body": "把克隆节点依次摘出，得到新链 [\"7'\", \"13'\", \"11'\", \"10'\", \"1'\"]。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 5 项",
+        "tokens": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "phase": 3
+        },
+        "rows": [
+          {
+            "label": "copy",
+            "values": [
+              "7'",
+              "13'",
+              "11'",
+              "10'",
+              "1'"
+            ]
+          },
+          {
+            "label": "random",
+            "values": [
+              "7'→null",
+              "13'→7'",
+              "11'→13'",
+              "10'→11'",
+              "1'→7'"
+            ]
+          }
+        ],
+        "result": [
+          "7'",
+          "13'",
+          "11'",
+          "10'",
+          "1'"
+        ],
+        "note": "把克隆节点依次摘出，得到新链 [\"7'\", \"13'\", \"11'\", \"10'\", \"1'\"]。"
+      },
+      "state": {
+        "values": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "variables": {
+          "phase": 3
+        },
+        "structure": {
+          "copy": [
+            "7'",
+            "13'",
+            "11'",
+            "10'",
+            "1'"
+          ],
+          "random": [
+            "7'→null",
+            "13'→7'",
+            "11'→13'",
+            "10'→11'",
+            "1'→7'"
+          ]
+        },
+        "result": [
+          "7'",
+          "13'",
+          "11'",
+          "10'",
+          "1'"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "138-trace-check-010",
+      "line": 35,
+      "lineIds": [
+        35
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回深拷贝链表，next 与 random 关系均已保持。 易错提醒：三步法的拆分步骤： 拆分时不仅要恢复原链表的 next，还要正确设置克隆链表的 next，两个链表要同时恢复 random 为 null 的情况： cur->random->next 会崩溃，必须先判断 if (cur->random)。哈希表法中用 mapping.count(cur->random) ? mapping[cur->ra…",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 5 项",
+        "tokens": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "phase": 3
+        },
+        "rows": [
+          {
+            "label": "copy",
+            "values": [
+              "7'",
+              "13'",
+              "11'",
+              "10'",
+              "1'"
+            ]
+          },
+          {
+            "label": "random",
+            "values": [
+              "7'→null",
+              "13'→7'",
+              "11'→13'",
+              "10'→11'",
+              "1'→7'"
+            ]
+          }
+        ],
+        "result": [
+          "7'",
+          "13'",
+          "11'",
+          "10'",
+          "1'"
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回深拷贝链表，next 与 random 关系均已保持。"
+      },
+      "state": {
+        "values": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "variables": {
+          "phase": 3
+        },
+        "structure": {
+          "copy": [
+            "7'",
+            "13'",
+            "11'",
+            "10'",
+            "1'"
+          ],
+          "random": [
+            "7'→null",
+            "13'→7'",
+            "11'→13'",
+            "10'→11'",
+            "1'→7'"
+          ]
+        },
+        "result": [
+          "7'",
+          "13'",
+          "11'",
+          "10'",
+          "1'"
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "138-trace-009",
+      "line": 38,
+      "lineIds": [
+        38
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回深拷贝链表，next 与 random 关系均已保持。",
+      "kind": "linked",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · linked",
+        "badge": "结果 5 项",
+        "tokens": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "phase": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "7'",
+              "13'",
+              "11'",
+              "10'",
+              "1'"
+            ]
+          },
+          {
+            "label": "random",
+            "values": [
+              "7'→null",
+              "13'→7'",
+              "11'→13'",
+              "10'→11'",
+              "1'→7'"
+            ]
+          }
+        ],
+        "result": [
+          "7'",
+          "13'",
+          "11'",
+          "10'",
+          "1'"
+        ],
+        "note": "返回深拷贝链表，next 与 random 关系均已保持。"
+      },
+      "state": {
+        "values": [
+          7,
+          13,
+          11,
+          10,
+          1
+        ],
+        "variables": {
+          "phase": 3
+        },
+        "structure": {
+          "copy": [
+            "7'",
+            "13'",
+            "11'",
+            "10'",
+            "1'"
+          ],
+          "random": [
+            "7'→null",
+            "13'→7'",
+            "11'→13'",
+            "10'→11'",
+            "1'→7'"
+          ]
+        },
+        "result": [
+          "7'",
+          "13'",
+          "11'",
+          "10'",
+          "1'"
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

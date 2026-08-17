@@ -1,0 +1,731 @@
+{
+  "problemId": 287,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 287,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        3,
+        4,
+        2,
+        2
+      ],
+      "variables": {
+        "duplicate": 2
+      },
+      "structure": {
+        "next": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ]
+      },
+      "result": [
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "ee72002eec5c77960d4cf57ce7b98bf1f6064ac8c6c49c5ee05096128c596035",
+    "sourceSemanticTokenHash": "5a129a1cc26ebb2e10f7c05e3fd4284e024ac7d3750a6e4bede0a8a59119da47",
+    "sourceCodeLineCount": 20
+  },
+  "sourceCodeSha256": "ee72002eec5c77960d4cf57ce7b98bf1f6064ac8c6c49c5ee05096128c596035",
+  "sourceSemanticTokenHash": "5a129a1cc26ebb2e10f7c05e3fd4284e024ac7d3750a6e4bede0a8a59119da47",
+  "steps": [
+    {
+      "id": "287-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "把数组看成函数图",
+      "body": "nums[x] 是从节点 x 指向下一节点的边；重复数对应环入口。 题解原意：思路讲解： 将数组看作一个隐式链表——nums[i] 表示节点 i 的 next 指针指向 nums[i]。因为有重复数字，不同的下标可能指向同一个值，所以这个链表必有环，且环的入口就是重复数。 第一阶段：找相遇点。 快指针每次走两步（fast = nums[nums[fast]]），慢指针每次走一步（slow = nums[slow]），它们在环中相遇。 第二阶段：找环入口。 将慢指针重置到起点，快慢指针都每次走一…",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · cycle",
+        "badge": "next",
+        "tokens": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "slow": 0,
+          "fast": 0
+        },
+        "rows": [
+          {
+            "label": "next",
+            "values": [
+              "0→1",
+              "1→3",
+              "2→4",
+              "3→2",
+              "4→2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[x] 是从节点 x 指向下一节点的边；重复数对应环入口。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "variables": {
+          "slow": 0,
+          "fast": 0
+        },
+        "structure": {
+          "next": [
+            1,
+            3,
+            4,
+            2,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "287-trace-002",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "第 1 次追赶",
+      "body": "slow=1，fast=3。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · cycle",
+        "badge": "next",
+        "tokens": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "active": [
+          1,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 1,
+          "fast": 3,
+          "step": 1
+        },
+        "rows": [
+          {
+            "label": "pointers",
+            "values": [
+              "slow=1",
+              "fast=3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "slow=1，fast=3。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "variables": {
+          "slow": 1,
+          "fast": 3,
+          "step": 1
+        },
+        "structure": {
+          "next": [
+            1,
+            3,
+            4,
+            2,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "287-trace-003",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "第 2 次追赶",
+      "body": "slow=3，fast=4。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · cycle",
+        "badge": "next",
+        "tokens": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "active": [
+          3,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 3,
+          "fast": 4,
+          "step": 2
+        },
+        "rows": [
+          {
+            "label": "pointers",
+            "values": [
+              "slow=3",
+              "fast=4"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "slow=3，fast=4。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "variables": {
+          "slow": 3,
+          "fast": 4,
+          "step": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            3,
+            4,
+            2,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "287-trace-004",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "第 3 次追赶",
+      "body": "slow=2，fast=4。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · cycle",
+        "badge": "next",
+        "tokens": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "active": [
+          2,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 2,
+          "fast": 4,
+          "step": 3
+        },
+        "rows": [
+          {
+            "label": "pointers",
+            "values": [
+              "slow=2",
+              "fast=4"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "slow=2，fast=4。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "variables": {
+          "slow": 2,
+          "fast": 4,
+          "step": 3
+        },
+        "structure": {
+          "next": [
+            1,
+            3,
+            4,
+            2,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "287-trace-005",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "mutate",
+      "title": "第 4 次追赶",
+      "body": "slow=4，fast=4。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · cycle",
+        "badge": "next",
+        "tokens": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "active": [
+          4,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 4,
+          "fast": 4,
+          "step": 4
+        },
+        "rows": [
+          {
+            "label": "pointers",
+            "values": [
+              "slow=4",
+              "fast=4"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "slow=4，fast=4。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "variables": {
+          "slow": 4,
+          "fast": 4,
+          "step": 4
+        },
+        "structure": {
+          "next": [
+            1,
+            3,
+            4,
+            2,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "287-trace-006",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "branch",
+      "title": "在节点 4 相遇",
+      "body": "相遇说明图中存在环；把 slow 放回 0 后再次同步前进。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "branch · cycle",
+        "badge": "next",
+        "tokens": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 4,
+          "fast": 4,
+          "meet": 4
+        },
+        "rows": [
+          {
+            "label": "meet",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [],
+        "note": "相遇说明图中存在环；把 slow 放回 0 后再次同步前进。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "variables": {
+          "slow": 4,
+          "fast": 4,
+          "meet": 4
+        },
+        "structure": {
+          "next": [
+            1,
+            3,
+            4,
+            2,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "287-trace-007",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "同步寻找环入口",
+      "body": "slow=1，fast=2。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · cycle",
+        "badge": "next",
+        "tokens": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "active": [
+          1,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 1,
+          "fast": 2
+        },
+        "rows": [
+          {
+            "label": "pointers",
+            "values": [
+              "slow=1",
+              "fast=2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "slow=1，fast=2。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "variables": {
+          "slow": 1,
+          "fast": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            3,
+            4,
+            2,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "287-trace-008",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "同步寻找环入口",
+      "body": "slow=3，fast=4。",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · cycle",
+        "badge": "next",
+        "tokens": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "active": [
+          3,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 3,
+          "fast": 4
+        },
+        "rows": [
+          {
+            "label": "pointers",
+            "values": [
+              "slow=3",
+              "fast=4"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "slow=3，fast=4。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "variables": {
+          "slow": 3,
+          "fast": 4
+        },
+        "structure": {
+          "next": [
+            1,
+            3,
+            4,
+            2,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "287-trace-009",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "同步寻找环入口",
+      "body": "slow=2，fast=2。 易错提醒：快慢指针的初始化：slow = fast = nums[0]，不要初始化为 0，因为 0 不在 [1, n] 范围内，可能导致索引越界 快慢指针的步长：快指针走两步，必须写成 nums[nums[fast]] 而不是 nums[fast] * 2 或 nums[fast] + 2 第二阶段从 nums[0] 开始：不是从 0 开始，而是从…",
+      "kind": "cycle",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · cycle",
+        "badge": "next",
+        "tokens": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "active": [
+          2,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "slow": 2,
+          "fast": 2
+        },
+        "rows": [
+          {
+            "label": "pointers",
+            "values": [
+              "slow=2",
+              "fast=2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "slow=2，fast=2。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "variables": {
+          "slow": 2,
+          "fast": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            3,
+            4,
+            2,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "287-trace-010",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "重复数为 2。",
+      "kind": "cycle",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · cycle",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "duplicate": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "重复数为 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          4,
+          2,
+          2
+        ],
+        "variables": {
+          "duplicate": 2
+        },
+        "structure": {
+          "next": [
+            1,
+            3,
+            4,
+            2,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

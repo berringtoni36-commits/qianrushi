@@ -1,0 +1,1193 @@
+{
+  "problemId": 48,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 48,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": false,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        [
+          7,
+          4,
+          1
+        ],
+        [
+          8,
+          5,
+          2
+        ],
+        [
+          9,
+          6,
+          3
+        ]
+      ],
+      "variables": {
+        "n": 3
+      },
+      "structure": {
+        "matrix": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ]
+      },
+      "result": [
+        [
+          7,
+          4,
+          1
+        ],
+        [
+          8,
+          5,
+          2
+        ],
+        [
+          9,
+          6,
+          3
+        ]
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "81ed4e8f02485ba65094cde3c99579865b293f7095a69e1529d3da996a82760e",
+    "sourceSemanticTokenHash": "9e0a9e360aecc5b1ef2bb4f8787de72290afbec5084e5ca9ad5132d48c7ed133",
+    "sourceCodeLineCount": 13
+  },
+  "sourceCodeSha256": "81ed4e8f02485ba65094cde3c99579865b293f7095a69e1529d3da996a82760e",
+  "sourceSemanticTokenHash": "9e0a9e360aecc5b1ef2bb4f8787de72290afbec5084e5ca9ad5132d48c7ed133",
+  "steps": [
+    {
+      "id": "48-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "准备原地旋转",
+      "body": "顺时针 90° = 先沿主对角线转置，再逐行左右翻转。 题解原意：核心洞察： 顺时针旋转 90 度可以拆解为两个简单步骤： 1. 转置：沿主对角线（左上到右下）翻转，即 matrix[i][j] 与 matrix[j][i] 交换 2. 翻转：每行逆序（左右翻转），即 matrix[i].reverse() 数学原理： 复杂度： O(n²) 时间，O(1) 空间。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · grid",
+        "badge": "matrix",
+        "tokens": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 3
+        },
+        "rows": [
+          {
+            "label": "matrix",
+            "values": [
+              "[1, 2, 3]",
+              "[4, 5, 6]",
+              "[7, 8, 9]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "顺时针 90° = 先沿主对角线转置，再逐行左右翻转。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "n": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              4,
+              5,
+              6
+            ],
+            [
+              7,
+              8,
+              9
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "48-trace-002",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "转置交换 (1,0)",
+      "body": "交换对称位置后矩阵为 [[1, 4, 3], [2, 5, 6], [7, 8, 9]]。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "i=1 · j=0",
+        "tokens": [
+          "1",
+          "4",
+          "3",
+          "2",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "matrix",
+            "values": [
+              "[1, 4, 3]",
+              "[2, 5, 6]",
+              "[7, 8, 9]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "交换对称位置后矩阵为 [[1, 4, 3], [2, 5, 6], [7, 8, 9]]。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            3
+          ],
+          [
+            2,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              3
+            ],
+            [
+              2,
+              5,
+              6
+            ],
+            [
+              7,
+              8,
+              9
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "48-trace-003",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "转置交换 (2,0)",
+      "body": "交换对称位置后矩阵为 [[1, 4, 7], [2, 5, 6], [3, 8, 9]]。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "i=2 · j=0",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "2",
+          "5",
+          "6",
+          "3",
+          "8",
+          "9"
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "matrix",
+            "values": [
+              "[1, 4, 7]",
+              "[2, 5, 6]",
+              "[3, 8, 9]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "交换对称位置后矩阵为 [[1, 4, 7], [2, 5, 6], [3, 8, 9]]。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7
+          ],
+          [
+            2,
+            5,
+            6
+          ],
+          [
+            3,
+            8,
+            9
+          ]
+        ],
+        "variables": {
+          "i": 2,
+          "j": 0
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7
+            ],
+            [
+              2,
+              5,
+              6
+            ],
+            [
+              3,
+              8,
+              9
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "48-trace-004",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "转置交换 (2,1)",
+      "body": "交换对称位置后矩阵为 [[1, 4, 7], [2, 5, 8], [3, 6, 9]]。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "i=2 · j=1",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "2",
+          "5",
+          "8",
+          "3",
+          "6",
+          "9"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 1
+        },
+        "rows": [
+          {
+            "label": "matrix",
+            "values": [
+              "[1, 4, 7]",
+              "[2, 5, 8]",
+              "[3, 6, 9]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "交换对称位置后矩阵为 [[1, 4, 7], [2, 5, 8], [3, 6, 9]]。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7
+          ],
+          [
+            2,
+            5,
+            8
+          ],
+          [
+            3,
+            6,
+            9
+          ]
+        ],
+        "variables": {
+          "i": 2,
+          "j": 1
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7
+            ],
+            [
+              2,
+              5,
+              8
+            ],
+            [
+              3,
+              6,
+              9
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "48-trace-005",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "翻转第 0 行",
+      "body": "左右交换后矩阵为 [[7, 4, 1], [2, 5, 8], [3, 6, 9]]。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "i=0 · j=1 · 结果 3 项",
+        "tokens": [
+          "7",
+          "4",
+          "1",
+          "2",
+          "5",
+          "8",
+          "3",
+          "6",
+          "9"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 1,
+          "k": 1
+        },
+        "rows": [
+          {
+            "label": "matrix",
+            "values": [
+              "[7, 4, 1]",
+              "[2, 5, 8]",
+              "[3, 6, 9]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            2,
+            5,
+            8
+          ],
+          [
+            3,
+            6,
+            9
+          ]
+        ],
+        "note": "左右交换后矩阵为 [[7, 4, 1], [2, 5, 8], [3, 6, 9]]。"
+      },
+      "state": {
+        "values": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            2,
+            5,
+            8
+          ],
+          [
+            3,
+            6,
+            9
+          ]
+        ],
+        "variables": {
+          "i": 0,
+          "j": 1,
+          "k": 1
+        },
+        "structure": {
+          "matrix": [
+            [
+              7,
+              4,
+              1
+            ],
+            [
+              2,
+              5,
+              8
+            ],
+            [
+              3,
+              6,
+              9
+            ]
+          ]
+        },
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            2,
+            5,
+            8
+          ],
+          [
+            3,
+            6,
+            9
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "48-trace-006",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "翻转第 1 行",
+      "body": "左右交换后矩阵为 [[7, 4, 1], [8, 5, 2], [3, 6, 9]]。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "i=1 · j=1 · 结果 3 项",
+        "tokens": [
+          "7",
+          "4",
+          "1",
+          "8",
+          "5",
+          "2",
+          "3",
+          "6",
+          "9"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "k": 1
+        },
+        "rows": [
+          {
+            "label": "matrix",
+            "values": [
+              "[7, 4, 1]",
+              "[8, 5, 2]",
+              "[3, 6, 9]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            3,
+            6,
+            9
+          ]
+        ],
+        "note": "左右交换后矩阵为 [[7, 4, 1], [8, 5, 2], [3, 6, 9]]。"
+      },
+      "state": {
+        "values": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            3,
+            6,
+            9
+          ]
+        ],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "k": 1
+        },
+        "structure": {
+          "matrix": [
+            [
+              7,
+              4,
+              1
+            ],
+            [
+              8,
+              5,
+              2
+            ],
+            [
+              3,
+              6,
+              9
+            ]
+          ]
+        },
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            3,
+            6,
+            9
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "48-trace-007",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "翻转第 2 行",
+      "body": "左右交换后矩阵为 [[7, 4, 1], [8, 5, 2], [9, 6, 3]]。",
+      "kind": "grid",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid",
+        "badge": "i=2 · j=1 · 结果 3 项",
+        "tokens": [
+          "7",
+          "4",
+          "1",
+          "8",
+          "5",
+          "2",
+          "9",
+          "6",
+          "3"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 1,
+          "k": 1
+        },
+        "rows": [
+          {
+            "label": "matrix",
+            "values": [
+              "[7, 4, 1]",
+              "[8, 5, 2]",
+              "[9, 6, 3]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "note": "左右交换后矩阵为 [[7, 4, 1], [8, 5, 2], [9, 6, 3]]。"
+      },
+      "state": {
+        "values": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "variables": {
+          "i": 2,
+          "j": 1,
+          "k": 1
+        },
+        "structure": {
+          "matrix": [
+            [
+              7,
+              4,
+              1
+            ],
+            [
+              8,
+              5,
+              2
+            ],
+            [
+              9,
+              6,
+              3
+            ]
+          ]
+        },
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "48-trace-check-009",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转完成：[[7, 4, 1], [8, 5, 2], [9, 6, 3]]。",
+      "kind": "grid",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=2 · j=1 · 结果 3 项",
+        "tokens": [
+          "7",
+          "4",
+          "1",
+          "8",
+          "5",
+          "2",
+          "9",
+          "6",
+          "3"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 1,
+          "k": 1
+        },
+        "rows": [
+          {
+            "label": "matrix",
+            "values": [
+              "[7, 4, 1]",
+              "[8, 5, 2]",
+              "[9, 6, 3]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转完成：[[7, 4, 1], [8, 5, 2], [9, 6, 3]]。"
+      },
+      "state": {
+        "values": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "variables": {
+          "i": 2,
+          "j": 1,
+          "k": 1
+        },
+        "structure": {
+          "matrix": [
+            [
+              7,
+              4,
+              1
+            ],
+            [
+              8,
+              5,
+              2
+            ],
+            [
+              9,
+              6,
+              3
+            ]
+          ]
+        },
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "48-trace-check-010",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转完成：[[7, 4, 1], [8, 5, 2], [9, 6, 3]]。 易错提醒：转置的遍历范围：j 从 i+1 开始，只遍历上三角（或下三角），不要从 0 开始，否则会交换两次回到原样。 逆时针旋转：先翻转后转置（而不是先转置后翻转）。 n 为奇数：中心元素在旋转中不变，但循环覆盖时要确保它不被覆盖到也不需要旋转。 反转 vs 逆序：在 C++ 中 matrix[i].reverse() 是原地反转，matrix[i…",
+      "kind": "grid",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=2 · j=1 · 结果 3 项",
+        "tokens": [
+          "7",
+          "4",
+          "1",
+          "8",
+          "5",
+          "2",
+          "9",
+          "6",
+          "3"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 1,
+          "k": 1
+        },
+        "rows": [
+          {
+            "label": "matrix",
+            "values": [
+              "[7, 4, 1]",
+              "[8, 5, 2]",
+              "[9, 6, 3]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。旋转完成：[[7, 4, 1], [8, 5, 2], [9, 6, 3]]。"
+      },
+      "state": {
+        "values": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "variables": {
+          "i": 2,
+          "j": 1,
+          "k": 1
+        },
+        "structure": {
+          "matrix": [
+            [
+              7,
+              4,
+              1
+            ],
+            [
+              8,
+              5,
+              2
+            ],
+            [
+              9,
+              6,
+              3
+            ]
+          ]
+        },
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "48-trace-008",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "旋转完成：[[7, 4, 1], [8, 5, 2], [9, 6, 3]]。",
+      "kind": "grid",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · grid",
+        "badge": "结果 3 项",
+        "tokens": [
+          "7",
+          "4",
+          "1",
+          "8",
+          "5",
+          "2",
+          "9",
+          "6",
+          "3"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "[7, 4, 1]",
+              "[8, 5, 2]",
+              "[9, 6, 3]"
+            ]
+          }
+        ],
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "note": "旋转完成：[[7, 4, 1], [8, 5, 2], [9, 6, 3]]。"
+      },
+      "state": {
+        "values": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "variables": {
+          "n": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              7,
+              4,
+              1
+            ],
+            [
+              8,
+              5,
+              2
+            ],
+            [
+              9,
+              6,
+              3
+            ]
+          ]
+        },
+        "result": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

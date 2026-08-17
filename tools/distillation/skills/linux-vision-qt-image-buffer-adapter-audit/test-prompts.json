@@ -1,0 +1,50 @@
+{
+  "skill": "linux-vision-qt-image-buffer-adapter-audit",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "请审计这个视觉项目的 MatImageToQt：CV_8UC1/3/4 分别对应什么 QImage 格式，BGR/RGB、src.step 和所有权是否闭合？",
+      "expected_behavior": "逐分支建立格式、颜色顺序、有效行字节、step、外部缓冲和拷贝语义表，区分文档声称、源码事实与目标 Qt 待验证项，不宣称运行成功",
+      "notes": "核心 Mat→QImage 合同"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "灰度显示全黑，彩色图偶尔红蓝互换或 ROI 行错位。请只读源码定位 memcmp、rgbSwapped、bytesPerLine/step 和非连续 Mat 的风险，并给最小复现矩阵。",
+      "expected_behavior": "按颜色错误→stride/尺寸→复制/生命周期→分支覆盖顺序审计，指出灰度 memcmp 返回值被丢弃，要求 1x1/2x2 已知像素和带 padding 的静态验证设计",
+      "notes": "症状驱动的显示边界审计"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "readFrame 和 yolop_process 都调用 MatImageToQt，但我不确定最终更新的是 cameraView 还是 resultView；还想知道 Mat 复用/释放后 QPixmap 是否安全。请建立两条消费者链和所有权时间线。",
+      "expected_behavior": "回链 cap.read/imread、适配器、QPixmap::fromImage 与具体 QLabel，分别记录 rgbSwapped/copy 的源码调用和目标 Qt 运行时待验证项",
+      "notes": "UI 消费者与缓冲生命周期"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "LSTR 的 Run 传了几个输入，mask_shape_、HWC/CHW、dtype 和输出解码是否匹配模型？",
+      "expected_behavior": "优先使用 vision-model-tensor-contract-audit；本 Skill 只在问题明确进入 Mat→QImage/QPixmap 显示边界时介入",
+      "notes": "兄弟 Skill：模型 tensor 合同"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "点击车道线识别后 Qt 窗口卡死，waitKey、QProcess finished/error 和取消如何审计？",
+      "expected_behavior": "优先使用 qt-event-loop-signal-slot-audit；本 Skill 不展开事件循环、QProcess 或线程调度问题",
+      "notes": "兄弟 Skill：Qt 事件循环与信号槽"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "只想了解 QImage 构造函数和 QPixmap::fromImage 的一般 API 用法，没有项目源码、Mat 缓冲、显示症状或版本信息。",
+      "expected_behavior": "做普通 Qt API 解释，不启动本 Skill 的项目证据审计；若讨论外部指针生命周期，应明确说明需要具体版本和源码才能闭合",
+      "notes": "通用 API 教学边界"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

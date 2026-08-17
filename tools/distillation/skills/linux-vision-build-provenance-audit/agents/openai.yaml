@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linux Vision Build Provenance Audit"
+  short_description: "Audit vision source build and artifacts"
+  default_prompt: "Use $linux-vision-build-provenance-audit to audit whether this vision binary is reproducible from the current source and CMake targets."

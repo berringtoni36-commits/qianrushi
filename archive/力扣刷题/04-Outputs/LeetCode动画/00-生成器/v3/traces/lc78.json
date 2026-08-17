@@ -1,0 +1,1879 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "位掩码枚举子集",
+    "sceneKind": "backtracking",
+    "input": [
+      1,
+      2,
+      3
+    ],
+    "expected": [
+      [],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    "exampleText": "[1,2,3]",
+    "expectedText": "8 个子集",
+    "invariant": "mask 的前 j 位与当前 path 完全一致",
+    "aha": "n 个独立二选一状态正好对应 0..2^n-1",
+    "time": "O(n2^n)",
+    "space": "O(n)",
+    "problemId": 78,
+    "title": "子集",
+    "day": "Day 10：回溯",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "d7769ee4147ceb57144fa951153e472387bddb8f7cb30d133e4201dd0f8aa301",
+    "semanticTokenHash": "00465cbcf45ef1f87e4ca7a1ca8dd5197d7b902e05d680b321325b9b0b2b6c4b",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": 0,
+              "n": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "枚举 3 位二进制掩码",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "每一位独立表示对应元素选或不选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "000",
+              "j": 0,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 000 检查第 0 位",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "000",
+              "j": 1,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 000 检查第 1 位",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "000",
+              "j": 2,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 000 检查第 2 位",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "000"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[]",
+            "action": "记录子集 []",
+            "status": "running",
+            "path": [],
+            "output": [
+              []
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "每个掩码唯一对应一个子集。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "001",
+              "j": 0,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 001 检查第 0 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              []
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "001",
+              "j": 1,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 001 检查第 1 位",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [
+              []
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "001",
+              "j": 2,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 001 检查第 2 位",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [
+              []
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "001"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0
+            ],
+            "formula": "[1]",
+            "action": "记录子集 [1]",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [
+              [],
+              [
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "每个掩码唯一对应一个子集。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "010",
+              "j": 0,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 010 检查第 0 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "010",
+              "j": 1,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 010 检查第 1 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "010",
+              "j": 2,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 010 检查第 2 位",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [],
+              [
+                1
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "010"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "[2]",
+            "action": "记录子集 [2]",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "每个掩码唯一对应一个子集。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "011",
+              "j": 0,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 011 检查第 0 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "011",
+              "j": 1,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 011 检查第 1 位",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "011",
+              "j": 2,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 011 检查第 2 位",
+            "status": "running",
+            "path": [
+              1,
+              2
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "011"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "[1, 2]",
+            "action": "记录子集 [1, 2]",
+            "status": "running",
+            "path": [
+              1,
+              2
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "每个掩码唯一对应一个子集。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "100",
+              "j": 0,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 100 检查第 0 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "100",
+              "j": 1,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 100 检查第 1 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "100",
+              "j": 2,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 100 检查第 2 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "100"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              2
+            ],
+            "formula": "[3]",
+            "action": "记录子集 [3]",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "每个掩码唯一对应一个子集。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "101",
+              "j": 0,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 101 检查第 0 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "101",
+              "j": 1,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 101 检查第 1 位",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "101",
+              "j": 2,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 101 检查第 2 位",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "101"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              2
+            ],
+            "formula": "[1, 3]",
+            "action": "记录子集 [1, 3]",
+            "status": "running",
+            "path": [
+              1,
+              3
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "每个掩码唯一对应一个子集。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "110",
+              "j": 0,
+              "selected": false
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=0",
+            "action": "mask 110 检查第 0 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "110",
+              "j": 1,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 110 检查第 1 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "110",
+              "j": 2,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 110 检查第 2 位",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "110"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1,
+              2
+            ],
+            "formula": "[2, 3]",
+            "action": "记录子集 [2, 3]",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "每个掩码唯一对应一个子集。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "111",
+              "j": 0,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 111 检查第 0 位",
+            "status": "running",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "compare",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "位为 1 时加入对应元素。",
+        "review": "bit=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "111",
+              "j": 1,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 111 检查第 1 位",
+            "status": "running",
+            "path": [
+              1
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "111",
+              "j": 2,
+              "selected": true
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "bit=1",
+            "action": "mask 111 检查第 2 位",
+            "status": "running",
+            "path": [
+              1,
+              2
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "位为 1 时加入对应元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个掩码唯一对应一个子集。",
+        "review": "[1, 2, 3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "mask": "111"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[1, 2, 3]",
+            "action": "记录子集 [1, 2, 3]",
+            "status": "running",
+            "path": [
+              1,
+              2,
+              3
+            ],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "每个掩码唯一对应一个子集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "所有选/不选组合均已覆盖。",
+        "review": "2³=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "count": 8
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "2³=8",
+            "action": "返回 8 个子集",
+            "status": "return",
+            "path": [],
+            "output": [
+              [],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "所有选/不选组合均已覆盖。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<vector<int>> subsets(vector<int>& nums) {\n        vector<vector<int>> res;\n        int n = nums.size();\n        for (int i = 0; i < 1 << n; i ++ ) {\n            vector<int> path;\n            for (int j = 0; j < n; j ++ )\n                if (i >> j & 1)\n                    path.push_back(nums[j]);\n            res.push_back(path);                                 // 记录结果\n        }\n\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3695,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3696,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3697,
+        "text": "    vector<vector<int>> subsets(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3698,
+        "text": "        vector<vector<int>> res;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3699,
+        "text": "        int n = nums.size();"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3700,
+        "text": "        for (int i = 0; i < 1 << n; i ++ ) {"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3701,
+        "text": "            vector<int> path;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3702,
+        "text": "            for (int j = 0; j < n; j ++ )"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3703,
+        "text": "                if (i >> j & 1)"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3704,
+        "text": "                    path.push_back(nums[j]);"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3705,
+        "text": "            res.push_back(path);                                 // 记录结果"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3706,
+        "text": "        }"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3707,
+        "text": ""
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3708,
+        "text": "        return res;"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3709,
+        "text": "    }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3710,
+        "text": "};"
+      }
+    ]
+  }
+}

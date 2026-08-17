@@ -1,0 +1,7488 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "逐行放置 + 三集合剪枝",
+    "sceneKind": "backtracking",
+    "input": 4,
+    "expected": [
+      [
+        ".Q..",
+        "...Q",
+        "Q...",
+        "..Q."
+      ],
+      [
+        "..Q.",
+        "Q...",
+        "...Q",
+        ".Q.."
+      ]
+    ],
+    "exampleText": "n = 4",
+    "expectedText": "2 种皇后摆法",
+    "invariant": "已放皇后两两不同行、不同列、不同对角线",
+    "aha": "row-col 与 row+col 唯一标识两类对角线",
+    "time": "O(n!)",
+    "space": "O(n)",
+    "problemId": 51,
+    "title": "N 皇后",
+    "day": "Day 10：回溯",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "7ab0c6991dd3d902b1b98862b489107f330529410139a52ccab6c8b761523088",
+    "semanticTokenHash": "e5eca90da857b85c7ffd04ec5da75faf3f9695735be7a6d82c7ee6cd1b878e83",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "compare",
+      "durationMs": 1700,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "建立 4×4 空棋盘",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "每行恰好放一个皇后。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 0,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (0,0)",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "0,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (0,0) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "0,0"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (1,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (1,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1700,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 2,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (1,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (1,2) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "compare",
+      "durationMs": 1700,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (1,2) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 3,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (1,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (1,3) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,3"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 1,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (2,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (2,1) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (2,1) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (1,3) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (0,0) 皇后",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 1,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (0,1)",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (0,1) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (1,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (1,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (1,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "占用三类冲突标记后递归下一行。",
+        "review": "在 (2,0) 放皇后"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 3,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (1,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (1,3) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,3"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 0,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (2,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (2,0) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "占用三类冲突标记后递归下一行。",
+        "review": "在 (3,2) 放皇后"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 2,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (3,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (3,2) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,2"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "撤销棋盘与三组占用标记。",
+        "review": "撤销 (2,0) 皇后"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "['.Q..', '...Q', 'Q...', '..Q.']",
+            "action": "记录一种 N 皇后布局",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "0,1",
+              "1,3",
+              "2,0",
+              "3,2"
+            ]
+          },
+          "caption": "四行全部合法放置后才记录。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (3,2) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (2,0) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "撤销棋盘与三组占用标记。",
+        "review": "撤销 (1,3) 皇后"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (1,3) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                1
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (0,1) 皇后",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 2,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (0,2)",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (0,2) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 0,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (1,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (1,0) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 3,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (2,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (2,3) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 1,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (3,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (3,1) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,1"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "['..Q.', 'Q...', '...Q', '.Q..']",
+            "action": "记录一种 N 皇后布局",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "0,2",
+              "1,0",
+              "2,3",
+              "3,1"
+            ]
+          },
+          "caption": "四行全部合法放置后才记录。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (3,1) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (2,3) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (1,0) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (1,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (1,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (1,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (0,2) 皇后",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 3,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (0,3)",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "0,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-18",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (0,3) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "0,3"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 0,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (1,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (1,0) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-19",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 2,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (2,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (2,2) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-20",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "撤销棋盘与三组占用标记。",
+        "review": "撤销 (2,2) 皇后"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 3,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (3,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                2
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                "Q",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "3,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (2,2) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-21",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "占用三类冲突标记后递归下一行。",
+        "review": "在 (1,1) 放皇后"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                "Q",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (1,0) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 1,
+              "valid": true
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "True",
+            "action": "检查位置 (1,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L27",
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "在 (1,1) 放皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ]
+          },
+          "caption": "占用三类冲突标记后递归下一行。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-22",
+      "phase": "compare",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "列、主对角线、副对角线均未占用才可放置。",
+        "review": "False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 0,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 1,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 2,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (2,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                "Q",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-23",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "撤销棋盘与三组占用标记。",
+        "review": "撤销 (0,3) 皇后"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (1,1) 皇后",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 2,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (1,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 1,
+              "col": 3,
+              "valid": false
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "False",
+            "action": "检查位置 (1,3)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                3
+              ]
+            ],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "Q"
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": [
+              "1,3"
+            ]
+          },
+          "caption": "列、主对角线、副对角线均未占用才可放置。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L30",
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "row": 0,
+              "col": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销 (0,3) 皇后",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ],
+              [
+                ".",
+                ".",
+                ".",
+                "."
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "撤销棋盘与三组占用标记。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "所有合法列选择分支均已遍历。",
+        "review": "2 solutions"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "count": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "2 solutions",
+            "action": "返回 2 种 N 皇后布局",
+            "status": "return",
+            "path": [],
+            "output": [
+              [
+                ".Q..",
+                "...Q",
+                "Q...",
+                "..Q."
+              ],
+              [
+                "..Q.",
+                "Q...",
+                "...Q",
+                ".Q.."
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "所有合法列选择分支均已遍历。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n\n    int n;\n    vector<bool> col, dg, udg;\n    vector<vector<string>> ans;\n    vector<string> path;\n\n    vector<vector<string>> solveNQueens(int _n) {\n        n = _n;\n        col = vector<bool>(n);\n        dg = udg = vector<bool>(n * 2);  // dg:主对角线, udg:副对角线\n        path = vector<string>(n, string(n, '.'));\n\n        dfs(0);\n        return ans;\n    }\n\n    void dfs(int u) {                                            // 深度优先搜索\n        if (u == n) {\n            ans.push_back(path);                                 // 记录结果\n            return;\n        }\n\n        for (int i = 0; i < n; i ++ ) {                          // 遍历\n            if (!col[i] && !dg[u - i + n] && !udg[u + i]) {  // 主对角线特征：row-col为常数\n                col[i] = dg[u - i + n] = udg[u + i] = true;  // 主对角线特征：row-col为常数\n                path[u][i] = 'Q';\n                dfs(u + 1);\n                path[u][i] = '.';\n                col[i] = dg[u - i + n] = udg[u + i] = false;  // 主对角线特征：row-col为常数\n            }\n        }\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4016,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4017,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4018,
+        "text": ""
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4019,
+        "text": "    int n;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4020,
+        "text": "    vector<bool> col, dg, udg;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4021,
+        "text": "    vector<vector<string>> ans;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4022,
+        "text": "    vector<string> path;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4023,
+        "text": ""
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4024,
+        "text": "    vector<vector<string>> solveNQueens(int _n) {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4025,
+        "text": "        n = _n;"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 4026,
+        "text": "        col = vector<bool>(n);"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 4027,
+        "text": "        dg = udg = vector<bool>(n * 2);  // dg:主对角线, udg:副对角线"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 4028,
+        "text": "        path = vector<string>(n, string(n, '.'));"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 4029,
+        "text": ""
+      },
+      {
+        "id": "L15",
+        "sourceLine": 4030,
+        "text": "        dfs(0);"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 4031,
+        "text": "        return ans;"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 4032,
+        "text": "    }"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 4033,
+        "text": ""
+      },
+      {
+        "id": "L19",
+        "sourceLine": 4034,
+        "text": "    void dfs(int u) {                                            // 深度优先搜索"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 4035,
+        "text": "        if (u == n) {"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 4036,
+        "text": "            ans.push_back(path);                                 // 记录结果"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 4037,
+        "text": "            return;"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 4038,
+        "text": "        }"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 4039,
+        "text": ""
+      },
+      {
+        "id": "L25",
+        "sourceLine": 4040,
+        "text": "        for (int i = 0; i < n; i ++ ) {                          // 遍历"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 4041,
+        "text": "            if (!col[i] && !dg[u - i + n] && !udg[u + i]) {  // 主对角线特征：row-col为常数"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 4042,
+        "text": "                col[i] = dg[u - i + n] = udg[u + i] = true;  // 主对角线特征：row-col为常数"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 4043,
+        "text": "                path[u][i] = 'Q';"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 4044,
+        "text": "                dfs(u + 1);"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 4045,
+        "text": "                path[u][i] = '.';"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 4046,
+        "text": "                col[i] = dg[u - i + n] = udg[u + i] = false;  // 主对角线特征：row-col为常数"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 4047,
+        "text": "            }"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 4048,
+        "text": "        }"
+      },
+      {
+        "id": "L34",
+        "sourceLine": 4049,
+        "text": "    }"
+      },
+      {
+        "id": "L35",
+        "sourceLine": 4050,
+        "text": "};"
+      }
+    ]
+  }
+}

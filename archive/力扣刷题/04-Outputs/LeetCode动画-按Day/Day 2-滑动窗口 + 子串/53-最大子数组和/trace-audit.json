@@ -1,0 +1,900 @@
+{
+  "problemId": 53,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 53,
+    "stepCount": 11,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        -2,
+        1,
+        -3,
+        4,
+        -1,
+        2,
+        1,
+        -5,
+        4
+      ],
+      "variables": {
+        "last": 5,
+        "res": 6
+      },
+      "structure": {},
+      "result": [
+        6
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "1767a6b9731c2ca9cade6037918aa1c1857594884d8050d6e1ae0fd217307320",
+    "sourceSemanticTokenHash": "496d1eceb038cfaedee02bdf64f5de6be2a868cf2c847ab216c79bcb7dcc4c10",
+    "sourceCodeLineCount": 11
+  },
+  "sourceCodeSha256": "1767a6b9731c2ca9cade6037918aa1c1857594884d8050d6e1ae0fd217307320",
+  "sourceSemanticTokenHash": "496d1eceb038cfaedee02bdf64f5de6be2a868cf2c847ab216c79bcb7dcc4c10",
+  "steps": [
+    {
+      "id": "53-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "初始化 Kadane 状态",
+      "body": "last 表示以当前位置结尾的最大子数组和，res 保存全局最大值。 题解原意：核心洞察： 定义 dp[i] 为以 nums[i] 结尾的最大子数组和。那么对于 nums[i] 有两种选择： 1. 把它接在 nums[i-1] 的后面：dp[i] = dp[i-1] + nums[i] 2. 以它为新起点重新开始：dp[i] = nums[i] 取两者中较大的：dp[i] = max(nums[i], dp[i-1] + nums[i]) 最终答案是所有 dp[i] 中的最大值。 空间优化： 因…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp1d",
+        "badge": "res=-1000000000",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "last": 0,
+          "res": -1000000000
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              -1000000000
+            ]
+          }
+        ],
+        "result": [],
+        "note": "last 表示以当前位置结尾的最大子数组和，res 保存全局最大值。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "last": 0,
+          "res": -1000000000
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "53-trace-002",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[0] = -2",
+      "body": "last = -2 + max(上一段, 0) = -2，res = -2。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=0 · res=-2 · 结果 1 项",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "x": -2,
+          "last": -2,
+          "res": -2
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              -2
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              -2
+            ]
+          }
+        ],
+        "result": [
+          -2
+        ],
+        "note": "last = -2 + max(上一段, 0) = -2，res = -2。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "i": 0,
+          "x": -2,
+          "last": -2,
+          "res": -2
+        },
+        "structure": {},
+        "result": [
+          -2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "53-trace-003",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[1] = 1",
+      "body": "last = 1 + max(上一段, 0) = 1，res = 1。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=1 · res=1 · 结果 1 项",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "x": 1,
+          "last": 1,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "last = 1 + max(上一段, 0) = 1，res = 1。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "i": 1,
+          "x": 1,
+          "last": 1,
+          "res": 1
+        },
+        "structure": {},
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "53-trace-004",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[2] = -3",
+      "body": "last = -3 + max(上一段, 0) = -2，res = 1。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=2 · res=1 · 结果 1 项",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "x": -3,
+          "last": -2,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              -2
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "last = -3 + max(上一段, 0) = -2，res = 1。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "i": 2,
+          "x": -3,
+          "last": -2,
+          "res": 1
+        },
+        "structure": {},
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "53-trace-005",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[3] = 4",
+      "body": "last = 4 + max(上一段, 0) = 4，res = 4。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=3 · res=4 · 结果 1 项",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "x": 4,
+          "last": 4,
+          "res": 4
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "last = 4 + max(上一段, 0) = 4，res = 4。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "x": 4,
+          "last": 4,
+          "res": 4
+        },
+        "structure": {},
+        "result": [
+          4
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "53-trace-006",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[4] = -1",
+      "body": "last = -1 + max(上一段, 0) = 3，res = 4。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=4 · res=4 · 结果 1 项",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "x": -1,
+          "last": 3,
+          "res": 4
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "last = -1 + max(上一段, 0) = 3，res = 4。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "i": 4,
+          "x": -1,
+          "last": 3,
+          "res": 4
+        },
+        "structure": {},
+        "result": [
+          4
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "53-trace-007",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[5] = 2",
+      "body": "last = 2 + max(上一段, 0) = 5，res = 5。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=5 · res=5 · 结果 1 项",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "x": 2,
+          "last": 5,
+          "res": 5
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              5
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [
+          5
+        ],
+        "note": "last = 2 + max(上一段, 0) = 5，res = 5。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "i": 5,
+          "x": 2,
+          "last": 5,
+          "res": 5
+        },
+        "structure": {},
+        "result": [
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "53-trace-008",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[6] = 1",
+      "body": "last = 1 + max(上一段, 0) = 6，res = 6。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=6 · res=6 · 结果 1 项",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "x": 1,
+          "last": 6,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              6
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "last = 1 + max(上一段, 0) = 6，res = 6。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "i": 6,
+          "x": 1,
+          "last": 6,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "53-trace-009",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[7] = -5",
+      "body": "last = -5 + max(上一段, 0) = 1，res = 6。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=7 · res=6 · 结果 1 项",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "x": -5,
+          "last": 1,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "last = -5 + max(上一段, 0) = 1，res = 6。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "i": 7,
+          "x": -5,
+          "last": 1,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "53-trace-010",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "update",
+      "title": "处理 nums[8] = 4",
+      "body": "last = 4 + max(上一段, 0) = 5，res = 6。 易错提醒：初始化问题：max_sum 必须初始化为 nums[0] 而不是 0。如果全为负数但初始化为 0 会返回错误结果 0。 空数组返回：题目说至少一个元素，但如果是空数组需要特殊处理。 重置时机：贪心法中重置 cur_sum = 0 而不是重置为当前元素值——因为下一轮循环会先加上当前元素。 负数处理：当累加和加上一个负数后虽然变小了但不一定…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=8 · res=6 · 结果 1 项",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "x": 4,
+          "last": 5,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "last",
+            "values": [
+              5
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "last = 4 + max(上一段, 0) = 5，res = 6。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "i": 8,
+          "x": 4,
+          "last": 5,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "53-trace-011",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最大子数组和为 6。",
+      "kind": "dp1d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp1d",
+        "badge": "res=6 · 结果 1 项",
+        "tokens": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "last": 5,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "最大子数组和为 6。"
+      },
+      "state": {
+        "values": [
+          -2,
+          1,
+          -3,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ],
+        "variables": {
+          "last": 5,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

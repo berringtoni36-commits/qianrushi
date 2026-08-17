@@ -1,0 +1,1230 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "按数字层级 DFS",
+    "sceneKind": "backtracking",
+    "input": "23",
+    "expected": [
+      "ad",
+      "ae",
+      "af",
+      "bd",
+      "be",
+      "bf",
+      "cd",
+      "ce",
+      "cf"
+    ],
+    "exampleText": "digits = \"23\"",
+    "expectedText": "ad, ae, af, bd, be, bf, cd, ce, cf",
+    "invariant": "path 长度始终等于已处理数字数 u",
+    "aha": "每层分支数由当前按键映射决定",
+    "time": "O(3^m4^n)",
+    "space": "O(m+n)",
+    "problemId": 17,
+    "title": "电话号码的字母组合",
+    "day": "Day 10：回溯",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "5309761e49f2299bf3137cc142ecd2c97bbbaff65217db93d3903deee7e8732e",
+    "semanticTokenHash": "254abc7c9cb48f0ef3ba59c00e389081cfaf852c94beaea9e88cb6835d2cbc7c",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "选择一个映射字母后进入下一位。",
+        "review": "a"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "从数字 2 的字母集合开始",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "每层消费一个数字。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 0,
+              "digit": "2",
+              "char": "a"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "a",
+            "action": "数字 2 选择字母 a",
+            "status": "running",
+            "path": [
+              "a"
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "accept",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "消费完全部数字才形成答案。",
+        "review": "ad"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 1,
+              "digit": "3",
+              "char": "d"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "ad",
+            "action": "数字 3 选择字母 d",
+            "status": "running",
+            "path": [
+              "a",
+              "d"
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "ad",
+            "action": "记录组合 ad",
+            "status": "running",
+            "path": [
+              "a",
+              "d"
+            ],
+            "output": [
+              "ad"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "消费完全部数字才形成答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "accept",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "消费完全部数字才形成答案。",
+        "review": "ae"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 1,
+              "digit": "3",
+              "char": "e"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "ae",
+            "action": "数字 3 选择字母 e",
+            "status": "running",
+            "path": [
+              "a",
+              "e"
+            ],
+            "output": [
+              "ad"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "ae",
+            "action": "记录组合 ae",
+            "status": "running",
+            "path": [
+              "a",
+              "e"
+            ],
+            "output": [
+              "ad",
+              "ae"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "消费完全部数字才形成答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "accept",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "消费完全部数字才形成答案。",
+        "review": "af"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 1,
+              "digit": "3",
+              "char": "f"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "af",
+            "action": "数字 3 选择字母 f",
+            "status": "running",
+            "path": [
+              "a",
+              "f"
+            ],
+            "output": [
+              "ad",
+              "ae"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "af",
+            "action": "记录组合 af",
+            "status": "running",
+            "path": [
+              "a",
+              "f"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "消费完全部数字才形成答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1310,
+      "captions": {
+        "learning": "选择一个映射字母后进入下一位。",
+        "review": "bd"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 0,
+              "digit": "2",
+              "char": "b"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "b",
+            "action": "数字 2 选择字母 b",
+            "status": "running",
+            "path": [
+              "b"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 1,
+              "digit": "3",
+              "char": "d"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "bd",
+            "action": "数字 3 选择字母 d",
+            "status": "running",
+            "path": [
+              "b",
+              "d"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "消费完全部数字才形成答案。",
+        "review": "bd"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "bd",
+            "action": "记录组合 bd",
+            "status": "running",
+            "path": [
+              "b",
+              "d"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "消费完全部数字才形成答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "选择一个映射字母后进入下一位。",
+        "review": "be"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 1,
+              "digit": "3",
+              "char": "e"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "be",
+            "action": "数字 3 选择字母 e",
+            "status": "running",
+            "path": [
+              "b",
+              "e"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "消费完全部数字才形成答案。",
+        "review": "be"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "be",
+            "action": "记录组合 be",
+            "status": "running",
+            "path": [
+              "b",
+              "e"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "消费完全部数字才形成答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "选择一个映射字母后进入下一位。",
+        "review": "bf"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 1,
+              "digit": "3",
+              "char": "f"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "bf",
+            "action": "数字 3 选择字母 f",
+            "status": "running",
+            "path": [
+              "b",
+              "f"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "消费完全部数字才形成答案。",
+        "review": "bf"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "bf",
+            "action": "记录组合 bf",
+            "status": "running",
+            "path": [
+              "b",
+              "f"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "消费完全部数字才形成答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "选择一个映射字母后进入下一位。",
+        "review": "c"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 0,
+              "digit": "2",
+              "char": "c"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "c",
+            "action": "数字 2 选择字母 c",
+            "status": "running",
+            "path": [
+              "c"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "选择一个映射字母后进入下一位。",
+        "review": "cd"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 1,
+              "digit": "3",
+              "char": "d"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "cd",
+            "action": "数字 3 选择字母 d",
+            "status": "running",
+            "path": [
+              "c",
+              "d"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "消费完全部数字才形成答案。",
+        "review": "cd"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "cd",
+            "action": "记录组合 cd",
+            "status": "running",
+            "path": [
+              "c",
+              "d"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "消费完全部数字才形成答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "选择一个映射字母后进入下一位。",
+        "review": "ce"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 1,
+              "digit": "3",
+              "char": "e"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "ce",
+            "action": "数字 3 选择字母 e",
+            "status": "running",
+            "path": [
+              "c",
+              "e"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "消费完全部数字才形成答案。",
+        "review": "ce"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "ce",
+            "action": "记录组合 ce",
+            "status": "running",
+            "path": [
+              "c",
+              "e"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd",
+              "ce"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "消费完全部数字才形成答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "选择一个映射字母后进入下一位。",
+        "review": "cf"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 1,
+              "digit": "3",
+              "char": "f"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "cf",
+            "action": "数字 3 选择字母 f",
+            "status": "running",
+            "path": [
+              "c",
+              "f"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd",
+              "ce"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "选择一个映射字母后进入下一位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "消费完全部数字才形成答案。",
+        "review": "cf"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "u": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "cf",
+            "action": "记录组合 cf",
+            "status": "running",
+            "path": [
+              "c",
+              "f"
+            ],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd",
+              "ce",
+              "cf"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "消费完全部数字才形成答案。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "3×3 个叶子全部记录。",
+        "review": "['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "2",
+              "3"
+            ],
+            "variables": {
+              "count": 9
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']",
+            "action": "返回 9 个字母组合",
+            "status": "return",
+            "path": [],
+            "output": [
+              "ad",
+              "ae",
+              "af",
+              "bd",
+              "be",
+              "bf",
+              "cd",
+              "ce",
+              "cf"
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "3×3 个叶子全部记录。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<string> ans;\n    string strs[10] = {\n        \"\", \"\", \"abc\", \"def\",\n        \"ghi\", \"jkl\", \"mno\",\n        \"pqrs\", \"tuv\", \"wxyz\",\n    };\n\n    vector<string> letterCombinations(string digits) {\n        if (digits.empty()) return ans;\n        dfs(digits, 0, \"\");\n        return ans;\n    }\n\n    void dfs(string& digits, int u, string path) {               // 深度优先搜索\n        if (u == digits.size()) ans.push_back(path);             // 记录结果\n        else {\n            for (auto c : strs[digits[u] - '0'])\n                dfs(digits, u + 1, path + c);\n        }\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3738,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3739,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3740,
+        "text": "    vector<string> ans;"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3741,
+        "text": "    string strs[10] = {"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3742,
+        "text": "        \"\", \"\", \"abc\", \"def\","
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3743,
+        "text": "        \"ghi\", \"jkl\", \"mno\","
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3744,
+        "text": "        \"pqrs\", \"tuv\", \"wxyz\","
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3745,
+        "text": "    };"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3746,
+        "text": ""
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3747,
+        "text": "    vector<string> letterCombinations(string digits) {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3748,
+        "text": "        if (digits.empty()) return ans;"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3749,
+        "text": "        dfs(digits, 0, \"\");"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3750,
+        "text": "        return ans;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3751,
+        "text": "    }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3752,
+        "text": ""
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3753,
+        "text": "    void dfs(string& digits, int u, string path) {               // 深度优先搜索"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3754,
+        "text": "        if (u == digits.size()) ans.push_back(path);             // 记录结果"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3755,
+        "text": "        else {"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3756,
+        "text": "            for (auto c : strs[digits[u] - '0'])"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3757,
+        "text": "                dfs(digits, u + 1, path + c);"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3758,
+        "text": "        }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3759,
+        "text": "    }"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 3760,
+        "text": "};"
+      }
+    ]
+  }
+}

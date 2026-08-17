@@ -1,0 +1,1281 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "下标单调队列",
+    "sceneKind": "stack-sequence",
+    "input": {
+      "nums": [
+        1,
+        3,
+        -1,
+        -3,
+        5,
+        3,
+        6,
+        7
+      ],
+      "k": 3
+    },
+    "expected": [
+      3,
+      3,
+      5,
+      5,
+      6,
+      7
+    ],
+    "exampleText": "[1,3,-1,-3,5,3,6,7], k = 3",
+    "expectedText": "[3,3,5,5,6,7]",
+    "invariant": "队列下标在窗口内且对应值严格递减",
+    "aha": "新元素会永久淘汰更早且不更大的候选",
+    "time": "O(n)",
+    "space": "O(n)",
+    "problemId": 239,
+    "title": "滑动窗口最大值",
+    "day": "Day 2：滑动窗口 + 子串",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "7e83bd85ee843b1698125aab86ffa769569e961bcc57cd6192d0f21340d79700",
+    "semanticTokenHash": "f4c82815f5f0f6e0ea88f8e3109b77b65ed12e538ba2fd06b2c4d23de54fefaa",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "队列保存下标，队首始终是当前窗口最大值。",
+        "review": "建立单调递减队列"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": null,
+              "k": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "建立单调递减队列",
+            "status": "running",
+            "queue": [],
+            "output": []
+          },
+          "caption": "队列保存下标，队首始终是当前窗口最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "入队后数值仍单调递减。",
+        "review": "下标 0 入队"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 0,
+              "front": 0
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 0 入队",
+            "status": "running",
+            "queue": [
+              0
+            ],
+            "activeQueue": [
+              0
+            ]
+          },
+          "caption": "入队后数值仍单调递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早且更小的元素不再可能成为最大值。",
+        "review": "3 >= 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 1,
+              "removed": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "3 >= 1",
+            "action": "3 淘汰队尾 1",
+            "status": "running",
+            "queue": []
+          },
+          "caption": "更早且更小的元素不再可能成为最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "入队后数值仍单调递减。",
+        "review": "下标 1 入队"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 1,
+              "front": 1
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 1 入队",
+            "status": "running",
+            "queue": [
+              1
+            ],
+            "activeQueue": [
+              1
+            ]
+          },
+          "caption": "入队后数值仍单调递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "入队后数值仍单调递减。",
+        "review": "下标 2 入队"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 2,
+              "front": 1
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 2 入队",
+            "status": "running",
+            "queue": [
+              1,
+              2
+            ],
+            "activeQueue": [
+              2
+            ]
+          },
+          "caption": "入队后数值仍单调递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "队首就是当前窗口最大值。",
+        "review": "max=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 2,
+              "left": 0,
+              "front": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "max=3",
+            "action": "窗口 [0,2] 最大值 3",
+            "status": "running",
+            "queue": [
+              1,
+              2
+            ],
+            "output": [
+              3
+            ]
+          },
+          "caption": "队首就是当前窗口最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "入队后数值仍单调递减。",
+        "review": "下标 3 入队"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 3,
+              "front": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 3 入队",
+            "status": "running",
+            "queue": [
+              1,
+              2,
+              3
+            ],
+            "activeQueue": [
+              3
+            ]
+          },
+          "caption": "入队后数值仍单调递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "队首就是当前窗口最大值。",
+        "review": "max=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 3,
+              "left": 1,
+              "front": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "max=3",
+            "action": "窗口 [1,3] 最大值 3",
+            "status": "running",
+            "queue": [
+              1,
+              2,
+              3
+            ],
+            "output": [
+              3,
+              3
+            ]
+          },
+          "caption": "队首就是当前窗口最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "队列中只保留当前窗口下标。",
+        "review": "1 < 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 4,
+              "left": 2
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "1 < 2",
+            "action": "移除过期下标 1",
+            "status": "running",
+            "queue": [
+              2,
+              3
+            ]
+          },
+          "caption": "队列中只保留当前窗口下标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早且更小的元素不再可能成为最大值。",
+        "review": "5 >= -3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 4,
+              "removed": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              3,
+              4
+            ],
+            "result": [],
+            "formula": "5 >= -3",
+            "action": "5 淘汰队尾 -3",
+            "status": "running",
+            "queue": [
+              2
+            ]
+          },
+          "caption": "更早且更小的元素不再可能成为最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早且更小的元素不再可能成为最大值。",
+        "review": "5 >= -1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 4,
+              "removed": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              2,
+              4
+            ],
+            "result": [],
+            "formula": "5 >= -1",
+            "action": "5 淘汰队尾 -1",
+            "status": "running",
+            "queue": []
+          },
+          "caption": "更早且更小的元素不再可能成为最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "入队后数值仍单调递减。",
+        "review": "下标 4 入队"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 4,
+              "front": 4
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 4 入队",
+            "status": "running",
+            "queue": [
+              4
+            ],
+            "activeQueue": [
+              4
+            ]
+          },
+          "caption": "入队后数值仍单调递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "队首就是当前窗口最大值。",
+        "review": "max=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 4,
+              "left": 2,
+              "front": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              4
+            ],
+            "formula": "max=5",
+            "action": "窗口 [2,4] 最大值 5",
+            "status": "running",
+            "queue": [
+              4
+            ],
+            "output": [
+              3,
+              3,
+              5
+            ]
+          },
+          "caption": "队首就是当前窗口最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "入队后数值仍单调递减。",
+        "review": "下标 5 入队"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 5,
+              "front": 4
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 5 入队",
+            "status": "running",
+            "queue": [
+              4,
+              5
+            ],
+            "activeQueue": [
+              5
+            ]
+          },
+          "caption": "入队后数值仍单调递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "队首就是当前窗口最大值。",
+        "review": "max=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 5,
+              "left": 3,
+              "front": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              4
+            ],
+            "formula": "max=5",
+            "action": "窗口 [3,5] 最大值 5",
+            "status": "running",
+            "queue": [
+              4,
+              5
+            ],
+            "output": [
+              3,
+              3,
+              5,
+              5
+            ]
+          },
+          "caption": "队首就是当前窗口最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早且更小的元素不再可能成为最大值。",
+        "review": "6 >= 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 6,
+              "removed": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              5,
+              6
+            ],
+            "result": [],
+            "formula": "6 >= 3",
+            "action": "6 淘汰队尾 3",
+            "status": "running",
+            "queue": [
+              4
+            ]
+          },
+          "caption": "更早且更小的元素不再可能成为最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早且更小的元素不再可能成为最大值。",
+        "review": "6 >= 5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 6,
+              "removed": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              4,
+              6
+            ],
+            "result": [],
+            "formula": "6 >= 5",
+            "action": "6 淘汰队尾 5",
+            "status": "running",
+            "queue": []
+          },
+          "caption": "更早且更小的元素不再可能成为最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-18",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "入队后数值仍单调递减。",
+        "review": "下标 6 入队"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 6,
+              "front": 6
+            },
+            "pointers": {},
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 6 入队",
+            "status": "running",
+            "queue": [
+              6
+            ],
+            "activeQueue": [
+              6
+            ]
+          },
+          "caption": "入队后数值仍单调递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-19",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "队首就是当前窗口最大值。",
+        "review": "max=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 6,
+              "left": 4,
+              "front": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              6
+            ],
+            "formula": "max=6",
+            "action": "窗口 [4,6] 最大值 6",
+            "status": "running",
+            "queue": [
+              6
+            ],
+            "output": [
+              3,
+              3,
+              5,
+              5,
+              6
+            ]
+          },
+          "caption": "队首就是当前窗口最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-20",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早且更小的元素不再可能成为最大值。",
+        "review": "7 >= 6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 7,
+              "removed": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [
+              6,
+              7
+            ],
+            "result": [],
+            "formula": "7 >= 6",
+            "action": "7 淘汰队尾 6",
+            "status": "running",
+            "queue": []
+          },
+          "caption": "更早且更小的元素不再可能成为最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-21",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "入队后数值仍单调递减。",
+        "review": "下标 7 入队"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 7,
+              "front": 7
+            },
+            "pointers": {},
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 7 入队",
+            "status": "running",
+            "queue": [
+              7
+            ],
+            "activeQueue": [
+              7
+            ]
+          },
+          "caption": "入队后数值仍单调递减。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-22",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "队首就是当前窗口最大值。",
+        "review": "max=7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "i": 7,
+              "left": 5,
+              "front": 7
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              7
+            ],
+            "formula": "max=7",
+            "action": "窗口 [5,7] 最大值 7",
+            "status": "running",
+            "queue": [
+              7
+            ],
+            "output": [
+              3,
+              3,
+              5,
+              5,
+              6,
+              7
+            ]
+          },
+          "caption": "队首就是当前窗口最大值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "所有窗口按顺序得到最大值。",
+        "review": "[3, 3, 5, 5, 6, 7]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              1,
+              3,
+              -1,
+              -3,
+              5,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "count": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "formula": "[3, 3, 5, 5, 6, 7]",
+            "action": "返回 6 个窗口最大值",
+            "status": "return",
+            "queue": [
+              7
+            ],
+            "output": [
+              3,
+              3,
+              5,
+              5,
+              6,
+              7
+            ]
+          },
+          "caption": "所有窗口按顺序得到最大值。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<int> maxSlidingWindow(vector<int>& nums, int k) {\n        deque<int> q;\n        vector<int> res;\n        for (int i = 0; i < nums.size(); i ++ ) {                // 遍历\n            if (q.size() && i - k + 1 > q.front()) q.pop_front();  // 出队\n            while (q.size() && nums[i] >= nums[q.back()]) q.pop_back();  // 出队\n            q.push_back(i);                                      // 入队\n            if (i >= k - 1) res.push_back(nums[q.front()]);      // 记录结果\n        }\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 568,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 569,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 570,
+        "text": "    vector<int> maxSlidingWindow(vector<int>& nums, int k) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 571,
+        "text": "        deque<int> q;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 572,
+        "text": "        vector<int> res;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 573,
+        "text": "        for (int i = 0; i < nums.size(); i ++ ) {                // 遍历"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 574,
+        "text": "            if (q.size() && i - k + 1 > q.front()) q.pop_front();  // 出队"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 575,
+        "text": "            while (q.size() && nums[i] >= nums[q.back()]) q.pop_back();  // 出队"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 576,
+        "text": "            q.push_back(i);                                      // 入队"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 577,
+        "text": "            if (i >= k - 1) res.push_back(nums[q.front()]);      // 记录结果"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 578,
+        "text": "        }"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 579,
+        "text": "        return res;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 580,
+        "text": "    }"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 581,
+        "text": "};"
+      }
+    ]
+  }
+}

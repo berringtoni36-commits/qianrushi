@@ -1,0 +1,919 @@
+{
+  "problemId": 543,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 543,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "variables": {
+        "best": 3
+      },
+      "structure": {
+        "tree": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "heights": {
+          "4": 1,
+          "5": 1,
+          "2": 2,
+          "3": 1,
+          "1": 3
+        }
+      },
+      "result": [
+        3
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "0202d63129dcbc9e697e4e76b093f68ab1fda21c96b329f6a16f70dd98927244",
+    "sourceSemanticTokenHash": "05183d998c4b870c7f425412dc49139ee0d8c1ecce2a54eb24d28c1e213f1c93",
+    "sourceCodeLineCount": 25
+  },
+  "sourceCodeSha256": "0202d63129dcbc9e697e4e76b093f68ab1fda21c96b329f6a16f70dd98927244",
+  "sourceSemanticTokenHash": "05183d998c4b870c7f425412dc49139ee0d8c1ecce2a54eb24d28c1e213f1c93",
+  "steps": [
+    {
+      "id": "543-trace-001",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "setup",
+      "title": "后序计算高度与直径",
+      "body": "每个节点向父节点返回单边高度，同时用 left_height + right_height 更新直径。 题解原意：核心思想： 每个节点的「直径贡献」= 左子树深度 + 右子树深度。在后序位置（已经知道了左右子树的深度）计算这个值，用全局变量更新最大值。 为什么用后序？ 因为要知道「经过当前节点的最长路径」，必须先知道左子树有多深、右子树有多深——这是典型的需要子树信息来计算的场景，必须用后序。前序/中序在进入节点时还不知道子树的深度。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "best=0",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "best": 0
+        },
+        "rows": [
+          {
+            "label": "tree",
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "每个节点向父节点返回单边高度，同时用 left_height + right_height 更新直径。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "best": 0
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "543-trace-002",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "update",
+      "title": "处理节点 4",
+      "body": "左右高度 0,0，通过该节点的路径长 0，best=0，返回高度 1。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "left=0 · right=0 · best=0",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "node": 4,
+          "left": 0,
+          "right": 0,
+          "height": 1,
+          "best": 0
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "4:1",
+              "5:1",
+              "2:2",
+              "3:1",
+              "1:3"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左右高度 0,0，通过该节点的路径长 0，best=0，返回高度 1。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "node": 4,
+          "left": 0,
+          "right": 0,
+          "height": 1,
+          "best": 0
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "heights": {
+            "4": 1,
+            "5": 1,
+            "2": 2,
+            "3": 1,
+            "1": 3
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "543-trace-003",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "update",
+      "title": "处理节点 5",
+      "body": "左右高度 0,0，通过该节点的路径长 0，best=0，返回高度 1。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "left=0 · right=0 · best=0",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "node": 5,
+          "left": 0,
+          "right": 0,
+          "height": 1,
+          "best": 0
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "4:1",
+              "5:1",
+              "2:2",
+              "3:1",
+              "1:3"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左右高度 0,0，通过该节点的路径长 0，best=0，返回高度 1。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "node": 5,
+          "left": 0,
+          "right": 0,
+          "height": 1,
+          "best": 0
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "heights": {
+            "4": 1,
+            "5": 1,
+            "2": 2,
+            "3": 1,
+            "1": 3
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "543-trace-004",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "update",
+      "title": "处理节点 2",
+      "body": "左右高度 1,1，通过该节点的路径长 2，best=2，返回高度 2。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "left=1 · right=1 · best=2",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "node": 2,
+          "left": 1,
+          "right": 1,
+          "height": 2,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "4:1",
+              "5:1",
+              "2:2",
+              "3:1",
+              "1:3"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左右高度 1,1，通过该节点的路径长 2，best=2，返回高度 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "node": 2,
+          "left": 1,
+          "right": 1,
+          "height": 2,
+          "best": 2
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "heights": {
+            "4": 1,
+            "5": 1,
+            "2": 2,
+            "3": 1,
+            "1": 3
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "543-trace-005",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "update",
+      "title": "处理节点 3",
+      "body": "左右高度 0,0，通过该节点的路径长 0，best=2，返回高度 1。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "left=0 · right=0 · best=2",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "left": 0,
+          "right": 0,
+          "height": 1,
+          "best": 2
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "4:1",
+              "5:1",
+              "2:2",
+              "3:1",
+              "1:3"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [],
+        "note": "左右高度 0,0，通过该节点的路径长 0，best=2，返回高度 1。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "node": 3,
+          "left": 0,
+          "right": 0,
+          "height": 1,
+          "best": 2
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "heights": {
+            "4": 1,
+            "5": 1,
+            "2": 2,
+            "3": 1,
+            "1": 3
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "543-trace-006",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "update",
+      "title": "处理节点 1",
+      "body": "左右高度 2,1，通过该节点的路径长 3，best=3，返回高度 3。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · tree",
+        "badge": "left=2 · right=1 · best=3 · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1,
+          "left": 2,
+          "right": 1,
+          "height": 3,
+          "best": 3
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "4:1",
+              "5:1",
+              "2:2",
+              "3:1",
+              "1:3"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "左右高度 2,1，通过该节点的路径长 3，best=3，返回高度 3。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "node": 1,
+          "left": 2,
+          "right": 1,
+          "height": 3,
+          "best": 3
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "heights": {
+            "4": 1,
+            "5": 1,
+            "2": 2,
+            "3": 1,
+            "1": 3
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "543-trace-check-008",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长路径边数为 3。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "left=2 · right=1 · best=3 · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1,
+          "left": 2,
+          "right": 1,
+          "height": 3,
+          "best": 3
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "4:1",
+              "5:1",
+              "2:2",
+              "3:1",
+              "1:3"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长路径边数为 3。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "node": 1,
+          "left": 2,
+          "right": 1,
+          "height": 3,
+          "best": 3
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "heights": {
+            "4": 1,
+            "5": 1,
+            "2": 2,
+            "3": 1,
+            "1": 3
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "543-trace-check-009",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长路径边数为 3。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "left=2 · right=1 · best=3 · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1,
+          "left": 2,
+          "right": 1,
+          "height": 3,
+          "best": 3
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "4:1",
+              "5:1",
+              "2:2",
+              "3:1",
+              "1:3"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长路径边数为 3。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "node": 1,
+          "left": 2,
+          "right": 1,
+          "height": 3,
+          "best": 3
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "heights": {
+            "4": 1,
+            "5": 1,
+            "2": 2,
+            "3": 1,
+            "1": 3
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "543-trace-check-010",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长路径边数为 3。 易错提醒：直径不经过根节点： 初学者常犯的错误是只算 maxDepth(root.left) + maxDepth(root.right)。但最长路径可能在左子树的内部，不经过根节点。必须每个节点都检查。 返回值和全局变量的区别： 递归函数的返回值是「当前节点的深度（向上汇报用）」，而全局变量 max_d 是「当前发现的最大直径（最终答案）」。两者…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "left=2 · right=1 · best=3 · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 1,
+          "left": 2,
+          "right": 1,
+          "height": 3,
+          "best": 3
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "4:1",
+              "5:1",
+              "2:2",
+              "3:1",
+              "1:3"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最长路径边数为 3。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "node": 1,
+          "left": 2,
+          "right": 1,
+          "height": 3,
+          "best": 3
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "heights": {
+            "4": 1,
+            "5": 1,
+            "2": 2,
+            "3": 1,
+            "1": 3
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "543-trace-007",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最长路径边数为 3。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "best=3 · 结果 1 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "best": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "最长路径边数为 3。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "best": 3
+        },
+        "structure": {
+          "tree": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "heights": {
+            "4": 1,
+            "5": 1,
+            "2": 2,
+            "3": 1,
+            "1": 3
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

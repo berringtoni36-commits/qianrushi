@@ -1,0 +1,875 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "Kahn 拓扑排序",
+    "sceneKind": "tree-graph",
+    "input": {
+      "n": 2,
+      "edges": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    "expected": true,
+    "exampleText": "n=2, prerequisites=[[1,0]]",
+    "expectedText": "可以完成 → true",
+    "invariant": "队列只含当前入度为 0 的未处理节点",
+    "aha": "有向无环图一定能不断删除入度为 0 的节点",
+    "time": "O(V+E)",
+    "space": "O(V+E)",
+    "problemId": 207,
+    "title": "课程表",
+    "day": "Day 8：图论 + 栈",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "8b33f21c96b41a7b09d1e357f2616a1a1c87ea7bb82d95c29bcc2cdfa6c78238",
+    "semanticTokenHash": "135236e0ffcf1abca60a7f798e1466f2b8f274a4dc2908a49130807508653154",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "队列中课程当前没有未完成前置课。",
+        "review": "d[0]=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "cnt": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "d[0]=0",
+            "action": "入度为 0 的课程 0 入队",
+            "status": "running",
+            "queue": [
+              0
+            ],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=1",
+                "level": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "c0",
+                "to": "c1"
+              }
+            ]
+          },
+          "caption": "队列中课程当前没有未完成前置课。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "cnt": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "d[0]=0",
+            "action": "不变量检查 5",
+            "status": "running",
+            "queue": [
+              0
+            ],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=1",
+                "level": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "c0",
+                "to": "c1"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "cnt": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "d[0]=0",
+            "action": "不变量检查 2",
+            "status": "running",
+            "queue": [
+              0
+            ],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=1",
+                "level": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "c0",
+                "to": "c1"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "出队课程进入拓扑序。",
+        "review": "cnt=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20",
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "t": 0,
+              "cnt": 1
+            },
+            "pointers": {},
+            "active": [
+              "c0"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=1",
+            "action": "学习课程 0，完成数 1",
+            "status": "running",
+            "queue": [],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=1",
+                "level": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "c0",
+                "to": "c1",
+                "status": "active"
+              }
+            ]
+          },
+          "caption": "出队课程进入拓扑序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20",
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "t": 0,
+              "cnt": 1
+            },
+            "pointers": {},
+            "active": [
+              "c0"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=1",
+            "action": "不变量检查 4",
+            "status": "running",
+            "queue": [],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=1",
+                "level": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "c0",
+                "to": "c1",
+                "status": "active"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "入度归零时新课程可入队。",
+        "review": "d[1]=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "t": 0,
+              "next": 1,
+              "cnt": 1
+            },
+            "pointers": {},
+            "active": [
+              "c1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "d[1]=0",
+            "action": "删除边 0→1，入度变 0",
+            "status": "running",
+            "queue": [
+              1
+            ],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=0",
+                "level": 1
+              }
+            ],
+            "edges": []
+          },
+          "caption": "入度归零时新课程可入队。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "t": 0,
+              "next": 1,
+              "cnt": 1
+            },
+            "pointers": {},
+            "active": [
+              "c1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "d[1]=0",
+            "action": "不变量检查 1",
+            "status": "running",
+            "queue": [
+              1
+            ],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=0",
+                "level": 1
+              }
+            ],
+            "edges": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "t": 0,
+              "next": 1,
+              "cnt": 1
+            },
+            "pointers": {},
+            "active": [
+              "c1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "d[1]=0",
+            "action": "不变量检查 7",
+            "status": "running",
+            "queue": [
+              1
+            ],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=0",
+                "level": 1
+              }
+            ],
+            "edges": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "t": 0,
+              "next": 1,
+              "cnt": 1
+            },
+            "pointers": {},
+            "active": [
+              "c1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "d[1]=0",
+            "action": "不变量检查 3",
+            "status": "running",
+            "queue": [
+              1
+            ],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=0",
+                "level": 1
+              }
+            ],
+            "edges": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "出队课程进入拓扑序。",
+        "review": "cnt=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20",
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "t": 1,
+              "cnt": 2
+            },
+            "pointers": {},
+            "active": [
+              "c1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=2",
+            "action": "学习课程 1，完成数 2",
+            "status": "running",
+            "queue": [],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=0",
+                "level": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "c0",
+                "to": "c1",
+                "status": "active"
+              }
+            ]
+          },
+          "caption": "出队课程进入拓扑序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20",
+            "L21"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "t": 1,
+              "cnt": 2
+            },
+            "pointers": {},
+            "active": [
+              "c1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "cnt=2",
+            "action": "不变量检查 6",
+            "status": "running",
+            "queue": [],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0 / d=0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1 / d=0",
+                "level": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "c0",
+                "to": "c1",
+                "status": "active"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "没有环阻止课程入队。",
+        "review": "2==2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L27"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [
+              0,
+              1
+            ],
+            "variables": {
+              "cnt": 2,
+              "n": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "c0",
+              "c1"
+            ],
+            "formula": "2==2",
+            "action": "两门课程全部进入拓扑序",
+            "status": "return",
+            "queue": [],
+            "nodes": [
+              {
+                "id": "c0",
+                "value": "0",
+                "level": 0
+              },
+              {
+                "id": "c1",
+                "value": "1",
+                "level": 1
+              }
+            ],
+            "edges": [],
+            "output": true
+          },
+          "caption": "没有环阻止课程入队。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    bool canFinish(int n, vector<vector<int>>& edges) {\n        vector<vector<int>> g(n);\n        vector<int> d(n);\n        for (auto& e: edges) {\n            int b = e[0], a = e[1];\n            g[a].push_back(b);\n            d[b] ++ ;\n        }\n\n        queue<int> q;\n        for (int i = 0; i < n; i ++ )                            // 遍历\n            if (d[i] == 0)\n                q.push(i);                                       // 入队\n\n        int cnt = 0;\n        while (q.size()) {\n            auto t = q.front();\n            q.pop();                                             // 出队\n            cnt ++ ;\n            for (auto i : g[t])\n                if ( -- d[i] == 0)\n                    q.push(i);                                   // 入队\n        }\n\n        return cnt == n;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3021,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3022,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3023,
+        "text": "    bool canFinish(int n, vector<vector<int>>& edges) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3024,
+        "text": "        vector<vector<int>> g(n);"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3025,
+        "text": "        vector<int> d(n);"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3026,
+        "text": "        for (auto& e: edges) {"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3027,
+        "text": "            int b = e[0], a = e[1];"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3028,
+        "text": "            g[a].push_back(b);"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3029,
+        "text": "            d[b] ++ ;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3030,
+        "text": "        }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3031,
+        "text": ""
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3032,
+        "text": "        queue<int> q;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3033,
+        "text": "        for (int i = 0; i < n; i ++ )                            // 遍历"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3034,
+        "text": "            if (d[i] == 0)"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3035,
+        "text": "                q.push(i);                                       // 入队"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3036,
+        "text": ""
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3037,
+        "text": "        int cnt = 0;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3038,
+        "text": "        while (q.size()) {"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3039,
+        "text": "            auto t = q.front();"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3040,
+        "text": "            q.pop();                                             // 出队"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3041,
+        "text": "            cnt ++ ;"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3042,
+        "text": "            for (auto i : g[t])"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 3043,
+        "text": "                if ( -- d[i] == 0)"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 3044,
+        "text": "                    q.push(i);                                   // 入队"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 3045,
+        "text": "        }"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 3046,
+        "text": ""
+      },
+      {
+        "id": "L27",
+        "sourceLine": 3047,
+        "text": "        return cnt == n;"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 3048,
+        "text": "    }"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 3049,
+        "text": "};"
+      }
+    ]
+  }
+}

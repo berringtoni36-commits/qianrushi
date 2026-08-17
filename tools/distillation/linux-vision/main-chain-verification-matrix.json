@@ -1,0 +1,522 @@
+{
+  "generated_at": "2026-08-14T12:19:14",
+  "source_files": [
+    "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/mainwindow.cpp",
+    "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/mainwindow.h",
+    "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/main.cpp",
+    "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/CMakeLists.txt",
+    "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime/CMakeLists.txt",
+    "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime_NEON+OpenMP/CMakeLists.txt",
+    "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/main.cpp",
+    "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/CMakeLists.txt",
+    "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/src/unet.cpp",
+    "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/CMakeLists.txt"
+  ],
+  "paths": {
+    "camera_write_literals": [
+      "/home/kylin/桌面/project_v1.0/frames/"
+    ],
+    "result_read_literals": [
+      "/home/kylin/桌面/project_v1.0/LSTR/result/"
+    ],
+    "ffmpeg_cd_literals": [
+      "/home/kylin/桌面/project_v1.0/LSTR/videos/"
+    ],
+    "ffmpeg_commands": [
+      "ffmpeg -i test.mp4 -vf fps=10 frames/%d.jpg"
+    ],
+    "inference_command": [
+      "./LSTR ../videos/frames/"
+    ],
+    "inference_expected_input_from_build_cwd": "/home/kylin/桌面/project_v1.0/LSTR/videos/frames/",
+    "lstr_model_relative_path": "../lstr_360x640.onnx",
+    "lstr_log_space_relative_path": "../log_space.bin"
+  },
+  "lifecycle": {
+    "qprocess_parentless": true,
+    "destructor_text": "{\n    delete ui;",
+    "signals_or_cleanup_found": {
+      "finished\\s*\\(": false,
+      "errorOccurred\\s*\\(": false,
+      "readyReadStandardError": false,
+      "waitForFinished": false,
+      "->terminate\\s*\\(": false,
+      "->kill\\s*\\(": false
+    },
+    "main_header_has_qprocess_members": true
+  },
+  "cmake": [
+    {
+      "path": "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/CMakeLists.txt",
+      "targets": [
+        {
+          "target": "LSTR",
+          "sources": [
+            "main.cpp"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime/CMakeLists.txt",
+      "targets": [
+        {
+          "target": "lime",
+          "sources": [
+            "lime.cpp"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime_NEON+OpenMP/CMakeLists.txt",
+      "targets": [
+        {
+          "target": "lime",
+          "sources": [
+            "lime_opt.cpp"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/CMakeLists.txt",
+      "targets": [
+        {
+          "target": "LSTR",
+          "sources": [
+            "main.cpp"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/CMakeLists.txt",
+      "targets": [
+        {
+          "target": "unet_ncnn",
+          "sources": [
+            "src/unet.cpp"
+          ]
+        }
+      ]
+    }
+  ],
+  "independent_targets": [
+    {
+      "name": "LSTR_ONNX",
+      "cmake": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/CMakeLists.txt",
+      "expected_target": "LSTR",
+      "target_found": true,
+      "declared_sources": [
+        "main.cpp"
+      ],
+      "resolved_sources": [
+        "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/main.cpp"
+      ],
+      "all_declared_sources_exist": true,
+      "build_executable": {
+        "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/build/LSTR",
+        "exists": true,
+        "size_bytes": 231384,
+        "sha256": "ea120f8e98ab52f0edfd395bb3c68f0e2b4a8167bd5ce377a40c3d2bd06257a2",
+        "mtime": "2026-08-01T22:18:09"
+      }
+    },
+    {
+      "name": "Unet_NCNN",
+      "cmake": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/CMakeLists.txt",
+      "expected_target": "unet_ncnn",
+      "target_found": true,
+      "declared_sources": [
+        "src/unet.cpp"
+      ],
+      "resolved_sources": [
+        "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/src/unet.cpp"
+      ],
+      "all_declared_sources_exist": true,
+      "build_executable": {
+        "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/build/unet_ncnn",
+        "exists": true,
+        "size_bytes": 4855864,
+        "sha256": "2064f7b928e5740be21cd8f3aa2dbd8960207c77d7b5287a5d347753b24ddf92",
+        "mtime": "2026-08-01T22:19:29"
+      }
+    }
+  ],
+  "independent_branches": {
+    "LSTR_ONNX": {
+      "source_files": [
+        "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/CMakeLists.txt",
+        "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/main.cpp"
+      ],
+      "asset_records": {
+        "model": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/lstr_360x640.onnx",
+          "exists": true,
+          "size_bytes": 3074878,
+          "sha256": "a36f5368c53ff01e7e8f3bdcdac4934a8cb96d20d8f0d47a3830c3e53be6cdae",
+          "mtime": "2026-08-01T22:10:56"
+        },
+        "log_space": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/log_space.bin",
+          "exists": true,
+          "size_bytes": 200,
+          "sha256": "3194b8762aeb628b6be7e25a69ad3c9c3da46903dfe10c695aad0002f83e1b3a",
+          "mtime": "2026-08-01T22:10:54"
+        },
+        "onnxruntime_shared_library": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/lib/libonnxruntime.so",
+          "exists": true,
+          "size_bytes": 18048112,
+          "sha256": "c46bae7875cbd6b1a83364615934ef612cd473f18b0d3d658e04f5e4cc18c0a1",
+          "mtime": "2026-08-01T22:19:07"
+        }
+      },
+      "runtime_literals": {
+        "model_path": "../lstr_360x640.onnx",
+        "log_space_path": "../log_space.bin",
+        "input_image": "../images/0.jpg",
+        "output_image": "output.png"
+      },
+      "static_findings": {
+        "target_source_membership": true,
+        "model_path_resolves_from_build": true,
+        "log_space_path_resolves_from_build": true,
+        "runtime_library_present": true,
+        "runtime_discovers_input_and_output_metadata": true,
+        "uses_two_input_tensors": true,
+        "model_file_handle_checked": false,
+        "arm_neon_header_in_source": true
+      }
+    },
+    "Unet_NCNN": {
+      "source_files": [
+        "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/CMakeLists.txt",
+        "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/src/unet.cpp"
+      ],
+      "asset_records": {
+        "param": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/models/model.ncnn.param",
+          "exists": true,
+          "size_bytes": 5821,
+          "sha256": "816cc1ebff0f96ec45b462ef6670cda062d1cc9cc346aa00d281a7c0e3db05b3",
+          "mtime": "2026-08-01T22:20:05"
+        },
+        "bin": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/models/model.ncnn.bin",
+          "exists": true,
+          "size_bytes": 12002032,
+          "sha256": "099f280e6c1baf91dba5e2515b510d799b8cb4b2d5bb668b91e57f1def49a0c0",
+          "mtime": "2026-08-01T22:20:02"
+        },
+        "ncnn_static_library": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/lib/libncnn.a",
+          "exists": true,
+          "size_bytes": 8067652,
+          "sha256": "a0825b77708d92621fedf17ef4b327c031b7b96336521e18f8166121e7b9a741",
+          "mtime": "2026-08-01T22:19:58"
+        }
+      },
+      "runtime_literals": {
+        "param_path": "../models/model.ncnn.param",
+        "bin_path": "../models/model.ncnn.bin",
+        "input_argument": "argv[1]",
+        "output_image": "result.jpg"
+      },
+      "static_findings": {
+        "target_source_membership": true,
+        "model_paths_resolve_from_build": true,
+        "ncnn_library_present": true,
+        "openmp_declared_in_cmake": true,
+        "four_threads_requested": true,
+        "input_is_command_line_argument": true,
+        "input_file_open_result_checked": false
+      }
+    }
+  },
+  "build_evidence": {
+    "stale_absolute_path_files": [
+      "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/build/CMakeCache.txt",
+      "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/build/CMakeFiles/LSTR.dir/DependInfo.cmake",
+      "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/build/CMakeFiles/LSTR.dir/build.make",
+      "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/build/CMakeFiles/LSTR.dir/link.txt",
+      "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime/build/CMakeCache.txt",
+      "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime/build/CMakeFiles/lime.dir/DependInfo.cmake",
+      "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime/build/CMakeFiles/lime.dir/build.make",
+      "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime_NEON+OpenMP/build/CMakeCache.txt",
+      "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime_NEON+OpenMP/build/CMakeFiles/lime.dir/DependInfo.cmake",
+      "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime_NEON+OpenMP/build/CMakeFiles/lime.dir/build.make",
+      "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/build/CMakeCache.txt",
+      "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/build/CMakeFiles/LSTR.dir/DependInfo.cmake",
+      "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/build/CMakeFiles/LSTR.dir/build.make",
+      "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/build/CMakeFiles/LSTR.dir/link.txt",
+      "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/build/CMakeCache.txt",
+      "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/build/CMakeFiles/unet_ncnn.dir/DependInfo.cmake",
+      "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/build/CMakeFiles/unet_ncnn.dir/build.make",
+      "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/build/CMakeFiles/unet_ncnn.dir/link.txt"
+    ],
+    "current_xinlime_exists": true,
+    "model_exists": true,
+    "log_space_exists": true,
+    "independent_asset_records": {
+      "LSTR_ONNX": {
+        "model": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/lstr_360x640.onnx",
+          "exists": true,
+          "size_bytes": 3074878,
+          "sha256": "a36f5368c53ff01e7e8f3bdcdac4934a8cb96d20d8f0d47a3830c3e53be6cdae",
+          "mtime": "2026-08-01T22:10:56"
+        },
+        "log_space": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/log_space.bin",
+          "exists": true,
+          "size_bytes": 200,
+          "sha256": "3194b8762aeb628b6be7e25a69ad3c9c3da46903dfe10c695aad0002f83e1b3a",
+          "mtime": "2026-08-01T22:10:54"
+        },
+        "onnxruntime_shared_library": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/lib/libonnxruntime.so",
+          "exists": true,
+          "size_bytes": 18048112,
+          "sha256": "c46bae7875cbd6b1a83364615934ef612cd473f18b0d3d658e04f5e4cc18c0a1",
+          "mtime": "2026-08-01T22:19:07"
+        }
+      },
+      "Unet_NCNN": {
+        "param": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/models/model.ncnn.param",
+          "exists": true,
+          "size_bytes": 5821,
+          "sha256": "816cc1ebff0f96ec45b462ef6670cda062d1cc9cc346aa00d281a7c0e3db05b3",
+          "mtime": "2026-08-01T22:20:05"
+        },
+        "bin": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/models/model.ncnn.bin",
+          "exists": true,
+          "size_bytes": 12002032,
+          "sha256": "099f280e6c1baf91dba5e2515b510d799b8cb4b2d5bb668b91e57f1def49a0c0",
+          "mtime": "2026-08-01T22:20:02"
+        },
+        "ncnn_static_library": {
+          "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/lib/libncnn.a",
+          "exists": true,
+          "size_bytes": 8067652,
+          "sha256": "a0825b77708d92621fedf17ef4b327c031b7b96336521e18f8166121e7b9a741",
+          "mtime": "2026-08-01T22:19:58"
+        }
+      }
+    },
+    "artifact_records": [
+      {
+        "path": "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/build/CMakeCache.txt",
+        "exists": true,
+        "size_bytes": 17012,
+        "sha256": "6bc37d7527dfc1491b8105628f422958072dfd49a26a284cc458c5c9eaa49768",
+        "mtime": "2026-08-01T22:13:54"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/build/CMakeFiles/LSTR.dir/DependInfo.cmake",
+        "exists": true,
+        "size_bytes": 670,
+        "sha256": "d86952a1e8a6add39f02870d79b06bb579767c3b4dc5e56b936545d9292b3336",
+        "mtime": "2026-08-01T22:28:36"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/build/CMakeFiles/LSTR.dir/build.make",
+        "exists": true,
+        "size_bytes": 6370,
+        "sha256": "3ea21aeb49d6497fd26e26a3fe0824f0e03e21c920006f730f81d4bccfd905c3",
+        "mtime": "2026-08-01T22:28:18"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/上位机程序/Lane_Detection/LSTR/build/CMakeFiles/LSTR.dir/link.txt",
+        "exists": true,
+        "size_bytes": 959,
+        "sha256": "364a203838185f6f2793da471f2776ce83628def24738b018475e5c9e79d016a",
+        "mtime": "2026-08-01T22:28:42"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime/build/CMakeCache.txt",
+        "exists": true,
+        "size_bytes": 15100,
+        "sha256": "4cb14e3e547bff989f90096e71e0ab3a678735bda6663badfaace63b50b20d0c",
+        "mtime": "2026-08-01T22:11:07"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime/build/CMakeFiles/lime.dir/DependInfo.cmake",
+        "exists": true,
+        "size_bytes": 680,
+        "sha256": "bccad23a2b47b7465a04c11e7a3a718d6d7a3c53905853e6f01e3671e52328e6",
+        "mtime": "2026-08-01T22:26:36"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime/build/CMakeFiles/lime.dir/build.make",
+        "exists": true,
+        "size_bytes": 6360,
+        "sha256": "0f4a6226cb2da84196375ce4185002e7f582eb4d0678cb4e480124f4a0cabe1d",
+        "mtime": "2026-08-01T22:26:25"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime/build/CMakeFiles/lime.dir/link.txt",
+        "exists": true,
+        "size_bytes": 683,
+        "sha256": "7297eb5fad79b7e786f61d9a4253e5a895a82647db4652720e7e22c812966af6",
+        "mtime": "2026-08-01T22:26:49"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime_NEON+OpenMP/build/CMakeCache.txt",
+        "exists": true,
+        "size_bytes": 17188,
+        "sha256": "4f675ccd1ffeff0e30371084a3757f60fd5f19a623e9c3c279e16ee8998a537f",
+        "mtime": "2026-08-01T22:12:24"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime_NEON+OpenMP/build/CMakeFiles/lime.dir/DependInfo.cmake",
+        "exists": true,
+        "size_bytes": 704,
+        "sha256": "da7451682a70594a852d4436f437eb816691b9ff4dd2a842f4647dc5977291e7",
+        "mtime": "2026-08-01T22:27:31"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime_NEON+OpenMP/build/CMakeFiles/lime.dir/build.make",
+        "exists": true,
+        "size_bytes": 6604,
+        "sha256": "3826056409b33d1e57487d1b118d6b433714abcaeb04021b69d73e7f443734e1",
+        "mtime": "2026-08-01T22:27:17"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/图像预处理（加速前+加速后）/Lime_NEON+OpenMP/build/CMakeFiles/lime.dir/link.txt",
+        "exists": true,
+        "size_bytes": 700,
+        "sha256": "eba49441e9e8dcf4c342905ed2a5f1873caae9fa56177026c7486b5ea3a97871",
+        "mtime": "2026-08-01T22:27:42"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/build/CMakeCache.txt",
+        "exists": true,
+        "size_bytes": 14672,
+        "sha256": "c109e2d30a77ca0e9c767eb0fa48512c7e8ca0bd565e1fe71931a7d9b6955601",
+        "mtime": "2026-08-01T22:18:06"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/build/CMakeFiles/LSTR.dir/DependInfo.cmake",
+        "exists": true,
+        "size_bytes": 616,
+        "sha256": "b4e37835c9d1784fc187c0790b465d15404013eb1fc6924750c80507c8592f35",
+        "mtime": "2026-08-01T22:29:08"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/build/CMakeFiles/LSTR.dir/build.make",
+        "exists": true,
+        "size_bytes": 5590,
+        "sha256": "4efe4b5b8213e3dfb59978554777940dc9b7bb6dce52a26c34b194d06db84de5",
+        "mtime": "2026-08-01T22:29:00"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/LSTR_ONNX/build/CMakeFiles/LSTR.dir/link.txt",
+        "exists": true,
+        "size_bytes": 845,
+        "sha256": "20548a35173d3aa32e531b4eb928b7c2c59cf6fa1e6784cdb6f0099f1f3d9409",
+        "mtime": "2026-08-01T22:29:10"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/build/CMakeCache.txt",
+        "exists": true,
+        "size_bytes": 16666,
+        "sha256": "c7410a8f260fbf6c316b9d90f00b0d23be86ada62e4b3f09ba858932301844ff",
+        "mtime": "2026-08-01T22:19:19"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/build/CMakeFiles/unet_ncnn.dir/DependInfo.cmake",
+        "exists": true,
+        "size_bytes": 631,
+        "sha256": "1adafd3f52206db4ac03efc16853bfb250d9f03d7c10b59839ed3866a32810a7",
+        "mtime": "2026-08-01T22:30:06"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/build/CMakeFiles/unet_ncnn.dir/build.make",
+        "exists": true,
+        "size_bytes": 5717,
+        "sha256": "24c4792e342118be021fa3b8afe1efb190fffd8d49831cc5fc088fc224deaa2a",
+        "mtime": "2026-08-01T22:29:44"
+      },
+      {
+        "path": "projects/linux视觉感知项目/源码/卷积神经网络/卷积神经网络/Unet_NCNN/build/CMakeFiles/unet_ncnn.dir/link.txt",
+        "exists": true,
+        "size_bytes": 871,
+        "sha256": "aea41f764fd155e4146f35899af244aea17773aff0c4a90987320f735c52004c",
+        "mtime": "2026-08-01T22:30:12"
+      }
+    ]
+  },
+  "static_findings": {
+    "camera_and_inference_paths_match": false,
+    "camera_writes_count_from_zero": true,
+    "camera_increments_after_write": true,
+    "lstr_reads_from_one": true,
+    "mainwindow_reads_results_from_one": true,
+    "ui_slot_has_ten_second_wait": true,
+    "ui_slot_polls_synchronously": true,
+    "base_lime_target_source": true,
+    "optimized_lime_target_source": true,
+    "xinlime_in_optimized_cmake": false,
+    "build_tree_uses_old_absolute_paths": true
+  },
+  "validation_matrix": [
+    {
+      "id": "V0",
+      "check": "source membership",
+      "status": "static-pass",
+      "evidence": "main/LIME plus LSTR_ONNX and Unet_NCNN CMake target source lists parsed"
+    },
+    {
+      "id": "V1",
+      "check": "camera frame write reaches inference input",
+      "status": "static-blocked",
+      "evidence": "camera=/home/kylin/桌面/project_v1.0/frames/; inference=/home/kylin/桌面/project_v1.0/LSTR/videos/frames/"
+    },
+    {
+      "id": "V2",
+      "check": "frame numbering contract",
+      "status": "static-risk",
+      "evidence": "camera count starts at 0; LSTR loop starts at 1"
+    },
+    {
+      "id": "V3",
+      "check": "QProcess completion/error/cancel lifecycle",
+      "status": "static-risk",
+      "evidence": "parent/finished/error/timeout/termination must be checked"
+    },
+    {
+      "id": "V4",
+      "check": "GUI event-loop responsiveness",
+      "status": "static-risk",
+      "evidence": "blocking wait and synchronous result loop occur in slot"
+    },
+    {
+      "id": "V5",
+      "check": "current CMake/build provenance",
+      "status": "historical-only",
+      "evidence": "old absolute build paths in 18 generated files"
+    },
+    {
+      "id": "V6",
+      "check": "model file and tensor metadata",
+      "status": "partial-static",
+      "evidence": "main, LSTR_ONNX and Unet_NCNN model/helper files are inventoried; file presence is not shape/dtype/runtime validation"
+    },
+    {
+      "id": "V7",
+      "check": "ARM/NEON/OpenMP performance",
+      "status": "not-run",
+      "evidence": "requires target AArch64/NEON and benchmark harness"
+    },
+    {
+      "id": "V8",
+      "check": "Qt/OpenCV buffer ownership and display",
+      "status": "not-run",
+      "evidence": "requires target Qt/OpenCV and known-pixel/non-contiguous Mat tests"
+    }
+  ]
+}

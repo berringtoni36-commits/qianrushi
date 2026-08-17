@@ -1,0 +1,898 @@
+{
+  "problemId": 104,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 104,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        3,
+        9,
+        20,
+        null,
+        null,
+        15,
+        7
+      ],
+      "variables": {
+        "root": 3,
+        "height": 3
+      },
+      "structure": {
+        "tree": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "heights": {
+          "9": 1,
+          "15": 1,
+          "7": 1,
+          "20": 2,
+          "3": 3
+        }
+      },
+      "result": [
+        3
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "ceddfc8cb40b287cf58f2692b4b0390040cfb51744245ae130c205b14ec1a32b",
+    "sourceSemanticTokenHash": "ff980adbab33c6cae9bd568aae1b5b781ffc8f8f1ddd7b1b56ce6cef144b9d54",
+    "sourceCodeLineCount": 16
+  },
+  "sourceCodeSha256": "ceddfc8cb40b287cf58f2692b4b0390040cfb51744245ae130c205b14ec1a32b",
+  "sourceSemanticTokenHash": "ff980adbab33c6cae9bd568aae1b5b781ffc8f8f1ddd7b1b56ce6cef144b9d54",
+  "steps": [
+    {
+      "id": "104-trace-001",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "setup",
+      "title": "定义空树高度",
+      "body": "空节点返回 0；每个非空节点等待左右子树高度后再加 1。 题解原意：核心思想： 一棵树的最大深度 = max(左子树的最大深度, 右子树的最大深度) + 1（加上根节点这一层）。 为什么用后序？ 因为要知道当前节点的深度，必须先知道左右子树的深度——这就是典型的「后序位置」：先处理左右子树得到结果，再汇总结果计算出当前节点的答案。这种从下往上汇总的方式叫做 分解法（分治思想）。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · tree",
+        "badge": "tree",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "node": 3
+        },
+        "rows": [
+          {
+            "label": "tree",
+            "values": [
+              3,
+              9,
+              20,
+              null,
+              null,
+              15,
+              7
+            ]
+          },
+          {
+            "label": "height",
+            "values": [
+              "待计算"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "空节点返回 0；每个非空节点等待左右子树高度后再加 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 3
+        },
+        "structure": {
+          "tree": [
+            3,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "104-trace-002",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "节点 9 汇报高度 1",
+      "body": "height(9) = max(左右高度) + 1 = 1。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "tree",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "node": 9,
+          "height": 1
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "9:1",
+              "15:1",
+              "7:1",
+              "20:2",
+              "3:3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "height(9) = max(左右高度) + 1 = 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 9,
+          "height": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "heights": {
+            "9": 1,
+            "15": 1,
+            "7": 1,
+            "20": 2,
+            "3": 3
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "104-trace-003",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "节点 15 汇报高度 1",
+      "body": "height(15) = max(左右高度) + 1 = 1。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "tree",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "node": 15,
+          "height": 1
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "9:1",
+              "15:1",
+              "7:1",
+              "20:2",
+              "3:3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "height(15) = max(左右高度) + 1 = 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 15,
+          "height": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "heights": {
+            "9": 1,
+            "15": 1,
+            "7": 1,
+            "20": 2,
+            "3": 3
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "104-trace-004",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "节点 7 汇报高度 1",
+      "body": "height(7) = max(左右高度) + 1 = 1。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "tree",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "node": 7,
+          "height": 1
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "9:1",
+              "15:1",
+              "7:1",
+              "20:2",
+              "3:3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "height(7) = max(左右高度) + 1 = 1。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 7,
+          "height": 1
+        },
+        "structure": {
+          "tree": [
+            3,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "heights": {
+            "9": 1,
+            "15": 1,
+            "7": 1,
+            "20": 2,
+            "3": 3
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "104-trace-005",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "节点 20 汇报高度 2",
+      "body": "height(20) = max(左右高度) + 1 = 2。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "tree",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "node": 20,
+          "height": 2
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "9:1",
+              "15:1",
+              "7:1",
+              "20:2",
+              "3:3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "height(20) = max(左右高度) + 1 = 2。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 20,
+          "height": 2
+        },
+        "structure": {
+          "tree": [
+            3,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "heights": {
+            "9": 1,
+            "15": 1,
+            "7": 1,
+            "20": 2,
+            "3": 3
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "104-trace-006",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "节点 3 汇报高度 3",
+      "body": "height(3) = max(左右高度) + 1 = 3。",
+      "kind": "tree",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "height": 3
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "9:1",
+              "15:1",
+              "7:1",
+              "20:2",
+              "3:3"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "height(3) = max(左右高度) + 1 = 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 3,
+          "height": 3
+        },
+        "structure": {
+          "tree": [
+            3,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "heights": {
+            "9": 1,
+            "15": 1,
+            "7": 1,
+            "20": 2,
+            "3": 3
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "104-trace-check-008",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最大深度 3。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "height": 3
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "9:1",
+              "15:1",
+              "7:1",
+              "20:2",
+              "3:3"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最大深度 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 3,
+          "height": 3
+        },
+        "structure": {
+          "tree": [
+            3,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "heights": {
+            "9": 1,
+            "15": 1,
+            "7": 1,
+            "20": 2,
+            "3": 3
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "104-trace-check-009",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最大深度 3。",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "height": 3
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "9:1",
+              "15:1",
+              "7:1",
+              "20:2",
+              "3:3"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最大深度 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 3,
+          "height": 3
+        },
+        "structure": {
+          "tree": [
+            3,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "heights": {
+            "9": 1,
+            "15": 1,
+            "7": 1,
+            "20": 2,
+            "3": 3
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "104-trace-check-010",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最大深度 3。 易错提醒：空树返回 0 而不是 nullptr： base case 必须返回 0，很多初学者会忘记这个特判。 递归时忘记 +1： return max(left, right) 是错的，需要加上当前节点这一层，所以是 1 + max(left, right)。 BFS 法的 depth 递增时机： 在进入 while 循环时就要 depth +=…",
+      "kind": "tree",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "node": 3,
+          "height": 3
+        },
+        "rows": [
+          {
+            "label": "heights",
+            "values": [
+              "9:1",
+              "15:1",
+              "7:1",
+              "20:2",
+              "3:3"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最大深度 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "node": 3,
+          "height": 3
+        },
+        "structure": {
+          "tree": [
+            3,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "heights": {
+            "9": 1,
+            "15": 1,
+            "7": 1,
+            "20": 2,
+            "3": 3
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "104-trace-007",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回最大深度 3。",
+      "kind": "tree",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · tree",
+        "badge": "结果 1 项",
+        "tokens": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "root": 3,
+          "height": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "返回最大深度 3。"
+      },
+      "state": {
+        "values": [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ],
+        "variables": {
+          "root": 3,
+          "height": 3
+        },
+        "structure": {
+          "tree": [
+            3,
+            9,
+            20,
+            null,
+            null,
+            15,
+            7
+          ],
+          "heights": {
+            "9": 1,
+            "15": 1,
+            "7": 1,
+            "20": 2,
+            "3": 3
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

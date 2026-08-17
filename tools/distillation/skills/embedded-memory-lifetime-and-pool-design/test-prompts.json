@@ -1,0 +1,14 @@
+{
+  "skill": "embedded-memory-lifetime-and-pool-design",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"嵌入式设备长期运行后 malloc 偶发失败，但剩余内存看起来还不少，应该怎么区分泄漏、碎片和容量不足？","expected_behavior":"激活本 skill，先做所有权/申请释放审计，再按尺寸和时间趋势检查碎片与余量，并提出压力验证","notes":"C 堆故障"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"这个 FreeRTOS 任务应该用 xTaskCreate 还是 xTaskCreateStatic？请结合实时性、堆碎片和任务栈验证说明","expected_behavior":"激活本 skill，比较动态/静态任务资源、确定性、配置和栈水位边界","notes":"RTOS 内存策略"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"请帮我设计一个固定大小内存池：块大小、池容量、并发访问、耗尽策略和如何证明不会越界都要考虑","expected_behavior":"激活本 skill，输出生命周期、块管理、并发、失败恢复和压力测试流程","notes":"内存池设计"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"C++ 的 unique_ptr、shared_ptr 和 weak_ptr 分别解决什么问题？","expected_behavior":"不优先激活本 skill，转 embedded-cpp-resource-lifetime","notes":"C++ 兄弟 Skill"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"STM32 一启动就 HardFault，怎样保存 fault frame 并判断 PC 和 LR？","expected_behavior":"不优先激活本 skill，转 rtos-runtime-fault-diagnosis","notes":"运行时故障兄弟 Skill"},
+    {"id":"edge-01","type":"edge_case","prompt":"我只想知道 malloc、calloc、realloc 的函数原型和返回值，不需要嵌入式设计建议","expected_behavior":"做简短 API 解释，不强行输出内存池决策流程","notes":"API 查询边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

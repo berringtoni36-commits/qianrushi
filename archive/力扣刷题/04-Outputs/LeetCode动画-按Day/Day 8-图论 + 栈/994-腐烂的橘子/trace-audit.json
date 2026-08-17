@@ -1,0 +1,1479 @@
+{
+  "problemId": 994,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 994,
+    "stepCount": 12,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "variables": {
+        "minute": 4,
+        "fresh": 0
+      },
+      "structure": {
+        "rotten": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ]
+      },
+      "result": [
+        4
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "32dc17b5e72bbda86905632c73b0c53490f9a0c035ee8616e8027979aa761239",
+    "sourceSemanticTokenHash": "f48d0af0c36fa005aacb7cb2f34900ac2f185b4076ded76195f73aa27af1835b",
+    "sourceCodeLineCount": 42
+  },
+  "sourceCodeSha256": "32dc17b5e72bbda86905632c73b0c53490f9a0c035ee8616e8027979aa761239",
+  "sourceSemanticTokenHash": "f48d0af0c36fa005aacb7cb2f34900ac2f185b4076ded76195f73aa27af1835b",
+  "steps": [
+    {
+      "id": "994-trace-001",
+      "line": 1,
+      "lineIds": [
+        1
+      ],
+      "phase": "setup",
+      "title": "把所有腐烂橘子同时入队",
+      "body": "多源 BFS 按层扩散；一层队列对应经过一分钟。 题解原意：核心思想： 将所有初始腐烂橘子入队作为 BFS 的起点，然后进行标准的层序遍历。BFS 的层数就等于所需的分钟数。 为什么多源 BFS 可行？因为所有腐烂橘子是「同时」开始腐烂的，多源 BFS 天然模拟了这种同步扩散过程：每一层遍历对应一分钟，所有腐烂橘子在这一分钟同时向四周蔓延。 复杂度： 时间 O(m×n)，空间 O(m×n)",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · grid-bfs",
+        "badge": "queue",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "minute": 0,
+          "fresh": 6
+        },
+        "rows": [
+          {
+            "label": "queue",
+            "values": [
+              "(0, 0)"
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [],
+        "note": "多源 BFS 按层扩散；一层队列对应经过一分钟。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 0,
+          "fresh": 6
+        },
+        "structure": {
+          "queue": [
+            [
+              0,
+              0
+            ]
+          ],
+          "grid": [
+            [
+              2,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "994-trace-002",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "第 1 分钟腐烂 (0, 1)",
+      "body": "从上一层腐烂橘子扩散到 (0, 1)，剩余新鲜橘子 5。",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "minute": 1,
+          "cell": [
+            0,
+            1
+          ],
+          "fresh": 5
+        },
+        "rows": [
+          {
+            "label": "rotten",
+            "values": [
+              "(0, 0)",
+              "(0, 1)"
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "(0, 1)",
+              "(1, 0)"
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "从上一层腐烂橘子扩散到 (0, 1)，剩余新鲜橘子 5。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 1,
+          "cell": [
+            0,
+            1
+          ],
+          "fresh": 5
+        },
+        "structure": {
+          "queue": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "994-trace-003",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "第 1 分钟腐烂 (1, 0)",
+      "body": "从上一层腐烂橘子扩散到 (1, 0)，剩余新鲜橘子 4。",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "minute": 1,
+          "cell": [
+            1,
+            0
+          ],
+          "fresh": 4
+        },
+        "rows": [
+          {
+            "label": "rotten",
+            "values": [
+              "(0, 0)",
+              "(0, 1)",
+              "(1, 0)"
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "(0, 1)",
+              "(1, 0)"
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "从上一层腐烂橘子扩散到 (1, 0)，剩余新鲜橘子 4。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 1,
+          "cell": [
+            1,
+            0
+          ],
+          "fresh": 4
+        },
+        "structure": {
+          "queue": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "994-trace-004",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "update",
+      "title": "完成第 1 层扩散",
+      "body": "这一分钟的队列处理完，继续下一层；fresh=4。",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "minute": 1,
+          "fresh": 4
+        },
+        "rows": [
+          {
+            "label": "minute",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "这一分钟的队列处理完，继续下一层；fresh=4。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 1,
+          "fresh": 4
+        },
+        "structure": {
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "994-trace-005",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "第 2 分钟腐烂 (0, 2)",
+      "body": "从上一层腐烂橘子扩散到 (0, 2)，剩余新鲜橘子 3。",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "minute": 2,
+          "cell": [
+            0,
+            2
+          ],
+          "fresh": 3
+        },
+        "rows": [
+          {
+            "label": "rotten",
+            "values": [
+              "(0, 0)",
+              "(0, 1)",
+              "(0, 2)",
+              "(1, 0)"
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "(0, 2)",
+              "(1, 1)"
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "从上一层腐烂橘子扩散到 (0, 2)，剩余新鲜橘子 3。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 2,
+          "cell": [
+            0,
+            2
+          ],
+          "fresh": 3
+        },
+        "structure": {
+          "queue": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "994-trace-006",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "第 2 分钟腐烂 (1, 1)",
+      "body": "从上一层腐烂橘子扩散到 (1, 1)，剩余新鲜橘子 2。",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "minute": 2,
+          "cell": [
+            1,
+            1
+          ],
+          "fresh": 2
+        },
+        "rows": [
+          {
+            "label": "rotten",
+            "values": [
+              "(0, 0)",
+              "(0, 1)",
+              "(0, 2)",
+              "(1, 0)",
+              "(1, 1)"
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "(0, 2)",
+              "(1, 1)"
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "从上一层腐烂橘子扩散到 (1, 1)，剩余新鲜橘子 2。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 2,
+          "cell": [
+            1,
+            1
+          ],
+          "fresh": 2
+        },
+        "structure": {
+          "queue": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "994-trace-007",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "update",
+      "title": "完成第 2 层扩散",
+      "body": "这一分钟的队列处理完，继续下一层；fresh=2。",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "minute": 2,
+          "fresh": 2
+        },
+        "rows": [
+          {
+            "label": "minute",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "这一分钟的队列处理完，继续下一层；fresh=2。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 2,
+          "fresh": 2
+        },
+        "structure": {
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "994-trace-008",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "第 3 分钟腐烂 (2, 1)",
+      "body": "从上一层腐烂橘子扩散到 (2, 1)，剩余新鲜橘子 1。",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "minute": 3,
+          "cell": [
+            2,
+            1
+          ],
+          "fresh": 1
+        },
+        "rows": [
+          {
+            "label": "rotten",
+            "values": [
+              "(0, 0)",
+              "(0, 1)",
+              "(0, 2)",
+              "(1, 0)",
+              "(1, 1)",
+              "(2, 1)"
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "(2, 1)"
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "从上一层腐烂橘子扩散到 (2, 1)，剩余新鲜橘子 1。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 3,
+          "cell": [
+            2,
+            1
+          ],
+          "fresh": 1
+        },
+        "structure": {
+          "queue": [
+            [
+              2,
+              1
+            ]
+          ],
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "994-trace-009",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "update",
+      "title": "完成第 3 层扩散",
+      "body": "这一分钟的队列处理完，继续下一层；fresh=1。",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "minute": 3,
+          "fresh": 1
+        },
+        "rows": [
+          {
+            "label": "minute",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "这一分钟的队列处理完，继续下一层；fresh=1。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 3,
+          "fresh": 1
+        },
+        "structure": {
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "994-trace-010",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "第 4 分钟腐烂 (2, 2)",
+      "body": "从上一层腐烂橘子扩散到 (2, 2)，剩余新鲜橘子 0。",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [
+          8
+        ],
+        "compared": [],
+        "variables": {
+          "minute": 4,
+          "cell": [
+            2,
+            2
+          ],
+          "fresh": 0
+        },
+        "rows": [
+          {
+            "label": "rotten",
+            "values": [
+              "(0, 0)",
+              "(0, 1)",
+              "(0, 2)",
+              "(1, 0)",
+              "(1, 1)",
+              "(2, 1)",
+              "(2, 2)"
+            ]
+          },
+          {
+            "label": "queue",
+            "values": [
+              "(2, 2)"
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "从上一层腐烂橘子扩散到 (2, 2)，剩余新鲜橘子 0。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 4,
+          "cell": [
+            2,
+            2
+          ],
+          "fresh": 0
+        },
+        "structure": {
+          "queue": [
+            [
+              2,
+              2
+            ]
+          ],
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "result": [
+          4
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "994-trace-011",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "update",
+      "title": "完成第 4 层扩散",
+      "body": "这一分钟的队列处理完，继续下一层；fresh=0。 易错提醒：新鲜橘子计数与 BFS 结束条件： 在 BFS 过程中如果 fresh == 0，可以提前结束循环，避免不必要的遍历。但注意：最后一分钟的 BFS 结束后，fresh 可能刚好变为 0，此时 minutes 是正确答案。 同时腐烂 vs 逐次腐烂： 必须用层序遍历 for _ in range(q.size()) 来确保同一分钟所有腐烂橘…",
+      "kind": "grid-bfs",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "minute": 4,
+          "fresh": 0
+        },
+        "rows": [
+          {
+            "label": "minute",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "fresh",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "这一分钟的队列处理完，继续下一层；fresh=0。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 4,
+          "fresh": 0
+        },
+        "structure": {
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "result": [
+          4
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "994-trace-012",
+      "line": 40,
+      "lineIds": [
+        40
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "所有橘子在 4 分钟内腐烂。",
+      "kind": "grid-bfs",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · grid-bfs",
+        "badge": "结果 1 项",
+        "tokens": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "minute": 4,
+          "fresh": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "所有橘子在 4 分钟内腐烂。"
+      },
+      "state": {
+        "values": [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "variables": {
+          "minute": 4,
+          "fresh": 0
+        },
+        "structure": {
+          "rotten": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "result": [
+          4
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

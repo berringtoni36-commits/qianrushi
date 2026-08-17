@@ -192,14 +192,37 @@
 
 .crisp-asr-source-controls {
   display: grid;
-  padding: 2px 12px 10px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 9px;
+  padding: 4px 12px 12px;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
-.crisp-asr-source-controls.is-computer-only .crisp-asr-field {
-  grid-column: 1 / -1;
+.crisp-asr-profile-field {
+  margin-bottom: 10px;
+}
+
+.crisp-asr-profile,
+.crisp-asr-profile-field select {
+  width: 100%;
+}
+
+.crisp-asr-marker-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.crisp-asr-speaker-rename__row {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.35fr) 1fr;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.crisp-asr-speaker-rename__row input {
+  width: 100%;
 }
 
 .crisp-asr-field {
@@ -242,6 +265,58 @@
   padding: 3px;
 }
 
+.crisp-asr-device-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.crisp-asr-microphone-test {
+  height: 20px;
+  min-height: 20px;
+  padding: 0 7px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 999px;
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  font-size: 10px;
+  line-height: 18px;
+}
+
+.crisp-asr-device-warning,
+.crisp-asr-active-microphone {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-warning, var(--text-muted));
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.crisp-asr-active-microphone {
+  color: var(--text-accent);
+}
+
+.crisp-asr-recovery__description {
+  margin: 10px 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.crisp-asr-recovery__actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+}
+
+.crisp-asr-recovery__discard {
+  grid-column: 1 / -1;
+  justify-self: end;
+  min-width: 54px;
+  color: var(--text-muted);
+}
+
 .crisp-asr-device-refresh svg {
   width: 12px;
   height: 12px;
@@ -249,8 +324,7 @@
 
 .crisp-asr-recording-row {
   display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: minmax(0, 1fr) minmax(72px, 0.75fr);
+  grid-template-columns: minmax(0, 1fr) minmax(64px, 0.6fr);
   align-items: center;
   gap: 10px;
 }
@@ -269,7 +343,8 @@
 }
 
 .crisp-asr-level {
-  height: 5px;
+  height: 6px;
+  min-width: 56px;
   overflow: hidden;
   border-radius: 999px;
   background: color-mix(in srgb, var(--text-muted) 13%, transparent);
@@ -285,7 +360,7 @@
 }
 
 .crisp-asr-actions {
-  padding: 3px 10px 11px;
+  padding: 4px 12px 12px;
   gap: 8px;
 }
 
@@ -429,6 +504,18 @@
   gap: 7px;
 }
 
+.crisp-asr-jobs__scan {
+  min-height: 22px;
+  margin: 0;
+  padding: 0 8px;
+  border: 1px solid var(--crisp-asr-border);
+  border-radius: 7px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+  font-size: 9px;
+}
+
 .crisp-asr-jobs__toggle {
   min-height: 22px;
   margin: 0;
@@ -444,6 +531,39 @@
 .crisp-asr-jobs__toggle:hover {
   border-color: color-mix(in srgb, var(--crisp-asr-accent) 28%, transparent);
   color: var(--text-normal);
+}
+
+.crisp-asr-scan-modal__search {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.crisp-asr-scan-modal__list {
+  display: flex;
+  max-height: 320px;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+  overflow-y: auto;
+}
+
+.crisp-asr-scan-modal__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: var(--font-ui-smaller);
+}
+
+.crisp-asr-scan-modal__row:hover {
+  background: var(--background-modifier-hover);
+}
+
+.crisp-asr-scan-modal__footer {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
 }
 
 .crisp-asr-job {

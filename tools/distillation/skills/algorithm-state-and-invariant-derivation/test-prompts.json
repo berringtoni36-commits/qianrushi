@@ -1,0 +1,16 @@
+{
+  "skill": "algorithm-state-and-invariant-derivation",
+  "version": "0.1.0",
+  "source_book": "LeetCode Hot 100 学习体系",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"我的二分代码在答案位于最左端时死循环，帮我写清楚闭区间不变量和收缩规则。","expected_behavior":"激活本 Skill，明确区间语义、mid、循环终止和端点测试。"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"零钱兑换 DP 不知道 dp[i] 的含义、初始化和遍历顺序，应该怎么从状态推导？","expected_behavior":"激活本 Skill，先定义状态再检查 base case、转移和答案位置。"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"这个贪心策略在样例上都对，能不能帮我构造一个最小反例验证它？","expected_behavior":"激活本 Skill，优先搜索击穿局部选择的反例并说明需要的证明。"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"这道新题到底是滑动窗口、前缀和还是 DP？我只知道 n 的范围。","expected_behavior":"拒绝本 Skill，优先转给 algorithm-problem-framework-selection。"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"我今天只完成了提示后 AC，帮我安排三天后无提示重写。","expected_behavior":"拒绝本 Skill，优先转给 algorithm-active-recall-loop。"},
+    {"id":"edge-01","type":"edge_case","prompt":"我已经有一份通过测试的 DP 代码，只想问它的时间复杂度，不需要推导。","expected_behavior":"只在复杂度依赖状态/遍历且需要语义核对时部分触发，否则给出普通复杂度说明。"}
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "静态预期 6/6；实际客户端盲测待补。"
+}

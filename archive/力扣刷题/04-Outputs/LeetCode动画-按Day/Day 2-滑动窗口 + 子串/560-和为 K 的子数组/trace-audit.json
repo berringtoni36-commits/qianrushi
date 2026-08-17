@@ -1,0 +1,899 @@
+{
+  "problemId": 560,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 560,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        1,
+        1
+      ],
+      "variables": {
+        "k": 2,
+        "res": 2
+      },
+      "structure": {
+        "prefix": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "hash": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "3": 1
+        }
+      },
+      "result": [
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "350d41bf17d5ccb07a7567124020f260a9688b5a439ac80496d2339f193a634b",
+    "sourceSemanticTokenHash": "4e4c2009ae322406655329402272b6ff5cf2df5802c07e9128c1d44dfc597846",
+    "sourceCodeLineCount": 16
+  },
+  "sourceCodeSha256": "350d41bf17d5ccb07a7567124020f260a9688b5a439ac80496d2339f193a634b",
+  "sourceSemanticTokenHash": "4e4c2009ae322406655329402272b6ff5cf2df5802c07e9128c1d44dfc597846",
+  "steps": [
+    {
+      "id": "560-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "建立前缀和与历史计数",
+      "body": "若当前前缀是 s[i]，就查 s[i] - k 出现过多少次。 题解原意：核心洞察： 子数组 nums[j..i] 的和 = prefix[i] - prefix[j-1]。要求这个和等于 k，即 prefix[j-1] = prefix[i] - k。所以当我们在位置 i 时，只需要知道有多少个前缀和等于 prefix[i] - k。 为什么用哈希表： 我们需要快速查询某个前缀和的出现次数，哈希表 O(1) 查询正合适。 为什么初始化 {0: 1}： 前缀和为 0 对应「空数组」。如果一…",
+      "kind": "prefix",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · prefix",
+        "badge": "i=0 · res=0",
+        "tokens": [
+          1,
+          1,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "i": 0,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "prefix",
+            "values": [
+              0
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "0:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "若当前前缀是 s[i]，就查 s[i] - k 出现过多少次。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "variables": {
+          "k": 2,
+          "i": 0,
+          "res": 0
+        },
+        "structure": {
+          "prefix": [
+            0
+          ],
+          "hash": {
+            "0": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "560-trace-002",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "lookup",
+      "title": "处理前缀 s[1] = 1",
+      "body": "查找前缀 -1，命中 0 次，本轮新增 0 个子数组。",
+      "kind": "prefix",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "lookup · prefix",
+        "badge": "i=1 · res=0 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "prefix": 1,
+          "need": -1,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "prefix",
+            "values": [
+              0,
+              1
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "0:1"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "查找前缀 -1，命中 0 次，本轮新增 0 个子数组。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "variables": {
+          "i": 1,
+          "prefix": 1,
+          "need": -1,
+          "res": 0
+        },
+        "structure": {
+          "prefix": [
+            0,
+            1
+          ],
+          "hash": {
+            "0": 1
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "560-trace-003",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 1",
+      "body": "查询之后再写入当前前缀，避免把同一位置重复使用。",
+      "kind": "prefix",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · prefix",
+        "badge": "i=1 · res=0 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "prefix": 1,
+          "need": -1,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "prefix",
+            "values": [
+              0,
+              1
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "0:1",
+              "1:1"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              0
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "查询之后再写入当前前缀，避免把同一位置重复使用。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "variables": {
+          "i": 1,
+          "prefix": 1,
+          "need": -1,
+          "res": 0
+        },
+        "structure": {
+          "prefix": [
+            0,
+            1
+          ],
+          "hash": {
+            "0": 1,
+            "1": 1
+          }
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "560-trace-004",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "lookup",
+      "title": "处理前缀 s[2] = 2",
+      "body": "查找前缀 0，命中 1 次，本轮新增 1 个子数组。",
+      "kind": "prefix",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "lookup · prefix",
+        "badge": "i=2 · res=1 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "prefix": 2,
+          "need": 0,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "prefix",
+            "values": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "0:1",
+              "1:1"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "查找前缀 0，命中 1 次，本轮新增 1 个子数组。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "variables": {
+          "i": 2,
+          "prefix": 2,
+          "need": 0,
+          "res": 1
+        },
+        "structure": {
+          "prefix": [
+            0,
+            1,
+            2
+          ],
+          "hash": {
+            "0": 1,
+            "1": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "560-trace-005",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 2",
+      "body": "查询之后再写入当前前缀，避免把同一位置重复使用。",
+      "kind": "prefix",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · prefix",
+        "badge": "i=2 · res=1 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "prefix": 2,
+          "need": 0,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "prefix",
+            "values": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "0:1",
+              "1:1",
+              "2:1"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "查询之后再写入当前前缀，避免把同一位置重复使用。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "variables": {
+          "i": 2,
+          "prefix": 2,
+          "need": 0,
+          "res": 1
+        },
+        "structure": {
+          "prefix": [
+            0,
+            1,
+            2
+          ],
+          "hash": {
+            "0": 1,
+            "1": 1,
+            "2": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "560-trace-006",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "lookup",
+      "title": "处理前缀 s[3] = 3",
+      "body": "查找前缀 1，命中 1 次，本轮新增 1 个子数组。",
+      "kind": "prefix",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "lookup · prefix",
+        "badge": "i=3 · res=2 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "prefix": 3,
+          "need": 1,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "prefix",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "0:1",
+              "1:1",
+              "2:1"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "查找前缀 1，命中 1 次，本轮新增 1 个子数组。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "variables": {
+          "i": 3,
+          "prefix": 3,
+          "need": 1,
+          "res": 2
+        },
+        "structure": {
+          "prefix": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "hash": {
+            "0": 1,
+            "1": 1,
+            "2": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "560-trace-007",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "记录前缀 3",
+      "body": "查询之后再写入当前前缀，避免把同一位置重复使用。",
+      "kind": "prefix",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · prefix",
+        "badge": "i=3 · res=2 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "prefix": 3,
+          "need": 1,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "prefix",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "0:1",
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "查询之后再写入当前前缀，避免把同一位置重复使用。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "variables": {
+          "i": 3,
+          "prefix": 3,
+          "need": 1,
+          "res": 2
+        },
+        "structure": {
+          "prefix": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "hash": {
+            "0": 1,
+            "1": 1,
+            "2": 1,
+            "3": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "560-trace-check-009",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。前缀扫描完成，满足和为 2 的子数组数量为 2。",
+      "kind": "prefix",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · res=2 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "prefix": 3,
+          "need": 1,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "prefix",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "0:1",
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。前缀扫描完成，满足和为 2 的子数组数量为 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "variables": {
+          "i": 3,
+          "prefix": 3,
+          "need": 1,
+          "res": 2
+        },
+        "structure": {
+          "prefix": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "hash": {
+            "0": 1,
+            "1": 1,
+            "2": 1,
+            "3": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "560-trace-check-010",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。前缀扫描完成，满足和为 2 的子数组数量为 2。 易错提醒：初始化 {0: 1} 遗漏：忘记初始化会导致从开头到某位置的子数组（和为 k）被漏统计。 更新顺序：必须先查 cur_sum - k，再将当前 cur_sum 存入哈希表。如果先存再查，当 k=0 时每个位置都会把自己算进去（把空子数组也算上了）。 负数处理：因为有负数，前缀和可能重复出现多次，哈希表要记录次数（计数累加），而不是简单用集…",
+      "kind": "prefix",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · res=2 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "prefix": 3,
+          "need": 1,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "prefix",
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "hash",
+            "values": [
+              "0:1",
+              "1:1",
+              "2:1",
+              "3:1"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。前缀扫描完成，满足和为 2 的子数组数量为 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "variables": {
+          "i": 3,
+          "prefix": 3,
+          "need": 1,
+          "res": 2
+        },
+        "structure": {
+          "prefix": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "hash": {
+            "0": 1,
+            "1": 1,
+            "2": 1,
+            "3": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "560-trace-008",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "前缀扫描完成，满足和为 2 的子数组数量为 2。",
+      "kind": "prefix",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · prefix",
+        "badge": "res=2 · 结果 1 项",
+        "tokens": [
+          1,
+          1,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "前缀扫描完成，满足和为 2 的子数组数量为 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "variables": {
+          "k": 2,
+          "res": 2
+        },
+        "structure": {
+          "prefix": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "hash": {
+            "0": 1,
+            "1": 1,
+            "2": 1,
+            "3": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

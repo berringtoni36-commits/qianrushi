@@ -1,0 +1,622 @@
+{
+  "problemId": 31,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 31,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": false,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        3,
+        2
+      ],
+      "variables": {
+        "k": 2
+      },
+      "structure": {},
+      "result": [
+        1,
+        3,
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "ce9c0b8230becdd5563b3af5ce2a415d1f8ede0d3eec6add5c61c490b427258e",
+    "sourceSemanticTokenHash": "36cd04565b5de2e6e51c67266b0f4a2b7b335a7fbca06333776e8646e260e599",
+    "sourceCodeLineCount": 15
+  },
+  "sourceCodeSha256": "ce9c0b8230becdd5563b3af5ce2a415d1f8ede0d3eec6add5c61c490b427258e",
+  "sourceSemanticTokenHash": "36cd04565b5de2e6e51c67266b0f4a2b7b335a7fbca06333776e8646e260e599",
+  "steps": [
+    {
+      "id": "31-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "从后往前寻找下降点",
+      "body": "当前排列 123 还有更大的后继；k 指向需要修改的后缀边界。 题解原意：思路讲解： 算法分为三步： 第一步：找转折点。 从右向左遍历，找到第一个 nums[i] < nums[i+1] 的位置 i。这个位置就是要调整的地方——在此处，升序被打破，说明我们可以通过改变这里的数字得到更大的排列。如果找不到这样的 i，说明整个数组是降序的，已经是最大排列，直接反转整个数组。 第二步：找交换目标。 从右向左找到第一个 nums[j] > nums[i] 的位置 j。这个 nums[j] 是右边比…",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · array",
+        "badge": "",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前排列 123 还有更大的后继；k 指向需要修改的后缀边界。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "k": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "31-trace-002",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "compare",
+      "title": "下降点为 k=2",
+      "body": "nums[k-1] < nums[k]，前缀可以增加；后缀仍保持非递增。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · array",
+        "badge": "",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "pivot",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums[k-1] < nums[k]，前缀可以增加；后缀仍保持非递增。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "k": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "31-trace-003",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "compare",
+      "title": "寻找刚好大于 pivot 的后缀元素",
+      "body": "pivot=2，交换对象为 nums[2]=3。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · array",
+        "badge": "pivot",
+        "tokens": [
+          1,
+          2,
+          3
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "t": 3
+        },
+        "rows": [
+          {
+            "label": "pivot",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [],
+        "note": "pivot=2，交换对象为 nums[2]=3。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "variables": {
+          "k": 2,
+          "t": 3
+        },
+        "structure": {
+          "pivot": 2
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "31-trace-004",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "交换 pivot 与后继",
+      "body": "交换后数组为 [1, 3, 2]。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · array",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [
+          1,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "t": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "交换后数组为 [1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          2
+        ],
+        "variables": {
+          "k": 2,
+          "t": 3
+        },
+        "structure": {},
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "31-trace-005",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "反转后缀得到最小增量",
+      "body": "后缀升序后，下一排列为 [1, 3, 2]。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · array",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "后缀升序后，下一排列为 [1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          2
+        ],
+        "variables": {
+          "k": 2
+        },
+        "structure": {},
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "31-trace-check-007",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回下一个排列 [1, 3, 2]。",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回下一个排列 [1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          2
+        ],
+        "variables": {
+          "k": 2
+        },
+        "structure": {},
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "31-trace-check-008",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回下一个排列 [1, 3, 2]。",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回下一个排列 [1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          2
+        ],
+        "variables": {
+          "k": 2
+        },
+        "structure": {},
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "31-trace-check-009",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回下一个排列 [1, 3, 2]。",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回下一个排列 [1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          2
+        ],
+        "variables": {
+          "k": 2
+        },
+        "structure": {},
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "31-trace-check-010",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回下一个排列 [1, 3, 2]。 易错提醒：比较符号的细节：找 i 时用 nums[i] >= nums[i+1]（包含等号），找 j 时用 nums[j] <= nums[i]（包含等号）。包含等号才能正确处理重复元素 i 可能为 -1：如果整个数组是降序，i 保持为 -1，此时跳过交换步骤，直接反转整个数组 必须在原地修改 nums：不能 return 新数组，必须直接修改 n…",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回下一个排列 [1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          2
+        ],
+        "variables": {
+          "k": 2
+        },
+        "structure": {},
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "31-trace-006",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回下一个排列 [1, 3, 2]。",
+      "kind": "array",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · array",
+        "badge": "结果 3 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              1,
+              3,
+              2
+            ]
+          }
+        ],
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "note": "返回下一个排列 [1, 3, 2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          2
+        ],
+        "variables": {
+          "k": 2
+        },
+        "structure": {},
+        "result": [
+          1,
+          3,
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

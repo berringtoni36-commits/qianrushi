@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LeetCode 21 · 合并两个有序链表 · C++ 逐步动画</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #091016;
+      --panel: #111b23;
+      --panel-2: #0d151c;
+      --border: #263541;
+      --muted: #8294a3;
+      --text: #eaf2f5;
+      --accent: #f2b35a;
+      --accent-2: #75d4cb;
+      --l1: #5ab7ff;
+      --l2: #f2b35a;
+      --dummy: #a5b1ba;
+      --danger: #ff8585;
+      --good: #9fe3a7;
+      --shadow: 0 20px 60px rgba(0, 0, 0, .25);
+      --page-surface: rgba(9, 16, 22, .84);
+      --font-body: "iA Writer Quattro V", Inter, "PingFang SC", -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif;
+      --font-code: "iA Writer Mono V", "Fira Code", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 76% 4%, rgba(242,179,90,.08), transparent 28%),
+        radial-gradient(circle at 8% 100%, rgba(90,183,255,.07), transparent 30%),
+        var(--page-surface);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "liga" 1, "calt" 1;
+    }
+
+    button, select, input { font: inherit; }
+    button { cursor: pointer; }
+
+    .app {
+      height: 100vh;
+      min-height: 680px;
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr);
+      gap: 12px;
+      padding: 16px 20px 14px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font: 700 11px/1.2 var(--font-code);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1 { margin: 5px 0 0; font-size: clamp(22px, 2.3vw, 32px); letter-spacing: -.03em; }
+    .subtitle { margin-top: 5px; color: var(--muted); font-size: 13px; }
+
+    .top-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .badge {
+      padding: 6px 9px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: #c9d5db;
+      background: rgba(17,27,35,.75);
+      font-size: 12px;
+    }
+    .badge.accent { color: var(--accent); border-color: rgba(242,179,90,.4); }
+
+    .workspace {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(420px, .88fr);
+      gap: 12px;
+    }
+
+    .panel {
+      min-height: 0;
+      background: linear-gradient(145deg, rgba(20,31,40,.98), rgba(11,19,26,.98));
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(18px) saturate(115%);
+    }
+
+    .visual-panel { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(38,53,65,.7);
+    }
+    .panel-title { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: #cbd8de; }
+    .panel-hint { color: var(--muted); font-size: 11px; }
+
+    .diagram {
+      min-height: 0;
+      overflow: auto;
+      padding: 10px 14px 6px;
+      scrollbar-width: thin;
+      scrollbar-color: #344754 transparent;
+    }
+
+    .phase {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 10px;
+      border: 1px solid rgba(117,212,203,.22);
+      border-radius: 11px;
+      background: rgba(117,212,203,.055);
+      margin-bottom: 8px;
+    }
+    .phase-mark {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      flex: none;
+      border-radius: 8px;
+      background: rgba(117,212,203,.16);
+      color: var(--accent-2);
+      font-weight: 800;
+      font-size: 12px;
+    }
+    .phase strong { display:block; font-size: 13px; }
+    .phase p { margin: 3px 0 0; color: #b7c6ce; font-size: 12px; line-height: 1.55; }
+
+    .list-block { margin: 8px 0; }
+    .list-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      color: #b8c8d0;
+      font-size: 12px;
+    }
+    .list-label .source { font-weight: 800; }
+    .source.l1 { color: var(--l1); }
+    .source.l2 { color: var(--l2); }
+    .source.result { color: var(--accent-2); }
+
+    .chain-wrap {
+      min-height: 58px;
+      padding: 9px 10px 8px;
+      border: 1px solid rgba(38,53,65,.95);
+      border-radius: 12px;
+      background: rgba(7,13,18,.52);
+    }
+    .chain { display: flex; align-items: center; gap: 6px; min-height: 36px; overflow-x: auto; padding-bottom: 2px; }
+    .arrow { flex: none; color: #687b87; font-size: 17px; }
+    .node {
+      position: relative;
+      min-width: 52px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      flex: none;
+      border: 1px solid #3c5160;
+      border-radius: 10px;
+      background: #17242d;
+      color: #eff7f8;
+      font: 800 14px/1 var(--font-code);
+      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+    .node::after {
+      content: attr(data-source);
+      position: absolute;
+      left: 7px;
+      bottom: 3px;
+      color: #77909d;
+      font: 700 8px/1 var(--font-code);
+      letter-spacing: .06em;
+    }
+    .node.l1 { border-color: rgba(90,183,255,.65); background: rgba(90,183,255,.13); }
+    .node.l2 { border-color: rgba(242,179,90,.65); background: rgba(242,179,90,.13); }
+    .node.dummy { border-style: dashed; border-color: #81919b; color: #b8c4ca; background: rgba(165,177,186,.09); }
+    .node.selected { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 0 0 3px rgba(242,179,90,.12), 0 10px 24px rgba(242,179,90,.12); }
+    .node.tail { box-shadow: inset 0 -3px 0 var(--accent-2); }
+    .node .pointer-badges {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 3px;
+      white-space: nowrap;
+    }
+    .pointer-badge { padding: 2px 4px; border-radius: 4px; background: #253744; color: #dcebf0; font: 700 8px/1 var(--font-code); }
+    .pointer-badge.tail { color: var(--accent-2); }
+    .pointer-badge.l1 { color: var(--l1); }
+    .pointer-badge.l2 { color: var(--l2); }
+    .pointer-badge.dummy { color: var(--dummy); }
+    .empty { color: #6b7e8b; font-size: 12px; font-style: italic; }
+    .chain-note { margin-top: 5px; color: #7f929e; font-size: 10px; }
+
+    .compare-card {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 8px;
+      border: 1px solid rgba(242,179,90,.22);
+      border-radius: 11px;
+      background: rgba(242,179,90,.055);
+    }
+    .compare-side { text-align: center; }
+    .compare-side .mini-label { display: block; margin-bottom: 4px; color: var(--muted); font-size: 10px; }
+    .compare-side strong { font: 800 17px/1 var(--font-code); }
+    .compare-op { padding: 4px 7px; border-radius: 6px; background: #263944; color: var(--accent); font: 800 13px/1 var(--font-code); }
+    .compare-result { grid-column: 1 / -1; padding-top: 5px; border-top: 1px solid rgba(242,179,90,.14); color: #d6e0e4; font-size: 11px; line-height: 1.35; text-align: center; }
+
+    .pointer-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 6px; margin-top: 8px; }
+    .pointer-cell { min-width: 0; padding: 6px 7px; border: 1px solid rgba(38,53,65,.95); border-radius: 8px; background: rgba(5,10,14,.36); }
+    .pointer-cell .key { display:block; color: var(--muted); font: 700 10px/1 var(--font-code); }
+    .pointer-cell .val { display:block; overflow:hidden; margin-top: 3px; color: #edf5f7; font: 800 11px/1 var(--font-code); text-overflow: ellipsis; white-space: nowrap; }
+
+    .code-panel { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+    .code-scroll { min-height: 0; overflow: auto; padding: 6px 0; scrollbar-width: thin; scrollbar-color: #344754 transparent; }
+    .code-line {
+      display: grid;
+      grid-template-columns: 34px minmax(0,1fr);
+      gap: 8px;
+      min-height: 14px;
+      align-items: center;
+      padding: 0 13px;
+      color: #aebdc5;
+      font: 10px/1.3 var(--font-code);
+      white-space: pre;
+      transition: background .16s ease, color .16s ease;
+    }
+    .code-line .no { color: #526570; text-align: right; user-select: none; }
+    .code-line.active { background: linear-gradient(90deg, rgba(242,179,90,.18), rgba(242,179,90,.035)); color: #f4f8f8; box-shadow: inset 3px 0 0 var(--accent); }
+    .code-line.active .no { color: var(--accent); }
+    .kw { color: #d19aee; }
+    .type { color: #80d4c9; }
+    .fn { color: #83b5ff; }
+    .var { color: #e8eef1; }
+    .num { color: #f2b35a; }
+    .op { color: #8ed7e4; }
+    .comment { color: #687d89; }
+
+    .explain {
+      margin: 0 10px 9px;
+      padding: 8px 10px;
+      border: 1px solid rgba(117,212,203,.23);
+      border-radius: 11px;
+      background: rgba(117,212,203,.06);
+    }
+    .explain .tag { color: var(--accent-2); font: 800 10px/1 var(--font-code); letter-spacing: .08em; }
+    .explain h2 { margin: 4px 0 3px; font-size: 13px; }
+    .explain p { margin: 0; color: #cfdbdf; font-size: 11px; line-height: 1.45; }
+
+    .controls {
+      display: grid;
+      grid-template-columns: auto minmax(160px, 1fr) auto auto;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-top: 1px solid rgba(38,53,65,.7);
+      background: rgba(7,13,18,.38);
+    }
+    .control-group { display: flex; align-items: center; gap: 6px; }
+    .btn {
+      height: 32px;
+      padding: 0 10px;
+      border: 1px solid #344956;
+      border-radius: 8px;
+      background: #172630;
+      color: #dce9ed;
+      font-size: 12px;
+      transition: background .15s ease, border-color .15s ease, transform .15s ease;
+    }
+    .btn:hover:not(:disabled) { background: #203541; border-color: #5c7a89; }
+    .btn:active:not(:disabled) { transform: translateY(1px); }
+    .btn.primary { border-color: rgba(242,179,90,.65); background: rgba(242,179,90,.15); color: var(--accent); }
+    .btn:disabled { cursor: not-allowed; opacity: .35; }
+    .select { height: 32px; padding: 0 8px; border: 1px solid #344956; border-radius: 8px; background: #172630; color: #dce9ed; font-size: 12px; }
+    .progress-wrap { display:flex; align-items:center; gap: 9px; min-width: 0; }
+    .progress-wrap input { width:100%; accent-color: var(--accent); }
+    .step-count { min-width: 72px; color: #9fb0b9; font: 11px/1 var(--font-code); text-align: right; }
+    .shortcut { color: #71838e; font-size: 11px; white-space: nowrap; }
+
+    .theme-toggle {
+      height: 32px;
+      padding: 0 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      transition: background .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .theme-toggle:hover { border-color: var(--accent); background: rgba(95,92,245,.09); color: var(--text); }
+    .theme-toggle:focus-visible,
+    .btn:focus-visible,
+    .select:focus-visible,
+    input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* The light palette follows the vault's Baseline direction: warm paper,
+       one restrained purple accent, and orange reserved for comparisons. */
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f7f6f3;
+      --panel: #ffffff;
+      --panel-2: #f1efe9;
+      --border: #d8d5ce;
+      --muted: #6b6b67;
+      --text: #252525;
+      --accent: #5f5cf5;
+      --accent-2: #2c8278;
+      --l1: #2a78ad;
+      --l2: #b45309;
+      --dummy: #747d82;
+      --danger: #b23d3d;
+      --good: #398a52;
+      --shadow: 0 12px 34px rgba(38, 35, 30, .10);
+      --page-surface: rgba(247, 246, 243, .76);
+    }
+    html[data-theme="light"] body {
+      background:
+        radial-gradient(circle at 76% 4%, rgba(95,92,245,.10), transparent 28%),
+        radial-gradient(circle at 8% 100%, rgba(42,120,173,.08), transparent 30%),
+        var(--page-surface);
+    }
+    html[data-theme="light"] .badge { color: #57534e; background: rgba(255,255,255,.78); }
+    html[data-theme="light"] .badge.accent { border-color: rgba(95,92,245,.42); }
+    html[data-theme="light"] .panel { background: linear-gradient(145deg, rgba(255,255,255,.72), rgba(247,246,243,.60)); }
+    html[data-theme="light"] .panel-head { border-color: rgba(86,82,75,.18); }
+    html[data-theme="light"] .panel-title { color: #494743; }
+    html[data-theme="light"] .phase { border-color: rgba(44,130,120,.24); background: rgba(44,130,120,.07); }
+    html[data-theme="light"] .phase-mark { background: rgba(44,130,120,.14); }
+    html[data-theme="light"] .phase p { color: #5d6868; }
+    html[data-theme="light"] .list-label { color: #555650; }
+    html[data-theme="light"] .chain-wrap { border-color: rgba(86,82,75,.22); background: rgba(249,248,245,.58); }
+    html[data-theme="light"] .arrow { color: #89918f; }
+    html[data-theme="light"] .node { border-color: #b9c4c7; background: #eef1f1; color: #263336; }
+    html[data-theme="light"] .node.l1 { border-color: rgba(42,120,173,.66); background: rgba(42,120,173,.12); }
+    html[data-theme="light"] .node.l2 { border-color: rgba(180,83,9,.62); background: rgba(180,83,9,.12); }
+    html[data-theme="light"] .node.dummy { border-color: #899296; color: #596367; background: rgba(116,125,130,.10); }
+    html[data-theme="light"] .node::after { color: #6b7c80; }
+    html[data-theme="light"] .pointer-badge { background: #e0e7e7; color: #445458; }
+    html[data-theme="light"] .empty { color: #818886; }
+    html[data-theme="light"] .chain-note { color: #72807e; }
+    html[data-theme="light"] .compare-card { border-color: rgba(180,83,9,.24); background: rgba(180,83,9,.06); }
+    html[data-theme="light"] .compare-op { background: #eee4d9; }
+    html[data-theme="light"] .compare-result { border-color: rgba(180,83,9,.20); color: #5d5b57; }
+    html[data-theme="light"] .pointer-cell { border-color: rgba(86,82,75,.22); background: rgba(246,245,241,.58); }
+    html[data-theme="light"] .pointer-cell .val { color: #273438; }
+    html[data-theme="light"] .code-scroll { scrollbar-color: #b6b7b7 transparent; }
+    html[data-theme="light"] .code-line { color: #5c6568; }
+    html[data-theme="light"] .code-line .no { color: #9aa2a2; }
+    html[data-theme="light"] .code-line.active { background: linear-gradient(90deg, rgba(95,92,245,.13), rgba(95,92,245,.025)); color: #24272a; }
+    html[data-theme="light"] .kw { color: #8a3fb0; }
+    html[data-theme="light"] .type { color: #24776f; }
+    html[data-theme="light"] .fn { color: #285ca8; }
+    html[data-theme="light"] .var { color: #333a3d; }
+    html[data-theme="light"] .num { color: #a55712; }
+    html[data-theme="light"] .op { color: #2b7984; }
+    html[data-theme="light"] .comment { color: #8b9699; }
+    html[data-theme="light"] .explain { border-color: rgba(44,130,120,.24); background: rgba(44,130,120,.07); }
+    html[data-theme="light"] .explain p { color: #536262; }
+    html[data-theme="light"] .controls { border-color: rgba(86,82,75,.18); background: rgba(243,242,238,.58); }
+    html[data-theme="light"] .btn,
+    html[data-theme="light"] .select { border-color: #c7c8c5; background: #ffffff; color: #394346; }
+    html[data-theme="light"] .btn:hover:not(:disabled) { background: #f0f0ff; border-color: #8d8af5; }
+    html[data-theme="light"] .btn.primary { border-color: rgba(95,92,245,.55); background: rgba(95,92,245,.10); }
+    html[data-theme="light"] .step-count { color: #697674; }
+    html[data-theme="light"] .shortcut { color: #7b8584; }
+
+    @media (max-width: 1120px) {
+      body { overflow: auto; }
+      .app { height: auto; min-height: 100vh; }
+      .workspace { grid-template-columns: 1fr; }
+      .visual-panel { min-height: 620px; }
+      .code-panel { min-height: 550px; }
+    }
+    @media (max-width: 640px) {
+      .app { padding: 12px; }
+      .topbar { flex-direction: column; }
+      .top-meta { justify-content: flex-start; }
+      .controls { grid-template-columns: 1fr; }
+      .control-group { justify-content: center; }
+      .pointer-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    .problem-drawer {
+      margin: -2px 0 0;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: rgba(17,27,35,.72);
+      box-shadow: 0 10px 28px rgba(0,0,0,.12);
+      backdrop-filter: blur(18px) saturate(115%);
+    }
+    .problem-drawer summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 10px 12px;
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .problem-drawer summary::-webkit-details-marker { display: none; }
+    .problem-drawer summary::before { content: '▸'; display: inline-block; margin-right: 7px; transition: transform .2s ease; }
+    .problem-drawer[open] summary::before { transform: rotate(90deg); }
+    .problem-copy {
+      max-height: 210px;
+      overflow: auto;
+      padding: 0 14px 12px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+    .problem-copy p { margin: 8px 0; }
+    .problem-copy code { padding: 1px 4px; border-radius: 4px; background: rgba(95,92,245,.10); font-family: var(--font-code); }
+    .problem-link { float: right; color: var(--muted); font-size: 10px; font-weight: 500; }
+    html[data-theme="light"] .problem-drawer { background: rgba(255,255,255,.78); }
+    html[data-theme="light"] .problem-copy { color: #5d6868; }
+  </style>
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">C++ TRACE LAB · LEETCODE 21</div>
+        <h1>合并两个有序链表</h1>
+        <div class="subtitle">每一步都回答三个问题：比较了谁？改了哪条指针？为什么现在可以继续？</div>
+      </div>
+      <div class="top-meta">
+        <span class="badge accent">Easy</span>
+        <span class="badge">双指针 · 链表</span>
+        <span class="badge">O(m+n) · O(1)</span>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换主题">☀ 浅色</button>
+      </div>
+    </header>
+
+    <details class="problem-drawer" aria-label="力扣官方题目">
+      <summary>力扣官方题目（展开查看，不影响动画操作） <a class="problem-link" href="https://leetcode.cn/problems/merge-two-sorted-lists/" target="_blank" rel="noreferrer">打开力扣原题 ↗</a></summary>
+      <div class="problem-copy">
+        <p>将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+        <p><strong>示例：</strong> l1 = [1,2,4]，l2 = [1,3,4]，输出 [1,1,2,3,4,4]。</p>
+        <p>两个链表都按升序排列，链表可能为空；返回合并后的升序链表。</p>
+      </div>
+    </details>
+
+    <section class="workspace">
+      <section class="panel visual-panel" aria-label="链表状态演示">
+        <div class="panel-head">
+          <span class="panel-title">链表状态 / POINTER STATE</span>
+          <span class="panel-hint" id="phase-label">准备</span>
+        </div>
+        <div class="diagram">
+          <div class="phase">
+            <div class="phase-mark" id="phase-number">01</div>
+            <div>
+              <strong id="phase-title">先固定观察视角</strong>
+              <p id="phase-body">我们只维护一个结果尾指针 tail：每次把两个头节点中更小的那个接到 tail 后面。</p>
+            </div>
+          </div>
+
+          <div class="list-block">
+            <div class="list-label"><span class="source l1">l1 · 第一条链表</span><span id="l1-note"></span></div>
+            <div class="chain-wrap"><div class="chain" id="chain-l1"></div></div>
+          </div>
+          <div class="list-block">
+            <div class="list-label"><span class="source l2">l2 · 第二条链表</span><span id="l2-note"></span></div>
+            <div class="chain-wrap"><div class="chain" id="chain-l2"></div></div>
+          </div>
+          <div class="list-block">
+            <div class="list-label"><span class="source result">dummy.next · 已接入结果</span><span id="result-note"></span></div>
+            <div class="chain-wrap"><div class="chain" id="chain-result"></div><div class="chain-note" id="chain-note"></div></div>
+          </div>
+
+          <div class="compare-card" id="compare-card" hidden>
+            <div class="compare-side"><span class="mini-label" id="compare-left-label">l1 当前</span><strong id="compare-left">—</strong></div>
+            <div class="compare-op" id="compare-op">&lt;</div>
+            <div class="compare-side"><span class="mini-label" id="compare-right-label">l2 当前</span><strong id="compare-right">—</strong></div>
+            <div class="compare-result" id="compare-result"></div>
+          </div>
+
+          <div class="pointer-grid" id="pointer-grid"></div>
+        </div>
+        <div class="controls">
+          <div class="control-group">
+            <button class="btn" id="prev" type="button">← 上一步</button>
+            <button class="btn primary" id="play" type="button">▶ 播放</button>
+            <button class="btn" id="next" type="button">下一步 →</button>
+          </div>
+          <div class="progress-wrap">
+            <input id="step-slider" type="range" min="0" max="1" step="1" value="0" aria-label="动画步骤">
+            <span class="step-count" id="step-count">1 / 1</span>
+          </div>
+          <div class="control-group">
+            <button class="btn" id="reset" type="button">重置</button>
+            <select class="select" id="speed" aria-label="播放速度">
+              <option value="1500">0.75×</option>
+              <option value="1100" selected>1×</option>
+              <option value="750">1.5×</option>
+              <option value="500">2×</option>
+            </select>
+          </div>
+          <span class="shortcut">← → 单步 · Space 播放</span>
+        </div>
+      </section>
+
+      <section class="panel code-panel" aria-label="C++ 代码与解释">
+        <div class="panel-head">
+          <span class="panel-title">YXC FINAL CODE / C++17</span>
+          <label class="panel-hint">案例
+            <select class="select" id="example-select" aria-label="选择案例">
+              <option value="main">主案例：1,2,4 + 1,3,4</option>
+              <option value="empty-left">边界：空链表 + 0</option>
+            </select>
+          </label>
+        </div>
+        <div class="code-scroll" id="code-scroll"></div>
+        <div class="explain">
+          <div class="tag" id="explain-tag">CURRENT ACTION</div>
+          <h2 id="explain-title">准备开始</h2>
+          <p id="explain-body">按“下一步”逐语句观察；动画不会跳过指针变化。</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    'use strict';
+
+    const CODE = [
+      { no: 1, html: '<span class="comment">/**</span>' },
+      { no: 2, html: '<span class="comment"> * Definition for singly-linked list.</span>' },
+      { no: 3, html: '<span class="comment"> * struct ListNode {</span>' },
+      { no: 4, html: '<span class="comment"> *     int val;</span>' },
+      { no: 5, html: '<span class="comment"> *     ListNode *next;</span>' },
+      { no: 6, html: '<span class="comment"> *     ListNode() : val(0), next(nullptr) {}</span>' },
+      { no: 7, html: '<span class="comment"> *     ListNode(int x) : val(x), next(nullptr) {}</span>' },
+      { no: 8, html: '<span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) {}</span>' },
+      { no: 9, html: '<span class="comment"> * };</span>' },
+      { no: 10, html: '<span class="comment"> */</span>' },
+      { no: 11, html: '<span class="kw">class</span> <span class="type">Solution</span> {' },
+      { no: 12, html: '<span class="kw">public</span>:' },
+      { no: 13, html: '    <span class="type">ListNode</span>* <span class="fn">mergeTwoLists</span>(<span class="type">ListNode</span>* <span class="var">l1</span>, <span class="type">ListNode</span>* <span class="var">l2</span>) {' },
+      { no: 14, html: '        <span class="kw">auto</span> <span class="var">dummy</span> = <span class="kw">new</span> <span class="type">ListNode</span>(<span class="num">-1</span>), <span class="var">tail</span> = <span class="var">dummy</span>;' },
+      { no: 15, html: '        <span class="kw">while</span> (<span class="var">l1</span> &amp;&amp; <span class="var">l2</span>) {' },
+      { no: 16, html: '            <span class="kw">if</span> (<span class="var">l1</span>-&gt;<span class="var">val</span> &lt; <span class="var">l2</span>-&gt;<span class="var">val</span>) {' },
+      { no: 17, html: '                <span class="var">tail</span> = <span class="var">tail</span>-&gt;<span class="var">next</span> = <span class="var">l1</span>;' },
+      { no: 18, html: '                <span class="var">l1</span> = <span class="var">l1</span>-&gt;<span class="var">next</span>;' },
+      { no: 19, html: '            } <span class="kw">else</span> {' },
+      { no: 20, html: '                <span class="var">tail</span> = <span class="var">tail</span>-&gt;<span class="var">next</span> = <span class="var">l2</span>;' },
+      { no: 21, html: '                <span class="var">l2</span> = <span class="var">l2</span>-&gt;<span class="var">next</span>;' },
+      { no: 22, html: '            }' },
+      { no: 23, html: '        }' },
+      { no: 24, html: '        <span class="kw">if</span> (<span class="var">l1</span>) <span class="var">tail</span>-&gt;<span class="var">next</span> = <span class="var">l1</span>;' },
+      { no: 25, html: '        <span class="kw">if</span> (<span class="var">l2</span>) <span class="var">tail</span>-&gt;<span class="var">next</span> = <span class="var">l2</span>;' },
+      { no: 26, html: '        <span class="kw">return</span> <span class="var">dummy</span>-&gt;<span class="var">next</span>;' },
+      { no: 27, html: '    }' },
+      { no: 28, html: '};' },
+    ];
+
+    const EXAMPLES = {
+      main: { id: 'main', label: '主案例', l1: [1, 2, 4], l2: [1, 3, 4], expected: [1, 1, 2, 3, 4, 4] },
+      'empty-left': { id: 'empty-left', label: '边界案例', l1: [], l2: [0], expected: [0] },
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const clone = (value) => JSON.parse(JSON.stringify(value));
+    const themeStorageKey = 'leetcode21-theme-mode';
+    const themeToggle = $('theme-toggle');
+    const systemThemeMedia = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+    const systemTheme = () => systemThemeMedia && systemThemeMedia.matches ? 'light' : 'dark';
+    const queryThemeMode = new URLSearchParams(window.location.search).get('theme') || new URLSearchParams(window.location.hash.replace(/^#/, '')).get('theme');
+    function hostTheme() {
+      try {
+        const roots = [window.parent?.document?.documentElement, window.parent?.document?.body].filter(Boolean);
+        const classes = roots.map(node => String(node.className || '')).join(' ');
+        if (/\btheme-dark\b|\bdark-mode\b/i.test(classes)) return 'dark';
+        if (/\btheme-light\b|\blight-mode\b/i.test(classes)) return 'light';
+        const raw = getComputedStyle(roots[0]).getPropertyValue('--background-primary').trim();
+        const rgb = raw.match(/rgba?\(([^)]+)\)/i);
+        if (rgb) {
+          const values = rgb[1].split(',').slice(0, 3).map(Number);
+          if (values.length === 3 && values.every(Number.isFinite)) {
+            const luminance = (0.2126 * values[0] + 0.7152 * values[1] + 0.0722 * values[2]) / 255;
+            return luminance < 0.48 ? 'dark' : 'light';
+          }
+        }
+      } catch (error) { /* iframe may not be allowed to inspect the host */ }
+      return null;
+    }
+    const preferredThemeMode = (() => {
+      if (queryThemeMode === 'auto' || queryThemeMode === 'light' || queryThemeMode === 'dark') return queryThemeMode;
+      try {
+        const saved = localStorage.getItem(themeStorageKey);
+        if (saved === 'auto' || saved === 'light' || saved === 'dark') return saved;
+      } catch (error) { /* private browsing can disable localStorage */ }
+      return 'auto';
+    })();
+    let themeMode = preferredThemeMode;
+    function setTheme(mode, persist = true) {
+      themeMode = mode;
+      const theme = mode === 'auto' ? (hostTheme() || systemTheme()) : mode;
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.dataset.themeMode = mode;
+      const labels = {
+        auto: ['◌ 自动', '切换主题（当前自动，跟随系统/宿主）'],
+        light: ['☀ 浅色', '切换到暗色主题'],
+        dark: ['◐ 暗色', '切换到自动主题'],
+      };
+      themeToggle.textContent = labels[mode][0];
+      themeToggle.setAttribute('aria-label', labels[mode][1]);
+      themeToggle.title = mode === 'auto' ? '跟随系统/宿主明暗；再点可切换为手动浅色' : labels[mode][1];
+      if (persist) {
+        try { localStorage.setItem(themeStorageKey, mode); } catch (error) { /* no-op */ }
+      }
+    }
+    themeToggle.addEventListener('click', () => {
+      const nextMode = themeMode === 'auto' ? 'light' : themeMode === 'light' ? 'dark' : 'auto';
+      setTheme(nextMode);
+    });
+    if (systemThemeMedia && systemThemeMedia.addEventListener) {
+      systemThemeMedia.addEventListener('change', () => { if (themeMode === 'auto') setTheme('auto', false); });
+    }
+    setTheme(preferredThemeMode, Boolean(queryThemeMode));
+
+    const nodeText = (state, id) => {
+      if (!id || !state.nodes[id]) return '空';
+      if (state.nodes[id].source === 'dummy') return 'dummy';
+      return `${state.nodes[id].source.toUpperCase()}#${state.nodes[id].index + 1} = ${state.nodes[id].value}`;
+    };
+
+    function baseState(example) {
+      const nodes = {};
+      const addList = (source, values) => {
+        const ids = values.map((value, index) => {
+          const id = `${source}-${index}`;
+          nodes[id] = { id, source, index, value, next: null };
+          return id;
+        });
+        ids.forEach((id, index) => { nodes[id].next = ids[index + 1] || null; });
+        return ids;
+      };
+      const ids1 = addList('l1', example.l1);
+      const ids2 = addList('l2', example.l2);
+      return {
+        nodes,
+        pointers: { l1: ids1[0] || null, l2: ids2[0] || null, dummy: null, tail: null },
+        dummyNext: null,
+        selected: null,
+        compare: null,
+        condition: null,
+        phase: '准备',
+        attached: false,
+        attachedSource: null,
+        returned: false,
+      };
+    }
+
+    function buildSteps(example) {
+      const state = baseState(example);
+      const steps = [];
+      const push = (id, line, phase, title, body, kind = 'info') => {
+        steps.push({ id, line, phase, title, body, kind, state: clone(state) });
+      };
+
+      push('start', 15, '观察入口', '先把问题压缩成一个动作', '两条链表本身已经有序。每一轮只看 l1 和 l2 当前节点，把更小的那个接到结果尾部。');
+
+      state.nodes.dummy = { id: 'dummy', source: 'dummy', index: -1, value: 'dummy', next: null };
+      state.pointers.dummy = 'dummy';
+      state.pointers.tail = 'dummy';
+      state.phase = '初始化';
+      push('init-dummy', 14, '初始化', '建立 dummy 和 tail', 'dummy 是结果链表的假头；tail 从 dummy 开始，所以第一个真实节点也能走同一套“接到 tail 后面”的逻辑。');
+
+      let round = 0;
+      while (state.pointers.l1 && state.pointers.l2) {
+        const left = state.nodes[state.pointers.l1];
+        const right = state.nodes[state.pointers.l2];
+        const leftWins = left.value < right.value;
+        const source = leftWins ? 'l1' : 'l2';
+        const chosen = leftWins ? left.id : right.id;
+        state.compare = { left: left.id, right: right.id, expression: `${left.value} < ${right.value}`, result: leftWins, chosen };
+        state.condition = null;
+        state.selected = null;
+        state.phase = '比较';
+        push(`compare-${round}`, 16, `第 ${round + 1} 轮 · 比较`, `${left.value} < ${right.value} 为 ${leftWins ? '真' : '假'}，所以本轮取 ${source}.val = ${state.nodes[chosen].value}。${leftWins ? '' : '相等时也走 else，先接 l2。'}`);
+
+        const tailBefore = state.pointers.tail;
+        state.selected = chosen;
+        state.phase = '接入节点';
+        state.nodes[tailBefore].next = chosen;
+        if (tailBefore === 'dummy') state.dummyNext = chosen;
+        push(`link-${round}`, leftWins ? 17 : 20, `第 ${round + 1} 轮 · 接入`, `把 ${nodeText(state, chosen)} 接到 tail 后面`, `这一句的真实动作是：先执行 ${tailBefore === 'dummy' ? 'dummy' : 'tail'}->next = ${source}，再让 tail 指向刚接入的节点。没有创建新的数据节点。`, 'link');
+
+        state.pointers.tail = chosen;
+        state.pointers[source] = state.nodes[chosen].next;
+        state.selected = null;
+        state.compare = null;
+        state.phase = '移动指针';
+        push(`advance-${round}`, leftWins ? 18 : 21, `第 ${round + 1} 轮 · 移动`, `${source} 向后移动一步`, `节点已经归入结果链；${source} 只需要指向它原来的 next，下一轮继续比较两个新头节点。`);
+        round += 1;
+      }
+
+      state.phase = '退出循环';
+      state.compare = {
+        left: state.pointers.l1,
+        right: state.pointers.l2,
+        expression: `${state.pointers.l1 ? 'l1' : '空'} && ${state.pointers.l2 ? 'l2' : '空'}`,
+        result: false,
+        chosen: null,
+      };
+      push('exit-while', 15, '循环条件', '至少一条链表已经走空', 'while 需要 l1 和 l2 同时非空；现在其中一条为空，比较动作停止，剩下的整段已经天然有序。');
+
+      const hasL1 = Boolean(state.pointers.l1);
+      state.condition = { target: 'l1', exists: hasL1 };
+      state.phase = '检查剩余';
+      push('check-l1', 24, '检查 l1 剩余部分', hasL1 ? 'l1 还有节点，准备整段接入' : 'l1 已为空，跳过这句');
+      if (hasL1) {
+        const tailBefore = state.pointers.tail;
+        state.nodes[tailBefore].next = state.pointers.l1;
+        if (tailBefore === 'dummy') state.dummyNext = state.pointers.l1;
+        state.attached = true;
+        state.attachedSource = 'l1';
+        state.phase = '整段接入';
+        push('attach-l1', 24, '接上 l1 剩余整段', `tail->next = l1，从 ${nodeText(state, state.pointers.l1)} 开始的整段不需要逐个比较。`, 'attach');
+      }
+
+      const hasL2 = Boolean(state.pointers.l2);
+      state.condition = { target: 'l2', exists: hasL2 };
+      state.phase = '检查剩余';
+      push('check-l2', 25, '检查 l2 剩余部分', hasL2 ? 'l2 还有节点，准备整段接入' : 'l2 已为空，跳过这句');
+      if (hasL2) {
+        const tailBefore = state.pointers.tail;
+        state.nodes[tailBefore].next = state.pointers.l2;
+        if (tailBefore === 'dummy') state.dummyNext = state.pointers.l2;
+        state.attached = true;
+        state.attachedSource = 'l2';
+        state.phase = '整段接入';
+        push('attach-l2', 25, '接上 l2 剩余整段', `tail->next = l2，从 ${nodeText(state, state.pointers.l2)} 开始的整段不需要逐个比较。`, 'attach');
+      }
+
+      state.returned = true;
+      state.condition = null;
+      state.phase = '返回';
+      push('return', 26, '返回结果', '返回 dummy->next，而不是 dummy 或 tail', 'dummy 只是为了统一处理首节点；真正的合并链表从 dummy.next 开始。', 'done');
+      return steps;
+    }
+
+    function traverse(state, start, stopAtTail) {
+      const ids = [];
+      let id = start;
+      const seen = new Set();
+      while (id && !seen.has(id)) {
+        ids.push(id);
+        seen.add(id);
+        if (stopAtTail && id === state.pointers.tail) break;
+        id = state.nodes[id] ? state.nodes[id].next : null;
+      }
+      return ids;
+    }
+
+    function outputIds(state) {
+      if (!state.dummyNext) return ['dummy'];
+      return traverse(state, state.dummyNext, !state.attached && !state.returned);
+    }
+
+    function sourceIds(state, key) {
+      return state.pointers[key] ? traverse(state, state.pointers[key], false) : [];
+    }
+
+    function pointerBadges(state, id) {
+      const badges = [];
+      if (state.pointers.l1 === id) badges.push('<span class="pointer-badge l1">l1</span>');
+      if (state.pointers.l2 === id) badges.push('<span class="pointer-badge l2">l2</span>');
+      if (state.pointers.tail === id) badges.push('<span class="pointer-badge tail">tail</span>');
+      if (state.pointers.dummy === id) badges.push('<span class="pointer-badge dummy">dummy</span>');
+      return badges.length ? `<span class="pointer-badges">${badges.join('')}</span>` : '';
+    }
+
+    function nodeMarkup(state, id) {
+      const node = state.nodes[id];
+      if (!node) return '';
+      const classes = ['node', node.source, state.selected === id ? 'selected' : '', state.pointers.tail === id ? 'tail' : ''].filter(Boolean).join(' ');
+      const value = node.source === 'dummy' ? 'D' : node.value;
+      const sourceLabel = node.source === 'dummy' ? 'dummy' : node.source.toUpperCase();
+      return `<div class="${classes}" data-source="${sourceLabel}" data-node-id="${id}">${pointerBadges(state, id)}<span>${value}</span></div>`;
+    }
+
+    function chainMarkup(state, ids) {
+      if (!ids.length) return '<span class="empty">∅（空）</span>';
+      return ids.map((id, index) => `${nodeMarkup(state, id)}${index < ids.length - 1 ? '<span class="arrow">→</span>' : ''}`).join('');
+    }
+
+    function renderCode(activeLine) {
+      $('code-scroll').innerHTML = CODE.map((line) => `<div class="code-line ${line.no === activeLine ? 'active' : ''}" data-line="${line.no}"><span class="no">${line.no}</span><span>${line.html}</span></div>`).join('');
+      const active = $('code-scroll').querySelector('.active');
+      if (active) active.scrollIntoView({ block: 'nearest' });
+    }
+
+    function renderPointers(state) {
+      const keys = ['l1', 'l2', 'tail', 'dummy'];
+      $('pointer-grid').innerHTML = keys.map((key) => `<div class="pointer-cell"><span class="key">${key}</span><span class="val">${nodeText(state, state.pointers[key])}</span></div>`).join('');
+    }
+
+    function renderCompare(state) {
+      const card = $('compare-card');
+      if (!state.compare) {
+        card.hidden = true;
+        $('compare-left').textContent = '—';
+        $('compare-right').textContent = '—';
+        $('compare-left-label').textContent = 'l1 当前';
+        $('compare-right-label').textContent = 'l2 当前';
+        $('compare-op').textContent = '<';
+        $('compare-result').textContent = '';
+        return;
+      }
+      card.hidden = false;
+      const left = state.compare.left ? state.nodes[state.compare.left] : null;
+      const right = state.compare.right ? state.nodes[state.compare.right] : null;
+      $('compare-left').textContent = left ? left.value : '空';
+      $('compare-right').textContent = right ? right.value : '空';
+      $('compare-left-label').textContent = left ? `${left.source}.val` : 'l1 当前';
+      $('compare-right-label').textContent = right ? `${right.source}.val` : 'l2 当前';
+      $('compare-op').textContent = state.compare.expression.includes('&&') ? '&&' : '<';
+      $('compare-result').textContent = state.compare.expression.includes('&&')
+        ? `while 条件为假：${state.compare.left ? 'l1 非空' : 'l1 为空'}，${state.compare.right ? 'l2 非空' : 'l2 为空'}`
+        : `${state.compare.expression} → ${state.compare.result ? '真，取 l1' : '假，走 else 取 l2'}`;
+    }
+
+    function render(index) {
+      const step = runtime.steps[index];
+      const state = step.state;
+      $('phase-label').textContent = state.phase;
+      $('phase-number').textContent = String(index + 1).padStart(2, '0');
+      $('phase-title').textContent = step.title;
+      $('phase-body').textContent = step.body;
+      $('phase-label').dataset.kind = step.kind;
+      $('chain-l1').innerHTML = chainMarkup(state, sourceIds(state, 'l1'));
+      $('chain-l2').innerHTML = chainMarkup(state, sourceIds(state, 'l2'));
+      $('chain-result').innerHTML = chainMarkup(state, outputIds(state));
+      $('l1-note').textContent = state.attachedSource === 'l1' ? '这段已整体接入结果' : '';
+      $('l2-note').textContent = state.attachedSource === 'l2' ? '这段已整体接入结果' : '';
+      $('result-note').textContent = state.returned ? '最终返回' : state.attached ? '剩余有序段已接入' : '只显示已确认到 tail 的前缀';
+      $('chain-note').textContent = state.attached ? '整段接入后不再逐个比较：它本来就是有序的。' : '浅色节点属于原链表；结果区只展示已经确认接入到 tail 的部分。';
+      $('explain-tag').textContent = `${step.kind.toUpperCase()} · LINE ${step.line}`;
+      $('explain-title').textContent = step.title;
+      $('explain-body').textContent = step.body;
+      renderPointers(state);
+      renderCompare(state);
+      renderCode(step.line);
+      $('step-slider').value = String(index);
+      $('step-count').textContent = `${index + 1} / ${runtime.steps.length}`;
+      $('prev').disabled = index === 0;
+      $('next').disabled = index === runtime.steps.length - 1;
+      $('play').textContent = runtime.playing ? '⏸ 暂停' : '▶ 播放';
+    }
+
+    const runtime = {
+      exampleId: 'main',
+      steps: [],
+      index: 0,
+      playing: false,
+      timer: null,
+      render,
+      load(exampleId) {
+        this.stop();
+        this.exampleId = exampleId;
+        this.steps = buildSteps(EXAMPLES[exampleId]);
+        this.index = 0;
+        $('step-slider').max = String(this.steps.length - 1);
+        render(this.index);
+      },
+      go(index) {
+        this.index = Math.max(0, Math.min(this.steps.length - 1, Number(index)));
+        render(this.index);
+      },
+      next() {
+        if (this.index >= this.steps.length - 1) { this.stop(); return; }
+        this.go(this.index + 1);
+      },
+      prev() { this.stop(); this.go(this.index - 1); },
+      play() {
+        if (this.playing) { this.stop(); return; }
+        if (this.index >= this.steps.length - 1) this.go(0);
+        this.playing = true;
+        $('play').textContent = '⏸ 暂停';
+        this.timer = setInterval(() => {
+          if (this.index >= this.steps.length - 1) this.stop();
+          else this.next();
+        }, Number($('speed').value));
+      },
+      stop() {
+        this.playing = false;
+        if (this.timer) clearInterval(this.timer);
+        this.timer = null;
+        if ($('play')) $('play').textContent = '▶ 播放';
+      },
+      audit() {
+        const last = this.steps[this.steps.length - 1].state;
+        const ids = outputIds(last).filter((id) => id !== 'dummy');
+        return {
+          example: this.exampleId,
+          stepCount: this.steps.length,
+          finalValues: ids.map((id) => last.nodes[id].value),
+          expected: EXAMPLES[this.exampleId].expected,
+          finalMatches: JSON.stringify(ids.map((id) => last.nodes[id].value)) === JSON.stringify(EXAMPLES[this.exampleId].expected),
+          returnTarget: last.returned ? 'dummy.next' : null,
+          hasDummy: Boolean(last.nodes.dummy),
+        };
+      },
+    };
+
+    $('prev').addEventListener('click', () => runtime.prev());
+    $('next').addEventListener('click', () => { runtime.stop(); runtime.next(); });
+    $('play').addEventListener('click', () => runtime.play());
+    $('reset').addEventListener('click', () => { runtime.stop(); runtime.go(0); });
+    $('step-slider').addEventListener('input', (event) => { runtime.stop(); runtime.go(event.target.value); });
+    $('speed').addEventListener('change', () => { if (runtime.playing) { runtime.stop(); runtime.play(); } });
+    $('example-select').addEventListener('change', (event) => runtime.load(event.target.value));
+    document.addEventListener('keydown', (event) => {
+      if (event.target && ['INPUT', 'SELECT', 'BUTTON'].includes(event.target.tagName) && event.key !== ' ') return;
+      if (event.key === 'ArrowRight') { event.preventDefault(); runtime.stop(); runtime.next(); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); runtime.prev(); }
+      if (event.key === ' ') { event.preventDefault(); runtime.play(); }
+    });
+
+    window.__leetcode21 = {
+      getState: () => ({ example: runtime.exampleId, index: runtime.index, step: clone(runtime.steps[runtime.index]), audit: runtime.audit() }),
+      goTo: (index) => runtime.go(index),
+      chooseExample: (id) => runtime.load(id),
+      audit: () => runtime.audit(),
+    };
+
+    runtime.load('main');
+  </script>
+</body>
+</html>

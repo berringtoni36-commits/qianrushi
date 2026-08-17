@@ -1,0 +1,2906 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "按候选个数枚举回溯",
+    "sceneKind": "backtracking",
+    "input": {
+      "candidates": [
+        2,
+        3,
+        6,
+        7
+      ],
+      "target": 7
+    },
+    "expected": [
+      [
+        7
+      ],
+      [
+        2,
+        2,
+        3
+      ]
+    ],
+    "exampleText": "candidates=[2,3,6,7], target=7",
+    "expectedText": "[[2,2,3],[7]]",
+    "invariant": "进入 u 层时 path 只含下标小于 u 的候选",
+    "aha": "同一数字可重复使用，因此枚举使用次数",
+    "time": "exponential",
+    "space": "O(target)",
+    "problemId": 39,
+    "title": "组合总和",
+    "day": "Day 10：回溯",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "ae969b75ddfca3a17a79aa8164a534665e7117769ac087fc0da51cc3f762d5a0",
+    "semanticTokenHash": "e353e83b9fcfb5a56a4ec4a004b8271e26a9bc6865e91c9e00589a137cd89f64",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "固定当前候选的使用次数后处理下一候选。",
+        "review": "next target=7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 0,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "从候选 2 开始分配个数",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "第 u 层枚举 c[u] 使用 0,1,2... 次。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 0,
+              "target": 7,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=7",
+            "action": "选择 0 个 2",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 7,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=7",
+            "action": "选择 0 个 3",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 7,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=7",
+            "action": "选择 0 个 6",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "循环结束后恢复进入本层前的路径。",
+        "review": "撤销候选 7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 7,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=7",
+            "action": "选择 0 个 7",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 7,
+              "count": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=0",
+            "action": "选择 1 个 7",
+            "status": "running",
+            "path": [
+              7
+            ],
+            "output": [],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 4,
+              "target": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              3
+            ],
+            "formula": "[7]",
+            "action": "记录组合 [7]",
+            "status": "running",
+            "path": [
+              7
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "剩余目标归零时记录。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 7",
+            "status": "running",
+            "path": [
+              7
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "循环结束后恢复进入本层前的路径。",
+        "review": "撤销候选 7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 7",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 7,
+              "count": 1
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=1",
+            "action": "选择 1 个 6",
+            "status": "running",
+            "path": [
+              6
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 1,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=1",
+            "action": "选择 0 个 7",
+            "status": "running",
+            "path": [
+              6
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 7",
+            "status": "running",
+            "path": [
+              6
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "固定当前候选的使用次数后处理下一候选。",
+        "review": "next target=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 6",
+            "status": "running",
+            "path": [
+              6
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 6",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 7,
+              "count": 1
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=4",
+            "action": "选择 1 个 3",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 4,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=4",
+            "action": "选择 0 个 6",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "固定当前候选的使用次数后处理下一候选。",
+        "review": "next target=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 4,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=4",
+            "action": "选择 0 个 7",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 4
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 7",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 4
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 6",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 7,
+              "count": 2
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=1",
+            "action": "选择 2 个 3",
+            "status": "running",
+            "path": [
+              3,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "循环结束后恢复进入本层前的路径。",
+        "review": "撤销候选 6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 1,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=1",
+            "action": "选择 0 个 6",
+            "status": "running",
+            "path": [
+              3,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 1,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=1",
+            "action": "选择 0 个 7",
+            "status": "running",
+            "path": [
+              3,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 7",
+            "status": "running",
+            "path": [
+              3,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 1
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 6",
+            "status": "running",
+            "path": [
+              3,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "固定当前候选的使用次数后处理下一候选。",
+        "review": "next target=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 3",
+            "status": "running",
+            "path": [
+              3,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 3",
+            "status": "running",
+            "path": [
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 3",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 0,
+              "target": 7,
+              "count": 1
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=5",
+            "action": "选择 1 个 2",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "循环结束后恢复进入本层前的路径。",
+        "review": "撤销候选 7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 5,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=5",
+            "action": "选择 0 个 3",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 5,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=5",
+            "action": "选择 0 个 6",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 5,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=5",
+            "action": "选择 0 个 7",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 7",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "固定当前候选的使用次数后处理下一候选。",
+        "review": "next target=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 6",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 5,
+              "count": 1
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=2",
+            "action": "选择 1 个 3",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 2,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=2",
+            "action": "选择 0 个 6",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 2,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=2",
+            "action": "选择 0 个 7",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1570,
+      "captions": {
+        "learning": "循环结束后恢复进入本层前的路径。",
+        "review": "撤销候选 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 2
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 7",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 2
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 6",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 3",
+            "status": "running",
+            "path": [
+              2,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 5
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 3",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1440,
+      "captions": {
+        "learning": "固定当前候选的使用次数后处理下一候选。",
+        "review": "next target=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 0,
+              "target": 7,
+              "count": 2
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=3",
+            "action": "选择 2 个 2",
+            "status": "running",
+            "path": [
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 3,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=3",
+            "action": "选择 0 个 3",
+            "status": "running",
+            "path": [
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 3,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=3",
+            "action": "选择 0 个 6",
+            "status": "running",
+            "path": [
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1440,
+      "captions": {
+        "learning": "循环结束后恢复进入本层前的路径。",
+        "review": "撤销候选 6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 3,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=3",
+            "action": "选择 0 个 7",
+            "status": "running",
+            "path": [
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 3
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 7",
+            "status": "running",
+            "path": [
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 3
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 6",
+            "status": "running",
+            "path": [
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1440,
+      "captions": {
+        "learning": "循环结束后恢复进入本层前的路径。",
+        "review": "撤销候选 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 3,
+              "count": 1
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=0",
+            "action": "选择 1 个 3",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              3
+            ],
+            "output": [
+              [
+                7
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "[2, 2, 3]",
+            "action": "记录组合 [2, 2, 3]",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              3
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "剩余目标归零时记录。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 3
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 3",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              3
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1440,
+      "captions": {
+        "learning": "固定当前候选的使用次数后处理下一候选。",
+        "review": "next target=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 3
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 3",
+            "status": "running",
+            "path": [
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 0,
+              "target": 7,
+              "count": 3
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=1",
+            "action": "选择 3 个 2",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 1,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=1",
+            "action": "选择 0 个 3",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1440,
+      "captions": {
+        "learning": "循环结束后恢复进入本层前的路径。",
+        "review": "撤销候选 7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 1,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=1",
+            "action": "选择 0 个 6",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 1,
+              "count": 0
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "next target=1",
+            "action": "选择 0 个 7",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "固定当前候选的使用次数后处理下一候选。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 3,
+              "target": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 7",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-16",
+      "phase": "mutate",
+      "durationMs": 1440,
+      "captions": {
+        "learning": "循环结束后恢复进入本层前的路径。",
+        "review": "撤销候选 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 2,
+              "target": 1
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 6",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 1,
+              "target": 1
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 3",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 0,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 2",
+            "status": "running",
+            "path": [
+              2,
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-17",
+      "phase": "mutate",
+      "durationMs": 1440,
+      "captions": {
+        "learning": "循环结束后恢复进入本层前的路径。",
+        "review": "撤销候选 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 0,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 2",
+            "status": "running",
+            "path": [
+              2,
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 0,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 2",
+            "status": "running",
+            "path": [
+              2
+            ],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        },
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "u": 0,
+              "target": 7
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "撤销候选 2",
+            "status": "running",
+            "path": [],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "循环结束后恢复进入本层前的路径。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "按候选下标分层避免了排列重复。",
+        "review": "[[7], [2, 2, 3]]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "variables": {
+              "count": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "formula": "[[7], [2, 2, 3]]",
+            "action": "返回两个组合",
+            "status": "return",
+            "path": [],
+            "output": [
+              [
+                7
+              ],
+              [
+                2,
+                2,
+                3
+              ]
+            ],
+            "matrix": null,
+            "activeCells": []
+          },
+          "caption": "按候选下标分层避免了排列重复。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n\n    vector<vector<int>> ans;\n    vector<int> path;\n\n    vector<vector<int>> combinationSum(vector<int>& c, int target) {\n        dfs(c, 0, target);\n        return ans;\n    }\n\n    void dfs(vector<int>& c, int u, int target) {                // 深度优先搜索\n        if (target == 0) {\n            ans.push_back(path);                                 // 记录结果\n            return;\n        }\n        if (u == c.size()) return;\n\n        for (int i = 0; c[u] * i <= target; i ++ ) {  // 枚举c[u]取0,1,2,...个\n            dfs(c, u + 1, target - c[u] * i);\n            path.push_back(c[u]);\n        }\n\n        for (int i = 0; c[u] * i <= target; i ++ ) {\n            path.pop_back();                                     // 回溯：撤销选择\n        }\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3788,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3789,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3790,
+        "text": ""
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3791,
+        "text": "    vector<vector<int>> ans;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3792,
+        "text": "    vector<int> path;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3793,
+        "text": ""
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3794,
+        "text": "    vector<vector<int>> combinationSum(vector<int>& c, int target) {"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3795,
+        "text": "        dfs(c, 0, target);"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3796,
+        "text": "        return ans;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3797,
+        "text": "    }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3798,
+        "text": ""
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3799,
+        "text": "    void dfs(vector<int>& c, int u, int target) {                // 深度优先搜索"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3800,
+        "text": "        if (target == 0) {"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3801,
+        "text": "            ans.push_back(path);                                 // 记录结果"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3802,
+        "text": "            return;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3803,
+        "text": "        }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3804,
+        "text": "        if (u == c.size()) return;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3805,
+        "text": ""
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3806,
+        "text": "        for (int i = 0; c[u] * i <= target; i ++ ) {  // 枚举c[u]取0,1,2,...个"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3807,
+        "text": "            dfs(c, u + 1, target - c[u] * i);"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3808,
+        "text": "            path.push_back(c[u]);"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3809,
+        "text": "        }"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 3810,
+        "text": ""
+      },
+      {
+        "id": "L24",
+        "sourceLine": 3811,
+        "text": "        for (int i = 0; c[u] * i <= target; i ++ ) {"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 3812,
+        "text": "            path.pop_back();                                     // 回溯：撤销选择"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 3813,
+        "text": "        }"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 3814,
+        "text": "    }"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 3815,
+        "text": "};"
+      }
+    ]
+  }
+}

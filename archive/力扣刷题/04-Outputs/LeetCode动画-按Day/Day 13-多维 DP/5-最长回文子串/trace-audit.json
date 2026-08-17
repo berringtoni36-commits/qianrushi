@@ -1,0 +1,690 @@
+{
+  "problemId": 5,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 5,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "b",
+        "a",
+        "b",
+        "a",
+        "d"
+      ],
+      "variables": {
+        "best": "bab"
+      },
+      "structure": {},
+      "result": [
+        "bab"
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "9b563f165c6351e772c672a718c67368a077bf3bf6b2809a124baf76622f206a",
+    "sourceSemanticTokenHash": "83479c3c7c3a02fdb47d3b787e0e8f6fd3fa3308087ee996ed79e451f0489b6a",
+    "sourceCodeLineCount": 17
+  },
+  "sourceCodeSha256": "9b563f165c6351e772c672a718c67368a077bf3bf6b2809a124baf76622f206a",
+  "sourceSemanticTokenHash": "83479c3c7c3a02fdb47d3b787e0e8f6fd3fa3308087ee996ed79e451f0489b6a",
+  "steps": [
+    {
+      "id": "5-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "准备中心扩展",
+      "body": "回文只需围绕奇数中心和偶数间隙向两侧比较。 题解原意：核心洞察：回文串一定是对称的，所以每个字符（以及每两个相邻字符之间）都可以作为回文中心，向两边扩展直到不是回文。长度为 n 的字符串有 2n-1 个可能的中心。",
+      "kind": "palindrome",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · palindrome",
+        "badge": "best=",
+        "tokens": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "best": ""
+        },
+        "rows": [
+          {
+            "label": "best",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "回文只需围绕奇数中心和偶数间隙向两侧比较。"
+      },
+      "state": {
+        "values": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "variables": {
+          "best": ""
+        },
+        "structure": {
+          "centers": "字符 + 间隙"
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "5-trace-002",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "compare",
+      "title": "以 1 为中心扩展",
+      "body": "比较 s[0] 与 s[2]，当前回文候选 bab。",
+      "kind": "palindrome",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · palindrome",
+        "badge": "l=0 · r=2 · best=",
+        "tokens": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [
+          0,
+          2
+        ],
+        "variables": {
+          "center": 1,
+          "l": 0,
+          "r": 2,
+          "best": ""
+        },
+        "rows": [
+          {
+            "label": "center",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "candidate",
+            "values": [
+              "bab"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "比较 s[0] 与 s[2]，当前回文候选 bab。"
+      },
+      "state": {
+        "values": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "variables": {
+          "center": 1,
+          "l": 0,
+          "r": 2,
+          "best": ""
+        },
+        "structure": {
+          "candidate": "bab"
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "5-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "更新 best = bab",
+      "body": "候选长度 3 与当前最优比较后保留 bab。",
+      "kind": "palindrome",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · palindrome",
+        "badge": "l=0 · r=2 · best=bab · 结果 1 项",
+        "tokens": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "center": 1,
+          "l": 0,
+          "r": 2,
+          "best": "bab"
+        },
+        "rows": [
+          {
+            "label": "best",
+            "values": [
+              "bab"
+            ]
+          }
+        ],
+        "result": [
+          "bab"
+        ],
+        "note": "候选长度 3 与当前最优比较后保留 bab。"
+      },
+      "state": {
+        "values": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "variables": {
+          "center": 1,
+          "l": 0,
+          "r": 2,
+          "best": "bab"
+        },
+        "structure": {
+          "candidate": "bab"
+        },
+        "result": [
+          "bab"
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "5-trace-004",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "compare",
+      "title": "以 2 为中心扩展",
+      "body": "比较 s[1] 与 s[3]，当前回文候选 aba。",
+      "kind": "palindrome",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · palindrome",
+        "badge": "l=1 · r=3 · best=bab",
+        "tokens": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [
+          1,
+          3
+        ],
+        "variables": {
+          "center": 2,
+          "l": 1,
+          "r": 3,
+          "best": "bab"
+        },
+        "rows": [
+          {
+            "label": "center",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "candidate",
+            "values": [
+              "aba"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "比较 s[1] 与 s[3]，当前回文候选 aba。"
+      },
+      "state": {
+        "values": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "variables": {
+          "center": 2,
+          "l": 1,
+          "r": 3,
+          "best": "bab"
+        },
+        "structure": {
+          "candidate": "aba"
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "5-trace-005",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "更新 best = bab",
+      "body": "候选长度 3 与当前最优比较后保留 bab。",
+      "kind": "palindrome",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · palindrome",
+        "badge": "l=1 · r=3 · best=bab · 结果 1 项",
+        "tokens": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "center": 2,
+          "l": 1,
+          "r": 3,
+          "best": "bab"
+        },
+        "rows": [
+          {
+            "label": "best",
+            "values": [
+              "bab"
+            ]
+          }
+        ],
+        "result": [
+          "bab"
+        ],
+        "note": "候选长度 3 与当前最优比较后保留 bab。"
+      },
+      "state": {
+        "values": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "variables": {
+          "center": 2,
+          "l": 1,
+          "r": 3,
+          "best": "bab"
+        },
+        "structure": {
+          "candidate": "aba"
+        },
+        "result": [
+          "bab"
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "5-trace-006",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "compare",
+      "title": "以 3 为中心扩展",
+      "body": "比较 s[2] 与 s[4]，当前回文候选 a。",
+      "kind": "palindrome",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · palindrome",
+        "badge": "l=2 · r=4 · best=bab",
+        "tokens": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [
+          2,
+          4
+        ],
+        "variables": {
+          "center": 3,
+          "l": 2,
+          "r": 4,
+          "best": "bab"
+        },
+        "rows": [
+          {
+            "label": "center",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "candidate",
+            "values": [
+              "a"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "比较 s[2] 与 s[4]，当前回文候选 a。"
+      },
+      "state": {
+        "values": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "variables": {
+          "center": 3,
+          "l": 2,
+          "r": 4,
+          "best": "bab"
+        },
+        "structure": {
+          "candidate": "a"
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "5-trace-007",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "更新 best = bab",
+      "body": "候选长度 1 与当前最优比较后保留 bab。",
+      "kind": "palindrome",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · palindrome",
+        "badge": "l=2 · r=4 · best=bab · 结果 1 项",
+        "tokens": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "center": 3,
+          "l": 2,
+          "r": 4,
+          "best": "bab"
+        },
+        "rows": [
+          {
+            "label": "best",
+            "values": [
+              "bab"
+            ]
+          }
+        ],
+        "result": [
+          "bab"
+        ],
+        "note": "候选长度 1 与当前最优比较后保留 bab。"
+      },
+      "state": {
+        "values": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "variables": {
+          "center": 3,
+          "l": 2,
+          "r": 4,
+          "best": "bab"
+        },
+        "structure": {
+          "candidate": "a"
+        },
+        "result": [
+          "bab"
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "5-trace-008",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "inspect",
+      "title": "检查偶数中心",
+      "body": "把 l=i、r=i+1 放在字符间隙，覆盖偶数长度回文。",
+      "kind": "palindrome",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · palindrome",
+        "badge": "best=bab",
+        "tokens": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "center": "gap",
+          "best": "bab"
+        },
+        "rows": [
+          {
+            "label": "best",
+            "values": [
+              "bab"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把 l=i、r=i+1 放在字符间隙，覆盖偶数长度回文。"
+      },
+      "state": {
+        "values": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "variables": {
+          "center": "gap",
+          "best": "bab"
+        },
+        "structure": {
+          "candidate": ""
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "5-trace-check-010",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最长回文 bab。 易错提醒：DP 遍历顺序：必须从下往上（i 递减），因为 dp[i][j] 依赖 dp[i+1][j-1]。从下往上保证左下角先被计算。 中心扩展的数量：n 个字符有 2n-1 个中心（n 个单字符中心 + n-1 个双字符中心）。 子串 vs 子序列：本题是子串（连续），区分于回文子序列问题。 长度 1 的特殊情况：任何单字符都是回文，直接返回…",
+      "kind": "palindrome",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "best=bab",
+        "tokens": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "center": "gap",
+          "best": "bab"
+        },
+        "rows": [
+          {
+            "label": "best",
+            "values": [
+              "bab"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回最长回文 bab。"
+      },
+      "state": {
+        "values": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "variables": {
+          "center": "gap",
+          "best": "bab"
+        },
+        "structure": {
+          "candidate": ""
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "5-trace-009",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回最长回文 bab。",
+      "kind": "palindrome",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · palindrome",
+        "badge": "best=bab · 结果 1 项",
+        "tokens": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "best": "bab"
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "bab"
+            ]
+          }
+        ],
+        "result": [
+          "bab"
+        ],
+        "note": "返回最长回文 bab。"
+      },
+      "state": {
+        "values": [
+          "b",
+          "a",
+          "b",
+          "a",
+          "d"
+        ],
+        "variables": {
+          "best": "bab"
+        },
+        "structure": {},
+        "result": [
+          "bab"
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

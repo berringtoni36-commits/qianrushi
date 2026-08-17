@@ -1,0 +1,1841 @@
+{
+  "problemId": 239,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 239,
+    "stepCount": 23,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        3,
+        -1,
+        -3,
+        5,
+        3,
+        6,
+        7
+      ],
+      "variables": {
+        "k": 3
+      },
+      "structure": {
+        "q": [
+          7
+        ]
+      },
+      "result": [
+        3,
+        3,
+        5,
+        5,
+        6,
+        7
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "7e83bd85ee843b1698125aab86ffa769569e961bcc57cd6192d0f21340d79700",
+    "sourceSemanticTokenHash": "12d896b4474c3fcd039ad091f7f4752b3e522f194b452f2b8c2ab4ef22d38251",
+    "sourceCodeLineCount": 14
+  },
+  "sourceCodeSha256": "7e83bd85ee843b1698125aab86ffa769569e961bcc57cd6192d0f21340d79700",
+  "sourceSemanticTokenHash": "12d896b4474c3fcd039ad091f7f4752b3e522f194b452f2b8c2ab4ef22d38251",
+  "steps": [
+    {
+      "id": "239-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立单调队列",
+      "body": "q 保存当前窗口中可能成为最大值的下标，并保持对应值递减。 题解原意：核心想法： 维护一个双端队列 q，队列中存储元素的索引（不是值），且这些索引对应的值在队列中是单调递减的。 为什么存储索引而不是值？ 因为我们需要判断队首元素是否已经滑出窗口——这需要通过索引与 i - k + 1 的关系来判断。 关键洞察： 当新元素 nums[i] 加入时，队列中所有比 nums[i] 小的元素都失去了成为最大值的可能（它们更早过期，更小），可以直接从队尾弹出。 单调队列的维护三步走： 1. 维护…",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · mono-deque",
+        "badge": "i=None",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 3,
+          "i": null
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "q 保存当前窗口中可能成为最大值的下标，并保持对应值递减。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "k": 3,
+          "i": null
+        },
+        "structure": {
+          "q": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-002",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入候选下标 0",
+      "body": "保持队列从队首到队尾对应值递减：[1]。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=0",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "0:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "保持队列从队首到队尾对应值递减：[1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 0,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "淘汰更差的队尾",
+      "body": "新值 3 不小于队尾候选，队尾不可能再成为最大值。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=1",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "新值 3 不小于队尾候选，队尾不可能再成为最大值。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 1,
+          "k": 3
+        },
+        "structure": {
+          "q": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-004",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入候选下标 1",
+      "body": "保持队列从队首到队尾对应值递减：[3]。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=1",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "1:3"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "保持队列从队首到队尾对应值递减：[3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 1,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            1
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-005",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入候选下标 2",
+      "body": "保持队列从队首到队尾对应值递减：[3, -1]。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=2",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "1:3",
+              "2:-1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "保持队列从队首到队尾对应值递减：[3, -1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 2,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            1,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-006",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "记录窗口最大值 3",
+      "body": "窗口 [0,2] 的最大值来自队首 q.front() = 1。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=2 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          0,
+          1,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "window max",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "deque",
+            "values": [
+              "1:3",
+              "2:-1"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "窗口 [0,2] 的最大值来自队首 q.front() = 1。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 2,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            1,
+            2
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "239-trace-007",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入候选下标 3",
+      "body": "保持队列从队首到队尾对应值递减：[3, -1, -3]。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=3 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "1:3",
+              "2:-1",
+              "3:-3"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "保持队列从队首到队尾对应值递减：[3, -1, -3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 3,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            1,
+            2,
+            3
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-008",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "记录窗口最大值 3",
+      "body": "窗口 [1,3] 的最大值来自队首 q.front() = 1。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=3 · 结果 2 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          1,
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "window max",
+            "values": [
+              3,
+              3
+            ]
+          },
+          {
+            "label": "deque",
+            "values": [
+              "1:3",
+              "2:-1",
+              "3:-3"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3
+        ],
+        "note": "窗口 [1,3] 的最大值来自队首 q.front() = 1。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 3,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            1,
+            2,
+            3
+          ]
+        },
+        "result": [
+          3,
+          3
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "239-trace-009",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "移除过期队首",
+      "body": "窗口左界超过队首下标，弹出过期候选；q=[2, 3]。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=4 · 结果 2 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "2:-1",
+              "3:-3"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3
+        ],
+        "note": "窗口左界超过队首下标，弹出过期候选；q=[2, 3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 4,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            2,
+            3
+          ]
+        },
+        "result": [
+          3,
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-010",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "淘汰更差的队尾",
+      "body": "新值 5 不小于队尾候选，队尾不可能再成为最大值。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=4 · 结果 2 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "2:-1"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3
+        ],
+        "note": "新值 5 不小于队尾候选，队尾不可能再成为最大值。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 4,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            2
+          ]
+        },
+        "result": [
+          3,
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-011",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "淘汰更差的队尾",
+      "body": "新值 5 不小于队尾候选，队尾不可能再成为最大值。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=4 · 结果 2 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3
+        ],
+        "note": "新值 5 不小于队尾候选，队尾不可能再成为最大值。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 4,
+          "k": 3
+        },
+        "structure": {
+          "q": []
+        },
+        "result": [
+          3,
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-012",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入候选下标 4",
+      "body": "保持队列从队首到队尾对应值递减：[5]。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=4 · 结果 2 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "4:5"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3
+        ],
+        "note": "保持队列从队首到队尾对应值递减：[5]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 4,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            4
+          ]
+        },
+        "result": [
+          3,
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-013",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "记录窗口最大值 5",
+      "body": "窗口 [2,4] 的最大值来自队首 q.front() = 4。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=4 · 结果 3 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          2,
+          3,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "window max",
+            "values": [
+              3,
+              3,
+              5
+            ]
+          },
+          {
+            "label": "deque",
+            "values": [
+              "4:5"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5
+        ],
+        "note": "窗口 [2,4] 的最大值来自队首 q.front() = 4。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 4,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            4
+          ]
+        },
+        "result": [
+          3,
+          3,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "239-trace-014",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入候选下标 5",
+      "body": "保持队列从队首到队尾对应值递减：[5, 3]。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=5 · 结果 3 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "4:5",
+              "5:3"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5
+        ],
+        "note": "保持队列从队首到队尾对应值递减：[5, 3]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 5,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            4,
+            5
+          ]
+        },
+        "result": [
+          3,
+          3,
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-015",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "记录窗口最大值 5",
+      "body": "窗口 [3,5] 的最大值来自队首 q.front() = 4。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=5 · 结果 4 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          3,
+          4,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "window max",
+            "values": [
+              3,
+              3,
+              5,
+              5
+            ]
+          },
+          {
+            "label": "deque",
+            "values": [
+              "4:5",
+              "5:3"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5,
+          5
+        ],
+        "note": "窗口 [3,5] 的最大值来自队首 q.front() = 4。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 5,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            4,
+            5
+          ]
+        },
+        "result": [
+          3,
+          3,
+          5,
+          5
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "239-trace-016",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "淘汰更差的队尾",
+      "body": "新值 6 不小于队尾候选，队尾不可能再成为最大值。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=6 · 结果 4 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "4:5"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5,
+          5
+        ],
+        "note": "新值 6 不小于队尾候选，队尾不可能再成为最大值。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 6,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            4
+          ]
+        },
+        "result": [
+          3,
+          3,
+          5,
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-017",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "淘汰更差的队尾",
+      "body": "新值 6 不小于队尾候选，队尾不可能再成为最大值。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=6 · 结果 4 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5,
+          5
+        ],
+        "note": "新值 6 不小于队尾候选，队尾不可能再成为最大值。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 6,
+          "k": 3
+        },
+        "structure": {
+          "q": []
+        },
+        "result": [
+          3,
+          3,
+          5,
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-018",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入候选下标 6",
+      "body": "保持队列从队首到队尾对应值递减：[6]。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=6 · 结果 4 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "6:6"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5,
+          5
+        ],
+        "note": "保持队列从队首到队尾对应值递减：[6]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 6,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            6
+          ]
+        },
+        "result": [
+          3,
+          3,
+          5,
+          5
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-019",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "记录窗口最大值 6",
+      "body": "窗口 [4,6] 的最大值来自队首 q.front() = 6。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=6 · 结果 5 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          4,
+          5,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "window max",
+            "values": [
+              3,
+              3,
+              5,
+              5,
+              6
+            ]
+          },
+          {
+            "label": "deque",
+            "values": [
+              "6:6"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5,
+          5,
+          6
+        ],
+        "note": "窗口 [4,6] 的最大值来自队首 q.front() = 6。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 6,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            6
+          ]
+        },
+        "result": [
+          3,
+          3,
+          5,
+          5,
+          6
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "239-trace-020",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "淘汰更差的队尾",
+      "body": "新值 7 不小于队尾候选，队尾不可能再成为最大值。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=7 · 结果 5 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5,
+          5,
+          6
+        ],
+        "note": "新值 7 不小于队尾候选，队尾不可能再成为最大值。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 7,
+          "k": 3
+        },
+        "structure": {
+          "q": []
+        },
+        "result": [
+          3,
+          3,
+          5,
+          5,
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-021",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "加入候选下标 7",
+      "body": "保持队列从队首到队尾对应值递减：[7]。",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=7 · 结果 5 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "deque",
+            "values": [
+              "7:7"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5,
+          5,
+          6
+        ],
+        "note": "保持队列从队首到队尾对应值递减：[7]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 7,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            7
+          ]
+        },
+        "result": [
+          3,
+          3,
+          5,
+          5,
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "239-trace-022",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "记录窗口最大值 7",
+      "body": "窗口 [5,7] 的最大值来自队首 q.front() = 7。 易错提醒：存储索引而非值： 队列中存储的必须是索引而不是值。因为我们需要判断过期——值无法告诉我们元素是否还在窗口内，只有索引可以。 单调性定义： 是单调递减（从大到小），队首是最大值。不是单调递增。如果是递增，队首是最小值，不符合需求。 出队顺序： 先弹出队尾小元素，再加入新元素，再弹出队首过期元素，最后取结果。顺序不要搞反。特别是，新加入的元素…",
+      "kind": "mono-deque",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · mono-deque",
+        "badge": "i=7 · 结果 6 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [
+          5,
+          6,
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "window max",
+            "values": [
+              3,
+              3,
+              5,
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "label": "deque",
+            "values": [
+              "7:7"
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5,
+          5,
+          6,
+          7
+        ],
+        "note": "窗口 [5,7] 的最大值来自队首 q.front() = 7。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "i": 7,
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            7
+          ]
+        },
+        "result": [
+          3,
+          3,
+          5,
+          5,
+          6,
+          7
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "239-trace-023",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "所有固定窗口处理完成，返回 [3, 3, 5, 5, 6, 7]。",
+      "kind": "mono-deque",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · mono-deque",
+        "badge": "结果 6 项",
+        "tokens": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3,
+              3,
+              5,
+              5,
+              6,
+              7
+            ]
+          }
+        ],
+        "result": [
+          3,
+          3,
+          5,
+          5,
+          6,
+          7
+        ],
+        "note": "所有固定窗口处理完成，返回 [3, 3, 5, 5, 6, 7]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        "variables": {
+          "k": 3
+        },
+        "structure": {
+          "q": [
+            7
+          ]
+        },
+        "result": [
+          3,
+          3,
+          5,
+          5,
+          6,
+          7
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

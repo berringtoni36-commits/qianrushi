@@ -1,8 +1,0 @@
-{
-  "cssSnippets": [
-    "codex-theme"
-  ],
-  "alwaysUpdateLinks": true,
-  "newFileLocation": "current",
-  "promptDelete": false
-}

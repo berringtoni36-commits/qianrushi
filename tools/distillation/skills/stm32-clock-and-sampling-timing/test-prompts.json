@@ -1,0 +1,14 @@
+{
+  "skill": "stm32-clock-and-sampling-timing",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"这个 STM32F1 工程宏写的是 72MHz，怎么从 HSE/PLL/APB 算到 ADC 和定时器的真实时钟？","expected_behavior":"激活本 skill，画时钟链并区分配置目标、PCLK、定时器倍频和实测证据","notes":"时钟树"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"MQ2 ADC 读数异常，帮我核对 PA4/ADC1_CH4、239.5 cycles、PCLK2/6、10 次平均和预热边界","expected_behavior":"激活本 skill，结合当前源码逐符号核对采样链，并指出没有预热等待/标定实测","notes":"工程采样审计"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"TIM2 的 PWM 频率算出来总是差一倍，串口乱码也可能和时钟有关，应该怎么排查？","expected_behavior":"激活本 skill，检查 APB prescaler 的定时器时钟规则、BRR、寄存器和测量","notes":"时序故障"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"温度、湿度和 MQ2 气体值怎样融合成自动模式 PWM？","expected_behavior":"不优先激活本 skill，转 rtos-sensor-acquisition-and-fusion","notes":"传感器融合兄弟 Skill"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"FreeRTOS 启动后任务不跑，SysTick、PendSV、SVC 和任务栈应该怎么查？","expected_behavior":"不优先激活本 skill，转 rtos-freertos-config-and-boot","notes":"启动兄弟 Skill"},
+    {"id":"edge-01","type":"edge_case","prompt":"我只想知道 ADC 的奈奎斯特采样定理是什么，不需要 STM32 工程核对","expected_behavior":"做普通 ADC 概念解释，不强行引入仓库项目事实","notes":"通用概念边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

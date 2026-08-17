@@ -1,0 +1,8 @@
+/* Keep the native monospace font stack on code blocks and inline code. */
+.markdown-source-view.mod-cm6 :is(.HyperMD-codeblock, .HyperMD-codeblock *),
+.markdown-preview-view :is(pre, pre code, pre code *),
+.markdown-source-view.mod-cm6 .cm-inline-code,
+.markdown-preview-view :not(pre) > code {
+  font-family: var(--font-monospace), monospace !important;
+  font-feature-settings: "liga" 1, "calt" 1 !important;
+}

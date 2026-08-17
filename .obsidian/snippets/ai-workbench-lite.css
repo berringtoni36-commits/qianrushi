@@ -1,0 +1,561 @@
+/* AI Workbench — editorial command center, scoped to the AI homepage. */
+.markdown-preview-view.aiw-dashboard.hv-dashboard :is(.mod-header, .inline-title, .metadata-container) {
+  display: none;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-metrics,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] > .callout-content {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] .block-language-button,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] button {
+  width: 100%;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard {
+  --file-line-width: 1120px;
+  --aiw-accent: var(--color-accent, var(--interactive-accent));
+  --aiw-accent-strong: var(--interactive-accent-hover, var(--aiw-accent));
+  --aiw-text: var(--text-normal);
+  --aiw-muted: color-mix(in srgb, var(--text-normal) 58%, var(--background-primary));
+  --aiw-faint: color-mix(in srgb, var(--text-normal) 42%, var(--background-primary));
+  --aiw-surface: color-mix(in srgb, var(--background-primary) 97%, var(--text-normal));
+  --aiw-surface-raised: color-mix(in srgb, var(--background-primary) 99%, var(--aiw-accent));
+  --aiw-surface-soft: color-mix(in srgb, var(--background-primary) 94%, var(--aiw-accent));
+  --aiw-border: color-mix(in srgb, var(--text-normal) 10%, transparent);
+  --aiw-border-strong: color-mix(in srgb, var(--text-normal) 16%, transparent);
+  --aiw-border-accent: color-mix(in srgb, var(--aiw-accent) 28%, transparent);
+  --aiw-shadow-sm: 0 1px 2px rgba(24, 24, 32, 0.035), 0 8px 24px rgba(24, 24, 32, 0.045);
+  --aiw-shadow-lg: 0 2px 4px rgba(24, 24, 32, 0.04), 0 24px 64px rgba(24, 24, 32, 0.075);
+  --aiw-radius-xl: 24px;
+  --aiw-radius-lg: 18px;
+  --aiw-radius-md: 13px;
+  color: var(--aiw-text);
+}
+
+.theme-dark .markdown-preview-view.aiw-dashboard.hv-dashboard {
+  --aiw-muted: color-mix(in srgb, var(--text-normal) 68%, var(--background-primary));
+  --aiw-faint: color-mix(in srgb, var(--text-normal) 48%, var(--background-primary));
+  --aiw-surface: color-mix(in srgb, var(--background-primary) 94%, var(--text-normal));
+  --aiw-surface-raised: color-mix(in srgb, var(--background-primary) 96%, var(--aiw-accent));
+  --aiw-surface-soft: color-mix(in srgb, var(--background-primary) 90%, var(--aiw-accent));
+  --aiw-border: color-mix(in srgb, var(--text-normal) 13%, transparent);
+  --aiw-border-strong: color-mix(in srgb, var(--text-normal) 20%, transparent);
+  --aiw-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.16), 0 10px 28px rgba(0, 0, 0, 0.13);
+  --aiw-shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.18), 0 28px 70px rgba(0, 0, 0, 0.22);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .markdown-preview-sizer {
+  padding-top: clamp(1.7rem, 3vw, 2.8rem) !important;
+  padding-bottom: 5rem !important;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout^="aiw-"] {
+  --callout-color: 0, 0, 0;
+  --callout-icon: none;
+  overflow: hidden;
+  border: 1px solid var(--aiw-border);
+  border-radius: var(--aiw-radius-lg);
+  background: var(--aiw-surface-raised) !important;
+  box-shadow: var(--aiw-shadow-sm);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout^="aiw-"]::after {
+  display: none !important;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout^="aiw-"] > .callout-title,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout^="aiw-"] > .callout-content {
+  background: transparent !important;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout^="aiw-"] > .callout-title .callout-icon {
+  display: none;
+}
+
+/* Hero: quiet depth, strong type hierarchy, no decorative noise. */
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-hero"] {
+  position: relative;
+  margin: 0 0 1.35rem;
+  padding: clamp(1.35rem, 3vw, 2.2rem);
+  border-color: var(--aiw-border-accent);
+  border-radius: var(--aiw-radius-xl);
+  background:
+    radial-gradient(circle at 92% 6%, color-mix(in srgb, var(--aiw-accent) 20%, transparent) 0, transparent 34%),
+    linear-gradient(135deg, color-mix(in srgb, var(--background-primary) 90%, var(--aiw-accent)), color-mix(in srgb, var(--background-primary) 98%, var(--aiw-accent))) !important;
+  box-shadow: var(--aiw-shadow-lg);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-hero"] > .callout-title {
+  margin: 0 0 0.65rem;
+  padding: 0;
+  color: var(--aiw-accent-strong) !important;
+  font-size: 0.72rem;
+  font-weight: 760;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-hero"] > .callout-content > p {
+  margin: 0;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-hero"] > .callout-content > p:first-child strong {
+  display: block;
+  max-width: none;
+  color: var(--aiw-text);
+  font-size: clamp(1.45rem, 3.1vw, 2.3rem);
+  font-weight: 770;
+  letter-spacing: -0.025em;
+  line-height: 1.22;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-hero"] > .callout-content > p:nth-child(2) {
+  margin-top: 0.55rem;
+  color: var(--aiw-muted);
+  font-family: var(--font-monospace);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-metrics {
+  gap: 0.7rem;
+  margin-top: 1.45rem;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-metric {
+  --aiw-tone: var(--aiw-accent);
+  position: relative;
+  overflow: hidden;
+  padding: 0.9rem 1rem 0.85rem;
+  border: 1px solid var(--aiw-border);
+  border-radius: var(--aiw-radius-md);
+  background: color-mix(in srgb, var(--background-primary) 91%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 56%, transparent);
+}
+
+.theme-dark .markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-metric {
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 7%, transparent);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-tone-amber { --aiw-tone: var(--color-orange, #d8924d); }
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-tone-blue { --aiw-tone: var(--color-blue, #5b8def); }
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-tone-violet { --aiw-tone: var(--color-purple, #8b75db); }
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-tone-green { --aiw-tone: var(--color-green, #55a67b); }
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-metric-value {
+  color: var(--aiw-tone);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 780;
+  font-variant-numeric: tabular-nums;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-metric-label {
+  margin-top: 0.28rem;
+  color: var(--aiw-muted);
+  font-size: 0.7rem;
+  font-weight: 620;
+  letter-spacing: 0.015em;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-agent-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.48rem;
+  margin-top: 0.85rem;
+  padding: 0.38rem 0.7rem;
+  border: 1px solid var(--aiw-border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--background-primary) 82%, transparent);
+  color: var(--aiw-muted);
+  font-size: 0.72rem;
+  font-weight: 620;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-agent-dot {
+  width: 0.46rem;
+  height: 0.46rem;
+  border-radius: 999px;
+  background: var(--color-orange, #d8924d);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-orange, #d8924d) 16%, transparent);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-agent-status.is-ready .aiw-agent-dot {
+  background: var(--color-green, #55a67b);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-green, #55a67b) 16%, transparent);
+}
+
+/* Command palette: tactile enough to scan, quiet enough to stay out of the way. */
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] {
+  margin: 0 0 1.35rem;
+  padding: 1.05rem 1.1rem 1.15rem;
+  border: 1px solid var(--aiw-border);
+  border-radius: var(--aiw-radius-lg);
+  background: var(--aiw-surface) !important;
+  box-shadow: var(--aiw-shadow-sm);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] > .callout-title {
+  margin-bottom: 0.75rem;
+  color: var(--aiw-muted) !important;
+  font-size: 0.72rem;
+  font-weight: 760;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] > .callout-content {
+  gap: 0.62rem;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] button {
+  min-height: 3.15rem;
+  justify-content: flex-start;
+  padding: 0.62rem 0.9rem;
+  border-color: var(--aiw-border);
+  border-radius: 12px;
+  background: var(--aiw-surface-raised) !important;
+  box-shadow: 0 1px 0 color-mix(in srgb, white 42%, transparent);
+  color: var(--aiw-text) !important;
+  font-size: 0.78rem;
+  font-weight: 680;
+  text-align: left;
+  transition:
+    transform var(--hv-duration-fast, 160ms) var(--hv-easing, ease),
+    border-color var(--hv-duration-fast, 160ms) var(--hv-easing, ease),
+    background-color var(--hv-duration-fast, 160ms) var(--hv-easing, ease),
+    box-shadow var(--hv-duration-fast, 160ms) var(--hv-easing, ease);
+}
+
+.theme-dark .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] button {
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 6%, transparent);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] .block-language-button:first-child button {
+  border-color: color-mix(in srgb, var(--aiw-accent) 46%, transparent);
+  background: var(--aiw-accent) !important;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--aiw-accent) 20%, transparent);
+  color: var(--text-on-accent) !important;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] .block-language-button:nth-child(4) button {
+  border-color: var(--aiw-border-accent);
+  background: var(--aiw-surface-soft) !important;
+  color: var(--aiw-accent-strong) !important;
+}
+
+@media (hover: hover) {
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] button:hover {
+    transform: translateY(-1px);
+    border-color: var(--aiw-border-accent);
+    background: var(--aiw-surface-soft) !important;
+    box-shadow: 0 8px 18px rgba(24, 24, 32, 0.07);
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] .block-language-button:first-child button:hover {
+    background: var(--aiw-accent-strong) !important;
+  }
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] button:focus-visible {
+  outline: 2px solid var(--aiw-accent);
+  outline-offset: 2px;
+}
+
+/* Daily focus: one calm execution surface, without the plugin chrome. */
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] {
+  margin: 0 0 2.4rem;
+  padding: 1.15rem 1.25rem 1.2rem;
+  border-color: var(--aiw-border-accent);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--aiw-accent) 7%, var(--background-primary)), var(--aiw-surface-raised) 38%) !important;
+  box-shadow: var(--aiw-shadow-sm);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] > .callout-title {
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.68rem;
+  border-bottom: 1px solid var(--aiw-border);
+  color: var(--aiw-accent-strong) !important;
+  font-size: 0.76rem;
+  font-weight: 760;
+  letter-spacing: 0.09em;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] > .callout-content {
+  color: var(--aiw-text);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] .block-language-dataviewjs p {
+  margin-block: 0.35rem;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] .block-language-dataviewjs p:first-child {
+  font-size: 1rem;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] .block-language-dataviewjs p:last-child a {
+  display: inline-flex;
+  padding: 0.28rem 0.58rem;
+  border: 1px solid var(--aiw-border-accent);
+  border-radius: 999px;
+  background: var(--aiw-surface-soft);
+  font-family: var(--font-monospace);
+  font-size: 0.72rem;
+  text-decoration: none;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] .plugin-tasks-toolbar,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] .task-count {
+  display: none;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] .plugin-tasks-query-result {
+  margin: 0.65rem 0 0;
+  padding: 0;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] .task-list-item {
+  margin: 0.35rem 0 0;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--aiw-border);
+  border-radius: 10px;
+  background: var(--aiw-surface-raised);
+}
+
+/* Editorial section rhythm overrides colorful global heading settings. */
+.markdown-preview-view.aiw-dashboard.hv-dashboard h2 {
+  position: relative;
+  margin: 2.85rem 0 1rem;
+  padding: 0 0 0.7rem;
+  border-bottom: 1px solid var(--aiw-border);
+  color: var(--aiw-text) !important;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 760;
+  letter-spacing: -0.02em;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard h2::after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 2.8rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--aiw-accent);
+  content: "";
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard h3 {
+  margin: 1.35rem 0 0.65rem;
+  color: var(--aiw-muted) !important;
+  font-size: 0.74rem;
+  font-weight: 760;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Bases and embedded exception table become part of the same visual system. */
+.markdown-preview-view.aiw-dashboard.hv-dashboard .internal-embed[src*="/Bases/"],
+.markdown-preview-view.aiw-dashboard.hv-dashboard .internal-embed[src="00-AI Workbench/系统/系统状态#系统异常"] {
+  display: block;
+  overflow: hidden;
+  margin: 0 0 1.35rem;
+  border: 1px solid var(--aiw-border);
+  border-radius: var(--aiw-radius-lg);
+  background: var(--aiw-surface-raised) !important;
+  box-shadow: var(--aiw-shadow-sm);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .internal-embed[src*="/Bases/"] > .markdown-embed-content,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .internal-embed[src="00-AI Workbench/系统/系统状态#系统异常"] > .markdown-embed-content {
+  padding: 0;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .bases-embed,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .bases-view {
+  border: 0;
+  background: var(--aiw-surface-raised) !important;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .bases-toolbar,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .bases-header {
+  border-color: var(--aiw-border);
+  background: var(--aiw-surface) !important;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .bases-thead,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .bases-table-header {
+  color: var(--aiw-muted);
+  font-size: 0.72rem;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-panel"] {
+  margin: 0 0 0.85rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--aiw-radius-lg);
+  background: var(--aiw-surface-raised) !important;
+  box-shadow: none;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-panel"] > .callout-title {
+  margin-bottom: 0.75rem;
+  padding: 0 0 0.65rem;
+  border-bottom: 1px solid var(--aiw-border);
+  color: var(--aiw-text) !important;
+  font-size: 0.82rem;
+  font-weight: 720;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-panel"] > .callout-content {
+  padding: 0;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-panel"] .table-view-table {
+  margin: 0;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-panel"] .dataview-error-box {
+  min-height: 0;
+  margin: 0;
+  padding: 0.65rem 0;
+  border: 0;
+  background: transparent !important;
+  color: var(--aiw-muted);
+  box-shadow: none;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-panel"] .dataview-error-message {
+  font-size: 0;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-panel"] .dataview-error-message::before {
+  content: "暂无内容";
+  font-size: 0.74rem;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .table-view-table {
+  border-color: var(--aiw-border);
+  color: var(--aiw-text);
+  font-size: 0.78rem;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .table-view-table th,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .table-view-table td {
+  border-color: var(--aiw-border);
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .internal-embed[src="00-AI Workbench/系统/系统状态#系统异常"] .markdown-preview-sizer {
+  min-height: 0;
+  padding: 1rem 1.05rem 1.15rem !important;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .internal-embed[src="00-AI Workbench/系统/系统状态#系统异常"] :is(.mod-header, .el-h2:has(h2[data-heading="系统异常"])) {
+  display: none;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard a.internal-link {
+  color: var(--aiw-accent-strong);
+  font-weight: 620;
+  text-decoration-color: color-mix(in srgb, var(--aiw-accent) 30%, transparent);
+}
+
+/* Bottom principles and navigation stay available without competing with daily work. */
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-guide"],
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-nav"] {
+  margin: 0.75rem 0 0;
+  padding: 0.8rem 0.95rem;
+  border-radius: var(--aiw-radius-md);
+  background: var(--aiw-surface) !important;
+  box-shadow: none;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-guide"] > .callout-title,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-nav"] > .callout-title {
+  color: var(--aiw-muted) !important;
+  font-size: 0.74rem;
+  font-weight: 720;
+  letter-spacing: 0.04em;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-guide"] > .callout-content,
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-nav"] > .callout-content {
+  color: var(--aiw-muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-nav"] p {
+  margin: 0.3rem 0 0;
+}
+
+@media (max-width: 700px) {
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .markdown-preview-sizer {
+    padding-top: 0.8rem !important;
+    padding-right: calc(0.72rem + env(safe-area-inset-right)) !important;
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom)) !important;
+    padding-left: calc(0.72rem + env(safe-area-inset-left)) !important;
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-hero"] {
+    padding: 1.2rem;
+    border-radius: 19px;
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-hero"] > .callout-content > p:first-child strong {
+    font-size: 1.42rem;
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.52rem;
+    margin-top: 1.1rem;
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .aiw-metric {
+    padding: 0.78rem 0.82rem 0.72rem;
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] {
+    padding: 0.9rem;
+    border-radius: 16px;
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] > .callout-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] button {
+    min-height: 3.3rem;
+    padding: 0.58rem 0.7rem;
+    font-size: 0.74rem;
+    line-height: 1.25;
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-focus"] {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard h2 {
+    margin-top: 2.35rem;
+    font-size: 1.3rem;
+  }
+
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .internal-embed[src*="/Bases/"],
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .internal-embed[src="00-AI Workbench/系统/系统状态#系统异常"],
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="aiw-panel"] {
+    border-radius: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markdown-preview-view.aiw-dashboard.hv-dashboard .callout[data-callout="dashboard-actions"] button {
+    transition: none !important;
+  }
+}

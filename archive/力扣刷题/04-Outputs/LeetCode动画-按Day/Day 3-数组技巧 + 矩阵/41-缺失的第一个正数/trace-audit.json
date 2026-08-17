@@ -1,0 +1,727 @@
+{
+  "problemId": 41,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 41,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        0,
+        -2,
+        2,
+        3
+      ],
+      "variables": {
+        "i": 1
+      },
+      "structure": {
+        "nums": [
+          0,
+          -2,
+          2,
+          3
+        ]
+      },
+      "result": [
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "f409b91b4bc5bee57d17736abc9a3b925ba56eaec22ae2c4fbbcfd6e86635622",
+    "sourceSemanticTokenHash": "c0b51dc7141b0ec60cc08193ba111b518a99d92e61e7b65ed0cb8170814114b1",
+    "sourceCodeLineCount": 21
+  },
+  "sourceCodeSha256": "f409b91b4bc5bee57d17736abc9a3b925ba56eaec22ae2c4fbbcfd6e86635622",
+  "sourceSemanticTokenHash": "c0b51dc7141b0ec60cc08193ba111b518a99d92e61e7b65ed0cb8170814114b1",
+  "steps": [
+    {
+      "id": "41-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立原地哈希位置",
+      "body": "n=4，先把每个正数减一，让值 x 对应位置 x。 题解原意：核心洞察： 答案一定在 [1, n+1] 范围内。我们把数组当作哈希表： 值 1 应该放在索引 0 值 2 应该放在索引 1 值 x（在 [1, n] 内）应该放在索引 x-1 通过交换操作将每个数归位，然后扫描找到第一个位置不对的，就是缺失的最小正数。 为什么用 while 而不是 if： 交换后，当前位置来了一个新值，这个新值可能也需要归位。while 确保当前位置的值最终要么归位要么不需要归位（负数、0、或 >…",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · array",
+        "badge": "nums",
+        "tokens": [
+          3,
+          4,
+          -1,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 4
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              3,
+              4,
+              -1,
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "n=4，先把每个正数减一，让值 x 对应位置 x。"
+      },
+      "state": {
+        "values": [
+          3,
+          4,
+          -1,
+          1
+        ],
+        "variables": {
+          "n": 4
+        },
+        "structure": {
+          "nums": [
+            3,
+            4,
+            -1,
+            1
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "41-trace-002",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "把值映射到下标",
+      "body": "输入 [3, 4, -1, 1] 变为偏移后的 [2, 3, -2, 0]，负值和越界值稍后忽略。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · array",
+        "badge": "nums",
+        "tokens": [
+          2,
+          3,
+          -2,
+          0
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 4
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              2,
+              3,
+              -2,
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "输入 [3, 4, -1, 1] 变为偏移后的 [2, 3, -2, 0]，负值和越界值稍后忽略。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          0
+        ],
+        "variables": {
+          "n": 4
+        },
+        "structure": {
+          "nums": [
+            2,
+            3,
+            -2,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "41-trace-003",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "交换 nums[0] 与 nums[2]",
+      "body": "把当前值放到它应该出现的位置，直到每个位置最多保留一个标记。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · array",
+        "badge": "i=0 · j=2",
+        "tokens": [
+          -2,
+          3,
+          2,
+          0
+        ],
+        "active": [
+          0,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 2
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              -2,
+              3,
+              2,
+              0
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把当前值放到它应该出现的位置，直到每个位置最多保留一个标记。"
+      },
+      "state": {
+        "values": [
+          -2,
+          3,
+          2,
+          0
+        ],
+        "variables": {
+          "i": 0,
+          "j": 2
+        },
+        "structure": {
+          "nums": [
+            -2,
+            3,
+            2,
+            0
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "41-trace-004",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "交换 nums[1] 与 nums[3]",
+      "body": "把当前值放到它应该出现的位置，直到每个位置最多保留一个标记。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · array",
+        "badge": "i=1 · j=3",
+        "tokens": [
+          -2,
+          0,
+          2,
+          3
+        ],
+        "active": [
+          1,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 3
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              -2,
+              0,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把当前值放到它应该出现的位置，直到每个位置最多保留一个标记。"
+      },
+      "state": {
+        "values": [
+          -2,
+          0,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 1,
+          "j": 3
+        },
+        "structure": {
+          "nums": [
+            -2,
+            0,
+            2,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "41-trace-005",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "mutate",
+      "title": "交换 nums[1] 与 nums[0]",
+      "body": "把当前值放到它应该出现的位置，直到每个位置最多保留一个标记。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · array",
+        "badge": "i=1 · j=0",
+        "tokens": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "active": [
+          1,
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把当前值放到它应该出现的位置，直到每个位置最多保留一个标记。"
+      },
+      "state": {
+        "values": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "nums": [
+            0,
+            -2,
+            2,
+            3
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "41-trace-006",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "发现缺口 2",
+      "body": "位置 i=1 没有值 i，首个缺失正数就是 2。",
+      "kind": "array",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · array",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "位置 i=1 没有值 i，首个缺失正数就是 2。"
+      },
+      "state": {
+        "values": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 1
+        },
+        "structure": {
+          "nums": [
+            0,
+            -2,
+            2,
+            3
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "41-trace-check-008",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 2。",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 2。"
+      },
+      "state": {
+        "values": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 1
+        },
+        "structure": {
+          "nums": [
+            0,
+            -2,
+            2,
+            3
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "41-trace-check-009",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 2。",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 2。"
+      },
+      "state": {
+        "values": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 1
+        },
+        "structure": {
+          "nums": [
+            0,
+            -2,
+            2,
+            3
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "41-trace-check-010",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 2。 易错提醒：使用 while 而非 if：在交换过程中，当前索引位置获得了新值，必须继续处理直到该位置的值归位或不需要归位。用 if 会导致遗漏。 交换顺序：nums[i], nums[nums[i]-1] 这个交换顺序有问题！因为 C++ 中右侧的 nums[i] 会先被计算还是先被赋值？正确写法是用临时变量或先存正确位置：correct_pos…",
+      "kind": "array",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1
+        },
+        "rows": [
+          {
+            "label": "nums",
+            "values": [
+              0,
+              -2,
+              2,
+              3
+            ]
+          },
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 2。"
+      },
+      "state": {
+        "values": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 1
+        },
+        "structure": {
+          "nums": [
+            0,
+            -2,
+            2,
+            3
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "41-trace-007",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 2。",
+      "kind": "array",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · array",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "返回 2。"
+      },
+      "state": {
+        "values": [
+          0,
+          -2,
+          2,
+          3
+        ],
+        "variables": {
+          "i": 1
+        },
+        "structure": {
+          "nums": [
+            0,
+            -2,
+            2,
+            3
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

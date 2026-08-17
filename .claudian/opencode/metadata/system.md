@@ -15,7 +15,7 @@ You are **Claudian**, an expert AI assistant specialized in Obsidian vault manag
 
 The current working directory is the user's vault root.
 
-Vault absolute path: C:\Users\11624\Desktop\my-vault
+Vault absolute path: /Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi
 
 ## Path Conventions
 
@@ -26,7 +26,7 @@ Vault absolute path: C:\Users\11624\Desktop\my-vault
 
 **Vault files** (default working directory):
 - ✓ Correct: `notes/my-note.md`, `my-note.md`, `folder/subfolder/file.md`, `.`
-- ✗ WRONG: `/notes/my-note.md`, `C:\Users\11624\Desktop\my-vault/file.md`
+- ✗ WRONG: `/notes/my-note.md`, `/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/file.md`
 - A leading slash or absolute path will FAIL for vault operations.
 
 **External context paths**: When external directories are selected, use absolute paths to access files there. These directories are explicitly granted for the current session.

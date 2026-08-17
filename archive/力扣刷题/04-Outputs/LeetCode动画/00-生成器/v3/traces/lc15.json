@@ -1,0 +1,796 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "排序 + 固定一数 + 对撞指针",
+    "sceneKind": "array-pointers",
+    "input": [
+      -1,
+      0,
+      1,
+      2,
+      -1,
+      -4
+    ],
+    "expected": [
+      [
+        -1,
+        -1,
+        2
+      ],
+      [
+        -1,
+        0,
+        1
+      ]
+    ],
+    "exampleText": "[-1, 0, 1, 2, -1, -4]",
+    "expectedText": "三元组：[-1,-1,2]、[-1,0,1]",
+    "invariant": "每个 (i,j) 只保留最右侧可行 k，重复值被跳过",
+    "aha": "有序性把两数搜索从平方降为线性",
+    "time": "O(n²)",
+    "space": "O(log n)",
+    "problemId": 15,
+    "title": "三数之和",
+    "day": "Day 1：哈希 + 双指针",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "8104147c07895d4f480e8f5f0ccae089db1f692d6df47fccf19b2fc004692570",
+    "semanticTokenHash": "9bbc4552a0d934a89006b546baeec5514e86bc43012c971bc1052f6015eff129",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序让双指针移动方向和去重都可判定。",
+        "review": "排序后开始固定第一个数"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": null,
+              "j": null,
+              "k": null
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "排序后开始固定第一个数",
+            "status": "running"
+          },
+          "caption": "排序让双指针移动方向和去重都可判定。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+        "review": "-4+-1+2=-3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 0,
+              "j": 1,
+              "k": 5
+            },
+            "pointers": {
+              "i": 0,
+              "j": 1,
+              "k": 5
+            },
+            "active": [],
+            "compared": [
+              0,
+              1,
+              5
+            ],
+            "result": [],
+            "formula": "-4+-1+2=-3",
+            "action": "检查和 -3",
+            "status": "running"
+          },
+          "caption": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "第二层也保持唯一。",
+        "review": "第二个值 -1 重复，跳过"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 0,
+              "j": 2,
+              "k": 5
+            },
+            "pointers": {
+              "i": 0,
+              "j": 2,
+              "k": 5
+            },
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "第二个值 -1 重复，跳过",
+            "status": "running"
+          },
+          "caption": "第二层也保持唯一。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+        "review": "-4+0+2=-2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 0,
+              "j": 3,
+              "k": 5
+            },
+            "pointers": {
+              "i": 0,
+              "j": 3,
+              "k": 5
+            },
+            "active": [],
+            "compared": [
+              0,
+              3,
+              5
+            ],
+            "result": [],
+            "formula": "-4+0+2=-2",
+            "action": "检查和 -2",
+            "status": "running"
+          },
+          "caption": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+        "review": "-4+1+2=-1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 0,
+              "j": 4,
+              "k": 5
+            },
+            "pointers": {
+              "i": 0,
+              "j": 4,
+              "k": 5
+            },
+            "active": [],
+            "compared": [
+              0,
+              4,
+              5
+            ],
+            "result": [],
+            "formula": "-4+1+2=-1",
+            "action": "检查和 -1",
+            "status": "running"
+          },
+          "caption": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+        "review": "-1+-1+2=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 1,
+              "j": 2,
+              "k": 5
+            },
+            "pointers": {
+              "i": 1,
+              "j": 2,
+              "k": 5
+            },
+            "active": [],
+            "compared": [
+              1,
+              2,
+              5
+            ],
+            "result": [],
+            "formula": "-1+-1+2=0",
+            "action": "检查和 0",
+            "status": "running"
+          },
+          "caption": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序与两层去重保证结果不重复。",
+        "review": "sum = 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 1,
+              "j": 2,
+              "k": 5,
+              "count": 1
+            },
+            "pointers": {
+              "i": 1,
+              "j": 2,
+              "k": 5
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              1,
+              2,
+              5
+            ],
+            "formula": "sum = 0",
+            "action": "记录三元组 [-1, -1, 2]",
+            "status": "running",
+            "output": [
+              [
+                -1,
+                -1,
+                2
+              ]
+            ]
+          },
+          "caption": "排序与两层去重保证结果不重复。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序后 k 左移只会让和减小。",
+        "review": "-1+0+1=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 1,
+              "j": 3,
+              "k": 4
+            },
+            "pointers": {
+              "i": 1,
+              "j": 3,
+              "k": 4
+            },
+            "active": [],
+            "compared": [
+              1,
+              3,
+              4
+            ],
+            "result": [],
+            "formula": "-1+0+1=0",
+            "action": "三数和偏大，k 左移到 4",
+            "status": "running"
+          },
+          "caption": "排序后 k 左移只会让和减小。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+        "review": "-1+0+1=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 1,
+              "j": 3,
+              "k": 4
+            },
+            "pointers": {
+              "i": 1,
+              "j": 3,
+              "k": 4
+            },
+            "active": [],
+            "compared": [
+              1,
+              3,
+              4
+            ],
+            "result": [],
+            "formula": "-1+0+1=0",
+            "action": "检查和 0",
+            "status": "running"
+          },
+          "caption": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "排序与两层去重保证结果不重复。",
+        "review": "sum = 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 1,
+              "j": 3,
+              "k": 4,
+              "count": 2
+            },
+            "pointers": {
+              "i": 1,
+              "j": 3,
+              "k": 4
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              1,
+              3,
+              4
+            ],
+            "formula": "sum = 0",
+            "action": "记录三元组 [-1, 0, 1]",
+            "status": "running",
+            "output": [
+              [
+                -1,
+                -1,
+                2
+              ],
+              [
+                -1,
+                0,
+                1
+              ]
+            ]
+          },
+          "caption": "排序与两层去重保证结果不重复。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "相同固定值只处理一次。",
+        "review": "固定值 -1 重复，跳过"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 2,
+              "j": null,
+              "k": null
+            },
+            "pointers": {
+              "i": 2
+            },
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "固定值 -1 重复，跳过",
+            "status": "running"
+          },
+          "caption": "相同固定值只处理一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+        "review": "0+1+2=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "i": 3,
+              "j": 4,
+              "k": 5
+            },
+            "pointers": {
+              "i": 3,
+              "j": 4,
+              "k": 5
+            },
+            "active": [],
+            "compared": [
+              3,
+              4,
+              5
+            ],
+            "result": [],
+            "formula": "0+1+2=3",
+            "action": "检查和 3",
+            "status": "running"
+          },
+          "caption": "当前位置是固定 i,j 下最靠右且和不小于零的 k。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "全部零和三元组已确认。",
+        "review": "[-1,-1,2], [-1,0,1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              -4,
+              -1,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "variables": {
+              "count": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "formula": "[-1,-1,2], [-1,0,1]",
+            "action": "返回两个唯一三元组",
+            "status": "return",
+            "output": [
+              [
+                -1,
+                -1,
+                2
+              ],
+              [
+                -1,
+                0,
+                1
+              ]
+            ]
+          },
+          "caption": "全部零和三元组已确认。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<vector<int>> threeSum(vector<int>& nums) {\n        vector<vector<int>> res;\n        sort(nums.begin(), nums.end());                          // 排序\n        for (int i = 0; i < nums.size(); i ++ ) {                // 遍历\n            if (i && nums[i] == nums[i - 1]) continue;\n            for (int j = i + 1, k = nums.size() - 1; j < k; j ++ ) {\n                if (j > i + 1 && nums[j] == nums[j - 1]) continue;\n                while (j < k - 1 && nums[i] + nums[j] + nums[k - 1] >= 0) k -- ;  // 移动k使三数和 ≥ 0的最右位置\n                if (nums[i] + nums[j] + nums[k] == 0) {\n                    res.push_back({nums[i], nums[j], nums[k]});  // 记录结果\n                }\n            }\n        }\n\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 304,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 305,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 306,
+        "text": "    vector<vector<int>> threeSum(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 307,
+        "text": "        vector<vector<int>> res;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 308,
+        "text": "        sort(nums.begin(), nums.end());                          // 排序"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 309,
+        "text": "        for (int i = 0; i < nums.size(); i ++ ) {                // 遍历"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 310,
+        "text": "            if (i && nums[i] == nums[i - 1]) continue;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 311,
+        "text": "            for (int j = i + 1, k = nums.size() - 1; j < k; j ++ ) {"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 312,
+        "text": "                if (j > i + 1 && nums[j] == nums[j - 1]) continue;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 313,
+        "text": "                while (j < k - 1 && nums[i] + nums[j] + nums[k - 1] >= 0) k -- ;  // 移动k使三数和 ≥ 0的最右位置"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 314,
+        "text": "                if (nums[i] + nums[j] + nums[k] == 0) {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 315,
+        "text": "                    res.push_back({nums[i], nums[j], nums[k]});  // 记录结果"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 316,
+        "text": "                }"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 317,
+        "text": "            }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 318,
+        "text": "        }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 319,
+        "text": ""
+      },
+      {
+        "id": "L17",
+        "sourceLine": 320,
+        "text": "        return res;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 321,
+        "text": "    }"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 322,
+        "text": "};"
+      }
+    ]
+  }
+}

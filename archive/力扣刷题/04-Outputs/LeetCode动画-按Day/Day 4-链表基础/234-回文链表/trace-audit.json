@@ -1,0 +1,762 @@
+{
+  "problemId": 234,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 234,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "variables": {
+        "success": true
+      },
+      "structure": {
+        "list": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "restored": true
+      },
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "d6d02b3c43b3e914b42327dab55cb8218d496f9f36c8c6b26b15ba9dc05b2b64",
+    "sourceSemanticTokenHash": "ca5be596c17951170f7910a87e9504361c04f9c451f62725eda52df7b5a6682b",
+    "sourceCodeLineCount": 48
+  },
+  "sourceCodeSha256": "d6d02b3c43b3e914b42327dab55cb8218d496f9f36c8c6b26b15ba9dc05b2b64",
+  "sourceSemanticTokenHash": "ca5be596c17951170f7910a87e9504361c04f9c451f62725eda52df7b5a6682b",
+  "steps": [
+    {
+      "id": "234-trace-001",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "setup",
+      "title": "先计算链表长度",
+      "body": "n=4，只需反转后半段并与前半段逐项比较。 题解原意：为什么这样想： 回文需要比较对称位置的值。数组可以用双指针从两端向中间移动，但链表不支持反向遍历。所以我们将后半段链表反转，这样就能用两个指针分别从前半段和后半段的起点开始，向中间移动比较。 关键洞察： 快慢指针找中点时，快指针走两步、慢指针走一步。结束时，如果节点数为奇数，慢指针正好在中间节点；如果为偶数，慢指针在中间偏右。我们需要的是后半段的起点，所以直接让慢指针作为后半段起点即可。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "n": 4,
+          "half": 2
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              2,
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "n=4，只需反转后半段并与前半段逐项比较。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "variables": {
+          "n": 4,
+          "half": 2
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            2,
+            1
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "234-trace-002",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "setup",
+      "title": "定位后半段起点",
+      "body": "从 head 前进 n-half=2 步，a 指向后半段起点值 2。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "n": 4,
+          "half": 2,
+          "a": 2
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              2,
+              1
+            ]
+          },
+          {
+            "label": "a",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [],
+        "note": "从 head 前进 n-half=2 步，a 指向后半段起点值 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "variables": {
+          "n": 4,
+          "half": 2,
+          "a": 2
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            2,
+            1
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "234-trace-003",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "inspect",
+      "title": "准备反转后半段",
+      "body": "b 从 a 的后继值 1 开始。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "active": [
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "a": 2,
+          "b": 3
+        },
+        "rows": [
+          {
+            "label": "list",
+            "values": [
+              1,
+              2,
+              2,
+              1
+            ]
+          }
+        ],
+        "result": [],
+        "note": "b 从 a 的后继值 1 开始。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "variables": {
+          "a": 2,
+          "b": 3
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            2,
+            1
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "234-trace-004",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "mutate",
+      "title": "反转后半段连接",
+      "body": "把后半段节点指向 a，得到从右向左的比较链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "forward",
+        "tokens": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "active": [
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "a": 3,
+          "b": null
+        },
+        "rows": [
+          {
+            "label": "forward",
+            "values": [
+              1,
+              2
+            ]
+          },
+          {
+            "label": "reverse",
+            "values": [
+              1,
+              2
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把后半段节点指向 a，得到从右向左的比较链。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "variables": {
+          "a": 3,
+          "b": null
+        },
+        "structure": {
+          "forward": [
+            1,
+            2
+          ],
+          "reverse": [
+            1,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "234-trace-005",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "compare",
+      "title": "比较 1 与 1",
+      "body": "p=1，q=1，相等，success=true。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "forward",
+        "tokens": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "active": [
+          0,
+          3
+        ],
+        "compared": [
+          0,
+          3
+        ],
+        "variables": {
+          "p": 0,
+          "q": 3,
+          "success": true
+        },
+        "rows": [
+          {
+            "label": "forward p",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "reverse q",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "success",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "p=1，q=1，相等，success=true。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "variables": {
+          "p": 0,
+          "q": 3,
+          "success": true
+        },
+        "structure": {
+          "forward": [
+            1,
+            2
+          ],
+          "reverse": [
+            1,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "234-trace-006",
+      "line": 28,
+      "lineIds": [
+        28
+      ],
+      "phase": "compare",
+      "title": "比较 2 与 2",
+      "body": "p=2，q=2，相等，success=true。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · linked",
+        "badge": "forward",
+        "tokens": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "active": [
+          1,
+          2
+        ],
+        "compared": [
+          1,
+          2
+        ],
+        "variables": {
+          "p": 1,
+          "q": 2,
+          "success": true
+        },
+        "rows": [
+          {
+            "label": "forward p",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "reverse q",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "success",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "p=2，q=2，相等，success=true。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "variables": {
+          "p": 1,
+          "q": 2,
+          "success": true
+        },
+        "structure": {
+          "forward": [
+            1,
+            2
+          ],
+          "reverse": [
+            1,
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "234-trace-007",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "update",
+      "title": "两个比较指针前进",
+      "body": "前半段与反转后的后半段都比较完，success 仍为 true。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · linked",
+        "badge": "list",
+        "tokens": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "p": 2,
+          "q": null,
+          "success": true
+        },
+        "rows": [
+          {
+            "label": "success",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [],
+        "note": "前半段与反转后的后半段都比较完，success 仍为 true。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "variables": {
+          "p": 2,
+          "q": null,
+          "success": true
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            2,
+            1
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "234-trace-008",
+      "line": 45,
+      "lineIds": [
+        45
+      ],
+      "phase": "mutate",
+      "title": "恢复链表结构",
+      "body": "比较完成后把反转段恢复，并断开临时尾部，原链表保持不变。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "success": true
+        },
+        "rows": [
+          {
+            "label": "restored list",
+            "values": [
+              1,
+              2,
+              2,
+              1
+            ]
+          },
+          {
+            "label": "success",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "比较完成后把反转段恢复，并断开临时尾部，原链表保持不变。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "variables": {
+          "success": true
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "restored": true
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "234-trace-check-010",
+      "line": 45,
+      "lineIds": [
+        45
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true。 易错提醒：奇数/偶数节点处理： 奇数节点时中间节点不需要参与比较（前后各半），用 while right 而不是 while left and right 可以自然处理 反转后链表结构改变： 函数返回后原链表结构已被改变，虽然本题不要求恢复，但在工程中需要注意 快慢指针起始： 有些写法将 fast 初始化为 head->next，这会影响中点的位置…",
+      "kind": "linked",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "success": true
+        },
+        "rows": [
+          {
+            "label": "restored list",
+            "values": [
+              1,
+              2,
+              2,
+              1
+            ]
+          },
+          {
+            "label": "success",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "variables": {
+          "success": true
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "restored": true
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "234-trace-009",
+      "line": 46,
+      "lineIds": [
+        46
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 true。",
+      "kind": "linked",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · linked",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "success": true
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "返回 true。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "variables": {
+          "success": true
+        },
+        "structure": {
+          "list": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "restored": true
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

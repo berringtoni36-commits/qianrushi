@@ -1,0 +1,1064 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "自底向上归并排序",
+    "sceneKind": "linked-list",
+    "input": [
+      4,
+      2,
+      1,
+      3
+    ],
+    "expected": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "exampleText": "[4,2,1,3]",
+    "expectedText": "[1,2,3,4]",
+    "invariant": "宽度 i 轮开始时每个长度 i 子链内部有序",
+    "aha": "链表归并只改 next，无需随机访问",
+    "time": "O(n log n)",
+    "space": "O(1)",
+    "problemId": 148,
+    "title": "排序链表",
+    "day": "Day 5：链表进阶",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "fbd66469a7810958b8e217712db2c941016e6db495c465d9a00593207f11c542",
+    "semanticTokenHash": "47a3d13b2ba4e4c021fcb94fdf3d21835244d04bb31e67ab99edde6370810a15",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每轮把相邻等长有序子链归并。",
+        "review": "自底向上从长度 1 子链开始"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 1
+            },
+            "pointers": {
+              "width": 1
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "自底向上从长度 1 子链开始",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "每轮把相邻等长有序子链归并。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "两个子链头中较小者是下一节点。",
+        "review": "take n1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 1,
+              "tail": "n1"
+            },
+            "pointers": {
+              "width": 1,
+              "tail": "n1"
+            },
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1"
+            ],
+            "formula": "take n1",
+            "action": "宽度 1 归并接入值 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "两个子链头中较小者是下一节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "两个子链头中较小者是下一节点。",
+        "review": "take n0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 1,
+              "tail": "n0"
+            },
+            "pointers": {
+              "width": 1,
+              "tail": "n0"
+            },
+            "active": [
+              "n0"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0"
+            ],
+            "formula": "take n0",
+            "action": "宽度 1 归并接入值 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "两个子链头中较小者是下一节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "两个子链头中较小者是下一节点。",
+        "review": "take n2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 1,
+              "tail": "n2"
+            },
+            "pointers": {
+              "width": 1,
+              "tail": "n2"
+            },
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n2"
+            ],
+            "formula": "take n2",
+            "action": "宽度 1 归并接入值 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "两个子链头中较小者是下一节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "两个子链头中较小者是下一节点。",
+        "review": "take n3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 1,
+              "tail": "n3"
+            },
+            "pointers": {
+              "width": 1,
+              "tail": "n3"
+            },
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n2",
+              "n3"
+            ],
+            "formula": "take n3",
+            "action": "宽度 1 归并接入值 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "两个子链头中较小者是下一节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "本轮结束后每段长度 width 的子链有序。",
+        "review": "[2, 4, 1, 3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 2,
+              "head": "n1"
+            },
+            "pointers": {
+              "width": 2,
+              "head": "n1"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n2",
+              "n3"
+            ],
+            "formula": "[2, 4, 1, 3]",
+            "action": "完成一轮，下一子链宽度 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "本轮结束后每段长度 width 的子链有序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "两个子链头中较小者是下一节点。",
+        "review": "take n2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 2,
+              "tail": "n2"
+            },
+            "pointers": {
+              "width": 2,
+              "tail": "n2"
+            },
+            "active": [
+              "n2"
+            ],
+            "compared": [],
+            "result": [
+              "n2"
+            ],
+            "formula": "take n2",
+            "action": "宽度 2 归并接入值 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": []
+          },
+          "caption": "两个子链头中较小者是下一节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "两个子链头中较小者是下一节点。",
+        "review": "take n1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 2,
+              "tail": "n1"
+            },
+            "pointers": {
+              "width": 2,
+              "tail": "n1"
+            },
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n2",
+              "n1"
+            ],
+            "formula": "take n1",
+            "action": "宽度 2 归并接入值 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              }
+            ]
+          },
+          "caption": "两个子链头中较小者是下一节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "两个子链头中较小者是下一节点。",
+        "review": "take n3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 2,
+              "tail": "n3"
+            },
+            "pointers": {
+              "width": 2,
+              "tail": "n3"
+            },
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n2",
+              "n1",
+              "n3"
+            ],
+            "formula": "take n3",
+            "action": "宽度 2 归并接入值 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n3"
+              }
+            ]
+          },
+          "caption": "两个子链头中较小者是下一节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "两个子链头中较小者是下一节点。",
+        "review": "take n0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 2,
+              "tail": "n0"
+            },
+            "pointers": {
+              "width": 2,
+              "tail": "n0"
+            },
+            "active": [
+              "n0"
+            ],
+            "compared": [],
+            "result": [
+              "n2",
+              "n1",
+              "n3",
+              "n0"
+            ],
+            "formula": "take n0",
+            "action": "宽度 2 归并接入值 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n0"
+              }
+            ]
+          },
+          "caption": "两个子链头中较小者是下一节点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "本轮结束后每段长度 width 的子链有序。",
+        "review": "[1, 2, 3, 4]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "width": 4,
+              "head": "n2"
+            },
+            "pointers": {
+              "width": 4,
+              "head": "n2"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "n2",
+              "n1",
+              "n3",
+              "n0"
+            ],
+            "formula": "[1, 2, 3, 4]",
+            "action": "完成一轮，下一子链宽度 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n0"
+              }
+            ]
+          },
+          "caption": "本轮结束后每段长度 width 的子链有序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "最后一轮得到整条有序链。",
+        "review": "[1, 2, 3, 4]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L34"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "head": "n2"
+            },
+            "pointers": {
+              "head": "n2"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "n2",
+              "n1",
+              "n3",
+              "n0"
+            ],
+            "formula": "[1, 2, 3, 4]",
+            "action": "返回排序链 [1,2,3,4]",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "n0",
+                "value": 4
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 1
+              },
+              {
+                "id": "n3",
+                "value": 3
+              }
+            ],
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n0"
+              }
+            ],
+            "output": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "caption": "最后一轮得到整条有序链。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* sortList(ListNode* head) {\n        int n = 0;\n        for (auto p = head; p; p = p->next) n ++ ;               \n\n        for (int i = 1; i < n; i *= 2) {  // 子链表长度：1,2,4,8,...\n            auto dummy = new ListNode(-1), cur = dummy;\n            for (int j = 1; j <= n; j += i * 2) {  // 每轮合并相邻的两个长度为i的子链表\n                auto p = head, q = p;\n                for (int k = 0; k < i && q; k ++ ) q = q->next;  \n                auto o = q;\n                for (int k = 0; k < i && o; k ++ ) o = o->next;  \n                int l = 0, r = 0;\n                while (l < i && r < i && p && q)\n                    if (p->val <= q->val) cur = cur->next = p, p = p->next, l ++ ; \n                    else cur = cur->next = q, q = q->next, r ++ ; \n                while (l < i && p) cur = cur->next = p, p = p->next, l ++ ; \n                while (r < i && q) cur = cur->next = q, q = q->next, r ++ ; \n                head = o;\n            }\n            cur->next = NULL;                                    \n            head = dummy->next;                                  \n        }\n\n        return head;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1820,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1821,
+        "text": " * Definition for singly-linked list."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1822,
+        "text": " * struct ListNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1823,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1824,
+        "text": " *     ListNode *next;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1825,
+        "text": " *     ListNode(int x) : val(x), next(NULL) {}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1826,
+        "text": " * };"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1827,
+        "text": " */"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1828,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1829,
+        "text": "public:"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1830,
+        "text": "    ListNode* sortList(ListNode* head) {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1831,
+        "text": "        int n = 0;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1832,
+        "text": "        for (auto p = head; p; p = p->next) n ++ ;               "
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1833,
+        "text": ""
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1834,
+        "text": "        for (int i = 1; i < n; i *= 2) {  // 子链表长度：1,2,4,8,..."
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1835,
+        "text": "            auto dummy = new ListNode(-1), cur = dummy;"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1836,
+        "text": "            for (int j = 1; j <= n; j += i * 2) {  // 每轮合并相邻的两个长度为i的子链表"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1837,
+        "text": "                auto p = head, q = p;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1838,
+        "text": "                for (int k = 0; k < i && q; k ++ ) q = q->next;  "
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1839,
+        "text": "                auto o = q;"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1840,
+        "text": "                for (int k = 0; k < i && o; k ++ ) o = o->next;  "
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1841,
+        "text": "                int l = 0, r = 0;"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 1842,
+        "text": "                while (l < i && r < i && p && q)"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 1843,
+        "text": "                    if (p->val <= q->val) cur = cur->next = p, p = p->next, l ++ ; "
+      },
+      {
+        "id": "L25",
+        "sourceLine": 1844,
+        "text": "                    else cur = cur->next = q, q = q->next, r ++ ; "
+      },
+      {
+        "id": "L26",
+        "sourceLine": 1845,
+        "text": "                while (l < i && p) cur = cur->next = p, p = p->next, l ++ ; "
+      },
+      {
+        "id": "L27",
+        "sourceLine": 1846,
+        "text": "                while (r < i && q) cur = cur->next = q, q = q->next, r ++ ; "
+      },
+      {
+        "id": "L28",
+        "sourceLine": 1847,
+        "text": "                head = o;"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 1848,
+        "text": "            }"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 1849,
+        "text": "            cur->next = NULL;                                    "
+      },
+      {
+        "id": "L31",
+        "sourceLine": 1850,
+        "text": "            head = dummy->next;                                  "
+      },
+      {
+        "id": "L32",
+        "sourceLine": 1851,
+        "text": "        }"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 1852,
+        "text": ""
+      },
+      {
+        "id": "L34",
+        "sourceLine": 1853,
+        "text": "        return head;"
+      },
+      {
+        "id": "L35",
+        "sourceLine": 1854,
+        "text": "    }"
+      },
+      {
+        "id": "L36",
+        "sourceLine": 1855,
+        "text": "};"
+      }
+    ]
+  }
+}

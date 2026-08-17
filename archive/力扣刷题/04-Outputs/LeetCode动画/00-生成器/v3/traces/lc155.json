@@ -1,0 +1,760 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "同步最小值辅助栈",
+    "sceneKind": "stack-sequence",
+    "input": [
+      [
+        "push",
+        -2
+      ],
+      [
+        "push",
+        0
+      ],
+      [
+        "push",
+        -3
+      ],
+      [
+        "getMin",
+        null
+      ],
+      [
+        "pop",
+        null
+      ],
+      [
+        "getMin",
+        null
+      ]
+    ],
+    "expected": [
+      -3,
+      -2
+    ],
+    "exampleText": "push(-2), push(0), push(-3), getMin(), pop()",
+    "expectedText": "最小值序列 [-3,-2]",
+    "invariant": "f.top() 等于 stk 中最小元素",
+    "aha": "只记录最小值发生变化的历史层级",
+    "time": "O(1) per op",
+    "space": "O(n)",
+    "problemId": 155,
+    "title": "最小栈",
+    "day": "Day 8：图论 + 栈",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "697af8be738c2b1493c544b565170901e62ef3af21cb429161c92279454f51e1",
+    "semanticTokenHash": "b755de96b33140b858249bb2fe1b47506485908f6db4c0edd07f8f86c05522eb",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最小栈只保存会成为某一时刻最小值的元素。",
+        "review": "数据栈与最小栈均为空"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "init"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "数据栈与最小栈均为空",
+            "status": "running",
+            "stack": [],
+            "heap": []
+          },
+          "caption": "最小栈只保存会成为某一时刻最小值的元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "init"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 4",
+            "status": "running",
+            "stack": [],
+            "heap": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "相等最小值也入辅助栈，保证重复值正确弹出。",
+        "review": "min=-2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10",
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "push",
+              "x": -2,
+              "min": -2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min=-2",
+            "action": "push(-2)",
+            "status": "running",
+            "stack": [
+              -2
+            ],
+            "heap": [
+              -2
+            ],
+            "activeStack": [
+              -2
+            ]
+          },
+          "caption": "相等最小值也入辅助栈，保证重复值正确弹出。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "相等最小值也入辅助栈，保证重复值正确弹出。",
+        "review": "min=-2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10",
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "push",
+              "x": 0,
+              "min": -2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min=-2",
+            "action": "push(0)",
+            "status": "running",
+            "stack": [
+              -2,
+              0
+            ],
+            "heap": [
+              -2
+            ],
+            "activeStack": [
+              0
+            ]
+          },
+          "caption": "相等最小值也入辅助栈，保证重复值正确弹出。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10",
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "push",
+              "x": 0,
+              "min": -2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min=-2",
+            "action": "不变量检查 3",
+            "status": "running",
+            "stack": [
+              -2,
+              0
+            ],
+            "heap": [
+              -2
+            ],
+            "activeStack": [
+              0
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "相等最小值也入辅助栈，保证重复值正确弹出。",
+        "review": "min=-3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10",
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "push",
+              "x": -3,
+              "min": -3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "min=-3",
+            "action": "push(-3)",
+            "status": "running",
+            "stack": [
+              -2,
+              0,
+              -3
+            ],
+            "heap": [
+              -2,
+              -3
+            ],
+            "activeStack": [
+              -3
+            ]
+          },
+          "caption": "相等最小值也入辅助栈，保证重复值正确弹出。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "辅助栈顶始终是全栈最小值。",
+        "review": "-3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "getMin",
+              "return": -3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "-3",
+            "action": "getMin()=-3",
+            "status": "running",
+            "stack": [
+              -2,
+              0,
+              -3
+            ],
+            "heap": [
+              -2,
+              -3
+            ],
+            "output": [
+              -3
+            ]
+          },
+          "caption": "辅助栈顶始终是全栈最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "getMin",
+              "return": -3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1
+            ],
+            "formula": "-3",
+            "action": "不变量检查 2",
+            "status": "running",
+            "stack": [
+              -2,
+              0,
+              -3
+            ],
+            "heap": [
+              -2,
+              -3
+            ],
+            "output": [
+              -3
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "仅当弹出值等于当前最小时同步弹最小栈。",
+        "review": "removed=-3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15",
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "pop",
+              "min": -2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "removed=-3",
+            "action": "pop() 移除 -3",
+            "status": "running",
+            "stack": [
+              -2,
+              0
+            ],
+            "heap": [
+              -2
+            ]
+          },
+          "caption": "仅当弹出值等于当前最小时同步弹最小栈。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "辅助栈顶始终是全栈最小值。",
+        "review": "-2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "getMin",
+              "return": -2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0
+            ],
+            "formula": "-2",
+            "action": "getMin()=-2",
+            "status": "running",
+            "stack": [
+              -2,
+              0
+            ],
+            "heap": [
+              -2
+            ],
+            "output": [
+              -3,
+              -2
+            ]
+          },
+          "caption": "辅助栈顶始终是全栈最小值。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "operation": "getMin",
+              "return": -2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0
+            ],
+            "formula": "-2",
+            "action": "不变量检查 1",
+            "status": "running",
+            "stack": [
+              -2,
+              0
+            ],
+            "heap": [
+              -2
+            ],
+            "output": [
+              -3,
+              -2
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "所有操作均为 O(1)。",
+        "review": "[-3, -2]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [],
+            "variables": {
+              "queries": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[-3, -2]",
+            "action": "最小值查询序列 [-3,-2]",
+            "status": "return",
+            "stack": [
+              -2,
+              0
+            ],
+            "heap": [
+              -2
+            ],
+            "output": [
+              -3,
+              -2
+            ]
+          },
+          "caption": "所有操作均为 O(1)。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class MinStack {\npublic:\n    /** initialize your data structure here. */\n    stack<int> stk, f;\n    MinStack() {\n\n    }\n\n    void push(int x) {\n        stk.push(x);                                             // 入栈\n        if (f.empty() || f.top() >= x) f.push(x);\n    }\n\n    void pop() {\n        if (stk.top() <= f.top()) f.pop();\n        stk.pop();                                               // 出栈\n    }\n\n    int top() {\n        return stk.top();\n    }\n\n    int getMin() {\n        return f.top();\n    }\n};\n\n/**\n * Your MinStack object will be instantiated and called as such:\n * MinStack* obj = new MinStack();\n * obj->push(x);\n * obj->pop();\n * int param_3 = obj->top();\n * int param_4 = obj->getMin();\n */",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3217,
+        "text": "class MinStack {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3218,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3219,
+        "text": "    /** initialize your data structure here. */"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3220,
+        "text": "    stack<int> stk, f;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3221,
+        "text": "    MinStack() {"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3222,
+        "text": ""
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3223,
+        "text": "    }"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3224,
+        "text": ""
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3225,
+        "text": "    void push(int x) {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3226,
+        "text": "        stk.push(x);                                             // 入栈"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3227,
+        "text": "        if (f.empty() || f.top() >= x) f.push(x);"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3228,
+        "text": "    }"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3229,
+        "text": ""
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3230,
+        "text": "    void pop() {"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3231,
+        "text": "        if (stk.top() <= f.top()) f.pop();"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3232,
+        "text": "        stk.pop();                                               // 出栈"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3233,
+        "text": "    }"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3234,
+        "text": ""
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3235,
+        "text": "    int top() {"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3236,
+        "text": "        return stk.top();"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3237,
+        "text": "    }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3238,
+        "text": ""
+      },
+      {
+        "id": "L23",
+        "sourceLine": 3239,
+        "text": "    int getMin() {"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 3240,
+        "text": "        return f.top();"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 3241,
+        "text": "    }"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 3242,
+        "text": "};"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 3243,
+        "text": ""
+      },
+      {
+        "id": "L28",
+        "sourceLine": 3244,
+        "text": "/**"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 3245,
+        "text": " * Your MinStack object will be instantiated and called as such:"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 3246,
+        "text": " * MinStack* obj = new MinStack();"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 3247,
+        "text": " * obj->push(x);"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 3248,
+        "text": " * obj->pop();"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 3249,
+        "text": " * int param_3 = obj->top();"
+      },
+      {
+        "id": "L34",
+        "sourceLine": 3250,
+        "text": " * int param_4 = obj->getMin();"
+      },
+      {
+        "id": "L35",
+        "sourceLine": 3251,
+        "text": " */"
+      }
+    ]
+  }
+}

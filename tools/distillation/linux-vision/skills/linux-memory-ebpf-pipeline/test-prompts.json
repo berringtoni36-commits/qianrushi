@@ -1,0 +1,14 @@
+{
+  "skill": "linux-memory-ebpf-pipeline",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"从 Python 执行到 eBPF 采集再到 TUI 展示，完整链路是什么？","expected_behavior":"激活本 skill，分加载、挂载、触发、Map、读取、展示解释","notes":"项目链路"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"BCC 在这个物理内存碎片项目里具体做了什么？","expected_behavior":"激活本 skill，解释编译加载挂载和用户态桥梁","notes":"BCC 角色"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"eBPF 程序加载成功但没有数据，应该检查哪些节点？","expected_behavior":"激活本 skill，按 attach、事件触发和 Map 更新排查","notes":"运行故障"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"last_time_map 的 key 设计是否有 bug？","expected_behavior":"不激活本 skill，优先激活 linux-memory-source-audit","notes":"跨 skill 混淆"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"为什么总空闲内存够但 order 8 分配失败？","expected_behavior":"不激活本 skill，优先激活 linux-buddy-fragmentation-diagnosis","notes":"跨 skill 混淆"},
+    {"id":"edge-01","type":"edge_case","prompt":"我只想知道 eBPF 和 BCC 的区别","expected_behavior":"可简要解释，但不展开本项目全链路，除非用户要求项目上下文","notes":"上下文边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

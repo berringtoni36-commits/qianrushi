@@ -1,0 +1,693 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "Floyd 函数图找环入口",
+    "sceneKind": "array-pointers",
+    "input": [
+      1,
+      3,
+      4,
+      2,
+      2
+    ],
+    "expected": 2,
+    "exampleText": "[1,3,4,2,2]",
+    "expectedText": "重复数 = 2",
+    "invariant": "指针每步严格按 nums 映射前进",
+    "aha": "重复值把数组映射变成带环链表",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 287,
+    "title": "寻找重复数",
+    "day": "Day 14：技巧专题",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "ee72002eec5c77960d4cf57ce7b98bf1f6064ac8c6c49c5ee05096128c596035",
+    "semanticTokenHash": "9a82e9ac4188ff754a32c4582a3474d0c2e2b14f74d795fada81b527aa091681",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "重复值对应函数图中两条边汇入同一节点，从而形成环。",
+        "review": "把下标视为节点，nums[i] 视为 next"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 0,
+              "b": 0
+            },
+            "pointers": {
+              "a": 0,
+              "b": 0
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "把下标视为节点，nums[i] 视为 next",
+            "status": "running"
+          },
+          "caption": "重复值对应函数图中两条边汇入同一节点，从而形成环。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "第一阶段在环内相遇。",
+        "review": "meet=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6",
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 1,
+              "b": 3,
+              "phase": 1
+            },
+            "pointers": {
+              "a": 1,
+              "b": 3
+            },
+            "active": [
+              1,
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "meet=False",
+            "action": "慢指针到 1，快指针到 3",
+            "status": "running"
+          },
+          "caption": "第一阶段在环内相遇。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "第一阶段在环内相遇。",
+        "review": "meet=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6",
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 3,
+              "b": 4,
+              "phase": 1
+            },
+            "pointers": {
+              "a": 3,
+              "b": 4
+            },
+            "active": [
+              3,
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "meet=False",
+            "action": "慢指针到 3，快指针到 4",
+            "status": "running"
+          },
+          "caption": "第一阶段在环内相遇。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "第一阶段在环内相遇。",
+        "review": "meet=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6",
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 2,
+              "b": 4,
+              "phase": 1
+            },
+            "pointers": {
+              "a": 2,
+              "b": 4
+            },
+            "active": [
+              2,
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "meet=False",
+            "action": "慢指针到 2，快指针到 4",
+            "status": "running"
+          },
+          "caption": "第一阶段在环内相遇。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "第一阶段在环内相遇。",
+        "review": "meet=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6",
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 4,
+              "b": 4,
+              "phase": 1
+            },
+            "pointers": {
+              "a": 4,
+              "b": 4
+            },
+            "active": [
+              4,
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "meet=True",
+            "action": "慢指针到 4，快指针到 4",
+            "status": "running"
+          },
+          "caption": "第一阶段在环内相遇。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "头到入口距离等于相遇点到入口的剩余距离。",
+        "review": "慢指针重置到 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 0,
+              "b": 4,
+              "phase": 2
+            },
+            "pointers": {
+              "a": 0,
+              "b": 4
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "慢指针重置到 0",
+            "status": "running"
+          },
+          "caption": "头到入口距离等于相遇点到入口的剩余距离。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "第二阶段相遇于环入口。",
+        "review": "same=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11",
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 1,
+              "b": 2,
+              "phase": 2
+            },
+            "pointers": {
+              "a": 1,
+              "b": 2
+            },
+            "active": [
+              1,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "same=False",
+            "action": "同速前进：a=1, b=2",
+            "status": "running"
+          },
+          "caption": "第二阶段相遇于环入口。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11",
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 1,
+              "b": 2,
+              "phase": 2
+            },
+            "pointers": {
+              "a": 1,
+              "b": 2
+            },
+            "active": [
+              1,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "same=False",
+            "action": "不变量检查 2",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "第二阶段相遇于环入口。",
+        "review": "same=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11",
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 3,
+              "b": 4,
+              "phase": 2
+            },
+            "pointers": {
+              "a": 3,
+              "b": 4
+            },
+            "active": [
+              3,
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "same=False",
+            "action": "同速前进：a=3, b=4",
+            "status": "running"
+          },
+          "caption": "第二阶段相遇于环入口。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "第二阶段相遇于环入口。",
+        "review": "same=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11",
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 2,
+              "b": 2,
+              "phase": 2
+            },
+            "pointers": {
+              "a": 2,
+              "b": 2
+            },
+            "active": [
+              2,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "same=True",
+            "action": "同速前进：a=2, b=2",
+            "status": "running"
+          },
+          "caption": "第二阶段相遇于环入口。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11",
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 2,
+              "b": 2,
+              "phase": 2
+            },
+            "pointers": {
+              "a": 2,
+              "b": 2
+            },
+            "active": [
+              2,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "same=True",
+            "action": "不变量检查 1",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "环入口的节点编号就是重复值。",
+        "review": "return 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              4,
+              2,
+              2
+            ],
+            "variables": {
+              "a": 2,
+              "b": 2
+            },
+            "pointers": {
+              "a": 2,
+              "b": 2
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              2
+            ],
+            "formula": "return 2",
+            "action": "返回重复数 2",
+            "status": "return",
+            "output": 2
+          },
+          "caption": "环入口的节点编号就是重复值。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int findDuplicate(vector<int>& nums) {\n        int a = 0, b = 0;\n        while (true) {\n            a = nums[a];\n            b = nums[nums[b]];\n            if (a == b) {\n                a = 0;\n                while (a != b) {\n                    a = nums[a];\n                    b = nums[b];\n                }\n                return a;\n            }\n        }\n\n        return -1;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 5598,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 5599,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 5600,
+        "text": "    int findDuplicate(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 5601,
+        "text": "        int a = 0, b = 0;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 5602,
+        "text": "        while (true) {"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 5603,
+        "text": "            a = nums[a];"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 5604,
+        "text": "            b = nums[nums[b]];"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 5605,
+        "text": "            if (a == b) {"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 5606,
+        "text": "                a = 0;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 5607,
+        "text": "                while (a != b) {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 5608,
+        "text": "                    a = nums[a];"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 5609,
+        "text": "                    b = nums[b];"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 5610,
+        "text": "                }"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 5611,
+        "text": "                return a;"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 5612,
+        "text": "            }"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 5613,
+        "text": "        }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 5614,
+        "text": ""
+      },
+      {
+        "id": "L18",
+        "sourceLine": 5615,
+        "text": "        return -1;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 5616,
+        "text": "    }"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 5617,
+        "text": "};"
+      }
+    ]
+  }
+}

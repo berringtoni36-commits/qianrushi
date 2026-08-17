@@ -1,0 +1,1181 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "网格路径 DFS + 原地标记",
+    "sceneKind": "backtracking",
+    "input": {
+      "board": [
+        [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        [
+          "S",
+          "F",
+          "C",
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
+        ]
+      ],
+      "word": "ABCCED"
+    },
+    "expected": true,
+    "exampleText": "board + word = \"ABCCED\"",
+    "expectedText": "找到路径 → true",
+    "invariant": "当前 path 中坐标互不重复且拼接等于 word 前缀",
+    "aha": "进入格子后临时改写，返回时恢复",
+    "time": "O(mn·4^L)",
+    "space": "O(L)",
+    "problemId": 79,
+    "title": "单词搜索",
+    "day": "Day 10：回溯",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "afc8f4fa0e0bdfcf44405dd28bf04b438364c9e7e1d7cd368477277e414573af",
+    "semanticTokenHash": "180ecdcf522181dc7d2b67d8d4e756bc3910d5400a0a9a8c608f78e568df4ba9",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "DFS 路径不能重复使用同一格。",
+        "review": "逐格尝试单词起点"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 0,
+              "x": 0,
+              "y": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "逐格尝试单词起点",
+            "status": "running",
+            "path": [],
+            "output": [],
+            "matrix": [
+              [
+                "A",
+                "B",
+                "C",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                "C",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                "E",
+                "E"
+              ]
+            ],
+            "activeCells": []
+          },
+          "caption": "DFS 路径不能重复使用同一格。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "临时标记阻止当前路径重复使用。",
+        "review": "visited"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 0,
+              "x": 0,
+              "y": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "visited",
+            "action": "匹配 A 并标记 (0,0)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                "A",
+                "B",
+                "C",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                "C",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                "E",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "0,0"
+            ]
+          },
+          "caption": "临时标记阻止当前路径重复使用。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "临时标记阻止当前路径重复使用。",
+        "review": "visited"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 1,
+              "x": 0,
+              "y": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "visited",
+            "action": "匹配 B 并标记 (0,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                "B",
+                "C",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                "C",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                "E",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ]
+          },
+          "caption": "临时标记阻止当前路径重复使用。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "临时标记阻止当前路径重复使用。",
+        "review": "visited"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 2,
+              "x": 0,
+              "y": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "visited",
+            "action": "匹配 C 并标记 (0,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                "C",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                "C",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                "E",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ]
+          },
+          "caption": "临时标记阻止当前路径重复使用。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "字符不匹配立即回退。",
+        "review": "mismatch"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 3,
+              "x": 0,
+              "y": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "mismatch",
+            "action": "(0,3)=E 不匹配 C",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                "C",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                "E",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "0,3"
+            ]
+          },
+          "caption": "字符不匹配立即回退。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "临时标记阻止当前路径重复使用。",
+        "review": "visited"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 3,
+              "x": 1,
+              "y": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "visited",
+            "action": "匹配 C 并标记 (1,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                "C",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                "E",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ]
+          },
+          "caption": "临时标记阻止当前路径重复使用。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "字符不匹配立即回退。",
+        "review": "mismatch"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 4,
+              "x": 1,
+              "y": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "mismatch",
+            "action": "(1,3)=S 不匹配 E",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                ".",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                "E",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "1,3"
+            ]
+          },
+          "caption": "字符不匹配立即回退。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "临时标记阻止当前路径重复使用。",
+        "review": "visited"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 4,
+              "x": 2,
+              "y": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "visited",
+            "action": "匹配 E 并标记 (2,2)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                ".",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                "E",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ]
+          },
+          "caption": "临时标记阻止当前路径重复使用。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "字符不匹配立即回退。",
+        "review": "mismatch"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 5,
+              "x": 2,
+              "y": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "mismatch",
+            "action": "(2,3)=E 不匹配 D",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                ".",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                ".",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ]
+          },
+          "caption": "字符不匹配立即回退。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 5,
+              "x": 2,
+              "y": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "mismatch",
+            "action": "不变量检查 1",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                2
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                ".",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                ".",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "2,3"
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "临时标记阻止当前路径重复使用。",
+        "review": "visited"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "u": 5,
+              "x": 2,
+              "y": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "visited",
+            "action": "匹配 D 并标记 (2,1)",
+            "status": "running",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "output": [],
+            "matrix": [
+              [
+                ".",
+                ".",
+                ".",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                ".",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                ".",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ]
+          },
+          "caption": "临时标记阻止当前路径重复使用。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "六个字符按相邻格顺序匹配。",
+        "review": "ABCCED"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "backtracking",
+            "values": [
+              "A",
+              "B",
+              "C",
+              "C",
+              "E",
+              "D"
+            ],
+            "variables": {
+              "length": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "formula": "ABCCED",
+            "action": "找到 ABCCED 路径",
+            "status": "return",
+            "path": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "output": true,
+            "matrix": [
+              [
+                "A",
+                "B",
+                "C",
+                "E"
+              ],
+              [
+                "S",
+                "F",
+                "C",
+                "S"
+              ],
+              [
+                "A",
+                "D",
+                "E",
+                "E"
+              ]
+            ],
+            "activeCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "1,2",
+              "2,2",
+              "2,1"
+            ]
+          },
+          "caption": "六个字符按相邻格顺序匹配。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    bool exist(vector<vector<char>>& board, string word) {\n        for (int i = 0; i < board.size(); i ++ ) {\n            for (int j = 0; j < board[i].size(); j ++ ) {\n                if (dfs(board, word, 0, i, j)) return true;\n            }\n        }\n        return false;\n    }\n\n    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};\n\n    bool dfs(vector<vector<char>>& board, string& word, int u, int x, int y) { // 深度优先搜索\n        if (board[x][y] != word[u]) return false;\n        if (u == word.size() - 1) return true;\n\n        char t = board[x][y];\n        board[x][y] = '.';\n        for (int i = 0; i < 4; i ++ ) {\n            int a = x + dx[i], b = y + dy[i];\n            if (a < 0 || a >= board.size() || b < 0 || b >= board[0].size() || board[a][b] == '.') continue;\n            if (dfs(board, word, u + 1, a, b)) return true;\n        }\n        board[x][y] = t;\n        return false;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 3891,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 3892,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 3893,
+        "text": "    bool exist(vector<vector<char>>& board, string word) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 3894,
+        "text": "        for (int i = 0; i < board.size(); i ++ ) {"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 3895,
+        "text": "            for (int j = 0; j < board[i].size(); j ++ ) {"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 3896,
+        "text": "                if (dfs(board, word, 0, i, j)) return true;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 3897,
+        "text": "            }"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 3898,
+        "text": "        }"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 3899,
+        "text": "        return false;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 3900,
+        "text": "    }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 3901,
+        "text": ""
+      },
+      {
+        "id": "L12",
+        "sourceLine": 3902,
+        "text": "    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 3903,
+        "text": ""
+      },
+      {
+        "id": "L14",
+        "sourceLine": 3904,
+        "text": "    bool dfs(vector<vector<char>>& board, string& word, int u, int x, int y) { // 深度优先搜索"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 3905,
+        "text": "        if (board[x][y] != word[u]) return false;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 3906,
+        "text": "        if (u == word.size() - 1) return true;"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 3907,
+        "text": ""
+      },
+      {
+        "id": "L18",
+        "sourceLine": 3908,
+        "text": "        char t = board[x][y];"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 3909,
+        "text": "        board[x][y] = '.';"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 3910,
+        "text": "        for (int i = 0; i < 4; i ++ ) {"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 3911,
+        "text": "            int a = x + dx[i], b = y + dy[i];"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 3912,
+        "text": "            if (a < 0 || a >= board.size() || b < 0 || b >= board[0].size() || board[a][b] == '.') continue;"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 3913,
+        "text": "            if (dfs(board, word, u + 1, a, b)) return true;"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 3914,
+        "text": "        }"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 3915,
+        "text": "        board[x][y] = t;"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 3916,
+        "text": "        return false;"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 3917,
+        "text": "    }"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 3918,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,654 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "一遍哈希",
+    "sceneKind": "hash-array",
+    "input": {
+      "nums": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "target": 9
+    },
+    "expected": [
+      0,
+      1
+    ],
+    "exampleText": "nums=[2,7,11,15], target=9",
+    "expectedText": "下标 [0,1]",
+    "invariant": "heap 只保存当前下标 i 之前的元素",
+    "aha": "先查询补数，再写入当前元素",
+    "time": "O(n)",
+    "space": "O(n)",
+    "problemId": 1,
+    "title": "两数之和",
+    "sourceHeading": "1. 两数之和（LeetCode 1 · Easy）",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "26538ee58bfecd4a1c5a947fcd4219ac5a81d54207e97408c2034002c2bc7e2a",
+    "semanticTokenHash": "a1007bd0520301b9e6d4280ee2ab4a15f30facd18aa3ee97ff08a4c939cedbaa"
+  },
+  "frames": [
+    {
+      "id": "hash-init",
+      "phase": "setup",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "先建立空表。它只保存已经走过的位置，因此永远不会把当前元素使用两次。",
+        "review": "heap = {}"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {},
+            "variables": {
+              "target": 9,
+              "i": null,
+              "r": null
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "status": "ready",
+            "action": "建立空哈希表"
+          },
+          "caption": "建立 heap，尚未保存任何下标。",
+          "emphasis": [
+            "heap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "i0-enter",
+      "phase": "inspect",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "第一次进入循环，当前只观察 nums[0]，表中还没有历史元素。",
+        "review": "i = 0, nums[i] = 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {},
+            "variables": {
+              "target": 9,
+              "i": 0,
+              "r": null
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "status": "ready",
+            "action": "检查下标 0"
+          },
+          "caption": "i 指向数值 2。",
+          "emphasis": [
+            "i"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "i0-complement",
+      "phase": "compare",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "目标是 9，所以当前真正要查询的是补数 7，而不是当前值 2。",
+        "review": "r = 9 - 2 = 7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {},
+            "variables": {
+              "target": 9,
+              "i": 0,
+              "r": 7
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "r = 9 - 2 = 7",
+            "status": "ready",
+            "action": "计算补数 7"
+          },
+          "caption": "算出 r = 7。",
+          "emphasis": [
+            "r"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "i0-miss",
+      "phase": "lookup",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "heap 只含历史元素；7 不在表中，当前还不能组成答案。",
+        "review": "heap.count(7) = 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {},
+            "variables": {
+              "target": 9,
+              "i": 0,
+              "r": 7
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "heap.count(7) = 0",
+            "status": "miss",
+            "action": "查询 7：未找到"
+          },
+          "caption": "查询补数 7，结果未命中。",
+          "emphasis": [
+            "lookup"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "i0-insert",
+      "phase": "mutate",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "查询必须发生在写入之前。现在把 2 的下标 0 留给后面的元素使用。",
+        "review": "heap[2] = 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {
+              "2": 0
+            },
+            "variables": {
+              "target": 9,
+              "i": 0,
+              "r": 7
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "heap[2] = 0",
+            "status": "insert",
+            "action": "写入 2 → 0"
+          },
+          "caption": "把当前值 2 和下标 0 写入 heap。",
+          "emphasis": [
+            "heap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invariant-check",
+      "phase": "inspect",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "此刻不变量成立：heap 中每个下标都严格小于下一轮的 i。",
+        "review": "heap 保存 i 左侧元素"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {
+              "2": 0
+            },
+            "variables": {
+              "target": 9,
+              "i": 0,
+              "r": 7
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "status": "settled",
+            "action": "核对一遍哈希不变量"
+          },
+          "caption": "heap 只保存已遍历元素。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "i1-enter",
+      "phase": "inspect",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "进入 i=1，当前值变成 7；此前的 2 已经安全地留在表中。",
+        "review": "i = 1, nums[i] = 7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {
+              "2": 0
+            },
+            "variables": {
+              "target": 9,
+              "i": 1,
+              "r": null
+            },
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "status": "ready",
+            "action": "检查下标 1"
+          },
+          "caption": "i 移到数值 7。",
+          "emphasis": [
+            "i"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "i1-complement",
+      "phase": "compare",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "7 距离目标 9 还差 2，恰好对应表中的历史值。",
+        "review": "r = 9 - 7 = 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {
+              "2": 0
+            },
+            "variables": {
+              "target": 9,
+              "i": 1,
+              "r": 2
+            },
+            "active": [
+              1
+            ],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "r = 9 - 7 = 2",
+            "status": "ready",
+            "action": "计算补数 2"
+          },
+          "caption": "算出 r = 2。",
+          "emphasis": [
+            "r"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "i1-hit",
+      "phase": "accept",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "补数 2 命中，heap[2] 给出它的下标 0；当前下标是 1。",
+        "review": "heap.count(2) = 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {
+              "2": 0
+            },
+            "variables": {
+              "target": 9,
+              "i": 1,
+              "r": 2
+            },
+            "active": [
+              1
+            ],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "heap.count(2) = 1",
+            "status": "hit",
+            "action": "查询 2：命中下标 0"
+          },
+          "caption": "查询命中，两个下标已经确定。",
+          "emphasis": [
+            "lookup",
+            "result"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pair-proof",
+      "phase": "aha",
+      "durationMs": 1400,
+      "captions": {
+        "learning": "这正是先查后存的价值：下标 0 一定来自过去，下标 1 一定是当前，两个元素不会重复。",
+        "review": "nums[0] + nums[1] = 9"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {
+              "2": 0
+            },
+            "variables": {
+              "target": 9,
+              "i": 1,
+              "r": 2
+            },
+            "active": [
+              1
+            ],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "nums[0] + nums[1] = 2 + 7 = 9",
+            "status": "hit",
+            "action": "确认 2 + 7 = 9"
+          },
+          "caption": "确认数值和、下标和不变量同时成立。",
+          "emphasis": [
+            "result"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "construct-result",
+      "phase": "accept",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "代码直接构造 {heap[r], i}，顺序就是历史下标在前、当前下标在后。",
+        "review": "{heap[2], 1} = {0, 1}"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {
+              "2": 0
+            },
+            "variables": {
+              "target": 9,
+              "i": 1,
+              "r": 2
+            },
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "{heap[2], 1} = {0, 1}",
+            "status": "result",
+            "action": "构造答案 [0, 1]"
+          },
+          "caption": "构造返回数组 [0, 1]。",
+          "emphasis": [
+            "result"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "找到唯一答案后立即返回，不再扫描 11 和 15。",
+        "review": "return [0, 1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "hash-array",
+            "values": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "hash": {
+              "2": 0
+            },
+            "variables": {
+              "target": 9,
+              "i": 1,
+              "r": 2
+            },
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1
+            ],
+            "formula": "return [0, 1]",
+            "status": "return",
+            "action": "返回 [0, 1]"
+          },
+          "caption": "函数返回下标 [0, 1]。",
+          "emphasis": [
+            "result"
+          ]
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n        unordered_map<int, int> heap;                            // 哈希表，O(1)查找\n        for (int i = 0; i < nums.size(); i ++ ) {                // 遍历\n            int r = target - nums[i];\n            if (heap.count(r)) return {heap[r], i};              // 查找是否在哈希表中\n            heap[nums[i]] = i;\n        }\n\n        return {};\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 57,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 58,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 59,
+        "text": "    vector<int> twoSum(vector<int>& nums, int target) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 60,
+        "text": "        unordered_map<int, int> heap;                            // 哈希表，O(1)查找"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 61,
+        "text": "        for (int i = 0; i < nums.size(); i ++ ) {                // 遍历"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 62,
+        "text": "            int r = target - nums[i];"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 63,
+        "text": "            if (heap.count(r)) return {heap[r], i};              // 查找是否在哈希表中"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 64,
+        "text": "            heap[nums[i]] = i;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 65,
+        "text": "        }"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 66,
+        "text": ""
+      },
+      {
+        "id": "L11",
+        "sourceLine": 67,
+        "text": "        return {};"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 68,
+        "text": "    }"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 69,
+        "text": "};"
+      }
+    ]
+  }
+}

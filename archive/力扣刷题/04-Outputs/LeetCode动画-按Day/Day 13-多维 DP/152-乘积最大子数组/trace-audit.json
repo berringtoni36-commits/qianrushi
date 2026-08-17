@@ -1,0 +1,784 @@
+{
+  "problemId": 152,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 152,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        2,
+        3,
+        -2,
+        4
+      ],
+      "variables": {
+        "f": 4,
+        "g": -48,
+        "res": 6
+      },
+      "structure": {},
+      "result": [
+        6
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "ddf61c601ed1ff822f938769bd0fd4dbbba05bced818d13232ee480bb3e6aa56",
+    "sourceSemanticTokenHash": "2c62d6e692c8d15fe92d448d043420387b1843bf70be06be09df99d04ae11522",
+    "sourceCodeLineCount": 14
+  },
+  "sourceCodeSha256": "ddf61c601ed1ff822f938769bd0fd4dbbba05bced818d13232ee480bb3e6aa56",
+  "sourceSemanticTokenHash": "2c62d6e692c8d15fe92d448d043420387b1843bf70be06be09df99d04ae11522",
+  "steps": [
+    {
+      "id": "152-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "同时保存最大/最小乘积",
+      "body": "负数会交换最大和最小的角色，因此 f、g 不能只保留一个。 题解原意：核心洞察：由于负数的存在，当前最大乘积可能来自之前的最大正数乘正数，也可能来自之前的最小负数乘负数。因此同时维护当前最大 max_prod 和当前最小 min_prod。 DP 五步法： 1. dp 定义：max_prod[i] 表示以 i 结尾的子数组最大乘积，min_prod[i] 表示最小乘积 2. 递推公式： max_prod[i] = max(nums[i], max_prod[i-1] * nums[i]…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp1d",
+        "badge": "res=2",
+        "tokens": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "f": 2,
+          "g": 2,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "max f",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "min g",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [],
+        "note": "负数会交换最大和最小的角色，因此 f、g 不能只保留一个。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "variables": {
+          "f": 2,
+          "g": 2,
+          "res": 2
+        },
+        "structure": {},
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "152-trace-002",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "处理 nums[1]=3",
+      "body": "候选 a=3, f*a=6, g*a=6；更新 f=6, g=3, res=6。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=1 · res=6 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "a": 3,
+          "f": 6,
+          "g": 3,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "f max",
+            "values": [
+              6
+            ]
+          },
+          {
+            "label": "g min",
+            "values": [
+              3
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "候选 a=3, f*a=6, g*a=6；更新 f=6, g=3, res=6。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "variables": {
+          "i": 1,
+          "a": 3,
+          "f": 6,
+          "g": 3,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "152-trace-003",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "处理 nums[2]=-2",
+      "body": "候选 a=-2, f*a=-12, g*a=-6；更新 f=-2, g=-12, res=6。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=2 · res=6 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "a": -2,
+          "f": -2,
+          "g": -12,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "f max",
+            "values": [
+              -2
+            ]
+          },
+          {
+            "label": "g min",
+            "values": [
+              -12
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "候选 a=-2, f*a=-12, g*a=-6；更新 f=-2, g=-12, res=6。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "variables": {
+          "i": 2,
+          "a": -2,
+          "f": -2,
+          "g": -12,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "152-trace-004",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "update",
+      "title": "处理 nums[3]=4",
+      "body": "候选 a=4, f*a=-8, g*a=-48；更新 f=4, g=-48, res=6。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp1d",
+        "badge": "i=3 · res=6 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "f max",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "g min",
+            "values": [
+              -48
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "候选 a=4, f*a=-8, g*a=-48；更新 f=4, g=-48, res=6。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "152-trace-check-006",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大乘积为 6。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · res=6 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "f max",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "g min",
+            "values": [
+              -48
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大乘积为 6。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "152-trace-check-007",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大乘积为 6。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · res=6 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "f max",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "g min",
+            "values": [
+              -48
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大乘积为 6。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "152-trace-check-008",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大乘积为 6。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · res=6 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "f max",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "g min",
+            "values": [
+              -48
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大乘积为 6。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "152-trace-check-009",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大乘积为 6。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · res=6 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "f max",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "g min",
+            "values": [
+              -48
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大乘积为 6。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "152-trace-check-010",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大乘积为 6。 易错提醒：负数处理：遇到负数时，最大和最小要互换（因为负数使得大的变小、小的变大）。 乘以 0：遇到 0 时，乘积变为 0，后续需要重新累积。前缀积解法中要重置为 1。 单元素数组：初始值设为 nums[0]，遍历从 index=1 开始。 结果溢出不考虑：题目保证结果在 32 位整型范围内。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=3 · res=6 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "f max",
+            "values": [
+              4
+            ]
+          },
+          {
+            "label": "g min",
+            "values": [
+              -48
+            ]
+          },
+          {
+            "label": "res",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。最大乘积为 6。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "variables": {
+          "i": 3,
+          "a": 4,
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "152-trace-005",
+      "line": 12,
+      "lineIds": [
+        12
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最大乘积为 6。",
+      "kind": "dp1d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp1d",
+        "badge": "res=6 · 结果 1 项",
+        "tokens": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              6
+            ]
+          }
+        ],
+        "result": [
+          6
+        ],
+        "note": "最大乘积为 6。"
+      },
+      "state": {
+        "values": [
+          2,
+          3,
+          -2,
+          4
+        ],
+        "variables": {
+          "f": 4,
+          "g": -48,
+          "res": 6
+        },
+        "structure": {},
+        "result": [
+          6
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

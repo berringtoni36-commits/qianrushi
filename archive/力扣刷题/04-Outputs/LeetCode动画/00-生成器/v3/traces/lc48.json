@@ -1,0 +1,827 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "转置 + 行反转",
+    "sceneKind": "matrix-grid",
+    "input": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6
+      ],
+      [
+        7,
+        8,
+        9
+      ]
+    ],
+    "expected": [
+      [
+        7,
+        4,
+        1
+      ],
+      [
+        8,
+        5,
+        2
+      ],
+      [
+        9,
+        6,
+        3
+      ]
+    ],
+    "exampleText": "[[1,2,3],[4,5,6],[7,8,9]]",
+    "expectedText": "[[7,4,1],[8,5,2],[9,6,3]]",
+    "invariant": "每阶段都是原地双元素交换",
+    "aha": "坐标变换 (r,c)→(c,n-1-r) 可拆成两次镜像",
+    "time": "O(n²)",
+    "space": "O(1)",
+    "problemId": 48,
+    "title": "旋转图像",
+    "day": "Day 3：数组技巧 + 矩阵",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "81ed4e8f02485ba65094cde3c99579865b293f7095a69e1529d3da996a82760e",
+    "semanticTokenHash": "7e100ade7c6aa09bea3a989840fdb0fb7363adac50ab82f286f07786eb14eb67",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "顺时针旋转等价于转置后水平翻转。",
+        "review": "先沿主对角线转置"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "n": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "先沿主对角线转置",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "顺时针旋转等价于转置后水平翻转。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "n": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 4",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每对非对角元素只交换一次。",
+        "review": "transpose swap"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "transpose swap",
+            "action": "交换 (1,0) 与 (0,1)",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                3
+              ],
+              [
+                2,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "1,0",
+              "0,1"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "每对非对角元素只交换一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每对非对角元素只交换一次。",
+        "review": "transpose swap"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "transpose swap",
+            "action": "交换 (2,0) 与 (0,2)",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7
+              ],
+              [
+                2,
+                5,
+                6
+              ],
+              [
+                3,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "2,0",
+              "0,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "每对非对角元素只交换一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "transpose swap",
+            "action": "不变量检查 3",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7
+              ],
+              [
+                2,
+                5,
+                6
+              ],
+              [
+                3,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "2,0",
+              "0,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每对非对角元素只交换一次。",
+        "review": "transpose swap"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "transpose swap",
+            "action": "交换 (2,1) 与 (1,2)",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                4,
+                7
+              ],
+              [
+                2,
+                5,
+                8
+              ],
+              [
+                3,
+                6,
+                9
+              ]
+            ],
+            "activeCells": [
+              "2,1",
+              "1,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "每对非对角元素只交换一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "转置后的每一行反转完成顺时针旋转。",
+        "review": "row reverse"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "row reverse",
+            "action": "水平翻转第 0 行",
+            "status": "running",
+            "matrix": [
+              [
+                7,
+                4,
+                1
+              ],
+              [
+                2,
+                5,
+                8
+              ],
+              [
+                3,
+                6,
+                9
+              ]
+            ],
+            "activeCells": [
+              "0,0",
+              "0,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "转置后的每一行反转完成顺时针旋转。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "j": 0,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "row reverse",
+            "action": "不变量检查 2",
+            "status": "running",
+            "matrix": [
+              [
+                7,
+                4,
+                1
+              ],
+              [
+                2,
+                5,
+                8
+              ],
+              [
+                3,
+                6,
+                9
+              ]
+            ],
+            "activeCells": [
+              "0,0",
+              "0,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "转置后的每一行反转完成顺时针旋转。",
+        "review": "row reverse"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "j": 0,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "row reverse",
+            "action": "水平翻转第 1 行",
+            "status": "running",
+            "matrix": [
+              [
+                7,
+                4,
+                1
+              ],
+              [
+                8,
+                5,
+                2
+              ],
+              [
+                3,
+                6,
+                9
+              ]
+            ],
+            "activeCells": [
+              "1,0",
+              "1,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "转置后的每一行反转完成顺时针旋转。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "转置后的每一行反转完成顺时针旋转。",
+        "review": "row reverse"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 0,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "row reverse",
+            "action": "水平翻转第 2 行",
+            "status": "running",
+            "matrix": [
+              [
+                7,
+                4,
+                1
+              ],
+              [
+                8,
+                5,
+                2
+              ],
+              [
+                9,
+                6,
+                3
+              ]
+            ],
+            "activeCells": [
+              "2,0",
+              "2,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "转置后的每一行反转完成顺时针旋转。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "j": 0,
+              "k": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "row reverse",
+            "action": "不变量检查 1",
+            "status": "running",
+            "matrix": [
+              [
+                7,
+                4,
+                1
+              ],
+              [
+                8,
+                5,
+                2
+              ],
+              [
+                9,
+                6,
+                3
+              ]
+            ],
+            "activeCells": [
+              "2,0",
+              "2,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "每个原坐标 (r,c) 到达 (c,n-1-r)。",
+        "review": "[[7, 4, 1], [8, 5, 2], [9, 6, 3]]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "n": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[[7, 4, 1], [8, 5, 2], [9, 6, 3]]",
+            "action": "旋转结果确认",
+            "status": "return",
+            "matrix": [
+              [
+                7,
+                4,
+                1
+              ],
+              [
+                8,
+                5,
+                2
+              ],
+              [
+                9,
+                6,
+                3
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "1,0",
+              "1,1",
+              "1,2",
+              "2,0",
+              "2,1",
+              "2,2"
+            ],
+            "output": [
+              [
+                7,
+                4,
+                1
+              ],
+              [
+                8,
+                5,
+                2
+              ],
+              [
+                9,
+                6,
+                3
+              ]
+            ]
+          },
+          "caption": "每个原坐标 (r,c) 到达 (c,n-1-r)。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    void rotate(vector<vector<int>>& matrix) {\n        int n = matrix.size();\n        for (int i = 0; i < n; i ++ )                            // 遍历\n            for (int j = 0; j < i; j ++ )\n                swap(matrix[i][j], matrix[j][i]);                // 交换\n\n        for (int i = 0; i < n; i ++ )                            // 遍历\n            for (int j = 0, k = n - 1; j < k; j ++, k -- )\n                swap(matrix[i][j], matrix[i][k]);                // 交换\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1078,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1079,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1080,
+        "text": "    void rotate(vector<vector<int>>& matrix) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1081,
+        "text": "        int n = matrix.size();"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1082,
+        "text": "        for (int i = 0; i < n; i ++ )                            // 遍历"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1083,
+        "text": "            for (int j = 0; j < i; j ++ )"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1084,
+        "text": "                swap(matrix[i][j], matrix[j][i]);                // 交换"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1085,
+        "text": ""
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1086,
+        "text": "        for (int i = 0; i < n; i ++ )                            // 遍历"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1087,
+        "text": "            for (int j = 0, k = n - 1; j < k; j ++, k -- )"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1088,
+        "text": "                swap(matrix[i][j], matrix[i][k]);                // 交换"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1089,
+        "text": "    }"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1090,
+        "text": "};"
+      }
+    ]
+  }
+}

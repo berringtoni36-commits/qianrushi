@@ -1,0 +1,1075 @@
+{
+  "problemId": 72,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 72,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [],
+      "variables": {},
+      "structure": {
+        "f": [
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            1,
+            2,
+            3
+          ],
+          [
+            2,
+            2,
+            1,
+            2
+          ],
+          [
+            3,
+            2,
+            2,
+            2
+          ],
+          [
+            4,
+            3,
+            3,
+            2
+          ],
+          [
+            5,
+            4,
+            4,
+            3
+          ]
+        ]
+      },
+      "result": [
+        3
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "ce470e10354dbbf238594872379f19d8c5894444eef41b4783f71277fd382f71",
+    "sourceSemanticTokenHash": "5ecfaad716ae7eba1a238a9c267fde5d3b527b838653490ff065d561ce5814fb",
+    "sourceCodeLineCount": 20
+  },
+  "sourceCodeSha256": "ce470e10354dbbf238594872379f19d8c5894444eef41b4783f71277fd382f71",
+  "sourceSemanticTokenHash": "5ecfaad716ae7eba1a238a9c267fde5d3b527b838653490ff065d561ce5814fb",
+  "steps": [
+    {
+      "id": "72-trace-001",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "setup",
+      "title": "初始化空前缀代价",
+      "body": "把一个字符串变为空字符串只能连续删除，第一列/第一行直接递增。 题解原意：核心洞察：dp[i][j] 表示 word1 前 i 个字符转换成 word2 前 j 个字符的最小编辑距离。对于每个子问题，我们有三种选择： 1. 删除 word1 的最后一个字符 → dp[i-1][j] + 1 2. 插入 word2 的最后一个字符到 word1 → dp[i][j-1] + 1 3. 替换 或跳过（字符相等时不用替换）→ dp[i-1][j-1] + (0 或 1) DP 五步法： 1. d…",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp2d",
+        "badge": "f",
+        "tokens": [
+          "h",
+          "o",
+          "r",
+          "s",
+          "e",
+          "r",
+          "o",
+          "s"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 1, 2, 3]",
+              "[1, 0, 0, 0]",
+              "[2, 0, 0, 0]",
+              "[3, 0, 0, 0]",
+              "[4, 0, 0, 0]",
+              "[5, 0, 0, 0]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "把一个字符串变为空字符串只能连续删除，第一列/第一行直接递增。"
+      },
+      "state": {
+        "values": [],
+        "variables": {},
+        "structure": {
+          "f": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              5,
+              0,
+              0,
+              0
+            ]
+          ],
+          "a": "horse",
+          "b": "ros"
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "72-trace-002",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "update",
+      "title": "完成字符 h 的一行",
+      "body": "当前 DP 行 [1, 1, 2, 3]；相等字符可以沿左上角不增加代价。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp2d",
+        "badge": "i=1 · 结果 1 项",
+        "tokens": [
+          "h",
+          "o",
+          "r",
+          "s",
+          "e",
+          "r",
+          "o",
+          "s"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 1, 2, 3]",
+              "[1, 1, 2, 3]",
+              "[2, 0, 0, 0]",
+              "[3, 0, 0, 0]",
+              "[4, 0, 0, 0]",
+              "[5, 0, 0, 0]"
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前 DP 行 [1, 1, 2, 3]；相等字符可以沿左上角不增加代价。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 1
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              5,
+              0,
+              0,
+              0
+            ]
+          ],
+          "a": "horse",
+          "b": "ros"
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "72-trace-003",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "update",
+      "title": "完成字符 o 的一行",
+      "body": "当前 DP 行 [2, 2, 1, 2]；相等字符可以沿左上角不增加代价。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp2d",
+        "badge": "i=2 · 结果 1 项",
+        "tokens": [
+          "h",
+          "o",
+          "r",
+          "s",
+          "e",
+          "r",
+          "o",
+          "s"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 1, 2, 3]",
+              "[1, 1, 2, 3]",
+              "[2, 2, 1, 2]",
+              "[3, 0, 0, 0]",
+              "[4, 0, 0, 0]",
+              "[5, 0, 0, 0]"
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前 DP 行 [2, 2, 1, 2]；相等字符可以沿左上角不增加代价。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 2
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              2,
+              1,
+              2
+            ],
+            [
+              3,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              5,
+              0,
+              0,
+              0
+            ]
+          ],
+          "a": "horse",
+          "b": "ros"
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "72-trace-004",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "update",
+      "title": "完成字符 r 的一行",
+      "body": "当前 DP 行 [3, 2, 2, 2]；相等字符可以沿左上角不增加代价。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp2d",
+        "badge": "i=3 · 结果 1 项",
+        "tokens": [
+          "h",
+          "o",
+          "r",
+          "s",
+          "e",
+          "r",
+          "o",
+          "s"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 1, 2, 3]",
+              "[1, 1, 2, 3]",
+              "[2, 2, 1, 2]",
+              "[3, 2, 2, 2]",
+              "[4, 0, 0, 0]",
+              "[5, 0, 0, 0]"
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前 DP 行 [3, 2, 2, 2]；相等字符可以沿左上角不增加代价。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 3
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              2,
+              1,
+              2
+            ],
+            [
+              3,
+              2,
+              2,
+              2
+            ],
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              5,
+              0,
+              0,
+              0
+            ]
+          ],
+          "a": "horse",
+          "b": "ros"
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "72-trace-005",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "update",
+      "title": "完成字符 s 的一行",
+      "body": "当前 DP 行 [4, 3, 3, 2]；相等字符可以沿左上角不增加代价。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp2d",
+        "badge": "i=4 · 结果 1 项",
+        "tokens": [
+          "h",
+          "o",
+          "r",
+          "s",
+          "e",
+          "r",
+          "o",
+          "s"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 1, 2, 3]",
+              "[1, 1, 2, 3]",
+              "[2, 2, 1, 2]",
+              "[3, 2, 2, 2]",
+              "[4, 3, 3, 2]",
+              "[5, 0, 0, 0]"
+            ]
+          }
+        ],
+        "result": [
+          0
+        ],
+        "note": "当前 DP 行 [4, 3, 3, 2]；相等字符可以沿左上角不增加代价。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 4
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              2,
+              1,
+              2
+            ],
+            [
+              3,
+              2,
+              2,
+              2
+            ],
+            [
+              4,
+              3,
+              3,
+              2
+            ],
+            [
+              5,
+              0,
+              0,
+              0
+            ]
+          ],
+          "a": "horse",
+          "b": "ros"
+        },
+        "result": [
+          0
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "72-trace-006",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "update",
+      "title": "完成字符 e 的一行",
+      "body": "当前 DP 行 [5, 4, 4, 3]；相等字符可以沿左上角不增加代价。",
+      "kind": "dp2d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · dp2d",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          "h",
+          "o",
+          "r",
+          "s",
+          "e",
+          "r",
+          "o",
+          "s"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 1, 2, 3]",
+              "[1, 1, 2, 3]",
+              "[2, 2, 1, 2]",
+              "[3, 2, 2, 2]",
+              "[4, 3, 3, 2]",
+              "[5, 4, 4, 3]"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "当前 DP 行 [5, 4, 4, 3]；相等字符可以沿左上角不增加代价。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 5
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              2,
+              1,
+              2
+            ],
+            [
+              3,
+              2,
+              2,
+              2
+            ],
+            [
+              4,
+              3,
+              3,
+              2
+            ],
+            [
+              5,
+              4,
+              4,
+              3
+            ]
+          ],
+          "a": "horse",
+          "b": "ros"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "72-trace-check-008",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。horse 到 ros 的编辑距离为 3。",
+      "kind": "dp2d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          "h",
+          "o",
+          "r",
+          "s",
+          "e",
+          "r",
+          "o",
+          "s"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 1, 2, 3]",
+              "[1, 1, 2, 3]",
+              "[2, 2, 1, 2]",
+              "[3, 2, 2, 2]",
+              "[4, 3, 3, 2]",
+              "[5, 4, 4, 3]"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。horse 到 ros 的编辑距离为 3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 5
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              2,
+              1,
+              2
+            ],
+            [
+              3,
+              2,
+              2,
+              2
+            ],
+            [
+              4,
+              3,
+              3,
+              2
+            ],
+            [
+              5,
+              4,
+              4,
+              3
+            ]
+          ],
+          "a": "horse",
+          "b": "ros"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "72-trace-check-009",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。horse 到 ros 的编辑距离为 3。",
+      "kind": "dp2d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          "h",
+          "o",
+          "r",
+          "s",
+          "e",
+          "r",
+          "o",
+          "s"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 1, 2, 3]",
+              "[1, 1, 2, 3]",
+              "[2, 2, 1, 2]",
+              "[3, 2, 2, 2]",
+              "[4, 3, 3, 2]",
+              "[5, 4, 4, 3]"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。horse 到 ros 的编辑距离为 3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 5
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              2,
+              1,
+              2
+            ],
+            [
+              3,
+              2,
+              2,
+              2
+            ],
+            [
+              4,
+              3,
+              3,
+              2
+            ],
+            [
+              5,
+              4,
+              4,
+              3
+            ]
+          ],
+          "a": "horse",
+          "b": "ros"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "72-trace-check-010",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。horse 到 ros 的编辑距离为 3。 易错提醒：边界初始化：dp[i][0] = i 和 dp[0][j] = j 必须正确设置。很多初学者忘记或赋值错误。 字符串索引偏移：word1[i-1] 与 word2[j-1] 比较，不是 word1[i] 与 word2[j]。 三个操作的理解：删除是对 word1 删除（等价于对 word2 插入），插入是对 word1 插入（等价于对…",
+      "kind": "dp2d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=5 · 结果 1 项",
+        "tokens": [
+          "h",
+          "o",
+          "r",
+          "s",
+          "e",
+          "r",
+          "o",
+          "s"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              "[0, 1, 2, 3]",
+              "[1, 1, 2, 3]",
+              "[2, 2, 1, 2]",
+              "[3, 2, 2, 2]",
+              "[4, 3, 3, 2]",
+              "[5, 4, 4, 3]"
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。horse 到 ros 的编辑距离为 3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {
+          "i": 5
+        },
+        "structure": {
+          "f": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              2,
+              1,
+              2
+            ],
+            [
+              3,
+              2,
+              2,
+              2
+            ],
+            [
+              4,
+              3,
+              3,
+              2
+            ],
+            [
+              5,
+              4,
+              4,
+              3
+            ]
+          ],
+          "a": "horse",
+          "b": "ros"
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "72-trace-007",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "horse 到 ros 的编辑距离为 3。",
+      "kind": "dp2d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp2d",
+        "badge": "结果 1 项",
+        "tokens": [
+          "h",
+          "o",
+          "r",
+          "s",
+          "e",
+          "r",
+          "o",
+          "s"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "horse 到 ros 的编辑距离为 3。"
+      },
+      "state": {
+        "values": [],
+        "variables": {},
+        "structure": {
+          "f": [
+            [
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              2,
+              1,
+              2
+            ],
+            [
+              3,
+              2,
+              2,
+              2
+            ],
+            [
+              4,
+              3,
+              3,
+              2
+            ],
+            [
+              5,
+              4,
+              4,
+              3
+            ]
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

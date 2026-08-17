@@ -1,0 +1,860 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "未匹配下标栈",
+    "sceneKind": "stack-sequence",
+    "input": "(()",
+    "expected": 2,
+    "exampleText": "s = \"(()\"",
+    "expectedText": "最长有效括号长度 = 2",
+    "invariant": "栈保存当前非法边界之后未匹配的左括号",
+    "aha": "栈空时长度从 start 算，非空时从栈顶算",
+    "time": "O(n)",
+    "space": "O(n)",
+    "problemId": 32,
+    "title": "最长有效括号",
+    "day": "Day 13：多维 DP",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "5d5c1353592673ca47cb8a8020a7a6b52c67ee4006363f68bc3b14f1ee22926c",
+    "semanticTokenHash": "a2bfb6e79fe5b644ec70a20e56e361ce6293ffe7e53bf29565ca15643f0f9e3f",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "栈保存尚未匹配的左括号下标。",
+        "review": "栈为空，非法边界 start=-1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": null,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "栈为空，非法边界 start=-1",
+            "status": "running",
+            "stack": []
+          },
+          "caption": "栈保存尚未匹配的左括号下标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": null,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 7",
+            "status": "running",
+            "stack": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": null,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 3",
+            "status": "running",
+            "stack": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "start 与栈顶共同界定当前合法后缀。",
+        "review": "stack=[0]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 0,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stack=[0]",
+            "action": "左括号下标 0 入栈",
+            "status": "running",
+            "stack": [
+              0
+            ]
+          },
+          "caption": "start 与栈顶共同界定当前合法后缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 0,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stack=[0]",
+            "action": "不变量检查 6",
+            "status": "running",
+            "stack": [
+              0
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "start 与栈顶共同界定当前合法后缀。",
+        "review": "stack=[0, 1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 1,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stack=[0, 1]",
+            "action": "左括号下标 1 入栈",
+            "status": "running",
+            "stack": [
+              0,
+              1
+            ]
+          },
+          "caption": "start 与栈顶共同界定当前合法后缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 1,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stack=[0, 1]",
+            "action": "不变量检查 2",
+            "status": "running",
+            "stack": [
+              0,
+              1
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 1,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stack=[0, 1]",
+            "action": "不变量检查 10",
+            "status": "running",
+            "stack": [
+              0,
+              1
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 1,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stack=[0, 1]",
+            "action": "不变量检查 5",
+            "status": "running",
+            "stack": [
+              0,
+              1
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "start 与栈顶共同界定当前合法后缀。",
+        "review": "stack=[0]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 2,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stack=[0]",
+            "action": "右括号 2 匹配并弹栈",
+            "status": "running",
+            "stack": [
+              0
+            ]
+          },
+          "caption": "start 与栈顶共同界定当前合法后缀。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 2,
+              "start": -1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stack=[0]",
+            "action": "不变量检查 9",
+            "status": "running",
+            "stack": [
+              0
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "有未匹配左括号时从栈顶后开始，否则从 start 后开始。",
+        "review": "2-top=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 2,
+              "start": -1,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1,
+              2
+            ],
+            "formula": "2-top=2",
+            "action": "合法后缀长度 2，答案 2",
+            "status": "running",
+            "stack": [
+              0
+            ]
+          },
+          "caption": "有未匹配左括号时从栈顶后开始，否则从 start 后开始。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 2,
+              "start": -1,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1,
+              2
+            ],
+            "formula": "2-top=2",
+            "action": "不变量检查 4",
+            "status": "running",
+            "stack": [
+              0
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 2,
+              "start": -1,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1,
+              2
+            ],
+            "formula": "2-top=2",
+            "action": "不变量检查 8",
+            "status": "running",
+            "stack": [
+              0
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "i": 2,
+              "start": -1,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1,
+              2
+            ],
+            "formula": "2-top=2",
+            "action": "不变量检查 1",
+            "status": "running",
+            "stack": [
+              0
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "最后两个字符组成最长合法段。",
+        "review": "() length=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "stack-sequence",
+            "values": [
+              "(",
+              "(",
+              ")"
+            ],
+            "variables": {
+              "start": -1,
+              "res": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1,
+              2
+            ],
+            "formula": "() length=2",
+            "action": "返回最长有效括号长度 2",
+            "status": "return",
+            "stack": [
+              0
+            ],
+            "output": 2
+          },
+          "caption": "最后两个字符组成最长合法段。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int longestValidParentheses(string s) {\n        stack<int> stk;\n\n        int res = 0;\n        for (int i = 0, start = -1; i < s.size(); i ++ ) {\n            if (s[i] == '(') stk.push(i);                        // 入栈\n            else {\n                if (stk.size()) {\n                    stk.pop();                                   // 出栈\n                    if (stk.size()) {\n                        res = max(res, i - stk.top());\n                    } else {\n                        res = max(res, i - start);\n                    }\n                } else {\n                    start = i;\n                }\n            }\n        }\n\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 5084,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 5085,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 5086,
+        "text": "    int longestValidParentheses(string s) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 5087,
+        "text": "        stack<int> stk;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 5088,
+        "text": ""
+      },
+      {
+        "id": "L6",
+        "sourceLine": 5089,
+        "text": "        int res = 0;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 5090,
+        "text": "        for (int i = 0, start = -1; i < s.size(); i ++ ) {"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 5091,
+        "text": "            if (s[i] == '(') stk.push(i);                        // 入栈"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 5092,
+        "text": "            else {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 5093,
+        "text": "                if (stk.size()) {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 5094,
+        "text": "                    stk.pop();                                   // 出栈"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 5095,
+        "text": "                    if (stk.size()) {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 5096,
+        "text": "                        res = max(res, i - stk.top());"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 5097,
+        "text": "                    } else {"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 5098,
+        "text": "                        res = max(res, i - start);"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 5099,
+        "text": "                    }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 5100,
+        "text": "                } else {"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 5101,
+        "text": "                    start = i;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 5102,
+        "text": "                }"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 5103,
+        "text": "            }"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 5104,
+        "text": "        }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 5105,
+        "text": ""
+      },
+      {
+        "id": "L23",
+        "sourceLine": 5106,
+        "text": "        return res;"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 5107,
+        "text": "    }"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 5108,
+        "text": "};"
+      }
+    ]
+  }
+}

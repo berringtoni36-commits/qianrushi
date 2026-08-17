@@ -1,5 +1,8 @@
 {
   "defaultViewMode": "preview",
   "alwaysUpdateLinks": true,
-  "promptDelete": false
+  "attachmentFolderPath": "assets",
+  "promptDelete": false,
+  "showInlineTitle": true,
+  "readableLineLength": true
 }

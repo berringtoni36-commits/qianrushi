@@ -1,0 +1,46 @@
+{
+  "question": "Q006",
+  "topic": "pointer-reference",
+  "duration_frames": 7140,
+  "fps": 30,
+  "scene_ranges": [
+    {"id": "opening", "start_frame": 0, "end_frame": 539},
+    {"id": "map", "start_frame": 540, "end_frame": 1139},
+    {"id": "binding", "start_frame": 1140, "end_frame": 2579},
+    {"id": "code", "start_frame": 2580, "end_frame": 3959},
+    {"id": "choice", "start_frame": 3960, "end_frame": 4919},
+    {"id": "followups", "start_frame": 4920, "end_frame": 6359},
+    {"id": "final", "start_frame": 6360, "end_frame": 7139}
+  ],
+  "binding_states": [
+    {"phase": "pointer_null", "local_start": 0, "local_end": 209, "p": "nullptr", "r": null},
+    {"phase": "pointer_to_a", "local_start": 210, "local_end": 449, "p": "&a", "r": null},
+    {"phase": "pointer_to_b", "local_start": 450, "local_end": 689, "p": "&b", "r": null},
+    {"phase": "reference_bound", "local_start": 690, "local_end": 929, "p": "&b", "r": "a"},
+    {"phase": "reference_write", "local_start": 930, "local_end": 1439, "p": "&b", "r": "a", "a": 40}
+  ],
+  "code_states": [
+    {"phase": "pointer_rebind", "local_start": 0, "local_end": 179, "active_line": 2, "p": "&b", "a": 10, "b": 20},
+    {"phase": "pointer_write", "local_start": 180, "local_end": 479, "active_line": 3, "p": "&b", "a": 10, "b": 30},
+    {"phase": "reference_write", "local_start": 480, "local_end": 779, "active_line": 5, "p": "&b", "r": "a", "a": 40, "b": 30},
+    {"phase": "assignment_not_rebind", "local_start": 780, "local_end": 1379, "active_line": 6, "p": "&b", "r": "a", "a": 30, "b": 30}
+  ],
+  "choice_states": [
+    {"index": 0, "local_start": 0, "local_end": 149, "answer": "const T&", "scenario": "avoid_copy_non_null"},
+    {"index": 1, "local_start": 150, "local_end": 329, "answer": "T*", "scenario": "nullable_parameter"},
+    {"index": 2, "local_start": 330, "local_end": 509, "answer": "volatile T*", "scenario": "register_dma"},
+    {"index": 3, "local_start": 510, "local_end": 959, "answer": "T&", "scenario": "stl_operator"}
+  ],
+  "followup_states": [
+    {"index": 0, "local_start": 0, "local_end": 359, "answer_start": 150, "question": "引用底层怎么实现？"},
+    {"index": 1, "local_start": 360, "local_end": 719, "answer_start": 510, "question": "C 为什么没有引用？"},
+    {"index": 2, "local_start": 720, "local_end": 1079, "answer_start": 870, "question": "C++ 有指针后为什么还需要引用？"},
+    {"index": 3, "local_start": 1080, "local_end": 1439, "answer_start": 1230, "question": "引用能完全替代指针吗？"}
+  ],
+  "final_recall_states": [
+    {"index": 0, "local_start": 0, "local_end": 194, "answer_start": 126, "question": "一句话本质？"},
+    {"index": 1, "local_start": 195, "local_end": 389, "answer_start": 321, "question": "空值和改指向？"},
+    {"index": 2, "local_start": 390, "local_end": 584, "answer_start": 516, "question": "r = b 是什么？"},
+    {"index": 3, "local_start": 585, "local_end": 779, "answer_start": 711, "question": "如何选型？"}
+  ]
+}

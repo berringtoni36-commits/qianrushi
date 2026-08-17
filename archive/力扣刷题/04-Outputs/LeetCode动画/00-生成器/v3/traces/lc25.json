@@ -1,0 +1,1654 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "逐组检查与原地反转",
+    "sceneKind": "linked-list",
+    "input": {
+      "list": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "k": 2
+    },
+    "expected": [
+      2,
+      1,
+      4,
+      3,
+      5
+    ],
+    "exampleText": "[1,2,3,4,5], k = 2",
+    "expectedText": "[2,1,4,3,5]",
+    "invariant": "p 之前都是完整翻转组，p 之后尚未处理",
+    "aha": "先用 q 验证组长，防止翻转不足 k 的尾段",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 25,
+    "title": "K 个一组翻转链表",
+    "day": "Day 5：链表进阶",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "1a94a9c0d3c7ec0f28f7191cbb59641ca17034e38529f021c746dafbb574eed0",
+    "semanticTokenHash": "1e3f4faa02bfb7c9efd7893dfc86059b1255342d6e5930bf722e0adc1557de47",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "不足 k 个的尾组保持原序。",
+        "review": "按 2 个节点划分分组"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "d",
+              "k": 2
+            },
+            "pointers": {
+              "p": "d",
+              "k": 2
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "按 2 个节点划分分组",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "不足 k 个的尾组保持原序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "d",
+              "k": 2
+            },
+            "pointers": {
+              "p": "d",
+              "k": 2
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 7",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "d",
+              "k": 2
+            },
+            "pointers": {
+              "p": "d",
+              "k": 2
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "q 走 k 步成功才允许翻转。",
+        "review": "确认完整分组 ['n0', 'n1']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "d",
+              "q": "n1",
+              "k": 2
+            },
+            "pointers": {
+              "p": "d",
+              "q": "n1",
+              "k": 2
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "确认完整分组 ['n0', 'n1']",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "q 走 k 步成功才允许翻转。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "d",
+              "q": "n1",
+              "k": 2
+            },
+            "pointers": {
+              "p": "d",
+              "q": "n1",
+              "k": 2
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 6",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "保存组后继后完成反转，再把头尾接回。",
+        "review": "reverse ['n0', 'n1']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "group": 1
+            },
+            "pointers": {
+              "p": "n0",
+              "group": 1
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0"
+            ],
+            "formula": "reverse ['n0', 'n1']",
+            "action": "组内翻转并接回前后链",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "保存组后继后完成反转，再把头尾接回。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "group": 1
+            },
+            "pointers": {
+              "p": "n0",
+              "group": 1
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0"
+            ],
+            "formula": "reverse ['n0', 'n1']",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "group": 1
+            },
+            "pointers": {
+              "p": "n0",
+              "group": 1
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0"
+            ],
+            "formula": "reverse ['n0', 'n1']",
+            "action": "不变量检查 10",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "group": 1
+            },
+            "pointers": {
+              "p": "n0",
+              "group": 1
+            },
+            "active": [
+              "n0",
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0"
+            ],
+            "formula": "reverse ['n0', 'n1']",
+            "action": "不变量检查 5",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "q 走 k 步成功才允许翻转。",
+        "review": "确认完整分组 ['n2', 'n3']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "q": "n3",
+              "k": 2
+            },
+            "pointers": {
+              "p": "n0",
+              "q": "n3",
+              "k": 2
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "确认完整分组 ['n2', 'n3']",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "q 走 k 步成功才允许翻转。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n0",
+              "q": "n3",
+              "k": 2
+            },
+            "pointers": {
+              "p": "n0",
+              "q": "n3",
+              "k": 2
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 9",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "保存组后继后完成反转，再把头尾接回。",
+        "review": "reverse ['n2', 'n3']"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "group": 2
+            },
+            "pointers": {
+              "p": "n2",
+              "group": 2
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n3",
+              "n2"
+            ],
+            "formula": "reverse ['n2', 'n3']",
+            "action": "组内翻转并接回前后链",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "保存组后继后完成反转，再把头尾接回。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "group": 2
+            },
+            "pointers": {
+              "p": "n2",
+              "group": 2
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n3",
+              "n2"
+            ],
+            "formula": "reverse ['n2', 'n3']",
+            "action": "不变量检查 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "group": 2
+            },
+            "pointers": {
+              "p": "n2",
+              "group": 2
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n3",
+              "n2"
+            ],
+            "formula": "reverse ['n2', 'n3']",
+            "action": "不变量检查 8",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L21",
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "p": "n2",
+              "group": 2
+            },
+            "pointers": {
+              "p": "n2",
+              "group": 2
+            },
+            "active": [
+              "n2",
+              "n3"
+            ],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n3",
+              "n2"
+            ],
+            "formula": "reverse ['n2', 'n3']",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "最后单节点不足一组，保持不变。",
+        "review": "[2, 1, 4, 3, 5]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L28"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "head": "n1"
+            },
+            "pointers": {
+              "head": "n1"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "n1",
+              "n0",
+              "n3",
+              "n2",
+              "n4"
+            ],
+            "formula": "[2, 1, 4, 3, 5]",
+            "action": "返回 [2,1,4,3,5]",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "d",
+                "value": -1
+              },
+              {
+                "id": "n0",
+                "value": 1
+              },
+              {
+                "id": "n1",
+                "value": 2
+              },
+              {
+                "id": "n2",
+                "value": 3
+              },
+              {
+                "id": "n3",
+                "value": 4
+              },
+              {
+                "id": "n4",
+                "value": 5
+              }
+            ],
+            "edges": [
+              {
+                "from": "d",
+                "to": "n1"
+              },
+              {
+                "from": "n1",
+                "to": "n0"
+              },
+              {
+                "from": "n0",
+                "to": "n3"
+              },
+              {
+                "from": "n3",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n4"
+              }
+            ],
+            "output": [
+              2,
+              1,
+              4,
+              3,
+              5
+            ]
+          },
+          "caption": "最后单节点不足一组，保持不变。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* reverseKGroup(ListNode* head, int k) {\n        auto dummy = new ListNode(-1);\n        dummy->next = head;                                      \n        for (auto p = dummy;;) {\n            auto q = p;\n            for (int i = 0; i < k && q; i ++ ) q = q->next;      \n            if (!q) break;\n            auto a = p->next, b = a->next;                       \n            for (int i = 0; i < k - 1; i ++ ) {\n                auto c = b->next;                                \n                b->next = a;                                     \n                a = b, b = c;\n            }\n            auto c = p->next;                                    \n            p->next = a, c->next = b;                            \n            p = c;\n        }\n        return dummy->next;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1691,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1692,
+        "text": " * Definition for singly-linked list."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1693,
+        "text": " * struct ListNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1694,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1695,
+        "text": " *     ListNode *next;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1696,
+        "text": " *     ListNode(int x) : val(x), next(NULL) {}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1697,
+        "text": " * };"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1698,
+        "text": " */"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1699,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1700,
+        "text": "public:"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1701,
+        "text": "    ListNode* reverseKGroup(ListNode* head, int k) {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1702,
+        "text": "        auto dummy = new ListNode(-1);"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1703,
+        "text": "        dummy->next = head;                                      "
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1704,
+        "text": "        for (auto p = dummy;;) {"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1705,
+        "text": "            auto q = p;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1706,
+        "text": "            for (int i = 0; i < k && q; i ++ ) q = q->next;      "
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1707,
+        "text": "            if (!q) break;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1708,
+        "text": "            auto a = p->next, b = a->next;                       "
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1709,
+        "text": "            for (int i = 0; i < k - 1; i ++ ) {"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1710,
+        "text": "                auto c = b->next;                                "
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1711,
+        "text": "                b->next = a;                                     "
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1712,
+        "text": "                a = b, b = c;"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 1713,
+        "text": "            }"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 1714,
+        "text": "            auto c = p->next;                                    "
+      },
+      {
+        "id": "L25",
+        "sourceLine": 1715,
+        "text": "            p->next = a, c->next = b;                            "
+      },
+      {
+        "id": "L26",
+        "sourceLine": 1716,
+        "text": "            p = c;"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 1717,
+        "text": "        }"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 1718,
+        "text": "        return dummy->next;"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 1719,
+        "text": "    }"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 1720,
+        "text": "};"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1012 @@
+{
+  "problemId": 139,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 139,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "l",
+        "e",
+        "e",
+        "t",
+        "c",
+        "o",
+        "d",
+        "e"
+      ],
+      "variables": {},
+      "structure": {
+        "f": [
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true
+        ],
+        "dict": [
+          "leet",
+          "code"
+        ]
+      },
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "780c397892e93b8f2906d32262205d39e50cb4513a3d1da5b3af898cb40af5ae",
+    "sourceSemanticTokenHash": "cd03d73493d1bf6944698b2a7437d1894d74d2e3f0f0e2c91d3d5465131e15c7",
+    "sourceCodeLineCount": 28
+  },
+  "sourceCodeSha256": "780c397892e93b8f2906d32262205d39e50cb4513a3d1da5b3af898cb40af5ae",
+  "sourceSemanticTokenHash": "cd03d73493d1bf6944698b2a7437d1894d74d2e3f0f0e2c91d3d5465131e15c7",
+  "steps": [
+    {
+      "id": "139-trace-001",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "setup",
+      "title": "初始化可拆分前缀",
+      "body": "f[i] 表示 s[0..i) 是否可以由字典单词拼出。 题解原意：核心洞察：定义 dp[i] 表示 s 的前 i 个字符（s[0:i]）能否被拆分。对于每个位置 i，检查是否存在一个切割点 j < i，使得 s[0:j] 可拆分且 s[j:i] 在字典中。这相当于完全背包的\"组合\"问题——物品能否按顺序拼成目标。 DP 五步法： 1. dp 定义：dp[i] 表示 s 的前 i 个字符是否能被拆分成字典中的单词 2. 递推公式：dp[i] = any(dp[j] and s[j:i…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp1d",
+        "badge": "i=0",
+        "tokens": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 0
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          {
+            "label": "dict",
+            "values": [
+              "leet",
+              "code"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "f[i] 表示 s[0..i) 是否可以由字典单词拼出。"
+      },
+      "state": {
+        "values": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "variables": {
+          "i": 0
+        },
+        "structure": {
+          "f": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "dict": [
+            "leet",
+            "code"
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "139-trace-002",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "mutate",
+      "title": "确认前缀 leet",
+      "body": "找到单词 leet，所以 f[4]=true，后续从这里继续扫描。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "i=4 · j=4 · 结果 1 项",
+        "tokens": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 4
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          {
+            "label": "matched",
+            "values": [
+              "leet"
+            ]
+          }
+        ],
+        "result": [
+          false
+        ],
+        "note": "找到单词 leet，所以 f[4]=true，后续从这里继续扫描。"
+      },
+      "state": {
+        "values": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "variables": {
+          "i": 4,
+          "j": 4
+        },
+        "structure": {
+          "f": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "dict": [
+            "leet",
+            "code"
+          ]
+        },
+        "result": [
+          false
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "139-trace-003",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "mutate",
+      "title": "确认前缀 leetcode",
+      "body": "找到单词 leetcode，所以 f[8]=true，后续从这里继续扫描。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "i=8 · j=8 · 结果 1 项",
+        "tokens": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ]
+          },
+          {
+            "label": "matched",
+            "values": [
+              "leet",
+              "leetcode"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "找到单词 leetcode，所以 f[8]=true，后续从这里继续扫描。"
+      },
+      "state": {
+        "values": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "structure": {
+          "f": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "dict": [
+            "leet",
+            "code"
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "139-trace-check-005",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=8 · j=8 · 结果 1 项",
+        "tokens": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ]
+          },
+          {
+            "label": "matched",
+            "values": [
+              "leet",
+              "leetcode"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。"
+      },
+      "state": {
+        "values": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "structure": {
+          "f": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "dict": [
+            "leet",
+            "code"
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "139-trace-check-006",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=8 · j=8 · 结果 1 项",
+        "tokens": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ]
+          },
+          {
+            "label": "matched",
+            "values": [
+              "leet",
+              "leetcode"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。"
+      },
+      "state": {
+        "values": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "structure": {
+          "f": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "dict": [
+            "leet",
+            "code"
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "139-trace-check-007",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=8 · j=8 · 结果 1 项",
+        "tokens": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ]
+          },
+          {
+            "label": "matched",
+            "values": [
+              "leet",
+              "leetcode"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。"
+      },
+      "state": {
+        "values": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "structure": {
+          "f": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "dict": [
+            "leet",
+            "code"
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "139-trace-check-008",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=8 · j=8 · 结果 1 项",
+        "tokens": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ]
+          },
+          {
+            "label": "matched",
+            "values": [
+              "leet",
+              "leetcode"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。"
+      },
+      "state": {
+        "values": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "structure": {
+          "f": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "dict": [
+            "leet",
+            "code"
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "139-trace-check-009",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=8 · j=8 · 结果 1 项",
+        "tokens": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ]
+          },
+          {
+            "label": "matched",
+            "values": [
+              "leet",
+              "leetcode"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。"
+      },
+      "state": {
+        "values": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "structure": {
+          "f": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "dict": [
+            "leet",
+            "code"
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "139-trace-check-010",
+      "line": 22,
+      "lineIds": [
+        22
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。 易错提醒：dp 索引偏移：dp[i] 对应 s[0:i]（前 i 个字符，不包含 s[i]），所以 dp[n] 是最终答案。 skipping break：找到解后及时 break 内层循环，避免多余计算。 子串截取性能：s[j:i] 是 O(k) 操作。字典用 set 保证 O(1) 查找。如果 n 很大可考虑用 Trie 树优化。 字典去重：u…",
+      "kind": "dp1d",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=8 · j=8 · 结果 1 项",
+        "tokens": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "rows": [
+          {
+            "label": "f",
+            "values": [
+              true,
+              false,
+              false,
+              false,
+              true,
+              false,
+              false,
+              false,
+              true
+            ]
+          },
+          {
+            "label": "matched",
+            "values": [
+              "leet",
+              "leetcode"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。leetcode 可以被拆成 leet + code，返回 true。"
+      },
+      "state": {
+        "values": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 8
+        },
+        "structure": {
+          "f": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "dict": [
+            "leet",
+            "code"
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "139-trace-004",
+      "line": 26,
+      "lineIds": [
+        26
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "leetcode 可以被拆成 leet + code，返回 true。",
+      "kind": "dp1d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "leetcode 可以被拆成 leet + code，返回 true。"
+      },
+      "state": {
+        "values": [
+          "l",
+          "e",
+          "e",
+          "t",
+          "c",
+          "o",
+          "d",
+          "e"
+        ],
+        "variables": {},
+        "structure": {
+          "f": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "dict": [
+            "leet",
+            "code"
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

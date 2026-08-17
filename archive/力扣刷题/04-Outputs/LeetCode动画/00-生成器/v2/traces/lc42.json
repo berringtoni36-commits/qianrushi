@@ -1,0 +1,5124 @@
+{
+  "meta": {
+    "difficulty": "Hard",
+    "algorithm": "单调栈按高度层结算",
+    "sceneKind": "water-stack",
+    "input": {
+      "height": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
+      ]
+    },
+    "expected": 6,
+    "exampleText": "height=[0,1,0,2,1,0,1,3,2,1,2,1]",
+    "expectedText": "接水总量 6",
+    "invariant": "栈底到栈顶高度递减；res 只包含已确认右边界的水层",
+    "aha": "弹栈不是按柱计算，而是用 last 把凹槽分层结算",
+    "time": "O(n)",
+    "space": "O(n)",
+    "problemId": 42,
+    "title": "接雨水",
+    "sourceHeading": "7. 接雨水（LeetCode 42 · Hard）",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "46ed51e741c9f0be378f573e814fa662975bfb89fa1bfb17dfab170de2ccb211",
+    "semanticTokenHash": "ba403df00c8f5739f357b8d82892e71ad895cbb06869f32c5d7e533091d48ba1"
+  },
+  "frames": [
+    {
+      "id": "init",
+      "phase": "setup",
+      "durationMs": 1100,
+      "captions": {
+        "learning": "栈保存还没有找到右边界的柱子，res 只累计已经被左右边界封住的水层。",
+        "review": "stk = [], res = 0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4",
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [],
+            "variables": {
+              "i": null,
+              "last": 0,
+              "res": 0,
+              "top": null
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "建立空栈，res=0"
+          },
+          "caption": "初始化单调栈和答案。",
+          "emphasis": [
+            "stack",
+            "res"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-0",
+      "phase": "inspect",
+      "durationMs": 1590,
+      "captions": {
+        "learning": "i=0 的柱高为 0。当前还没有新增可确认的水层，累计 res=0。",
+        "review": "i=0, +0, res=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [],
+            "variables": {
+              "i": 0,
+              "last": 0,
+              "res": 0,
+              "top": null
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=0，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 0，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [],
+            "variables": {
+              "i": 0,
+              "last": 0,
+              "res": 0,
+              "top": null
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stk.empty()",
+            "action": "栈为空，没有左边界"
+          },
+          "caption": "栈为空时无法形成凹槽，这一段不再加水。",
+          "emphasis": [
+            "boundary"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              0
+            ],
+            "variables": {
+              "i": 0,
+              "last": 0,
+              "res": 0,
+              "top": 0
+            },
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 0 入栈"
+          },
+          "caption": "把当前柱 0:0 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-1",
+      "phase": "inspect",
+      "durationMs": 1950,
+      "captions": {
+        "learning": "i=1 的柱高为 1。当前还没有新增可确认的水层，累计 res=0。",
+        "review": "i=1, +0, res=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              0
+            ],
+            "variables": {
+              "i": 1,
+              "last": 0,
+              "res": 0,
+              "top": 0
+            },
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=1，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 1，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              0
+            ],
+            "variables": {
+              "i": 1,
+              "last": 0,
+              "res": 0,
+              "top": 0
+            },
+            "active": [
+              1
+            ],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "height[0] ≤ height[1]",
+            "action": "0 ≤ 1，右边界出现"
+          },
+          "caption": "栈顶 0 的高度不高于当前柱，开始结算这一层。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              0
+            ],
+            "variables": {
+              "i": 1,
+              "last": 0,
+              "res": 0,
+              "top": 0
+            },
+            "active": [
+              1
+            ],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "(0-0)×(1-0-1)=0",
+            "action": "结算 0 单位水"
+          },
+          "caption": "高度层 0→0，宽度 0，res 变为 0。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              0
+            ],
+            "variables": {
+              "i": 1,
+              "last": 0,
+              "res": 0,
+              "top": 0
+            },
+            "active": [
+              1
+            ],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "last = height[0] = 0",
+            "action": "last 更新为 0"
+          },
+          "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+          "emphasis": [
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [],
+            "variables": {
+              "i": 1,
+              "last": 0,
+              "res": 0,
+              "top": null
+            },
+            "active": [
+              1
+            ],
+            "compared": [
+              0,
+              1
+            ],
+            "result": [],
+            "formula": "",
+            "action": "弹出下标 0"
+          },
+          "caption": "下标 0 的右边界已经确定，移出栈。",
+          "emphasis": [
+            "stack"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [],
+            "variables": {
+              "i": 1,
+              "last": 0,
+              "res": 0,
+              "top": null
+            },
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stk.empty()",
+            "action": "栈为空，没有左边界"
+          },
+          "caption": "栈为空时无法形成凹槽，这一段不再加水。",
+          "emphasis": [
+            "boundary"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1
+            ],
+            "variables": {
+              "i": 1,
+              "last": 0,
+              "res": 0,
+              "top": 1
+            },
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 1 入栈"
+          },
+          "caption": "把当前柱 1:1 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-2",
+      "phase": "inspect",
+      "durationMs": 1770,
+      "captions": {
+        "learning": "i=2 的柱高为 0。当前还没有新增可确认的水层，累计 res=0。",
+        "review": "i=2, +0, res=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1
+            ],
+            "variables": {
+              "i": 2,
+              "last": 0,
+              "res": 0,
+              "top": 1
+            },
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=2，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 0，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1
+            ],
+            "variables": {
+              "i": 2,
+              "last": 0,
+              "res": 0,
+              "top": 1
+            },
+            "active": [
+              2
+            ],
+            "compared": [
+              1,
+              2
+            ],
+            "result": [],
+            "formula": "height[1] > height[2]",
+            "action": "1 > 0，停止弹栈"
+          },
+          "caption": "新的栈顶更高，while 结束。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1
+            ],
+            "variables": {
+              "i": 2,
+              "last": 0,
+              "res": 0,
+              "top": 1
+            },
+            "active": [
+              2
+            ],
+            "compared": [
+              1,
+              2
+            ],
+            "result": [],
+            "formula": "(2-1-1)×(0-0)=0",
+            "action": "左边界 1 再封住 0 单位"
+          },
+          "caption": "左边界仍存在，补齐到当前高度 0，res=0。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1,
+              2
+            ],
+            "variables": {
+              "i": 2,
+              "last": 0,
+              "res": 0,
+              "top": 2
+            },
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 2 入栈"
+          },
+          "caption": "把当前柱 2:0 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-3",
+      "phase": "mutate",
+      "durationMs": 1950,
+      "captions": {
+        "learning": "i=3 的柱高为 2。本轮按高度层结算 1 单位，累计 res=1。",
+        "review": "i=3, +1, res=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1,
+              2
+            ],
+            "variables": {
+              "i": 3,
+              "last": 0,
+              "res": 0,
+              "top": 2
+            },
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=3，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 2，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1,
+              2
+            ],
+            "variables": {
+              "i": 3,
+              "last": 0,
+              "res": 0,
+              "top": 2
+            },
+            "active": [
+              3
+            ],
+            "compared": [
+              2,
+              3
+            ],
+            "result": [],
+            "formula": "height[2] ≤ height[3]",
+            "action": "0 ≤ 2，右边界出现"
+          },
+          "caption": "栈顶 2 的高度不高于当前柱，开始结算这一层。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1,
+              2
+            ],
+            "variables": {
+              "i": 3,
+              "last": 0,
+              "res": 0,
+              "top": 2
+            },
+            "active": [
+              3
+            ],
+            "compared": [
+              2,
+              3
+            ],
+            "result": [],
+            "formula": "(0-0)×(3-2-1)=0",
+            "action": "结算 0 单位水"
+          },
+          "caption": "高度层 0→0，宽度 0，res 变为 0。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1,
+              2
+            ],
+            "variables": {
+              "i": 3,
+              "last": 0,
+              "res": 0,
+              "top": 2
+            },
+            "active": [
+              3
+            ],
+            "compared": [
+              2,
+              3
+            ],
+            "result": [],
+            "formula": "last = height[2] = 0",
+            "action": "last 更新为 0"
+          },
+          "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+          "emphasis": [
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1
+            ],
+            "variables": {
+              "i": 3,
+              "last": 0,
+              "res": 0,
+              "top": 1
+            },
+            "active": [
+              3
+            ],
+            "compared": [
+              2,
+              3
+            ],
+            "result": [],
+            "formula": "",
+            "action": "弹出下标 2"
+          },
+          "caption": "下标 2 的右边界已经确定，移出栈。",
+          "emphasis": [
+            "stack"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1
+            ],
+            "variables": {
+              "i": 3,
+              "last": 0,
+              "res": 0,
+              "top": 1
+            },
+            "active": [
+              3
+            ],
+            "compared": [
+              1,
+              3
+            ],
+            "result": [],
+            "formula": "height[1] ≤ height[3]",
+            "action": "1 ≤ 2，右边界出现"
+          },
+          "caption": "栈顶 1 的高度不高于当前柱，开始结算这一层。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1
+            ],
+            "variables": {
+              "i": 3,
+              "last": 0,
+              "res": 1,
+              "top": 1
+            },
+            "active": [
+              3
+            ],
+            "compared": [
+              1,
+              3
+            ],
+            "result": [],
+            "formula": "(1-0)×(3-1-1)=1",
+            "action": "结算 1 单位水"
+          },
+          "caption": "高度层 0→1，宽度 1，res 变为 1。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              1
+            ],
+            "variables": {
+              "i": 3,
+              "last": 1,
+              "res": 1,
+              "top": 1
+            },
+            "active": [
+              3
+            ],
+            "compared": [
+              1,
+              3
+            ],
+            "result": [],
+            "formula": "last = height[1] = 1",
+            "action": "last 更新为 1"
+          },
+          "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+          "emphasis": [
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [],
+            "variables": {
+              "i": 3,
+              "last": 1,
+              "res": 1,
+              "top": null
+            },
+            "active": [
+              3
+            ],
+            "compared": [
+              1,
+              3
+            ],
+            "result": [],
+            "formula": "",
+            "action": "弹出下标 1"
+          },
+          "caption": "下标 1 的右边界已经确定，移出栈。",
+          "emphasis": [
+            "stack"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [],
+            "variables": {
+              "i": 3,
+              "last": 1,
+              "res": 1,
+              "top": null
+            },
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stk.empty()",
+            "action": "栈为空，没有左边界"
+          },
+          "caption": "栈为空时无法形成凹槽，这一段不再加水。",
+          "emphasis": [
+            "boundary"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 3,
+              "last": 1,
+              "res": 1,
+              "top": 3
+            },
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 3 入栈"
+          },
+          "caption": "把当前柱 3:2 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-4",
+      "phase": "inspect",
+      "durationMs": 1770,
+      "captions": {
+        "learning": "i=4 的柱高为 1。当前还没有新增可确认的水层，累计 res=1。",
+        "review": "i=4, +0, res=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 4,
+              "last": 0,
+              "res": 1,
+              "top": 3
+            },
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=4，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 1，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 4,
+              "last": 0,
+              "res": 1,
+              "top": 3
+            },
+            "active": [
+              4
+            ],
+            "compared": [
+              3,
+              4
+            ],
+            "result": [],
+            "formula": "height[3] > height[4]",
+            "action": "2 > 1，停止弹栈"
+          },
+          "caption": "新的栈顶更高，while 结束。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 4,
+              "last": 0,
+              "res": 1,
+              "top": 3
+            },
+            "active": [
+              4
+            ],
+            "compared": [
+              3,
+              4
+            ],
+            "result": [],
+            "formula": "(4-3-1)×(1-0)=0",
+            "action": "左边界 3 再封住 0 单位"
+          },
+          "caption": "左边界仍存在，补齐到当前高度 1，res=1。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4
+            ],
+            "variables": {
+              "i": 4,
+              "last": 0,
+              "res": 1,
+              "top": 4
+            },
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 4 入栈"
+          },
+          "caption": "把当前柱 4:1 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-5",
+      "phase": "inspect",
+      "durationMs": 1770,
+      "captions": {
+        "learning": "i=5 的柱高为 0。当前还没有新增可确认的水层，累计 res=1。",
+        "review": "i=5, +0, res=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4
+            ],
+            "variables": {
+              "i": 5,
+              "last": 0,
+              "res": 1,
+              "top": 4
+            },
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=5，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 0，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4
+            ],
+            "variables": {
+              "i": 5,
+              "last": 0,
+              "res": 1,
+              "top": 4
+            },
+            "active": [
+              5
+            ],
+            "compared": [
+              4,
+              5
+            ],
+            "result": [],
+            "formula": "height[4] > height[5]",
+            "action": "1 > 0，停止弹栈"
+          },
+          "caption": "新的栈顶更高，while 结束。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4
+            ],
+            "variables": {
+              "i": 5,
+              "last": 0,
+              "res": 1,
+              "top": 4
+            },
+            "active": [
+              5
+            ],
+            "compared": [
+              4,
+              5
+            ],
+            "result": [],
+            "formula": "(5-4-1)×(0-0)=0",
+            "action": "左边界 4 再封住 0 单位"
+          },
+          "caption": "左边界仍存在，补齐到当前高度 0，res=1。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4,
+              5
+            ],
+            "variables": {
+              "i": 5,
+              "last": 0,
+              "res": 1,
+              "top": 5
+            },
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 5 入栈"
+          },
+          "caption": "把当前柱 5:0 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-6",
+      "phase": "mutate",
+      "durationMs": 1950,
+      "captions": {
+        "learning": "i=6 的柱高为 1。本轮按高度层结算 1 单位，累计 res=2。",
+        "review": "i=6, +1, res=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4,
+              5
+            ],
+            "variables": {
+              "i": 6,
+              "last": 0,
+              "res": 1,
+              "top": 5
+            },
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=6，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 1，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4,
+              5
+            ],
+            "variables": {
+              "i": 6,
+              "last": 0,
+              "res": 1,
+              "top": 5
+            },
+            "active": [
+              6
+            ],
+            "compared": [
+              5,
+              6
+            ],
+            "result": [],
+            "formula": "height[5] ≤ height[6]",
+            "action": "0 ≤ 1，右边界出现"
+          },
+          "caption": "栈顶 5 的高度不高于当前柱，开始结算这一层。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4,
+              5
+            ],
+            "variables": {
+              "i": 6,
+              "last": 0,
+              "res": 1,
+              "top": 5
+            },
+            "active": [
+              6
+            ],
+            "compared": [
+              5,
+              6
+            ],
+            "result": [],
+            "formula": "(0-0)×(6-5-1)=0",
+            "action": "结算 0 单位水"
+          },
+          "caption": "高度层 0→0，宽度 0，res 变为 1。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4,
+              5
+            ],
+            "variables": {
+              "i": 6,
+              "last": 0,
+              "res": 1,
+              "top": 5
+            },
+            "active": [
+              6
+            ],
+            "compared": [
+              5,
+              6
+            ],
+            "result": [],
+            "formula": "last = height[5] = 0",
+            "action": "last 更新为 0"
+          },
+          "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+          "emphasis": [
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4
+            ],
+            "variables": {
+              "i": 6,
+              "last": 0,
+              "res": 1,
+              "top": 4
+            },
+            "active": [
+              6
+            ],
+            "compared": [
+              5,
+              6
+            ],
+            "result": [],
+            "formula": "",
+            "action": "弹出下标 5"
+          },
+          "caption": "下标 5 的右边界已经确定，移出栈。",
+          "emphasis": [
+            "stack"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4
+            ],
+            "variables": {
+              "i": 6,
+              "last": 0,
+              "res": 1,
+              "top": 4
+            },
+            "active": [
+              6
+            ],
+            "compared": [
+              4,
+              6
+            ],
+            "result": [],
+            "formula": "height[4] ≤ height[6]",
+            "action": "1 ≤ 1，右边界出现"
+          },
+          "caption": "栈顶 4 的高度不高于当前柱，开始结算这一层。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4
+            ],
+            "variables": {
+              "i": 6,
+              "last": 0,
+              "res": 2,
+              "top": 4
+            },
+            "active": [
+              6
+            ],
+            "compared": [
+              4,
+              6
+            ],
+            "result": [],
+            "formula": "(1-0)×(6-4-1)=1",
+            "action": "结算 1 单位水"
+          },
+          "caption": "高度层 0→1，宽度 1，res 变为 2。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              4
+            ],
+            "variables": {
+              "i": 6,
+              "last": 1,
+              "res": 2,
+              "top": 4
+            },
+            "active": [
+              6
+            ],
+            "compared": [
+              4,
+              6
+            ],
+            "result": [],
+            "formula": "last = height[4] = 1",
+            "action": "last 更新为 1"
+          },
+          "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+          "emphasis": [
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 6,
+              "last": 1,
+              "res": 2,
+              "top": 3
+            },
+            "active": [
+              6
+            ],
+            "compared": [
+              4,
+              6
+            ],
+            "result": [],
+            "formula": "",
+            "action": "弹出下标 4"
+          },
+          "caption": "下标 4 的右边界已经确定，移出栈。",
+          "emphasis": [
+            "stack"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 6,
+              "last": 1,
+              "res": 2,
+              "top": 3
+            },
+            "active": [
+              6
+            ],
+            "compared": [
+              3,
+              6
+            ],
+            "result": [],
+            "formula": "height[3] > height[6]",
+            "action": "2 > 1，停止弹栈"
+          },
+          "caption": "新的栈顶更高，while 结束。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 6,
+              "last": 1,
+              "res": 2,
+              "top": 3
+            },
+            "active": [
+              6
+            ],
+            "compared": [
+              3,
+              6
+            ],
+            "result": [],
+            "formula": "(6-3-1)×(1-1)=0",
+            "action": "左边界 3 再封住 0 单位"
+          },
+          "caption": "左边界仍存在，补齐到当前高度 1，res=2。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              6
+            ],
+            "variables": {
+              "i": 6,
+              "last": 1,
+              "res": 2,
+              "top": 6
+            },
+            "active": [
+              6
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 6 入栈"
+          },
+          "caption": "把当前柱 6:1 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-7",
+      "phase": "mutate",
+      "durationMs": 1950,
+      "captions": {
+        "learning": "i=7 的柱高为 3。本轮按高度层结算 3 单位，累计 res=5。",
+        "review": "i=7, +3, res=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              6
+            ],
+            "variables": {
+              "i": 7,
+              "last": 0,
+              "res": 2,
+              "top": 6
+            },
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=7，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 3，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              6
+            ],
+            "variables": {
+              "i": 7,
+              "last": 0,
+              "res": 2,
+              "top": 6
+            },
+            "active": [
+              7
+            ],
+            "compared": [
+              6,
+              7
+            ],
+            "result": [],
+            "formula": "height[6] ≤ height[7]",
+            "action": "1 ≤ 3，右边界出现"
+          },
+          "caption": "栈顶 6 的高度不高于当前柱，开始结算这一层。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              6
+            ],
+            "variables": {
+              "i": 7,
+              "last": 0,
+              "res": 2,
+              "top": 6
+            },
+            "active": [
+              7
+            ],
+            "compared": [
+              6,
+              7
+            ],
+            "result": [],
+            "formula": "(1-0)×(7-6-1)=0",
+            "action": "结算 0 单位水"
+          },
+          "caption": "高度层 0→1，宽度 0，res 变为 2。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3,
+              6
+            ],
+            "variables": {
+              "i": 7,
+              "last": 1,
+              "res": 2,
+              "top": 6
+            },
+            "active": [
+              7
+            ],
+            "compared": [
+              6,
+              7
+            ],
+            "result": [],
+            "formula": "last = height[6] = 1",
+            "action": "last 更新为 1"
+          },
+          "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+          "emphasis": [
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 7,
+              "last": 1,
+              "res": 2,
+              "top": 3
+            },
+            "active": [
+              7
+            ],
+            "compared": [
+              6,
+              7
+            ],
+            "result": [],
+            "formula": "",
+            "action": "弹出下标 6"
+          },
+          "caption": "下标 6 的右边界已经确定，移出栈。",
+          "emphasis": [
+            "stack"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 7,
+              "last": 1,
+              "res": 2,
+              "top": 3
+            },
+            "active": [
+              7
+            ],
+            "compared": [
+              3,
+              7
+            ],
+            "result": [],
+            "formula": "height[3] ≤ height[7]",
+            "action": "2 ≤ 3，右边界出现"
+          },
+          "caption": "栈顶 3 的高度不高于当前柱，开始结算这一层。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 7,
+              "last": 1,
+              "res": 5,
+              "top": 3
+            },
+            "active": [
+              7
+            ],
+            "compared": [
+              3,
+              7
+            ],
+            "result": [],
+            "formula": "(2-1)×(7-3-1)=3",
+            "action": "结算 3 单位水"
+          },
+          "caption": "高度层 1→2，宽度 3，res 变为 5。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              3
+            ],
+            "variables": {
+              "i": 7,
+              "last": 2,
+              "res": 5,
+              "top": 3
+            },
+            "active": [
+              7
+            ],
+            "compared": [
+              3,
+              7
+            ],
+            "result": [],
+            "formula": "last = height[3] = 2",
+            "action": "last 更新为 2"
+          },
+          "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+          "emphasis": [
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [],
+            "variables": {
+              "i": 7,
+              "last": 2,
+              "res": 5,
+              "top": null
+            },
+            "active": [
+              7
+            ],
+            "compared": [
+              3,
+              7
+            ],
+            "result": [],
+            "formula": "",
+            "action": "弹出下标 3"
+          },
+          "caption": "下标 3 的右边界已经确定，移出栈。",
+          "emphasis": [
+            "stack"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [],
+            "variables": {
+              "i": 7,
+              "last": 2,
+              "res": 5,
+              "top": null
+            },
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "stk.empty()",
+            "action": "栈为空，没有左边界"
+          },
+          "caption": "栈为空时无法形成凹槽，这一段不再加水。",
+          "emphasis": [
+            "boundary"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7
+            ],
+            "variables": {
+              "i": 7,
+              "last": 2,
+              "res": 5,
+              "top": 7
+            },
+            "active": [
+              7
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 7 入栈"
+          },
+          "caption": "把当前柱 7:3 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-8",
+      "phase": "inspect",
+      "durationMs": 1770,
+      "captions": {
+        "learning": "i=8 的柱高为 2。当前还没有新增可确认的水层，累计 res=5。",
+        "review": "i=8, +0, res=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7
+            ],
+            "variables": {
+              "i": 8,
+              "last": 0,
+              "res": 5,
+              "top": 7
+            },
+            "active": [
+              8
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=8，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 2，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7
+            ],
+            "variables": {
+              "i": 8,
+              "last": 0,
+              "res": 5,
+              "top": 7
+            },
+            "active": [
+              8
+            ],
+            "compared": [
+              7,
+              8
+            ],
+            "result": [],
+            "formula": "height[7] > height[8]",
+            "action": "3 > 2，停止弹栈"
+          },
+          "caption": "新的栈顶更高，while 结束。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7
+            ],
+            "variables": {
+              "i": 8,
+              "last": 0,
+              "res": 5,
+              "top": 7
+            },
+            "active": [
+              8
+            ],
+            "compared": [
+              7,
+              8
+            ],
+            "result": [],
+            "formula": "(8-7-1)×(2-0)=0",
+            "action": "左边界 7 再封住 0 单位"
+          },
+          "caption": "左边界仍存在，补齐到当前高度 2，res=5。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8
+            ],
+            "variables": {
+              "i": 8,
+              "last": 0,
+              "res": 5,
+              "top": 8
+            },
+            "active": [
+              8
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 8 入栈"
+          },
+          "caption": "把当前柱 8:2 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-9",
+      "phase": "inspect",
+      "durationMs": 1770,
+      "captions": {
+        "learning": "i=9 的柱高为 1。当前还没有新增可确认的水层，累计 res=5。",
+        "review": "i=9, +0, res=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8
+            ],
+            "variables": {
+              "i": 9,
+              "last": 0,
+              "res": 5,
+              "top": 8
+            },
+            "active": [
+              9
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=9，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 1，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8
+            ],
+            "variables": {
+              "i": 9,
+              "last": 0,
+              "res": 5,
+              "top": 8
+            },
+            "active": [
+              9
+            ],
+            "compared": [
+              8,
+              9
+            ],
+            "result": [],
+            "formula": "height[8] > height[9]",
+            "action": "2 > 1，停止弹栈"
+          },
+          "caption": "新的栈顶更高，while 结束。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8
+            ],
+            "variables": {
+              "i": 9,
+              "last": 0,
+              "res": 5,
+              "top": 8
+            },
+            "active": [
+              9
+            ],
+            "compared": [
+              8,
+              9
+            ],
+            "result": [],
+            "formula": "(9-8-1)×(1-0)=0",
+            "action": "左边界 8 再封住 0 单位"
+          },
+          "caption": "左边界仍存在，补齐到当前高度 1，res=5。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8,
+              9
+            ],
+            "variables": {
+              "i": 9,
+              "last": 0,
+              "res": 5,
+              "top": 9
+            },
+            "active": [
+              9
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 9 入栈"
+          },
+          "caption": "把当前柱 9:1 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-10",
+      "phase": "mutate",
+      "durationMs": 1950,
+      "captions": {
+        "learning": "i=10 的柱高为 2。本轮按高度层结算 1 单位，累计 res=6。",
+        "review": "i=10, +1, res=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8,
+              9
+            ],
+            "variables": {
+              "i": 10,
+              "last": 0,
+              "res": 5,
+              "top": 9
+            },
+            "active": [
+              10
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=10，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 2，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8,
+              9
+            ],
+            "variables": {
+              "i": 10,
+              "last": 0,
+              "res": 5,
+              "top": 9
+            },
+            "active": [
+              10
+            ],
+            "compared": [
+              9,
+              10
+            ],
+            "result": [],
+            "formula": "height[9] ≤ height[10]",
+            "action": "1 ≤ 2，右边界出现"
+          },
+          "caption": "栈顶 9 的高度不高于当前柱，开始结算这一层。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8,
+              9
+            ],
+            "variables": {
+              "i": 10,
+              "last": 0,
+              "res": 5,
+              "top": 9
+            },
+            "active": [
+              10
+            ],
+            "compared": [
+              9,
+              10
+            ],
+            "result": [],
+            "formula": "(1-0)×(10-9-1)=0",
+            "action": "结算 0 单位水"
+          },
+          "caption": "高度层 0→1，宽度 0，res 变为 5。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8,
+              9
+            ],
+            "variables": {
+              "i": 10,
+              "last": 1,
+              "res": 5,
+              "top": 9
+            },
+            "active": [
+              10
+            ],
+            "compared": [
+              9,
+              10
+            ],
+            "result": [],
+            "formula": "last = height[9] = 1",
+            "action": "last 更新为 1"
+          },
+          "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+          "emphasis": [
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8
+            ],
+            "variables": {
+              "i": 10,
+              "last": 1,
+              "res": 5,
+              "top": 8
+            },
+            "active": [
+              10
+            ],
+            "compared": [
+              9,
+              10
+            ],
+            "result": [],
+            "formula": "",
+            "action": "弹出下标 9"
+          },
+          "caption": "下标 9 的右边界已经确定，移出栈。",
+          "emphasis": [
+            "stack"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8
+            ],
+            "variables": {
+              "i": 10,
+              "last": 1,
+              "res": 5,
+              "top": 8
+            },
+            "active": [
+              10
+            ],
+            "compared": [
+              8,
+              10
+            ],
+            "result": [],
+            "formula": "height[8] ≤ height[10]",
+            "action": "2 ≤ 2，右边界出现"
+          },
+          "caption": "栈顶 8 的高度不高于当前柱，开始结算这一层。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8
+            ],
+            "variables": {
+              "i": 10,
+              "last": 1,
+              "res": 6,
+              "top": 8
+            },
+            "active": [
+              10
+            ],
+            "compared": [
+              8,
+              10
+            ],
+            "result": [],
+            "formula": "(2-1)×(10-8-1)=1",
+            "action": "结算 1 单位水"
+          },
+          "caption": "高度层 1→2，宽度 1，res 变为 6。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              8
+            ],
+            "variables": {
+              "i": 10,
+              "last": 2,
+              "res": 6,
+              "top": 8
+            },
+            "active": [
+              10
+            ],
+            "compared": [
+              8,
+              10
+            ],
+            "result": [],
+            "formula": "last = height[8] = 2",
+            "action": "last 更新为 2"
+          },
+          "caption": "last 记住刚结算到的高度，避免下一层重复计算。",
+          "emphasis": [
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7
+            ],
+            "variables": {
+              "i": 10,
+              "last": 2,
+              "res": 6,
+              "top": 7
+            },
+            "active": [
+              10
+            ],
+            "compared": [
+              8,
+              10
+            ],
+            "result": [],
+            "formula": "",
+            "action": "弹出下标 8"
+          },
+          "caption": "下标 8 的右边界已经确定，移出栈。",
+          "emphasis": [
+            "stack"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7
+            ],
+            "variables": {
+              "i": 10,
+              "last": 2,
+              "res": 6,
+              "top": 7
+            },
+            "active": [
+              10
+            ],
+            "compared": [
+              7,
+              10
+            ],
+            "result": [],
+            "formula": "height[7] > height[10]",
+            "action": "3 > 2，停止弹栈"
+          },
+          "caption": "新的栈顶更高，while 结束。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7
+            ],
+            "variables": {
+              "i": 10,
+              "last": 2,
+              "res": 6,
+              "top": 7
+            },
+            "active": [
+              10
+            ],
+            "compared": [
+              7,
+              10
+            ],
+            "result": [],
+            "formula": "(10-7-1)×(2-2)=0",
+            "action": "左边界 7 再封住 0 单位"
+          },
+          "caption": "左边界仍存在，补齐到当前高度 2，res=6。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              10
+            ],
+            "variables": {
+              "i": 10,
+              "last": 2,
+              "res": 6,
+              "top": 10
+            },
+            "active": [
+              10
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 10 入栈"
+          },
+          "caption": "把当前柱 10:2 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scan-11",
+      "phase": "inspect",
+      "durationMs": 1770,
+      "captions": {
+        "learning": "i=11 的柱高为 1。当前还没有新增可确认的水层，累计 res=6。",
+        "review": "i=11, +0, res=6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              10
+            ],
+            "variables": {
+              "i": 11,
+              "last": 0,
+              "res": 6,
+              "top": 10
+            },
+            "active": [
+              11
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "i=11，本轮 last 从 0 开始"
+          },
+          "caption": "扫描高度 1，本轮尚未结算任何高度层。",
+          "emphasis": [
+            "i",
+            "last"
+          ]
+        },
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              10
+            ],
+            "variables": {
+              "i": 11,
+              "last": 0,
+              "res": 6,
+              "top": 10
+            },
+            "active": [
+              11
+            ],
+            "compared": [
+              10,
+              11
+            ],
+            "result": [],
+            "formula": "height[10] > height[11]",
+            "action": "2 > 1，停止弹栈"
+          },
+          "caption": "新的栈顶更高，while 结束。",
+          "emphasis": [
+            "compare"
+          ]
+        },
+        {
+          "lineIds": [
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              10
+            ],
+            "variables": {
+              "i": 11,
+              "last": 0,
+              "res": 6,
+              "top": 10
+            },
+            "active": [
+              11
+            ],
+            "compared": [
+              10,
+              11
+            ],
+            "result": [],
+            "formula": "(11-10-1)×(1-0)=0",
+            "action": "左边界 10 再封住 0 单位"
+          },
+          "caption": "左边界仍存在，补齐到当前高度 1，res=6。",
+          "emphasis": [
+            "formula",
+            "res"
+          ]
+        },
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              10,
+              11
+            ],
+            "variables": {
+              "i": 11,
+              "last": 0,
+              "res": 6,
+              "top": 11
+            },
+            "active": [
+              11
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "下标 11 入栈"
+          },
+          "caption": "把当前柱 11:1 压栈，等待未来右边界。",
+          "emphasis": [
+            "stack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1900,
+      "captions": {
+        "learning": "所有能被左右边界确认的高度层都已累计，最终接水总量为 6。",
+        "review": "return 6"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "water-stack",
+            "values": [
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              1,
+              3,
+              2,
+              1,
+              2,
+              1
+            ],
+            "water": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "stack": [
+              7,
+              10,
+              11
+            ],
+            "variables": {
+              "i": 11,
+              "last": 0,
+              "res": 6,
+              "top": 11
+            },
+            "active": [
+              11
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "formula": "return res = 6",
+            "action": "扫描完成，返回 6"
+          },
+          "caption": "返回 res = 6。",
+          "emphasis": [
+            "result"
+          ]
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int trap(vector<int>& height) {\n        stack<int> stk;\n        int res = 0;\n        for (int i = 0; i < height.size(); i ++ ) {\n            int last = 0;\n            while (stk.size() && height[stk.top()] <= height[i]) { // 维护单调栈\n                res += (height[stk.top()] - last) * (i - stk.top() - 1);  // 计算当前高度层的雨水面积\n                last = height[stk.top()];\n                stk.pop();                                       // 出栈\n            }\n\n            if (stk.size()) res += (i - stk.top() - 1) * (height[i] - last);  // 处理栈顶剩余部分\n            stk.push(i);                                         // 入栈\n        }\n\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 363,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 364,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 365,
+        "text": "    int trap(vector<int>& height) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 366,
+        "text": "        stack<int> stk;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 367,
+        "text": "        int res = 0;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 368,
+        "text": "        for (int i = 0; i < height.size(); i ++ ) {"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 369,
+        "text": "            int last = 0;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 370,
+        "text": "            while (stk.size() && height[stk.top()] <= height[i]) { // 维护单调栈"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 371,
+        "text": "                res += (height[stk.top()] - last) * (i - stk.top() - 1);  // 计算当前高度层的雨水面积"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 372,
+        "text": "                last = height[stk.top()];"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 373,
+        "text": "                stk.pop();                                       // 出栈"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 374,
+        "text": "            }"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 375,
+        "text": ""
+      },
+      {
+        "id": "L14",
+        "sourceLine": 376,
+        "text": "            if (stk.size()) res += (i - stk.top() - 1) * (height[i] - last);  // 处理栈顶剩余部分"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 377,
+        "text": "            stk.push(i);                                         // 入栈"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 378,
+        "text": "        }"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 379,
+        "text": ""
+      },
+      {
+        "id": "L18",
+        "sourceLine": 380,
+        "text": "        return res;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 381,
+        "text": "    }"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 382,
+        "text": "};"
+      }
+    ]
+  }
+}

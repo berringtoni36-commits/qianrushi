@@ -1,0 +1,71 @@
+{
+  "question": 10,
+  "composition": "MallocNewQ10",
+  "fps": 30,
+  "durationFrames": 7140,
+  "rawLifecycle": [
+    {
+      "start": 0,
+      "end": 180,
+      "phase": "recall",
+      "activeLine": 0,
+      "liveObjects": 0,
+      "storage": "unknown",
+      "constructor": false,
+      "destructor": false
+    },
+    {
+      "start": 180,
+      "end": 405,
+      "phase": "malloc-storage",
+      "activeLine": 0,
+      "liveObjects": 0,
+      "storage": "allocated",
+      "constructor": false,
+      "destructor": false
+    },
+    {
+      "start": 405,
+      "end": 630,
+      "phase": "typed-pointer",
+      "activeLine": 1,
+      "liveObjects": 0,
+      "storage": "allocated",
+      "constructor": false,
+      "destructor": false
+    },
+    {
+      "start": 630,
+      "end": 855,
+      "phase": "placement-new",
+      "activeLine": 3,
+      "liveObjects": 1,
+      "storage": "allocated",
+      "constructor": true,
+      "destructor": false
+    },
+    {
+      "start": 855,
+      "end": 1080,
+      "phase": "destroy-free",
+      "activeLine": 4,
+      "liveObjects": 0,
+      "storage": "released",
+      "constructor": true,
+      "destructor": true
+    }
+  ],
+  "arrayLifecycle": [
+    { "start": 0, "end": 150, "phase": "recall", "activeLine": 0, "liveObjects": null, "destructors": null },
+    { "start": 150, "end": 440, "phase": "single-object", "activeLine": 0, "liveObjects": 1, "destructors": 0 },
+    { "start": 440, "end": 730, "phase": "object-array", "activeLine": 3, "liveObjects": 3, "destructors": 0 },
+    { "start": 730, "end": 1020, "phase": "delete-array", "activeLine": 4, "liveObjects": 0, "destructors": 3 }
+  ],
+  "pairing": [
+    { "start": 0, "end": 150, "phase": "recall" },
+    { "start": 150, "end": 382, "phase": "malloc-free", "valid": true },
+    { "start": 382, "end": 615, "phase": "new-delete", "valid": true },
+    { "start": 615, "end": 847, "phase": "new-array-delete-array", "valid": true },
+    { "start": 847, "end": 1080, "phase": "mismatch", "valid": false }
+  ]
+}

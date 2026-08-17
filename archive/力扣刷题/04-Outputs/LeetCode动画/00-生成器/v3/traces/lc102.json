@@ -1,0 +1,1352 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "按层定长 BFS",
+    "sceneKind": "tree-graph",
+    "input": "[3,9,20,null,null,15,7]",
+    "expected": [
+      [
+        3
+      ],
+      [
+        9,
+        20
+      ],
+      [
+        15,
+        7
+      ]
+    ],
+    "exampleText": "[3,9,20,null,null,15,7]",
+    "expectedText": "[[3],[9,20],[15,7]]",
+    "invariant": "每轮开始队列恰好包含当前层全部节点",
+    "aha": "先保存 len，避免新入队子节点混入当前层",
+    "time": "O(n)",
+    "space": "O(width)",
+    "problemId": 102,
+    "title": "二叉树的层序遍历",
+    "day": "Day 6：二叉树基础",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "c2a693a39758a3fe52e9939d89862b955fc7a2320974b83da7d993a0c3d9f644",
+    "semanticTokenHash": "1b6fc2c57e6b7e13113dd756bdaf69cb1cf8fce9be3171f21b26889eb17def2b",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每轮固定当前队列长度作为一层。",
+        "review": "根节点入 BFS 队列"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "根节点入 BFS 队列",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [
+              "n3"
+            ]
+          },
+          "caption": "每轮固定当前队列长度作为一层。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "本轮新入队子节点留给下一层。",
+        "review": "len=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 0,
+              "len": 1
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "len=1",
+            "action": "第 0 层有 1 个节点",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [
+              "n3"
+            ]
+          },
+          "caption": "本轮新入队子节点留给下一层。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前层按从左到右顺序收集。",
+        "review": "[3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 0,
+              "node": "n3"
+            },
+            "pointers": {},
+            "active": [
+              "n3"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[3]",
+            "action": "出队并记录 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [
+              "n9",
+              "n20"
+            ],
+            "output": [
+              [
+                3
+              ]
+            ]
+          },
+          "caption": "当前层按从左到右顺序收集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "本轮新入队子节点留给下一层。",
+        "review": "len=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 1,
+              "len": 2
+            },
+            "pointers": {},
+            "active": [
+              "n9",
+              "n20"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "len=2",
+            "action": "第 1 层有 2 个节点",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [
+              "n9",
+              "n20"
+            ]
+          },
+          "caption": "本轮新入队子节点留给下一层。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前层按从左到右顺序收集。",
+        "review": "[9]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 1,
+              "node": "n9"
+            },
+            "pointers": {},
+            "active": [
+              "n9"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[9]",
+            "action": "出队并记录 9",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [
+              "n20"
+            ],
+            "output": [
+              [
+                3
+              ],
+              [
+                9
+              ]
+            ]
+          },
+          "caption": "当前层按从左到右顺序收集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前层按从左到右顺序收集。",
+        "review": "[9, 20]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 1,
+              "node": "n20"
+            },
+            "pointers": {},
+            "active": [
+              "n20"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[9, 20]",
+            "action": "出队并记录 20",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [
+              "n15",
+              "n7"
+            ],
+            "output": [
+              [
+                3
+              ],
+              [
+                9,
+                20
+              ]
+            ]
+          },
+          "caption": "当前层按从左到右顺序收集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "本轮新入队子节点留给下一层。",
+        "review": "len=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 2,
+              "len": 2
+            },
+            "pointers": {},
+            "active": [
+              "n15",
+              "n7"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "len=2",
+            "action": "第 2 层有 2 个节点",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [
+              "n15",
+              "n7"
+            ]
+          },
+          "caption": "本轮新入队子节点留给下一层。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 2,
+              "len": 2
+            },
+            "pointers": {},
+            "active": [
+              "n15",
+              "n7"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "len=2",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [
+              "n15",
+              "n7"
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前层按从左到右顺序收集。",
+        "review": "[15]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 2,
+              "node": "n15"
+            },
+            "pointers": {},
+            "active": [
+              "n15"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[15]",
+            "action": "出队并记录 15",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [
+              "n7"
+            ],
+            "output": [
+              [
+                3
+              ],
+              [
+                9,
+                20
+              ],
+              [
+                15
+              ]
+            ]
+          },
+          "caption": "当前层按从左到右顺序收集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前层按从左到右顺序收集。",
+        "review": "[15, 7]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 2,
+              "node": "n7"
+            },
+            "pointers": {},
+            "active": [
+              "n7"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[15, 7]",
+            "action": "出队并记录 7",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [],
+            "output": [
+              [
+                3
+              ],
+              [
+                9,
+                20
+              ],
+              [
+                15,
+                7
+              ]
+            ]
+          },
+          "caption": "当前层按从左到右顺序收集。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23",
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "level": 2,
+              "node": "n7"
+            },
+            "pointers": {},
+            "active": [
+              "n7"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "[15, 7]",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "queue": [],
+            "output": [
+              [
+                3
+              ],
+              [
+                9,
+                20
+              ],
+              [
+                15,
+                7
+              ]
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "每层边界由入层时的队列长度锁定。",
+        "review": "[[3], [9, 20], [15, 7]]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L32"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "levels": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "n3",
+              "n9",
+              "n20",
+              "n15",
+              "n7"
+            ],
+            "formula": "[[3], [9, 20], [15, 7]]",
+            "action": "返回三层遍历结果",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n9",
+                "value": 9,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n20",
+                "value": 20,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n15",
+                "value": 15,
+                "level": 2,
+                "order": 0
+              },
+              {
+                "id": "n7",
+                "value": 7,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n3",
+                "to": "n20"
+              },
+              {
+                "from": "n20",
+                "to": "n15"
+              },
+              {
+                "from": "n20",
+                "to": "n7"
+              }
+            ],
+            "output": [
+              [
+                3
+              ],
+              [
+                9,
+                20
+              ],
+              [
+                15,
+                7
+              ]
+            ]
+          },
+          "caption": "每层边界由入层时的队列长度锁定。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    vector<vector<int>> levelOrder(TreeNode* root) {\n        vector<vector<int>> res;\n        queue<TreeNode*> q;\n        if (root) q.push(root);                                  // 入队\n\n        while (q.size()) {\n            vector<int> level;\n            int len = q.size();\n\n            while (len -- ) {\n                auto t = q.front();\n                q.pop();                                         // 出队\n                level.push_back(t->val);\n                if (t->left) q.push(t->left);                    // 入队\n                if (t->right) q.push(t->right);                  // 入队\n            }\n\n            res.push_back(level);                                // 记录结果\n        }\n\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2290,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2291,
+        "text": " * Definition for a binary tree node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2292,
+        "text": " * struct TreeNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2293,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2294,
+        "text": " *     TreeNode *left;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2295,
+        "text": " *     TreeNode *right;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2296,
+        "text": " *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2297,
+        "text": " * };"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2298,
+        "text": " */"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2299,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2300,
+        "text": "public:"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2301,
+        "text": "    vector<vector<int>> levelOrder(TreeNode* root) {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2302,
+        "text": "        vector<vector<int>> res;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2303,
+        "text": "        queue<TreeNode*> q;"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2304,
+        "text": "        if (root) q.push(root);                                  // 入队"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2305,
+        "text": ""
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2306,
+        "text": "        while (q.size()) {"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2307,
+        "text": "            vector<int> level;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2308,
+        "text": "            int len = q.size();"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2309,
+        "text": ""
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2310,
+        "text": "            while (len -- ) {"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2311,
+        "text": "                auto t = q.front();"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 2312,
+        "text": "                q.pop();                                         // 出队"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 2313,
+        "text": "                level.push_back(t->val);"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 2314,
+        "text": "                if (t->left) q.push(t->left);                    // 入队"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 2315,
+        "text": "                if (t->right) q.push(t->right);                  // 入队"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 2316,
+        "text": "            }"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 2317,
+        "text": ""
+      },
+      {
+        "id": "L29",
+        "sourceLine": 2318,
+        "text": "            res.push_back(level);                                // 记录结果"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 2319,
+        "text": "        }"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 2320,
+        "text": ""
+      },
+      {
+        "id": "L32",
+        "sourceLine": 2321,
+        "text": "        return res;"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 2322,
+        "text": "    }"
+      },
+      {
+        "id": "L34",
+        "sourceLine": 2323,
+        "text": "};"
+      }
+    ]
+  }
+}

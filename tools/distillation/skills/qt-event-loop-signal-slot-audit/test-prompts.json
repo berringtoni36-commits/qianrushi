@@ -1,0 +1,50 @@
+{
+  "skill": "qt-event-loop-signal-slot-audit",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "Qt 车道线识别按钮调用 waitKey(10000) 后窗口卡死，结果轮询也没有取消入口。请审计事件循环和槽函数阻塞点。",
+      "expected_behavior": "定位 GUI 线程中的同步等待和无上界轮询，区分启动、结果完整、完成、超时与取消，并给出事件驱动收尾方案",
+      "notes": "waitKey/长轮询/UI 事件循环"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "QProcess 只接了 readyReadStandardOutput，重复点击会再次启动任务，窗口关闭时还偶发收到旧输出。怎么审计 finished/error、超时、取消、重复启动和对象归属？",
+      "expected_behavior": "建立 QProcess 状态机和信号覆盖表，核对 run ID、started/finished/error/readyRead、超时取消、parent/owner 与退出收尾",
+      "notes": "QProcess 生命周期与重复启动"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Qt 项目同时使用 setupUi 的 connectSlotsByName 和手动 connect，槽函数有时执行两次；另一个版本还涉及 queued/direct 和 moveToThread。请做信号槽连接与线程语义审计。",
+      "expected_behavior": "按 sender/objectName、真实 signal 签名、receiver/slot、连接类型、线程归属和建立/销毁点逐项判定，不能仅凭 on_ 槽名断言重复",
+      "notes": "自动/手动连接、QObject 线程归属"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "摄像头帧写入目录后 LSTR 读不到，想审计路径、编号、原子 rename、完成标记和旧结果清理。",
+      "expected_behavior": "优先使用 linux-vision-file-ipc-lifecycle-audit，聚焦跨进程文件交换合同；仅在出现 Qt 槽阻塞或信号生命周期问题时切入本 Skill",
+      "notes": "兄弟 Skill：文件型 IPC 生命周期"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我准备这个 ARM Linux 视觉项目的一分钟面试介绍，并说明我应该怎样表达个人贡献。",
+      "expected_behavior": "优先使用 linux-vision-project-storytelling，不进行 Qt 事件循环或连接生命周期审计",
+      "notes": "兄弟 Skill：项目表达"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "只想了解 Qt signal/slot 的基本语法，不提供项目源码，也不涉及 UI 卡顿、QProcess、连接重复或线程问题。",
+      "expected_behavior": "做普通 Qt API 教学，不激活本 Skill 的项目审计流程",
+      "notes": "通用 API 解释边界"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

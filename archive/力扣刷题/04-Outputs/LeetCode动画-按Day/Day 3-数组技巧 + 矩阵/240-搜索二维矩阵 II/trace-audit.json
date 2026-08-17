@@ -1,0 +1,1105 @@
+{
+  "problemId": 240,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 240,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        [
+          1,
+          4,
+          7,
+          11
+        ],
+        [
+          2,
+          5,
+          8,
+          12
+        ],
+        [
+          3,
+          6,
+          9,
+          16
+        ]
+      ],
+      "variables": {
+        "i": 1,
+        "j": 1,
+        "target": 5
+      },
+      "structure": {
+        "matrix": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ]
+      },
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "c14633c0226920c4da240a992cff8e4c4b1796c15c09db9790a00f33f32e6a89",
+    "sourceSemanticTokenHash": "752be711165b72326f3623361df7927f72a09678f1fcf50f6a0b5a83dce5adfe",
+    "sourceCodeLineCount": 15
+  },
+  "sourceCodeSha256": "c14633c0226920c4da240a992cff8e4c4b1796c15c09db9790a00f33f32e6a89",
+  "sourceSemanticTokenHash": "752be711165b72326f3623361df7927f72a09678f1fcf50f6a0b5a83dce5adfe",
+  "steps": [
+    {
+      "id": "240-trace-001",
+      "line": 6,
+      "lineIds": [
+        6
+      ],
+      "phase": "setup",
+      "title": "从右上角开始",
+      "body": "每次比较都能排除一整行或一整列。 题解原意：核心洞察： 从右上角 (0, n-1) 出发，利用行列单调性： matrix[row][col] > target → 当前元素太大了，该列下面的元素都更大，排除当前列，col-- matrix[row][col] < target → 当前元素太小了，该行左边的元素都更小，排除当前行，row++ matrix[row][col] == target → 找到 为什么是右上角而不是左上角？ 从左上角 (0, 0) 出…",
+      "kind": "matrix-search",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · matrix-search",
+        "badge": "i=0 · j=3",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "11",
+          "2",
+          "5",
+          "8",
+          "12",
+          "3",
+          "6",
+          "9",
+          "16"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 3,
+          "target": 5
+        },
+        "rows": [
+          {
+            "label": "matrix",
+            "values": [
+              "[1, 4, 7, 11]",
+              "[2, 5, 8, 12]",
+              "[3, 6, 9, 16]"
+            ]
+          },
+          {
+            "label": "cursor",
+            "values": [
+              "(0,3)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "每次比较都能排除一整行或一整列。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ],
+        "variables": {
+          "i": 0,
+          "j": 3,
+          "target": 5
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7,
+              11
+            ],
+            [
+              2,
+              5,
+              8,
+              12
+            ],
+            [
+              3,
+              6,
+              9,
+              16
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "240-trace-002",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "compare",
+      "title": "比较 matrix[0][3] = 11",
+      "body": "当前值 11 与 target=5 比较。",
+      "kind": "matrix-search",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · matrix-search",
+        "badge": "i=0 · j=3",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "11",
+          "2",
+          "5",
+          "8",
+          "12",
+          "3",
+          "6",
+          "9",
+          "16"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 3,
+          "t": 11,
+          "target": 5
+        },
+        "rows": [
+          {
+            "label": "cursor",
+            "values": [
+              "(0,3) = 11"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前值 11 与 target=5 比较。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ],
+        "variables": {
+          "i": 0,
+          "j": 3,
+          "t": 11,
+          "target": 5
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7,
+              11
+            ],
+            [
+              2,
+              5,
+              8,
+              12
+            ],
+            [
+              3,
+              6,
+              9,
+              16
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "240-trace-003",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "值太大，排除当前列",
+      "body": "更新游标到 (0,2)，未排除的区域仍包含全部可能答案。",
+      "kind": "matrix-search",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · matrix-search",
+        "badge": "i=0 · j=2",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "11",
+          "2",
+          "5",
+          "8",
+          "12",
+          "3",
+          "6",
+          "9",
+          "16"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 2,
+          "target": 5
+        },
+        "rows": [
+          {
+            "label": "cursor",
+            "values": [
+              "(0,2)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新游标到 (0,2)，未排除的区域仍包含全部可能答案。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ],
+        "variables": {
+          "i": 0,
+          "j": 2,
+          "target": 5
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7,
+              11
+            ],
+            [
+              2,
+              5,
+              8,
+              12
+            ],
+            [
+              3,
+              6,
+              9,
+              16
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "240-trace-004",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "compare",
+      "title": "比较 matrix[0][2] = 7",
+      "body": "当前值 7 与 target=5 比较。",
+      "kind": "matrix-search",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · matrix-search",
+        "badge": "i=0 · j=2",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "11",
+          "2",
+          "5",
+          "8",
+          "12",
+          "3",
+          "6",
+          "9",
+          "16"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 2,
+          "t": 7,
+          "target": 5
+        },
+        "rows": [
+          {
+            "label": "cursor",
+            "values": [
+              "(0,2) = 7"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前值 7 与 target=5 比较。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ],
+        "variables": {
+          "i": 0,
+          "j": 2,
+          "t": 7,
+          "target": 5
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7,
+              11
+            ],
+            [
+              2,
+              5,
+              8,
+              12
+            ],
+            [
+              3,
+              6,
+              9,
+              16
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "240-trace-005",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "值太大，排除当前列",
+      "body": "更新游标到 (0,1)，未排除的区域仍包含全部可能答案。",
+      "kind": "matrix-search",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · matrix-search",
+        "badge": "i=0 · j=1",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "11",
+          "2",
+          "5",
+          "8",
+          "12",
+          "3",
+          "6",
+          "9",
+          "16"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 1,
+          "target": 5
+        },
+        "rows": [
+          {
+            "label": "cursor",
+            "values": [
+              "(0,1)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新游标到 (0,1)，未排除的区域仍包含全部可能答案。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ],
+        "variables": {
+          "i": 0,
+          "j": 1,
+          "target": 5
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7,
+              11
+            ],
+            [
+              2,
+              5,
+              8,
+              12
+            ],
+            [
+              3,
+              6,
+              9,
+              16
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "240-trace-006",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "compare",
+      "title": "比较 matrix[0][1] = 4",
+      "body": "当前值 4 与 target=5 比较。",
+      "kind": "matrix-search",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · matrix-search",
+        "badge": "i=0 · j=1",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "11",
+          "2",
+          "5",
+          "8",
+          "12",
+          "3",
+          "6",
+          "9",
+          "16"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 1,
+          "t": 4,
+          "target": 5
+        },
+        "rows": [
+          {
+            "label": "cursor",
+            "values": [
+              "(0,1) = 4"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前值 4 与 target=5 比较。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ],
+        "variables": {
+          "i": 0,
+          "j": 1,
+          "t": 4,
+          "target": 5
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7,
+              11
+            ],
+            [
+              2,
+              5,
+              8,
+              12
+            ],
+            [
+              3,
+              6,
+              9,
+              16
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "240-trace-007",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "值太小，排除当前行",
+      "body": "更新游标到 (1,1)，未排除的区域仍包含全部可能答案。",
+      "kind": "matrix-search",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · matrix-search",
+        "badge": "i=1 · j=1",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "11",
+          "2",
+          "5",
+          "8",
+          "12",
+          "3",
+          "6",
+          "9",
+          "16"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "target": 5
+        },
+        "rows": [
+          {
+            "label": "cursor",
+            "values": [
+              "(1,1)"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "更新游标到 (1,1)，未排除的区域仍包含全部可能答案。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "target": 5
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7,
+              11
+            ],
+            [
+              2,
+              5,
+              8,
+              12
+            ],
+            [
+              3,
+              6,
+              9,
+              16
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "240-trace-008",
+      "line": 3,
+      "lineIds": [
+        3
+      ],
+      "phase": "compare",
+      "title": "比较 matrix[1][1] = 5",
+      "body": "当前值 5 与 target=5 比较。",
+      "kind": "matrix-search",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · matrix-search",
+        "badge": "i=1 · j=1",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "11",
+          "2",
+          "5",
+          "8",
+          "12",
+          "3",
+          "6",
+          "9",
+          "16"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "t": 5,
+          "target": 5
+        },
+        "rows": [
+          {
+            "label": "cursor",
+            "values": [
+              "(1,1) = 5"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "当前值 5 与 target=5 比较。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "t": 5,
+          "target": 5
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7,
+              11
+            ],
+            [
+              2,
+              5,
+              8,
+              12
+            ],
+            [
+              3,
+              6,
+              9,
+              16
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "240-trace-009",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "命中目标",
+      "body": "找到 target=5，立即返回 true。 易错提醒：越界检查：while row < m and col >= 0 或 while row >= 0 and col < n，一不小心就索引越界。 空矩阵：虽然题目说 m,n >= 1，但养成防御性检查的习惯总没错。 与 74 题混淆：74-搜索二维矩阵 中矩阵是\"下一行首大于上一行末\"，可以当成一维数组直接二分。本题的矩阵没有这个性质，不能…",
+      "kind": "matrix-search",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · matrix-search",
+        "badge": "i=1 · j=1 · 结果 1 项",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "11",
+          "2",
+          "5",
+          "8",
+          "12",
+          "3",
+          "6",
+          "9",
+          "16"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "t": 5,
+          "target": 5
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "找到 target=5，立即返回 true。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "t": 5,
+          "target": 5
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7,
+              11
+            ],
+            [
+              2,
+              5,
+              8,
+              12
+            ],
+            [
+              3,
+              6,
+              9,
+              16
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "240-trace-010",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 true。",
+      "kind": "matrix-search",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · matrix-search",
+        "badge": "i=1 · j=1 · 结果 1 项",
+        "tokens": [
+          "1",
+          "4",
+          "7",
+          "11",
+          "2",
+          "5",
+          "8",
+          "12",
+          "3",
+          "6",
+          "9",
+          "16"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "target": 5
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              "true"
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "返回 true。"
+      },
+      "state": {
+        "values": [
+          [
+            1,
+            4,
+            7,
+            11
+          ],
+          [
+            2,
+            5,
+            8,
+            12
+          ],
+          [
+            3,
+            6,
+            9,
+            16
+          ]
+        ],
+        "variables": {
+          "i": 1,
+          "j": 1,
+          "target": 5
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              4,
+              7,
+              11
+            ],
+            [
+              2,
+              5,
+              8,
+              12
+            ],
+            [
+              3,
+              6,
+              9,
+              16
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

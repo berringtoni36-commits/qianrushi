@@ -1,0 +1,40 @@
+gap_id	page_start	page_end	chapter	gap_kind	observed_text_or_asset	asset_files	missing_or_unverified	inference_boundary	evidence_level	next_check
+GAP-001	2	2	I 基础算法	image-only	矩阵记录 1 个栅格 asset，快照文本保留逆序对说明但无图片引用；矩阵标签为归并流程图，未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-002-image-01.png	图中步骤、箭头、文字和与代码的对应关系不可由文本层确认	只能推断本页有归并/逆序对图示入口，不能推断图示结论	E1-IMAGE	人工回源 PDF p2 对照图示；本轮不 OCR、不升级事实等级
+GAP-002	34	34	II 数据结构	image-table	矩阵记录 1 个栅格 asset，快照文本有字符串哈希代码和 STL 标题；矩阵标签为 STL 操作/复杂度表，未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-034-image-01.png	表格单元格、操作语义、复杂度和版面关系不可由快照确认	只能推断 STL 速查表待回源，不能把表格条目当已验证	E1-GAP	人工回源 PDF p34 逐单元格核对；本轮不 OCR
+GAP-003	38	38	III 搜索与图论	image-only	矩阵记录 1 个栅格 asset，文本层出现数字全排列 DFS/回溯代码但无图片引用	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-038-image-01.png	图片中的搜索树、剪枝和分支关系未转录或验证	只能把图片列为回溯图示缺口，不能推断图中完整证明	E1-IMAGE	人工回源 PDF p38 核对图片与代码；本轮不 OCR
+GAP-004	39	39	III 搜索与图论	text-variable	文本层有树重心定义和 DFS 代码，但题面结点数/编号/边数出现空洞	-	缺失变量、精确题面、公式/版面和变量与代码的绑定	只能推断主题是树重心；不能补写空洞变量或复杂度	E1-GAP	人工回源 PDF p39 逐项核对变量和公式
+GAP-005	40	40	III 搜索与图论	image-only	矩阵记录 1 个栅格 asset，文本层有 N 皇后棋盘/对角线标记代码但无图片引用	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-040-image-01.png	棋盘示意、冲突关系和图片文字未转录	只能推断图片与 N 皇后主题相关，不能推断图示完备性	E1-IMAGE	人工回源 PDF p40 核对图示；本轮不 OCR
+GAP-005A	47	47	III 搜索与图论	text-complexity	文本层有堆优化 Dijkstra 标题和代码，但“时间复杂度”表达式为空洞	-	复杂度表达式、变量含义和适用条件缺失	只能把本页作为堆优化 Dijkstra 定位，不得补写复杂度	E1-GAP	人工回源 PDF p47 核对复杂度式并独立验证
+GAP-006	48	48	III 搜索与图论	image+text-formula	矩阵记录栅格 asset；文本层有 Bellman-Ford 代码但复杂度有空洞，矩阵标签为 Bellman-Ford 草稿图未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-048-image-01.png	草稿图箭头、公式、复杂度和备份数组关系未确认	只能推断 Bellman-Ford 主题和代码定位，不能引用图或精确复杂度	E1-GAP	人工回源 PDF p48 对照图片/公式，再核验代码
+GAP-007	49	49	III 搜索与图论	text-complexity	文本层解释 Bellman-Ford 的 k 次迭代并引出 SPFA，但平均/最坏复杂度表达式为空洞	-	平均/最坏复杂度、变量和适用边界缺失	只能推断本页提供迭代解释和 SPFA 入口，不能补写复杂度结论	E1-GAP	人工回源 PDF p49 核对复杂度并用独立推导复验
+GAP-008	53	53	III 搜索与图论	text-complexity	文本层出现 Floyd 动态规划说明、三重循环和代码，但复杂度表达式为空洞	-	复杂度表达式及相关变量缺失	只能推断 Floyd 全源最短路模板定位，不能把复杂度写成已验证事实	E1-GAP	人工回源 PDF p53 核对复杂度并独立验证
+GAP-009	55	55	III 搜索与图论	text-complexity	文本层出现 Prim 朴素/堆优化和稠密/稀疏场景，但堆优化复杂度表达式为空洞	-	复杂度、场景边界和适用条件缺失	只能推断本页用于 Prim 两实现对照，不能确认复杂度表述	E1-GAP	人工回源 PDF p55 核对复杂度与场景条件
+GAP-010	58	58	III 搜索与图论	text-complexity	文本层出现 Kruskal 按边排序和并查集代码，但复杂度标题后的表达式为空洞	-	复杂度表达式和变量缺失	只能推断 Kruskal 模板入口，不能补写复杂度或最优性证明	E1-GAP	人工回源 PDF p58 核对复杂度并独立验证
+GAP-011	61	61	III 搜索与图论	image+text-complexity	矩阵记录栅格 asset；文本层有二分图染色代码但复杂度为空洞，矩阵标签为图示未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-061-image-01.png	图示、复杂度表达式、颜色语义和边界未确认	只能推断二分图染色主题，不能引用图示或复杂度	E1-GAP	人工回源 PDF p61 对照图示/复杂度，再核验代码
+GAP-012	67	67	IV 数学知识	image-formula	矩阵记录 1 个栅格 asset；文本层有试除法求约数和约数个数主题，矩阵标签为公式推导未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-067-image-01.png	约数个数公式、上下标、推导步骤和图文关系缺失	只能推断本页是约数公式回源点，不能把公式当已验证	E1-GAP	人工回源 PDF p67 转录并逐项核对公式
+GAP-013	68	68	IV 数学知识	image-formula	矩阵记录 1 个栅格 asset；文本层有约数之和和质因子次数代码，公式推导未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-068-image-01.png	约数和公式、推导和变量含义缺失	只能推断主题是约数和定理，不能补写推导或复杂度	E1-GAP	人工回源 PDF p68 转录/核对公式
+GAP-014	69	69	IV 数学知识	image-formula	矩阵记录 1 个栅格 asset；文本层出现约数公式标题和 GCD 代码，公式解释未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-069-image-01.png	公式、代码第 26 行解释及版面对应关系缺失	只能推断约数公式到 GCD 的主题衔接，不能确认图片解释	E1-GAP	人工回源 PDF p69 对照公式与代码行
+GAP-015	70	70	IV 数学知识	text-formula-variable	文本层可见欧拉函数定义/容斥叙述，但 N、质因子和等式多处为空洞	-	定义公式、质因子分解、容斥等式和变量绑定缺失	只能推断欧拉函数证明主题，不能补写公式或证明链	E1-GAP	人工回源 PDF p70 核对定义、变量和容斥步骤
+GAP-016	71	71	IV 数学知识	text-formula-variable	文本层有奇偶容斥说明和 phi/线性筛代码，但等价变形公式有空洞	-	等价公式、证明收束和变量含义缺失	只能推断线性筛欧拉函数模板存在，不能确认证明结论	E1-GAP	人工回源 PDF p71 核对公式并独立推导
+GAP-017	73	73	IV 数学知识	image-formula	矩阵记录 1 个栅格 asset；文本层出现 CRT/EXCRT 标题、exgcd 和合并代码，讲解图未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-073-image-01.png	同余条件、公式、合并过程图示和不可解条件缺失	只能推断 CRT/EXCRT 模板定位，不能引用图示或条件	E1-GAP	人工回源 PDF p73 核对公式、条件和代码
+GAP-018	74	74	IV 数学知识	image-formula	矩阵记录 1 个栅格 asset；文本层有高斯消元标题和方程组说明，方程组图未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-074-image-01.png	方程组具体内容、版面和与 EXCRT 续写的关系缺失	只能推断本页含线性方程组入口，不能补写方程或结论	E1-GAP	人工回源 PDF p74 核对方程组图示
+GAP-019	75	75	IV 数学知识	text-formula-variable	文本层有高斯消元代码和模板标题，但讲解中的方程/变量出现空洞	-	方程变量、证明/解释和图片关系缺失	只能推断存在浮点高斯消元模板，不能把返回码语义扩写为已验证	E1-GAP	人工回源 PDF p75 核对变量并测试代码
+GAP-020	77	77	IV 数学知识	image-formula	矩阵记录 1 个栅格 asset；文本层有组合数/递推标题，组合讲解图未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-077-image-01.png	组合记号、递推证明、边界和公式版面缺失	只能推断本页是组合数基础回源点，不能引用图中公式	E1-GAP	人工回源 PDF p77 转录组合公式
+GAP-021	78	78	IV 数学知识	image-formula	矩阵记录 1 个栅格 asset；文本层有杨辉三角和阶乘逆元代码，图示未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-078-image-01.png	杨辉三角图、组合公式及逆元条件缺失	只能推断提供预处理逆元组合数入口，不能确认图示结论	E1-GAP	人工回源 PDF p78 核对图示和模数条件
+GAP-022	86	86	IV 数学知识	text-formula-variable	文本层出现必胜/必败态标题和 Nim/台阶 Nim 代码，但结论公式为空洞	-	必胜条件、异或表达式、证明和变量缺失	只能推断 Nim 结论待回源，不能写成已验证定理	E1-GAP	人工回源 PDF p86 核对结论式并独立验证
+GAP-023	87	87	IV 数学知识	text-formula-variable	文本层出现奇数台阶结论和集合 Nim SG 代码，但台阶条件公式为空洞	-	奇数台阶条件、SG 结论和证明缺失	只能推断本页连接台阶 Nim 与集合 Nim，不能补写结论	E1-GAP	人工回源 PDF p87 核对公式并测试 SG 代码
+GAP-024	88	88	V 动态规划	image-figure	矩阵记录 1 个栅格 asset；文本层出现 DP 三特征和四类背包，矩阵标签为闫式 DP 分类图未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-088-image-01.jpeg	分类图节点、箭头、集合关系和图中文字缺失	只能推断图是 DP 分类复习入口，不能据图补齐分类规则	E1-GAP	人工回源 PDF p88 核对分类图
+GAP-025	89	89	V 动态规划	image-figure	矩阵记录 2 个栅格 asset；文本层有 01 背包标题和二维代码开头，矩阵标签为状态图/表未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-089-image-01.png;distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-089-image-02.png	状态集合、表格单元格、转移箭头和初始化关系缺失	只能推断图表与 01 背包主题相关，不能引用图表结论	E1-GAP	人工回源 PDF p89 对照两张图/表并核对代码
+GAP-026	93	93	V 动态规划	image-formula	矩阵记录 1 个栅格 asset；文本层有分组背包转移和数字三角形标题，矩阵标签为 DP 图未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-093-image-01.png	数字三角形状态图、转移关系和公式版面缺失	只能推断本页是分组背包到线性 DP 的图示入口，不能补写转移	E1-GAP	人工回源 PDF p93 核对图示与转移
+GAP-027	96	96	V 动态规划	image-formula	矩阵记录 1 个栅格 asset；文本层定义编辑操作并有状态转移标题，矩阵标签为编辑距离 DP 图未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-096-image-01.png	编辑距离状态格、操作箭头、初值和公式缺失	只能推断图示用于编辑距离，不能据图确认代价或转移	E1-GAP	人工回源 PDF p96 核对图示、初值和转移
+GAP-028	97	97	V 动态规划	image-formula	矩阵记录 1 个栅格 asset；文本层描述相邻石子合并和区间 DP，矩阵标签为区间状态图未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-097-image-01.png	区间划分图、代价公式、枚举顺序和图中文字缺失	只能推断图与石子合并区间 DP 相关，不能补写状态关系	E1-GAP	人工回源 PDF p97 核对图示和公式
+GAP-029	99	99	V 动态规划	image-formula	矩阵记录 1 个栅格 asset；文本层有数位统计 count 代码，矩阵标签为数位 DP 分类图未转录	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-099-image-01.png	按位分类、前导零处理和状态关系图缺失	只能推断图片是数位 DP 复习入口，不能引用分类结论	E1-GAP	人工回源 PDF p99 核对分类图并测试代码
+GAP-030	101	101	V 动态规划	text-formula-variable	文本层有状态压缩合法状态和 Hamilton 代码，但“状态转移方程”后的公式为空洞	-	转移公式、变量含义和兼容条件版面缺失	只能推断本页含状态压缩/Hamilton 模板，不能补写转移	E1-GAP	人工回源 PDF p101 核对公式和状态定义
+GAP-031	102	102	V 动态规划	text-formula-variable	文本层出现 Hamilton 转移和树形 DP 标题，但状态转移表达式有空洞	-	公式、状态集合和变量绑定缺失	只能推断本页是 Hamilton 到树形 DP 过渡，不能确认公式	E1-GAP	人工回源 PDF p102 核对公式并测试实现
+GAP-032	103	103	V 动态规划	text-formula-variable	文本层出现树形 DP 两状态、滑雪记忆化搜索代码，但状态方程标题有空洞	-	状态定义、递归关系和边界缺失	只能推断主题与树形 DP/记忆化搜索相关，不能补写状态转移	E1-GAP	人工回源 PDF p103 核对公式和状态语义
+GAP-033	105	105	VI 贪心	image+text-formula	矩阵记录 1 个栅格 asset；文本层定义闭区间选点并有右端点排序代码，题面变量有空洞	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-105-image-01.png	区间示意图、变量、闭端点关系和贪心证明缺失	只能推断右端点贪心模板入口，不能确认图示或端点约定	E1-GAP	人工回源 PDF p105 对照图示/变量并独立证明
+GAP-034	106	106	VI 贪心	text-formula-variable	文本层定义最大不相交区间并陈述与最少覆盖点数相等，但题面变量有空洞	-	区间符号、端点严格性和等价证明的完整表达缺失	只能推断两类区间题被并置，不能把等价说明当完整证明	E1-GAP	人工回源 PDF p106 核对题面并独立证明
+GAP-035	107	107	VI 贪心	image-only	矩阵记录 1 个栅格 asset；文本层有按左端点排序和小根堆分组代码，无图片引用	distillation/algorithm-pdf/算法基础课模板大全-C++版本_assets/page-107-image-01.png	分组步骤图、端点相交关系和图中文字未转录	只能把图片列为区间分组图示缺口，不能推断图示证明	E1-IMAGE	人工回源 PDF p107 核对图示；本轮不 OCR
+GAP-036	109	109	VII 杂项	text-formula-variable	文本层有排队打水排序代码，但人数、水龙头数、时间变量及计算公式出现空洞	-	题面参数、等待总和公式、并行模型和排序不等式证明缺失	只能推断排队打水主题和 AC 自动机入口，不能补写公式	E1-GAP	人工回源 PDF p109 核对公式/变量并独立验证
+GAP-037	120	120	附录/说明	text-complexity-table	文本层有按数据范围选择算法的列表，但复杂度数量级和范围表达式多处为空洞；页面向量对象偏多	-	复杂度表精确值、范围、算法对应关系和版面缺失	只能把本页当复习索引，不能把复杂度表当完整证据	E1-GAP	人工回源 PDF p120 逐行核对复杂度表
+GAP-038	121	121	附录/说明	text-formula-variable	文本层有来源说明及高精度/FFT/NTT 线索，但末尾复杂度和位数表达式为空洞	-	复杂度、位数变量、FFT/NTT 细节和来源对应关系缺失	只能推断本页是来源/附录说明，不能扩写算法结论	E1-GAP	人工回源 PDF p121 核对末尾公式与来源说明

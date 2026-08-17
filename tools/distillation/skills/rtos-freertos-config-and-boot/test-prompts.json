@@ -1,0 +1,14 @@
+{
+  "skill": "rtos-freertos-config-and-boot",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"请按这个 STM32 项目的源码解释 Reset_Handler、SystemInit、main、vTaskStartScheduler、SVC、SysTick、PendSV 的启动和切换关系","expected_behavior":"激活本 skill，按实际启动文件、main 和 Cortex-M3 port 组织时间线","notes":"启动链解释"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"FreeRTOS 任务栈宏写 128，到底是 128 字节还是 128 个字？这个项目应该怎么核对","expected_behavior":"激活本 skill，解释 StackType_t 单位并结合 app_tasks.h、heap 和 map 核对","notes":"配置语义"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"DMA 优先级 4、TIM4 优先级 5，而 FreeRTOS 阈值是 3，这些中断能不能调用 FromISR API？","expected_behavior":"激活本 skill，按 Cortex-M 数值语义和 configMAX_SYSCALL_INTERRUPT_PRIORITY 判断","notes":"IRQ 边界"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"DMA 完成中断触发了，但等待信号量的任务没有醒，给我逐段排查步骤","expected_behavior":"不优先激活本 skill，转 rtos-communication-debugging","notes":"事件链兄弟 Skill"},
+    {"id":"should_not_trigger-02","type":"should_not_trigger","prompt":"STM32 一运行就 HardFault，怎么保存现场并判断是不是栈溢出？","expected_behavior":"不优先激活本 skill，转 rtos-runtime-fault-diagnosis","notes":"运行时故障兄弟 Skill"},
+    {"id":"edge-01","type":"edge_case","prompt":"我只想知道 FreeRTOS 通用的任务状态定义，不需要这个 STM32 项目的源码映射","expected_behavior":"给出通用概念并明确不套用本项目事实，不强行激活项目专属分析","notes":"通用概念边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}

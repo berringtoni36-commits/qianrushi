@@ -1,0 +1,813 @@
+{
+  "problemId": 74,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 74,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "variables": {
+        "r": 1
+      },
+      "structure": {
+        "matrix": [
+          [
+            1,
+            3,
+            5
+          ],
+          [
+            7,
+            9,
+            11
+          ]
+        ]
+      },
+      "result": [
+        true
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "2ff6d3f9a80827ce7931c6cee21853ae4c76788a1698695f3f5374850c0f80eb",
+    "sourceSemanticTokenHash": "857761b5ddec85b2ab90789f6ac5f883db29d8bc158baf0af4721c3260493054",
+    "sourceCodeLineCount": 16
+  },
+  "sourceCodeSha256": "2ff6d3f9a80827ce7931c6cee21853ae4c76788a1698695f3f5374850c0f80eb",
+  "sourceSemanticTokenHash": "857761b5ddec85b2ab90789f6ac5f883db29d8bc158baf0af4721c3260493054",
+  "steps": [
+    {
+      "id": "74-trace-001",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "setup",
+      "title": "把矩阵展平为有序下标",
+      "body": "matrix[mid/m][mid%m] 对应一维数组，搜索 target=3。 题解原意：核心思想： 把 m x n 的矩阵看作长度为 m x n 的一维有序数组。通过数学映射在 O(log(mn)) 时间内完成查找。 映射关系： 一维索引 mid → 二维坐标 (row, col)： row = mid // n col = mid % n 可视化（以 3x4 矩阵为例，展平后索引对应关系）：",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · binary",
+        "badge": "l=0 · r=5",
+        "tokens": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "target": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,5]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "matrix[mid/m][mid%m] 对应一维数组，搜索 target=3。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "target": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              7,
+              9,
+              11
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "74-trace-002",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "检查下标 2 = 5",
+      "body": "二维坐标 (0,2)，与 target 比较。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · binary",
+        "badge": "l=0 · r=5 · mid=2",
+        "tokens": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "mid": 2,
+          "value": 5,
+          "target": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,5]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "二维坐标 (0,2)，与 target 比较。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "variables": {
+          "l": 0,
+          "r": 5,
+          "mid": 2,
+          "value": 5,
+          "target": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              7,
+              9,
+              11
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "74-trace-003",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "缩小矩阵搜索区间",
+      "body": "新的候选下标区间 [0,2]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=0 · r=2",
+        "tokens": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "target": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,2]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "新的候选下标区间 [0,2]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "target": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              7,
+              9,
+              11
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "74-trace-004",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "检查下标 1 = 3",
+      "body": "二维坐标 (0,1)，与 target 比较。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · binary",
+        "badge": "l=0 · r=2 · mid=1",
+        "tokens": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "mid": 1,
+          "value": 3,
+          "target": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,2]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "二维坐标 (0,1)，与 target 比较。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "variables": {
+          "l": 0,
+          "r": 2,
+          "mid": 1,
+          "value": 3,
+          "target": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              7,
+              9,
+              11
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "74-trace-005",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "缩小矩阵搜索区间",
+      "body": "新的候选下标区间 [0,1]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=0 · r=1",
+        "tokens": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "target": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,1]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "新的候选下标区间 [0,1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "target": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              7,
+              9,
+              11
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "74-trace-006",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "compare",
+      "title": "检查下标 0 = 1",
+      "body": "二维坐标 (0,0)，与 target 比较。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · binary",
+        "badge": "l=0 · r=1 · mid=0",
+        "tokens": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "mid": 0,
+          "value": 1,
+          "target": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[0,1]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "二维坐标 (0,0)，与 target 比较。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "variables": {
+          "l": 0,
+          "r": 1,
+          "mid": 0,
+          "value": 1,
+          "target": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              7,
+              9,
+              11
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "74-trace-007",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "mutate",
+      "title": "缩小矩阵搜索区间",
+      "body": "新的候选下标区间 [1,1]。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "l=1 · r=1",
+        "tokens": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "target": 3
+        },
+        "rows": [
+          {
+            "label": "range",
+            "values": [
+              "[1,1]"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "新的候选下标区间 [1,1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "variables": {
+          "l": 1,
+          "r": 1,
+          "target": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              7,
+              9,
+              11
+            ]
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "74-trace-008",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "mutate",
+      "title": "检查收敛位置",
+      "body": "matrix[0][1]=3，命中=true。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "r=1 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "r": 1,
+          "target": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "matrix[0][1]=3，命中=true。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "variables": {
+          "r": 1,
+          "target": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              7,
+              9,
+              11
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "74-trace-check-010",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true。 易错提醒：1. 矩阵为空：matrix = [] 或 matrix = [[]] 时需提前返回 false。 2. 一维展开时的列数 n：mid // n 和 mid % n 中的 n 是列数（不是行数），写反会导致完全错误的坐标。 3. 两次二分中\"找行\"的边界：bottom 指向最后一行首元素 <= target 的行。如果 bottom <…",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "r=1 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "r": 1,
+          "target": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。返回 true。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "variables": {
+          "r": 1,
+          "target": 3
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              7,
+              9,
+              11
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "74-trace-009",
+      "line": 14,
+      "lineIds": [
+        14
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回 true。",
+      "kind": "binary",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · binary",
+        "badge": "r=1 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "r": 1
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              true
+            ]
+          }
+        ],
+        "result": [
+          true
+        ],
+        "note": "返回 true。"
+      },
+      "state": {
+        "values": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "variables": {
+          "r": 1
+        },
+        "structure": {
+          "matrix": [
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              7,
+              9,
+              11
+            ]
+          ]
+        },
+        "result": [
+          true
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

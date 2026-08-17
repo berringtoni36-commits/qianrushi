@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linux Process Signal Daemon Lifecycle"
+  short_description: "Analyze Linux process signal daemon and IPC lifecycles"
+  default_prompt: "Use $linux-process-signal-daemon-lifecycle to reconstruct this Linux process, signal, daemon, or IPC shutdown lifecycle."

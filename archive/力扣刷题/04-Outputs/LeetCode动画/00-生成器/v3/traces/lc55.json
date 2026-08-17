@@ -1,0 +1,608 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "贪心维护最远可达边界",
+    "sceneKind": "generic-array",
+    "input": [
+      2,
+      3,
+      1,
+      1,
+      4
+    ],
+    "expected": true,
+    "exampleText": "[2,3,1,1,4]",
+    "expectedText": "可以到达末尾 → true",
+    "invariant": "[0,far] 内所有已需访问位置可达",
+    "aha": "无需决定具体跳法，只需维护可达并集右端点",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 55,
+    "title": "跳跃游戏",
+    "day": "Day 12：动态规划 + 贪心",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "c0247c76e8986c6a56b1900aecee4877388cb1165cba12a0299e0bf5b8c51540",
+    "semanticTokenHash": "e8bd89132ab7f4a08f443bcde5ce302d724caa1c381e75aad9da237fe0ca1d31",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "只要 i 不超过最远边界，就能继续扩展。",
+        "review": "最远可达位置从 0 开始"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "最远可达位置从 0 开始",
+            "status": "running"
+          },
+          "caption": "只要 i 不超过最远边界，就能继续扩展。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "若边界落在 i 左边，则出现不可跨越断点。",
+        "review": "0 < 0 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "0 < 0 → False",
+            "action": "检查 i=0 是否可达",
+            "status": "running"
+          },
+          "caption": "若边界落在 i 左边，则出现不可跨越断点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "所有不超过 far 的位置都可达。",
+        "review": "max(0,0+2)=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 0,
+              "j": 2
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "max(0,0+2)=2",
+            "action": "最远边界从 0 扩展到 2",
+            "status": "running"
+          },
+          "caption": "所有不超过 far 的位置都可达。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "若边界落在 i 左边，则出现不可跨越断点。",
+        "review": "2 < 1 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 1,
+              "j": 2
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "2 < 1 → False",
+            "action": "检查 i=1 是否可达",
+            "status": "running"
+          },
+          "caption": "若边界落在 i 左边，则出现不可跨越断点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "所有不超过 far 的位置都可达。",
+        "review": "max(2,1+3)=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 1,
+              "j": 4
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "formula": "max(2,1+3)=4",
+            "action": "最远边界从 2 扩展到 4",
+            "status": "running"
+          },
+          "caption": "所有不超过 far 的位置都可达。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "若边界落在 i 左边，则出现不可跨越断点。",
+        "review": "4 < 2 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 2,
+              "j": 4
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "4 < 2 → False",
+            "action": "检查 i=2 是否可达",
+            "status": "running"
+          },
+          "caption": "若边界落在 i 左边，则出现不可跨越断点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "所有不超过 far 的位置都可达。",
+        "review": "max(4,2+1)=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 2,
+              "j": 4
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "formula": "max(4,2+1)=4",
+            "action": "最远边界从 4 扩展到 4",
+            "status": "running"
+          },
+          "caption": "所有不超过 far 的位置都可达。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "若边界落在 i 左边，则出现不可跨越断点。",
+        "review": "4 < 3 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 3,
+              "j": 4
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "4 < 3 → False",
+            "action": "检查 i=3 是否可达",
+            "status": "running"
+          },
+          "caption": "若边界落在 i 左边，则出现不可跨越断点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "所有不超过 far 的位置都可达。",
+        "review": "max(4,3+1)=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 3,
+              "j": 4
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "formula": "max(4,3+1)=4",
+            "action": "最远边界从 4 扩展到 4",
+            "status": "running"
+          },
+          "caption": "所有不超过 far 的位置都可达。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "若边界落在 i 左边，则出现不可跨越断点。",
+        "review": "4 < 4 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 4,
+              "j": 4
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "4 < 4 → False",
+            "action": "检查 i=4 是否可达",
+            "status": "running"
+          },
+          "caption": "若边界落在 i 左边，则出现不可跨越断点。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "所有不超过 far 的位置都可达。",
+        "review": "max(4,4+4)=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "i": 4,
+              "j": 8
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "formula": "max(4,4+4)=8",
+            "action": "最远边界从 4 扩展到 8",
+            "status": "running"
+          },
+          "caption": "所有不超过 far 的位置都可达。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "可达边界覆盖最后一个下标。",
+        "review": "far=8 >= 4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              2,
+              3,
+              1,
+              1,
+              4
+            ],
+            "variables": {
+              "j": 8
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "formula": "far=8 >= 4",
+            "action": "返回可以到达末尾",
+            "status": "return",
+            "output": true
+          },
+          "caption": "可达边界覆盖最后一个下标。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    bool canJump(vector<int>& nums) {\n        for (int i = 0, j = 0; i < nums.size(); i ++ ) {\n            if (j < i) return false;\n            j = max(j, i + nums[i]);\n        }\n        return true;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4474,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4475,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4476,
+        "text": "    bool canJump(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4477,
+        "text": "        for (int i = 0, j = 0; i < nums.size(); i ++ ) {"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4478,
+        "text": "            if (j < i) return false;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4479,
+        "text": "            j = max(j, i + nums[i]);"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4480,
+        "text": "        }"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4481,
+        "text": "        return true;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4482,
+        "text": "    }"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4483,
+        "text": "};"
+      }
+    ]
+  }
+}

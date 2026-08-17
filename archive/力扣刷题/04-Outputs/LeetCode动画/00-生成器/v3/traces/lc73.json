@@ -1,0 +1,934 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "首行首列原地标记",
+    "sceneKind": "matrix-grid",
+    "input": [
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "expected": [
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1
+      ]
+    ],
+    "exampleText": "[[1,1,1],[1,0,1],[1,1,1]]",
+    "expectedText": "[[1,0,1],[0,0,0],[1,0,1]]",
+    "invariant": "标记阶段首行/首列准确记录需清零的行列",
+    "aha": "复用矩阵边界作为 O(1) 标记空间",
+    "time": "O(mn)",
+    "space": "O(1)",
+    "problemId": 73,
+    "title": "矩阵置零",
+    "day": "Day 3：数组技巧 + 矩阵",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "9a4833e2fe7023e6f61c8d873719b8582f85f12ec5cca12617fd5bb22f2096bf",
+    "semanticTokenHash": "8edaa5fb69498a1a40f269c0ff1831c178ca9552a01f6660baedfffd1dc77460",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "首行首列同时充当标记区，必须先保存原状态。",
+        "review": "检查首行首列是否原本含零"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "r0": 1,
+              "c0": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "检查首行首列是否原本含零",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "首行首列同时充当标记区，必须先保存原状态。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "内部零会同时标记对应首行与首列。",
+        "review": "zero=True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "r": 1,
+              "c": 1,
+              "r0": 1,
+              "c0": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "zero=True",
+            "action": "检查 (1,1)=0",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "内部零会同时标记对应首行与首列。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "标记阶段不立即清除其他单元格。",
+        "review": "row/col marker=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "r": 1,
+              "c": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "row/col marker=0",
+            "action": "把第 1 行与第 1 列标为需清零",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "0,1",
+              "1,0"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "标记阶段不立即清除其他单元格。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L14",
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "r": 1,
+              "c": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "row/col marker=0",
+            "action": "不变量检查 3",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "0,1",
+              "1,0"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "内部零会同时标记对应首行与首列。",
+        "review": "zero=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "r": 1,
+              "c": 2,
+              "r0": 1,
+              "c0": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "zero=False",
+            "action": "检查 (1,2)=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "内部零会同时标记对应首行与首列。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "内部零会同时标记对应首行与首列。",
+        "review": "zero=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "r": 2,
+              "c": 1,
+              "r0": 1,
+              "c0": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "zero=False",
+            "action": "检查 (2,1)=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "内部零会同时标记对应首行与首列。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "r": 2,
+              "c": 1,
+              "r0": 1,
+              "c0": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "zero=False",
+            "action": "不变量检查 2",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "内部零会同时标记对应首行与首列。",
+        "review": "zero=False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "r": 2,
+              "c": 2,
+              "r0": 1,
+              "c0": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "zero=False",
+            "action": "检查 (2,2)=1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                1
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "内部零会同时标记对应首行与首列。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "列标记转化为真实清零。",
+        "review": "按标记清零第 1 列"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "column": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "按标记清零第 1 列",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "0,1",
+              "1,1",
+              "2,1"
+            ]
+          },
+          "caption": "列标记转化为真实清零。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L24"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "column": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "0,1",
+              "1,1",
+              "2,1"
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "行标记转化为真实清零。",
+        "review": "按标记清零第 1 行"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L29"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "row": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "按标记清零第 1 行",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "1,0",
+              "1,1",
+              "1,2"
+            ]
+          },
+          "caption": "行标记转化为真实清零。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "首行首列按保存的原始标志最后处理。",
+        "review": "[[1, 0, 1], [0, 0, 0], [1, 0, 1]]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L31"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "r0": 1,
+              "c0": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[[1, 0, 1], [0, 0, 0], [1, 0, 1]]",
+            "action": "矩阵置零完成",
+            "status": "return",
+            "matrix": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "0,1",
+              "1,0",
+              "1,1",
+              "1,2",
+              "2,1"
+            ],
+            "output": [
+              [
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1
+              ]
+            ]
+          },
+          "caption": "首行首列按保存的原始标志最后处理。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    void setZeroes(vector<vector<int>>& matrix) {\n        if (matrix.empty() || matrix[0].empty()) return;\n        int n = matrix.size(), m = matrix[0].size();\n\n        int r0 = 1, c0 = 1;\n        for (int i = 0; i < m; i ++ ) if (!matrix[0][i]) r0 = 0;\n        for (int i = 0; i < n; i ++ ) if (!matrix[i][0]) c0 = 0; // 遍历\n\n        for (int i = 1; i < m; i ++ )\n            for (int j = 0; j < n; j ++ )\n                if (!matrix[j][i])\n                    matrix[0][i] = 0;\n\n        for (int i = 1; i < n; i ++ )\n            for (int j = 0; j < m; j ++ )\n                if (!matrix[i][j])\n                    matrix[i][0] = 0;\n\n        for (int i = 1; i < m; i ++ )\n            if (!matrix[0][i])\n                for (int j = 0; j < n; j ++ )\n                    matrix[j][i] = 0;\n\n        for (int i = 1; i < n; i ++ )\n            if (!matrix[i][0])\n                for (int j = 0; j < m; j ++ )\n                    matrix[i][j] = 0;\n\n        if (!r0) for (int i = 0; i < m; i ++ ) matrix[0][i] = 0;\n        if (!c0) for (int i = 0; i < n; i ++ ) matrix[i][0] = 0; // 遍历\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 948,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 949,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 950,
+        "text": "    void setZeroes(vector<vector<int>>& matrix) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 951,
+        "text": "        if (matrix.empty() || matrix[0].empty()) return;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 952,
+        "text": "        int n = matrix.size(), m = matrix[0].size();"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 953,
+        "text": ""
+      },
+      {
+        "id": "L7",
+        "sourceLine": 954,
+        "text": "        int r0 = 1, c0 = 1;"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 955,
+        "text": "        for (int i = 0; i < m; i ++ ) if (!matrix[0][i]) r0 = 0;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 956,
+        "text": "        for (int i = 0; i < n; i ++ ) if (!matrix[i][0]) c0 = 0; // 遍历"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 957,
+        "text": ""
+      },
+      {
+        "id": "L11",
+        "sourceLine": 958,
+        "text": "        for (int i = 1; i < m; i ++ )"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 959,
+        "text": "            for (int j = 0; j < n; j ++ )"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 960,
+        "text": "                if (!matrix[j][i])"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 961,
+        "text": "                    matrix[0][i] = 0;"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 962,
+        "text": ""
+      },
+      {
+        "id": "L16",
+        "sourceLine": 963,
+        "text": "        for (int i = 1; i < n; i ++ )"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 964,
+        "text": "            for (int j = 0; j < m; j ++ )"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 965,
+        "text": "                if (!matrix[i][j])"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 966,
+        "text": "                    matrix[i][0] = 0;"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 967,
+        "text": ""
+      },
+      {
+        "id": "L21",
+        "sourceLine": 968,
+        "text": "        for (int i = 1; i < m; i ++ )"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 969,
+        "text": "            if (!matrix[0][i])"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 970,
+        "text": "                for (int j = 0; j < n; j ++ )"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 971,
+        "text": "                    matrix[j][i] = 0;"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 972,
+        "text": ""
+      },
+      {
+        "id": "L26",
+        "sourceLine": 973,
+        "text": "        for (int i = 1; i < n; i ++ )"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 974,
+        "text": "            if (!matrix[i][0])"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 975,
+        "text": "                for (int j = 0; j < m; j ++ )"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 976,
+        "text": "                    matrix[i][j] = 0;"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 977,
+        "text": ""
+      },
+      {
+        "id": "L31",
+        "sourceLine": 978,
+        "text": "        if (!r0) for (int i = 0; i < m; i ++ ) matrix[0][i] = 0;"
+      },
+      {
+        "id": "L32",
+        "sourceLine": 979,
+        "text": "        if (!c0) for (int i = 0; i < n; i ++ ) matrix[i][0] = 0; // 遍历"
+      },
+      {
+        "id": "L33",
+        "sourceLine": 980,
+        "text": "    }"
+      },
+      {
+        "id": "L34",
+        "sourceLine": 981,
+        "text": "};"
+      }
+    ]
+  }
+}

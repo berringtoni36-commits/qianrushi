@@ -1,0 +1,705 @@
+{
+  "meta": {
+    "difficulty": "Easy",
+    "algorithm": "一次扫描维护历史最低价",
+    "sceneKind": "generic-array",
+    "input": [
+      7,
+      1,
+      5,
+      3,
+      6,
+      4
+    ],
+    "expected": 5,
+    "exampleText": "[7,1,5,3,6,4]",
+    "expectedText": "最大利润 = 5",
+    "invariant": "minp 是当前位置之前含当前的最低价格",
+    "aha": "固定卖出日后最佳买入日就是此前最低价",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 121,
+    "title": "买卖股票的最佳时机",
+    "day": "Day 12：动态规划 + 贪心",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "2cdfbc9f8f8da43e13584d1a505db43eb474177b7fd566171759ad3b9cedfe09",
+    "semanticTokenHash": "10e703dc59f73332ccf0e73b684fece53ebce2e0fc68757a8d9e3bf7f06230ea",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每一天只需要此前最低买入价。",
+        "review": "利润从 0 开始，最低价为无穷"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": null,
+              "minp": "∞",
+              "res": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "利润从 0 开始，最低价为无穷",
+            "status": "running"
+          },
+          "caption": "每一天只需要此前最低买入价。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "卖出计算使用的是今天之前的最低价。",
+        "review": "res=max(res,7-minp)=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 0,
+              "price": 7,
+              "minp": "∞",
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "res=max(res,7-minp)=0",
+            "action": "若今天卖出，利润 不可买卖",
+            "status": "running"
+          },
+          "caption": "卖出计算使用的是今天之前的最低价。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最低价只会下降。",
+        "review": "minp=min(minp,7)=7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 0,
+              "price": 7,
+              "minp": 7,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              0
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "minp=min(minp,7)=7",
+            "action": "最低价更新/保持为 7",
+            "status": "running"
+          },
+          "caption": "最低价只会下降。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "卖出计算使用的是今天之前的最低价。",
+        "review": "res=max(res,1-minp)=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 1,
+              "price": 1,
+              "minp": 7,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "res=max(res,1-minp)=0",
+            "action": "若今天卖出，利润 -6",
+            "status": "running"
+          },
+          "caption": "卖出计算使用的是今天之前的最低价。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最低价只会下降。",
+        "review": "minp=min(minp,1)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 1,
+              "price": 1,
+              "minp": 1,
+              "res": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "minp=min(minp,1)=1",
+            "action": "最低价更新/保持为 1",
+            "status": "running"
+          },
+          "caption": "最低价只会下降。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "卖出计算使用的是今天之前的最低价。",
+        "review": "res=max(res,5-minp)=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 2,
+              "price": 5,
+              "minp": 1,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "res=max(res,5-minp)=4",
+            "action": "若今天卖出，利润 4",
+            "status": "running"
+          },
+          "caption": "卖出计算使用的是今天之前的最低价。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最低价只会下降。",
+        "review": "minp=min(minp,5)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 2,
+              "price": 5,
+              "minp": 1,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "minp=min(minp,5)=1",
+            "action": "最低价更新/保持为 1",
+            "status": "running"
+          },
+          "caption": "最低价只会下降。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "卖出计算使用的是今天之前的最低价。",
+        "review": "res=max(res,3-minp)=4"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 3,
+              "price": 3,
+              "minp": 1,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "res=max(res,3-minp)=4",
+            "action": "若今天卖出，利润 2",
+            "status": "running"
+          },
+          "caption": "卖出计算使用的是今天之前的最低价。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最低价只会下降。",
+        "review": "minp=min(minp,3)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 3,
+              "price": 3,
+              "minp": 1,
+              "res": 4
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "minp=min(minp,3)=1",
+            "action": "最低价更新/保持为 1",
+            "status": "running"
+          },
+          "caption": "最低价只会下降。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "卖出计算使用的是今天之前的最低价。",
+        "review": "res=max(res,6-minp)=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 4,
+              "price": 6,
+              "minp": 1,
+              "res": 5
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "res=max(res,6-minp)=5",
+            "action": "若今天卖出，利润 5",
+            "status": "running"
+          },
+          "caption": "卖出计算使用的是今天之前的最低价。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最低价只会下降。",
+        "review": "minp=min(minp,6)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 4,
+              "price": 6,
+              "minp": 1,
+              "res": 5
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "minp=min(minp,6)=1",
+            "action": "最低价更新/保持为 1",
+            "status": "running"
+          },
+          "caption": "最低价只会下降。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "卖出计算使用的是今天之前的最低价。",
+        "review": "res=max(res,4-minp)=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 5,
+              "price": 4,
+              "minp": 1,
+              "res": 5
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "res=max(res,4-minp)=5",
+            "action": "若今天卖出，利润 3",
+            "status": "running"
+          },
+          "caption": "卖出计算使用的是今天之前的最低价。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最低价只会下降。",
+        "review": "minp=min(minp,4)=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L7"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "i": 5,
+              "price": 4,
+              "minp": 1,
+              "res": 5
+            },
+            "pointers": {},
+            "active": [
+              5
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "minp=min(minp,4)=1",
+            "action": "最低价更新/保持为 1",
+            "status": "running"
+          },
+          "caption": "最低价只会下降。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "第 1 天买入、第 4 天卖出最优。",
+        "review": "6-1=5"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "generic-array",
+            "values": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              4
+            ],
+            "variables": {
+              "minp": 1,
+              "res": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              1,
+              4
+            ],
+            "formula": "6-1=5",
+            "action": "返回最大利润 5",
+            "status": "return",
+            "output": 5
+          },
+          "caption": "第 1 天买入、第 4 天卖出最优。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int maxProfit(vector<int>& prices) {\n        int res = 0;\n        for (int i = 0, minp = INT_MAX; i < prices.size(); i ++ ) {  // 初始化为最大可能值\n            res = max(res, prices[i] - minp);\n            minp = min(minp, prices[i]);\n        }\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4429,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4430,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4431,
+        "text": "    int maxProfit(vector<int>& prices) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4432,
+        "text": "        int res = 0;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4433,
+        "text": "        for (int i = 0, minp = INT_MAX; i < prices.size(); i ++ ) {  // 初始化为最大可能值"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4434,
+        "text": "            res = max(res, prices[i] - minp);"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4435,
+        "text": "            minp = min(minp, prices[i]);"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4436,
+        "text": "        }"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4437,
+        "text": "        return res;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4438,
+        "text": "    }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 4439,
+        "text": "};"
+      }
+    ]
+  }
+}

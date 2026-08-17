@@ -1,0 +1,966 @@
+{
+  "problemId": 206,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 206,
+    "stepCount": 12,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "variables": {
+        "a": 4,
+        "b": null
+      },
+      "structure": {
+        "reversed": [
+          5,
+          4,
+          3,
+          1
+        ]
+      },
+      "result": [
+        5,
+        4,
+        3,
+        1
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "f1048157fdb9707aa72f2ac01720d13f8efa5cf5e6269f8fc2b5dbd1dae37162",
+    "sourceSemanticTokenHash": "73de7fd33e6af4141ca1aefe92f4e9257de5ee381a442d5f37b1468ce125da25",
+    "sourceCodeLineCount": 23
+  },
+  "sourceCodeSha256": "f1048157fdb9707aa72f2ac01720d13f8efa5cf5e6269f8fc2b5dbd1dae37162",
+  "sourceSemanticTokenHash": "73de7fd33e6af4141ca1aefe92f4e9257de5ee381a442d5f37b1468ce125da25",
+  "steps": [
+    {
+      "id": "206-trace-001",
+      "line": 13,
+      "lineIds": [
+        13
+      ],
+      "phase": "setup",
+      "title": "准备 prev 与 cur",
+      "body": "a 指向已经反转部分的头，b 指向尚未处理部分的头。 题解原意：为什么这样想： 反转一个节点的核心操作是 cur->next = pre，但这样会断开与后续节点的连接。所以需要一个指针 nxt 先保存后续节点。反转完当前节点后，三个指针整体后移一位，重复操作。 关键洞察： pre 始终指向「已反转部分的头节点」，cur 指向「当前待反转的节点」。每次迭代把 cur 从原链表中「摘下来」放到 pre 的前面。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · linked",
+        "badge": "reversed",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "a": 1,
+          "b": 2
+        },
+        "rows": [
+          {
+            "label": "reversed",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": [
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "a 指向已经反转部分的头，b 指向尚未处理部分的头。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 1,
+          "b": 2
+        },
+        "structure": {
+          "reversed": [
+            1
+          ],
+          "remaining": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "206-trace-002",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "inspect",
+      "title": "保存 b=3 的后继",
+      "body": "c 暂存为 4，避免改指针后丢失剩余链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · linked",
+        "badge": "reversed",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          1,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        },
+        "rows": [
+          {
+            "label": "reversed",
+            "values": [
+              1
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": [
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "c 暂存为 4，避免改指针后丢失剩余链。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        },
+        "structure": {
+          "reversed": [
+            1
+          ],
+          "remaining": [
+            3,
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "206-trace-003",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "把 3 指向 2",
+      "body": "将当前节点接到已反转链表头部。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "reversed",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          1,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        },
+        "rows": [
+          {
+            "label": "reversed",
+            "values": [
+              3,
+              1
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": [
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "将当前节点接到已反转链表头部。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        },
+        "structure": {
+          "reversed": [
+            3,
+            1
+          ],
+          "remaining": [
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "206-trace-004",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "update",
+      "title": "移动 a、b 到下一轮",
+      "body": "a=3，b=4。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · linked",
+        "badge": "reversed",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "a": 2,
+          "b": 3
+        },
+        "rows": [
+          {
+            "label": "reversed",
+            "values": [
+              3,
+              1
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": [
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "a=3，b=4。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 2,
+          "b": 3
+        },
+        "structure": {
+          "reversed": [
+            3,
+            1
+          ],
+          "remaining": [
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "206-trace-005",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "inspect",
+      "title": "保存 b=4 的后继",
+      "body": "c 暂存为 5，避免改指针后丢失剩余链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · linked",
+        "badge": "reversed",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "a": 2,
+          "b": 3,
+          "c": 4
+        },
+        "rows": [
+          {
+            "label": "reversed",
+            "values": [
+              3,
+              1
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": [
+              4,
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "c 暂存为 5，避免改指针后丢失剩余链。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 2,
+          "b": 3,
+          "c": 4
+        },
+        "structure": {
+          "reversed": [
+            3,
+            1
+          ],
+          "remaining": [
+            4,
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "206-trace-006",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "把 4 指向 3",
+      "body": "将当前节点接到已反转链表头部。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "reversed",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "a": 2,
+          "b": 3,
+          "c": 4
+        },
+        "rows": [
+          {
+            "label": "reversed",
+            "values": [
+              4,
+              3,
+              1
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "将当前节点接到已反转链表头部。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 2,
+          "b": 3,
+          "c": 4
+        },
+        "structure": {
+          "reversed": [
+            4,
+            3,
+            1
+          ],
+          "remaining": [
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "206-trace-007",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "update",
+      "title": "移动 a、b 到下一轮",
+      "body": "a=4，b=5。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · linked",
+        "badge": "reversed",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          3,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "a": 3,
+          "b": 4
+        },
+        "rows": [
+          {
+            "label": "reversed",
+            "values": [
+              4,
+              3,
+              1
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "a=4，b=5。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 3,
+          "b": 4
+        },
+        "structure": {
+          "reversed": [
+            4,
+            3,
+            1
+          ],
+          "remaining": [
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "206-trace-008",
+      "line": 15,
+      "lineIds": [
+        15
+      ],
+      "phase": "inspect",
+      "title": "保存 b=5 的后继",
+      "body": "c 暂存为 null，避免改指针后丢失剩余链。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "inspect · linked",
+        "badge": "reversed",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          3,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "a": 3,
+          "b": 4,
+          "c": null
+        },
+        "rows": [
+          {
+            "label": "reversed",
+            "values": [
+              4,
+              3,
+              1
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": [
+              5
+            ]
+          }
+        ],
+        "result": [],
+        "note": "c 暂存为 null，避免改指针后丢失剩余链。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 3,
+          "b": 4,
+          "c": null
+        },
+        "structure": {
+          "reversed": [
+            4,
+            3,
+            1
+          ],
+          "remaining": [
+            5
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "206-trace-009",
+      "line": 16,
+      "lineIds": [
+        16
+      ],
+      "phase": "mutate",
+      "title": "把 5 指向 4",
+      "body": "将当前节点接到已反转链表头部。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "reversed",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          3,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "a": 3,
+          "b": 4,
+          "c": null
+        },
+        "rows": [
+          {
+            "label": "reversed",
+            "values": [
+              5,
+              4,
+              3,
+              1
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "将当前节点接到已反转链表头部。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 3,
+          "b": 4,
+          "c": null
+        },
+        "structure": {
+          "reversed": [
+            5,
+            4,
+            3,
+            1
+          ],
+          "remaining": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "206-trace-010",
+      "line": 17,
+      "lineIds": [
+        17
+      ],
+      "phase": "update",
+      "title": "移动 a、b 到下一轮",
+      "body": "a=5，b=null。",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · linked",
+        "badge": "reversed",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "a": 4,
+          "b": null
+        },
+        "rows": [
+          {
+            "label": "reversed",
+            "values": [
+              5,
+              4,
+              3,
+              1
+            ]
+          },
+          {
+            "label": "remaining",
+            "values": []
+          }
+        ],
+        "result": [],
+        "note": "a=5，b=null。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 4,
+          "b": null
+        },
+        "structure": {
+          "reversed": [
+            5,
+            4,
+            3,
+            1
+          ],
+          "remaining": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "206-trace-011",
+      "line": 20,
+      "lineIds": [
+        20
+      ],
+      "phase": "mutate",
+      "title": "断开原头节点的旧后继",
+      "body": "原来的 head 变成反转链表尾部，next 置空。 易错提醒：断链问题： 执行 cur->next = pre 之前，一定要先保存 nxt = cur->next，否则后续节点丢失 递归返回值： 递归的核心是返回 new_head（即原链表尾节点），不是 head 尾节点处理： 反转后原头节点变成尾节点，要记得将 head->next 设为 nullptr，否则形成环 空链表和单节点： 这两种情况直…",
+      "kind": "linked",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · linked",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "a": 4,
+          "b": null
+        },
+        "rows": [
+          {
+            "label": "result",
+            "values": [
+              5,
+              4,
+              3,
+              1
+            ]
+          }
+        ],
+        "result": [
+          5,
+          4,
+          3,
+          1
+        ],
+        "note": "原来的 head 变成反转链表尾部，next 置空。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 4,
+          "b": null
+        },
+        "structure": {
+          "reversed": [
+            5,
+            4,
+            3,
+            1
+          ]
+        },
+        "result": [
+          5,
+          4,
+          3,
+          1
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "206-trace-012",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "返回反转后的链表 [5, 4, 3, 1]。",
+      "kind": "linked",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · linked",
+        "badge": "结果 4 项",
+        "tokens": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "a": 4,
+          "b": null
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              5,
+              4,
+              3,
+              1
+            ]
+          }
+        ],
+        "result": [
+          5,
+          4,
+          3,
+          1
+        ],
+        "note": "返回反转后的链表 [5, 4, 3, 1]。"
+      },
+      "state": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "variables": {
+          "a": 4,
+          "b": null
+        },
+        "structure": {
+          "reversed": [
+            5,
+            4,
+            3,
+            1
+          ]
+        },
+        "result": [
+          5,
+          4,
+          3,
+          1
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

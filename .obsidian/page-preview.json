@@ -1,7 +1,5 @@
 {
-  "markdown": false,
-  "search": false,
-  "fileExplorer": false,
-  "graph": false,
-  "preview": true
+  "editor": false,
+  "preview": true,
+  "git-view": false
 }

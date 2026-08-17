@@ -1,0 +1,50 @@
+{
+  "skill": "rtos-software-timer-periodic-design",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "请审计这个工程的 FreeRTOS 软件定时器：configUSE_TIMERS=1 是否说明业务已经在用 xTimerCreate？Timer Service Task、命令队列和回调上下文分别是什么？",
+      "expected_behavior": "激活本 skill；区分功能启用与业务调用，沿 timers.c 解释 Timer Service Task、xTimerQueue、命令处理和回调上下文，并给出源码证据。",
+      "notes": "软件定时器源码审计"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "KeyScanTask、SensorTask 和 MotorControlTask 都在循环末尾 delay_ms，帮我判断它们的标称周期是否等于实际 start-to-start 周期，怎么查漂移和执行超时？",
+      "expected_behavior": "激活本 skill；核对 delay_ms/vTaskDelay/fac_ms，区分工作时长、调度延迟、标称周期与实测周期，并提出时间戳和执行时长验证。",
+      "notes": "delay-based 周期审计"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "TIM4 每次更新中断给 g_speedCalcSemaphore，SpeedCalcTask 再调用 get_speed。这个硬件定时器 ISR 到任务通知路径该怎么选型和审计？二值信号会不会丢或合并？",
+      "expected_behavior": "激活本 skill；核对 TIM4_init、TIM4_IRQHandler、xSemaphoreGiveFromISR、SpeedCalcTask 和 get_speed，明确二值信号量容量/合并风险是待验证项，并给出计数器与初始化顺序检查。",
+      "notes": "硬件定时器到任务"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "STM32F1 的 TIM4 为什么可能和 PCLK1 差一倍？请从 APB 分频和定时器时钟公式重新计算 1 ms。",
+      "expected_behavior": "不优先激活本 skill；转交 stm32-clock-and-sampling-timing，专注 STM32 时钟树/APB 定时器时钟公式。",
+      "notes": "时钟公式诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "FreeRTOS 中断里能不能做复杂计算？任务优先级、FromISR、互斥量和共享状态一般应该怎么设计？",
+      "expected_behavior": "不优先激活本 skill；转交 rtos-task-and-isr-design，回答通用任务/ISR原则，不展开本 skill 的周期机制审计。",
+      "notes": "任务/ISR 通用原则诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我只想知道 FreeRTOS 软件定时器 API 的通用用法，不需要审计这个 STM32 工程，也不关心当前有没有 xTimerCreate。",
+      "expected_behavior": "只做必要的通用 API 说明；不强行声称当前工程事实，若需要源码证据再激活本 skill 的工程审计部分。",
+      "notes": "通用概念与项目审计边界"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

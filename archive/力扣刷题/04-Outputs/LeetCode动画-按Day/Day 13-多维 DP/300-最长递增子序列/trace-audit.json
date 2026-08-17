@@ -1,0 +1,798 @@
+{
+  "problemId": 300,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 300,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
+      ],
+      "variables": {},
+      "structure": {
+        "q": [
+          2,
+          3,
+          7,
+          18
+        ]
+      },
+      "result": [
+        4
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "75e3b37017be5c6ef0f417636eb9a896c8c6e7f9bffda3808c54810331fa0456",
+    "sourceSemanticTokenHash": "84cd003765b90ea5d1da701c4fa6e31c6dd6ce8af69b25b7c85fd8873031c156",
+    "sourceCodeLineCount": 23
+  },
+  "sourceCodeSha256": "75e3b37017be5c6ef0f417636eb9a896c8c6e7f9bffda3808c54810331fa0456",
+  "sourceSemanticTokenHash": "84cd003765b90ea5d1da701c4fa6e31c6dd6ce8af69b25b7c85fd8873031c156",
+  "steps": [
+    {
+      "id": "300-trace-001",
+      "line": 5,
+      "lineIds": [
+        5
+      ],
+      "phase": "setup",
+      "title": "维护递增尾部数组",
+      "body": "q[i] 是长度 i+1 的递增子序列可能达到的最小尾值。 题解原意：核心洞察：定义 dp[i] 为以 nums[i] 结尾的最长递增子序列长度。对于每个 i，遍历它前面的所有 j，如果 nums[j] < nums[i]，就可以在 dp[j] 的基础上接上 nums[i]。 DP 五步法： 1. dp 定义：dp[i] 表示以 nums[i] 结尾的 LIS 长度 2. 递推公式：dp[i] = max(dp[i], dp[j] + 1) for j < i if nums[j] <…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · dp1d",
+        "badge": "q",
+        "tokens": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "q",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "q[i] 是长度 i+1 的递增子序列可能达到的最小尾值。"
+      },
+      "state": {
+        "values": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "variables": {},
+        "structure": {
+          "q": []
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "300-trace-002",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "追加 10",
+      "body": "处理 x=10 后 q=[10]；长度不变时让尾值更小。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "x": 10
+        },
+        "rows": [
+          {
+            "label": "q",
+            "values": [
+              10
+            ]
+          },
+          {
+            "label": "length",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "处理 x=10 后 q=[10]；长度不变时让尾值更小。"
+      },
+      "state": {
+        "values": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "variables": {
+          "x": 10
+        },
+        "structure": {
+          "q": [
+            10
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "300-trace-003",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "用 9 替换 q[0]",
+      "body": "处理 x=9 后 q=[9]；长度不变时让尾值更小。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "x": 9
+        },
+        "rows": [
+          {
+            "label": "q",
+            "values": [
+              9
+            ]
+          },
+          {
+            "label": "length",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "处理 x=9 后 q=[9]；长度不变时让尾值更小。"
+      },
+      "state": {
+        "values": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "variables": {
+          "x": 9
+        },
+        "structure": {
+          "q": [
+            9
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "300-trace-004",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "用 2 替换 q[0]",
+      "body": "处理 x=2 后 q=[2]；长度不变时让尾值更小。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "x": 2
+        },
+        "rows": [
+          {
+            "label": "q",
+            "values": [
+              2
+            ]
+          },
+          {
+            "label": "length",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "处理 x=2 后 q=[2]；长度不变时让尾值更小。"
+      },
+      "state": {
+        "values": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "variables": {
+          "x": 2
+        },
+        "structure": {
+          "q": [
+            2
+          ]
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "300-trace-005",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "追加 5",
+      "body": "处理 x=5 后 q=[2, 5]；长度不变时让尾值更小。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "x": 5
+        },
+        "rows": [
+          {
+            "label": "q",
+            "values": [
+              2,
+              5
+            ]
+          },
+          {
+            "label": "length",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "处理 x=5 后 q=[2, 5]；长度不变时让尾值更小。"
+      },
+      "state": {
+        "values": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "variables": {
+          "x": 5
+        },
+        "structure": {
+          "q": [
+            2,
+            5
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "300-trace-006",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "用 3 替换 q[1]",
+      "body": "处理 x=3 后 q=[2, 3]；长度不变时让尾值更小。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "x": 3
+        },
+        "rows": [
+          {
+            "label": "q",
+            "values": [
+              2,
+              3
+            ]
+          },
+          {
+            "label": "length",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "处理 x=3 后 q=[2, 3]；长度不变时让尾值更小。"
+      },
+      "state": {
+        "values": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "variables": {
+          "x": 3
+        },
+        "structure": {
+          "q": [
+            2,
+            3
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "300-trace-007",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "追加 7",
+      "body": "处理 x=7 后 q=[2, 3, 7]；长度不变时让尾值更小。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "x": 7
+        },
+        "rows": [
+          {
+            "label": "q",
+            "values": [
+              2,
+              3,
+              7
+            ]
+          },
+          {
+            "label": "length",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "处理 x=7 后 q=[2, 3, 7]；长度不变时让尾值更小。"
+      },
+      "state": {
+        "values": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "variables": {
+          "x": 7
+        },
+        "structure": {
+          "q": [
+            2,
+            3,
+            7
+          ]
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "300-trace-008",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "追加 101",
+      "body": "处理 x=101 后 q=[2, 3, 7, 101]；长度不变时让尾值更小。",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "x": 101
+        },
+        "rows": [
+          {
+            "label": "q",
+            "values": [
+              2,
+              3,
+              7,
+              101
+            ]
+          },
+          {
+            "label": "length",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "处理 x=101 后 q=[2, 3, 7, 101]；长度不变时让尾值更小。"
+      },
+      "state": {
+        "values": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "variables": {
+          "x": 101
+        },
+        "structure": {
+          "q": [
+            2,
+            3,
+            7,
+            101
+          ]
+        },
+        "result": [
+          4
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "300-trace-009",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "mutate",
+      "title": "用 18 替换 q[3]",
+      "body": "处理 x=18 后 q=[2, 3, 7, 18]；长度不变时让尾值更小。 易错提醒：dp[i] 定义：是以 nums[i] 结尾，不是\"前 i 个\"！所以最后返回 max(dp) 不是 dp[-1]。 初始化：所有 dp[i] 至少是 1，不要初始化为 0。 严格递增：条件是 < 不是 <=。 二分查找用 lower_bound_left：需要严格递增时用 lower_bound_left；如果允许相等（非严格），用 l…",
+      "kind": "dp1d",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "x": 18
+        },
+        "rows": [
+          {
+            "label": "q",
+            "values": [
+              2,
+              3,
+              7,
+              18
+            ]
+          },
+          {
+            "label": "length",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "处理 x=18 后 q=[2, 3, 7, 18]；长度不变时让尾值更小。"
+      },
+      "state": {
+        "values": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "variables": {
+          "x": 18
+        },
+        "structure": {
+          "q": [
+            2,
+            3,
+            7,
+            18
+          ]
+        },
+        "result": [
+          4
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "300-trace-010",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "最长递增子序列长度为 4。",
+      "kind": "dp1d",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · dp1d",
+        "badge": "结果 1 项",
+        "tokens": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {},
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "result": [
+          4
+        ],
+        "note": "最长递增子序列长度为 4。"
+      },
+      "state": {
+        "values": [
+          10,
+          9,
+          2,
+          5,
+          3,
+          7,
+          101,
+          18
+        ],
+        "variables": {},
+        "structure": {
+          "q": [
+            2,
+            3,
+            7,
+            18
+          ]
+        },
+        "result": [
+          4
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,2046 @@
+{
+  "problemId": 3,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 3,
+    "stepCount": 25,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c",
+        "b",
+        "b"
+      ],
+      "variables": {
+        "i": 8,
+        "j": 7,
+        "res": 3
+      },
+      "structure": {
+        "count": {
+          "a": 0,
+          "b": 1,
+          "c": 0
+        }
+      },
+      "result": [
+        3
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "f9b9a657a9f4825c1b2646a7f529e0738b286588c01cff0fea595ef298024ea0",
+    "sourceSemanticTokenHash": "bf671a50c08e0870cf3c9f1b41e11c668e8048dda9ce2a2d98da18135ba66edc",
+    "sourceCodeLineCount": 13
+  },
+  "sourceCodeSha256": "f9b9a657a9f4825c1b2646a7f529e0738b286588c01cff0fea595ef298024ea0",
+  "sourceSemanticTokenHash": "bf671a50c08e0870cf3c9f1b41e11c668e8048dda9ce2a2d98da18135ba66edc",
+  "steps": [
+    {
+      "id": "3-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "建立窗口计数",
+      "body": "窗口 [j,i] 只保留当前没有重复字符的最长合法区间。 题解原意：核心想法： 用哈希集合 char_set 存储当前窗口内的字符。右指针扩展窗口，如果遇到重复字符，左指针收缩直到窗口内无重复。 三问法分析： 1. 什么时候扩大？ 右指针字符加入后无重复 → 右移 right。 2. 什么时候缩小？ 出现重复字符 → 左移 left 直到无重复。 3. 什么时候更新答案？ 扩大窗口后（窗口变大，可能产生更优解）。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · window",
+        "badge": "i=None · j=0 · res=0",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": null,
+          "j": 0,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "count",
+            "values": [
+              "空"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "窗口 [j,i] 只保留当前没有重复字符的最长合法区间。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": null,
+          "j": 0,
+          "res": 0
+        },
+        "structure": {
+          "count": {}
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-002",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "右端加入 a",
+      "body": "i=0，字符 a 计数变为 1。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=0 · j=0 · res=0",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 0,
+          "res": 0
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[0,0]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=0，字符 a 计数变为 1。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 0,
+          "j": 0,
+          "res": 0
+        },
+        "structure": {
+          "count": {
+            "a": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-003",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "更新窗口答案 1",
+      "body": "窗口 [0,0] 合法，长度 1，res = 1。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=0 · j=0 · res=1 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "i": 0,
+          "j": 0,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[0,0]"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              1
+            ]
+          }
+        ],
+        "result": [
+          1
+        ],
+        "note": "窗口 [0,0] 合法，长度 1，res = 1。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 0,
+          "j": 0,
+          "res": 1
+        },
+        "structure": {
+          "count": {
+            "a": 1
+          }
+        },
+        "result": [
+          1
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-004",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "右端加入 b",
+      "body": "i=1，字符 b 计数变为 1。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=1 · j=0 · res=1",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 0,
+          "res": 1
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[0,1]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:1",
+              "b:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=1，字符 b 计数变为 1。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 1,
+          "j": 0,
+          "res": 1
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-005",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "更新窗口答案 2",
+      "body": "窗口 [0,1] 合法，长度 2，res = 2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=1 · j=0 · res=2 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          0,
+          1
+        ],
+        "compared": [],
+        "variables": {
+          "i": 1,
+          "j": 0,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[0,1]"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "窗口 [0,1] 合法，长度 2，res = 2。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 1,
+          "j": 0,
+          "res": 2
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1
+          }
+        },
+        "result": [
+          2
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-006",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "右端加入 c",
+      "body": "i=2，字符 c 计数变为 1。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=2 · j=0 · res=2",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 0,
+          "res": 2
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[0,2]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:1",
+              "b:1",
+              "c:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=2，字符 c 计数变为 1。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 2,
+          "j": 0,
+          "res": 2
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-007",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "更新窗口答案 3",
+      "body": "窗口 [0,2] 合法，长度 3，res = 3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=2 · j=0 · res=3 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          0,
+          1,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "i": 2,
+          "j": 0,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[0,2]"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "窗口 [0,2] 合法，长度 3，res = 3。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 2,
+          "j": 0,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-008",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "右端加入 a",
+      "body": "i=3，字符 a 计数变为 2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=3 · j=0 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 0,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[0,3]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:2",
+              "b:1",
+              "c:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=3，字符 a 计数变为 2。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 3,
+          "j": 0,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 2,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-009",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=1",
+      "body": "a 重复，移出 s[0] = a，直到窗口重新合法。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=3 · j=1 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          1,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 1,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[1,3]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:1",
+              "b:1",
+              "c:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "a 重复，移出 s[0] = a，直到窗口重新合法。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 3,
+          "j": 1,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-010",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "更新窗口答案 3",
+      "body": "窗口 [1,3] 合法，长度 3，res = 3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=3 · j=1 · res=3 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          1,
+          2,
+          3
+        ],
+        "compared": [],
+        "variables": {
+          "i": 3,
+          "j": 1,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[1,3]"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "窗口 [1,3] 合法，长度 3，res = 3。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 3,
+          "j": 1,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-011",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "右端加入 b",
+      "body": "i=4，字符 b 计数变为 2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=4 · j=1 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 1,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[1,4]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:1",
+              "b:2",
+              "c:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=4，字符 b 计数变为 2。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 4,
+          "j": 1,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 2,
+            "c": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-012",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=2",
+      "body": "b 重复，移出 s[1] = b，直到窗口重新合法。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=4 · j=2 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          2,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[2,4]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:1",
+              "b:1",
+              "c:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "b 重复，移出 s[1] = b，直到窗口重新合法。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-013",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "更新窗口答案 3",
+      "body": "窗口 [2,4] 合法，长度 3，res = 3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=4 · j=2 · res=3 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          2,
+          3,
+          4
+        ],
+        "compared": [],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[2,4]"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "窗口 [2,4] 合法，长度 3，res = 3。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 4,
+          "j": 2,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-014",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "右端加入 c",
+      "body": "i=5，字符 c 计数变为 2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=5 · j=2 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "j": 2,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[2,5]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:1",
+              "b:1",
+              "c:2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=5，字符 c 计数变为 2。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 5,
+          "j": 2,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1,
+            "c": 2
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-015",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=3",
+      "body": "c 重复，移出 s[2] = c，直到窗口重新合法。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=5 · j=3 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          3,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "j": 3,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[3,5]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:1",
+              "b:1",
+              "c:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "c 重复，移出 s[2] = c，直到窗口重新合法。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 5,
+          "j": 3,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-016",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "更新窗口答案 3",
+      "body": "窗口 [3,5] 合法，长度 3，res = 3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=5 · j=3 · res=3 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          3,
+          4,
+          5
+        ],
+        "compared": [],
+        "variables": {
+          "i": 5,
+          "j": 3,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[3,5]"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "窗口 [3,5] 合法，长度 3，res = 3。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 5,
+          "j": 3,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-017",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "右端加入 b",
+      "body": "i=6，字符 b 计数变为 2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=6 · j=3 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "j": 3,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[3,6]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:1",
+              "b:2",
+              "c:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=6，字符 b 计数变为 2。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 6,
+          "j": 3,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 1,
+            "b": 2,
+            "c": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-018",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=4",
+      "body": "b 重复，移出 s[3] = a，直到窗口重新合法。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=6 · j=4 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          4,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "j": 4,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[4,6]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "b:2",
+              "c:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "b 重复，移出 s[3] = a，直到窗口重新合法。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 6,
+          "j": 4,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 0,
+            "b": 2,
+            "c": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-019",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=5",
+      "body": "b 重复，移出 s[4] = b，直到窗口重新合法。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=6 · j=5 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          5,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "j": 5,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[5,6]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "b:1",
+              "c:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "b 重复，移出 s[4] = b，直到窗口重新合法。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 6,
+          "j": 5,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 0,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-020",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "更新窗口答案 3",
+      "body": "窗口 [5,6] 合法，长度 2，res = 3。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=6 · j=5 · res=3 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          5,
+          6
+        ],
+        "compared": [],
+        "variables": {
+          "i": 6,
+          "j": 5,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[5,6]"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "窗口 [5,6] 合法，长度 2，res = 3。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 6,
+          "j": 5,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 0,
+            "b": 1,
+            "c": 1
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-021",
+      "line": 7,
+      "lineIds": [
+        7
+      ],
+      "phase": "mutate",
+      "title": "右端加入 b",
+      "body": "i=7，字符 b 计数变为 2。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=7 · j=5 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "j": 5,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[5,7]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "a:0",
+              "b:2",
+              "c:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "i=7，字符 b 计数变为 2。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 7,
+          "j": 5,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 0,
+            "b": 2,
+            "c": 1
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-022",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=6",
+      "body": "b 重复，移出 s[5] = c，直到窗口重新合法。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=7 · j=6 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          6,
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "j": 6,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[6,7]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "b:2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "b 重复，移出 s[5] = c，直到窗口重新合法。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 7,
+          "j": 6,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 0,
+            "b": 2,
+            "c": 0
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-023",
+      "line": 8,
+      "lineIds": [
+        8
+      ],
+      "phase": "mutate",
+      "title": "收缩左端到 j=7",
+      "body": "b 重复，移出 s[6] = b，直到窗口重新合法。",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · window",
+        "badge": "i=7 · j=7 · res=3",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          7,
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "j": 7,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[7,7]"
+            ]
+          },
+          {
+            "label": "count",
+            "values": [
+              "b:1"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "b 重复，移出 s[6] = b，直到窗口重新合法。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 7,
+          "j": 7,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 0,
+            "b": 1,
+            "c": 0
+          }
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-024",
+      "line": 9,
+      "lineIds": [
+        9
+      ],
+      "phase": "update",
+      "title": "更新窗口答案 3",
+      "body": "窗口 [7,7] 合法，长度 1，res = 3。 易错提醒：子串 vs 子序列： 子串必须连续，不重复子序列可以跳过中间字符。题目要求的是子串，所以用滑动窗口。如果搞成子序列，就变成完全不同的题了。 字典版中 left 不能回退： 需要检查 char_index[ch] >= left，因为 char_index 中可能记录了该字符但不在当前窗口中（已经被 left 越过了）。如果不加这个判断，l…",
+      "kind": "window",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "update · window",
+        "badge": "i=7 · j=7 · res=3 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [
+          7
+        ],
+        "compared": [],
+        "variables": {
+          "i": 7,
+          "j": 7,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "window",
+            "values": [
+              "[7,7]"
+            ]
+          },
+          {
+            "label": "best",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "窗口 [7,7] 合法，长度 1，res = 3。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 7,
+          "j": 7,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 0,
+            "b": 1,
+            "c": 0
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "3-trace-025",
+      "line": 11,
+      "lineIds": [
+        11
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "扫描完成，最长无重复窗口长度为 3。",
+      "kind": "window",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · window",
+        "badge": "i=8 · j=7 · res=3 · 结果 1 项",
+        "tokens": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "i": 8,
+          "j": 7,
+          "res": 3
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              3
+            ]
+          }
+        ],
+        "result": [
+          3
+        ],
+        "note": "扫描完成，最长无重复窗口长度为 3。"
+      },
+      "state": {
+        "values": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "b",
+          "c",
+          "b",
+          "b"
+        ],
+        "variables": {
+          "i": 8,
+          "j": 7,
+          "res": 3
+        },
+        "structure": {
+          "count": {
+            "a": 0,
+            "b": 1,
+            "c": 0
+          }
+        },
+        "result": [
+          3
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

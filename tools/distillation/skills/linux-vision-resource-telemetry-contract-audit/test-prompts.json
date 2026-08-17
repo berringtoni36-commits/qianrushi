@@ -1,0 +1,50 @@
+{
+  "skill": "linux-vision-resource-telemetry-contract-audit",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "请审计这个 Linux 视觉 Qt 上位机的 CPU 监控：/proc/stat 是累计 jiffies，代码用 pre_user/pre_total 做差分，但第一点异常高。请区分首样本 baseline、分子分母、采样间隔和源码能证明的事实。",
+      "expected_behavior": "激活本 skill；沿 sysinfolinuximpl::cpuLoadAverage、pre_user/pre_total、QTimer 与 timerTimeOut 建立证据链，指出首个成功样本以零为前值、1 秒只是定时器配置，并区分文档声称、源码事实和待验证项。",
+      "notes": "CPU 累计计数与首样本合同"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "free -m 的内存曲线和另一台机器对不上。请检查当前项目固定读取 lst[1] 和 lst[6] 的含义、free 与 available、单位、解析失败返回值，以及应该如何设计有效状态。",
+      "expected_behavior": "激活本 skill；核对 get_mem_usage__ 的命令、行读取、固定下标、(total-free)/total 公式和 false 转 double 的行为；要求目标环境原始 stdout/表头/退出码来确认字段语义，不把常见输出当作目标发行版实测。",
+      "notes": "内存字段、单位和错误状态合同"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "QTimer 设为 1000 ms、QList 最多 51 个点、X 轴范围 0 到 5000，能不能说这就是 51 秒实时 CPU/内存曲线？请审计实际时间窗口、xSpace、clear+append 和图表能否证明推理 FPS。",
+      "expected_behavior": "激活本 skill；区分标称定时器间隔、实测 start-to-start、样本数、墙钟跨度和绘图坐标，指出 51 点不自动等于 51 秒，QtCharts 曲线不等于推理吞吐，并给出时间戳验证计划。",
+      "notes": "滑窗、单位和性能归因边界"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "Qt 上位机点击车道线识别后卡死。请审计 QProcess 的 finished/error/readyRead、waitKey、GUI 事件循环、连接类型和 QObject 生命周期。",
+      "expected_behavior": "不优先激活本 skill；转交 qt-event-loop-signal-slot-audit，专注事件循环阻塞、QProcess 状态/信号、线程与对象生命周期；如提到资源定时器，只作交叉风险，不展开遥测字段合同。",
+      "notes": "兄弟 Skill：Qt 事件循环与 QProcess 生命周期"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "请优化 ARM Linux 视觉链路：摄像头采集、LIME、LSTR/ONNX 推理、Qt 显示，分析 NEON/OpenMP、缓存和端到端 FPS。",
+      "expected_behavior": "不优先激活本 skill；转交 linux-vision-pipeline-and-optimization，专注端到端链路、热点、NEON/OpenMP、缓存和性能回归，不把系统资源曲线当作本题主合同。",
+      "notes": "兄弟 Skill：视觉流水线与性能优化"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我只想知道 Linux /proc/stat 和 free 命令的通用含义，不提供这个 Qt 项目源码，也不要求审计当前实现。",
+      "expected_behavior": "只做必要的通用概念说明；不冒充当前项目源码事实，不声称目标发行版字段映射或真实运行结果；只有用户要求审计项目实现时才按本 skill 建立来源账本。",
+      "notes": "通用概念与项目合同审计边界"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

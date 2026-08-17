@@ -1,0 +1,50 @@
+{
+  "skill": "rtos-display-buzzer-feedback",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "请按当前源码解释 UIDisplayTask 为什么是优先级1/200ms，而 MotorControlTask 是优先级5/50ms，并说明 delay_ms 对周期的影响。",
+      "expected_behavior": "激活本 Skill，区分源码配置、相对延时和未实测的实时性保证，并指出与通用任务设计 Skill 的边界。",
+      "notes": "显示任务与控制任务边界"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "LCD 无显示或画面错位，如何按这个 STM32 项目的源码检查 SPI1、PB6-PB9、复位、命令/数据电平和同步刷新？哪些结论还需要逻辑分析仪？",
+      "expected_behavior": "激活本 Skill，沿 Hardware_Init→LCD_Init→SPI_WriteByte→Show_Str 排查，并明确文档标称值不等于硬件实测。",
+      "notes": "LCD 初始化与刷新"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "请解释 Key1/Key2 短按、长按持续、释放时的蜂鸣器反馈，并给出未来 SensorTask 和 AntiBackflowTask 也报警时的单一消费者事件队列设计。",
+      "expected_behavior": "激活本 Skill，绑定 Buzzer_Beep/Beep_on/Beep_off 与事件生命周期，说明当前无队列，并把队列方案标为未来建议。",
+      "notes": "按键反馈与报警仲裁"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "请只分析 30ms 消抖、1秒长按阈值、KEY_STATE_LONG_PRESS 和 ClearEvent 的状态机问题。",
+      "expected_behavior": "不优先激活本 Skill，转交 rtos-key-event-state-machine；只有涉及蜂鸣反馈映射时才补充本 Skill。",
+      "notes": "兄弟 Skill：按键状态机"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "请帮我用一分钟介绍完整 STM32+FreeRTOS 油烟机项目，并组织面试中的个人贡献和项目价值。",
+      "expected_behavior": "不优先激活本 Skill，转交 rtos-project-storytelling；除非用户追问显示/蜂鸣器证据链。",
+      "notes": "兄弟 Skill：项目表达"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我只想审计这个项目应该用 xTimer、vTaskDelayUntil 还是 delay_ms 做周期任务，不需要 LCD 或蜂鸣器反馈。",
+      "expected_behavior": "不把本 Skill 作为主 Skill，转交 rtos-software-timer-periodic-design；可引用 UI 200ms 作为边界例子但不展开反馈链。",
+      "notes": "时间机制边界"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

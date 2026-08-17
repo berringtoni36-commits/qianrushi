@@ -1,0 +1,902 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "两次二分查找左右边界",
+    "sceneKind": "binary-search",
+    "input": {
+      "nums": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "target": 8
+    },
+    "expected": [
+      3,
+      4
+    ],
+    "exampleText": "[5,7,7,8,8,10], target=8",
+    "expectedText": "范围 [3,4]",
+    "invariant": "第一轮保留最左候选，第二轮保留最右候选",
+    "aha": "mid 取整方向必须与收缩公式配套",
+    "time": "O(log n)",
+    "space": "O(1)",
+    "problemId": 34,
+    "title": "在排序数组中查找元素的第一个和最后一个位置",
+    "day": "Day 11：二分查找",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "18ab56601a88c2bfeb4e7bcb26a9f1685922197840cd2fbcfa7f88834f00e51d",
+    "semanticTokenHash": "0b34d456131b6735cd86026b8c584fe584c67652a240a7b6eb96a7687facfd12",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左边界用下取整 mid。",
+        "review": "第一轮寻找最左侧 8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "target": 8,
+              "phase": "left"
+            },
+            "pointers": {
+              "l": 0,
+              "r": 5
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "第一轮寻找最左侧 8",
+            "status": "running"
+          },
+          "caption": "左边界用下取整 mid。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左界比较 nums[2]=7",
+        "review": "7 >= 8 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "mid": 2,
+              "target": 8
+            },
+            "pointers": {
+              "l": 0,
+              "r": 5,
+              "mid": 2
+            },
+            "active": [
+              2
+            ],
+            "compared": [
+              0,
+              5
+            ],
+            "result": [],
+            "formula": "7 >= 8 → False",
+            "action": "左界比较 nums[2]=7",
+            "status": "running"
+          },
+          "caption": "左界比较 nums[2]=7",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左界区间 [3,5]",
+        "review": "left search=[3,5]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 3,
+              "r": 5,
+              "mid": null,
+              "target": 8
+            },
+            "pointers": {
+              "l": 3,
+              "r": 5
+            },
+            "active": [],
+            "compared": [
+              3,
+              5
+            ],
+            "result": [],
+            "formula": "left search=[3,5]",
+            "action": "左界区间 [3,5]",
+            "status": "running"
+          },
+          "caption": "左界区间 [3,5]",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左界比较 nums[4]=8",
+        "review": "8 >= 8 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 3,
+              "r": 5,
+              "mid": 4,
+              "target": 8
+            },
+            "pointers": {
+              "l": 3,
+              "r": 5,
+              "mid": 4
+            },
+            "active": [
+              4
+            ],
+            "compared": [
+              3,
+              5
+            ],
+            "result": [],
+            "formula": "8 >= 8 → True",
+            "action": "左界比较 nums[4]=8",
+            "status": "running"
+          },
+          "caption": "左界比较 nums[4]=8",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左界区间 [3,4]",
+        "review": "left search=[3,4]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 3,
+              "r": 4,
+              "mid": null,
+              "target": 8
+            },
+            "pointers": {
+              "l": 3,
+              "r": 4
+            },
+            "active": [],
+            "compared": [
+              3,
+              4
+            ],
+            "result": [],
+            "formula": "left search=[3,4]",
+            "action": "左界区间 [3,4]",
+            "status": "running"
+          },
+          "caption": "左界区间 [3,4]",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左界比较 nums[3]=8",
+        "review": "8 >= 8 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 3,
+              "r": 4,
+              "mid": 3,
+              "target": 8
+            },
+            "pointers": {
+              "l": 3,
+              "r": 4,
+              "mid": 3
+            },
+            "active": [
+              3
+            ],
+            "compared": [
+              3,
+              4
+            ],
+            "result": [],
+            "formula": "8 >= 8 → True",
+            "action": "左界比较 nums[3]=8",
+            "status": "running"
+          },
+          "caption": "左界比较 nums[3]=8",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "左界区间 [3,3]",
+        "review": "left search=[3,3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 3,
+              "r": 3,
+              "mid": null,
+              "target": 8
+            },
+            "pointers": {
+              "l": 3,
+              "r": 3
+            },
+            "active": [],
+            "compared": [
+              3,
+              3
+            ],
+            "result": [],
+            "formula": "left search=[3,3]",
+            "action": "左界区间 [3,3]",
+            "status": "running"
+          },
+          "caption": "左界区间 [3,3]",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "确认存在后保存左边界。",
+        "review": "L=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "L": 3,
+              "l": 3,
+              "r": 3
+            },
+            "pointers": {
+              "L": 3
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              3
+            ],
+            "formula": "L=3",
+            "action": "最左位置确认为 3",
+            "status": "running"
+          },
+          "caption": "确认存在后保存左边界。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "右界比较 nums[3]=8",
+        "review": "8 <= 8 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 0,
+              "r": 5,
+              "mid": 3,
+              "target": 8
+            },
+            "pointers": {
+              "l": 0,
+              "r": 5,
+              "mid": 3
+            },
+            "active": [
+              3
+            ],
+            "compared": [
+              0,
+              5
+            ],
+            "result": [],
+            "formula": "8 <= 8 → True",
+            "action": "右界比较 nums[3]=8",
+            "status": "running"
+          },
+          "caption": "右界比较 nums[3]=8",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "右界区间 [3,5]",
+        "review": "right search=[3,5]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 3,
+              "r": 5,
+              "mid": null,
+              "target": 8
+            },
+            "pointers": {
+              "l": 3,
+              "r": 5
+            },
+            "active": [],
+            "compared": [
+              3,
+              5
+            ],
+            "result": [],
+            "formula": "right search=[3,5]",
+            "action": "右界区间 [3,5]",
+            "status": "running"
+          },
+          "caption": "右界区间 [3,5]",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "右界比较 nums[4]=8",
+        "review": "8 <= 8 → True"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 3,
+              "r": 5,
+              "mid": 4,
+              "target": 8
+            },
+            "pointers": {
+              "l": 3,
+              "r": 5,
+              "mid": 4
+            },
+            "active": [
+              4
+            ],
+            "compared": [
+              3,
+              5
+            ],
+            "result": [],
+            "formula": "8 <= 8 → True",
+            "action": "右界比较 nums[4]=8",
+            "status": "running"
+          },
+          "caption": "右界比较 nums[4]=8",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "右界区间 [4,5]",
+        "review": "right search=[4,5]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 4,
+              "r": 5,
+              "mid": null,
+              "target": 8
+            },
+            "pointers": {
+              "l": 4,
+              "r": 5
+            },
+            "active": [],
+            "compared": [
+              4,
+              5
+            ],
+            "result": [],
+            "formula": "right search=[4,5]",
+            "action": "右界区间 [4,5]",
+            "status": "running"
+          },
+          "caption": "右界区间 [4,5]",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "右界比较 nums[5]=10",
+        "review": "10 <= 8 → False"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 4,
+              "r": 5,
+              "mid": 5,
+              "target": 8
+            },
+            "pointers": {
+              "l": 4,
+              "r": 5,
+              "mid": 5
+            },
+            "active": [
+              5
+            ],
+            "compared": [
+              4,
+              5
+            ],
+            "result": [],
+            "formula": "10 <= 8 → False",
+            "action": "右界比较 nums[5]=10",
+            "status": "running"
+          },
+          "caption": "右界比较 nums[5]=10",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "右界区间 [4,4]",
+        "review": "right search=[4,4]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "l": 4,
+              "r": 4,
+              "mid": null,
+              "target": 8
+            },
+            "pointers": {
+              "l": 4,
+              "r": 4
+            },
+            "active": [],
+            "compared": [
+              4,
+              4
+            ],
+            "result": [],
+            "formula": "right search=[4,4]",
+            "action": "右界区间 [4,4]",
+            "status": "running"
+          },
+          "caption": "右界区间 [4,4]",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "两个二分分别锁定等值区间两端。",
+        "review": "[3,4]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L23"
+          ],
+          "state": {
+            "sceneKind": "binary-search",
+            "values": [
+              5,
+              7,
+              7,
+              8,
+              8,
+              10
+            ],
+            "variables": {
+              "L": 3,
+              "r": 4
+            },
+            "pointers": {
+              "L": 3,
+              "R": 4
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              3,
+              4
+            ],
+            "formula": "[3,4]",
+            "action": "返回范围 [3,4]",
+            "status": "return",
+            "output": [
+              3,
+              4
+            ]
+          },
+          "caption": "两个二分分别锁定等值区间两端。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<int> searchRange(vector<int>& nums, int target) {\n        if (nums.empty()) return {-1, -1};\n\n        int l = 0, r = nums.size() - 1;\n        while (l < r) {\n            int mid = l + r >> 1;\n            if (nums[mid] >= target) r = mid;\n            else l = mid + 1;\n        }\n\n        if (nums[r] != target) return {-1, -1};\n\n        int L = r;\n        l = 0, r = nums.size() - 1;\n        while (l < r) {\n            int mid = l + r + 1 >> 1;\n            if (nums[mid] <= target) l = mid;\n            else r = mid - 1;\n        }\n\n        return {L, r};\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4185,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4186,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4187,
+        "text": "    vector<int> searchRange(vector<int>& nums, int target) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4188,
+        "text": "        if (nums.empty()) return {-1, -1};"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4189,
+        "text": ""
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4190,
+        "text": "        int l = 0, r = nums.size() - 1;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4191,
+        "text": "        while (l < r) {"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4192,
+        "text": "            int mid = l + r >> 1;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4193,
+        "text": "            if (nums[mid] >= target) r = mid;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4194,
+        "text": "            else l = mid + 1;"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 4195,
+        "text": "        }"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 4196,
+        "text": ""
+      },
+      {
+        "id": "L13",
+        "sourceLine": 4197,
+        "text": "        if (nums[r] != target) return {-1, -1};"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 4198,
+        "text": ""
+      },
+      {
+        "id": "L15",
+        "sourceLine": 4199,
+        "text": "        int L = r;"
+      },
+      {
+        "id": "L16",
+        "sourceLine": 4200,
+        "text": "        l = 0, r = nums.size() - 1;"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 4201,
+        "text": "        while (l < r) {"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 4202,
+        "text": "            int mid = l + r + 1 >> 1;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 4203,
+        "text": "            if (nums[mid] <= target) l = mid;"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 4204,
+        "text": "            else r = mid - 1;"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 4205,
+        "text": "        }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 4206,
+        "text": ""
+      },
+      {
+        "id": "L23",
+        "sourceLine": 4207,
+        "text": "        return {L, r};"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 4208,
+        "text": "    }"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 4209,
+        "text": "};"
+      }
+    ]
+  }
+}

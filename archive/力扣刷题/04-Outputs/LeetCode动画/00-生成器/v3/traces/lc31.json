@@ -1,0 +1,622 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "枢轴交换 + 后缀翻转",
+    "sceneKind": "array-pointers",
+    "input": [
+      1,
+      2,
+      3
+    ],
+    "expected": [
+      1,
+      3,
+      2
+    ],
+    "exampleText": "[1,2,3]",
+    "expectedText": "下一个排列 = [1,3,2]",
+    "invariant": "k 右侧始终是当前可确定的最长非递增后缀",
+    "aha": "前缀做最小增量，后缀重置为最小",
+    "time": "O(n)",
+    "space": "O(1)",
+    "problemId": 31,
+    "title": "下一个排列",
+    "day": "Day 14：技巧专题",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "ce9c0b8230becdd5563b3af5ce2a415d1f8ede0d3eec6add5c61c490b427258e",
+    "semanticTokenHash": "7c36edc19f7937b2f4811a5610650ff055a0529b186bdf24d4e9c18712d2138c",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "后缀越长，说明当前排列越接近该前缀下的最大排列。",
+        "review": "从右向左寻找非递增后缀"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "k": 2
+            },
+            "pointers": {
+              "k": 2
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "从右向左寻找非递增后缀",
+            "status": "running"
+          },
+          "caption": "后缀越长，说明当前排列越接近该前缀下的最大排列。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "k": 2
+            },
+            "pointers": {
+              "k": 2
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 5",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L4"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "k": 2
+            },
+            "pointers": {
+              "k": 2
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 2",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "在递减后缀中寻找最小的更大元素。",
+        "review": "nums[2]=3 仍大于枢轴 2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "k": 2,
+              "t": 2
+            },
+            "pointers": {
+              "pivot": 1,
+              "t": 2
+            },
+            "active": [],
+            "compared": [
+              1,
+              2
+            ],
+            "result": [],
+            "formula": "",
+            "action": "nums[2]=3 仍大于枢轴 2",
+            "status": "running"
+          },
+          "caption": "在递减后缀中寻找最小的更大元素。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L10"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              2,
+              3
+            ],
+            "variables": {
+              "k": 2,
+              "t": 2
+            },
+            "pointers": {
+              "pivot": 1,
+              "t": 2
+            },
+            "active": [],
+            "compared": [
+              1,
+              2
+            ],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 4",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "前缀只增加最小可能幅度。",
+        "review": "交换枢轴与最小更大元素"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              2
+            ],
+            "variables": {
+              "k": 2,
+              "t": 2
+            },
+            "pointers": {
+              "pivot": 1,
+              "t": 2
+            },
+            "active": [
+              1,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "交换枢轴与最小更大元素",
+            "status": "running"
+          },
+          "caption": "前缀只增加最小可能幅度。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              2
+            ],
+            "variables": {
+              "k": 2,
+              "t": 2
+            },
+            "pointers": {
+              "pivot": 1,
+              "t": 2
+            },
+            "active": [
+              1,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 1",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              2
+            ],
+            "variables": {
+              "k": 2,
+              "t": 2
+            },
+            "pointers": {
+              "pivot": 1,
+              "t": 2
+            },
+            "active": [
+              1,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 7",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L11"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              2
+            ],
+            "variables": {
+              "k": 2,
+              "t": 2
+            },
+            "pointers": {
+              "pivot": 1,
+              "t": 2
+            },
+            "active": [
+              1,
+              2
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 3",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "固定新前缀后，后缀取最小升序。",
+        "review": "[1, 3, 2]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              2
+            ],
+            "variables": {
+              "k": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[1, 3, 2]",
+            "action": "翻转后缀得到最小排列",
+            "status": "running"
+          },
+          "caption": "固定新前缀后，后缀取最小升序。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              2
+            ],
+            "variables": {
+              "k": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[1, 3, 2]",
+            "action": "不变量检查 6",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "这是字典序中严格更大的最小排列。",
+        "review": "[1, 3, 2]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "array-pointers",
+            "values": [
+              1,
+              3,
+              2
+            ],
+            "variables": {},
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              0,
+              1,
+              2
+            ],
+            "formula": "[1, 3, 2]",
+            "action": "下一个排列为 [1,3,2]",
+            "status": "return",
+            "output": [
+              1,
+              3,
+              2
+            ]
+          },
+          "caption": "这是字典序中严格更大的最小排列。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    void nextPermutation(vector<int>& nums) {\n        int k = nums.size() - 1;\n        while (k > 0 && nums[k - 1] >= nums[k]) k -- ;\n        if (k <= 0) {\n            reverse(nums.begin(), nums.end());\n        } else {\n            int t = k;\n            while (t < nums.size() && nums[t] > nums[k - 1]) t ++ ;\n            swap(nums[t - 1], nums[k - 1]);                      // 交换\n            reverse(nums.begin() + k, nums.end());\n        }\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 5546,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 5547,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 5548,
+        "text": "    void nextPermutation(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 5549,
+        "text": "        int k = nums.size() - 1;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 5550,
+        "text": "        while (k > 0 && nums[k - 1] >= nums[k]) k -- ;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 5551,
+        "text": "        if (k <= 0) {"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 5552,
+        "text": "            reverse(nums.begin(), nums.end());"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 5553,
+        "text": "        } else {"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 5554,
+        "text": "            int t = k;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 5555,
+        "text": "            while (t < nums.size() && nums[t] > nums[k - 1]) t ++ ;"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 5556,
+        "text": "            swap(nums[t - 1], nums[k - 1]);                      // 交换"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 5557,
+        "text": "            reverse(nums.begin() + k, nums.end());"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 5558,
+        "text": "        }"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 5559,
+        "text": "    }"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 5560,
+        "text": "};"
+      }
+    ]
+  }
+}

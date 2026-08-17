@@ -1,0 +1,622 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "单调指针优化的动态规划",
+    "sceneKind": "dp-table",
+    "input": [
+      2,
+      3,
+      1,
+      1,
+      4
+    ],
+    "expected": 2,
+    "exampleText": "[2,3,1,1,4]",
+    "expectedText": "最少跳数 = 2",
+    "invariant": "j 是最早能够一步覆盖 i 的位置",
+    "aha": "覆盖边界单调右移，所以 j 不回退",
+    "time": "O(n)",
+    "space": "O(n)",
+    "problemId": 45,
+    "title": "跳跃游戏 II",
+    "day": "Day 12：动态规划 + 贪心",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "d118bc93c6f4165e303fecf49f686171bfeeb61f6c2fe4d5ace105528650e463",
+    "semanticTokenHash": "29699c0bbc9a5c137e5dec807bff3b8a37b83733ba3d45c42abfc9e07a9e1094",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "j 始终寻找最早能覆盖 i 的位置。",
+        "review": "f[0]=0，指针 j=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "f[0]=0，指针 j=0",
+            "status": "running"
+          },
+          "caption": "j 始终寻找最早能覆盖 i 的位置。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L5"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "i": 0,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 3",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最早可覆盖位置拥有不更多的跳数。",
+        "review": "f[1]=0+1=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "variables": {
+              "i": 1,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [
+              1
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "f[1]=0+1=1",
+            "action": "f[1] = f[0] + 1 = 1",
+            "status": "running"
+          },
+          "caption": "最早可覆盖位置拥有不更多的跳数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最早可覆盖位置拥有不更多的跳数。",
+        "review": "f[2]=0+1=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            "variables": {
+              "i": 2,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "f[2]=0+1=1",
+            "action": "f[2] = f[0] + 1 = 1",
+            "status": "running"
+          },
+          "caption": "最早可覆盖位置拥有不更多的跳数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            "variables": {
+              "i": 2,
+              "j": 0
+            },
+            "pointers": {},
+            "active": [
+              2
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "f[2]=0+1=1",
+            "action": "不变量检查 2",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "更早位置若不能覆盖 i，以后也无需再考虑。",
+        "review": "0+2 < 3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L8"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            "variables": {
+              "i": 3,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [
+              0
+            ],
+            "result": [],
+            "formula": "0+2 < 3",
+            "action": "位置 0 无法覆盖 3，j 右移",
+            "status": "running"
+          },
+          "caption": "更早位置若不能覆盖 i，以后也无需再考虑。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最早可覆盖位置拥有不更多的跳数。",
+        "review": "f[3]=1+1=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              0
+            ],
+            "variables": {
+              "i": 3,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "f[3]=1+1=2",
+            "action": "f[3] = f[1] + 1 = 2",
+            "status": "running"
+          },
+          "caption": "最早可覆盖位置拥有不更多的跳数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              0
+            ],
+            "variables": {
+              "i": 3,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "f[3]=1+1=2",
+            "action": "不变量检查 5",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              0
+            ],
+            "variables": {
+              "i": 3,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [
+              3
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "f[3]=1+1=2",
+            "action": "不变量检查 1",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "最早可覆盖位置拥有不更多的跳数。",
+        "review": "f[4]=1+1=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 4,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "f[4]=1+1=2",
+            "action": "f[4] = f[1] + 1 = 2",
+            "status": "running"
+          },
+          "caption": "最早可覆盖位置拥有不更多的跳数。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "i": 4,
+              "j": 1
+            },
+            "pointers": {},
+            "active": [
+              4
+            ],
+            "compared": [
+              1
+            ],
+            "result": [],
+            "formula": "f[4]=1+1=2",
+            "action": "不变量检查 4",
+            "status": "running"
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "路径可为 0→1→4。",
+        "review": "f[4]=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L12"
+          ],
+          "state": {
+            "sceneKind": "dp-table",
+            "values": [
+              0,
+              1,
+              1,
+              2,
+              2
+            ],
+            "variables": {
+              "j": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              4
+            ],
+            "formula": "f[4]=2",
+            "action": "返回最少跳数 2",
+            "status": "return",
+            "output": 2
+          },
+          "caption": "路径可为 0→1→4。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    int jump(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> f(n);\n\n        for (int i = 1, j = 0; i < n; i ++ ) {\n            while (j + nums[j] < i) j ++ ;\n            f[i] = f[j] + 1;\n        }\n\n        return f[n - 1];\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 4519,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 4520,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 4521,
+        "text": "    int jump(vector<int>& nums) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 4522,
+        "text": "        int n = nums.size();"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 4523,
+        "text": "        vector<int> f(n);"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 4524,
+        "text": ""
+      },
+      {
+        "id": "L7",
+        "sourceLine": 4525,
+        "text": "        for (int i = 1, j = 0; i < n; i ++ ) {"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 4526,
+        "text": "            while (j + nums[j] < i) j ++ ;"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 4527,
+        "text": "            f[i] = f[j] + 1;"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 4528,
+        "text": "        }"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 4529,
+        "text": ""
+      },
+      {
+        "id": "L12",
+        "sourceLine": 4530,
+        "text": "        return f[n - 1];"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 4531,
+        "text": "    }"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 4532,
+        "text": "};"
+      }
+    ]
+  }
+}

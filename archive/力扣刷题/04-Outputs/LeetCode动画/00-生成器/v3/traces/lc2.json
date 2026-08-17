@@ -1,0 +1,799 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "逐位加法与进位",
+    "sceneKind": "linked-list",
+    "input": [
+      [
+        2,
+        4,
+        3
+      ],
+      [
+        5,
+        6,
+        4
+      ]
+    ],
+    "expected": [
+      7,
+      0,
+      8
+    ],
+    "exampleText": "[2,4,3] + [5,6,4]",
+    "expectedText": "[7,0,8]",
+    "invariant": "结果链保存已处理低位，t 保存下一位进位",
+    "aha": "逆序存储让链表遍历顺序与手算加法一致",
+    "time": "O(n)",
+    "space": "O(max(m,n))",
+    "problemId": 2,
+    "title": "两数相加",
+    "day": "Day 4：链表基础",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "85777970bd5d8ddb85da8d25ccf498c4f1b69c2238ac2d3ff892f909d2112379",
+    "semanticTokenHash": "f31e6b023b24f9e16b26b4e31b6106031a70c669b8863598824c92fb4362484a",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每轮处理同一十进制位。",
+        "review": "进位 t=0，结果链为空"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "l1": "2",
+              "l2": "5",
+              "cur": "dummy",
+              "t": 0
+            },
+            "pointers": {
+              "l1": "2",
+              "l2": "5",
+              "cur": "dummy",
+              "t": 0
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "进位 t=0，结果链为空",
+            "status": "running",
+            "nodes": [],
+            "edges": []
+          },
+          "caption": "每轮处理同一十进制位。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "l1": "2",
+              "l2": "5",
+              "cur": "dummy",
+              "t": 0
+            },
+            "pointers": {
+              "l1": "2",
+              "l2": "5",
+              "cur": "dummy",
+              "t": 0
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 4",
+            "status": "running",
+            "nodes": [],
+            "edges": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "低位结果与新进位由 total 同时决定。",
+        "review": "2+5+0=7"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15",
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "i": 0,
+              "x": 2,
+              "y": 5,
+              "t": 7
+            },
+            "pointers": {
+              "digit": 0
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "2+5+0=7",
+            "action": "第 0 位求和 2+5+进位=7",
+            "status": "running",
+            "nodes": [],
+            "edges": []
+          },
+          "caption": "低位结果与新进位由 total 同时决定。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "结果链按低位到高位追加。",
+        "review": "digit=7, carry=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "cur": "r0",
+              "t": 0
+            },
+            "pointers": {
+              "cur": "r0",
+              "t": 0
+            },
+            "active": [
+              "r0"
+            ],
+            "compared": [],
+            "result": [
+              "r0"
+            ],
+            "formula": "digit=7, carry=0",
+            "action": "写入 7，进位变 0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r0",
+                "value": 7
+              }
+            ],
+            "edges": []
+          },
+          "caption": "结果链按低位到高位追加。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "cur": "r0",
+              "t": 0
+            },
+            "pointers": {
+              "cur": "r0",
+              "t": 0
+            },
+            "active": [
+              "r0"
+            ],
+            "compared": [],
+            "result": [
+              "r0"
+            ],
+            "formula": "digit=7, carry=0",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r0",
+                "value": 7
+              }
+            ],
+            "edges": []
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "低位结果与新进位由 total 同时决定。",
+        "review": "4+6+0=10"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15",
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "i": 1,
+              "x": 4,
+              "y": 6,
+              "t": 10
+            },
+            "pointers": {
+              "digit": 1
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "4+6+0=10",
+            "action": "第 1 位求和 4+6+进位=10",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r0",
+                "value": 7
+              }
+            ],
+            "edges": []
+          },
+          "caption": "低位结果与新进位由 total 同时决定。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "结果链按低位到高位追加。",
+        "review": "digit=0, carry=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "cur": "r1",
+              "t": 1
+            },
+            "pointers": {
+              "cur": "r1",
+              "t": 1
+            },
+            "active": [
+              "r1"
+            ],
+            "compared": [],
+            "result": [
+              "r0",
+              "r1"
+            ],
+            "formula": "digit=0, carry=1",
+            "action": "写入 0，进位变 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r0",
+                "value": 7
+              },
+              {
+                "id": "r1",
+                "value": 0
+              }
+            ],
+            "edges": [
+              {
+                "from": "r0",
+                "to": "r1"
+              }
+            ]
+          },
+          "caption": "结果链按低位到高位追加。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "cur": "r1",
+              "t": 1
+            },
+            "pointers": {
+              "cur": "r1",
+              "t": 1
+            },
+            "active": [
+              "r1"
+            ],
+            "compared": [],
+            "result": [
+              "r0",
+              "r1"
+            ],
+            "formula": "digit=0, carry=1",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r0",
+                "value": 7
+              },
+              {
+                "id": "r1",
+                "value": 0
+              }
+            ],
+            "edges": [
+              {
+                "from": "r0",
+                "to": "r1"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "低位结果与新进位由 total 同时决定。",
+        "review": "3+4+1=8"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L15",
+            "L16"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "i": 2,
+              "x": 3,
+              "y": 4,
+              "t": 8
+            },
+            "pointers": {
+              "digit": 2
+            },
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "3+4+1=8",
+            "action": "第 2 位求和 3+4+进位=8",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r0",
+                "value": 7
+              },
+              {
+                "id": "r1",
+                "value": 0
+              }
+            ],
+            "edges": [
+              {
+                "from": "r0",
+                "to": "r1"
+              }
+            ]
+          },
+          "caption": "低位结果与新进位由 total 同时决定。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "结果链按低位到高位追加。",
+        "review": "digit=8, carry=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "cur": "r2",
+              "t": 0
+            },
+            "pointers": {
+              "cur": "r2",
+              "t": 0
+            },
+            "active": [
+              "r2"
+            ],
+            "compared": [],
+            "result": [
+              "r0",
+              "r1",
+              "r2"
+            ],
+            "formula": "digit=8, carry=0",
+            "action": "写入 8，进位变 0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r0",
+                "value": 7
+              },
+              {
+                "id": "r1",
+                "value": 0
+              },
+              {
+                "id": "r2",
+                "value": 8
+              }
+            ],
+            "edges": [
+              {
+                "from": "r0",
+                "to": "r1"
+              },
+              {
+                "from": "r1",
+                "to": "r2"
+              }
+            ]
+          },
+          "caption": "结果链按低位到高位追加。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17",
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "cur": "r2",
+              "t": 0
+            },
+            "pointers": {
+              "cur": "r2",
+              "t": 0
+            },
+            "active": [
+              "r2"
+            ],
+            "compared": [],
+            "result": [
+              "r0",
+              "r1",
+              "r2"
+            ],
+            "formula": "digit=8, carry=0",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "r0",
+                "value": 7
+              },
+              {
+                "id": "r1",
+                "value": 0
+              },
+              {
+                "id": "r2",
+                "value": 8
+              }
+            ],
+            "edges": [
+              {
+                "from": "r0",
+                "to": "r1"
+              },
+              {
+                "from": "r1",
+                "to": "r2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "逆序链表正好允许从个位开始计算。",
+        "review": "342+465=807"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L20"
+          ],
+          "state": {
+            "sceneKind": "linked-list",
+            "values": [],
+            "variables": {
+              "head": "r0"
+            },
+            "pointers": {
+              "head": "r0"
+            },
+            "active": [],
+            "compared": [],
+            "result": [
+              "r0",
+              "r1",
+              "r2"
+            ],
+            "formula": "342+465=807",
+            "action": "返回 [7,0,8]",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "r0",
+                "value": 7
+              },
+              {
+                "id": "r1",
+                "value": 0
+              },
+              {
+                "id": "r2",
+                "value": 8
+              }
+            ],
+            "edges": [
+              {
+                "from": "r0",
+                "to": "r1"
+              },
+              {
+                "from": "r1",
+                "to": "r2"
+              }
+            ],
+            "output": [
+              7,
+              0,
+              8
+            ]
+          },
+          "caption": "逆序链表正好允许从个位开始计算。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {\n        auto dummy = new ListNode(-1), cur = dummy;\n        int t = 0;\n        while (l1 || l2 || t) {\n            if (l1) t += l1->val, l1 = l1->next;                 \n            if (l2) t += l2->val, l2 = l2->next;                 \n            cur = cur->next = new ListNode(t % 10);  // 创建新节点，存储当前位\n            t /= 10;  // 进位：t整除10\n        }\n        return dummy->next;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1523,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1524,
+        "text": " * Definition for singly-linked list."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1525,
+        "text": " * struct ListNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1526,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1527,
+        "text": " *     ListNode *next;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1528,
+        "text": " *     ListNode(int x) : val(x), next(NULL) {}"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1529,
+        "text": " * };"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1530,
+        "text": " */"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1531,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1532,
+        "text": "public:"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1533,
+        "text": "    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1534,
+        "text": "        auto dummy = new ListNode(-1), cur = dummy;"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1535,
+        "text": "        int t = 0;"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1536,
+        "text": "        while (l1 || l2 || t) {"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1537,
+        "text": "            if (l1) t += l1->val, l1 = l1->next;                 "
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1538,
+        "text": "            if (l2) t += l2->val, l2 = l2->next;                 "
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1539,
+        "text": "            cur = cur->next = new ListNode(t % 10);  // 创建新节点，存储当前位"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1540,
+        "text": "            t /= 10;  // 进位：t整除10"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1541,
+        "text": "        }"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1542,
+        "text": "        return dummy->next;"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1543,
+        "text": "    }"
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1544,
+        "text": "};"
+      }
+    ]
+  }
+}

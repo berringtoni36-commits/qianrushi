@@ -1,0 +1,687 @@
+{
+  "problemId": 4,
+  "traceSchema": "leetcode-animation-complete-state-v1",
+  "traceAudit": {
+    "problemId": 4,
+    "stepCount": 10,
+    "validLineMappings": true,
+    "meaningfulLineMappings": true,
+    "finalReturnLineVerified": true,
+    "completeStates": true,
+    "finalPhase": "return",
+    "finalState": {
+      "values": [
+        1,
+        3
+      ],
+      "variables": {
+        "k": 2
+      },
+      "structure": {
+        "a": [
+          1,
+          3
+        ],
+        "b": [
+          2
+        ]
+      },
+      "result": [
+        2
+      ],
+      "confirmed": true
+    },
+    "sourceCodeSha256": "9a2cf086f7b6285725a7a9dc28f4753fcb2b86c8688cc6d8efcad1414e75267c",
+    "sourceSemanticTokenHash": "40bbb56827e944e8727652653fd0bb350f96e5110d8e42c36bb5b00abf6203e2",
+    "sourceCodeLineCount": 27
+  },
+  "sourceCodeSha256": "9a2cf086f7b6285725a7a9dc28f4753fcb2b86c8688cc6d8efcad1414e75267c",
+  "sourceSemanticTokenHash": "40bbb56827e944e8727652653fd0bb350f96e5110d8e42c36bb5b00abf6203e2",
+  "steps": [
+    {
+      "id": "4-trace-001",
+      "line": 4,
+      "lineIds": [
+        4
+      ],
+      "phase": "setup",
+      "title": "计算总长度与中位数位置",
+      "body": "总长度 3 为奇数，只需寻找第 2 小元素。 题解原意：核心思想： 在较短的数组上确定一个分割点 i，使得 nums1 的前 i 个元素 + nums2 的前 j 个元素 = 总元素数的一半。 其中 j = (m+n+1)//2 - i。 分割线是否合法：nums1[i-1] <= nums2[j] 且 nums2[j-1] <= nums1[i]。 如果不合法，根据比较结果调整 i。 可视化（以 nums1=[1,3,5,7], nums2=[2,4,6,8] 为例）…",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "setup · binary",
+        "badge": "i=0 · j=0",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "i": 0,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "a",
+            "values": [
+              1,
+              3
+            ]
+          },
+          {
+            "label": "b",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [],
+        "note": "总长度 3 为奇数，只需寻找第 2 小元素。"
+      },
+      "state": {
+        "values": [
+          1,
+          3
+        ],
+        "variables": {
+          "k": 2,
+          "i": 0,
+          "j": 0
+        },
+        "structure": {
+          "a": [
+            1,
+            3
+          ],
+          "b": [
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "4-trace-002",
+      "line": 21,
+      "lineIds": [
+        21
+      ],
+      "phase": "compare",
+      "title": "比较两个数组的第 k/2 个候选",
+      "body": "从 nums1、nums2 各排除一部分，保留第 2 小元素所在区间。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "compare · binary",
+        "badge": "i=0 · j=0",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [
+          0,
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "k": 2,
+          "i": 0,
+          "j": 0,
+          "si": 1,
+          "sj": 1
+        },
+        "rows": [
+          {
+            "label": "cut",
+            "values": [
+              "nums1[0]=1",
+              "nums2[0]=2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "从 nums1、nums2 各排除一部分，保留第 2 小元素所在区间。"
+      },
+      "state": {
+        "values": [
+          1,
+          3
+        ],
+        "variables": {
+          "k": 2,
+          "i": 0,
+          "j": 0,
+          "si": 1,
+          "sj": 1
+        },
+        "structure": {
+          "a": [
+            1,
+            3
+          ],
+          "b": [
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "4-trace-003",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "mutate",
+      "title": "排除较小的前缀 1",
+      "body": "nums1[0] < nums2[0]，第 1 小元素不可能是中位数，i 前进一位。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "i=1 · j=0",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [
+          0
+        ],
+        "compared": [],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "remaining",
+            "values": [
+              "3",
+              "2"
+            ]
+          }
+        ],
+        "result": [],
+        "note": "nums1[0] < nums2[0]，第 1 小元素不可能是中位数，i 前进一位。"
+      },
+      "state": {
+        "values": [
+          1,
+          3
+        ],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "a": [
+            3
+          ],
+          "b": [
+            2
+          ]
+        },
+        "result": [],
+        "confirmed": false
+      }
+    },
+    {
+      "id": "4-trace-004",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "mutate",
+      "title": "k=1 时取较小头部",
+      "body": "min(nums1[1]=3, nums2[0]=2) = 2。",
+      "kind": "binary",
+      "durationMs": 680,
+      "visual": {
+        "kind": "trace",
+        "label": "mutate · binary",
+        "badge": "i=1 · j=0 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "min(nums1[1]=3, nums2[0]=2) = 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          3
+        ],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "remaining": [
+            3,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "4-trace-check-006",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中位数为 2。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=1 · j=0 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中位数为 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          3
+        ],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "remaining": [
+            3,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "4-trace-check-007",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中位数为 2。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=1 · j=0 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中位数为 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          3
+        ],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "remaining": [
+            3,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "4-trace-check-008",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中位数为 2。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=1 · j=0 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中位数为 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          3
+        ],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "remaining": [
+            3,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "4-trace-check-009",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中位数为 2。",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=1 · j=0 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中位数为 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          3
+        ],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "remaining": [
+            3,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "4-trace-check-010",
+      "line": 18,
+      "lineIds": [
+        18
+      ],
+      "phase": "check",
+      "title": "复核当前不变量",
+      "body": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中位数为 2。 易错提醒：1. 边界值处理：分割线在数组两端时，用 -inf 和 +inf 表示是优雅的处理方式。忘记处理边界会导致索引越界。 2. 总元素数奇偶性：奇数时中位数是左半最大值，偶数时是左右半的平均值。要把两种情况都考虑到。 3. 分割线位置 i 的范围：i 在 [0, m] 范围内（包括 0 和 m），对应的 j 由 total_left - i…",
+      "kind": "binary",
+      "durationMs": 560,
+      "visual": {
+        "kind": "trace",
+        "label": "check · 不变量复核",
+        "badge": "i=1 · j=0 · 结果 1 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [
+          2
+        ],
+        "compared": [],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "答案尚未新增；复核变量、辅助结构和边界状态后再执行返回。中位数为 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          3
+        ],
+        "variables": {
+          "k": 1,
+          "i": 1,
+          "j": 0
+        },
+        "structure": {
+          "remaining": [
+            3,
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    },
+    {
+      "id": "4-trace-005",
+      "line": 10,
+      "lineIds": [
+        10
+      ],
+      "phase": "return",
+      "title": "返回最终答案",
+      "body": "中位数为 2。",
+      "kind": "binary",
+      "durationMs": 1500,
+      "visual": {
+        "kind": "trace",
+        "label": "return · binary",
+        "badge": "结果 1 项",
+        "tokens": [
+          1,
+          3,
+          2
+        ],
+        "active": [],
+        "compared": [],
+        "variables": {
+          "k": 2
+        },
+        "rows": [
+          {
+            "label": "answer",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "result": [
+          2
+        ],
+        "note": "中位数为 2。"
+      },
+      "state": {
+        "values": [
+          1,
+          3
+        ],
+        "variables": {
+          "k": 2
+        },
+        "structure": {
+          "a": [
+            1,
+            3
+          ],
+          "b": [
+            2
+          ]
+        },
+        "result": [
+          2
+        ],
+        "confirmed": true
+      }
+    }
+  ]
+}

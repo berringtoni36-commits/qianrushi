@@ -1,0 +1,923 @@
+{
+  "skill_count": 56,
+  "canonical_edge_count": 181,
+  "external_edge_count": 2,
+  "edges": [
+    {
+      "source": "algorithm-active-recall-loop",
+      "target": "algorithm-problem-framework-selection",
+      "kind": "canonical"
+    },
+    {
+      "source": "algorithm-active-recall-loop",
+      "target": "algorithm-state-and-invariant-derivation",
+      "kind": "canonical"
+    },
+    {
+      "source": "algorithm-problem-framework-selection",
+      "target": "algorithm-state-and-invariant-derivation",
+      "kind": "canonical"
+    },
+    {
+      "source": "algorithm-problem-framework-selection",
+      "target": "algorithm-active-recall-loop",
+      "kind": "canonical"
+    },
+    {
+      "source": "algorithm-state-and-invariant-derivation",
+      "target": "algorithm-problem-framework-selection",
+      "kind": "canonical"
+    },
+    {
+      "source": "algorithm-state-and-invariant-derivation",
+      "target": "algorithm-active-recall-loop",
+      "kind": "canonical"
+    },
+    {
+      "source": "cmake-source-discovery-incremental-build-audit",
+      "target": "linux-build-debug-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "cmake-source-discovery-incremental-build-audit",
+      "target": "linux-vision-build-provenance-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "cmake-source-discovery-incremental-build-audit",
+      "target": "rtos-build-flash-runtime-provenance",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-arm-linux-boot-chain",
+      "target": "embedded-interview-layered-answer",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-arm-linux-boot-chain",
+      "target": "linux-memory-source-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-bus-selection",
+      "target": "embedded-interview-layered-answer",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-bus-selection",
+      "target": "rtos-communication-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-c-storage-linkage-audit",
+      "target": "embedded-memory-lifetime-and-pool-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-c-storage-linkage-audit",
+      "target": "rtos-freertos-config-and-boot",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-c-storage-linkage-audit",
+      "target": "embedded-cpp-resource-lifetime",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-c-storage-linkage-audit",
+      "target": "linux-build-debug-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-c-struct-binary-contract-audit",
+      "target": "embedded-c-storage-linkage-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-c-struct-binary-contract-audit",
+      "target": "embedded-numeric-contract-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-c-struct-binary-contract-audit",
+      "target": "embedded-memory-lifetime-and-pool-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-c-struct-binary-contract-audit",
+      "target": "embedded-bus-selection",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-cpp-resource-lifetime",
+      "target": "embedded-memory-lifetime-and-pool-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-cpp-resource-lifetime",
+      "target": "embedded-interview-layered-answer",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-cpp-resource-lifetime",
+      "target": "rtos-runtime-fault-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-interview-layered-answer",
+      "target": "embedded-bus-selection",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-interview-layered-answer",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-interview-layered-answer",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-learning-state-and-active-recall",
+      "target": "algorithm-active-recall-loop",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-learning-state-and-active-recall",
+      "target": "embedded-interview-layered-answer",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-learning-state-and-active-recall",
+      "target": "vault-source-boundary-and-derived-artifact-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-memory-lifetime-and-pool-design",
+      "target": "embedded-cpp-resource-lifetime",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-memory-lifetime-and-pool-design",
+      "target": "rtos-freertos-config-and-boot",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-memory-lifetime-and-pool-design",
+      "target": "rtos-runtime-fault-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-memory-lifetime-and-pool-design",
+      "target": "linux-buddy-fragmentation-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-numeric-contract-audit",
+      "target": "embedded-c-struct-binary-contract-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-numeric-contract-audit",
+      "target": "stm32-clock-and-sampling-timing",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-numeric-contract-audit",
+      "target": "rtos-sensor-acquisition-and-fusion",
+      "kind": "canonical"
+    },
+    {
+      "source": "embedded-numeric-contract-audit",
+      "target": "rtos-motor-pid-control",
+      "kind": "canonical"
+    },
+    {
+      "source": "interactive-lab-fact-boundary-audit",
+      "target": "linux-memory-source-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "interactive-lab-fact-boundary-audit",
+      "target": "linux-memory-ebpf-pipeline",
+      "kind": "canonical"
+    },
+    {
+      "source": "interactive-lab-fact-boundary-audit",
+      "target": "linux-vision-pipeline-and-optimization",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-buddy-fragmentation-diagnosis",
+      "target": "linux-memory-ebpf-pipeline",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-buddy-fragmentation-diagnosis",
+      "target": "linux-memory-source-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-build-debug-chain",
+      "target": "linux-fd-process-io-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-build-debug-chain",
+      "target": "embedded-arm-linux-boot-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-driver-device-tree-boundary",
+      "target": "embedded-arm-linux-boot-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-driver-device-tree-boundary",
+      "target": "linux-build-debug-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-driver-device-tree-boundary",
+      "target": "linux-fd-process-io-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-driver-device-tree-boundary",
+      "target": "embedded-memory-lifetime-and-pool-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-driver-device-tree-boundary",
+      "target": "embedded-interview-layered-answer",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-ebpf-map-counter-contract",
+      "target": "linux-memory-ebpf-pipeline",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-ebpf-map-counter-contract",
+      "target": "linux-buddy-fragmentation-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-ebpf-map-counter-contract",
+      "target": "linux-memory-source-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-fd-process-io-debugging",
+      "target": "linux-socket-multiplexing-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-fd-process-io-debugging",
+      "target": "linux-build-debug-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-fd-process-io-debugging",
+      "target": "rtos-communication-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-file-persistence-crash-consistency",
+      "target": "linux-fd-process-io-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-file-persistence-crash-consistency",
+      "target": "linux-virtual-memory-reclaim-path",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-file-persistence-crash-consistency",
+      "target": "rtos-iap-firmware-upgrade",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-file-persistence-crash-consistency",
+      "target": "embedded-c-struct-binary-contract-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-memory-ebpf-pipeline",
+      "target": "linux-memory-source-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-memory-ebpf-pipeline",
+      "target": "linux-buddy-fragmentation-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-memory-ebpf-pipeline",
+      "target": "embedded-interview-layered-answer",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-memory-fastpath-observation-contract",
+      "target": "linux-memory-ebpf-pipeline",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-memory-fastpath-observation-contract",
+      "target": "linux-buddy-fragmentation-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-memory-fastpath-observation-contract",
+      "target": "linux-memory-source-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-memory-source-audit",
+      "target": "linux-memory-ebpf-pipeline",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-memory-source-audit",
+      "target": "linux-buddy-fragmentation-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-memory-source-audit",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-process-signal-daemon-lifecycle",
+      "target": "linux-fd-process-io-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-process-signal-daemon-lifecycle",
+      "target": "linux-thread-sync-deadlock-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-process-signal-daemon-lifecycle",
+      "target": "linux-socket-multiplexing-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-rx-napi-path-diagnosis",
+      "target": "linux-tcp-loss-path-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-rx-napi-path-diagnosis",
+      "target": "linux-socket-multiplexing-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-rx-napi-path-diagnosis",
+      "target": "linux-driver-device-tree-boundary",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-socket-multiplexing-design",
+      "target": "linux-fd-process-io-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-socket-multiplexing-design",
+      "target": "embedded-bus-selection",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-socket-multiplexing-design",
+      "target": "linux-build-debug-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-tcp-loss-path-diagnosis",
+      "target": "linux-socket-multiplexing-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-tcp-loss-path-diagnosis",
+      "target": "linux-fd-process-io-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-tcp-loss-path-diagnosis",
+      "target": "linux-build-debug-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-tcp-loss-path-diagnosis",
+      "target": "embedded-bus-selection",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-thread-sync-deadlock-diagnosis",
+      "target": "linux-fd-process-io-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-thread-sync-deadlock-diagnosis",
+      "target": "linux-socket-multiplexing-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-thread-sync-deadlock-diagnosis",
+      "target": "linux-build-debug-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-thread-sync-deadlock-diagnosis",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-udp-broadcast-reachability-contract",
+      "target": "linux-udp-datagram-endpoint-routing",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-udp-broadcast-reachability-contract",
+      "target": "linux-udp-multicast-interface-membership-contract",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-udp-broadcast-reachability-contract",
+      "target": "linux-socket-multiplexing-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-udp-datagram-endpoint-routing",
+      "target": "linux-udp-broadcast-reachability-contract",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-udp-datagram-endpoint-routing",
+      "target": "linux-udp-multicast-interface-membership-contract",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-udp-datagram-endpoint-routing",
+      "target": "linux-socket-multiplexing-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-udp-datagram-endpoint-routing",
+      "target": "linux-fd-process-io-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-udp-multicast-interface-membership-contract",
+      "target": "linux-udp-broadcast-reachability-contract",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-udp-multicast-interface-membership-contract",
+      "target": "linux-udp-datagram-endpoint-routing",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-udp-multicast-interface-membership-contract",
+      "target": "linux-socket-multiplexing-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-userspace-timer-drift-audit",
+      "target": "linux-socket-multiplexing-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-userspace-timer-drift-audit",
+      "target": "rtos-software-timer-periodic-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-userspace-timer-drift-audit",
+      "target": "stm32-clock-and-sampling-timing",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-virtual-memory-reclaim-path",
+      "target": "linux-buddy-fragmentation-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-virtual-memory-reclaim-path",
+      "target": "embedded-memory-lifetime-and-pool-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-virtual-memory-reclaim-path",
+      "target": "linux-memory-source-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-build-provenance-audit",
+      "target": "cmake-source-discovery-incremental-build-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-build-provenance-audit",
+      "target": "linux-vision-pipeline-and-optimization",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-build-provenance-audit",
+      "target": "linux-vision-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-build-provenance-audit",
+      "target": "linux-build-debug-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-file-ipc-lifecycle-audit",
+      "target": "qt-event-loop-signal-slot-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-file-ipc-lifecycle-audit",
+      "target": "linux-vision-pipeline-and-optimization",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-file-ipc-lifecycle-audit",
+      "target": "linux-fd-process-io-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-file-ipc-lifecycle-audit",
+      "target": "linux-vision-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-pipeline-and-optimization",
+      "target": "linux-memory-source-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-pipeline-and-optimization",
+      "target": "embedded-interview-layered-answer",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-pipeline-and-optimization",
+      "target": "linux-vision-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-project-storytelling",
+      "target": "linux-vision-pipeline-and-optimization",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-project-storytelling",
+      "target": "embedded-interview-layered-answer",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-qt-image-buffer-adapter-audit",
+      "target": "vision-model-tensor-contract-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-qt-image-buffer-adapter-audit",
+      "target": "qt-event-loop-signal-slot-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-qt-image-buffer-adapter-audit",
+      "target": "linux-vision-file-ipc-lifecycle-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-resource-telemetry-contract-audit",
+      "target": "qt-event-loop-signal-slot-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-resource-telemetry-contract-audit",
+      "target": "linux-vision-pipeline-and-optimization",
+      "kind": "canonical"
+    },
+    {
+      "source": "linux-vision-resource-telemetry-contract-audit",
+      "target": "linux-vision-build-provenance-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "qt-event-loop-signal-slot-audit",
+      "target": "linux-vision-file-ipc-lifecycle-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "qt-event-loop-signal-slot-audit",
+      "target": "linux-vision-pipeline-and-optimization",
+      "kind": "canonical"
+    },
+    {
+      "source": "qt-event-loop-signal-slot-audit",
+      "target": "linux-process-signal-daemon-lifecycle",
+      "kind": "canonical"
+    },
+    {
+      "source": "qt-event-loop-signal-slot-audit",
+      "target": "linux-vision-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-auto-mode-state-machine",
+      "target": "rtos-sensor-acquisition-and-fusion",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-auto-mode-state-machine",
+      "target": "rtos-key-event-state-machine",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-auto-mode-state-machine",
+      "target": "rtos-motor-pid-control",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-auto-mode-state-machine",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-auto-mode-state-machine",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-build-flash-runtime-provenance",
+      "target": "rtos-freertos-config-and-boot",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-build-flash-runtime-provenance",
+      "target": "rtos-runtime-fault-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-build-flash-runtime-provenance",
+      "target": "rtos-iap-firmware-upgrade",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-build-flash-runtime-provenance",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-build-flash-runtime-provenance",
+      "target": "linux-build-debug-chain",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-communication-debugging",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-communication-debugging",
+      "target": "embedded-bus-selection",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-display-buzzer-feedback",
+      "target": "rtos-key-event-state-machine",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-display-buzzer-feedback",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-display-buzzer-feedback",
+      "target": "rtos-software-timer-periodic-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-display-buzzer-feedback",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-freertos-config-and-boot",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-freertos-config-and-boot",
+      "target": "rtos-runtime-fault-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-freertos-config-and-boot",
+      "target": "rtos-communication-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-freertos-config-and-boot",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-iap-firmware-upgrade",
+      "target": "rtos-communication-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-iap-firmware-upgrade",
+      "target": "rtos-freertos-config-and-boot",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-iap-firmware-upgrade",
+      "target": "rtos-runtime-fault-diagnosis",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-iap-firmware-upgrade",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-key-event-state-machine",
+      "target": "rtos-auto-mode-state-machine",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-key-event-state-machine",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-key-event-state-machine",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-motor-pid-control",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-motor-pid-control",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-project-storytelling",
+      "target": "embedded-interview-layered-answer",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-project-storytelling",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-project-storytelling",
+      "target": "rtos-motor-pid-control",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-runtime-fault-diagnosis",
+      "target": "rtos-freertos-config-and-boot",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-runtime-fault-diagnosis",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-runtime-fault-diagnosis",
+      "target": "rtos-communication-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-runtime-fault-diagnosis",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-sensor-acquisition-and-fusion",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-sensor-acquisition-and-fusion",
+      "target": "rtos-auto-mode-state-machine",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-sensor-acquisition-and-fusion",
+      "target": "rtos-motor-pid-control",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-sensor-acquisition-and-fusion",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-software-timer-periodic-design",
+      "target": "rtos-task-and-isr-design",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-software-timer-periodic-design",
+      "target": "stm32-clock-and-sampling-timing",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-software-timer-periodic-design",
+      "target": "rtos-communication-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-software-timer-periodic-design",
+      "target": "rtos-motor-pid-control",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-task-and-isr-design",
+      "target": "rtos-communication-debugging",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-task-and-isr-design",
+      "target": "rtos-motor-pid-control",
+      "kind": "canonical"
+    },
+    {
+      "source": "rtos-task-and-isr-design",
+      "target": "rtos-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "stm32-clock-and-sampling-timing",
+      "target": "rtos-freertos-config-and-boot",
+      "kind": "canonical"
+    },
+    {
+      "source": "stm32-clock-and-sampling-timing",
+      "target": "rtos-sensor-acquisition-and-fusion",
+      "kind": "canonical"
+    },
+    {
+      "source": "stm32-clock-and-sampling-timing",
+      "target": "rtos-motor-pid-control",
+      "kind": "canonical"
+    },
+    {
+      "source": "stm32-clock-and-sampling-timing",
+      "target": "embedded-bus-selection",
+      "kind": "canonical"
+    },
+    {
+      "source": "vault-source-boundary-and-derived-artifact-audit",
+      "target": "interactive-lab-fact-boundary-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "vault-source-boundary-and-derived-artifact-audit",
+      "target": "json-canvas",
+      "kind": "external"
+    },
+    {
+      "source": "vault-source-boundary-and-derived-artifact-audit",
+      "target": "cangjie-skill",
+      "kind": "external"
+    },
+    {
+      "source": "vision-model-tensor-contract-audit",
+      "target": "linux-vision-pipeline-and-optimization",
+      "kind": "canonical"
+    },
+    {
+      "source": "vision-model-tensor-contract-audit",
+      "target": "linux-vision-project-storytelling",
+      "kind": "canonical"
+    },
+    {
+      "source": "vision-model-tensor-contract-audit",
+      "target": "interactive-lab-fact-boundary-audit",
+      "kind": "canonical"
+    },
+    {
+      "source": "vision-model-tensor-contract-audit",
+      "target": "linux-memory-source-audit",
+      "kind": "canonical"
+    }
+  ],
+  "errors": []
+}

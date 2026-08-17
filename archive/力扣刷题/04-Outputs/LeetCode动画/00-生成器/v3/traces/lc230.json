@@ -1,0 +1,1101 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "BST 中序计数",
+    "sceneKind": "tree-graph",
+    "input": "[3,1,4,null,2], k=1",
+    "expected": 1,
+    "exampleText": "[3,1,4,null,2], k=1",
+    "expectedText": "第 k 小 = 1",
+    "invariant": "已访问节点恰为 BST 中最小的若干个",
+    "aha": "BST 中序顺序就是升序排名",
+    "time": "O(n)",
+    "space": "O(h)",
+    "problemId": 230,
+    "title": "二叉搜索树中第 K 小的元素",
+    "day": "Day 7：二叉树进阶",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "e086d3197d088e81e7136b5ebcb018a2837a1f53dc52b01ac776e6d04f45d0cd",
+    "semanticTokenHash": "f7c770bfbf63edf9c3496bd60607cf44cbdbe33277917db83c1fd42665c9bf38",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "BST 中序序列严格递增。",
+        "review": "k=1，开始 BST 中序遍历"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "k": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "k=1，开始 BST 中序遍历",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "BST 中序序列严格递增。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "k": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 5",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "k": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 2",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L17"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "k": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "不变量检查 8",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "compare",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每访问一个节点就消费一个排名。",
+        "review": "--k=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "k": 0
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "--k=0",
+            "action": "访问 1，k 减为 0",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "每访问一个节点就消费一个排名。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "k": 0
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "--k=0",
+            "action": "不变量检查 4",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L25"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "k": 0
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [],
+            "formula": "--k=0",
+            "action": "不变量检查 7",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "命中后返回 true 提前终止递归。",
+        "review": "1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "k": 0,
+              "ans": 1
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1"
+            ],
+            "formula": "1",
+            "action": "第 1 小为 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "命中后返回 true 提前终止递归。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "k": 0,
+              "ans": 1
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1"
+            ],
+            "formula": "1",
+            "action": "不变量检查 1",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "k": 0,
+              "ans": 1
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1"
+            ],
+            "formula": "1",
+            "action": "不变量检查 6",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "inspect",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "当前所有指针、容器与已确认结果都与代码执行到这里一致。",
+        "review": "完整状态检查"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L26"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "root": "n1",
+              "k": 0,
+              "ans": 1
+            },
+            "pointers": {},
+            "active": [
+              "n1"
+            ],
+            "compared": [],
+            "result": [
+              "n1"
+            ],
+            "formula": "1",
+            "action": "不变量检查 3",
+            "status": "running",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ]
+          },
+          "caption": "暂停核对当前完整状态；后续步骤只会在这个状态上增量更新。",
+          "emphasis": [
+            "invariant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "中序第一个节点即最小值。",
+        "review": "return 1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L19"
+          ],
+          "state": {
+            "sceneKind": "tree-graph",
+            "values": [],
+            "variables": {
+              "ans": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [
+              "n1"
+            ],
+            "formula": "return 1",
+            "action": "返回第 1 小元素 1",
+            "status": "return",
+            "nodes": [
+              {
+                "id": "n3",
+                "value": 3,
+                "level": 0,
+                "order": 0
+              },
+              {
+                "id": "n1",
+                "value": 1,
+                "level": 1,
+                "order": 0
+              },
+              {
+                "id": "n4",
+                "value": 4,
+                "level": 1,
+                "order": 1
+              },
+              {
+                "id": "n2",
+                "value": 2,
+                "level": 2,
+                "order": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": "n3",
+                "to": "n1"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              }
+            ],
+            "output": 1
+          },
+          "caption": "中序第一个节点即最小值。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode() : val(0), left(nullptr), right(nullptr) {}\n *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}\n *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}\n * };\n */\nclass Solution {\npublic:\n    int k, ans;\n\n    int kthSmallest(TreeNode* root, int _k) {\n        k = _k;\n        dfs(root);\n        return ans;\n    }\n\n    bool dfs(TreeNode* root) {                                   // 深度优先搜索\n        if (!root) return false;\n        if (dfs(root->left)) return true;\n        if ( -- k == 0) {\n            ans = root->val;\n            return true;\n        }\n        return dfs(root->right);\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 2469,
+        "text": "/**"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 2470,
+        "text": " * Definition for a binary tree node."
+      },
+      {
+        "id": "L3",
+        "sourceLine": 2471,
+        "text": " * struct TreeNode {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 2472,
+        "text": " *     int val;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 2473,
+        "text": " *     TreeNode *left;"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 2474,
+        "text": " *     TreeNode *right;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 2475,
+        "text": " *     TreeNode() : val(0), left(nullptr), right(nullptr) {}"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 2476,
+        "text": " *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}"
+      },
+      {
+        "id": "L9",
+        "sourceLine": 2477,
+        "text": " *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 2478,
+        "text": " * };"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 2479,
+        "text": " */"
+      },
+      {
+        "id": "L12",
+        "sourceLine": 2480,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 2481,
+        "text": "public:"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 2482,
+        "text": "    int k, ans;"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 2483,
+        "text": ""
+      },
+      {
+        "id": "L16",
+        "sourceLine": 2484,
+        "text": "    int kthSmallest(TreeNode* root, int _k) {"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 2485,
+        "text": "        k = _k;"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 2486,
+        "text": "        dfs(root);"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 2487,
+        "text": "        return ans;"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 2488,
+        "text": "    }"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 2489,
+        "text": ""
+      },
+      {
+        "id": "L22",
+        "sourceLine": 2490,
+        "text": "    bool dfs(TreeNode* root) {                                   // 深度优先搜索"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 2491,
+        "text": "        if (!root) return false;"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 2492,
+        "text": "        if (dfs(root->left)) return true;"
+      },
+      {
+        "id": "L25",
+        "sourceLine": 2493,
+        "text": "        if ( -- k == 0) {"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 2494,
+        "text": "            ans = root->val;"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 2495,
+        "text": "            return true;"
+      },
+      {
+        "id": "L28",
+        "sourceLine": 2496,
+        "text": "        }"
+      },
+      {
+        "id": "L29",
+        "sourceLine": 2497,
+        "text": "        return dfs(root->right);"
+      },
+      {
+        "id": "L30",
+        "sourceLine": 2498,
+        "text": "    }"
+      },
+      {
+        "id": "L31",
+        "sourceLine": 2499,
+        "text": "};"
+      }
+    ]
+  }
+}

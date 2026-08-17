@@ -1,0 +1,1237 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "algorithm": "方向数组 + 访问标记",
+    "sceneKind": "matrix-grid",
+    "input": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6
+      ],
+      [
+        7,
+        8,
+        9
+      ]
+    ],
+    "expected": [
+      1,
+      2,
+      3,
+      6,
+      9,
+      8,
+      7,
+      4,
+      5
+    ],
+    "exampleText": "[[1,2,3],[4,5,6],[7,8,9]]",
+    "expectedText": "螺旋序列 [1,2,3,6,9,8,7,4,5]",
+    "invariant": "已输出格永久标记，当前位置下一步按顺时针规则选择",
+    "aha": "只有碰墙或碰到已访问格时才转向",
+    "time": "O(mn)",
+    "space": "O(mn)",
+    "problemId": 54,
+    "title": "螺旋矩阵",
+    "day": "Day 3：数组技巧 + 矩阵",
+    "sourcePath": "/Users/zhaowenqiang/Library/Mobile Documents/iCloud~md~obsidian/Documents/qianrushi/archive/力扣刷题/01-Raw/04-Hot100两周速通-yxc简洁代码.md",
+    "sourceSha256": "7c09bf93c9e4397b39aa7873c99220c1a6c024ca57381928ac2a6c82665784e3",
+    "semanticTokenHash": "a1c65039718ba0b97c82742338a10e4b2179890bbab2f4f952e16ad5ee5e12eb",
+    "rendererVersion": "V3-series"
+  },
+  "frames": [
+    {
+      "id": "step-01",
+      "phase": "setup",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "方向只在下一格越界或已访问时旋转。",
+        "review": "从左上角向右开始"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L9"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 0,
+              "y": 0,
+              "d": "右"
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "",
+            "action": "从左上角向右开始",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "方向只在下一格越界或已访问时旋转。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-02",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个格子只访问一次。",
+        "review": "[1]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 0,
+              "y": 0,
+              "d": 0,
+              "step": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1]",
+            "action": "访问 (0,0)，输出 1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "0,0"
+            ],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0"
+            ],
+            "output": [
+              1
+            ]
+          },
+          "caption": "每个格子只访问一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-03",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个格子只访问一次。",
+        "review": "[1, 2]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 0,
+              "y": 1,
+              "d": 0,
+              "step": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 2]",
+            "action": "访问 (0,1)，输出 2",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "0,1"
+            ],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1"
+            ],
+            "output": [
+              1,
+              2
+            ]
+          },
+          "caption": "每个格子只访问一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-04",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个格子只访问一次。",
+        "review": "[1, 2, 3]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 0,
+              "y": 2,
+              "d": 0,
+              "step": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 2, 3]",
+            "action": "访问 (0,2)，输出 3",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2"
+            ],
+            "output": [
+              1,
+              2,
+              3
+            ]
+          },
+          "caption": "每个格子只访问一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-05",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "转向后再计算下一坐标。",
+        "review": "d=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 0,
+              "y": 2,
+              "d": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "d=1",
+            "action": "前方受阻，顺时针转向 1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "0,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "转向后再计算下一坐标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-06",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个格子只访问一次。",
+        "review": "[1, 2, 3, 6]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 1,
+              "y": 2,
+              "d": 1,
+              "step": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 2, 3, 6]",
+            "action": "访问 (1,2)，输出 6",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "1,2"
+            ],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "1,2"
+            ],
+            "output": [
+              1,
+              2,
+              3,
+              6
+            ]
+          },
+          "caption": "每个格子只访问一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-07",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个格子只访问一次。",
+        "review": "[1, 2, 3, 6, 9]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 2,
+              "y": 2,
+              "d": 1,
+              "step": 4
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 2, 3, 6, 9]",
+            "action": "访问 (2,2)，输出 9",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "1,2",
+              "2,2"
+            ],
+            "output": [
+              1,
+              2,
+              3,
+              6,
+              9
+            ]
+          },
+          "caption": "每个格子只访问一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-08",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "转向后再计算下一坐标。",
+        "review": "d=2"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 2,
+              "y": 2,
+              "d": 2
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "d=2",
+            "action": "前方受阻，顺时针转向 2",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "2,2"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "转向后再计算下一坐标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-09",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个格子只访问一次。",
+        "review": "[1, 2, 3, 6, 9, 8]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 2,
+              "y": 1,
+              "d": 2,
+              "step": 5
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 2, 3, 6, 9, 8]",
+            "action": "访问 (2,1)，输出 8",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "2,1"
+            ],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "1,2",
+              "2,1",
+              "2,2"
+            ],
+            "output": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8
+            ]
+          },
+          "caption": "每个格子只访问一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-10",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个格子只访问一次。",
+        "review": "[1, 2, 3, 6, 9, 8, 7]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 2,
+              "y": 0,
+              "d": 2,
+              "step": 6
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 2, 3, 6, 9, 8, 7]",
+            "action": "访问 (2,0)，输出 7",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "1,2",
+              "2,0",
+              "2,1",
+              "2,2"
+            ],
+            "output": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7
+            ]
+          },
+          "caption": "每个格子只访问一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-11",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "转向后再计算下一坐标。",
+        "review": "d=3"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 2,
+              "y": 0,
+              "d": 3
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "d=3",
+            "action": "前方受阻，顺时针转向 3",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "2,0"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "转向后再计算下一坐标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-12",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个格子只访问一次。",
+        "review": "[1, 2, 3, 6, 9, 8, 7, 4]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 1,
+              "y": 0,
+              "d": 3,
+              "step": 7
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 2, 3, 6, 9, 8, 7, 4]",
+            "action": "访问 (1,0)，输出 4",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "1,0",
+              "1,2",
+              "2,0",
+              "2,1",
+              "2,2"
+            ],
+            "output": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7,
+              4
+            ]
+          },
+          "caption": "每个格子只访问一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-13",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "转向后再计算下一坐标。",
+        "review": "d=0"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 1,
+              "y": 0,
+              "d": 0
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "d=0",
+            "action": "前方受阻，顺时针转向 0",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "1,0"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "转向后再计算下一坐标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-14",
+      "phase": "accept",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "每个格子只访问一次。",
+        "review": "[1, 2, 3, 6, 9, 8, 7, 4, 5]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L13",
+            "L14"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 1,
+              "y": 1,
+              "d": 0,
+              "step": 8
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 2, 3, 6, 9, 8, 7, 4, 5]",
+            "action": "访问 (1,1)，输出 5",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "1,0",
+              "1,1",
+              "1,2",
+              "2,0",
+              "2,1",
+              "2,2"
+            ],
+            "output": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7,
+              4,
+              5
+            ]
+          },
+          "caption": "每个格子只访问一次。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "step-15",
+      "phase": "mutate",
+      "durationMs": 1180,
+      "captions": {
+        "learning": "转向后再计算下一坐标。",
+        "review": "d=1"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L18"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "x": 1,
+              "y": 1,
+              "d": 1
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "d=1",
+            "action": "前方受阻，顺时针转向 1",
+            "status": "running",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [
+              "1,1"
+            ],
+            "comparedCells": [],
+            "resultCells": []
+          },
+          "caption": "转向后再计算下一坐标。",
+          "emphasis": []
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "phase": "return",
+      "durationMs": 1800,
+      "captions": {
+        "learning": "九个格子恰好访问一次。",
+        "review": "[1, 2, 3, 6, 9, 8, 7, 4, 5]"
+      },
+      "beats": [
+        {
+          "lineIds": [
+            "L6"
+          ],
+          "state": {
+            "sceneKind": "matrix-grid",
+            "values": [],
+            "variables": {
+              "count": 9
+            },
+            "pointers": {},
+            "active": [],
+            "compared": [],
+            "result": [],
+            "formula": "[1, 2, 3, 6, 9, 8, 7, 4, 5]",
+            "action": "返回螺旋序列",
+            "status": "return",
+            "matrix": [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "activeCells": [],
+            "comparedCells": [],
+            "resultCells": [
+              "0,0",
+              "0,1",
+              "0,2",
+              "1,0",
+              "1,1",
+              "1,2",
+              "2,0",
+              "2,1",
+              "2,2"
+            ],
+            "output": [
+              1,
+              2,
+              3,
+              6,
+              9,
+              8,
+              7,
+              4,
+              5
+            ]
+          },
+          "caption": "九个格子恰好访问一次。",
+          "emphasis": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "language": "cpp",
+    "text": "class Solution {\npublic:\n    vector<int> spiralOrder(vector<vector<int>>& matrix) {\n        vector<int> res;\n        int n = matrix.size();\n        if (!n) return res;\n        int m = matrix[0].size();\n\n        int dx[] = {0, 1, 0, -1}, dy[] = {1, 0, -1, 0};\n        vector<vector<bool>> st(n, vector<bool>(m));\n\n        for (int i = 0, x = 0, y = 0, d = 0; i < n * m; i ++ ) {\n            res.push_back(matrix[x][y]);                         // 记录结果\n            st[x][y] = true;\n\n            int a = x + dx[d], b = y + dy[d];\n            if (a < 0 || a >= n || b < 0 || b >= m || st[a][b]) {\n                d = (d + 1) % 4;\n                a = x + dx[d], b = y + dy[d];\n            }\n\n            x = a, y = b;\n        }\n\n        return res;\n    }\n};",
+    "lines": [
+      {
+        "id": "L1",
+        "sourceLine": 1015,
+        "text": "class Solution {"
+      },
+      {
+        "id": "L2",
+        "sourceLine": 1016,
+        "text": "public:"
+      },
+      {
+        "id": "L3",
+        "sourceLine": 1017,
+        "text": "    vector<int> spiralOrder(vector<vector<int>>& matrix) {"
+      },
+      {
+        "id": "L4",
+        "sourceLine": 1018,
+        "text": "        vector<int> res;"
+      },
+      {
+        "id": "L5",
+        "sourceLine": 1019,
+        "text": "        int n = matrix.size();"
+      },
+      {
+        "id": "L6",
+        "sourceLine": 1020,
+        "text": "        if (!n) return res;"
+      },
+      {
+        "id": "L7",
+        "sourceLine": 1021,
+        "text": "        int m = matrix[0].size();"
+      },
+      {
+        "id": "L8",
+        "sourceLine": 1022,
+        "text": ""
+      },
+      {
+        "id": "L9",
+        "sourceLine": 1023,
+        "text": "        int dx[] = {0, 1, 0, -1}, dy[] = {1, 0, -1, 0};"
+      },
+      {
+        "id": "L10",
+        "sourceLine": 1024,
+        "text": "        vector<vector<bool>> st(n, vector<bool>(m));"
+      },
+      {
+        "id": "L11",
+        "sourceLine": 1025,
+        "text": ""
+      },
+      {
+        "id": "L12",
+        "sourceLine": 1026,
+        "text": "        for (int i = 0, x = 0, y = 0, d = 0; i < n * m; i ++ ) {"
+      },
+      {
+        "id": "L13",
+        "sourceLine": 1027,
+        "text": "            res.push_back(matrix[x][y]);                         // 记录结果"
+      },
+      {
+        "id": "L14",
+        "sourceLine": 1028,
+        "text": "            st[x][y] = true;"
+      },
+      {
+        "id": "L15",
+        "sourceLine": 1029,
+        "text": ""
+      },
+      {
+        "id": "L16",
+        "sourceLine": 1030,
+        "text": "            int a = x + dx[d], b = y + dy[d];"
+      },
+      {
+        "id": "L17",
+        "sourceLine": 1031,
+        "text": "            if (a < 0 || a >= n || b < 0 || b >= m || st[a][b]) {"
+      },
+      {
+        "id": "L18",
+        "sourceLine": 1032,
+        "text": "                d = (d + 1) % 4;"
+      },
+      {
+        "id": "L19",
+        "sourceLine": 1033,
+        "text": "                a = x + dx[d], b = y + dy[d];"
+      },
+      {
+        "id": "L20",
+        "sourceLine": 1034,
+        "text": "            }"
+      },
+      {
+        "id": "L21",
+        "sourceLine": 1035,
+        "text": ""
+      },
+      {
+        "id": "L22",
+        "sourceLine": 1036,
+        "text": "            x = a, y = b;"
+      },
+      {
+        "id": "L23",
+        "sourceLine": 1037,
+        "text": "        }"
+      },
+      {
+        "id": "L24",
+        "sourceLine": 1038,
+        "text": ""
+      },
+      {
+        "id": "L25",
+        "sourceLine": 1039,
+        "text": "        return res;"
+      },
+      {
+        "id": "L26",
+        "sourceLine": 1040,
+        "text": "    }"
+      },
+      {
+        "id": "L27",
+        "sourceLine": 1041,
+        "text": "};"
+      }
+    ]
+  }
+}

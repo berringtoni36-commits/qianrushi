@@ -1,0 +1,14 @@
+{
+  "skill": "rtos-project-storytelling",
+  "version": "0.1.0",
+  "darwin_compatible": true,
+  "test_cases": [
+    {"id":"should-trigger-01","type":"should_trigger","prompt":"帮我用 1 分钟介绍 STM32+FreeRTOS 烟机项目","expected_behavior":"激活本 skill，输出背景、架构、主链、结果和边界","notes":"项目短答"},
+    {"id":"should-trigger-02","type":"should_trigger","prompt":"面试官会怎么深挖这个 RTOS 项目的任务和 IAP？","expected_behavior":"激活本 skill，生成逐层追问并绑定源码证据","notes":"项目深挖"},
+    {"id":"should-trigger-03","type":"should_trigger","prompt":"我的贡献不确定，帮我按源码证据划清能说和不能说的内容","expected_behavior":"激活本 skill，要求用户确认贡献并标注事实边界","notes":"贡献边界"},
+    {"id":"should-not-trigger-01","type":"should_not_trigger","prompt":"DMA 完成但任务没醒，怎么排查？","expected_behavior":"不激活本 skill，优先激活 rtos-communication-debugging","notes":"跨 skill 混淆"},
+    {"id":"should-not-trigger-02","type":"should_not_trigger","prompt":"解释 FreeRTOS 的优先级调度机制","expected_behavior":"不激活本 skill，做通用知识解释或使用任务设计 Skill","notes":"项目上下文缺失"},
+    {"id":"edge-01","type":"edge_case","prompt":"我只想背项目里的 PID 原理，不想准备项目介绍","expected_behavior":"不激活本 skill，优先激活 rtos-motor-pid-control","notes":"主题边界"}
+  ],
+  "minimum_pass_rate": 0.8
+}
