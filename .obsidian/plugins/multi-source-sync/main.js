@@ -63759,7 +63759,7 @@ function installInlineMultiPlatformFallback(Base, obsidian) {
     async onload(...args) {
       await super.onload?.(...args);
       this.addSettingTab?.(new (class extends SettingTab {
-        constructor(app, plugin) { super(app, plugin); this.name = "多平台收藏同步"; this.id = "multi-platform-sync"; }
+        constructor(app, plugin) { super(app, plugin); this.name = "Obsidian Source Sync"; this.id = "multi-platform-sync"; }
         display() {
           const el = this.containerEl; el?.empty?.();
           el?.createEl?.("h2", { text: "多平台收藏同步" });
@@ -63886,7 +63886,7 @@ function installDeferredMultiPlatformExtension(Base, obsidian) {
         }
       }
       this.addSettingTab?.(new (class extends (obsidian?.PluginSettingTab || class {}) {
-        constructor(app, plugin) { super(app, plugin); this.name = "多平台收藏同步"; this.id = "multi-platform-sync"; }
+        constructor(app, plugin) { super(app, plugin); this.name = "Obsidian Source Sync"; this.id = "multi-platform-sync"; }
         display() { this.containerEl?.empty?.(); this.containerEl?.createEl?.("h2", { text: "多平台收藏同步" }); this.containerEl?.createEl?.("p", { text: "扩展源码未能从插件目录加载，请保留 src 目录并重新加载 Obsidian。" }); }
       })(this.app, this));
       this.addCommand?.({ id: "sync-all-platform-favorites", name: "立即同步全部平台收藏", callback: () => this.syncNow?.() });

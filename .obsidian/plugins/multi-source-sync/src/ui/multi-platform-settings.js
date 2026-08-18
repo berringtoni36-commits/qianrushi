@@ -22,7 +22,7 @@ class MultiPlatformSettingTab extends ObsidianPluginSettingTab {
     this.plugin = plugin;
     this.obsidian = obsidian || {};
     this.id = "multi-platform-sync";
-    this.name = "多平台收藏同步";
+    this.name = "Obsidian Source Sync";
   }
 
   display() {
