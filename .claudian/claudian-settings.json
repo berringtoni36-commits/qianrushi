@@ -52,6 +52,47 @@
       "customModels": "",
       "discoveredModels": [
         {
+          "model": "gpt-5.6-luna",
+          "displayName": "GPT-5.6-Luna",
+          "description": "Fast and affordable agentic coding model.",
+          "supportedReasoningEfforts": [
+            {
+              "value": "low",
+              "description": "Fast responses with lighter reasoning"
+            },
+            {
+              "value": "medium",
+              "description": "Balances speed and reasoning depth for everyday tasks"
+            },
+            {
+              "value": "high",
+              "description": "Greater reasoning depth for complex problems"
+            },
+            {
+              "value": "xhigh",
+              "description": "Extra high reasoning depth for complex problems"
+            },
+            {
+              "value": "max",
+              "description": "Maximum reasoning depth for the hardest problems"
+            }
+          ],
+          "defaultReasoningEffort": "medium",
+          "serviceTiers": [
+            {
+              "id": "priority",
+              "name": "Fast",
+              "description": "1.5x speed, increased usage"
+            }
+          ],
+          "defaultServiceTier": null,
+          "inputModalities": [
+            "text",
+            "image"
+          ],
+          "isDefault": true
+        },
+        {
           "model": "gpt-5.6-sol",
           "displayName": "GPT-5.6-Sol",
           "description": "Latest frontier agentic coding model.",
@@ -82,42 +123,13 @@
             }
           ],
           "defaultReasoningEffort": "low",
-          "serviceTiers": [],
-          "defaultServiceTier": null,
-          "inputModalities": [
-            "text",
-            "image"
-          ],
-          "isDefault": true
-        },
-        {
-          "model": "gpt-5.6-luna",
-          "displayName": "GPT-5.6-Luna",
-          "description": "Fast and affordable agentic coding model.",
-          "supportedReasoningEfforts": [
+          "serviceTiers": [
             {
-              "value": "low",
-              "description": "Fast responses with lighter reasoning"
-            },
-            {
-              "value": "medium",
-              "description": "Balances speed and reasoning depth for everyday tasks"
-            },
-            {
-              "value": "high",
-              "description": "Greater reasoning depth for complex problems"
-            },
-            {
-              "value": "xhigh",
-              "description": "Extra high reasoning depth for complex problems"
-            },
-            {
-              "value": "max",
-              "description": "Maximum reasoning depth for the hardest problems"
+              "id": "priority",
+              "name": "Fast",
+              "description": "1.5x speed, increased usage"
             }
           ],
-          "defaultReasoningEffort": "medium",
-          "serviceTiers": [],
           "defaultServiceTier": null,
           "inputModalities": [
             "text",
@@ -132,7 +144,7 @@
       "reasoningSummary": "detailed",
       "environmentVariables": "",
       "environmentHash": "runtime-input:v1:decaf2e9f2b8e6d193a7c85d6901e9f83cb199cd91b1e77a0332e8440095d3de",
-      "catalogTimestamp": 1786906048828,
+      "catalogTimestamp": 1787022270855,
       "catalogFingerprint": "2:ab762a88fe92d6c077f6d8cb12dd4c7b8b110ef216700e82515890813ad99181",
       "installationMethodsByHost": {},
       "wslDistroOverridesByHost": {}

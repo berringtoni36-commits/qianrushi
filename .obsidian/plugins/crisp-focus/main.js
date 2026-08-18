@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Crisp Focus - Spring-Eased Cursor & Local Ambient Engine (v1.3.2)
+   Crisp Focus - Spring-Eased Cursor & Local Ambient Engine (v1.3.4)
    Crafted by letschips (Xiaohongshu)
    ========================================================================== */
 
@@ -713,8 +713,149 @@ class CrispFocusAudioEngine {
 }
 
 // --------------------------------------------------------------------------
-// 2. CodeMirror 6 Native Cursor Layer Smooth Motion Hook
+// 2. CodeMirror 6 Native Cursor Layer Smooth Motion Hook (GPU-Accelerated Engine)
 // --------------------------------------------------------------------------
+class CrispCursorMarker {
+  constructor(className, left, top, height, useTransform = true) {
+    this.className = className;
+    this.useTransform = useTransform;
+    this.left = Math.round(left);
+    this.top = Math.round(top);
+    this.height = Math.round(height);
+  }
+
+  draw() {
+    const el = document.createElement("div");
+    el.className = this.className;
+    this.applyStyle(el);
+    return el;
+  }
+
+  applyStyle(el) {
+    const win = el.win || el.ownerDocument?.defaultView || window;
+    win.requestAnimationFrame(() => {
+      const styles = { height: `${this.height}px` };
+      if (this.useTransform) {
+        styles.translate = `${this.left}px ${this.top}px`;
+      } else {
+        styles.left = `${this.left}px`;
+        styles.top = `${this.top}px`;
+      }
+      if (typeof el.setCssStyles === "function") {
+        el.setCssStyles(styles);
+      } else {
+        if (styles.translate !== undefined) el.style.translate = styles.translate;
+        if (styles.left !== undefined) el.style.left = styles.left;
+        if (styles.top !== undefined) el.style.top = styles.top;
+        if (styles.height !== undefined) el.style.height = styles.height;
+      }
+    });
+  }
+
+  adjust(cursorEl) {
+    if (cursorEl) {
+      this.applyStyle(cursorEl);
+    }
+  }
+
+  update(el, oldMarker) {
+    if (oldMarker.className !== this.className || oldMarker.useTransform !== this.useTransform) {
+      return false;
+    }
+    this.requestAdjust =
+      oldMarker.requestAdjust ||
+      this.requestAdjust ||
+      debounceHelper((marker, target) => marker.applyStyle(target), 10);
+    this.requestAdjust(this, el);
+    return true;
+  }
+
+  eq(other) {
+    return (
+      other != null &&
+      this.left === other.left &&
+      this.top === other.top &&
+      this.height === other.height &&
+      this.className === other.className &&
+      this.useTransform === other.useTransform
+    );
+  }
+
+  static forRange(view, className, range, useTransform = true) {
+    const coords = view.coordsAtPos(range.head, range.assoc || 1);
+    if (!coords) return null;
+    const offset = getScrollOffset(view);
+    return new CrispCursorMarker(
+      className,
+      coords.left - offset.left,
+      coords.top - offset.top,
+      coords.bottom - coords.top,
+      useTransform
+    );
+  }
+
+  static forTableCellRange(parentView, cellView, className, range, useTransform = true) {
+    const coords = cellView.coordsAtPos(range.head, range.assoc || 1);
+    if (!coords) return null;
+    const offset = getScrollOffset(parentView);
+    return new CrispCursorMarker(
+      className,
+      coords.left - offset.left,
+      coords.top - offset.top,
+      coords.bottom - coords.top,
+      useTransform
+    );
+  }
+}
+
+function getScrollOffset(view) {
+  if (!view || !view.scrollDOM) return { top: 0, left: 0 };
+  const rect = view.scrollDOM.getBoundingClientRect();
+  const left =
+    view.textDirection === 1 || !view.textDirection
+      ? rect.left
+      : rect.right - view.scrollDOM.clientWidth * (view.scaleX || 1);
+  return {
+    top: rect.top - view.scrollDOM.scrollTop * (view.scaleY || 1),
+    left: left - view.scrollDOM.scrollLeft * (view.scaleX || 1),
+  };
+}
+
+function getActiveTableCell(state) {
+  if (!state || typeof state.field !== "function") return null;
+  try {
+    const editor = state.field(obsidian.editorInfoField)?.editor;
+    return editor && editor.inTableCell ? editor.activeCM : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function debounceHelper(fn, delay, resetTimer = false) {
+  if (obsidian && typeof obsidian.debounce === "function") {
+    return obsidian.debounce(fn, delay, resetTimer);
+  }
+  let timer = null;
+  return function (...args) {
+    if (resetTimer && timer) clearTimeout(timer);
+    if (!timer || resetTimer) {
+      timer = setTimeout(() => {
+        timer = null;
+        fn.apply(this, args);
+      }, delay);
+    }
+  };
+}
+
+const debounceBlink = debounceHelper((dom) => {
+  if (!dom) return;
+  if (typeof dom.addClass === "function") {
+    dom.addClass("cm-blinkLayer");
+  } else if (dom.classList) {
+    dom.classList.add("cm-blinkLayer");
+  }
+}, 350, true);
+
 function hookCursorPlugin(view) {
   if (!view || !view.plugins) return null;
   return view.plugins.find((inst) => {
@@ -738,52 +879,109 @@ function patchCursorLayer(cursorPluginInstance, plugin) {
     if (cursorElements) {
       cursorElements.forEach((cursorEl) => {
         cursorEl.style.transition = "";
+        cursorEl.style.translate = "";
       });
       patchedEditors.delete(editor);
     }
   };
 
   const unpatch = around(layer, {
-    markers: (origMarkers) => function (view) {
-      const result = origMarkers.call(this, view);
+    mount: () => function () {},
+    update: () => function (update, dom) {
       if (!plugin.settings.focusModeEnabled || !plugin.settings.animatedCursorEnabled) {
-        cleanupEditor(view.dom);
-        return result;
+        return false;
       }
-
-      const adjustableMarkers = Array.isArray(result)
-        ? result.filter((marker) => marker && typeof marker.adjust === "function")
-        : [];
-      if (adjustableMarkers.length === 0) {
-        cleanupEditor(view.dom);
-        return result;
+      const cell = update && update.state ? getActiveTableCell(update.state) : null;
+      if (cell === update.view) return false;
+      const isOverTableCell = !update.view.hasFocus && (cell?.hasFocus ?? false);
+      if (dom && dom.classList) {
+        dom.classList.toggle("cm-overTableCell", Boolean(isOverTableCell));
+      }
+      if (update && (update.docChanged || update.selectionSet) && (update.view.hasFocus || isOverTableCell)) {
+        if (dom && dom.classList) {
+          dom.classList.remove("cm-blinkLayer");
+          debounceBlink(dom);
+        }
+        return true;
+      }
+      return false;
+    },
+    markers: (origMarkers) => function (view) {
+      const origResult = origMarkers ? origMarkers.call(this, view) : [];
+      if (!plugin.settings.focusModeEnabled || !plugin.settings.animatedCursorEnabled) {
+        cleanupEditor(view && view.dom);
+        return origResult;
       }
 
       const speed = plugin.settings.cursorSpeed ?? 80;
       const blinkRate = plugin.settings.blinkRate ?? 1000;
       const blinkCount = plugin.settings.blinkCount ?? 10;
 
-      view.dom.style.setProperty("--crisp-focus-cursor-speed", `${speed}ms`);
-      view.dom.style.setProperty("--crisp-focus-blink-rate", `${blinkRate}ms`);
-      view.dom.style.setProperty("--crisp-focus-blink-count", `${blinkCount}`);
+      // Real CodeMirror 6 EditorView with state & selection
+      let state = view ? view.state : null;
+      if (state && state.selection && Array.isArray(state.selection.ranges)) {
+        const cell = !view.hasFocus ? getActiveTableCell(state) : null;
+        if (cell) state = cell.state;
+        if (view === cell) return [];
 
-      if (!patchedEditors.has(view.dom)) {
-        patchedEditors.set(view.dom, new Set());
+        if (state.selection.ranges.length === 0) {
+          cleanupEditor(view.dom);
+          return [];
+        }
+
+        if (view.dom) {
+          view.dom.style.setProperty("--crisp-focus-cursor-speed", `${speed}ms`);
+          view.dom.style.setProperty("--crisp-focus-blink-rate", `${blinkRate}ms`);
+          view.dom.style.setProperty("--crisp-focus-blink-count", `${blinkCount}`);
+          view.dom.classList.add("crisp-focus-active");
+          view.dom.classList.toggle("crisp-focus-no-blink", blinkCount === 0);
+          if (!patchedEditors.has(view.dom)) {
+            patchedEditors.set(view.dom, new Set());
+          }
+        }
+
+        const markers = [];
+        for (const range of state.selection.ranges) {
+          const isPrimary = range === state.selection.main;
+          const cls = `cm-cursor ${isPrimary ? "cm-cursor-primary" : "cm-cursor-secondary"}`;
+          const marker = cell
+            ? CrispCursorMarker.forTableCellRange(view, cell, cls, range, true)
+            : CrispCursorMarker.forRange(view, cls, range, true);
+          if (marker) markers.push(marker);
+        }
+        return markers.length > 0 ? markers : origResult;
       }
 
-      adjustableMarkers.forEach((marker) => {
+      // Fallback for mocks / synthetic marker layers
+      const rawMarkers = Array.isArray(origResult) ? origResult : [];
+      if (rawMarkers.length === 0) {
+        cleanupEditor(view && view.dom);
+        return origResult;
+      }
+
+      if (view && view.dom) {
+        view.dom.style.setProperty("--crisp-focus-cursor-speed", `${speed}ms`);
+        view.dom.style.setProperty("--crisp-focus-blink-rate", `${blinkRate}ms`);
+        view.dom.style.setProperty("--crisp-focus-blink-count", `${blinkCount}`);
+        if (!patchedEditors.has(view.dom)) {
+          patchedEditors.set(view.dom, new Set());
+        }
+      }
+
+      rawMarkers.forEach((marker) => {
+        if (!marker) return;
         const origAdjust = marker.adjust;
         marker.adjust = function (cursorEl) {
-          if (cursorEl) {
+          if (cursorEl && view && view.dom) {
             view.dom.classList.add("crisp-focus-active");
             view.dom.classList.toggle("crisp-focus-no-blink", blinkCount === 0);
-            cursorEl.style.transition = `transform ${speed}ms cubic-bezier(0.16, 1, 0.3, 1), height 80ms ease`;
-            patchedEditors.get(view.dom).add(cursorEl);
+            cursorEl.style.transition = `translate ${speed}ms ease, top ${speed}ms ease, left ${speed}ms ease, height 60ms ease`;
+            patchedEditors.get(view.dom)?.add(cursorEl);
           }
-          return origAdjust.call(this, cursorEl);
+          return origAdjust ? origAdjust.call(this, cursorEl) : undefined;
         };
       });
-      return result;
+      return rawMarkers;
     }
   });
 
