@@ -46,3 +46,15 @@ __pycache__/
 **/node_modules/
 **/.remotion/
 projects/嵌入式八股/remotion-static-q1-demo/out/
+projects/嵌入式八股/remotion-embedded-150/out/
+
+# Large binary assets (images, fonts, videos, etc.) — use iCloud sync instead of Git
+assets/
+.obsidian/fonts/
+*.epub
+*.mp4
+*.mov
+*.pdf
+*.so
+*.ttf
+*.otf
