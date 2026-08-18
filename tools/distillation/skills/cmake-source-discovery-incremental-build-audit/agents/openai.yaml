@@ -1,4 +1,0 @@
-interface:
-  display_name: "CMake Source Discovery & Incremental Build Audit"
-  short_description: "Audit CMake source membership and stale builds"
-  default_prompt: "Use $cmake-source-discovery-incremental-build-audit to trace sources into a CMake target and verify build and runtime freshness."

@@ -10,7 +10,7 @@
     "fira-code-codeblocks"
   ],
   "baseFontSize": 16,
-  "monospaceFontFamily": "iA Writer Mono V,Fira Code",
+  "monospaceFontFamily": "Fira Code,iA Writer Mono V",
   "baseFontSizeAction": false,
   "nativeMenus": false,
   "translucency": true

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Embedded Learning State"
-  short_description: "Audit embedded learning state and recall"
-  default_prompt: "Use $embedded-learning-state-and-active-recall to audit my embedded-learning progress and design a truthful active-recall session."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Linux RX NAPI Path Diagnosis"
-  short_description: "定位 Linux 接收路径 IRQ、NAPI、软中断与 Socket 断点"
-  default_prompt: "使用 $linux-rx-napi-path-diagnosis 沿硬中断、RingBuffer、NAPI、软中断、协议栈到 Socket 逐层诊断接收异常。"

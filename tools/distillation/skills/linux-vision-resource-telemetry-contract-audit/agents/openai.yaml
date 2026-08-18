@@ -1,4 +1,0 @@
-interface:
-  display_name: "Linux Vision Resource Telemetry Audit"
-  short_description: "Audit CPU memory telemetry contracts"
-  default_prompt: "Use $linux-vision-resource-telemetry-contract-audit to audit a Qt Linux vision app resource telemetry contract."

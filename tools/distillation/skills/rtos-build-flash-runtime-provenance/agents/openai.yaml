@@ -1,4 +1,0 @@
-interface:
-  display_name: "RTOS Build Flash Runtime Provenance"
-  short_description: "审计 STM32 固件构建、烧录与串口运行证据链可复现性"
-  default_prompt: "Use $rtos-build-flash-runtime-provenance to audit this STM32 firmware's build, flash, and serial/runtime provenance."

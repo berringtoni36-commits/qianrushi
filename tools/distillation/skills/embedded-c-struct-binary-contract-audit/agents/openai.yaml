@@ -1,4 +1,0 @@
-interface:
-  display_name: "Embedded C Struct Binary Contract Audit"
-  short_description: "Audit C struct layout and binary contracts"
-  default_prompt: "Use $embedded-c-struct-binary-contract-audit to audit whether this C struct safely matches a register or protocol binary layout."

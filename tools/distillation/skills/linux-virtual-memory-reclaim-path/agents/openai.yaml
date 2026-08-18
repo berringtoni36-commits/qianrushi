@@ -1,4 +1,0 @@
-interface:
-  display_name: "Linux Virtual Memory Reclaim Path"
-  short_description: "Diagnose Linux page faults and memory reclaim paths"
-  default_prompt: "Use $linux-virtual-memory-reclaim-path to analyze this Linux page-fault, reclaim, watermark, swap, or memory-latency symptom."

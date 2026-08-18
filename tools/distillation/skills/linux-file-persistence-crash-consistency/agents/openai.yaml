@@ -1,4 +1,0 @@
-interface:
-  display_name: "Linux File Persistence Crash Consistency"
-  short_description: "Analyze file durability and crash loss"
-  default_prompt: "Use $linux-file-persistence-crash-consistency to analyze what a successful write means after a process crash or power loss."

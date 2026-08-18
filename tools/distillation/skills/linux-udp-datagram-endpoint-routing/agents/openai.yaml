@@ -1,4 +1,0 @@
-interface:
-  display_name: "Linux UDP Datagram Endpoint Routing"
-  short_description: "Analyze UDP endpoints and reply routing"
-  default_prompt: "Use $linux-udp-datagram-endpoint-routing to diagnose this UDP sendto/recvfrom endpoint and reply-routing problem."
