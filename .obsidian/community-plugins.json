@@ -10,5 +10,12 @@
   "crisp-base",
   "crisp-file-explorer",
   "crisp-focus",
-  "vscode-editor"
+  "vscode-editor",
+  "buttons",
+  "dataview",
+  "docxer",
+  "obsidian-dsh",
+  "multi-source-sync",
+  "rednote-indexer",
+  "obsidian-tasks-plugin"
 ]
